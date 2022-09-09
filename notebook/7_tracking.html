@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8. 2022年度レポート" href="2022_report_answer.html" />
+    <link rel="next" title="レポート" href="report/report.html" />
     <link rel="prev" title="6. イベントデータの解析" href="6_event.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -111,7 +111,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    スポーツデータ分析のためのプログラミング
+                    Top
                 </a>
             </li>
         </ul>
@@ -151,10 +151,24 @@ const thebe_selector_output = ".output, .cell_output"
    7. トラッキングデータの解析
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2022_report_answer.html">
-   8. 2022年度レポート
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="report/report.html">
+   レポート
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="report/2022_report_answer.html">
+     2022年度レポート
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -369,12 +383,12 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pettersen">
-     Pettersenデータセット
+     7.1.1. Pettersenデータセット
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     データセットの内容
+     7.1.2. データセットの内容
     </a>
    </li>
   </ul>
@@ -386,22 +400,22 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     データの加工・整形
+     7.2.1. データの加工・整形
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     不要な選手の除去
+     7.2.2. 不要な選手の除去
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id7">
-     データの保存
+     7.2.3. データの保存
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     発展問題
+     7.2.4. 発展問題
     </a>
    </li>
   </ul>
@@ -413,27 +427,27 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id10">
-     データの読み込み
+     7.3.1. データの読み込み
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id11">
-     データの扱い方
+     7.3.2. データの扱い方
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id12">
-     重心と標準偏差の計算
+     7.3.3. 重心と標準偏差の計算
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id13">
-     速度と秩序変数の計算
+     7.3.4. 速度と秩序変数の計算
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id14">
-     発展問題
+     7.3.5. 発展問題
     </a>
    </li>
   </ul>
@@ -445,17 +459,17 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id16">
-     ボロノイ領域
+     7.4.1. ボロノイ領域
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id17">
-     ボロノイ領域の計算と描画
+     7.4.2. ボロノイ領域の計算と描画
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id18">
-     トラッキングデータへの応用
+     7.4.3. トラッキングデータへの応用
     </a>
    </li>
   </ul>
@@ -467,22 +481,22 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id20">
-     平均フォーメーション
+     7.5.1. 平均フォーメーション
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id21">
-     ドロネーネットワーク
+     7.5.2. ドロネーネットワーク
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id22">
-     ドロネーネットワークの計算と描画
+     7.5.3. ドロネーネットワークの計算と描画
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id23">
-     トラッキングデータへの応用
+     7.5.4. トラッキングデータへの応用
     </a>
    </li>
   </ul>
@@ -494,22 +508,22 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id25">
-     位置
+     7.6.1. 位置
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id26">
-     位置とテキスト
+     7.6.2. 位置とテキスト
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id27">
-     位置・速度ベクトル・テキスト
+     7.6.3. 位置・速度ベクトル・テキスト
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id28">
-     発展問題
+     7.6.4. 発展問題
     </a>
    </li>
   </ul>
@@ -540,12 +554,12 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pettersen">
-     Pettersenデータセット
+     7.1.1. Pettersenデータセット
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     データセットの内容
+     7.1.2. データセットの内容
     </a>
    </li>
   </ul>
@@ -557,22 +571,22 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     データの加工・整形
+     7.2.1. データの加工・整形
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     不要な選手の除去
+     7.2.2. 不要な選手の除去
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id7">
-     データの保存
+     7.2.3. データの保存
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     発展問題
+     7.2.4. 発展問題
     </a>
    </li>
   </ul>
@@ -584,27 +598,27 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id10">
-     データの読み込み
+     7.3.1. データの読み込み
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id11">
-     データの扱い方
+     7.3.2. データの扱い方
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id12">
-     重心と標準偏差の計算
+     7.3.3. 重心と標準偏差の計算
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id13">
-     速度と秩序変数の計算
+     7.3.4. 速度と秩序変数の計算
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id14">
-     発展問題
+     7.3.5. 発展問題
     </a>
    </li>
   </ul>
@@ -616,17 +630,17 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id16">
-     ボロノイ領域
+     7.4.1. ボロノイ領域
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id17">
-     ボロノイ領域の計算と描画
+     7.4.2. ボロノイ領域の計算と描画
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id18">
-     トラッキングデータへの応用
+     7.4.3. トラッキングデータへの応用
     </a>
    </li>
   </ul>
@@ -638,22 +652,22 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id20">
-     平均フォーメーション
+     7.5.1. 平均フォーメーション
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id21">
-     ドロネーネットワーク
+     7.5.2. ドロネーネットワーク
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id22">
-     ドロネーネットワークの計算と描画
+     7.5.3. ドロネーネットワークの計算と描画
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id23">
-     トラッキングデータへの応用
+     7.5.4. トラッキングデータへの応用
     </a>
    </li>
   </ul>
@@ -665,22 +679,22 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id25">
-     位置
+     7.6.1. 位置
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id26">
-     位置とテキスト
+     7.6.2. 位置とテキスト
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id27">
-     位置・速度ベクトル・テキスト
+     7.6.3. 位置・速度ベクトル・テキスト
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id28">
-     発展問題
+     7.6.4. 発展問題
     </a>
    </li>
   </ul>
@@ -735,7 +749,7 @@ title="Print to PDF"
 <section id="id2">
 <h2><span class="section-number">7.1. </span>データセット<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <section id="pettersen">
-<h3>Pettersenデータセット<a class="headerlink" href="#pettersen" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.1.1. </span>Pettersenデータセット<a class="headerlink" href="#pettersen" title="Permalink to this headline">#</a></h3>
 <p>Pettersenデータセットはサッカーのトラッキングデータをまとめたデータセットである．
 試合数は3試合と少ないが，2022年時点で一般公開されている数少ない（唯一の？）サッカートラッキングデータである．
 データセットの内容は以下の論文にまとめられている：</p>
@@ -749,7 +763,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="id3">
-<h3>データセットの内容<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.1.2. </span>データセットの内容<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <p>本データセットはノルウェーのAlfheimスタジアムにおいて取得されている．
 対象となる試合はAlfheimスタジアムを本拠地とするTromsø ILの3試合である．
 データセットには試合映像とセンサーによって取得された位置座標のデータ（トラッキングデータ）が含まれているが，トラッキングデータの取得対象はTromsø ILの選手のみである．
@@ -888,7 +902,7 @@ title="Print to PDF"
 <li><p><a class="reference external" href="https://datasets.simula.no/downloads/alfheim/2013-11-03/zxy/2013-11-03_tromso_stromsgodset_first.csv">https://datasets.simula.no/downloads/alfheim/2013-11-03/zxy/2013-11-03_tromso_stromsgodset_first.csv</a></p></li>
 </ul>
 <section id="id5">
-<h3>データの加工・整形<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.2.1. </span>データの加工・整形<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
 <p><strong>データの読み込み</strong></p>
 <p>ダウンロードしたcsvファイルを<code class="docutils literal notranslate"><span class="pre">df</span></code>という名前でDataFrameに読み込む．
 その際に列ラベル（<code class="docutils literal notranslate"><span class="pre">columns</span></code>）を指定しておく．</p>
@@ -1183,7 +1197,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="id6">
-<h3>不要な選手の除去<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.2.2. </span>不要な選手の除去<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">df_x</span></code>，<code class="docutils literal notranslate"><span class="pre">df_y</span></code>には以下の選手の座標が含まれている：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1364,7 +1378,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="id7">
-<h3>データの保存<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.2.3. </span>データの保存<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_x2</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./7_tracking/x_1st.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
@@ -1375,7 +1389,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="id8">
-<h3>発展問題<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.2.4. </span>発展問題<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>トラッキングデータの前処理を行う関数を作成せよ</p></li>
 <li><p>この関数を用いて後半のデータや他の試合のデータの前処理を行え</p></li>
@@ -1385,7 +1399,7 @@ title="Print to PDF"
 <section id="id9">
 <h2><span class="section-number">7.3. </span>トラッキングデータ解析の基本<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h2>
 <section id="id10">
-<h3>データの読み込み<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.3.1. </span>データの読み込み<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h3>
 <p>改めて，作成したデータを<code class="docutils literal notranslate"><span class="pre">X</span></code>，<code class="docutils literal notranslate"><span class="pre">Y</span></code>というDataFrameに読み込む．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1397,7 +1411,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="id11">
-<h3>データの扱い方<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.3.2. </span>データの扱い方<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h3>
 <p><strong>データの構造</strong></p>
 <p>DataFrame<code class="docutils literal notranslate"><span class="pre">X</span></code>，<code class="docutils literal notranslate"><span class="pre">Y</span></code>は以下のような構造になっている：</p>
 <ul class="simple">
@@ -1888,7 +1902,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="id12">
-<h3>重心と標準偏差の計算<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.3.3. </span>重心と標準偏差の計算<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h3>
 <p>集団の動きを解析する際に，チーム全体のおおまかな位置と広がりを把握することは非常に重要である．
 これらの量の定義の仕方は色々と考えられるが，以下では重心と慣性半径を計算する．</p>
 <p><strong>チームの重心</strong></p>
@@ -1960,7 +1974,7 @@ Y_{c}(i) = \frac{1}{N} \sum_{u=1}^{N} Y_{u}(i), \\[10pt]
 </div>
 </section>
 <section id="id13">
-<h3>速度と秩序変数の計算<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.3.4. </span>速度と秩序変数の計算<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h3>
 <p><strong>速度</strong></p>
 <p>次に，位置座標から速度を求めてみよう．
 速度の<span class="math notranslate nohighlight">\(x,\ y\)</span>成分を<span class="math notranslate nohighlight">\(V_{x},\ V_{y}\)</span>とすると，これらは以下のように表される：</p>
@@ -2103,7 +2117,7 @@ V_{y}(i) = \frac{Y(i+n) - Y(i)}{0.05n}
 </div>
 </section>
 <section id="id14">
-<h3>発展問題<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.3.5. </span>発展問題<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>各選手の走行距離を計算せよ</p></li>
 <li><p>速度から速さ（速度の大きさ）を求め，選手ごとに速さのヒストグラムを求めよ．</p></li>
@@ -2114,7 +2128,7 @@ V_{y}(i) = \frac{Y(i+n) - Y(i)}{0.05n}
 <section id="id15">
 <h2><span class="section-number">7.4. </span>支配領域<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h2>
 <section id="id16">
-<h3>ボロノイ領域<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.4.1. </span>ボロノイ領域<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h3>
 <p>2次元平面上に<span class="math notranslate nohighlight">\(N\)</span>個の個体（<strong>母点</strong>と呼ぶ）が配置されているとき，平面上の各点を「どの母点から最も近いか」という基準で分割する．
 このとき，母点<span class="math notranslate nohighlight">\(p\)</span>から最も近い領域のことを母点<span class="math notranslate nohighlight">\(p\)</span>の<strong>ボロノイ領域</strong>と呼ぶ．
 通常，近さの基準はユークリッド距離によって定める．
@@ -2135,7 +2149,7 @@ V_{y}(i) = \frac{Y(i+n) - Y(i)}{0.05n}
 </figure>
 </section>
 <section id="id17">
-<h3>ボロノイ領域の計算と描画<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.4.2. </span>ボロノイ領域の計算と描画<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h3>
 <p>Pythonには科学技術計算のためのライブラリであるSciPyが用意されており，Anacondaをインストールすれば標準で使うことができる．
 ボロノイ領域の計算には，scipy.spatialモジュールに含まれる<code class="docutils literal notranslate"><span class="pre">Voronoi</span></code>クラスおよび<code class="docutils literal notranslate"><span class="pre">voronoi_plot_2d</span></code>関数を用いる．
 まずはこれらを以下のようにインポートする．</p>
@@ -2306,7 +2320,7 @@ V_{y}(i) = \frac{Y(i+n) - Y(i)}{0.05n}
 </div>
 </section>
 <section id="id18">
-<h3>トラッキングデータへの応用<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.4.3. </span>トラッキングデータへの応用<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h3>
 <p>サッカーのトラッキングデータからボロノイ領域を描画するには，特定のフレームにおける選手の座標を取得し，それを母点として<code class="docutils literal notranslate"><span class="pre">Voronoi</span></code>クラスのオブジェクトを生成すれば良い．
 ただし，ボロノイ領域の描画に<code class="docutils literal notranslate"><span class="pre">voronoi_plot_2d</span></code>をそのまま用いると，無限に延びるボロノイ線が途中で切れてしまうという問題が発生する．
 そこで，ここでは<code class="docutils literal notranslate"><span class="pre">voronoi_plot_2d</span></code>のソースコード（<a class="reference external" href="https://github.com/scipy/scipy/blob/v1.8.1/scipy/spatial/_plotutils.py#L151-L265">https://github.com/scipy/scipy/blob/v1.8.1/scipy/spatial/_plotutils.py#L151-L265</a> )を参考に，独自の描画関数<code class="docutils literal notranslate"><span class="pre">my_voronoi_plot_2d</span></code>を以下のように作成する．</p>
@@ -2409,7 +2423,7 @@ V_{y}(i) = \frac{Y(i+n) - Y(i)}{0.05n}
 </ol>
 <p>以下では，トラッキングデータを用いて，それぞれの方法を簡単に解説する．</p>
 <section id="id20">
-<h3>平均フォーメーション<a class="headerlink" href="#id20" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.5.1. </span>平均フォーメーション<a class="headerlink" href="#id20" title="Permalink to this headline">#</a></h3>
 <p><strong>絶対座標系</strong></p>
 <p>まずは何も考えずに試合前半の全選手の位置をフィールド上に色分けしてプロットしてみよう．
 この場合，座標原点がフィールドの左下に常に固定されているので，<strong>絶対座標系</strong>と呼ばれる．</p>
@@ -2498,7 +2512,7 @@ V_{y}(i) = \frac{Y(i+n) - Y(i)}{0.05n}
 特に，守備側から４人，４人，２人という並びになっており，おおよそ4-4-2というフォーメーションが見事に可視化されている．</p>
 </section>
 <section id="id21">
-<h3>ドロネーネットワーク<a class="headerlink" href="#id21" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.5.2. </span>ドロネーネットワーク<a class="headerlink" href="#id21" title="Permalink to this headline">#</a></h3>
 <p>以上は，ある程度幅のある時間帯から選手の平均位置を求めてフォーメーションを可視化する手法であった．
 では，特定の時刻においてフォーメーションを定量化・可視化するにはどうすればよいだろうか？
 各時刻において4-4-2や3-4-3などの数字の組を割り当てるのも一つの方法かもしれないが，実はもっと便利な方法がある．
@@ -2518,7 +2532,7 @@ V_{y}(i) = \frac{Y(i+n) - Y(i)}{0.05n}
 </figure>
 </section>
 <section id="id22">
-<h3>ドロネーネットワークの計算と描画<a class="headerlink" href="#id22" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.5.3. </span>ドロネーネットワークの計算と描画<a class="headerlink" href="#id22" title="Permalink to this headline">#</a></h3>
 <p>scipy.spatialにはドロネーネットワークを計算・描画するための<code class="docutils literal notranslate"><span class="pre">Delaunay</span></code>クラスと<code class="docutils literal notranslate"><span class="pre">delaunay_plot_2d</span></code>が用意されている．
 まずはこれらを以下のようにインポートする．</p>
 <div class="cell docutils container">
@@ -2649,7 +2663,7 @@ V_{y}(i) = \frac{Y(i+n) - Y(i)}{0.05n}
 </div>
 </section>
 <section id="id23">
-<h3>トラッキングデータへの応用<a class="headerlink" href="#id23" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.5.4. </span>トラッキングデータへの応用<a class="headerlink" href="#id23" title="Permalink to this headline">#</a></h3>
 <p>サッカーのトラッキングデータからドロネーネットワークを描画するには，特定のフレームにおける選手の座標を取得し，それを母点として<code class="docutils literal notranslate"><span class="pre">Delaunay</span></code>クラスのオブジェクトを生成すれば良い．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2728,7 +2742,7 @@ V_{y}(i) = \frac{Y(i+n) - Y(i)}{0.05n}
 <p>この設定に変更しておくと，MatplotlibのグラフはJupyter Lab内ではなく別ウインドウとして表示されるはずである．
 この辺りの詳細については「5. Matplotlibの基礎」の「5.6.1. 描画結果の出力先」にまとめてある．</p>
 <section id="id25">
-<h3>位置<a class="headerlink" href="#id25" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.6.1. </span>位置<a class="headerlink" href="#id25" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./7_tracking/x_1st.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -2763,7 +2777,7 @@ V_{y}(i) = \frac{Y(i+n) - Y(i)}{0.05n}
 </div>
 </section>
 <section id="id26">
-<h3>位置とテキスト<a class="headerlink" href="#id26" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.6.2. </span>位置とテキスト<a class="headerlink" href="#id26" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 描画関数</span>
@@ -2796,7 +2810,7 @@ V_{y}(i) = \frac{Y(i+n) - Y(i)}{0.05n}
 </div>
 </section>
 <section id="id27">
-<h3>位置・速度ベクトル・テキスト<a class="headerlink" href="#id27" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.6.3. </span>位置・速度ベクトル・テキスト<a class="headerlink" href="#id27" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 速度ベクトルと秩序変数の計算</span>
@@ -2848,7 +2862,7 @@ V_{y}(i) = \frac{Y(i+n) - Y(i)}{0.05n}
 </div>
 </section>
 <section id="id28">
-<h3>発展問題<a class="headerlink" href="#id28" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.6.4. </span>発展問題<a class="headerlink" href="#id28" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>チームの重心と慣性半径を描画するアニメーションを作成せよ</p></li>
 <li><p>チームの重心を原点とする座標系（重心座標系）でアニメーションを作成せよ</p></li>
@@ -2891,10 +2905,10 @@ V_{y}(i) = \frac{Y(i+n) - Y(i)}{0.05n}
             <p class="prev-next-title"><span class="section-number">6. </span>イベントデータの解析</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="2022_report_answer.html" title="next page">
+    <a class='right-next' id="next-link" href="report/report.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>2022年度レポート</p>
+        <p class="prev-next-title">レポート</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
