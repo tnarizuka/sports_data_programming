@@ -842,24 +842,12 @@ DataFrameは（Excelのような）テーブル形式の構造を持ち，以下
 <li><p>indexとcolumnsには数値や文字列を用いて任意のラベルを与えることができる．</p></li>
 <li><p>行と列にはNumPy配列と同じ行番号・列番号も付与されており，行番号が増える方向を<code class="docutils literal notranslate"><span class="pre">axis=0</span></code>，列番号が増える方向を<code class="docutils literal notranslate"><span class="pre">axis=1</span></code>と呼ぶ．</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
-<span class="n">IFrame</span><span class="p">(</span><span class="s1">&#39;https://drive.google.com/file/d/1CzhxQSyAslqBz4yD9Yrq3ATTf5bPFONs/preview&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="600"
-    height="300"
-    src="https://drive.google.com/file/d/1CzhxQSyAslqBz4yD9Yrq3ATTf5bPFONs/preview"
-    frameborder="0"
-    allowfullscreen
-></iframe>
-</div></div>
-</div>
+<figure class="align-default" id="fig-dataframe">
+<a class="reference internal image-reference" href="../_images/dataframe.png"><img alt="../_images/dataframe.png" src="../_images/dataframe.png" style="height: 250px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">DataFrameの例</span><a class="headerlink" href="#fig-dataframe" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <section id="id3">
 <h3>DataFrameの生成<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <p>DataFrameを生成するには，<code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>関数を用いる：</p>
