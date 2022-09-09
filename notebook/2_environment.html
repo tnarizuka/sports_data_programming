@@ -1,0 +1,1264 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>2. プログラミング環境の構築 &#8212; Sports Data Programming</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. NumPyの基礎" href="3_numpy.html" />
+    <link rel="prev" title="1. イントロダクション" href="1_introduction.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Sports Data Programming</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    スポーツデータ分析のためのプログラミング
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_introduction.html">
+   1. イントロダクション
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   2. プログラミング環境の構築
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3_numpy.html">
+   3. NumPyの基礎
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4_pandas.html">
+   4. Pandasの基礎
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5_matplotlib.html">
+   5. Matplotlibの基礎
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6_event.html">
+   6. イベントデータの解析
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="7_tracking.html">
+   7. トラッキングデータの解析
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/tnarizuka/sports_data_programming/main?urlpath=tree/docs/notebook/2_environment.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/tnarizuka/sports_data_programming"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/tnarizuka/sports_data_programming/issues/new?title=Issue%20on%20page%20%2Fnotebook/2_environment.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notebook/2_environment.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#anaconda">
+   2.1. Anacondaのインストール
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#maplotlib">
+   2.2. Maplotlibの日本語対応
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   2.3. 作業フォルダの作成
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#path">
+   2.4. パス（Path）について
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     パスとは何か？
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     パスの取得方法
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#windowspython">
+     WindowsのPythonでパスを指定する際の注意
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     絶対パスと相対パス
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyter-lab">
+   2.5. Jupyter Lab
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     Jupyter Labの起動方法
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ipynb">
+     .ipynbファイルの起動方法
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     Jupyter Labの運用方法
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     （参考）便利な機能
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#windows-terminal">
+   2.6. （任意）Windows Terminalのインストール
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#google-colab">
+   2.7. （参考）Google Colab
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#google-colabjupyter-notebook">
+     Google colabでjupyter notebookを開く
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import">
+     必要なモジュールをimportする
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#google-drive">
+     Google Driveをマウントする
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     （任意）自作モジュールをimportする
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matplotlib">
+     （任意）matplotlibのスタイルファイルを読み込む
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>プログラミング環境の構築</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#anaconda">
+   2.1. Anacondaのインストール
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#maplotlib">
+   2.2. Maplotlibの日本語対応
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   2.3. 作業フォルダの作成
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#path">
+   2.4. パス（Path）について
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     パスとは何か？
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     パスの取得方法
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#windowspython">
+     WindowsのPythonでパスを指定する際の注意
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     絶対パスと相対パス
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyter-lab">
+   2.5. Jupyter Lab
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     Jupyter Labの起動方法
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ipynb">
+     .ipynbファイルの起動方法
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     Jupyter Labの運用方法
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     （参考）便利な機能
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#windows-terminal">
+   2.6. （任意）Windows Terminalのインストール
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#google-colab">
+   2.7. （参考）Google Colab
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#google-colabjupyter-notebook">
+     Google colabでjupyter notebookを開く
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import">
+     必要なモジュールをimportする
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#google-drive">
+     Google Driveをマウントする
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     （任意）自作モジュールをimportする
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matplotlib">
+     （任意）matplotlibのスタイルファイルを読み込む
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># （必須）モジュールのインポート</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">japanize_matplotlib</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># （必須）カレントディレクトリの変更（自分の作業フォルダのパスをコピーして入力する）</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\parar\OneDrive\sport_data&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>このページの.ipynbファイル：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1A0dtXMVJ5GcRYRNIKq0cT6smObwPasWG">2_environment.ipynb</a></strong></p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>最新の内容が表示されない場合は強制リロードして下さい．</strong></p>
+<ul>
+<li><p>Windows: <code class="docutils literal notranslate"><span class="pre">Ctrl+F5</span></code></p></li>
+<li><p>Mac: <code class="docutils literal notranslate"><span class="pre">Command+R</span></code> or <code class="docutils literal notranslate"><span class="pre">Command</span> <span class="pre">+</span> <span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">R</span></code></p></li>
+</ul>
+</li>
+</ul>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">2. </span>プログラミング環境の構築<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<section id="anaconda">
+<h2><span class="section-number">2.1. </span>Anacondaのインストール<a class="headerlink" href="#anaconda" title="Permalink to this headline">#</a></h2>
+<p>既に「プログラミング基礎」の授業内でAnacondaをインストールしているはずなので，以下ではインストールの概要だけ述べる．詳細は<a class="reference external" href="https://www.python.jp/install/anaconda/windows/install.html">Python.jp</a>や<a class="reference external" href="https://www.javadrive.jp/python/install/index5.html">Let’sプログラミング</a>などが参考になる．</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.anaconda.com/products/individual">Anacondaの公式サイト</a>にアクセスする</p></li>
+<li><p>下にスクロールし，”Anaconda Installers”から環境に応じたインストーラをダウンロードする</p></li>
+<li><p>ダウンロードしたインストーラをクリックし，画面の指示に従う</p>
+<ul>
+<li><p>途中で，”add Anaconda to the system Pass environment variable”にチェックを入れてPathの設定を行う</p></li>
+</ul>
+</li>
+<li><p>Anaconda Navigatorが使えるか確認する</p></li>
+</ul>
+</section>
+<section id="maplotlib">
+<h2><span class="section-number">2.2. </span>Maplotlibの日本語対応<a class="headerlink" href="#maplotlib" title="Permalink to this headline">#</a></h2>
+<p>Matplotlibはグラフ作成のためのライブラリである（詳しくは基礎編で解説する）．
+Matplotlibは標準で日本語に対応していないので，ここでは日本語対応する方法を解説する．
+日本語対応する方法には以下の2つが存在する（詳しくは<a class="reference external" href="https://ai-inter1.com/matplotlib-japanize/">こちら</a>）：</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. japanize_matplotlib を利用する
+2. MatplotlibのFontPropertiesを利用する
+</pre></div>
+</div>
+<p>ここでは，1. japanize_matplotlibを利用する方法を説明する．
+japanize_matplotlibはPythonのモジュールなので，最初にインストールしておけば，あとは他のモジュールと同じように<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">japanize_matplotlib</span></code>とするだけで日本語が使用可能になる．
+ただし，使用可能なフォントはIPAexゴシックだけなので，フォントにこだわりたい場合は2.の方法をおすすめする．</p>
+<p><strong>japanize_matplotlibのインストール（詳しくは<a class="reference external" href="https://pypi.org/project/japanize-matplotlib/">こちら</a>）</strong></p>
+<ul>
+<li><p>pipでインストール</p>
+<ul>
+<li><p>ターミナルを開いて以下のコマンドを実行し，AnacondaのインストールされているフォルダのPathを取得する</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">info</span> <span class="o">-</span><span class="n">e</span>
+<span class="c1"># conda environmentsL</span>
+<span class="c1">#</span>
+<span class="n">base</span>    <span class="o">*</span>     <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">username</span>\<span class="n">anaconda3</span>
+</pre></div>
+</div>
+</li>
+<li><p>取得したAnaconda環境をactivateする</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code>の右に表示された文字列（フォルダのパス）をコピーして以下を実行</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">activate</span> <span class="pre">&quot;フォルダのパス&quot;</span></code></p></li>
+<li><p>これでanaconda環境にpipコマンドでインストール可能になる</p></li>
+</ul>
+</li>
+<li><p>以下のコマンドを実行してインストールする</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">japanize-matplotlib</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>condaでインストール</p>
+<ul class="simple">
+<li><p>今は対応していない様子</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id2">
+<h2><span class="section-number">2.3. </span>作業フォルダの作成<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<p>データ分析では，様々なファイルを扱わなければならない．
+例えば，本講義では，Pythonのソースコード（<code class="docutils literal notranslate"><span class="pre">.py</span></code>ファイル），Jupyter NoteBook（<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>ファイル），データ（<code class="docutils literal notranslate"><span class="pre">.csv</span></code>ファイル），図（<code class="docutils literal notranslate"><span class="pre">.pdf</span></code>ファイル）などのファイルを扱うことになる．
+これらのファイルが自分のPC内のどこに保存されているかを把握しておかないと，ファイルを探すだけで時間を取られてしまい，時間の無駄である．
+データ分析を始める際にまず行うべきことは，PC内のフォルダやファイルを整理することである．</p>
+<p>まず本講義専用の作業フォルダを作成する（名前は自分で分かれば何でも良い）．
+作業フォルダの作成場所はできればOneDriveやGoogle Driveの中に作ることを推奨する（こうすれば，自動的にクラウド上にバックアップされる）．</p>
+<p>ここでは，[ローカルディスク（C:）][ユーザー][username][OneDrive]の中に[sport_data]という作業フォルダを作ったとする：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">OneDrive</span><span class="p">]</span>
+    <span class="o">-</span> <span class="p">[</span><span class="n">デスクトップ</span><span class="p">]</span>
+    <span class="o">-</span> <span class="p">[</span><span class="n">ドキュメント</span><span class="p">]</span>
+    <span class="o">...</span>
+    <span class="o">-</span> <span class="p">[</span><span class="n">sport_data</span><span class="p">]</span>
+
+</pre></div>
+</div>
+<p>本講義で扱うファイルは全てこの[sport_data]の中に保存する．
+[sport_data]フォルダの中身は次のように章ごとのサブフォルダやレポート用のフォルダに分けておくと良い：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">sport_data</span><span class="p">]</span>
+    <span class="o">-</span> <span class="p">[</span><span class="mi">1</span><span class="n">_introduction</span><span class="p">]</span>
+    <span class="o">-</span> <span class="p">[</span><span class="mi">2</span><span class="n">_environment</span><span class="p">]</span>
+        <span class="o">-</span> <span class="mi">2</span><span class="n">_environment</span><span class="o">.</span><span class="n">ipynb</span>
+    <span class="o">-</span> <span class="p">[</span><span class="mi">3</span><span class="n">_numpy</span><span class="p">]</span>
+    <span class="o">-</span> <span class="p">[</span><span class="mi">4</span><span class="n">_pandas</span><span class="p">]</span>
+    <span class="o">-</span> <span class="p">[</span><span class="mi">5</span><span class="n">_matplotlib</span><span class="p">]</span>
+    <span class="o">-</span> <span class="p">[</span><span class="mi">6</span><span class="n">_event</span><span class="p">]</span>
+    <span class="o">-</span> <span class="p">[</span><span class="mi">7</span><span class="n">_tracking</span><span class="p">]</span>
+    <span class="o">-</span> <span class="p">[</span><span class="n">report</span><span class="p">]</span>
+    <span class="o">-</span> <span class="p">[</span><span class="n">others</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>例えば，[2_environment]というフォルダの中には，”.ipynb”ファイル（このページの上部からダウンロード可）が保存されている．</p>
+</section>
+<section id="path">
+<h2><span class="section-number">2.4. </span>パス（Path）について<a class="headerlink" href="#path" title="Permalink to this headline">#</a></h2>
+<section id="id3">
+<h3>パスとは何か？<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<p>Pythonプログラムの実行，自分のPC上のファイルの読み込み，加工したデータの保存を行うには，対象となるファイルの在り処，つまりアドレスが分からないといけない．
+このアドレスを指定する文字列のことをパス（Path）と呼ぶ．</p>
+<p>パスはフォルダの階層構造を区切り文字によって区切った形式で表される．
+細かい表記方法はWindowsやMacなどのOSによって異なるが，Windowsの場合は以下のように表される：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>C:¥Program Files
+C:¥Users¥username¥work¥test.txt
+G:¥マイドライブ
+</pre></div>
+</div>
+<p>ここで，それぞれのパスの先頭には”C”や”G”などの文字が付いている．
+これは，最も上の階層であるドライブ名を表す文字で，エクスプローラーを開いてナビゲーションウィンドウからPCアイコンをクリックすると表示される［例えば，”C”はCドライブを意味し，ローカルディスク（C:）と表示されているものに対応する］．
+また，フォルダの階層の区切りは”¥”（またはバックスラッシュ”&quot;）によって表されており，”¥”の隣にはフォルダの名前が記載されている．
+例えば，１番目のパスは，Cドライブの中にある”Program Files”というフォルダのパスを表す．
+また，2番目のパスは”test.txt”というファイルのパスを表す．
+3番目は先頭の文字が”G”となっているが，これはGoogle Driveのパスを表している．</p>
+</section>
+<section id="id4">
+<h3>パスの取得方法<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<p>Windowsでは，パスをコピーしたいファイルやフォルダに対し，shiftキーを押しながら右クリックし「パスのコピー」を選択すればよい．</p>
+</section>
+<section id="windowspython">
+<h3>WindowsのPythonでパスを指定する際の注意<a class="headerlink" href="#windowspython" title="Permalink to this headline">#</a></h3>
+<p>Windows環境においてパスをコピーして貼り付けると
+<code class="docutils literal notranslate"><span class="pre">&quot;C:\Users\username\OneDrive\sport_data&quot;</span></code>
+のように区切り文字がバックスラッシュ”&quot;または”¥”になるはずである．
+ところが，pythonではバックスラッシュ”&quot;と文字を組み合わせたエスケープシーケンスいう特別な文字列が存在し，例えば，”\n”は改行，”\t”はタブを表すエスケープシーケンスである．
+これにより，上の例の中にある”\t”の部分はパスの区切りではなくエスケープシーケンスとして認識され，エラーが出ることがある（特に，pythonでファイルの入出力を行うとき）．</p>
+<p>これを回避するには以下の方法がある：</p>
+<ol class="simple">
+<li><p>［推奨］r”C:\Users\username\OneDrive\sport_data”とする（raw文字列）</p></li>
+<li><p>バックスラッシュ”&quot;をスラッシュ”/”に書き換える</p></li>
+<li><p>バックスラッシュ”&quot;を”\”に書き換える</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># エラーが出る</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C:\Users\username\OneDrive\sport_data&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-1-aa03846d7c5b&gt;&quot;</span><span class="gt">, line </span><span class="mi">2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C:\Users\username\OneDrive\sport_data&quot;</span><span class="p">)</span>
+          <span class="o">^</span>
+<span class="ne">SyntaxError</span>: (unicode error) &#39;unicodeescape&#39; codec can&#39;t decode bytes in position 2-3: truncated \UXXXXXXXX escape
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># raw文字列</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\username\OneDrive\sport_data&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\username\OneDrive\sport_data
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># \ -&gt; /</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C:/Users/username/OneDrive/sport_data&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:/Users/username/OneDrive/sport_data
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># \ -&gt; \\</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">Users</span><span class="se">\\</span><span class="s2">username</span><span class="se">\\</span><span class="s2">OneDrive</span><span class="se">\\</span><span class="s2">sport_data&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\username\OneDrive\sport_data
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id5">
+<h3>絶対パスと相対パス<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<p>まず，以下のようなプログラムをPythonスクリプト（<a class="reference external" href="http://test.py">test.py</a>）に保存する（<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1htV_JZw26qMvnefhc1YGZfhZCiYMojmk">ダウンロードはこちら</a>）．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>ここでは，Pythonスクリプトファイルのパス（保存先）が<code class="docutils literal notranslate"><span class="pre">&quot;C:\Users\username\OneDrive\sport_data\2_environment\test.py&quot;</span></code>であるとする．
+これを実行するには以下の方法がある：</p>
+<ol class="simple">
+<li><p>ipythonまたはJupyterで実行する</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">%run</span> <span class="pre">&quot;ファイルのパス&quot;</span></code></p></li>
+</ul>
+</li>
+<li><p>ターミナル（またはコマンドプロンプト）で実行する</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">&quot;ファイルのパス&quot;</span></code></p></li>
+</ul>
+</li>
+</ol>
+<p>このとき，ファイルのパスを指定する方法には以下の2通りが存在する．</p>
+<p><strong>1. 絶対パス</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> &quot;C:\Users\parar\OneDrive\sport_data\2_environment\test.py&quot;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>test0
+test1
+test2
+test3
+test4
+</pre></div>
+</div>
+</div>
+</div>
+<p>この方法では，最も上の階層であるドライブ名（ここではCドライブ）から始まるパスを指定しており，これを<strong>絶対パス</strong>と呼ぶ．
+「パスのコピー」によって取得されるのはこの絶対パスである．
+よって，絶対パスを使っておけばエラーは出にくいが，PCの奥深くにあるフォルダだとパスが長くなるという問題がある．</p>
+<p><strong>2.相対パス</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\parar\OneDrive\sport_data&quot;</span><span class="p">)</span> <span class="c1"># カレントディレクトリの移動</span>
+<span class="o">%</span><span class="k">run</span> &quot;./2_environment/test.py&quot;             # 実行
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>test0
+test1
+test2
+test3
+test4
+</pre></div>
+</div>
+</div>
+</div>
+<p>2つ目の方法では，まず<code class="docutils literal notranslate"><span class="pre">os.chdir</span></code>コマンドで<code class="docutils literal notranslate"><span class="pre">&quot;C:/Users/username/OneDrive/sport_data&quot;</span></code>という作業フォルダに移動してから，さらに”./2_environment/test.py”を実行している．
+このとき，現在の居場所（今の場合は[sport_data]フォルダ）のことをカレントディレクトリと呼ぶ．
+また，スクリプトファイルのパスは”./2_environment/test.py”のように指定されるが，これを<strong>相対パス</strong>と呼ぶ．
+相対パスは，カレントディレクトリからの相対的な位置関係を表しており，”.”というのがカレントディレクトリのパスを表す省略記号である．
+相対パスを用いると，パスが短くなるので便利であるが，カレントディレクトリがどこなのかを認識しておく必要がある．</p>
+</section>
+</section>
+<section id="jupyter-lab">
+<h2><span class="section-number">2.5. </span>Jupyter Lab<a class="headerlink" href="#jupyter-lab" title="Permalink to this headline">#</a></h2>
+<p>Anacondaをインストールすると，自動的にJupyter NotebookとJupyter Labが使えるようになる．
+本講義ではJupyter Labの方を用いる．</p>
+<section id="id6">
+<h3>Jupyter Labの起動方法<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+<ol class="simple">
+<li><p>ターミナル（またはコマンドプロンプト）から起動</p>
+<ul class="simple">
+<li><p>次のコマンドを実行：<code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">lab</span> <span class="pre">&quot;起動ディレクトリのパス&quot;</span></code></p></li>
+<li><p>起動ディレクトリのパスは省略可（デフォルトでは”C:/Users/username”）</p></li>
+</ul>
+</li>
+<li><p>Anaconda Navigatorから起動</p>
+<ul class="simple">
+<li><p>［スタートメニュー］→［Anaconda Navigator (anaconda3)］</p></li>
+<li><p>［Jupyter Lab］をクリック</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p>初期状態ではLauncherが起動するので，NotebookからPython 3を選択する</p></li>
+</ul>
+</section>
+<section id="ipynb">
+<h3>.ipynbファイルの起動方法<a class="headerlink" href="#ipynb" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>.ipynbファイルをダウンロードし，作業フォルダに保存する．</p>
+<ul>
+<li><p>講義ノート冒頭のDLリンクをクリックし，ダウンロードアイコンをクリック</p></li>
+<li><p>自動保存された場合は[ダウンロード]フォルダ内に保存されているはず</p></li>
+</ul>
+</li>
+<li><p>Jupyter Labを起動し，左上のフォルダアイコンをクリックする．</p></li>
+<li><p>.ipynbファイルを保存した作業フォルダに移動し，.ipynbファイルをダブルクリックする．</p></li>
+</ul>
+</section>
+<section id="id7">
+<h3>Jupyter Labの運用方法<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
+<p>Jupyter Labで作業する際には，以下の手順でカレントディレクトリを作業フォルダに変更しておくと良い：</p>
+<ol class="simple">
+<li><p>エクスプローラー上で，作業フォルダをshiftを押しながら右クリックし，パスのコピーを選択</p></li>
+<li><p>コピーしたパスの先頭に<code class="docutils literal notranslate"><span class="pre">r</span></code>を付けて<code class="docutils literal notranslate"><span class="pre">os.chdir(r&quot;作業フォルダのパス&quot;)</span></code>のように実行</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\parar\OneDrive\sport_data&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>これにより，[sport_data]内部のフォルダには相対パスでアクセスすることができるようになる．
+例えば，Matplotlibで作成した図を[sport_data][2_environment]に保存したい場合は以下のようにする．
+japanize_matplotlibがうまくインストールされていれば，ラベルに日本語が表示されるはずである．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">japanize_matplotlib</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x軸&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y軸&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./2_environment/graph.pdf&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">,</span> <span class="n">pad_inches</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2_environment_36_0.png" src="../_images/2_environment_36_0.png" />
+</div>
+</div>
+<p><strong>JupyterとPythonスクリプトの使い分け</strong></p>
+<p>Jupyterは短いコードを逐次実行しながら結果を確認するのには適しているが，コードが長くなると分かりにくくなる．そこで，コードが長くなってきたら関数やクラスに適宜まとめてスクリプト（<code class="docutils literal notranslate"><span class="pre">.py</span></code>ファイル）に保存すると良い．保存したスクリプトはNumPyやPandasと同じようにimportできるので，Jupyter上ではimportしたスクリプト内の関数を実行するだけにすると結果が整理しやすい．その際，以下に説明する自作モジュールの自動リロードの設定をしておくと便利である．</p>
+<p>※ ローカル環境で<code class="docutils literal notranslate"><span class="pre">.py</span></code>ファイルを編集するにはエディタを使用する．Windowsに標準搭載されているメモ帳を使うのが最も手軽だが，非常に使いづらいので推奨しない．まずは自分の好みに合うエディタを探すことを推奨する．よく使われるエディタは以下の通り：</p>
+<ul class="simple">
+<li><p>Visual Studio Code</p></li>
+<li><p>Atom</p></li>
+<li><p>Sublime Text</p></li>
+</ul>
+</section>
+<section id="id8">
+<h3>（参考）便利な機能<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
+<p><strong>Jupyterのconfigファイル</strong></p>
+<ul class="simple">
+<li><p>ターミナルで以下を実行する</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span> <span class="pre">--generate-config</span></code></p></li>
+<li><p>“C:\Users\username.jupyter”の中に”jupyter_notebook_config.py”というファイルができる．</p></li>
+</ul>
+</li>
+<li><p>“jupyter_notebook_config.py”を開いて以下を追加</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">c=get_config()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c.NotebookApp.notebook_dir=&quot;起動ディレクトリのパス&quot;</span></code></p></li>
+</ul>
+</li>
+<li><p>これにより，Jupyter Labを起動したときに指定したフォルダが開かれる</p></li>
+</ul>
+<p><strong>Ipythonのプロファイル</strong></p>
+<p>Ipythonプロファイルを作成すると，jupyterの起動時に自動実行したいコマンドを設定できる．</p>
+<ul>
+<li><p>ターミナルで以下を実行する</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ipython</span> <span class="pre">profile</span> <span class="pre">create</span> <span class="pre">profile_name</span></code></p></li>
+<li><p>“C:\Users\username.ipython\prifile_name”に”startup”フォルダが作成される．</p></li>
+</ul>
+</li>
+<li><p>startupフォルダの中に”00.ipy”というファイル（スタートアップスクリプト）を作り，自動実行したいコマンドを記述する．</p></li>
+<li><p>例えば，以下はよく使うので自動importしておくと良い</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</li>
+<li><p>自作のモジュール（例えば<code class="docutils literal notranslate"><span class="pre">my_module.py</span></code>）をimportして使う場合，<code class="docutils literal notranslate"><span class="pre">my_module.py</span></code>を一度jupyterでimportした後に，ローカルで<code class="docutils literal notranslate"><span class="pre">my_module.py</span></code>を変更することがよくある．このとき，ローカルで行った変更内容はjupyter側には自動で反映されない．そこで，スタートアップスクリプトに以下を加えておくと自作モジュールの変更が自動で反映される．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">load_ext</span> <span class="n">autoreload</span>
+<span class="o">%</span><span class="n">autoreload</span> <span class="mi">2</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>例として，[sport_data]フォルダの中に[module]フォルダを作り，以下のプログラムを<code class="docutils literal notranslate"><span class="pre">my_module.py</span></code>として保存する．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_func</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">my_func</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>つまり，このPythonスクリプトのパスは”C:\Users\username\OneDrive\sport_data\module\my_module.py”となる．</p>
+<p>これを単にPythonスクリプトとして実行すると，<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__':</span></code>以下のコマンドが実行される：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> &quot;./module/my_module.py&quot;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>test0
+test1
+test2
+test3
+test4
+</pre></div>
+</div>
+</div>
+</div>
+<p>一方，これをモジュールとしてインポートするには以下のようにする：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">module.my_module</span> <span class="k">as</span> <span class="nn">mm</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>この状態で<code class="docutils literal notranslate"><span class="pre">my_module</span></code>内の関数<code class="docutils literal notranslate"><span class="pre">my_func()</span></code>を以下のように<code class="docutils literal notranslate"><span class="pre">mm.my_func()</span></code>として実行できる：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mm</span><span class="o">.</span><span class="n">my_func</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>test0
+test1
+test2
+test3
+test4
+</pre></div>
+</div>
+</div>
+</div>
+<p>スタートアップスクリプト内にautoreloadの設定を書いている場合は，ローカルで<code class="docutils literal notranslate"><span class="pre">my_module.py</span></code>を書き換えたら即座に変更内容が反映されるはずである．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mm</span><span class="o">.</span><span class="n">my_func</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module_test0
+module_test1
+module_test2
+module_test3
+module_test4
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="windows-terminal">
+<h2><span class="section-number">2.6. </span>（任意）Windows Terminalのインストール<a class="headerlink" href="#windows-terminal" title="Permalink to this headline">#</a></h2>
+<p>プログラミングをする上でコマンドによる操作は避けて通れない．
+Windowsにはコマンドプロンプトというコマンドラインツールが搭載されているが，使いづらいのでWindows Terminalをインストールすることを推奨する．
+（コマンドプロンプトでも可）</p>
+<p><strong>インストール</strong></p>
+<ul class="simple">
+<li><p>Windosw10の場合はMicrosoft Storeからインストールできる．</p></li>
+<li><p>Windows11の場合は標準搭載されている．</p></li>
+</ul>
+<p><strong>設定</strong></p>
+<ul class="simple">
+<li><p>左下の検索をクリックし，”ターミナル”と検索</p></li>
+<li><p>検索結果の中から”ターミナル”を右クリックし”管理者として実行”</p></li>
+<li><p>以下のコマンドを実行</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Set</span><span class="o">-</span><span class="n">ExecutionPolicy</span> <span class="n">RemoteSigned</span>
+</pre></div>
+</div>
+<p><strong>実行</strong></p>
+<ul class="simple">
+<li><p>タスクバーにピン留めしておいて，そこから実行すると良い</p></li>
+</ul>
+</section>
+<section id="google-colab">
+<h2><span class="section-number">2.7. </span>（参考）Google Colab<a class="headerlink" href="#google-colab" title="Permalink to this headline">#</a></h2>
+<p>Google Colab（正式名称はGoogle Colaboratoty）はgoogleが提供するPython実行環境であり，Jupyter Notebookがベースになっている．
+実際，Google Colabで作成したノートブックは”.ipynb形式”で保存されるので，相互互換性がある．
+Google Colabの特徴は以下の通りである：</p>
+<ul class="simple">
+<li><p>ブラウザ上で動作する</p></li>
+<li><p>基本操作はJupyter Notebookと似ている（細かい操作方法は異なる）</p></li>
+<li><p>作成したノートブックはGoogle Drive上に保存される</p>
+<ul>
+<li><p>Google Driveが必要（なのでGoogle アカウントも必要）</p></li>
+</ul>
+</li>
+<li><p>pythonの環境構築が不要（新たにモジュールをインストールすることも可能）</p></li>
+<li><p>無料でGPUを使用可能</p></li>
+</ul>
+<p>特に，Jupyter Notebookの場合は自分のPC上にpython環境を構築する必要があるが，Google Colabはその必要がない点がメリットである．
+また，GPUが無料で使用可能なので，重い計算を行う際にも重宝する．
+本講義では，基本的にJupyter Labを用いるが，Google Colabを用いても問題ない．</p>
+<section id="google-colabjupyter-notebook">
+<h3>Google colabでjupyter notebookを開く<a class="headerlink" href="#google-colabjupyter-notebook" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Google Driveを開いて作業フォルダに移動</p></li>
+<li><p>既存の<code class="docutils literal notranslate"><span class="pre">.ipynbファイル</span></code>を選択するとGoogle Colabが開く</p></li>
+<li><p>新規作成作成の場合は以下</p>
+<ul>
+<li><p>［右クリック］→［その他］→［Google Colaboratory］</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="import">
+<h3>必要なモジュールをimportする<a class="headerlink" href="#import" title="Permalink to this headline">#</a></h3>
+<ul>
+<li><p>google colabにインストールされていないモジュール（japanize_matplotlibなど）</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install japanize-matplotlib
+import japanize_matplotlib
+</pre></div>
+</div>
+</li>
+<li><p>既にインストールされているモジュール</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="google-drive">
+<h3>Google Driveをマウントする<a class="headerlink" href="#google-drive" title="Permalink to this headline">#</a></h3>
+<p>Google Driveに保存した自作モジュールやファイルにアクセスしたい場合はGoogle Driveをマウントする必要がある．</p>
+<ul>
+<li><p>以下を実行する</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>「このノートブックにGoogleドライブのファイルへのアクセスを許可しますか？」と聞かれるので「Google ドライブに接続」を選択</p></li>
+<li><p>自分のGoogleアカウントを選択し，「許可」を選択</p></li>
+</ul>
+</section>
+<section id="id9">
+<h3>（任意）自作モジュールをimportする<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/content/drive/My Drive/***&#39;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="o">***.</span><span class="n">xxx</span>
+</pre></div>
+</div>
+<p>※ なお，自作モジュールの変更を反映したい場合は［ランタイムを出荷時設定にリセット］し，再度マウントする</p>
+</section>
+<section id="matplotlib">
+<h3>（任意）matplotlibのスタイルファイルを読み込む<a class="headerlink" href="#matplotlib" title="Permalink to this headline">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;/content/drive/My Drive/***/matplotlibrc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebook"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="1_introduction.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">1. </span>イントロダクション</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="3_numpy.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>NumPyの基礎</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Takuma Narizuka<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

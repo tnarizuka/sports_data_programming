@@ -1,0 +1,14 @@
+# スポーツデータ分析のためのプログラミング
+
+## 講義情報
+
+- 科目群：専門科目・専門基礎科目群
+- 必選区分：選択
+- 対象：データサイエンス学部２年次
+- 曜日・時限：第１期・月曜・２限
+
+
+
+## [講義ノート](https://tnarizuka.github.io/AIP_2022/)
+
+本講義ノートは[Jupyter Book](https://jupyterbook.org/en/stable/intro.html)を用いて作られています
