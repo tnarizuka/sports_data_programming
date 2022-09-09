@@ -1,0 +1,16 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: index
+options:
+  numbered: 2
+
+chapters:
+- file: notebook/1_introduction.ipynb
+- file: notebook/2_environment.ipynb
+- file: notebook/3_numpy.ipynb
+- file: notebook/4_pandas.ipynb
+- file: notebook/5_matplotlib.ipynb
+- file: notebook/6_event.ipynb
+- file: notebook/7_tracking.ipynb
