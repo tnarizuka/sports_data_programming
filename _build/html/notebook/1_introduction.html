@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="2. プログラミング環境の構築" href="2_environment.html" />
-    <link rel="prev" title="スポーツデータ分析のためのプログラミング" href="../index.html" />
+    <link rel="prev" title="Top" href="../index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -109,7 +109,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    スポーツデータ分析のためのプログラミング
+                    Top
                 </a>
             </li>
         </ul>
@@ -149,10 +149,24 @@ const thebe_selector_output = ".output, .cell_output"
    7. トラッキングデータの解析
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2022_report_answer.html">
-   8. 2022年度レポート
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="report/report.html">
+   レポート
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="report/2022_report_answer.html">
+     2022年度レポート
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -367,22 +381,22 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     スポーツデータの取得とスポーツ科学の発展
+     1.1.1. スポーツデータの取得とスポーツ科学の発展
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     スポーツデータの特徴
+     1.1.2. スポーツデータの特徴
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     スタッツの取得とプログラミング
+     1.1.3. スタッツの取得とプログラミング
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#python">
-     Pythonを用いる理由
+     1.1.4. Pythonを用いる理由
     </a>
    </li>
   </ul>
@@ -394,12 +408,12 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id7">
-     本講義の目的と構成
+     1.2.1. 本講義の目的と構成
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     評価方法
+     1.2.2. 評価方法
     </a>
    </li>
   </ul>
@@ -435,22 +449,22 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     スポーツデータの取得とスポーツ科学の発展
+     1.1.1. スポーツデータの取得とスポーツ科学の発展
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     スポーツデータの特徴
+     1.1.2. スポーツデータの特徴
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     スタッツの取得とプログラミング
+     1.1.3. スタッツの取得とプログラミング
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#python">
-     Pythonを用いる理由
+     1.1.4. Pythonを用いる理由
     </a>
    </li>
   </ul>
@@ -462,12 +476,12 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id7">
-     本講義の目的と構成
+     1.2.1. 本講義の目的と構成
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     評価方法
+     1.2.2. 評価方法
     </a>
    </li>
   </ul>
@@ -527,7 +541,7 @@ title="Print to PDF"
 <section id="id2">
 <h2><span class="section-number">1.1. </span>スポーツデータ分析とは？<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <section id="id3">
-<h3>スポーツデータの取得とスポーツ科学の発展<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.1.1. </span>スポーツデータの取得とスポーツ科学の発展<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <p>スポーツデータ分析を行うには，まずは何らかの方法でデータを取得する必要がある．
 スポーツデータの取得方法はおおよそ以下のように分類できる：</p>
 <ul class="simple">
@@ -544,7 +558,7 @@ title="Print to PDF"
 今後は個別の動作の理解に加え，集団運動や相互作用を含めたスポーツの理解がスポーツ科学の課題になると考えられる．</p>
 </section>
 <section id="id4">
-<h3>スポーツデータの特徴<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.1.2. </span>スポーツデータの特徴<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
 <p>このように取得したデータは，取得時刻とその時刻における様々な情報がセットになっており，時系列データ（time series data）と呼ばれる．
 また，スポーツデータには，時刻に加えて位置座標のデータが含まれていることも多く，これを時空間データ（spatiotemporal data）と呼ぶこともある．
 スポーツデータにおける，時間と空間の解像度（データの取得精度）は様々である．
@@ -566,13 +580,13 @@ title="Print to PDF"
 一方，最も時間スケールの細かいトラッキングデータは，ここ10年ほどでようやく取得が可能になったため，大規模なデータセットの出現が待たれている．</p>
 </section>
 <section id="id5">
-<h3>スタッツの取得とプログラミング<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.1.3. </span>スタッツの取得とプログラミング<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
 <p>スポーツデータが取得できたら，実際にデータ分析を行うことになるが，その結果はスタッツという形にまとめられる．
 ここではスタッツを以下のように定義することにする：「スポーツデータに何らかの（統計）解析を行うことにより抽出された意味のある情報」．これより，スタッツを得るには元になるデータを取得・加工した上で，何らかの（統計）解析を行い，意味のある情報を抽出することが必要になる．スタッツの例としては，サッカーにおける選手の走行距離やスプリント回数，野球における長打率やOPSなどの各種統計指標などが挙げられる．多くの場合，スポーツデータ分析の第一目標は何らかのスタッツを得ることと言って良い．</p>
 <p>スタッツを得るためには，まずデータを取得して扱いやすい形に加工・整形し，その上で何らかの（統計）解析を行う必要がある．また，スタッツをわかりやすく伝えるには解析結果を可視化することも必要である．基本的にこうした一連の手順を手作業で行うことは不可能なので，プログラミング技術が必須である．プログラミング言語には様々な種類が存在するが，近年スポーツを含むデータ分析にはPythonが用いられることが多い．Pythonはスクリプト言語と呼ばれ，コンパイルの必要がない．また，高速に動作する目的別のライブラリが多数用意されており，データの加工・解析・可視化を１つの言語で完結できる．</p>
 </section>
 <section id="python">
-<h3>Pythonを用いる理由<a class="headerlink" href="#python" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.1.4. </span>Pythonを用いる理由<a class="headerlink" href="#python" title="Permalink to this headline">#</a></h3>
 <p>スポーツデータ分析にPythonを用いる理由は様々であるが，データの加工・解析・可視化を１つの言語で完結できる点が特に重要だろう．
 例えば，個人的によく使うライブラリは以下の通りである：</p>
 <ul class="simple">
@@ -612,7 +626,7 @@ title="Print to PDF"
 <section id="id6">
 <h2><span class="section-number">1.2. </span>講義の概要<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
 <section id="id7">
-<h3>本講義の目的と構成<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.2.1. </span>本講義の目的と構成<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
 <p>本講義では，スポーツデータの取得からスタッツを得るまでの一連の過程で必要なプログラミング技術を解説する．プログラミング言語には，本学で１年次から必修となっているPythonを用いることとし，「プログラミング基礎」および「プログラミング基礎実習」で扱った内容は既知とする．</p>
 <p>講義は基礎編と実践編から成る．基礎編ではNumPy，Pandas，Matplotlibの基礎知識について解説する．基礎編の内容は，以下のテキストを参考にしている：</p>
 <ul class="simple">
@@ -642,7 +656,7 @@ title="Print to PDF"
 なお，高度な解析手法は扱わない．</p>
 </section>
 <section id="id8">
-<h3>評価方法<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.2.2. </span>評価方法<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
 <p>以下の基準で評価する：</p>
 <ul class="simple">
 <li><p>レポート</p>
@@ -748,7 +762,7 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">スポーツデータ分析のためのプログラミング</p>
+            <p class="prev-next-title">Top</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="2_environment.html" title="next page">

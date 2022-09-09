@@ -3,17 +3,22 @@
 
 format: jb-book
 root: index
-options:
-  numbered: 2
 
-chapters:
-- file: notebook/1_introduction.ipynb
-- file: notebook/2_environment.ipynb
-- file: notebook/3_numpy.ipynb
-- file: notebook/4_pandas.ipynb
-- file: notebook/5_matplotlib.ipynb
-- file: notebook/6_event.ipynb
-- file: notebook/7_tracking.ipynb
-- file: notebook/report/report.md
-  sections
-    - file: notebook/report/2022_report_answer.ipynb
+parts:
+- caption:
+  numbered: True
+  chapters:
+  - file: notebook/1_introduction.ipynb
+  - file: notebook/2_environment.ipynb
+  - file: notebook/3_numpy.ipynb
+  - file: notebook/4_pandas.ipynb
+  - file: notebook/5_matplotlib.ipynb
+  - file: notebook/6_event.ipynb
+  - file: notebook/7_tracking.ipynb
+
+- caption:
+  numbered: False
+  chapters:
+  - file: notebook/report/report.md
+    sections:
+      - file: notebook/report/2022_report_answer.ipynb
