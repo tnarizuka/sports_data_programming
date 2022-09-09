@@ -1886,13 +1886,14 @@ title="Print to PDF"
 <p>集団の動きを解析する際に，チーム全体のおおまかな位置と広がりを把握することは非常に重要である．
 これらの量の定義の仕方は色々と考えられるが，以下では重心と慣性半径を計算する．</p>
 <p><strong>チームの重心</strong></p>
-<p>チームの重心は，メンバー全員の平均位置を表す量で，以下のように定義される：
-$<span class="math notranslate nohighlight">\(
+<p>チームの重心は，メンバー全員の平均位置を表す量で，以下のように定義される：</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 X_{c}(i) = \frac{1}{N} \sum_{u=1}^{N} X_{u}(i), \\[10pt]
 Y_{c}(i) = \frac{1}{N} \sum_{u=1}^{N} Y_{u}(i), \\[10pt]
-\)</span><span class="math notranslate nohighlight">\(
-ここで，\)</span>X_{u}(i),\ Y_{u}(i)<span class="math notranslate nohighlight">\(は第\)</span>i<span class="math notranslate nohighlight">\(フレームの選手\)</span>u<span class="math notranslate nohighlight">\(の\)</span>x,\ y<span class="math notranslate nohighlight">\(座標である．
-これは，全選手の\)</span>x,\ y$座標の平均値を求めれば良いので，以下のように計算できる：</p>
+\end{split}\]</div>
+<p>ここで，<span class="math notranslate nohighlight">\(X_{u}(i),\ Y_{u}(i)\)</span>は第<span class="math notranslate nohighlight">\(i\)</span>フレームの選手<span class="math notranslate nohighlight">\(u\)</span>の<span class="math notranslate nohighlight">\(x,\ y\)</span>座標である．
+これは，全選手の<span class="math notranslate nohighlight">\(x,\ y\)</span>座標の平均値を求めれば良いので，以下のように計算できる：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Xc</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -2120,24 +2121,12 @@ V_{y}(i) = \frac{Y(i+n) - Y(i)}{0.05n}
 <p>なお，最近では，「選手<span class="math notranslate nohighlight">\(p\)</span>から最も近い領域」を「選手<span class="math notranslate nohighlight">\(p\)</span>から最も速く到達できる領域」に拡張した<strong>優勢領域</strong>が盛んに研究されている．
 優勢領域を求めるには，各選手から平面上の全ての位置までの到達時間を計算する必要がある．
 この計算に用いられるモデルは<strong>運動モデル</strong>と呼ばれ，運動方程式や機械学習に基づく様々なモデルが提案されている．</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
-<span class="n">IFrame</span><span class="p">(</span><span class="s2">&quot;https://drive.google.com/file/d/1ZcMT3ntGWi4S6ntPbCZXa1dgBMIZPbqH/preview&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">320</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">240</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="320"
-    height="240"
-    src="https://drive.google.com/file/d/1ZcMT3ntGWi4S6ntPbCZXa1dgBMIZPbqH/preview"
-    frameborder="0"
-    allowfullscreen
-></iframe>
-</div></div>
-</div>
+<figure class="align-default" id="fig-voronoi">
+<a class="reference internal image-reference" href="../_images/voronoi.png"><img alt="../_images/voronoi.png" src="../_images/voronoi.png" style="height: 250px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7.1 </span><span class="caption-text">ボロノイ図の例</span><a class="headerlink" href="#fig-voronoi" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="id17">
 <h3>ボロノイ領域の計算と描画<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h3>
@@ -2515,24 +2504,12 @@ V_{y}(i) = \frac{Y(i+n) - Y(i)}{0.05n}
 <p>ドロネーネットワークは平面において隣接関係を定義する方法として知られている．
 そこで，チームスポーツにおけるフォーメーションを「選手同士の隣接関係」と捉えると，ドロネーネットワークによってフォーメーションを定量化することができる．
 これにより，フォーメーションの可視化や時間変化の解析など様々な応用が期待される．</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
-<span class="n">IFrame</span><span class="p">(</span><span class="s2">&quot;https://drive.google.com/file/d/1ZjMlmFO1UCsH_PfRn1Tl3qnCJDHMYoAF/preview&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">320</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">240</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="320"
-    height="240"
-    src="https://drive.google.com/file/d/1ZjMlmFO1UCsH_PfRn1Tl3qnCJDHMYoAF/preview"
-    frameborder="0"
-    allowfullscreen
-></iframe>
-</div></div>
-</div>
+<figure class="align-default" id="fig-delaunay">
+<a class="reference internal image-reference" href="../_images/delaunay.png"><img alt="../_images/delaunay.png" src="../_images/delaunay.png" style="height: 250px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7.2 </span><span class="caption-text">ドロネーネットワークの例</span><a class="headerlink" href="#fig-delaunay" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="id22">
 <h3>ドロネーネットワークの計算と描画<a class="headerlink" href="#id22" title="Permalink to this headline">#</a></h3>

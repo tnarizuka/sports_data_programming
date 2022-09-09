@@ -430,6 +430,7 @@ fig.savefig('./5_matplotlib/multi_sin.pdf', bbox_inches='tight')
 # **ポアソン分布のグラフ（得点分布への導入）**
 
 # 期待値$\lambda$のポアソン分布は以下で定義される：
+# 
 # $$
 #     f(x) = \frac{m^x}{x!} \mathrm{e}^{-m x}
 # $$
@@ -454,12 +455,6 @@ poisson.pmf(x, 5)
 # - $y$軸に好きなラベルを設定
 # - グラフを好きな名前で保存
 
-# In[ ]:
-
-
-
-
-
 # ## 箱ひげ図とヒストグラム
 # ---
 
@@ -478,12 +473,13 @@ poisson.pmf(x, 5)
 # 最小値，第１四分位数，中央値，第３四分位数，最大値によってデータのばらつきを表す方法は**五数要約**と呼ばれる．
 # なお，データ数が偶数個の場合には，中央に来る２つの値の平均値を中央値とするのが一般的である．
 
-# In[19]:
-
-
-from IPython.display import IFrame
-IFrame('https://drive.google.com/file/d/164ZTUfxrmw1qbldQvRv041LFA26cgpeZ/preview', width=500, height=200)
-
+# ```{figure} ../figure/five_number.png
+# ---
+# height: 200px
+# name: fig:five_number
+# ---
+# 五数要約の例
+# ```
 
 # **箱ひげ図**とは，五数要約の結果を可視化した図のことである．
 # 箱ひげ図は以下の手順で描く（テューキーの方式）：
@@ -492,12 +488,13 @@ IFrame('https://drive.google.com/file/d/164ZTUfxrmw1qbldQvRv041LFA26cgpeZ/previe
 # 3. 箱から箱の長さ（四分位範囲）の1.5倍を超えて離れた点を外れ値と見なし，白丸で描く．
 # 4. 外れ値でないものの最大値と最小値から箱まで線（ひげ）を引く．
 
-# In[17]:
-
-
-from IPython.display import IFrame
-IFrame('https://drive.google.com/file/d/164QKTb3FviSd4RN-zSrWw10qp6MY_h4x/preview', width=500, height=350)
-
+# ```{figure} ../figure/box_plot.png
+# ---
+# height: 300px
+# name: fig:box_plot
+# ---
+# 箱ひげ図の例
+# ```
 
 # Matplotlibには箱ひげ図を描くための`ax.boxplot`メソッドが用意されている：
 # ```python
@@ -870,12 +867,13 @@ get_ipython().run_line_magic('matplotlib', '--list')
 # Figureは描画エリア全体を表し，その中に複数のAxes（座標軸）が存在するという構造になっている．
 # グラフのプロットや装飾はAxesオブジェクト（座標軸）のメソッドを用いて行う．
 
-# In[1]:
-
-
-from IPython.display import IFrame
-IFrame('https://drive.google.com/file/d/16SSpdn9RGc4OB7N6M2g-QNMZ5PW8RCPy/preview', width=320, height=240)
-
+# ```{figure} ../figure/fig_axes.png
+# ---
+# height: 250px
+# name: fig:fig_axes
+# ---
+# MatplotlibにおけるFigureオブジェクトとAxesオブジェクト
+# ```
 
 # Matplotlibには２つのプロットスタイルが存在し，方法１を**オブジェクト指向スタイル**，方法２を**MATLABスタイル**と呼ぶ．
 # オブジェクト指向スタイルでは，FigureオブジェクトとAxesオブジェクトを明示的に生成し，生成したオブジェクトのメソッドを用いてグラフを作成する．

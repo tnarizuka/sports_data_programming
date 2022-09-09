@@ -1205,10 +1205,11 @@ $<span class="math notranslate nohighlight">\(
 <li><p>グラフを好きな名前で保存</p></li>
 </ul>
 <p><strong>ポアソン分布のグラフ（得点分布への導入）</strong></p>
-<p>期待値<span class="math notranslate nohighlight">\(\lambda\)</span>のポアソン分布は以下で定義される：
-$<span class="math notranslate nohighlight">\(
+<p>期待値<span class="math notranslate nohighlight">\(\lambda\)</span>のポアソン分布は以下で定義される：</p>
+<div class="math notranslate nohighlight">
+\[
     f(x) = \frac{m^x}{x!} \mathrm{e}^{-m x}
-\)</span>$</p>
+\]</div>
 <p>Pythonにおいてポアソン分布を扱うには，まず<code class="docutils literal notranslate"><span class="pre">scipy.stats.poisson</span></code>をインポートする．
 その上で，値<span class="math notranslate nohighlight">\(x\)</span>に対してパラメータ<span class="math notranslate nohighlight">\(m\)</span>のポアソン分布を計算するには<code class="docutils literal notranslate"><span class="pre">poisson.pmf(x,</span> <span class="pre">m)</span></code>とする．</p>
 <div class="cell docutils container">
@@ -1256,24 +1257,12 @@ $<span class="math notranslate nohighlight">\(
 また，下位データの中央値を第１四分位数，上位データの中央値を第３四分位数と呼ぶ．
 最小値，第１四分位数，中央値，第３四分位数，最大値によってデータのばらつきを表す方法は<strong>五数要約</strong>と呼ばれる．
 なお，データ数が偶数個の場合には，中央に来る２つの値の平均値を中央値とするのが一般的である．</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
-<span class="n">IFrame</span><span class="p">(</span><span class="s1">&#39;https://drive.google.com/file/d/164ZTUfxrmw1qbldQvRv041LFA26cgpeZ/preview&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="500"
-    height="200"
-    src="https://drive.google.com/file/d/164ZTUfxrmw1qbldQvRv041LFA26cgpeZ/preview"
-    frameborder="0"
-    allowfullscreen
-></iframe>
-</div></div>
-</div>
+<figure class="align-default" id="fig-five-number">
+<a class="reference internal image-reference" href="../_images/five_number.png"><img alt="../_images/five_number.png" src="../_images/five_number.png" style="height: 200px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.1 </span><span class="caption-text">五数要約の例</span><a class="headerlink" href="#fig-five-number" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p><strong>箱ひげ図</strong>とは，五数要約の結果を可視化した図のことである．
 箱ひげ図は以下の手順で描く（テューキーの方式）：</p>
 <ol class="simple">
@@ -1282,24 +1271,12 @@ $<span class="math notranslate nohighlight">\(
 <li><p>箱から箱の長さ（四分位範囲）の1.5倍を超えて離れた点を外れ値と見なし，白丸で描く．</p></li>
 <li><p>外れ値でないものの最大値と最小値から箱まで線（ひげ）を引く．</p></li>
 </ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
-<span class="n">IFrame</span><span class="p">(</span><span class="s1">&#39;https://drive.google.com/file/d/164QKTb3FviSd4RN-zSrWw10qp6MY_h4x/preview&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">350</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="500"
-    height="350"
-    src="https://drive.google.com/file/d/164QKTb3FviSd4RN-zSrWw10qp6MY_h4x/preview"
-    frameborder="0"
-    allowfullscreen
-></iframe>
-</div></div>
-</div>
+<figure class="align-default" id="fig-box-plot">
+<a class="reference internal image-reference" href="../_images/box_plot.png"><img alt="../_images/box_plot.png" src="../_images/box_plot.png" style="height: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.2 </span><span class="caption-text">箱ひげ図の例</span><a class="headerlink" href="#fig-box-plot" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Matplotlibには箱ひげ図を描くための<code class="docutils literal notranslate"><span class="pre">ax.boxplot</span></code>メソッドが用意されている：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">boxplot</span><span class="p">([</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">option</span><span class="p">)</span>
 </pre></div>
@@ -1432,7 +1409,7 @@ $<span class="math notranslate nohighlight">\(
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$Y$&#39;)
 </pre></div>
 </div>
-<img alt="../_images/5_matplotlib_73_1.png" src="../_images/5_matplotlib_73_1.png" />
+<img alt="../_images/5_matplotlib_72_1.png" src="../_images/5_matplotlib_72_1.png" />
 </div>
 </div>
 </section>
@@ -1470,7 +1447,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_77_0.png" src="../_images/5_matplotlib_77_0.png" />
+<img alt="../_images/5_matplotlib_76_0.png" src="../_images/5_matplotlib_76_0.png" />
 </div>
 </div>
 <p>以下は上のヒストグラムに対応する度数分布表である．</p>
@@ -1660,7 +1637,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_82_0.png" src="../_images/5_matplotlib_82_0.png" />
+<img alt="../_images/5_matplotlib_81_0.png" src="../_images/5_matplotlib_81_0.png" />
 </div>
 </div>
 <p><strong>ヒストグラムのタイプ</strong></p>
@@ -1707,7 +1684,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_85_0.png" src="../_images/5_matplotlib_85_0.png" />
+<img alt="../_images/5_matplotlib_84_0.png" src="../_images/5_matplotlib_84_0.png" />
 </div>
 </div>
 </section>
@@ -1781,7 +1758,7 @@ $<span class="math notranslate nohighlight">\(
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x140de71c0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/5_matplotlib_89_1.png" src="../_images/5_matplotlib_89_1.png" />
+<img alt="../_images/5_matplotlib_88_1.png" src="../_images/5_matplotlib_88_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1800,7 +1777,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_90_0.png" src="../_images/5_matplotlib_90_0.png" />
+<img alt="../_images/5_matplotlib_89_0.png" src="../_images/5_matplotlib_89_0.png" />
 </div>
 </div>
 <p><strong>ヒートマップの装飾と<a class="reference external" href="https://matplotlib.org/3.5.0/api/_as_gen/matplotlib.pyplot.colorbar.html">カラーバーの追加</a></strong></p>
@@ -1865,7 +1842,7 @@ $<span class="math notranslate nohighlight">\(
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x140cc9520&gt;
 </pre></div>
 </div>
-<img alt="../_images/5_matplotlib_93_1.png" src="../_images/5_matplotlib_93_1.png" />
+<img alt="../_images/5_matplotlib_92_1.png" src="../_images/5_matplotlib_92_1.png" />
 </div>
 </div>
 </section>
@@ -2130,7 +2107,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_108_0.png" src="../_images/5_matplotlib_108_0.png" />
+<img alt="../_images/5_matplotlib_107_0.png" src="../_images/5_matplotlib_107_0.png" />
 </div>
 </div>
 <p><strong>（参考）Jupyter Labで実行し，別ウインドウに表示する</strong></p>
@@ -2177,24 +2154,12 @@ $<span class="math notranslate nohighlight">\(
 <p>Matplotlibの描画エリアは下図のようにFigureオブジェクト, Axesオブジェクトという要素で構成されている．
 Figureは描画エリア全体を表し，その中に複数のAxes（座標軸）が存在するという構造になっている．
 グラフのプロットや装飾はAxesオブジェクト（座標軸）のメソッドを用いて行う．</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
-<span class="n">IFrame</span><span class="p">(</span><span class="s1">&#39;https://drive.google.com/file/d/16SSpdn9RGc4OB7N6M2g-QNMZ5PW8RCPy/preview&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">320</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">240</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="320"
-    height="240"
-    src="https://drive.google.com/file/d/16SSpdn9RGc4OB7N6M2g-QNMZ5PW8RCPy/preview"
-    frameborder="0"
-    allowfullscreen
-></iframe>
-</div></div>
-</div>
+<figure class="align-default" id="fig-fig-axes">
+<a class="reference internal image-reference" href="../_images/fig_axes.png"><img alt="../_images/fig_axes.png" src="../_images/fig_axes.png" style="height: 250px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.3 </span><span class="caption-text">MatplotlibにおけるFigureオブジェクトとAxesオブジェクト</span><a class="headerlink" href="#fig-fig-axes" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Matplotlibには２つのプロットスタイルが存在し，方法１を<strong>オブジェクト指向スタイル</strong>，方法２を<strong>MATLABスタイル</strong>と呼ぶ．
 オブジェクト指向スタイルでは，FigureオブジェクトとAxesオブジェクトを明示的に生成し，生成したオブジェクトのメソッドを用いてグラフを作成する．
 この方法は，ややコードが長くなるが，グラフの細部の調整を行いたい場合に便利である．
@@ -2246,7 +2211,7 @@ Figureは描画エリア全体を表し，その中に複数のAxes（座標軸�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_123_0.png" src="../_images/5_matplotlib_123_0.png" />
+<img alt="../_images/5_matplotlib_122_0.png" src="../_images/5_matplotlib_122_0.png" />
 </div>
 </div>
 <p><strong>（非推奨）方法２：MATLABスタイル</strong></p>
@@ -2270,7 +2235,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_126_0.png" src="../_images/5_matplotlib_126_0.png" />
+<img alt="../_images/5_matplotlib_125_0.png" src="../_images/5_matplotlib_125_0.png" />
 </div>
 </div>
 </section>
@@ -2335,7 +2300,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Y&#39;)
 </pre></div>
 </div>
-<img alt="../_images/5_matplotlib_131_1.png" src="../_images/5_matplotlib_131_1.png" />
+<img alt="../_images/5_matplotlib_130_1.png" src="../_images/5_matplotlib_130_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2363,7 +2328,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Y&#39;)
 </pre></div>
 </div>
-<img alt="../_images/5_matplotlib_132_1.png" src="../_images/5_matplotlib_132_1.png" />
+<img alt="../_images/5_matplotlib_131_1.png" src="../_images/5_matplotlib_131_1.png" />
 </div>
 </div>
 <p><strong>Figureを生成して，後からAxesを追加</strong></p>
@@ -2397,7 +2362,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Y&#39;)
 </pre></div>
 </div>
-<img alt="../_images/5_matplotlib_135_1.png" src="../_images/5_matplotlib_135_1.png" />
+<img alt="../_images/5_matplotlib_134_1.png" src="../_images/5_matplotlib_134_1.png" />
 </div>
 </div>
 </section>

@@ -368,10 +368,12 @@ ax.set_aspect('equal')
 # **チームの重心**
 
 # チームの重心は，メンバー全員の平均位置を表す量で，以下のように定義される：
+# 
 # $$
 # X_{c}(i) = \frac{1}{N} \sum_{u=1}^{N} X_{u}(i), \\[10pt]
 # Y_{c}(i) = \frac{1}{N} \sum_{u=1}^{N} Y_{u}(i), \\[10pt]
 # $$
+# 
 # ここで，$X_{u}(i),\ Y_{u}(i)$は第$i$フレームの選手$u$の$x,\ y$座標である．
 # これは，全選手の$x,\ y$座標の平均値を求めれば良いので，以下のように計算できる：
 
@@ -540,12 +542,13 @@ ax.set_aspect('equal')
 # 優勢領域を求めるには，各選手から平面上の全ての位置までの到達時間を計算する必要がある．
 # この計算に用いられるモデルは**運動モデル**と呼ばれ，運動方程式や機械学習に基づく様々なモデルが提案されている．
 
-# In[10]:
-
-
-from IPython.display import IFrame
-IFrame("https://drive.google.com/file/d/1ZcMT3ntGWi4S6ntPbCZXa1dgBMIZPbqH/preview", width=320, height=240)
-
+# ```{figure} ../figure/voronoi.png
+# ---
+# height: 250px
+# name: fig:voronoi
+# ---
+# ボロノイ図の例
+# ```
 
 # ### ボロノイ領域の計算と描画
 
@@ -837,12 +840,13 @@ ax.set_xlabel('$X$'); ax.set_ylabel('$Y$')
 # そこで，チームスポーツにおけるフォーメーションを「選手同士の隣接関係」と捉えると，ドロネーネットワークによってフォーメーションを定量化することができる．
 # これにより，フォーメーションの可視化や時間変化の解析など様々な応用が期待される．
 
-# In[31]:
-
-
-from IPython.display import IFrame
-IFrame("https://drive.google.com/file/d/1ZjMlmFO1UCsH_PfRn1Tl3qnCJDHMYoAF/preview", width=320, height=240)
-
+# ```{figure} ../figure/delaunay.png
+# ---
+# height: 250px
+# name: fig:delaunay
+# ---
+# ドロネーネットワークの例
+# ```
 
 # ### ドロネーネットワークの計算と描画
 

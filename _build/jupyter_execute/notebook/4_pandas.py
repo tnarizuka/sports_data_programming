@@ -99,12 +99,13 @@ pd.DataFrame({'t':[2, 64, 350, 600],
 # - indexとcolumnsには数値や文字列を用いて任意のラベルを与えることができる．
 # - 行と列にはNumPy配列と同じ行番号・列番号も付与されており，行番号が増える方向を`axis=0`，列番号が増える方向を`axis=1`と呼ぶ．
 
-# In[8]:
-
-
-from IPython.display import IFrame
-IFrame('https://drive.google.com/file/d/1CzhxQSyAslqBz4yD9Yrq3ATTf5bPFONs/preview', width=600, height=300)
-
+# ```{figure} ../figure/dataframe.png
+# ---
+# height: 250px
+# name: fig:dataframe
+# ---
+# DataFrameの例
+# ```
 
 # ### DataFrameの生成
 # DataFrameを生成するには，`pd.DataFrame`関数を用いる：
