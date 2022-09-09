@@ -6,7 +6,7 @@ root: index
 
 parts:
 - caption:
-  numbered: True
+  numbered: 3
   chapters:
   - file: notebook/1_introduction.ipynb
   - file: notebook/2_environment.ipynb
