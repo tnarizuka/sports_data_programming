@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: Sports Data Programming
-author: Takuma Narizuka
+author: 成塚拓真（Takuma Narizuka）
 logo: logo.png
 
 # Force re-execution of notebooks on each build.
