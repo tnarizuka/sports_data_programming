@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>3. Pandasの基礎 &#8212; Sports Data Programming</title>
+    <title>4. Pandasの基礎 &#8212; Sports Data Programming</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,8 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4. Matplotlibの基礎" href="5_matplotlib.html" />
-    <link rel="prev" title="2. NumPyの基礎" href="3_numpy.html" />
+    <link rel="next" title="5. Matplotlibの基礎" href="5_matplotlib.html" />
+    <link rel="prev" title="3. NumPyの基礎" href="3_numpy.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -122,28 +122,33 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="2_environment.html">
+   2. プログラミング環境の構築
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="3_numpy.html">
-   2. NumPyの基礎
+   3. NumPyの基礎
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   3. Pandasの基礎
+   4. Pandasの基礎
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="5_matplotlib.html">
-   4. Matplotlibの基礎
+   5. Matplotlibの基礎
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="6_event.html">
-   5. イベントデータの解析
+   6. イベントデータの解析
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="7_tracking.html">
-   6. トラッキングデータの解析
+   7. トラッキングデータの解析
   </a>
  </li>
 </ul>
@@ -373,142 +378,142 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   3.1. Pandasとは？
+   4.1. Pandasとは？
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id2">
-     3.1.1. Pandasのインポート
+     4.1.1. Pandasのインポート
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pandasnumpy">
-     3.1.2. PandasとNumPyの違い
+     4.1.2. PandasとNumPyの違い
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dataframe">
-   3.2. DataFrameオブジェクト
+   4.2. DataFrameオブジェクト
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     3.2.1. DataFrameの生成
+     4.2.1. DataFrameの生成
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     3.2.2. DataFrameのファイル入出力
+     4.2.2. DataFrameのファイル入出力
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     3.2.3. 欠損値について
+     4.2.3. 欠損値について
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     3.2.4. DataFrameの属性
+     4.2.4. DataFrameの属性
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id7">
-     3.2.5. DataFrameの参照
+     4.2.5. DataFrameの参照
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#series">
-     3.2.6. （参考）Seriesオブジェクト
+     4.2.6. （参考）Seriesオブジェクト
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     3.2.7. 演習問題
+     4.2.7. 演習問題
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id9">
-   3.3. 条件付き抽出
+   4.3. 条件付き抽出
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id10">
-     3.3.1. ブールインデックスの取得
+     4.3.1. ブールインデックスの取得
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id11">
-     3.3.2. ブールインデックス参照
+     4.3.2. ブールインデックス参照
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id12">
-     3.3.3. ブールインデックス参照による値の変更
+     4.3.3. ブールインデックス参照による値の変更
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id13">
-     3.3.4. 演習問題
+     4.3.4. 演習問題
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id14">
-   3.4. データの演算と集計
+   4.4. データの演算と集計
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id15">
-     3.4.1. 演算規則
+     4.4.1. 演算規則
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id16">
-     3.4.2. データの集計
+     4.4.2. データの集計
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id17">
-   3.5. データの整形
+   4.5. データの整形
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id18">
-     3.5.1. 行・列の追加と削除
+     4.5.1. 行・列の追加と削除
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id19">
-     3.5.2. データの並び替え
+     4.5.2. データの並び替え
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id20">
-     3.5.3. 行ラベル・列ラベルの変更
+     4.5.3. 行ラベル・列ラベルの変更
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id21">
-     3.5.4. （参考）データの結合
+     4.5.4. （参考）データの結合
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id22">
-     3.5.5. （参考）データの重複処理
+     4.5.5. （参考）データの重複処理
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id23">
-   3.6. レポート問題
+   4.6. レポート問題
   </a>
  </li>
 </ul>
@@ -532,142 +537,142 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   3.1. Pandasとは？
+   4.1. Pandasとは？
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id2">
-     3.1.1. Pandasのインポート
+     4.1.1. Pandasのインポート
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pandasnumpy">
-     3.1.2. PandasとNumPyの違い
+     4.1.2. PandasとNumPyの違い
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dataframe">
-   3.2. DataFrameオブジェクト
+   4.2. DataFrameオブジェクト
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     3.2.1. DataFrameの生成
+     4.2.1. DataFrameの生成
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     3.2.2. DataFrameのファイル入出力
+     4.2.2. DataFrameのファイル入出力
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     3.2.3. 欠損値について
+     4.2.3. 欠損値について
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     3.2.4. DataFrameの属性
+     4.2.4. DataFrameの属性
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id7">
-     3.2.5. DataFrameの参照
+     4.2.5. DataFrameの参照
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#series">
-     3.2.6. （参考）Seriesオブジェクト
+     4.2.6. （参考）Seriesオブジェクト
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     3.2.7. 演習問題
+     4.2.7. 演習問題
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id9">
-   3.3. 条件付き抽出
+   4.3. 条件付き抽出
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id10">
-     3.3.1. ブールインデックスの取得
+     4.3.1. ブールインデックスの取得
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id11">
-     3.3.2. ブールインデックス参照
+     4.3.2. ブールインデックス参照
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id12">
-     3.3.3. ブールインデックス参照による値の変更
+     4.3.3. ブールインデックス参照による値の変更
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id13">
-     3.3.4. 演習問題
+     4.3.4. 演習問題
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id14">
-   3.4. データの演算と集計
+   4.4. データの演算と集計
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id15">
-     3.4.1. 演算規則
+     4.4.1. 演算規則
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id16">
-     3.4.2. データの集計
+     4.4.2. データの集計
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id17">
-   3.5. データの整形
+   4.5. データの整形
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id18">
-     3.5.1. 行・列の追加と削除
+     4.5.1. 行・列の追加と削除
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id19">
-     3.5.2. データの並び替え
+     4.5.2. データの並び替え
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id20">
-     3.5.3. 行ラベル・列ラベルの変更
+     4.5.3. 行ラベル・列ラベルの変更
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id21">
-     3.5.4. （参考）データの結合
+     4.5.4. （参考）データの結合
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id22">
-     3.5.5. （参考）データの重複処理
+     4.5.5. （参考）データの重複処理
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id23">
-   3.6. レポート問題
+   4.6. レポート問題
   </a>
  </li>
 </ul>
@@ -735,12 +740,12 @@ title="Print to PDF"
 <li><p><a class="reference external" href="http://note.nkmk.me">note.nkmk.me</a>: <a class="reference external" href="https://note.nkmk.me">https://note.nkmk.me</a></p></li>
 </ul>
 <section class="tex2jax_ignore mathjax_ignore" id="pandas">
-<h1><span class="section-number">3. </span>Pandasの基礎<a class="headerlink" href="#pandas" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">4. </span>Pandasの基礎<a class="headerlink" href="#pandas" title="Permalink to this headline">#</a></h1>
 <section id="id1">
-<h2><span class="section-number">3.1. </span>Pandasとは？<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.1. </span>Pandasとは？<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <section id="id2">
-<h3><span class="section-number">3.1.1. </span>Pandasのインポート<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.1.1. </span>Pandasのインポート<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
 <p>Pandas（パンダス）は<code class="docutils literal notranslate"><span class="pre">pd</span></code>という名前でインポートするのが慣例である：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -751,7 +756,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="pandasnumpy">
-<h3><span class="section-number">3.1.2. </span>PandasとNumPyの違い<a class="headerlink" href="#pandasnumpy" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.1.2. </span>PandasとNumPyの違い<a class="headerlink" href="#pandasnumpy" title="Permalink to this headline">#</a></h3>
 <p>前章では，NumPyを用いて多次元配列を扱う方法を解説した．NumPyでは数値データの処理を非常に高速に実現することができた．一方，Pandas（パンダス）も基本的には多次元配列を扱うためのライブラリであり，PandasとNumPyを相互に変換することもできる．しかし，PandasにはNumPyと異なる以下のような特徴がある：</p>
 <ol class="simple">
 <li><p>行と列にラベルが付与される</p></li>
@@ -845,7 +850,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="dataframe">
-<h2><span class="section-number">3.2. </span>DataFrameオブジェクト<a class="headerlink" href="#dataframe" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.2. </span>DataFrameオブジェクト<a class="headerlink" href="#dataframe" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <p>NumPyではデータをndarrayオブジェクト（NumPy配列）に格納し，様々な処理を行なった．
 Pandasでも2次元のデータを扱うための専用のオブジェクトDataFrameが用意されている．
@@ -859,11 +864,11 @@ DataFrameは（Excelのような）テーブル形式の構造を持ち，以下
 <figure class="align-default" id="fig-dataframe">
 <a class="reference internal image-reference" href="../_images/dataframe.png"><img alt="../_images/dataframe.png" src="../_images/dataframe.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3.1 </span><span class="caption-text">DataFrameの例</span><a class="headerlink" href="#fig-dataframe" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">DataFrameの例</span><a class="headerlink" href="#fig-dataframe" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="id3">
-<h3><span class="section-number">3.2.1. </span>DataFrameの生成<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.2.1. </span>DataFrameの生成<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <p>DataFrameを生成するには，<code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>関数を用いる：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">])</span>
 </pre></div>
@@ -1058,7 +1063,7 @@ DataFrameは（Excelのような）テーブル形式の構造を持ち，以下
 </div>
 </section>
 <section id="id4">
-<h3><span class="section-number">3.2.2. </span>DataFrameのファイル入出力<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.2.2. </span>DataFrameのファイル入出力<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
 <p>Pandasでデータ分析を行う場合，外部のファイルから直接データを読み込んだり，整形したデータを改めてファイルに保存することが多い．特に，データ分析で最もよく用いられるのがcsv形式のファイルである．csvとはカンマで区切られたテキストファイルを指す略称で，Excelで読み込むこともできる．</p>
 <p><strong>csvファイルに保存する</strong></p>
 <p>まず，DataFrameをcsvファイルに保存するには<code class="docutils literal notranslate"><span class="pre">to_csv</span></code>メソッドを用いる：</p>
@@ -1255,7 +1260,7 @@ DataFrameは（Excelのような）テーブル形式の構造を持ち，以下
 </div>
 </section>
 <section id="id5">
-<h3><span class="section-number">3.2.3. </span>欠損値について<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.2.3. </span>欠損値について<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
 <p><strong>欠損値とは？</strong></p>
 <p>データが何らかの事情で欠落している箇所を欠損値と呼ぶ．
 Pandasにおいて，欠損値は<code class="docutils literal notranslate"><span class="pre">NaN</span></code>と表示される（’Not a Number’の略）．
@@ -1685,7 +1690,7 @@ Pandasではpythonの組み込み定数である<code class="docutils literal no
 </div>
 </section>
 <section id="id6">
-<h3><span class="section-number">3.2.4. </span>DataFrameの属性<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.2.4. </span>DataFrameの属性<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
 <p>DataFrameに対して，<code class="docutils literal notranslate"><span class="pre">df.属性名</span></code>とすることで，<code class="docutils literal notranslate"><span class="pre">df</span></code>の様々な情報を取得できる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1790,7 +1795,7 @@ dtype: object
 </div>
 </section>
 <section id="id7">
-<h3><span class="section-number">3.2.5. </span>DataFrameの参照<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.2.5. </span>DataFrameの参照<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
 <p>DataFrameの一部を参照する方法として，主に以下がある：</p>
 <ul class="simple">
 <li><p>行・列番号による参照：<code class="docutils literal notranslate"><span class="pre">iloc</span></code>属性</p></li>
@@ -2447,7 +2452,7 @@ Name: t, dtype: int64
 </div>
 </section>
 <section id="series">
-<h3><span class="section-number">3.2.6. </span>（参考）Seriesオブジェクト<a class="headerlink" href="#series" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.2.6. </span>（参考）Seriesオブジェクト<a class="headerlink" href="#series" title="Permalink to this headline">#</a></h3>
 <p>Pandasには，DataFrameの他に1次元のデータを扱うためのSeriesオブジェクトが用意されている．DataFrameには行ラベルindexと列ラベルcolumnsが付与されたが，<strong>Seriesにはindexだけが付与される</strong>．<strong>SeriesはDataFrameから特定の1列を抜き出したものであり，基本的な操作方法はDataFrameと同じである</strong>．実際のデータ分析においてSeriesを単体で用いることはあまりないが，DataFrameを１列だけ取り出したり，ブールインデックスを扱ったりすると遭遇する．</p>
 <p>SeriesはDataFrameから1列または1行を取り出すことで生成できる．
 また，<code class="docutils literal notranslate"><span class="pre">pd.Series</span></code>関数により，リスト，NumPy配列，辞書などから生成することもできる．</p>
@@ -2568,7 +2573,7 @@ dtype: float64
 </div>
 </section>
 <section id="id8">
-<h3><span class="section-number">3.2.7. </span>演習問題<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.2.7. </span>演習問題<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
 <p>次のcsvファイルをダウンロードし，作業フォルダ（例えば<code class="docutils literal notranslate"><span class="pre">OneDrive/sport_data/4_pandas</span></code>）に移動せよ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP">player_all.csv</a> <br>
 このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
 ※ 本データはPappalardoデータセットを加工したものである（詳細は<a class="reference external" href="https://rtwqzpj5uefb1pvzmprbnq-on.drv.tw/document/%E8%AC%9B%E7%BE%A9/%E7%AB%8B%E6%AD%A3/%E3%82%B9%E3%83%9B%E3%82%9A%E3%83%BC%E3%83%84%E3%83%86%E3%82%99%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%83%95%E3%82%9A%E3%83%AD%E3%82%AF%E3%82%99%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%AF%E3%82%99/6_event.html">イベントデータの解析</a>）．</p>
@@ -2829,12 +2834,12 @@ dtype: float64
 </section>
 </section>
 <section id="id9">
-<h2><span class="section-number">3.3. </span>条件付き抽出<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.3. </span>条件付き抽出<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <p>DataFrameからある条件を満たす行や列を抽出する方法として，ブールインデックス参照がある．<br>
 ※ この他にも<code class="docutils literal notranslate"><span class="pre">where</span></code>メソッド，<code class="docutils literal notranslate"><span class="pre">query</span></code>メソッドなどがある．</p>
 <section id="id10">
-<h3><span class="section-number">3.3.1. </span>ブールインデックスの取得<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.1. </span>ブールインデックスの取得<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h3>
 <p>DataFrameにおけるブールインデックス参照は基本的にはNumPyと同様である．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3009,7 +3014,7 @@ Name: t, dtype: bool
 </div>
 </section>
 <section id="id11">
-<h3><span class="section-number">3.3.2. </span>ブールインデックス参照<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.2. </span>ブールインデックス参照<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h3>
 <p>NumPyと同様，以下のようにブールインデックスが<code class="docutils literal notranslate"><span class="pre">True</span></code>の行だけを抽出することができる：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">条件</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;列ラベル1&#39;</span><span class="p">,</span> <span class="s1">&#39;列ラベル2&#39;</span><span class="p">]]</span>
 </pre></div>
@@ -3341,7 +3346,7 @@ Name: t, dtype: bool
 </div>
 </section>
 <section id="id12">
-<h3><span class="section-number">3.3.3. </span>ブールインデックス参照による値の変更<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.3. </span>ブールインデックス参照による値の変更<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h3>
 <p>ブールインデックス参照で抽出したDataFrameに値を代入することで，条件を満たす要素だけ変更することができる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3479,7 +3484,7 @@ Name: t, dtype: bool
 </div>
 </section>
 <section id="id13">
-<h3><span class="section-number">3.3.4. </span>演習問題<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.4. </span>演習問題<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h3>
 <p>次のcsvファイルをダウンロードし，作業フォルダ（例えば<code class="docutils literal notranslate"><span class="pre">OneDrive/sport_data/4_pandas</span></code>）に移動せよ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP">player_all.csv</a> <br>
 このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
 ※ 本データはPappalardoデータセットを加工したものである（詳細は<a class="reference external" href="https://rtwqzpj5uefb1pvzmprbnq-on.drv.tw/document/%E8%AC%9B%E7%BE%A9/%E7%AB%8B%E6%AD%A3/%E3%82%B9%E3%83%9B%E3%82%9A%E3%83%BC%E3%83%84%E3%83%86%E3%82%99%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%83%95%E3%82%9A%E3%83%AD%E3%82%AF%E3%82%99%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%AF%E3%82%99/6_event.html">イベントデータの解析</a>）．</p>
@@ -3712,10 +3717,10 @@ Name: t, dtype: bool
 </section>
 </section>
 <section id="id14">
-<h2><span class="section-number">3.4. </span>データの演算と集計<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.4. </span>データの演算と集計<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <section id="id15">
-<h3><span class="section-number">3.4.1. </span>演算規則<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.4.1. </span>演算規則<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h3>
 <p>まず，NumPyの演算規則は以下のようにまとめられた：</p>
 <ul class="simple">
 <li><p>NumPy配列と数値の演算は，配列の全ての要素に演算が適用される</p></li>
@@ -4634,7 +4639,7 @@ Name: c, dtype: float64
 </div>
 </section>
 <section id="id16">
-<h3><span class="section-number">3.4.2. </span>データの集計<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.4.2. </span>データの集計<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h3>
 <p>PandasにもNumPyと同様にデータの集計を行う様々なメソッドが用意されている．
 各メソッドで集計の方向を指定するには<code class="docutils literal notranslate"><span class="pre">axis</span></code>引数を用いる．
 列ごとに集計したい場合は<code class="docutils literal notranslate"><span class="pre">axis=0</span></code>，行ごとの場合は<code class="docutils literal notranslate"><span class="pre">axis=1</span></code>を指定する．</p>
@@ -5373,7 +5378,7 @@ dtype: float64
 </section>
 </section>
 <section id="id17">
-<h2><span class="section-number">3.5. </span>データの整形<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.5. </span>データの整形<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5442,7 +5447,7 @@ dtype: float64
 </div></div></div>
 </div>
 <section id="id18">
-<h3><span class="section-number">3.5.1. </span>行・列の追加と削除<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.5.1. </span>行・列の追加と削除<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h3>
 <p><strong>行・列の追加：拡張代入</strong></p>
 <p>DataFrameに値を代入する際に存在しない行ラベルや列ラベルを指定すると，新たな行や列が追加される．
 これを拡張代入と呼ぶ．
@@ -5845,7 +5850,7 @@ dtype: float64
 </div>
 </section>
 <section id="id19">
-<h3><span class="section-number">3.5.2. </span>データの並び替え<a class="headerlink" href="#id19" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.5.2. </span>データの並び替え<a class="headerlink" href="#id19" title="Permalink to this headline">#</a></h3>
 <p>Pandasには特定の列の値によってデータを並び替える<code class="docutils literal notranslate"><span class="pre">sort_values</span></code>メソッドと，行ラベル（index）によってデータを並び替える<code class="docutils literal notranslate"><span class="pre">sort_index</span></code>メソッドが用意されている．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6339,7 +6344,7 @@ dtype: float64
 </div>
 </section>
 <section id="id20">
-<h3><span class="section-number">3.5.3. </span>行ラベル・列ラベルの変更<a class="headerlink" href="#id20" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.5.3. </span>行ラベル・列ラベルの変更<a class="headerlink" href="#id20" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
@@ -6923,7 +6928,7 @@ dtype: float64
 </div>
 </section>
 <section id="id21">
-<h3><span class="section-number">3.5.4. </span>（参考）データの結合<a class="headerlink" href="#id21" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.5.4. </span>（参考）データの結合<a class="headerlink" href="#id21" title="Permalink to this headline">#</a></h3>
 <p>複数のDataFrameがあったとき，これらを結合する方法として，<code class="docutils literal notranslate"><span class="pre">concat</span></code>関数，<code class="docutils literal notranslate"><span class="pre">merge</span></code>関数，<code class="docutils literal notranslate"><span class="pre">join</span></code>関数が用意されている．
 <code class="docutils literal notranslate"><span class="pre">concat</span></code>関数は縦方向と横方向に連結ができる．
 一方，<code class="docutils literal notranslate"><span class="pre">merge</span></code>関数と<code class="docutils literal notranslate"><span class="pre">join</span></code>関数は横方向に連結する関数であり，<code class="docutils literal notranslate"><span class="pre">merge</span></code>関数は特定の列，<code class="docutils literal notranslate"><span class="pre">join</span></code>関数はindexを基準に連結する．
@@ -7458,7 +7463,7 @@ dtype: float64
 </div>
 </section>
 <section id="id22">
-<h3><span class="section-number">3.5.5. </span>（参考）データの重複処理<a class="headerlink" href="#id22" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.5.5. </span>（参考）データの重複処理<a class="headerlink" href="#id22" title="Permalink to this headline">#</a></h3>
 <p><strong>重複データの削除（<code class="docutils literal notranslate"><span class="pre">drop_duplicates</span></code>メソッド）</strong></p>
 <p>pandasで重複したデータを削除するには<code class="docutils literal notranslate"><span class="pre">drop_duplicates</span></code>メソッドを用いる．<code class="docutils literal notranslate"><span class="pre">drop_duplicates</span></code>メソッドは以下のように指定する：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;列名1&#39;</span><span class="p">,</span> <span class="s1">&#39;列名2&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span>
@@ -8013,7 +8018,7 @@ dtype: bool
 </section>
 </section>
 <section id="id23">
-<h2><span class="section-number">3.6. </span>レポート問題<a class="headerlink" href="#id23" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.6. </span>レポート問題<a class="headerlink" href="#id23" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <p>次のcsvファイルをダウンロードし，作業フォルダ（例えば<code class="docutils literal notranslate"><span class="pre">OneDrive/sport_data/4_pandas</span></code>）に移動せよ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP">player_all.csv</a> <br>
 このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
@@ -8124,13 +8129,13 @@ $<span class="math notranslate nohighlight">\(
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">2. </span>NumPyの基礎</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>NumPyの基礎</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="5_matplotlib.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Matplotlibの基礎</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Matplotlibの基礎</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
