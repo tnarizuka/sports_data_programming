@@ -649,7 +649,7 @@ title="Print to PDF"
 <li><p>下にスクロールし，”Anaconda Installers”から環境に応じたインストーラをダウンロードする</p></li>
 <li><p>ダウンロードしたインストーラをクリックし，画面の指示に従う</p>
 <ul>
-<li><p>途中で，”add Anaconda to the system Pass environment variable”にチェックを入れてPathの設定を行う</p></li>
+<li><p>途中で，<code class="docutils literal notranslate"><span class="pre">add</span> <span class="pre">Anaconda</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">system</span> <span class="pre">Pass</span> <span class="pre">environment</span> <span class="pre">variable</span></code>にチェックを入れてPathの設定を行う</p></li>
 </ul>
 </li>
 <li><p>Anaconda Navigatorが使えるか確認する</p></li>
@@ -669,19 +669,18 @@ japanize_matplotlibはPythonのモジュールなので，最初にインスト�
 ただし，使用可能なフォントはIPAexゴシックだけなので，フォントにこだわりたい場合は2.の方法をおすすめする．</p>
 <p><strong>japanize_matplotlibのインストール（詳しくは<a class="reference external" href="https://pypi.org/project/japanize-matplotlib/">こちら</a>）</strong></p>
 <ul>
-<li><p>pipでインストール</p>
-<ul>
 <li><p>ターミナルを開いて以下のコマンドを実行し，AnacondaのインストールされているフォルダのPathを取得する</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">info</span> <span class="o">-</span><span class="n">e</span>
+<span class="o">---</span>
 <span class="c1"># conda environmentsL</span>
 <span class="c1">#</span>
-<span class="n">base</span>    <span class="o">*</span>     <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">username</span>\<span class="n">anaconda3</span>
+<span class="n">base</span>  <span class="o">*</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">username</span>\<span class="n">anaconda3</span>
 </pre></div>
 </div>
 </li>
 <li><p>取得したAnaconda環境をactivateする</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code>の右に表示された文字列（フォルダのパス）をコピーして以下を実行</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">base</span> <span class="pre">*</span> </code>の右に表示された文字列（フォルダのパス）をコピーして以下を実行</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">activate</span> <span class="pre">&quot;フォルダのパス&quot;</span></code></p></li>
 <li><p>これでanaconda環境にpipコマンドでインストール可能になる</p></li>
 </ul>
@@ -689,13 +688,6 @@ japanize_matplotlibはPythonのモジュールなので，最初にインスト�
 <li><p>以下のコマンドを実行してインストールする</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">japanize-matplotlib</span></code></p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>condaでインストール</p>
-<ul class="simple">
-<li><p>今は対応していない様子</p></li>
 </ul>
 </li>
 </ul>
