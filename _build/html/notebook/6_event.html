@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="ja">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -42,6 +42,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -52,12 +53,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="7. トラッキングデータの解析" href="7_tracking.html" />
     <link rel="prev" title="5. Matplotlibの基礎" href="5_matplotlib.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="ja">
     
 
     <!-- Google Analytics -->
@@ -675,11 +676,11 @@ title="Print to PDF"
 </div>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">6. </span>イベントデータの解析<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">6. </span>イベントデータの解析<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">#</a></h1>
 <section id="id2">
-<h2><span class="section-number">6.1. </span>データセット<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.1. </span>データセット<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">#</a></h2>
 <section id="pappalardo">
-<h3><span class="section-number">6.1.1. </span>Pappalardoデータセット<a class="headerlink" href="#pappalardo" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.1.1. </span>Pappalardoデータセット<a class="headerlink" href="#pappalardo" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>Pappalardoデータセットはサッカーのイベントデータをまとめた大規模データセットであり，<a class="reference external" href="https://creativecommons.org/licenses/by/4.0/deed.ja">CC BY 4.0ライセンス</a>の下で提供されている．
 元のデータはWyscout社によって収集されたもので，それをL. Pappalardoらが編纂し2019年に公開された．
 2022年時点で一般公開されている数少ない大規模サッカーデータである．
@@ -690,7 +691,7 @@ title="Print to PDF"
 <p>本章で用いるデータセットはPappalardoデータセットを加工・整形したものである．</p>
 </section>
 <section id="id3">
-<h3><span class="section-number">6.1.2. </span>データセットの内容<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.1.2. </span>データセットの内容<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p><strong>対象試合</strong></p>
 <p>Pappalardoデータセットに含まれる試合は2017年度ヨーロッパリーグ，2018年度FIFAW杯，2016年度UEFAチャンピオンズリーグの全1941試合である．</p>
 <table class="colwidths-auto table">
@@ -791,7 +792,7 @@ Pappalardoデータセットには，各試合のイベントログの他，下�
 </table>
 </section>
 <section id="id4">
-<h3><span class="section-number">6.1.3. </span>サポートページ<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.1.3. </span>サポートページ<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>Pappalardoデータセットに含まれる全てのデータおよび付加情報は以下で取得できる．</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://figshare.com/collections/Soccer_match_event_dataset/4415000/5">figshare</a></p>
@@ -817,7 +818,7 @@ Pappalardoデータセットには，各試合のイベントログの他，下�
 </ul>
 </section>
 <section id="id5">
-<h3><span class="section-number">6.1.4. </span>本講義で用いる加工済みデータ<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.1.4. </span>本講義で用いる加工済みデータ<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>Pappalardoデータセットに含まれるオリジナルのデータはjson形式で提供されており，このままではデータ分析がしづらい．
 そこで，まずはjson形式のデータを整形・加工し，PandasのDataFrameの形で保存する．
 この過程は本講義で扱った知識を総動員するだけでなく，文字列の処理などより高度な技術が必要である．
@@ -878,7 +879,7 @@ Pappalardoデータセットには，各試合のイベントログの他，下�
 </section>
 </section>
 <section id="id6">
-<h2><span class="section-number">6.2. </span>リーグ成績と順位表<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.2. </span>リーグ成績と順位表<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">#</a></h2>
 <p>今，手元には2017年度ヨーロッパリーグ全試合の得点データ（ <a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A">game.csv</a> ）とチームプロフィール（<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1">team.csv</a>）がある．
 これらを用いれば，チームごとに得点，失点，得失点差，勝敗などを算出することができる．
 各リーグの最終的な順位は勝ち点によって決まる．
@@ -891,7 +892,7 @@ Pappalardoデータセットには，各試合のイベントログの他，下�
 <li><p><a class="reference external" href="https://www.premierleague.com/tables?co=1&amp;se=79&amp;mw=-1&amp;ha=-1">Premier League Table, Form Guide &amp; Season Archives</a></p></li>
 </ul>
 <section id="id7">
-<h3><span class="section-number">6.2.1. </span>データの読み込み<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.2.1. </span>データの読み込み<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>まずは<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A">game.csv</a>をダウンロードして作業フォルダ（例えば<code class="docutils literal notranslate"><span class="pre">OneDrive/sport_data/6_event</span></code>）に移動し，<code class="docutils literal notranslate"><span class="pre">GM</span></code>という名前のDataFrameに読み込む．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -950,7 +951,7 @@ Pappalardoデータセットには，各試合のイベントログの他，下�
 </div>
 <p>このデータの各行には2017年度ヨーロッパリーグで行われた試合の情報が収められている．
 各列の意味は下表の通りである．
-このうち，’away_score’列と’home_score’列がアウェイチームとホームチームの得点である．
+このうち，'away_score'列と'home_score'列がアウェイチームとホームチームの得点である．
 例えば，第0行はアーセナル（ホーム）対レイチェスターシティ（アウェイ）の試合情報を表し，得点は4-3であることが分かる．</p>
 <table class="colwidths-auto table">
 <thead>
@@ -1087,7 +1088,7 @@ Pappalardoデータセットには，各試合のイベントログの他，下�
 <td><p>チームの俗称</p></td>
 </tr>
 <tr class="row-odd"><td><p>team_id</p></td>
-<td><p>チームID．playersデータの’currentTeamId’+’currentNationalTeamId’</p></td>
+<td><p>チームID．playersデータの'currentTeamId'+'currentNationalTeamId'</p></td>
 </tr>
 <tr class="row-even"><td><p>city</p></td>
 <td><p>チームの所在都市</p></td>
@@ -1112,7 +1113,7 @@ Pappalardoデータセットには，各試合のイベントログの他，下�
 </div>
 </section>
 <section id="id8">
-<h3><span class="section-number">6.2.2. </span>１チームのリーグ成績<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.2.2. </span>１チームのリーグ成績<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>まずはチームプロフィール<code class="docutils literal notranslate"><span class="pre">TM_E</span></code>の先頭行のチーム（アーセナル）に対し，リーグ成績を求めてみよう．
 このチームのチームIDとチーム名を取得するには以下のように<code class="docutils literal notranslate"><span class="pre">iloc</span></code>属性を用いて先頭行を抽出すれば良い．</p>
 <div class="cell docutils container">
@@ -1516,7 +1517,7 @@ Arsenal
 </div>
 </section>
 <section id="id9">
-<h3><span class="section-number">6.2.3. </span>全チームのリーグ成績と順位表<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.2.3. </span>全チームのリーグ成績と順位表<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>全チームのリーグ成績を求めるには，<code class="docutils literal notranslate"><span class="pre">for</span></code>文を用いて上の手続きを繰り返せば良い．
 以下では，<code class="docutils literal notranslate"><span class="pre">Rank</span></code>という名前のDataFrameに全チームのリーグ成績を保存する．</p>
 <div class="cell docutils container">
@@ -1780,19 +1781,19 @@ Arsenal
 </div>
 </section>
 <section id="id10">
-<h3><span class="section-number">6.2.4. </span>演習問題<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.2.4. </span>演習問題<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">#</a></h3>
 <ul class="simple">
 <li><p>他のリーグについて，順位表を作成せよ</p></li>
 </ul>
 </section>
 </section>
 <section id="id11">
-<h2><span class="section-number">6.3. </span>得点分布<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.3. </span>得点分布<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">#</a></h2>
 <p>サッカーの特徴は得点がランダムに入る（どちらのチームがいつ得点するかが予測不能）という点であり，このランダム性こそが人々を魅了する理由と考えられる．
 また，サッカーはほとんど点が入らないのも大きな特徴である．
 では，こうした特徴は統計的にはどのように定量化できるだろうか？</p>
 <section id="id12">
-<h3><span class="section-number">6.3.1. </span>ポアソン分布<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.3.1. </span>ポアソン分布<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p><strong>二項分布からポアソン分布へ</strong></p>
 <p>成功確率が<span class="math notranslate nohighlight">\(p\)</span>の試行を独立に<span class="math notranslate nohighlight">\(n\)</span>回繰り返すことを考える．
 例えば，サイコロを振って特定の目が出ることを成功とすると，<span class="math notranslate nohighlight">\(p=1/6\)</span>である．
@@ -1829,7 +1830,7 @@ f(x) = \frac{m^{x}}{x!} \mathrm{e}^{-m}
 以上のような仮定を置くと，サッカーにおける1試合の得点数はポアソン分布に従うことが期待される．</p>
 </section>
 <section id="id13">
-<h3><span class="section-number">6.3.2. </span>得点データの要約<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.3.2. </span>得点データの要約<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>まずは<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A">game.csv</a>をダウンロードして作業フォルダ（例えば<code class="docutils literal notranslate"><span class="pre">OneDrive/sport_data/6_event</span></code>）に移動し，<code class="docutils literal notranslate"><span class="pre">GM</span></code>という名前のDataFrameに読み込む．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1991,7 +1992,7 @@ dtype: float64
 </div>
 </section>
 <section id="id14">
-<h3><span class="section-number">6.3.3. </span>得点分布<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.3.3. </span>得点分布<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>平均値と分散の一致だけではポアソン分布に従う根拠として乏しい．
 そこで，リーグ別にホームチームの得点のヒストグラムを求めてみよう．
 以下はイングランド・プレミアリーグのホームチームの得点分布である．</p>
@@ -2078,15 +2079,15 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
 また，<span class="math notranslate nohighlight">\(\chi^2\)</span>検定などを用いてより定量的な検証を行うことも必要である．</p>
 </section>
 <section id="id15">
-<h3><span class="section-number">6.3.4. </span>演習問題<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.3.4. </span>演習問題<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">#</a></h3>
 <ul class="simple">
 <li><p>他のリーグについて，得点分布を求めよ</p></li>
 </ul>
 </section>
 <section id="id16">
-<h3><span class="section-number">6.3.5. </span>発展問題：バスケの得点分布<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.3.5. </span>発展問題：バスケの得点分布<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>以下は2015年度NBAの得点データである：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=18qfHa2OIjSmRqxFaAsFvn3O706-676Vs">score_nba.csv</a><br>
-‘away’, ‘home’列はアウェイチームとホームチームの得点，’total’列は両チームの得点の和を表す．
+'away', 'home'列はアウェイチームとホームチームの得点，'total'列は両チームの得点の和を表す．
 このデータを用いてバスケットボールの得点傾向を調べ，サッカーとの違いを考察せよ．<br>
 <strong>※ レポート問題として取り組んでも良い．</strong></p>
 <div class="cell docutils container">
@@ -2159,7 +2160,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
 </section>
 </section>
 <section id="id17">
-<h2><span class="section-number">6.4. </span>イベントデータの解析<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.4. </span>イベントデータの解析<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">#</a></h2>
 <p>Pappalardoデータセットのメインデータはイベントデータである．
 イベントデータはイベントログとイベントタグの2種類から成る：</p>
 <ul class="simple">
@@ -2202,7 +2203,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
 <li><p>タグリスト：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1o_tZ-y0eAYlgN1audJThoVBMN0Ta2x5f">tag_list.csv</a></p></li>
 </ul>
 <section id="id18">
-<h3><span class="section-number">6.4.1. </span>イベントデータの詳細<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.4.1. </span>イベントデータの詳細<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p><strong>イベントログ</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2460,8 +2461,8 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
 </div></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">EV_tag</span></code>はイベントログ<code class="docutils literal notranslate"><span class="pre">EV</span></code>と同じ行数のDataFrameであり，各行が試合中の１イベントを表している．
-一方，各列には’goal’，’assist’などのイベントに付与されたタグ（付加情報）が並んでおり，真ならば1，偽ならば0となっている．
-例えば，’goal’列が1である行では，そのイベントにおいて得点が入ったことを意味する．
+一方，各列には'goal'，'assist'などのイベントに付与されたタグ（付加情報）が並んでおり，真ならば1，偽ならば0となっている．
+例えば，'goal'列が1である行では，そのイベントにおいて得点が入ったことを意味する．
 タグの詳細情報は<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1o_tZ-y0eAYlgN1audJThoVBMN0Ta2x5f">tag_list.csv</a>にまとめられている．
 主要なタグを下表にまとめる．</p>
 <table class="colwidths-auto table">
@@ -2490,7 +2491,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
 </table>
 </section>
 <section id="id19">
-<h3><span class="section-number">6.4.2. </span>イベントデータ解析の基本<a class="headerlink" href="#id19" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.4.2. </span>イベントデータ解析の基本<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>イベントログ<code class="docutils literal notranslate"><span class="pre">EV</span></code>とイベントタグ<code class="docutils literal notranslate"><span class="pre">EV_tag</span></code>には，ボールに関わるイベントに関するほぼ全ての情報が含まれている．
 イベントデータ解析の目的はこれらのデータから意味のある情報を抽出することである．
 イベントデータを解析する際の手順は以下のようにまとめられる：</p>
@@ -2825,9 +2826,9 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
 </div></div></div>
 </div>
 <p><strong>特定のイベントの抽出</strong></p>
-<p>イベントログ<code class="docutils literal notranslate"><span class="pre">EV</span></code>には’event’列と’subevent’列が存在する．
-‘event’列は’pass’，’foul’などの大分類，’subevent’列は’simple_pass’や’high_pass’などの小分類となっている．
-‘event’および’subevent’のリストは<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1oSDUt73paDOsORVj732rGU0vwIwGHvHJ">event_list.csv</a> にまとめられている．</p>
+<p>イベントログ<code class="docutils literal notranslate"><span class="pre">EV</span></code>には'event'列と'subevent'列が存在する．
+'event'列は'pass'，'foul'などの大分類，'subevent'列は'simple_pass'や'high_pass'などの小分類となっている．
+'event'および'subevent'のリストは<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1oSDUt73paDOsORVj732rGU0vwIwGHvHJ">event_list.csv</a> にまとめられている．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># event列が&#39;pass&#39;の行を抽出</span>
@@ -3292,7 +3293,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
 </div>
 </section>
 <section id="id20">
-<h3><span class="section-number">6.4.3. </span>イベント別のヒートマップ<a class="headerlink" href="#id20" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.4.3. </span>イベント別のヒートマップ<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>条件付き抽出の応用として，イベント別にヒートマップを描いてみよう．
 まず，以下のようにヒートマップを描く<code class="docutils literal notranslate"><span class="pre">event_hmap</span></code>関数を作成する．
 この関数は，<span class="math notranslate nohighlight">\(x,\ y\)</span>座標のデータを引数として受け取り，matplotlibの<code class="docutils literal notranslate"><span class="pre">hist2d</span></code>関数を用いてヒートマップを描く．</p>
@@ -3418,7 +3419,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
 </div>
 </section>
 <section id="id21">
-<h3><span class="section-number">6.4.4. </span>選手のランキング<a class="headerlink" href="#id21" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.4.4. </span>選手のランキング<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>シーズンが終了すると，チームのリーグ成績と共に選手の個人成績が発表される．
 個人成績は，シュート数やゴール数などの部門別ランキングとなっている．
 ここでは，イベントデータを用いてこれらのランキングを求めてみよう．
@@ -3433,15 +3434,15 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
 <ul class="simple">
 <li><p>ランキング項目に応じて条件付き抽出する．</p>
 <ul>
-<li><p>例えば，パス数の場合は’event’列が’pass’である行を抽出する</p></li>
+<li><p>例えば，パス数の場合は'event'列が'pass'である行を抽出する</p></li>
 </ul>
 </li>
-<li><p>条件付き抽出後のDataFrameに対し，’player_id’ごとの出現回数を求める</p>
+<li><p>条件付き抽出後のDataFrameに対し，'player_id'ごとの出現回数を求める</p>
 <ul>
 <li><p>DataFrameの<code class="docutils literal notranslate"><span class="pre">value_counts</span></code>メソッドを用いる</p></li>
 </ul>
 </li>
-<li><p>選手プロフィール<code class="docutils literal notranslate"><span class="pre">PL</span></code>を用いて’player_id’を選手名に変換する</p></li>
+<li><p>選手プロフィール<code class="docutils literal notranslate"><span class="pre">PL</span></code>を用いて'player_id'を選手名に変換する</p></li>
 </ul>
 <p><strong>シュート数</strong></p>
 <div class="cell docutils container">
@@ -3545,7 +3546,7 @@ Name: player_id, dtype: int64
 </div>
 </section>
 <section id="id22">
-<h3><span class="section-number">6.4.5. </span>ボールの軌跡の可視化<a class="headerlink" href="#id22" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.4.5. </span>ボールの軌跡の可視化<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>イベントデータを用いると，パスやシュートなどのイベント単位で試合展開を追跡することができる．
 ここでは，特定の試合に対し，ボールの軌跡を可視化してみよう．</p>
 <p><strong>試合の抽出</strong></p>
@@ -3575,7 +3576,7 @@ Name: player_id, dtype: int64
 <p><strong>座標の反転（片方のチーム）</strong></p>
 <p>元のデータでは，両チームの攻撃方向が右方向に統一されている．
 これだと，試合展開を可視化する際にわかりにくいので，一方のチームの攻撃方向が逆になるように変換する．
-以下のように，片方のチーム（’team_id’が1631）の<span class="math notranslate nohighlight">\(x, y\)</span>座標から最大値100を引き，絶対値を取ればよい．</p>
+以下のように，片方のチーム（'team_id'が1631）の<span class="math notranslate nohighlight">\(x, y\)</span>座標から最大値100を引き，絶対値を取ればよい．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">100</span><span class="p">)</span>
@@ -3591,7 +3592,7 @@ Name: player_id, dtype: int64
 <p><strong>ボールの軌跡の描画</strong></p>
 <p>イベントログにはイベントの始点と終点の座標が収められており，これがおおよそボールの軌跡に対応する．
 そこで，<code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>の<code class="docutils literal notranslate"><span class="pre">plot</span></code>関数を用いてイベントの始点と終点の座標を結ぶことで，ボールの軌跡を描いてみる．
-なお，イベント名が’duel’の場合，始点と終点の座標が同じで’team_id’が異なる2つの行が挿入されている．</p>
+なお，イベント名が'duel'の場合，始点と終点の座標が同じで'team_id'が異なる2つの行が挿入されている．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;duel&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -3671,7 +3672,7 @@ Name: player_id, dtype: int64
 </div></div></div>
 </div>
 <p>これは，ボール保持チームが特定できないためと考えられる．
-そこで，イベント名が’duel’の場合には一方のチームの座標だけを黒線で描画し，それ以外はチームごとに色分けして描画することにする．
+そこで，イベント名が'duel'の場合には一方のチームの座標だけを黒線で描画し，それ以外はチームごとに色分けして描画することにする．
 以下の<code class="docutils literal notranslate"><span class="pre">ball_trj</span></code>関数は，時間帯を３つの引数<code class="docutils literal notranslate"><span class="pre">half</span></code>, <code class="docutils literal notranslate"><span class="pre">ts</span></code>, <code class="docutils literal notranslate"><span class="pre">te</span></code>で指定し，その時間帯でボールの軌跡を描く．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3734,7 +3735,7 @@ Name: player_id, dtype: int64
 </div>
 </section>
 <section id="id23">
-<h3><span class="section-number">6.4.6. </span>選手間のパス数の可視化<a class="headerlink" href="#id23" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.4.6. </span>選手間のパス数の可視化<a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>最後に，特定の試合における選手間のパス数を可視化してみよう．
 本来，このような解析にはnetworkxという専用のライブラリを使うべきだが，以下ではpandasとseabornという可視化ライブラリを用いて実装する．</p>
 <p><strong>試合の抽出</strong></p>
@@ -3750,7 +3751,7 @@ Name: player_id, dtype: int64
 <p><strong>パスリストの作成</strong></p>
 <p>選手間のパス数を求めるには，パスの出し手と受け手の情報が必要である．
 しかし，イベントログ<code class="docutils literal notranslate"><span class="pre">EV</span></code>にはパスの出し手の情報しかないので，受け手の情報を加える必要がある．
-イベント名が’pass’の行については，次の行の選手IDがパスの受け手に対応するので，以下のようにパスリスト<code class="docutils literal notranslate"><span class="pre">ps</span></code>を作成できる．</p>
+イベント名が'pass'の行については，次の行の選手IDがパスの受け手に対応するので，以下のようにパスリスト<code class="docutils literal notranslate"><span class="pre">ps</span></code>を作成できる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;pass&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;player_id&#39;</span><span class="p">,</span> <span class="s1">&#39;team_id&#39;</span><span class="p">]]</span>
@@ -3827,8 +3828,8 @@ Name: player_id, dtype: int64
 </div></div></div>
 </div>
 <p><strong>選手名の追加</strong></p>
-<p>イベントログには選手ID（’player_id’）の情報しかないので，選手プロフィール<code class="docutils literal notranslate"><span class="pre">PL</span></code>のデータを用いて選手名を追加する．
-以下のように，<code class="docutils literal notranslate"><span class="pre">replace</span></code>メソッドを用いて，選手ID（’player_id’）を選手名（’name’）に置換すれば良い．</p>
+<p>イベントログには選手ID（'player_id'）の情報しかないので，選手プロフィール<code class="docutils literal notranslate"><span class="pre">PL</span></code>のデータを用いて選手名を追加する．
+以下のように，<code class="docutils literal notranslate"><span class="pre">replace</span></code>メソッドを用いて，選手ID（'player_id'）を選手名（'name'）に置換すれば良い．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ps</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ps</span><span class="p">[</span><span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">PL</span><span class="p">[</span><span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">PL</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
@@ -4011,16 +4012,16 @@ Name: player_id, dtype: int64
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="5_matplotlib.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="5_matplotlib.html" title="前へ ページ">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-subtitle">前へ</p>
             <p class="prev-next-title"><span class="section-number">5. </span>Matplotlibの基礎</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="7_tracking.html" title="next page">
+    <a class='right-next' id="next-link" href="7_tracking.html" title="次へ ページ">
     <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-subtitle">次へ</p>
         <p class="prev-next-title"><span class="section-number">7. </span>トラッキングデータの解析</p>
     </div>
     <i class="fas fa-angle-right"></i>
@@ -4032,7 +4033,6 @@ Name: player_id, dtype: int64
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-      &copy; Copyright 2022-present by 成塚拓真（Takuma Narizuka）.<br/>
     <div class="extra_footer">
       © Copyright 2022-present by 成塚拓真 (Takuma Narizuka). この作品は<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ja">CC BY-NC-ND 4.0</a>の下に提供する．</a>ただし，作品中のコードは<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供する．
 
