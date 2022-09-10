@@ -8,39 +8,10 @@ copyright: "2022-present by 成塚拓真（Takuma Narizuka）"
 exclude_patterns: [_build, README.md, .DS_Store]
 only_build_toc_files: true
 
-# Force re-execution of notebooks on each build.
-# See https://jupyterbook.org/content/execute.html
+#######################################################################################
+# Execution settings
 execute:
   execute_notebooks: off
-
-# Define the name of the latex output file for PDF builds
-latex:
-  latex_documents:
-    targetname: book.tex
-
-# Add a bibtex file so that we can create citations
-bibtex_bibfiles:
-  - references.bib
-
-# sphinx:
-#   config:
-#     bibtex_reference_style: author_year # "author_year"/"label"/"super"
-#     bibtex_bibfiles: "reference.bib"
-
-# Information about where the book exists on the web
-repository:
-  url: https://github.com/tnarizuka/sports_data_programming  # Online location of your book
-  path_to_book: docs  # Optional path to your book, relative to the repository root
-  branch: main  # Which branch of the repository should be used when creating links (optional)
-
-
-html:
-  use_issues_button: true
-  use_repository_button: true
-  home_page_in_navbar: false
-  extra_footer: |
-    © Copyright 2022-present by 成塚拓真 (Takuma Narizuka). この講義ノートは<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ja">CC BY-NC-ND 4.0</a>の下に提供する．</a>ただし，作品中のコードは<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供する．
-
 
 #######################################################################################
 # Parse and render settings
@@ -59,6 +30,32 @@ parse:
     - tasklist
   myst_url_schemes: [mailto, http, https] # URI schemes that will be recognised as external URLs in Markdown links
   myst_dmath_double_inline: true  # Allow display math ($$) within an inline context
+
+#######################################################################################
+# HTML-specific settings
+html:
+  use_issues_button: true
+  use_repository_button: true
+  home_page_in_navbar: false
+  © Copyright 2022-present by 成塚拓真 (Takuma Narizuka). この講義ノートは<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ja">CC BY-NC-ND 4.0</a>の下に提供する．</a>ただし，作品中のコードは<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供する．
+
+#######################################################################################
+# Launch button settings
+launch_buttons:
+  notebook_interface        : "jupyterlab" # The interface interactive links will activate ["classic", "jupyterlab"]
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
+
+repository:
+  url: https://github.com/tnarizuka/sports_data_programming  # Online location of your book
+  path_to_book: docs  # Optional path to your book, relative to the repository root
+  branch: main  # Which branch of the repository should be used when creating links (optional)
+
+bibtex_bibfiles:
+  - references.bib
 
 sphinx:
   config:
