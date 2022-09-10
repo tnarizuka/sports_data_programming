@@ -9,7 +9,7 @@ parts:
   numbered: 3
   chapters:
   - file: notebook/1_introduction.ipynb
-  - file: notebook/2_environment.ipynb
+  # - file: notebook/2_environment.ipynb
   - file: notebook/3_numpy.ipynb
   - file: notebook/4_pandas.ipynb
   - file: notebook/5_matplotlib.ipynb
