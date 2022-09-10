@@ -338,35 +338,27 @@ fig.savefig('./2_environment/graph.pdf', bbox_inches="tight", pad_inches=0.2, tr
 
 # これを単にPythonスクリプトとして実行すると，`if __name__ == '__main__':`以下のコマンドが実行される：
 
-# In[41]:
-
-
-get_ipython().run_line_magic('run', '"./module/my_module.py"')
-
+# ```py
+# %run "./module/my_module.py"
+# ```
 
 # 一方，これをモジュールとしてインポートするには以下のようにする：
 
-# In[42]:
-
-
-import module.my_module as mm
-
+# ```py
+# import module.my_module as mm
+# ```
 
 # この状態で`my_module`内の関数`my_func()`を以下のように`mm.my_func()`として実行できる：
 
-# In[43]:
-
-
-mm.my_func()
-
+# ```py
+# mm.my_func()
+# ```
 
 # スタートアップスクリプト内にautoreloadの設定を書いている場合は，ローカルで`my_module.py`を書き換えたら即座に変更内容が反映されるはずである．
 
-# In[44]:
-
-
-mm.my_func()
-
+# ```py
+# mm.my_func()
+# ```
 
 # ## （任意）Windows Terminalのインストール
 # 

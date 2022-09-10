@@ -1023,63 +1023,20 @@ japanize_matplotlibがうまくインストールされていれば，ラベル�
 </div>
 <p>つまり，このPythonスクリプトのパスは”C:\Users\username\OneDrive\sport_data\module\my_module.py”となる．</p>
 <p>これを単にPythonスクリプトとして実行すると，<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__':</span></code>以下のコマンドが実行される：</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> &quot;./module/my_module.py&quot;
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">run</span> <span class="s2">&quot;./module/my_module.py&quot;</span>
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>test0
-test1
-test2
-test3
-test4
-</pre></div>
-</div>
-</div>
 </div>
 <p>一方，これをモジュールとしてインポートするには以下のようにする：</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">module.my_module</span> <span class="k">as</span> <span class="nn">mm</span>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">module.my_module</span> <span class="k">as</span> <span class="nn">mm</span>
 </pre></div>
-</div>
-</div>
 </div>
 <p>この状態で<code class="docutils literal notranslate"><span class="pre">my_module</span></code>内の関数<code class="docutils literal notranslate"><span class="pre">my_func()</span></code>を以下のように<code class="docutils literal notranslate"><span class="pre">mm.my_func()</span></code>として実行できる：</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mm</span><span class="o">.</span><span class="n">my_func</span><span class="p">()</span>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">mm</span><span class="o">.</span><span class="n">my_func</span><span class="p">()</span>
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>test0
-test1
-test2
-test3
-test4
-</pre></div>
-</div>
-</div>
 </div>
 <p>スタートアップスクリプト内にautoreloadの設定を書いている場合は，ローカルで<code class="docutils literal notranslate"><span class="pre">my_module.py</span></code>を書き換えたら即座に変更内容が反映されるはずである．</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mm</span><span class="o">.</span><span class="n">my_func</span><span class="p">()</span>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">mm</span><span class="o">.</span><span class="n">my_func</span><span class="p">()</span>
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module_test0
-module_test1
-module_test2
-module_test3
-module_test4
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
