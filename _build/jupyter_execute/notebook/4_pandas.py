@@ -30,12 +30,6 @@ get_ipython().run_line_magic('precision', '3')
 os.chdir(r"C:\Users\parar\OneDrive\sport_data")
 
 
-# - **このページの.ipynbファイル：[4_pandas.ipynb](https://drive.google.com/uc?export=download&id=1A3AYHL707Yf38Dzqz-yuIoDgJiojYYZo)**
-
-# - **最新の内容が表示されない場合は強制リロードして下さい．**
-#     - Windows: `Ctrl+F5`
-#     - Mac: `Command+R` or `Command + Shift + R`
-
 # 本章は以下の文献とウェブサイトを参考にしています：
 # - 株式会社ロンバート・増田秀人，現場で使える！pandsデータ前処理入門，翔泳社，2020．
 # - Wes McKinney, Pythonによるデータ分析入門，オライリー，2018

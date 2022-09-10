@@ -23,12 +23,6 @@ except:
 os.chdir(r"C:\Users\parar\OneDrive\sport_data")
 
 
-# - **このページの.ipynbファイル**：[6_event.ipynb](https://drive.google.com/uc?export=download&id=1ANDo_rzqkoj4JkzLrpSALB-bLv9mGa-u)
-
-# - **最新の内容が表示されない場合は強制リロードして下さい．**
-#     - Windows: `Ctrl+F5`
-#     - Mac: `Command+R` or `Command + Shift + R`
-
 # # イベントデータの解析
 
 # ## データセット

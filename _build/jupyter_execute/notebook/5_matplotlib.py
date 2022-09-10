@@ -23,12 +23,6 @@ except:
 os.chdir(r"C:\Users\parar\OneDrive\sport_data")
 
 
-# - **このページの.ipynbファイル：[5_matplotlib.ipynb](https://drive.google.com/uc?export=download&id=1AFVSb9TRaRQMKIPCGvqAjv_Av7qktu5k)**
-
-# - **最新の内容が表示されない場合は強制リロードして下さい．**
-#     - Windows: `Ctrl+F5`
-#     - Mac: `Command+R` or `Command + Shift + R`
-
 # # Matplotlibの基礎
 
 # 本章は主に以下の文献とウェブサイトを参考にしている：

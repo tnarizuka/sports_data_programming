@@ -27,12 +27,6 @@ get_ipython().run_line_magic('precision', '3')
 os.chdir(r"C:\Users\parar\OneDrive\sport_data")
 
 
-# - **このページの.ipynbファイル：[3_numpy.ipynb](https://drive.google.com/uc?export=download&id=19za9Q56tooe-z6S9uxqJAyjrWLgct7l0)**
-
-# - **最新の内容が表示されない場合は強制リロードして下さい．**
-#     - Windows: `Ctrl+F5`
-#     - Mac: `Command+R` or `Command + Shift + R`
-
 # # NumPyの基礎
 
 # 本章は以下の文献とウェブサイトを参考にしています：
