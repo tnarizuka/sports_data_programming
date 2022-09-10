@@ -20,11 +20,11 @@ np.set_printoptions(suppress=True, precision=3)
 get_ipython().run_line_magic('precision', '3')
 
 
-# In[26]:
+# In[2]:
 
 
 # （必須）カレントディレクトリの変更（自分の作業フォルダのパスをコピーして入力する）
-os.chdir(r"C:\Users\parar\OneDrive\sport_data")
+os.chdir(r'/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data')
 
 
 # # NumPyの基礎
@@ -49,7 +49,7 @@ os.chdir(r"C:\Users\parar\OneDrive\sport_data")
 # ### NumPyのimport
 # NumPyは他のパッケージと同様にimportすることができる．Numpyはnpという名前でimportするのが慣例である：
 
-# In[4]:
+# In[3]:
 
 
 import numpy as np
@@ -65,7 +65,7 @@ import numpy as np
 # リストは以下のように整数と文字列など複数の型を同時に格納することができ，多次元にすることも可能である．
 # また，行ごとに異なるサイズにすることも可能である．
 
-# In[5]:
+# In[4]:
 
 
 [[1, 'a', 10.0], [2, 'b']]
@@ -75,7 +75,7 @@ import numpy as np
 # 
 # NumPy配列を作成する方法は後ほど詳しく説明するが，`np.array`関数を用いて組み込みリストを変換するのが基本である．
 
-# In[6]:
+# In[5]:
 
 
 np.array([[1, 2], [3, 4]])
@@ -109,7 +109,7 @@ np.array([[1, 2], [3, 4]])
 # 
 # などである．より詳しく'float64'のようにビット長を指定することもできるが省略するとデフォルトのビット長が指定される．なお，文字列を扱いたい場合はリストかPandasを用いるのが良い．
 
-# In[7]:
+# In[6]:
 
 
 x = np.array([1,2,3,4], dtype='float')
@@ -117,7 +117,7 @@ x = np.array([1,2,3,4], dtype='float')
 
 # NumPy配列のデータ型を調べたい場合は`dtype`属性を用いる．
 
-# In[8]:
+# In[7]:
 
 
 # 配列のデータ型を取得する
@@ -126,7 +126,7 @@ x.dtype
 
 # データ型を変更したい場合は`astype`メソッドを用いる．
 
-# In[9]:
+# In[8]:
 
 
 # データ型を整数に変更

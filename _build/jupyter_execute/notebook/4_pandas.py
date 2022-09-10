@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[3]:
+# In[214]:
 
 
 # （必須）モジュールのインポート
@@ -23,11 +23,11 @@ pd.set_option('display.max_columns', 5)  # 表示する列数の上限
 get_ipython().run_line_magic('precision', '3')
 
 
-# In[77]:
+# In[215]:
 
 
 # （必須）カレントディレクトリの変更（自分の作業フォルダのパスをコピーして入力する）
-os.chdir(r"C:\Users\parar\OneDrive\sport_data")
+os.chdir(r'/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data')
 
 
 # 本章は以下の文献とウェブサイトを参考にしています：
@@ -45,7 +45,7 @@ os.chdir(r"C:\Users\parar\OneDrive\sport_data")
 # 
 # Pandas（パンダス）は`pd`という名前でインポートするのが慣例である：
 
-# In[16]:
+# In[216]:
 
 
 import pandas as pd
@@ -64,7 +64,7 @@ import pandas as pd
 # スポーツデータは文字列や数値など様々な型のデータを含み，分析を行うためにはデータを扱いやすい形に整形する必要がある．
 # 例えば，以下は，典型的なサッカーのイベントデータをPandasに読み込んだものである．
 
-# In[192]:
+# In[217]:
 
 
 pd.DataFrame({'t':[2, 64, 350, 600],
@@ -113,7 +113,7 @@ pd.DataFrame({'t':[2, 64, 350, 600],
 # 
 # 
 
-# In[80]:
+# In[218]:
 
 
 # リストの変換
@@ -122,7 +122,7 @@ pd.DataFrame([[1,2,3], [4,5,6]],
              columns=['A', 'B', 'C'])
 
 
-# In[82]:
+# In[219]:
 
 
 # NumPy配列の変換
@@ -136,7 +136,7 @@ pd.DataFrame(np.arange(6).reshape(2, 3),
 # `data`として辞書を指定すると，辞書のkeyが列ラベル`columns`となる．
 # 行ラベル`index`はオプションとして指定する．
 
-# In[27]:
+# In[220]:
 
 
 # 辞書データ
@@ -147,7 +147,7 @@ dict_data = {'t':[2, 64, 350, 600],
 list(dict_data.keys())
 
 
-# In[28]:
+# In[221]:
 
 
 # 辞書による生成
@@ -173,7 +173,7 @@ pd.DataFrame(dict_data, index=['A', 'B', 'C', 'D'])
 # | encoding | エンコーディング | 'utf-8', 'shift-jis'など |
 # | columns | 出力する列 | ['A', 'B']など |
 
-# In[194]:
+# In[222]:
 
 
 # DataFrameを生成する
@@ -186,7 +186,7 @@ df = pd.DataFrame({'t':[2, 64, 350, 600],
 
 # 絶対パス
 
-# In[ ]:
+# In[223]:
 
 
 # 絶対パスを指定してcsvファイルに保存する
@@ -196,12 +196,12 @@ df.to_csv(r"C:\Users\parar\OneDrive\sport_data\4_pandas\df_sample.csv",\
 
 # 相対パス
 
-# In[ ]:
+# In[224]:
 
 
 # 相対パスを指定してcsvファイルに保存する
-os.chdir(r"C:\Users\parar\OneDrive\sport_data")  # カレントディレクトリをsport_dataに変更
-df.to_csv('./4_pandas/df_sample.csv',\           # sport_dataからの相対パスを指定
+os.chdir(r'/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data')  # カレントディレクトリをsport_dataに変更
+df.to_csv('./4_pandas/df_sample.csv',            # sport_dataからの相対パスを指定
           header=True, index=True, encoding='utf-8', columns=df.columns)
 
 
@@ -226,23 +226,23 @@ df.to_csv('./4_pandas/df_sample.csv',\           # sport_dataからの相対パ�
 
 # 絶対パス
 
-# In[ ]:
+# In[225]:
 
 
 # 絶対パスを指定してcsvファイルをDataFrameに読み込む
-df = pd.read_csv(r"C:\Users\parar\OneDrive\sport_data\4_pandas\df_sample.csv",\
+df = pd.read_csv(r"/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data/4_pandas/df_sample.csv",\
                  header=0, index_col=0, usecols=None)
 df
 
 
 # 相対パス
 
-# In[84]:
+# In[226]:
 
 
 # 相対パスを指定してcsvファイルをDataFrameに読み込む
-os.chdir(r"C:\Users\parar\OneDrive\sport_data")  # カレントディレクトリをsport_dataに変更
-df = pd.read_csv('./4_pandas/df_sample.csv',\    # sport_dataからの相対パスを指定
+os.chdir(r'/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data')  # カレントディレクトリをsport_dataに変更
+df = pd.read_csv('./4_pandas/df_sample.csv',    # sport_dataからの相対パスを指定
                  header=0, index_col=0, usecols=None)
 df
 
@@ -256,7 +256,7 @@ df
 # Pandasではpythonの組み込み定数である`None`や`math.nan`，`np.nan`は全て欠損値として扱われる．<br>
 # ※ 無限大を表す`inf`はデフォルトでは欠損値として扱われない．
 
-# In[190]:
+# In[227]:
 
 
 # 欠損値を含むDataFrame
@@ -269,13 +269,13 @@ df
 
 # `NaN`の検出には`isna`メソッドまたは`pd.isnull`関数を用いる．どちらも動作は同じで，`NaN`の箇所がTrue，それ以外がFalseとなる．
 
-# In[86]:
+# In[228]:
 
 
 df.isna()
 
 
-# In[87]:
+# In[229]:
 
 
 pd.isnull(df)
@@ -291,7 +291,7 @@ pd.isnull(df)
 # 引数に`how='any'`を指定した場合，行／列に`NaN`が１つでも含まれれば削除される．
 # 一方，`how='all'`の場合，行／列の全ての要素が`NaN`の場合に削除される．
 
-# In[29]:
+# In[230]:
 
 
 df = pd.DataFrame(np.array([[np.nan, 1, 2], [3, np.nan, 5], [6, 7, 8], [np.nan, np.nan, np.nan]]),
@@ -299,21 +299,21 @@ df = pd.DataFrame(np.array([[np.nan, 1, 2], [3, np.nan, 5], [6, 7, 8], [np.nan, 
 df
 
 
-# In[30]:
+# In[231]:
 
 
 # 欠損値を１つでも含む行を削除
 df.dropna(axis=0, how='any')
 
 
-# In[31]:
+# In[232]:
 
 
 # 欠損値を１つでも含む列を削除
 df.dropna(axis=1, how='any')
 
 
-# In[32]:
+# In[233]:
 
 
 # 全ての要素が欠損値である行を削除
@@ -328,7 +328,7 @@ df.dropna(axis=0, how='all')
 # ```
 # valueに数値を指定すると，全ての欠損値がその数値で置換される．
 
-# In[33]:
+# In[234]:
 
 
 # 欠損値を0で置換
@@ -339,7 +339,7 @@ df.fillna(0)
 
 # DataFrameに対して，`df.属性名`とすることで，`df`の様々な情報を取得できる．
 
-# In[201]:
+# In[235]:
 
 
 # DataFrameの読み込み
@@ -352,7 +352,7 @@ df = pd.read_csv('./4_pandas/df_sample.csv',\
 # `values`属性を用いると，値をNumPy配列として取り出すことができる．<br>
 # ※ 複数の型が混在するDataFrameの場合，取り出したNumPy配列はobject型という特殊な型になる．
 
-# In[166]:
+# In[236]:
 
 
 # 値をNumPy配列として取り出す
@@ -363,14 +363,14 @@ df.values
 
 # DataFrameの行ラベルと列ラベルは`index`属性と`columns`属性で抽出できる．
 
-# In[167]:
+# In[237]:
 
 
 # 行ラベル
 df.index
 
 
-# In[168]:
+# In[238]:
 
 
 # 列ラベル
@@ -381,21 +381,21 @@ df.columns
 
 # DataFrameにはその他に以下の属性がある．
 
-# In[202]:
+# In[239]:
 
 
 # DataFrameの要素数
 df.size
 
 
-# In[203]:
+# In[240]:
 
 
 # DataFrameの形状
 df.shape
 
 
-# In[206]:
+# In[241]:
 
 
 # 各列のデータ型
@@ -413,7 +413,7 @@ df.dtypes
 # 以下で説明するように，基本的には`iloc`属性と`loc`属性を用い，角括弧は列を選択する場合だけに使用することを推奨する．
 # 特に`loc`属性を用いた参照方法はPandas特有であり，かつ頻繁に使用する．
 
-# In[11]:
+# In[242]:
 
 
 # csvファイルをDataFrameに読み込む
@@ -430,35 +430,35 @@ df
 # ```
 # 基本的にはNumPyのインデックス参照と同様であり，スライスにも対応している．
 
-# In[12]:
+# In[243]:
 
 
 # 第1行の参照（列番号は省略可）
 df.iloc[1]
 
 
-# In[13]:
+# In[244]:
 
 
 # 第1列の参照（df['player']と同じ）
 df.iloc[:, 1]
 
 
-# In[14]:
+# In[245]:
 
 
 # 第1~3行の参照
 df.iloc[1:4]
 
 
-# In[15]:
+# In[246]:
 
 
 # 第1行と3行の参照
 df.iloc[[1, 3]]
 
 
-# In[16]:
+# In[247]:
 
 
 # 第0列〜2列の参照
@@ -474,35 +474,35 @@ df.iloc[:, :3]
 # これはNumPyにはないPandas特有の方法である．
 # なお，特定の行を参照する場合，列ラベルは省略できる．
 
-# In[18]:
+# In[248]:
 
 
 # 'A'行を参照（列ラベルは省略可）
 df.loc['A']
 
 
-# In[19]:
+# In[249]:
 
 
 # 複数の行を参照
 df.loc[['A', 'C']]
 
 
-# In[20]:
+# In[250]:
 
 
 # 複数の列を参照（df[['x', 'y']]と同じ）
 df.loc[:, ['x', 'y']]
 
 
-# In[21]:
+# In[251]:
 
 
 # 行ラベルが'A'，列ラベルが't'の要素を参照
 df.loc['A', 't']
 
 
-# In[22]:
+# In[252]:
 
 
 # 複数の行ラベルと列ラベルの指定
@@ -515,7 +515,7 @@ df.loc[['A', 'C'], ['x', 'y']]
 # 
 # ※ スライスなどにも対応しているが，`loc`属性の使用を推奨
 
-# In[23]:
+# In[253]:
 
 
 # 't'列の参照（df.loc[:, 't']と同じ）
@@ -524,7 +524,7 @@ df['t']
 
 # 複数の列ラベルをリストで指定すると，複数の列を取り出すことができる．
 
-# In[24]:
+# In[254]:
 
 
 # 'x'と'y'列の参照（df.loc[:, ['x', 'y']]と同じ）
@@ -535,7 +535,7 @@ df[['x', 'y']]
 # 
 # DataFrame`df`の先頭から`n`行だけ抽出したい場合は`df.head(n)`とする．
 
-# In[25]:
+# In[255]:
 
 
 # 先頭から2行だけ抽出
@@ -546,7 +546,7 @@ df.head(2)
 # 
 # DataFrame`df`の末尾から`n`行だけ抽出したい場合は`df.tail(n)`とする．
 
-# In[26]:
+# In[256]:
 
 
 # 末尾から2行だけ抽出
@@ -560,7 +560,7 @@ df.tail(2)
 # SeriesはDataFrameから1列または1行を取り出すことで生成できる．
 # また，`pd.Series`関数により，リスト，NumPy配列，辞書などから生成することもできる．
 
-# In[27]:
+# In[257]:
 
 
 df = pd.read_csv('./4_pandas/df_sample.csv',\
@@ -568,13 +568,13 @@ df = pd.read_csv('./4_pandas/df_sample.csv',\
 df['t']
 
 
-# In[28]:
+# In[258]:
 
 
 type(df['t'])
 
 
-# In[29]:
+# In[259]:
 
 
 # リストから作成
@@ -585,35 +585,35 @@ sr
 
 # Seriesオブジェクトの属性や参照の方法はDataFrameと同じである．
 
-# In[59]:
+# In[260]:
 
 
 # NumPy配列に変換
 sr.values
 
 
-# In[60]:
+# In[261]:
 
 
 # ラベルを取得
 sr.index
 
 
-# In[31]:
+# In[262]:
 
 
 # ラベル'A'の要素を取り出す
 sr['A']
 
 
-# In[32]:
+# In[263]:
 
 
 # loc属性でラベル'A'の要素を取り出す
 sr.loc['A']
 
 
-# In[33]:
+# In[264]:
 
 
 # iloc属性で0番目要素を取り出す
@@ -628,7 +628,7 @@ sr.iloc[0]
 
 # まず，ダウンロードしたcsvファイルを`df`に読み込む．<br>
 
-# In[9]:
+# In[265]:
 
 
 # index_col='player_id'：選手IDを行ラベル（index）に設定
@@ -639,7 +639,7 @@ df
 
 # DataFrameの先頭2行を取得せよ
 
-# In[ ]:
+# In[266]:
 
 
 # 解答欄
@@ -647,7 +647,7 @@ df
 
 # DataFrameの末尾2行を取得せよ
 
-# In[ ]:
+# In[267]:
 
 
 # 解答欄
@@ -655,7 +655,7 @@ df
 
 # `index`（行ラベル）を取得せよ
 
-# In[ ]:
+# In[268]:
 
 
 # 解答欄
@@ -663,7 +663,7 @@ df
 
 # `columns`（列ラベル）を取得せよ
 
-# In[ ]:
+# In[269]:
 
 
 # 解答欄
@@ -671,7 +671,7 @@ df
 
 # `iloc`属性を用いて行番号が114の行を抽出せよ
 
-# In[ ]:
+# In[270]:
 
 
 # 解答欄
@@ -680,7 +680,7 @@ df
 # `iloc`属性を用いて行番号が1416~1936までの行を抽出せよ<br>
 # ※ これはイタリアリーグのデータである
 
-# In[ ]:
+# In[271]:
 
 
 # 解答欄
@@ -688,7 +688,7 @@ df
 
 # `iloc`属性を用いて列番号が4の列を抽出せよ
 
-# In[ ]:
+# In[272]:
 
 
 # 解答欄
@@ -696,7 +696,7 @@ df
 
 # `iloc`属性を用いて列番号が4以上の列を抽出せよ
 
-# In[ ]:
+# In[273]:
 
 
 # 解答欄
@@ -704,7 +704,7 @@ df
 
 # 角括弧`[]`を用いて`weight`列を抽出せよ
 
-# In[ ]:
+# In[274]:
 
 
 # 解答欄
@@ -712,7 +712,7 @@ df
 
 # 角括弧`[]`を用いて`nationarity`列を抽出せよ
 
-# In[ ]:
+# In[275]:
 
 
 # 解答欄
@@ -721,7 +721,7 @@ df
 # 角括弧`[]`を用いて`team_id`列，`height`列，`weight`列を抽出せよ<br>
 # ※ これがNumPyのレポート問題で扱ったデータである．
 
-# In[ ]:
+# In[276]:
 
 
 # 解答欄
@@ -729,7 +729,7 @@ df
 
 # `loc`属性を用いてindex（行ラベル）が703の行を抽出せよ
 
-# In[ ]:
+# In[277]:
 
 
 # 解答欄
@@ -737,7 +737,7 @@ df
 
 # `loc`属性を用いて`weight`列を抽出せよ
 
-# In[ ]:
+# In[278]:
 
 
 # 解答欄
@@ -746,7 +746,7 @@ df
 # `loc`属性を用いてindex（行ラベル）が61941，8747，283062の行を抽出せよ<br>
 # ※ これは身長2m以上の選手のデータである
 
-# In[ ]:
+# In[279]:
 
 
 # 解答欄
@@ -754,7 +754,7 @@ df
 
 # `loc`属性を用いて`index`（行ラベル）が703で`columns`（列ラベル）が`name`，`weight`，`height`の要素を抽出せよ
 
-# In[ ]:
+# In[280]:
 
 
 # 解答欄
@@ -766,25 +766,25 @@ df
 # ```
 # これらの選手を以下の方法で抽出せよ．
 
-# In[ ]:
+# In[281]:
 
 
 # 上のindexの順番で抽出
 
 
-# In[ ]:
+# In[282]:
 
 
 # indexを昇順に並び替えた上で抽出
 
 
-# In[ ]:
+# In[283]:
 
 
 # 上のindexの順番で`name`列だけを抽出
 
 
-# In[ ]:
+# In[284]:
 
 
 # 上のindexの順番で`name`, `height`, `weight`列を抽出
@@ -799,7 +799,7 @@ df
 
 # DataFrameにおけるブールインデックス参照は基本的にはNumPyと同様である．
 
-# In[56]:
+# In[285]:
 
 
 df = pd.read_csv('./4_pandas/df_sample.csv',\
@@ -809,21 +809,21 @@ df
 
 # NumPyと同様に，`==, >, <, %`などの比較演算子を用いると，ブール値のSeriesまたはDataFrameを自動的に取得することができる．
 
-# In[36]:
+# In[286]:
 
 
 # 't'列の値が64
 df['t']==64
 
 
-# In[37]:
+# In[287]:
 
 
 # 't'列の値が64より大きい
 df['t']>64
 
 
-# In[38]:
+# In[288]:
 
 
 # 'x'列の値が'y'列の値より大きい
@@ -832,14 +832,14 @@ df['x'] > df['y']
 
 # 複数条件の場合は`(条件1) & (条件2)`や`（条件1）|（条件2）`のように各条件を()で囲む（and, or,  notは使えない）
 
-# In[39]:
+# In[289]:
 
 
 # 't'列が64より大きくかつ'player'列が'hyuga'
 (df['t']>64) & (df['player'] == 'hyuga')
 
 
-# In[40]:
+# In[290]:
 
 
 # 'player'列が'misaki'または'hyuga'
@@ -848,7 +848,7 @@ df['x'] > df['y']
 
 # ある条件の否定は`~条件`で実現できる．この表記は条件が多い場合に役立つ．
 
-# In[41]:
+# In[291]:
 
 
 # 't'列が64でない（df['t']!=64と同じ）
@@ -863,49 +863,49 @@ df['x'] > df['y']
 # ```
 # 特に，**条件の次に列ラベルを指定すると，条件を満たす特定の列だけを抽出できる．**
 
-# In[42]:
+# In[292]:
 
 
 # 't'列の値が64の行
 df.loc[df['t']==64]
 
 
-# In[43]:
+# In[293]:
 
 
 # 't'列の値が64の行で，'x'，'y'列のみ抽出
 df.loc[df['t']==64, ['x', 'y']]
 
 
-# In[44]:
+# In[294]:
 
 
 # 't'列が64でない行（df['t']!=64と同じ）
 df.loc[~(df['t']==64)]
 
 
-# In[45]:
+# In[295]:
 
 
 # 't'列が64より大きくかつ'player'列が'hyuga'である行
 df.loc[(df['t']>64) & (df['player'] == 'hyuga')]
 
 
-# In[46]:
+# In[296]:
 
 
 # 'player'列が'misaki'または'hyuga'である行で，'x','y'列のみ抽出
 df.loc[(df['player']=='misaki') | (df['player']=='hyuga'), ['x', 'y']]
 
 
-# In[47]:
+# In[297]:
 
 
 # 'x'列の値が'y'列の値より大きい行
 df.loc[df['x'] > df['y']]
 
 
-# In[48]:
+# In[298]:
 
 
 # 'x'列の値が'y'列の値より大きい行で'player'列のみ抽出
@@ -916,7 +916,7 @@ df.loc[df['x'] > df['y'], ['player']]
 
 # ブールインデックス参照で抽出したDataFrameに値を代入することで，条件を満たす要素だけ変更することができる．
 
-# In[49]:
+# In[299]:
 
 
 # 't'==64の'player'を'wakashimazu'に変更
@@ -925,7 +925,7 @@ df2.loc[df['t']==350, 'player'] = 'wakashimazu'
 df2
 
 
-# In[50]:
+# In[300]:
 
 
 # 't'>64の'x'と'y'を0に変更
@@ -940,7 +940,7 @@ df2
 # このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
 # ※ 本データはPappalardoデータセットを加工したものである（詳細は[イベントデータの解析](https://rtwqzpj5uefb1pvzmprbnq-on.drv.tw/document/講義/立正/スポーツデータ分析のためのプログラミング/6_event.html)）．
 
-# In[57]:
+# In[301]:
 
 
 # index_col='player_id'：選手IDを行ラベル（index）に設定
@@ -951,90 +951,90 @@ df
 
 # 身長（`height`）が2m以上の選手を抽出せよ
 
-# In[ ]:
+# In[302]:
 
 
-
+# 解答欄
 
 
 # 国籍（`nationality`）が日本の選手を抽出せよ
 
-# In[ ]:
+# In[303]:
 
 
-
+# 解答欄
 
 
 # 国籍（`nationality`）がケニアの選手を抽出せよ
 
-# In[ ]:
+# In[304]:
 
 
-
+# 解答欄
 
 
 # 出生地（`birth_area`）がケニアの選手を抽出せよ
 
-# In[ ]:
+# In[305]:
 
 
-
+# 解答欄
 
 
 # 利き足（`foot`）が右（`right`）の選手の身長と体重を抽出せよ
 
-# In[ ]:
+# In[306]:
 
 
-
+# 解答欄
 
 
 # スペインリーグに所属し，ポジション（`role`）がフォワードの選手を抽出せよ<br>
 # ※ まず`df['role'].unique()`によって，`role`列に含まれる値を確認する
 
-# In[64]:
+# In[307]:
 
 
 # まず，role列の値を確認する
 df['role'].unique()
 
 
-# In[ ]:
+# In[308]:
 
 
-
+# 解答欄
 
 
 # 所属リーグ名（`league`）と出生地名（`birth_area`）が同じ選手を抽出し，先頭から10行だけ表示せよ
 
-# In[ ]:
+# In[309]:
 
 
-
+# 解答欄
 
 
 # `league`列内の`England`を`イングランド`に変更せよ
 
-# In[ ]:
+# In[310]:
 
 
-
+# 解答欄
 
 
 # イタリアリーグのデータだけ抽出し，`player_Italy.csv`という名前でcsvファイルに保存せよ．
 
-# In[ ]:
+# In[311]:
 
 
-
+# 解答欄
 
 
 # 自分の好きな条件でデータを抽出せよ
 
-# In[ ]:
+# In[312]:
 
 
-
+# 解答欄
 
 
 # ## データの演算と集計
@@ -1050,14 +1050,14 @@ df['role'].unique()
 # Pandasの基本的な演算規則はNumPyと似ているが，DataFrame（Series）にはラベルが付与されているのでやや挙動が異なる．
 # 四則演算については`+`，`-`，`/`，`*`などの演算子で実現できるが，`df.add`や`df.sub`などの算術メソッドを用いると，より細かい制御が可能である．
 
-# In[71]:
+# In[313]:
 
 
 df1 = pd.DataFrame(np.arange(12).reshape(4, 3), columns=['a', 'b', 'c'], dtype='float')
 df1
 
 
-# In[73]:
+# In[314]:
 
 
 df2 = pd.DataFrame(2*np.ones(15).reshape(5, 3), columns=['a', 'b', 'd'])
@@ -1068,28 +1068,28 @@ df2
 
 # DataFrame（およびSeries）と数値の演算は全ての要素に演算が適用される．
 
-# In[74]:
+# In[315]:
 
 
 # 1を足す
 df1 + 1
 
 
-# In[75]:
+# In[316]:
 
 
 # 1を足す（addメソッドを用いる）
 df1.add(1)
 
 
-# In[76]:
+# In[317]:
 
 
 # 2を掛ける
 df1 * 2
 
 
-# In[77]:
+# In[318]:
 
 
 # 2を掛ける（mulメソッドを用いる）
@@ -1098,35 +1098,35 @@ df1.mul(2)
 
 # **列（Series）同士の演算**
 
-# In[78]:
+# In[319]:
 
 
 # 'a'列と'b'列の和
 df1['a'] + df1['b']
 
 
-# In[79]:
+# In[320]:
 
 
 # 'a'列と'b'列の積
 df1['a'] * df1['b']
 
 
-# In[80]:
+# In[321]:
 
 
 # 'a'列と'b'列の割り算
 df1['a'] / df1['b']
 
 
-# In[82]:
+# In[322]:
 
 
 # 'c'列を２乗する
 df1['c']**2
 
 
-# In[83]:
+# In[323]:
 
 
 # 'a'列から5を引いて2乗する
@@ -1138,14 +1138,14 @@ df1['c']**2
 # 行ラベル（index）と列ラベル（columns）が同じ要素同士で演算が行われる．
 # 異なるラベルが存在する場合は列と行が拡張され，欠損値`NaN`となる．
 
-# In[84]:
+# In[324]:
 
 
 # ラベルが同じDataFrame同士の足し算
 df1+df1
 
 
-# In[85]:
+# In[325]:
 
 
 # ラベルが異なるDataFrame間の足し算
@@ -1154,13 +1154,13 @@ df1+df2
 
 # **DataFrameとSeries（特定の列）の演算**
 
-# In[86]:
+# In[326]:
 
 
 df1
 
 
-# In[87]:
+# In[327]:
 
 
 s1 = df1['c']
@@ -1170,28 +1170,28 @@ s1
 # DataFrameの各列とSeriesの演算を行いたい場合は算術メソッドを用いて`axis=0`を指定する．<br>
 # ※ 各種算術メソッドでは，デフォルトで`axis=1`となっているので注意．
 
-# In[88]:
+# In[328]:
 
 
 # 各列にs1を加える
 df1.add(s1, axis=0)
 
 
-# In[89]:
+# In[329]:
 
 
 # 各列からs1を引く
 df1.sub(s1, axis=0)
 
 
-# In[90]:
+# In[330]:
 
 
 # 各列をs1で割る
 df1.div(s1, axis=0)
 
 
-# In[91]:
+# In[331]:
 
 
 # 各列にs1を掛ける
@@ -1219,7 +1219,7 @@ df1.mul(s1, axis=0)
 # | diff | 階差 | periods（何行前との差を取るか） |
 # | cumusum | 累積和 |
 
-# In[92]:
+# In[332]:
 
 
 df = pd.DataFrame(np.random.randint(0, 100, [5, 4]),
@@ -1227,56 +1227,56 @@ df = pd.DataFrame(np.random.randint(0, 100, [5, 4]),
 df
 
 
-# In[93]:
+# In[333]:
 
 
 # 各列の最大値
 df.max(axis=0)
 
 
-# In[94]:
+# In[334]:
 
 
 # 各行の最大値
 df.max(axis=1)
 
 
-# In[95]:
+# In[335]:
 
 
 # 各列の和
 df.sum(axis=0)
 
 
-# In[96]:
+# In[336]:
 
 
 # 各行の和
 df.sum(axis=1)
 
 
-# In[97]:
+# In[337]:
 
 
 # 各列の平均
 df.mean(axis=0)
 
 
-# In[98]:
+# In[338]:
 
 
 # 各行の平均
 df.mean(axis=1)
 
 
-# In[99]:
+# In[339]:
 
 
 # 各列の標本標準偏差
 df.std(ddof=0, axis=0)
 
 
-# In[100]:
+# In[340]:
 
 
 # 1行前との差分
@@ -1287,49 +1287,49 @@ df.diff(periods=1, axis=0)
 # 
 # まず，演習問題で扱った`"player_all.csv"`を`df`に読み込む
 
-# In[101]:
+# In[341]:
 
 
 df = pd.read_csv('./4_pandas/player_all.csv', header=0, index_col='player_id', na_values=0)
 df
 
 
-# In[102]:
+# In[342]:
 
 
 # 国籍が'Japan'の選手の平均身長
 df.loc[df['nationality']=='Japan', ['height']].mean()
 
 
-# In[103]:
+# In[343]:
 
 
 # 国籍が'England'の選手の平均身長
 df.loc[df['nationality']=='England', ['height']].mean()
 
 
-# In[104]:
+# In[344]:
 
 
 # 右利きの選手の平均身長と平均体重
 df.loc[df['foot']=='right', ['height', 'weight']].mean()
 
 
-# In[105]:
+# In[345]:
 
 
 # 左利きの選手の平均身長と平均体重
 df.loc[df['foot']=='left', ['height', 'weight']].mean()
 
 
-# In[106]:
+# In[346]:
 
 
 # 身長が最大の選手
 df.loc[df['height']==df['height'].max()]
 
 
-# In[107]:
+# In[347]:
 
 
 # 体重が最大の選手
@@ -1339,7 +1339,7 @@ df.loc[df['weight']==df['weight'].max()]
 # ## データの整形
 # ---
 
-# In[108]:
+# In[348]:
 
 
 df = pd.read_csv('./4_pandas/df_sample.csv',\
@@ -1357,7 +1357,7 @@ df
 # 
 # ※ この他に，列を追加する`assin`メソッド，行を追加する`append`メソッドがあるがここでは触れない．
 
-# In[109]:
+# In[349]:
 
 
 # loc属性による'z'列の追加
@@ -1366,7 +1366,7 @@ df2.loc[:, 'z'] = 5
 df2
 
 
-# In[110]:
+# In[350]:
 
 
 # 角括弧による'z'列の追加
@@ -1375,7 +1375,7 @@ df2['z'] = [1,2,3,4]
 df2
 
 
-# In[111]:
+# In[351]:
 
 
 # loc属性による'E'行の追加
@@ -1390,21 +1390,21 @@ df2
 # 行を削除する場合は`df.drop(index=['行名1', '行名2'])`とする．<br>
 # ※ バージョン0.21.0より前の場合は`axis`引数を指定する必要がある．
 
-# In[112]:
+# In[352]:
 
 
 # 'B'行の削除
 df.drop(index=['B'])
 
 
-# In[113]:
+# In[353]:
 
 
 # 't'列の削除
 df.drop(columns=['t'])
 
 
-# In[114]:
+# In[354]:
 
 
 # 't'列と'player'列の削除
@@ -1415,7 +1415,7 @@ df.drop(columns=['t', 'player'])
 
 # Pandasには特定の列の値によってデータを並び替える`sort_values`メソッドと，行ラベル（index）によってデータを並び替える`sort_index`メソッドが用意されている．
 
-# In[114]:
+# In[355]:
 
 
 dict_data = {'t':[2, 64, 350, 600],\
@@ -1436,7 +1436,7 @@ df
 # ラベル名を複数指定すると，まず1つ目のラベルでソートし，その後順に2つ目以降のラベルでソートされる．
 # また，ソートの方向は`axis`引数で指定し，特定の列でソートする場合には`axis=0`，特定の行でソートする場合には`axis=1`を指定する．
 
-# In[118]:
+# In[356]:
 
 
 dict_data = {'half': [1, 2, 1, 2],
@@ -1448,7 +1448,7 @@ df = pd.DataFrame(dict_data, index=[2, 0, 1, 3])
 df
 
 
-# In[119]:
+# In[357]:
 
 
 # 'half'列，'t'列の順にソート
@@ -1457,7 +1457,7 @@ df.sort_values(['half', 't'], axis=0, ascending=True)
 
 # 特定の行を用いてソートする場合，数値と文字列が混在する可能性が高いが，この場合はエラーになる．以下は'player'列を削除してから第2行の値でソートしている．
 
-# In[120]:
+# In[358]:
 
 
 # 'half'列，'t'列の順にソート
@@ -1473,21 +1473,21 @@ df2.sort_values(by=2, axis=1, ascending=True)
 # ```
 # 行ラベルか列ラベルかは`axis`引数で指定する．並び替えの方法（昇順か降順）は`ascending`引数に指定し，Trueの場合は昇順，Falseの場合は降順となる．
 
-# In[115]:
+# In[359]:
 
 
 # 行ラベルの昇順でソート
 df.sort_index(axis=0, ascending=True)
 
 
-# In[116]:
+# In[360]:
 
 
 # 行ラベルの降順でソート
 df.sort_index(axis=0, ascending=False)
 
 
-# In[117]:
+# In[361]:
 
 
 # 列ラベルの昇順でソート
@@ -1496,7 +1496,7 @@ df.sort_index(axis=1, ascending=True)
 
 # ### 行ラベル・列ラベルの変更
 
-# In[3]:
+# In[362]:
 
 
 df = pd.DataFrame(np.arange(12).reshape(4, 3),
@@ -1507,7 +1507,7 @@ df
 
 # **`index`属性・`columns`属性への代入**
 
-# In[139]:
+# In[363]:
 
 
 df2 = df.copy()
@@ -1515,7 +1515,7 @@ df2.index = ['A', 'B', 'C', 'D']
 df2
 
 
-# In[140]:
+# In[364]:
 
 
 df2 = df.copy()
@@ -1529,14 +1529,14 @@ df2
 # デフォルトでは`drop`引数が0になっており，元のindexが新たな列としてDataFrameに残る．
 # 元のindexを削除したい場合は`drop=1`を指定する．
 
-# In[143]:
+# In[365]:
 
 
 # 元のindexを残す
 df.reset_index(drop=0)
 
 
-# In[144]:
+# In[366]:
 
 
 # 元のindexを削除
@@ -1548,28 +1548,28 @@ df.reset_index(drop=1)
 # `reindex`メソッドを用いると，指定した行・列ラベルの順番にDataFrameを並べ替えることができる．<br>
 # なお，単にラベルを昇順・降順に並べ替えたい場合は既に説明した`sort_index`メソッドを用いた方が良い．
 
-# In[4]:
+# In[367]:
 
 
 # 指定した行ラベルの順に並び替え
 df.reindex(index=[0, 1, 2, 3])
 
 
-# In[5]:
+# In[368]:
 
 
 # 指定した列ラベルの順に並び替え
 df.reindex(columns=['c', 'a', 'b'])
 
 
-# In[6]:
+# In[369]:
 
 
 # 新たなラベルの指定
 df.reindex(index=[0, 1, 2, 3, 4, 5])
 
 
-# In[7]:
+# In[370]:
 
 
 # 新たなラベルを指定し，欠損値を穴埋め
@@ -1592,7 +1592,7 @@ df.reindex(index=[0, 1, 2, 3, 4, 5], fill_value=0)
 # `axis`引数に0を指定すると縦方向，1を指定すると横方向に連結される（デフォルトは0）．
 # `join`引数は`'outer'`または`'inner'`を指定する（デフォルトは`'outer'`）．挙動は以下で説明する．
 
-# In[105]:
+# In[371]:
 
 
 df1 = pd.DataFrame(np.arange(0, 6).reshape(2, 3),
@@ -1600,7 +1600,7 @@ df1 = pd.DataFrame(np.arange(0, 6).reshape(2, 3),
 df1
 
 
-# In[106]:
+# In[372]:
 
 
 # 列ラベルが一部異なるDataFrame
@@ -1609,7 +1609,7 @@ df2 = pd.DataFrame(np.arange(6, 12).reshape(2, 3),
 df2
 
 
-# In[107]:
+# In[373]:
 
 
 # 行ラベルが一部異なるDataFrame
@@ -1623,7 +1623,7 @@ df3
 
 # 縦に連結する場合は`axis=0`を指定する．列ラベル（columns）が同じ場合，そのまま縦に連結される．連結するDataFrameは2個以上でも良い．
 
-# In[108]:
+# In[374]:
 
 
 # 縦に連結（列ラベルが同じ場合）
@@ -1632,7 +1632,7 @@ pd.concat([df1, df1, df1], axis=0)
 
 # 列ラベルが一部異なる場合，新たな列が追加される．
 
-# In[109]:
+# In[375]:
 
 
 # 縦に連結（列ラベルが一部異なる場合）
@@ -1641,7 +1641,7 @@ pd.concat([df1, df2], axis=0)
 
 # `join='inner'`を指定すると，ラベルが共通の列だけが残る．
 
-# In[110]:
+# In[376]:
 
 
 # 縦に連結（列ラベルが一部異なる場合）
@@ -1652,7 +1652,7 @@ pd.concat([df1, df2], axis=0, join='inner')
 
 # 横に連結する場合は`axis=1`を指定する．行ラベル（index）が同じ場合，そのまま横に連結される．
 
-# In[111]:
+# In[377]:
 
 
 # 横に連結（行ラベルが同じ場合）
@@ -1661,7 +1661,7 @@ pd.concat([df1, df1], axis=1)
 
 # 行ラベルが一部異なる場合，新たな行が追加される
 
-# In[112]:
+# In[378]:
 
 
 # 横に連結（行ラベルが一部異なる場合）
@@ -1670,7 +1670,7 @@ pd.concat([df1, df3], axis=1)
 
 # `join='inner'`を指定すると，ラベルが共通の行だけが残る．
 
-# In[113]:
+# In[379]:
 
 
 # 横に連結（行ラベルが同じ場合）
@@ -1688,7 +1688,7 @@ pd.concat([df1, df3], axis=1, join='inner')
 # `keep`引数は重複した複数行のうち，削除しないで残す（keepする）行を指定する．デフォルトでは`keep='first'`となっており，重複した行のうち最初の行が残る．`keep='last'`とすると最後の行が残り，`keep=False`とすれば重複する全ての行が削除される．
 # また，デフォルトでは全ての列の値が一致しているときに重複と見なされるが，特定の列だけで判断したい場合は`subset`引数に列名のリストを指定する．
 
-# In[121]:
+# In[380]:
 
 
 dict_data = {'t':[2, 64, 64, 350, 600, 600, 600],    
@@ -1699,21 +1699,21 @@ df = pd.DataFrame(dict_data)
 df
 
 
-# In[122]:
+# In[381]:
 
 
 # 重複する最初の行を残す
 df.drop_duplicates(keep='first', subset=None)
 
 
-# In[123]:
+# In[382]:
 
 
 # 重複する最後の行を残す
 df.drop_duplicates(keep='last', subset=None)
 
 
-# In[124]:
+# In[383]:
 
 
 # 重複する全ての行を削除
@@ -1730,25 +1730,25 @@ df.drop_duplicates(keep=False, subset=None)
 # `keep`引数は重複した複数行のうち，検出しない行を指定する（重複を削除するときに残る行なのでkeep)．デフォルトでは`keep='first'`となっており，重複した行のうち最初の行がFalseとなる．`keep='last'`とすると最後の行がFalseとなり，`keep=False`とすれば重複する全ての行がTrueとなる．
 # また，デフォルトでは全ての列の値が一致しているときに重複と見なされるが，特定の列だけで判断したい場合は`subset`引数に列名のリストを指定する．
 
-# In[125]:
+# In[384]:
 
 
 df.duplicated(keep=False, subset=None)
 
 
-# In[126]:
+# In[385]:
 
 
 df.duplicated(keep='first', subset=None)
 
 
-# In[127]:
+# In[386]:
 
 
 df.duplicated(keep='last', subset=None)
 
 
-# In[128]:
+# In[387]:
 
 
 df.duplicated(keep=False, subset=['t', 'player', 'x'])
@@ -1756,21 +1756,21 @@ df.duplicated(keep=False, subset=['t', 'player', 'x'])
 
 # 重複した行はブールインデックス参照によって抽出できる．
 
-# In[129]:
+# In[388]:
 
 
 # 重複する全ての行を検出
 df.loc[df.duplicated(keep=False, subset=None)]
 
 
-# In[130]:
+# In[389]:
 
 
 # 重複する最初の行は検出しない
 df.loc[df.duplicated(keep='first', subset=None)]
 
 
-# In[131]:
+# In[390]:
 
 
 # 重複する最後の行は検出しない
@@ -1786,18 +1786,18 @@ df.loc[df.duplicated(keep='last', subset=None)]
 
 # - `player_all.csv`ファイルを`df`に読み込め
 
-# In[ ]:
+# In[391]:
 
 
-
+# 解答欄
 
 
 # - `df`の先頭から2行を表示せよ
 
-# In[ ]:
+# In[392]:
 
 
-
+# 解答欄
 
 
 # - 肥満度を表す指標としてBMIが知られている．BMIは身長と体重を用いて以下で定義される：
@@ -1810,19 +1810,19 @@ df.loc[df.duplicated(keep='last', subset=None)]
 #     ※ この選手はRekeem Jordan Harper選手である．<br>
 #     ※ 日本肥満学会の基準では，BMIが18.5未満の場合を痩せ型と定義している．
 
-# In[ ]:
+# In[393]:
 
 
 # 'height'の単位をcm->m
 
 
-# In[ ]:
+# In[394]:
 
 
 # BMIを求めて'BMI'列を作成
 
 
-# In[ ]:
+# In[395]:
 
 
 # BMIが18.5未満の選手を抽出
@@ -1830,25 +1830,25 @@ df.loc[df.duplicated(keep='last', subset=None)]
 
 #  - ポジション（`role`）ごとに，身長，体重，BMIの平均値を計算せよ．<br>
 
-# In[65]:
+# In[396]:
 
 
 # ディフェンダー（'DF'）
 
 
-# In[66]:
+# In[397]:
 
 
 # ミッドフィルダー（'MF'）
 
 
-# In[67]:
+# In[398]:
 
 
 # フォワード（'FW'）
 
 
-# In[69]:
+# In[399]:
 
 
 # キーパー（'GK'）

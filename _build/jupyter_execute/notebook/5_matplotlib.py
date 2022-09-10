@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[3]:
+# In[66]:
 
 
 # （必須）モジュールのインポート
@@ -15,12 +15,19 @@ try:
 except:
     pass
 
+# 表示設定
+np.set_printoptions(suppress=True, precision=3)
+pd.set_option('display.precision', 3)    # 小数点以下の表示桁
+pd.set_option('display.max_rows', 150)   # 表示する行数の上限
+pd.set_option('display.max_columns', 5)  # 表示する列数の上限
+get_ipython().run_line_magic('precision', '3')
 
-# In[2]:
+
+# In[67]:
 
 
 # （必須）カレントディレクトリの変更（自分の作業フォルダのパスをコピーして入力する）
-os.chdir(r"C:\Users\parar\OneDrive\sport_data")
+os.chdir(r'/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data')
 
 
 # # Matplotlibの基礎
@@ -44,7 +51,7 @@ os.chdir(r"C:\Users\parar\OneDrive\sport_data")
 # Matplotlibは以下のようにインポートするのが慣例である．
 # なお，日本語を使用するために，既に説明したjapanize_matplotlibもインポートしておく．
 
-# In[15]:
+# In[68]:
 
 
 import matplotlib as mpl
@@ -69,7 +76,7 @@ except:
 # 指定するデータはリストやNumPy配列，Seriesなどに対応している．
 # 例えば，以下の場合は$(0, 1)$，$(1, -1)$，$(2, 1)$，$(3, -1)$に`'x'`マーカーがプロットされ，その間が線で結ばれる．
 
-# In[2]:
+# In[69]:
 
 
 fig, ax = plt.subplots()
@@ -98,7 +105,7 @@ ax.plot([0, 1, 2, 3], [1, -1, 1, -1], 'x-')
 #     fig.savefig('abc.pdf', dpi=80, transparent=True, bbox_inches='tight', pad_inches=0.2)
 #     ```
 
-# In[8]:
+# In[70]:
 
 
 # FigureとAxesを生成する
@@ -149,7 +156,7 @@ fig.savefig('./5_matplotlib/graph1.pdf', bbox_inches="tight", pad_inches=0.2, tr
 # - 他の色名は[ここ](https://matplotlib.org/stable/gallery/color/named_colors.html)にまとまっている．
 # - 色を指定しない場合はデフォルトの色から順に指定される．
 
-# In[70]:
+# In[71]:
 
 
 # 様々な色の指定方法
@@ -168,7 +175,7 @@ ax.plot(x, x+3, c='k'); # colorオプションに色名の頭文字を指定
 # - 他のマーカーは[ここ](https://matplotlib.org/stable/api/markers_api.html)にまとまっている
 # - マーカーを指定しない場合はデフォルトのマーカーが順に指定される
 
-# In[71]:
+# In[72]:
 
 
 # 様々なマーカー
@@ -185,7 +192,7 @@ ax.plot(x, x+4, marker='^', ls='None', mfc='None', mec='b');
 # - `linestyle='-'`のように指定する
 # - 主要な線種：'-', '--', ':' , '-.', 'None'
 
-# In[72]:
+# In[73]:
 
 
 # 様々な線種
@@ -206,7 +213,7 @@ ax.plot(x, x+3, ls='-.');
 # - 第１引数`x`には棒グラフを出力する$x$軸上の位置，第２引数`h` には高さを指定する．
 # - その他のオプションは[ここ](https://matplotlib.org/3.5.1/api/_as_gen/matplotlib.pyplot.bar.html)にまとまっている．
 
-# In[66]:
+# In[74]:
 
 
 fig, ax = plt.subplots()
@@ -229,7 +236,7 @@ ax.bar(x, h, width=0.2, align='edge', color='w', edgecolor='b')
 # ```
 # - 'angles'，'units'，'scale'などは挙動が分かりにくいので，詳しくは[ここ](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.quiver.html)を参照のこと．
 
-# In[35]:
+# In[75]:
 
 
 # 1つの矢印
@@ -242,7 +249,7 @@ ax.quiver(x, y, u, v, angles='uv', units='xy', scale=1, width=0.1)
 ax.set_xlim([0, 3]); plt.ylim([0, 3]);
 
 
-# In[36]:
+# In[76]:
 
 
 # 複数の矢印
@@ -261,7 +268,7 @@ ax.set_xlim([0, 3]); plt.ylim([0, 3]);
 # Axesオブジェクトには`ax.plot`や`ax.bar`などのグラフを描くメソッドの他に，グラフを装飾するための様々なメソッドが用意されている．
 # まずは，主要なメソッドを用いたグラフ装飾の例を示す．
 
-# In[9]:
+# In[77]:
 
 
 '''FigureとAxesの生成'''
@@ -432,7 +439,7 @@ fig.savefig('./5_matplotlib/multi_sin.pdf', bbox_inches='tight')
 # Pythonにおいてポアソン分布を扱うには，まず`scipy.stats.poisson`をインポートする．
 # その上で，値$x$に対してパラメータ$m$のポアソン分布を計算するには`poisson.pmf(x, m)`とする．
 
-# In[1]:
+# In[78]:
 
 
 from scipy.stats import poisson
@@ -503,7 +510,7 @@ poisson.pmf(x, 5)
 # | widths | 箱の幅 | 数値 |
 # | vert | 箱の回転 | True/False |
 
-# In[21]:
+# In[79]:
 
 
 # データの作成
@@ -514,13 +521,13 @@ data2 = np.random.normal(loc=2, scale=2, size=100)
 # PandasのDataFaremeには要約統計量を一度に計算する`describe`メソッドが用意されている．
 # これを用いて，まずは要約統計量を求めてみよう．
 
-# In[22]:
+# In[80]:
 
 
 pd.DataFrame({'data1':data1, 'data2':data2}).describe()
 
 
-# In[23]:
+# In[81]:
 
 
 # 箱ひげ図のプロット
@@ -551,7 +558,7 @@ ax.set_ylabel('$Y$', fontsize=15)
 # - `bins`引数には，ヒストグラムの階級数（または各階級の左端の値）を指定する．
 # - 例えば，`bins=n`とした場合，１つの階級の大きさは`(最大値-最小値) / n`となる．
 
-# In[114]:
+# In[82]:
 
 
 # データの作成
@@ -570,7 +577,7 @@ ax.set_xticks(np.arange(130, 210, 10));
 
 # 以下は上のヒストグラムに対応する度数分布表である．
 
-# In[94]:
+# In[83]:
 
 
 f, x = ret[0], ret[1]
@@ -594,7 +601,7 @@ df
 # | rwidth | バーの幅 | 数値（0~1） |
 # | align | バーの中央を階級のどこに合わせるか | 'left'（階級の左端）, 'mid'（階級の中央＝デフォルト）, 'right'（階級の右端） |
 
-# In[95]:
+# In[84]:
 
 
 # データの作成
@@ -628,7 +635,7 @@ ax.set_xticks(np.arange(130, 210, 10));
 # | density | Trueの場合は縦軸を相対度数に変更 | True/False |
 # | cumulative | Trueの場合は縦軸を累積度数に変更 | 1（下側累積）, 0, -1（上側累積） |
 
-# In[96]:
+# In[85]:
 
 
 # データの作成
@@ -674,7 +681,7 @@ ax.set_xticks(np.arange(130, 210, 10));
 # | cmin | 表示するbinの度数の最小値 | 数値 |
 # | cmax | 表示するbinの度数の最大値 | 数値 |
 
-# In[101]:
+# In[86]:
 
 
 # データの作成
@@ -682,7 +689,7 @@ X = np.random.normal(loc=0, scale=2, size=100000)
 Y = np.random.normal(loc=0, scale=1, size=100000)
 
 
-# In[110]:
+# In[87]:
 
 
 # 散布図
@@ -691,7 +698,7 @@ ax.set_aspect('equal')
 ax.plot(X, Y, '.', ms=0.1, alpha=0.3)
 
 
-# In[108]:
+# In[88]:
 
 
 # ヒートマップ
@@ -729,7 +736,7 @@ ret = ax.hist2d(X, Y,
 # | aspect | カラーバーの縦横比 | 数値 |
 # | pad | カラーバーの位置 | 数値 |
 
-# In[111]:
+# In[89]:
 
 
 # データの生成
@@ -754,7 +761,7 @@ fig.colorbar(ret[3], orientation='vertical',
 # このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
 # ※ 本データはPappalardoデータセットを加工したものである（詳細は[イベントデータの解析](https://rtwqzpj5uefb1pvzmprbnq-on.drv.tw/document/講義/立正/スポーツデータ分析のためのプログラミング/6_event.html)）．
 
-# In[76]:
+# In[90]:
 
 
 df = pd.read_csv('./5_matplotlib/player_all.csv', header=0, index_col='player_id', na_values=0)
@@ -771,18 +778,18 @@ df
 #     D = [data1, data2, ...]
 #     ```
 
-# In[107]:
+# In[91]:
 
 
-
+# 解答欄
 
 
 # - リスト`D`を用いて，体重の箱ひげ図をリーグ別に作成せよ．ただし，横軸の目盛りをリーグ名とせよ．
 
-# In[ ]:
+# In[92]:
 
 
-
+# 解答欄
 
 
 # **問題B：身長のヒストグラム**
@@ -792,10 +799,10 @@ df
 #     - 階級の数：10
 #     - その他の装飾は自由
 
-# In[ ]:
+# In[93]:
 
 
-
+# 解答欄
 
 
 # ## 参考
@@ -812,14 +819,14 @@ df
 # 
 # **※ 一番最後のコマンドにセミコロンを付けることがある．これは，不要な文字列が出力されるのを防ぐ（隠す）ためである．**
 
-# In[9]:
+# In[94]:
 
 
 # notebook内に出力する
 get_ipython().run_line_magic('matplotlib', 'inline')
 
 
-# In[11]:
+# In[95]:
 
 
 fig, ax = plt.subplots()
@@ -831,7 +838,7 @@ plt.plot(x, np.sin(x));
 
 # Jupyterのマジックコマンド`%matplotlib`の後に`tk`を指定すると，描画結果が別画面に出力される．
 
-# In[6]:
+# In[96]:
 
 
 # 別ウインドウに出力する
@@ -840,14 +847,14 @@ get_ipython().run_line_magic('matplotlib', 'tk')
 
 # なお，'inline'や'tk'はバックエンドと呼ばれ，以下が利用可能である．
 
-# In[7]:
+# In[97]:
 
 
 # 現在のバックエンドを確認
 print(matplotlib.get_backend())
 
 
-# In[12]:
+# In[98]:
 
 
 # 利用可能なバックエンドのリストを表示
@@ -900,7 +907,7 @@ get_ipython().run_line_magic('matplotlib', '--list')
 #     fig.savefig('abc.pdf', dpi=80, transparent=True, bbox_inches='tight', pad_inches=0.2)
 #     ```
 
-# In[14]:
+# In[99]:
 
 
 # FigureとAxesを生成する
@@ -925,7 +932,7 @@ fig.savefig('./5_matplotlib/1_axes.pdf', bbox_inches="tight", pad_inches=0.2, tr
 # MATLABスタイルでは，プロット，装飾，保存など全てのコマンドが`plt.`から始まる．
 # 特に，グラフの装飾のコマンドに`set_`が付かないことに注意する．
 
-# In[12]:
+# In[100]:
 
 
 # プロットする
@@ -959,7 +966,7 @@ plt.savefig('./5_matplotlib/1_axes.pdf', bbox_inches="tight", pad_inches=0.2, tr
 # | linewidth | 枠線の太さ | 数値 |
 # | edgecolor | 枠線の色 | 'black', Noneなど |
 
-# In[13]:
+# In[101]:
 
 
 # Figureと1つのAxesを生成する
@@ -977,7 +984,7 @@ ax.set_xlabel('X'); ax.set_ylabel('Y')
 # fig.savefig('./5_matplotlib/1_axes.pdf', bbox_inches="tight", pad_inches=0.2, transparent=True, dpi=300)
 
 
-# In[14]:
+# In[102]:
 
 
 '''複数のAxes'''
@@ -1004,7 +1011,7 @@ axs[1].set_xlabel('X'); axs[1].set_ylabel('Y')
 # また，`fig.add_subplot(LMN)`でAxesを1つずつ追加できる．
 # ここで，Lは行方向の分割数，Mは列方向の分割数，Nは追加したいAxesの番号を表す．
 
-# In[112]:
+# In[103]:
 
 
 # Figureの生成

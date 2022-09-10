@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[70]:
 
 
 # （必須）モジュールのインポート
@@ -15,12 +15,19 @@ try:
 except:
     pass
 
+# 表示設定
+np.set_printoptions(suppress=True, precision=3)
+pd.set_option('display.precision', 3)    # 小数点以下の表示桁
+pd.set_option('display.max_rows', 150)   # 表示する行数の上限
+pd.set_option('display.max_columns', 5)  # 表示する列数の上限
+get_ipython().run_line_magic('precision', '3')
 
-# In[2]:
+
+# In[71]:
 
 
 # （必須）カレントディレクトリの変更（自分の作業フォルダのパスをコピーして入力する）
-os.chdir(r"C:\Users\parar\OneDrive\sport_data")
+os.chdir(r'/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data')
 
 
 # # イベントデータの解析
@@ -127,7 +134,7 @@ os.chdir(r"C:\Users\parar\OneDrive\sport_data")
 
 # まずは[game.csv](https://drive.google.com/uc?export=download&id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A)をダウンロードして作業フォルダ（例えば`OneDrive/sport_data/6_event`）に移動し，`GM`という名前のDataFrameに読み込む．
 
-# In[3]:
+# In[72]:
 
 
 GM = pd.read_csv('./6_event/game.csv', header=0)
@@ -155,7 +162,7 @@ GM.head(2)
 
 # 次に[team.csv](https://drive.google.com/uc?export=download&id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1)をダウンロードして作業フォルダ（例えば`OneDrive/sport_data/6_event`）に移動し，`TM`という名前のDataFrameに読み込む．
 
-# In[4]:
+# In[73]:
 
 
 TM = pd.read_csv('./6_event/team.csv', header=0)
@@ -177,7 +184,7 @@ TM.head()
 # 以下では，イングランド・プレミアリーグのデータを解析対象とする．
 # そこで，条件付き抽出を用いて，`TM`と`GM`からイングランド・プレミアリーグのデータだけ抽出する．
 
-# In[5]:
+# In[74]:
 
 
 GM_E = GM.loc[GM['league']=='England']
@@ -189,7 +196,7 @@ TM_E = TM.loc[TM['league']=='England']
 # まずはチームプロフィール`TM_E`の先頭行のチーム（アーセナル）に対し，リーグ成績を求めてみよう．
 # このチームのチームIDとチーム名を取得するには以下のように`iloc`属性を用いて先頭行を抽出すれば良い．
 
-# In[6]:
+# In[75]:
 
 
 tm_id = TM_E['team_id'].iloc[0]
@@ -206,7 +213,7 @@ print(tm_name)
 # このことに注意し，アーセナルのホームゲームの得点・失点を`S_h`，アウェイゲームの得点・失点を`S_a`に保存する．
 # また，得失点差の列`diff`を追加する．
 
-# In[7]:
+# In[76]:
 
 
 # 得点と失点（ホームゲーム）
@@ -215,7 +222,7 @@ S_h = S_h.rename(columns={'home_score': 'goal', 'away_score': 'loss'})  # 列ラ
 S_h.head()
 
 
-# In[8]:
+# In[77]:
 
 
 # 得点と失点（アウェイゲーム）
@@ -224,7 +231,7 @@ S_a = S_a.rename(columns={'away_score': 'goal', 'home_score': 'loss'})  # 列ラ
 S_a.head()
 
 
-# In[9]:
+# In[78]:
 
 
 # 得失点差列の追加
@@ -240,7 +247,7 @@ S_h.head()
 # このようにすると，各試合の結果は得失点差から求めることができる．
 # 求め方は色々と考えられるが，以下では`np.sign`関数を使って正の数を1，負の数を-1に変換している．
 
-# In[10]:
+# In[79]:
 
 
 S_h['result'] = np.sign(S_h['diff']) # ホーム
@@ -252,7 +259,7 @@ S_h.head()
 # 
 # 次に，`pd.concat`関数を使ってホームゲームとアウェイゲームのデータを統合する．
 
-# In[11]:
+# In[80]:
 
 
 S = pd.concat([S_h, S_a])
@@ -264,7 +271,7 @@ print(S.tail())
 
 # 勝ち点は勝ちの場合に3，引き分けの場合に1として計算する．
 
-# In[12]:
+# In[81]:
 
 
 S['point'] = 0
@@ -276,7 +283,7 @@ S.loc[S['result']==0, 'point'] = 1
 
 # 最後に各試合のデータを集計し，総得点，総失点，総得失点差，勝ち点を計算する．
 
-# In[14]:
+# In[82]:
 
 
 gf = S['goal'].sum()  # 総得点
@@ -290,7 +297,7 @@ print(gf, ga, gd, pt)
 # 以上より，アーセナルのリーグ成績が計算できた．
 # 他のチームの成績を統合することを考えて，以下のようにDataFrameの形に整形しておく．
 
-# In[15]:
+# In[83]:
 
 
 pd.DataFrame([[tm_name, tm_id, gf, ga, gd, pt]],
@@ -302,7 +309,7 @@ pd.DataFrame([[tm_name, tm_id, gf, ga, gd, pt]],
 # 全チームのリーグ成績を求めるには，`for`文を用いて上の手続きを繰り返せば良い．
 # 以下では，`Rank`という名前のDataFrameに全チームのリーグ成績を保存する．
 
-# In[16]:
+# In[84]:
 
 
 Rank = pd.DataFrame(columns=['name', 'team_id', 'gf', 'ga', 'gd', 'pt'])
@@ -353,7 +360,7 @@ for i in range(len(TM_E)):
 
 # 最後に，勝ち点の順にソートし，インデックスを付け直す．
 
-# In[17]:
+# In[85]:
 
 
 # ソートと再インデックス
@@ -363,7 +370,7 @@ Rank = Rank.reset_index(drop=1)
 
 # 以上により，イングランド・プレミアリーグの順位表が作成できた．
 
-# In[18]:
+# In[86]:
 
 
 Rank
@@ -381,14 +388,22 @@ Rank
 
 # ### ポアソン分布
 
+# In[ ]:
+
+
+
+
+
 # **二項分布からポアソン分布へ**
 # 
 # 成功確率が$p$の試行を独立に$n$回繰り返すことを考える．
 # 例えば，サイコロを振って特定の目が出ることを成功とすると，$p=1/6$である．
 # いま，$n$回中$x$回成功する確率を$f(x)$とすると，$f(x)$は二項分布
+# 
 # $$
 #     f(x) = \binom{n}{x}p^{x}(1-p)^{n-x}
 # $$
+# 
 # になることが知られている．
 # この式において，$ p^{x}(1-p)^{n-x} $は成功が$ x $回，失敗が$ n-x $回生じる確率を意味する．
 # また，$ \binom{n}{x} $は$ n $個から$ x $を取り出す組み合わせの数$ _{n}C_{x} $を表し，$ n $回の中で何回目に成功するかの場合の数に対応する．
@@ -396,9 +411,11 @@ Rank
 # いま，成功確率$ p $が小さく，かつ試行回数$ n $が大きい極限を考える．
 # ただし，極限を取る際に発散しないように平均値が一定値$ np=m $になるようにする．
 # このような条件で$n$回中$x$回成功する確率$f(x)$は，二項分布の式に$ np=m $を代入し，極限$ p\to 0,\ n\to \infty $を取ることで
+# 
 # $$
 # f(x) = \frac{m^{x}}{x!} \mathrm{e}^{-m}
 # $$
+# 
 # と求まる．
 # これを**ポアソン分布**と呼ぶ．
 # ポアソン分布は1つのパラメータ$ m $だけで特徴づけられ，**期待値と分散はともに$ m $となる**．
@@ -420,7 +437,7 @@ Rank
 
 # まずは[game.csv](https://drive.google.com/uc?export=download&id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A)をダウンロードして作業フォルダ（例えば`OneDrive/sport_data/6_event`）に移動し，`GM`という名前のDataFrameに読み込む．
 
-# In[19]:
+# In[87]:
 
 
 GM = pd.read_csv('./6_event/game.csv', header=0)
@@ -434,7 +451,7 @@ GM.head(2)
 # - ホームとアウェイで比べると，ホームの方がやや平均得点が高い傾向にある．
 # - 得点の平均値と分散はほぼ同じ値となっており，ポアソン分布の性質をおおよそ満たしている．
 
-# In[20]:
+# In[88]:
 
 
 # England
@@ -442,7 +459,7 @@ print(GM.loc[GM['league']=='England', ['away_score', 'home_score']].mean())
 print(GM.loc[GM['league']=='England', ['away_score', 'home_score']].var())
 
 
-# In[21]:
+# In[89]:
 
 
 # France
@@ -450,7 +467,7 @@ print(GM.loc[GM['league']=='France', ['away_score', 'home_score']].mean())
 print(GM.loc[GM['league']=='France', ['away_score', 'home_score']].var())
 
 
-# In[22]:
+# In[90]:
 
 
 # Germany
@@ -458,7 +475,7 @@ print(GM.loc[GM['league']=='Germany', ['away_score', 'home_score']].mean())
 print(GM.loc[GM['league']=='Germany', ['away_score', 'home_score']].var())
 
 
-# In[23]:
+# In[91]:
 
 
 # Italy
@@ -466,7 +483,7 @@ print(GM.loc[GM['league']=='Italy', ['away_score', 'home_score']].mean())
 print(GM.loc[GM['league']=='Italy', ['away_score', 'home_score']].var())
 
 
-# In[24]:
+# In[92]:
 
 
 # Spain
@@ -480,7 +497,7 @@ print(GM.loc[GM['league']=='Spain', ['away_score', 'home_score']].var())
 # そこで，リーグ別にホームチームの得点のヒストグラムを求めてみよう．
 # 以下はイングランド・プレミアリーグのホームチームの得点分布である．
 
-# In[31]:
+# In[93]:
 
 
 data = GM.loc[GM['league']=='England', 'home_score']
@@ -506,7 +523,7 @@ ax.set_xticks(np.arange(data.max()+2));
 # $$
 # のグラフを描けば良い．
 
-# In[35]:
+# In[94]:
 
 
 from scipy.stats import poisson
@@ -520,7 +537,7 @@ ax.plot(x, fx, '-ok')
 # 上のグラフを見比べると，確かに似た分布になっていることが分かる．
 # そこで，最後に２つのグラフを合わせよう．
 
-# In[34]:
+# In[95]:
 
 
 from scipy.stats import poisson
@@ -560,7 +577,7 @@ ax.set_xticks(np.arange(data.max()+2));
 # このデータを用いてバスケットボールの得点傾向を調べ，サッカーとの違いを考察せよ．<br>
 # **※ レポート問題として取り組んでも良い．**
 
-# In[28]:
+# In[96]:
 
 
 # 得点データの読み込み
@@ -590,7 +607,7 @@ data.head()
 # 
 # これらを以下のように読み込んでおく．
 
-# In[461]:
+# In[97]:
 
 
 # イベントデータと選手プロフィールの読み込み
@@ -607,7 +624,7 @@ PL = pd.read_csv('./6_event/player.csv', header=0)
 
 # **イベントログ**
 
-# In[462]:
+# In[98]:
 
 
 EV.head()
@@ -651,7 +668,7 @@ EV.head()
 # ax.set_aspect(68/105)
 # ```
 
-# In[464]:
+# In[99]:
 
 
 '''サッカーコートの描画'''
@@ -668,7 +685,7 @@ ax.set_xlabel('$X$'); ax.set_ylabel('$Y$')
 
 # **イベントタグ**
 
-# In[463]:
+# In[100]:
 
 
 EV_tag.head()
@@ -702,7 +719,7 @@ EV_tag.head()
 
 # **特定の試合・時間帯の抽出**
 
-# In[276]:
+# In[101]:
 
 
 # 特定の試合を抽出
@@ -710,26 +727,26 @@ ev = EV.loc[EV['game_id']==EV['game_id'].unique()[0]]
 ev_tag = EV_tag.loc[EV['game_id']==EV['game_id'].unique()[0]]
 
 
-# In[277]:
+# In[102]:
 
 
 ev.head()
 
 
-# In[278]:
+# In[103]:
 
 
 ev_tag.head()
 
 
-# In[279]:
+# In[104]:
 
 
 # 前半のみ抽出
 ev.loc[ev['half']==1].tail()
 
 
-# In[280]:
+# In[105]:
 
 
 # 前半開始20秒までを抽出
@@ -742,21 +759,21 @@ ev.loc[(ev['half']==1) & (ev['t']<20)].tail()
 # 'event'列は'pass'，'foul'などの大分類，'subevent'列は'simple_pass'や'high_pass'などの小分類となっている．
 # 'event'および'subevent'のリストは[event_list.csv](https://drive.google.com/uc?export=download&id=1oSDUt73paDOsORVj732rGU0vwIwGHvHJ) にまとめられている．
 
-# In[281]:
+# In[106]:
 
 
 # event列が'pass'の行を抽出
 ev.loc[ev['event']=='pass'].head()
 
 
-# In[282]:
+# In[107]:
 
 
 # subevent列が'simple_pass'の行を抽出
 ev.loc[ev['subevent']=='simple_pass'].head()
 
 
-# In[283]:
+# In[108]:
 
 
 # event列が'shot'の行を抽出
@@ -768,14 +785,14 @@ ev.loc[(ev_tag['goal']==1)].head()
 # イベントタグ`EV_tag`はイベントログ`EV`と同じ行数で共通の行ラベル（インデックス）を持つ．
 # よって，`EV_tag`で取得したブールインデックスを用いて`EV`から条件付き抽出することができる．
 
-# In[284]:
+# In[109]:
 
 
 # イベント名が'pass'で，'accurate'タグが1である行（成功パス）を抽出
 ev.loc[(ev['event']=='pass') & (ev_tag['accurate']==1)]
 
 
-# In[285]:
+# In[110]:
 
 
 # イベント名が'shot'で，'goal'タグが1である行（成功シュート）
@@ -788,7 +805,7 @@ ev.loc[(ev['event']=='shot') & (ev_tag['goal']==1)]
 # まず，以下のようにヒートマップを描く`event_hmap`関数を作成する．
 # この関数は，$x,\ y$座標のデータを引数として受け取り，matplotlibの`hist2d`関数を用いてヒートマップを描く．
 
-# In[477]:
+# In[111]:
 
 
 def event_hmap(x, y, cm='Greens'):
@@ -817,7 +834,7 @@ def event_hmap(x, y, cm='Greens'):
 # 特定のイベントだけを条件付き抽出してその$x,\ y$座標を`event_hmap`関数に渡せば，そのイベントが行われたフィールド上の位置をヒートマップで可視化することができる．
 # 以下にいくつかの例を示す．
 
-# In[478]:
+# In[112]:
 
 
 # パス
@@ -826,7 +843,7 @@ x, y = EV.loc[cond, 'x1'], EV.loc[cond, 'y1']
 event_hmap(x, y)
 
 
-# In[479]:
+# In[113]:
 
 
 # 特定の選手のパス
@@ -835,7 +852,7 @@ x, y = EV.loc[cond, 'x1'], EV.loc[cond, 'y1']
 event_hmap(x, y, 'Blues')
 
 
-# In[480]:
+# In[114]:
 
 
 # クロス
@@ -844,7 +861,7 @@ x, y = EV.loc[cond, 'x1'], EV.loc[cond, 'y1']
 event_hmap(x, y, 'Reds')
 
 
-# In[481]:
+# In[115]:
 
 
 # デュエル
@@ -853,7 +870,7 @@ x, y = EV.loc[cond, 'x1'], EV.loc[cond, 'y1']
 event_hmap(x, y, 'Greys')
 
 
-# In[482]:
+# In[116]:
 
 
 # デュエル（攻撃）
@@ -862,7 +879,7 @@ x, y = EV.loc[cond, 'x1'], EV.loc[cond, 'y1']
 event_hmap(x, y, 'jet')
 
 
-# In[484]:
+# In[117]:
 
 
 # シュート
@@ -871,7 +888,7 @@ x, y = EV.loc[cond, 'x1'], EV.loc[cond, 'y1']
 event_hmap(x, y)
 
 
-# In[485]:
+# In[118]:
 
 
 # シュート（成功）
@@ -901,7 +918,7 @@ event_hmap(x, y)
 
 # **シュート数**
 
-# In[487]:
+# In[119]:
 
 
 PR_shot = EV.loc[(EV['subevent']=='shot') | (EV['subevent']=='free_kick_shot') | (EV['subevent']=='penalty'), 'player_id'].value_counts()
@@ -911,7 +928,7 @@ PR_shot.iloc[:10]
 
 # **パス数**
 
-# In[488]:
+# In[120]:
 
 
 PR_pass = EV.loc[(EV['event']=='pass'), 'player_id'].value_counts()
@@ -921,7 +938,7 @@ PR_pass.iloc[:10]
 
 # **アシスト数**
 
-# In[489]:
+# In[121]:
 
 
 PR_assist = EV.loc[(EV_tag['assist']==1), 'player_id'].value_counts()
@@ -931,7 +948,7 @@ PR_assist.iloc[:10]
 
 # **ゴール数**
 
-# In[490]:
+# In[122]:
 
 
 PR_goal = EV.loc[((EV['event']=='shot') | (EV['event']=='free_kick')) & (EV_tag['goal']==1), 'player_id'].value_counts()
@@ -946,7 +963,7 @@ PR_goal.iloc[:10]
 
 # **試合の抽出**
 
-# In[491]:
+# In[123]:
 
 
 # 後のエラー対処のために明示的に.copy()を付けている
@@ -956,7 +973,7 @@ ev_tag = EV_tag.loc[EV['game_id']==EV['game_id'].unique()[0]].copy()
 
 # **チーム名の確認**
 
-# In[492]:
+# In[124]:
 
 
 tm_id = ev['team_id'].unique()
@@ -969,7 +986,7 @@ tm_id
 # これだと，試合展開を可視化する際にわかりにくいので，一方のチームの攻撃方向が逆になるように変換する．
 # 以下のように，片方のチーム（'team_id'が1631）の$x, y$座標から最大値100を引き，絶対値を取ればよい．
 
-# In[493]:
+# In[125]:
 
 
 ev.loc[ev['team_id']==tm_id[1], ['x1', 'x2']] = np.abs(ev.loc[ev['team_id']==tm_id[1], ['x1', 'x2']] - 100)
@@ -986,7 +1003,7 @@ ev.loc[(ev['x1']==100)|(ev['x2']==100), ['x2', 'y2']] = np.nan
 # そこで，`matplotlib`の`plot`関数を用いてイベントの始点と終点の座標を結ぶことで，ボールの軌跡を描いてみる．
 # なお，イベント名が'duel'の場合，始点と終点の座標が同じで'team_id'が異なる2つの行が挿入されている．
 
-# In[496]:
+# In[126]:
 
 
 ev.loc[ev['event']=='duel'].head()
@@ -996,7 +1013,7 @@ ev.loc[ev['event']=='duel'].head()
 # そこで，イベント名が'duel'の場合には一方のチームの座標だけを黒線で描画し，それ以外はチームごとに色分けして描画することにする．
 # 以下の`ball_trj`関数は，時間帯を３つの引数`half`, `ts`, `te`で指定し，その時間帯でボールの軌跡を描く．
 
-# In[504]:
+# In[127]:
 
 
 def ball_trj(half=1, ts=0, te=50):
@@ -1034,13 +1051,13 @@ def ball_trj(half=1, ts=0, te=50):
     ax.set_xlabel('$X$'); ax.set_ylabel('$Y$')
 
 
-# In[502]:
+# In[128]:
 
 
 ball_trj(half=1, ts=50, te=100)
 
 
-# In[506]:
+# In[129]:
 
 
 ball_trj(half=2, ts=2000, te=2050)
@@ -1053,7 +1070,7 @@ ball_trj(half=2, ts=2000, te=2050)
 
 # **試合の抽出**
 
-# In[507]:
+# In[130]:
 
 
 # 後のエラー対処のために明示的に.copy()を付けている
@@ -1067,7 +1084,7 @@ ev_tag = EV_tag.loc[EV['game_id']==EV['game_id'].iloc[0]].copy()
 # しかし，イベントログ`EV`にはパスの出し手の情報しかないので，受け手の情報を加える必要がある．
 # イベント名が'pass'の行については，次の行の選手IDがパスの受け手に対応するので，以下のようにパスリスト`ps`を作成できる．
 
-# In[508]:
+# In[131]:
 
 
 ps = ev.loc[ev['event']=='pass', ['player_id', 'team_id']]
@@ -1082,7 +1099,7 @@ ps.head()
 # イベントログには選手ID（'player_id'）の情報しかないので，選手プロフィール`PL`のデータを用いて選手名を追加する．
 # 以下のように，`replace`メソッドを用いて，選手ID（'player_id'）を選手名（'name'）に置換すれば良い．
 
-# In[509]:
+# In[132]:
 
 
 ps['name'] = ps['player_id'].replace(PL['player_id'].values, PL['name'].values)
@@ -1096,7 +1113,7 @@ ps.head()
 # パス数行列は非対称な行列であり，行列の$(i, j)$成分は選手$i$から$j$へのパス，$(j, i)$成分はその逆を表す．
 # パス数行列の作成方法はいくつか考えられるが，以下では`for`文を用いて実装している．
 
-# In[514]:
+# In[133]:
 
 
 pl_id0 = ps.loc[ps['team_id']==tm_id[0], 'name'].unique()
@@ -1105,7 +1122,7 @@ A0 = pd.DataFrame(index=pl_id0, columns=pl_id0)
 A1 = pd.DataFrame(index=pl_id1, columns=pl_id1)
 
 
-# In[515]:
+# In[134]:
 
 
 for i in pl_id0:
@@ -1128,7 +1145,7 @@ A1 = A1.astype(int)
 # しかし，ネットワークの分析と可視化にはnetworkxなどの専用ライブラリの知識が必要となるので，ここではより直接的にヒートマップを用いた可視化方法を採用する．
 # 以下の`plot_corr_mat`関数は，seabornという可視化ライブラリを用いてパス数行列をヒートマップで可視化する．
 
-# In[528]:
+# In[135]:
 
 
 import seaborn
@@ -1142,13 +1159,13 @@ def plot_corr_mat(mat, cm='jet'):
     ax_clb.ax.tick_params(labelsize=8)
 
 
-# In[529]:
+# In[136]:
 
 
 plot_corr_mat(A0, 'Reds')
 
 
-# In[527]:
+# In[137]:
 
 
 plot_corr_mat(A1, 'Greens')

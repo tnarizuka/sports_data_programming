@@ -16,11 +16,11 @@ except:
     pass
 
 
-# In[ ]:
+# In[1]:
 
 
 # （必須）カレントディレクトリの変更（自分の作業フォルダのパスをコピーして入力する）
-os.chdir(r"C:\Users\parar\OneDrive\sport_data")
+os.chdir(r'/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data')
 
 
 # # プログラミング環境の構築
@@ -142,28 +142,28 @@ os.chdir(r"C:\Users\parar\OneDrive\sport_data")
 # 2. バックスラッシュ"\\"をスラッシュ"/"に書き換える
 # 3. バックスラッシュ"\\"を"\\\\"に書き換える
 
-# In[1]:
+# In[2]:
 
 
 # エラーが出る
 print("C:\Users\username\OneDrive\sport_data")
 
 
-# In[2]:
+# In[3]:
 
 
 # raw文字列
 print(r"C:\Users\username\OneDrive\sport_data")
 
 
-# In[5]:
+# In[4]:
 
 
 # \ -> /
 print("C:/Users/username/OneDrive/sport_data")
 
 
-# In[6]:
+# In[5]:
 
 
 # \ -> \\
@@ -242,18 +242,18 @@ print("C:\\Users\\username\\OneDrive\\sport_data")
 # 1. エクスプローラー上で，作業フォルダをshiftを押しながら右クリックし，パスのコピーを選択
 # 2. コピーしたパスの先頭に`r`を付けて`os.chdir(r"作業フォルダのパス")`のように実行
 
-# In[4]:
+# In[7]:
 
 
 import os
-os.chdir(r"C:\Users\parar\OneDrive\sport_data")
+os.chdir(r'/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data')
 
 
 # これにより，[sport_data]内部のフォルダには相対パスでアクセスすることができるようになる．
 # 例えば，Matplotlibで作成した図を[sport_data][2_environment]に保存したい場合は以下のようにする．
 # japanize_matplotlibがうまくインストールされていれば，ラベルに日本語が表示されるはずである．
 
-# In[6]:
+# In[8]:
 
 
 import numpy as np
