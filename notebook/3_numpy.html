@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>3. NumPyの基礎 &#8212; Sports Data Programming</title>
+    <title>2. NumPyの基礎 &#8212; Sports Data Programming</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,8 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4. Pandasの基礎" href="4_pandas.html" />
-    <link rel="prev" title="2. プログラミング環境の構築" href="2_environment.html" />
+    <link rel="next" title="3. Pandasの基礎" href="4_pandas.html" />
+    <link rel="prev" title="1. イントロダクション" href="1_introduction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -121,34 +121,29 @@ const thebe_selector_output = ".output, .cell_output"
    1. イントロダクション
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2_environment.html">
-   2. プログラミング環境の構築
-  </a>
- </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   3. NumPyの基礎
+   2. NumPyの基礎
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="4_pandas.html">
-   4. Pandasの基礎
+   3. Pandasの基礎
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="5_matplotlib.html">
-   5. Matplotlibの基礎
+   4. Matplotlibの基礎
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="6_event.html">
-   6. イベントデータの解析
+   5. イベントデータの解析
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="7_tracking.html">
-   7. トラッキングデータの解析
+   6. トラッキングデータの解析
   </a>
  </li>
 </ul>
@@ -378,191 +373,191 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   3.1. Numpyとは？
+   2.1. Numpyとは？
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id2">
-     3.1.1. NumPyとは？
+     2.1.1. NumPyとは？
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#numpyimport">
-     3.1.2. NumPyのimport
+     2.1.2. NumPyのimport
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     3.1.3. Numpy配列と組み込みリストの違い
+     2.1.3. Numpy配列と組み込みリストの違い
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     3.1.4. NumPy配列の型
+     2.1.4. NumPy配列の型
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     3.1.5. NumPy配列の属性
+     2.1.5. NumPy配列の属性
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     3.1.6. 演習問題
+     2.1.6. 演習問題
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id7">
-   3.2. ベクトルと行列について
+   2.2. ベクトルと行列について
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     3.2.1. ベクトル
+     2.2.1. ベクトル
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id9">
-     3.2.2. 行列
+     2.2.2. 行列
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id10">
-   3.3. NumPy配列の構築
+   2.3. NumPy配列の構築
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id11">
-     3.3.1. リストを変換する
+     2.3.1. リストを変換する
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id12">
-     3.3.2. 配列生成関数を使う
+     2.3.2. 配列生成関数を使う
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id13">
-     3.3.3. 演習問題
+     2.3.3. 演習問題
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id14">
-   3.4. NumPy配列の操作
+   2.4. NumPy配列の操作
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id15">
-     3.4.1. 配列のインデックス参照
+     2.4.1. 配列のインデックス参照
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id16">
-     3.4.2. 配列のスライス
+     2.4.2. 配列のスライス
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id17">
-     3.4.3. （参考）ファンシーインデックス参照
+     2.4.3. （参考）ファンシーインデックス参照
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id18">
-     3.4.4. 配列への代入
+     2.4.4. 配列への代入
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id19">
-     3.4.5. 演習問題
+     2.4.5. 演習問題
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id20">
-   3.5. 条件付き抽出
+   2.5. 条件付き抽出
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id21">
-     3.5.1. ブールインデックス参照
+     2.5.1. ブールインデックス参照
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id22">
-     3.5.2. （参考）条件を満たす要素のインデックスを取得
+     2.5.2. （参考）条件を満たす要素のインデックスを取得
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id23">
-     3.5.3. 演習問題
+     2.5.3. 演習問題
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id24">
-   3.6. 配列の形状変更
+   2.6. 配列の形状変更
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id25">
-     3.6.1. 要素数を保った形状変更
+     2.6.1. 要素数を保った形状変更
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id26">
-     3.6.2. 配列の連結
+     2.6.2. 配列の連結
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id27">
-     3.6.3. 配列の削除
+     2.6.3. 配列の削除
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id28">
-   3.7. NumPy配列の演算
+   2.7. NumPy配列の演算
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ufunc">
-     3.7.1. ユニバーサル関数（ufunc）
+     2.7.1. ユニバーサル関数（ufunc）
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id29">
-     3.7.2. 配列の演算規則
+     2.7.2. 配列の演算規則
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id30">
-     3.7.3. 様々なユニバーサル関数
+     2.7.3. 様々なユニバーサル関数
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id31">
-     3.7.4. 配列の集計
+     2.7.4. 配列の集計
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id32">
-   3.8. ファイル入出力
+   2.8. ファイル入出力
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id33">
-   3.9. レポート問題
+   2.9. レポート問題
   </a>
  </li>
 </ul>
@@ -586,191 +581,191 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   3.1. Numpyとは？
+   2.1. Numpyとは？
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id2">
-     3.1.1. NumPyとは？
+     2.1.1. NumPyとは？
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#numpyimport">
-     3.1.2. NumPyのimport
+     2.1.2. NumPyのimport
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     3.1.3. Numpy配列と組み込みリストの違い
+     2.1.3. Numpy配列と組み込みリストの違い
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     3.1.4. NumPy配列の型
+     2.1.4. NumPy配列の型
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     3.1.5. NumPy配列の属性
+     2.1.5. NumPy配列の属性
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     3.1.6. 演習問題
+     2.1.6. 演習問題
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id7">
-   3.2. ベクトルと行列について
+   2.2. ベクトルと行列について
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     3.2.1. ベクトル
+     2.2.1. ベクトル
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id9">
-     3.2.2. 行列
+     2.2.2. 行列
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id10">
-   3.3. NumPy配列の構築
+   2.3. NumPy配列の構築
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id11">
-     3.3.1. リストを変換する
+     2.3.1. リストを変換する
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id12">
-     3.3.2. 配列生成関数を使う
+     2.3.2. 配列生成関数を使う
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id13">
-     3.3.3. 演習問題
+     2.3.3. 演習問題
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id14">
-   3.4. NumPy配列の操作
+   2.4. NumPy配列の操作
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id15">
-     3.4.1. 配列のインデックス参照
+     2.4.1. 配列のインデックス参照
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id16">
-     3.4.2. 配列のスライス
+     2.4.2. 配列のスライス
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id17">
-     3.4.3. （参考）ファンシーインデックス参照
+     2.4.3. （参考）ファンシーインデックス参照
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id18">
-     3.4.4. 配列への代入
+     2.4.4. 配列への代入
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id19">
-     3.4.5. 演習問題
+     2.4.5. 演習問題
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id20">
-   3.5. 条件付き抽出
+   2.5. 条件付き抽出
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id21">
-     3.5.1. ブールインデックス参照
+     2.5.1. ブールインデックス参照
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id22">
-     3.5.2. （参考）条件を満たす要素のインデックスを取得
+     2.5.2. （参考）条件を満たす要素のインデックスを取得
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id23">
-     3.5.3. 演習問題
+     2.5.3. 演習問題
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id24">
-   3.6. 配列の形状変更
+   2.6. 配列の形状変更
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id25">
-     3.6.1. 要素数を保った形状変更
+     2.6.1. 要素数を保った形状変更
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id26">
-     3.6.2. 配列の連結
+     2.6.2. 配列の連結
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id27">
-     3.6.3. 配列の削除
+     2.6.3. 配列の削除
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id28">
-   3.7. NumPy配列の演算
+   2.7. NumPy配列の演算
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ufunc">
-     3.7.1. ユニバーサル関数（ufunc）
+     2.7.1. ユニバーサル関数（ufunc）
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id29">
-     3.7.2. 配列の演算規則
+     2.7.2. 配列の演算規則
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id30">
-     3.7.3. 様々なユニバーサル関数
+     2.7.3. 様々なユニバーサル関数
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id31">
-     3.7.4. 配列の集計
+     2.7.4. 配列の集計
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id32">
-   3.8. ファイル入出力
+   2.8. ファイル入出力
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id33">
-   3.9. レポート問題
+   2.9. レポート問題
   </a>
  </li>
 </ul>
@@ -828,7 +823,7 @@ title="Print to PDF"
 </li>
 </ul>
 <section class="tex2jax_ignore mathjax_ignore" id="numpy">
-<h1><span class="section-number">3. </span>NumPyの基礎<a class="headerlink" href="#numpy" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">2. </span>NumPyの基礎<a class="headerlink" href="#numpy" title="Permalink to this headline">#</a></h1>
 <p>本章は以下の文献とウェブサイトを参考にしています：</p>
 <ul class="simple">
 <li><p>Wes McKinney, Pythonによるデータ分析入門，オライリー，2018</p></li>
@@ -836,16 +831,16 @@ title="Print to PDF"
 <li><p><a class="reference external" href="http://note.nkmk.me">note.nkmk.me</a>: <a class="reference external" href="https://note.nkmk.me">https://note.nkmk.me</a></p></li>
 </ul>
 <section id="id1">
-<h2><span class="section-number">3.1. </span>Numpyとは？<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.1. </span>Numpyとは？<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <section id="id2">
-<h3><span class="section-number">3.1.1. </span>NumPyとは？<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.1.1. </span>NumPyとは？<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
 <p>スポーツのデータセットは画像，ドキュメント，数値測定結果，など様々なフォーマットを持つが，これらは数値や文字列を格納した配列として扱うことができる．例えば，競技を撮影した動画はフレーム単位ではデジタル画像として表されている．デジタル画像は2次元配列として表され，配列の各要素が各ピクセルの輝度（RGB値）に対応している．また，選手の位置情報は <span class="math notranslate nohighlight">\((x, y, z)\)</span> の時系列データとなっているので，これも実数値の2次元配列として表すことができる．</p>
 <p>このように，数値や文字列を効率的に格納し操作することは，データ分析において最重要項目である．Pythonには，配列を扱うためのリストが標準搭載されているが，サイズの大きいデータを扱うのには不向きである．そこで，大規模な配列を扱うための特別なツールとしてNumPyライブラリが用意されている．NumPy配列はPythonの組み込みリストと似ているが，配列のサイズが大きくなるにつれ，より効率的なデータ操作ができるように設計されている．</p>
 <p>なお，以下ではNumPyを「ナンパイ」と読む．</p>
 </section>
 <section id="numpyimport">
-<h3><span class="section-number">3.1.2. </span>NumPyのimport<a class="headerlink" href="#numpyimport" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.1.2. </span>NumPyのimport<a class="headerlink" href="#numpyimport" title="Permalink to this headline">#</a></h3>
 <p>NumPyは他のパッケージと同様にimportすることができる．Numpyはnpという名前でimportするのが慣例である：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -857,7 +852,7 @@ title="Print to PDF"
 <p>これにより，NumPyの関数（例えば<code class="docutils literal notranslate"><span class="pre">func</span></code>）を使うときには<code class="docutils literal notranslate"><span class="pre">np.func()</span></code>のように実行できる．</p>
 </section>
 <section id="id3">
-<h3><span class="section-number">3.1.3. </span>Numpy配列と組み込みリストの違い<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.1.3. </span>Numpy配列と組み込みリストの違い<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <p><strong>組み込みリスト</strong></p>
 <p>Pythonは何もimportせずに組み込みリスト（以下，単にリストと呼ぶ）を使うことができる．
 リストは以下のように整数と文字列など複数の型を同時に格納することができ，多次元にすることも可能である．
@@ -901,7 +896,7 @@ title="Print to PDF"
 一方，NumPyには予めソート関数<code class="docutils literal notranslate"><span class="pre">np.sort</span></code>が用意されているためこれを用いるだけで済み，さらにアルゴリズムを選択することもできる．</p>
 </section>
 <section id="id4">
-<h3><span class="section-number">3.1.4. </span>NumPy配列の型<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.1.4. </span>NumPy配列の型<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
 <p>データ型を明示的に指定したい場合には<code class="docutils literal notranslate"><span class="pre">dtype</span></code>キーワードを用いる．<code class="docutils literal notranslate"><span class="pre">dtype</span></code>で指定できる主要なデータ型は</p>
 <ul class="simple">
 <li><p>‘int’（整数）</p></li>
@@ -949,7 +944,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="id5">
-<h3><span class="section-number">3.1.5. </span>NumPy配列の属性<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.1.5. </span>NumPy配列の属性<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
 <p>NumPy配列は以下のような属性を持つ</p>
 <ul class="simple">
 <li><p>shape：配列の形状</p></li>
@@ -1038,7 +1033,7 @@ float64
 </div>
 </section>
 <section id="id6">
-<h3><span class="section-number">3.1.6. </span>演習問題<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.1.6. </span>演習問題<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">np.array</span></code>関数を用いて様々なデータ型の配列を作成せよ</p></li>
 <li><p>作成した配列の属性を取得せよ</p></li>
@@ -1048,11 +1043,11 @@ float64
 </section>
 </section>
 <section id="id7">
-<h2><span class="section-number">3.2. </span>ベクトルと行列について<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.2. </span>ベクトルと行列について<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <p>2年次には線形代数が必修科目となっている．線形代数では主にベクトルと行列を扱うが，これらはデータ分析をする上で避けて通ることができない．実は，NumPyはベクトルや行列を扱うためのパッケージといっても過言ではない．以下，ベクトルと行列について超簡単に説明する．</p>
 <section id="id8">
-<h3><span class="section-number">3.2.1. </span>ベクトル<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.2.1. </span>ベクトル<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
 <p>以下のように数字を並べたものをベクトルと呼ぶ：</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1102,7 +1097,7 @@ float64
 スポーツデータの分析では，選手の速度を求めることがよくあるが，速度というのは向きと大きさを持つ量であるので，速度ベクトルとして表すことができる．</p>
 </section>
 <section id="id9">
-<h3><span class="section-number">3.2.2. </span>行列<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.2.2. </span>行列<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
 <p>ベクトルは数を一方向に並べたものであったが，以下のように数を縦と横に並べたものを考える：</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1183,16 +1178,16 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 <figure class="align-default" id="fig-matrix">
 <a class="reference internal image-reference" href="../_images/matrix.png"><img alt="../_images/matrix.png" src="../_images/matrix.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3.1 </span><span class="caption-text">行列の例</span><a class="headerlink" href="#fig-matrix" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.1 </span><span class="caption-text">行列の例</span><a class="headerlink" href="#fig-matrix" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="id10">
-<h2><span class="section-number">3.3. </span>NumPy配列の構築<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.3. </span>NumPy配列の構築<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <section id="id11">
-<h3><span class="section-number">3.3.1. </span>リストを変換する<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.3.1. </span>リストを変換する<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h3>
 <p>リストからNumPy配列を作るには，<code class="docutils literal notranslate"><span class="pre">np.array</span></code>関数を用いる</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1236,7 +1231,7 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </div>
 </section>
 <section id="id12">
-<h3><span class="section-number">3.3.2. </span>配列生成関数を使う<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.3.2. </span>配列生成関数を使う<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h3>
 <p>配列の要素が分かっていてサイズが小さい場合には上の方法で問題ないが，サイズが大きい場合にはNumPyの配列生成関数を利用するのが良い．</p>
 <p><strong>等間隔の数列を作成する</strong></p>
 <p>まず，等間隔の数列を作る関数として，<code class="docutils literal notranslate"><span class="pre">np.arange</span></code>と<code class="docutils literal notranslate"><span class="pre">np.linspace</span></code>がある．
@@ -1408,7 +1403,7 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </div>
 </section>
 <section id="id13">
-<h3><span class="section-number">3.3.3. </span>演習問題<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.3.3. </span>演習問題<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h3>
 <p>以下の配列を作成せよ：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 0から100まで2ずつ増加する数列</span>
 <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
@@ -1706,10 +1701,10 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </section>
 </section>
 <section id="id14">
-<h2><span class="section-number">3.4. </span>NumPy配列の操作<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.4. </span>NumPy配列の操作<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <section id="id15">
-<h3><span class="section-number">3.4.1. </span>配列のインデックス参照<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.4.1. </span>配列のインデックス参照<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h3>
 <p>配列中の要素が先頭から何番目かを表すのがインデックスである．
 1次元配列は1つのインデックス，2次元配列は2つのインデックス（行番号と列番号に対応するインデックス）によって指定する．
 Pythonでは<strong>インデックスは0から始まる</strong>ことに注意する．</p>
@@ -1816,7 +1811,7 @@ NumPy配列に対するインデックス参照の方法はPythonリストの場
 </div>
 </section>
 <section id="id16">
-<h3><span class="section-number">3.4.2. </span>配列のスライス<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.4.2. </span>配列のスライス<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h3>
 <p>配列中の連続する要素を取り出す操作を<strong>スライス</strong>と呼ぶ．
 NumPyでは，以下のようなコロン<code class="docutils literal notranslate"><span class="pre">:</span></code>を用いた表記により配列の１部分にアクセスすることができる：</p>
 <p><code class="docutils literal notranslate"><span class="pre">x[i_start:</span> <span class="pre">i_end:</span> <span class="pre">step]</span></code></p>
@@ -2029,7 +2024,7 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </div>
 </section>
 <section id="id17">
-<h3><span class="section-number">3.4.3. </span>（参考）ファンシーインデックス参照<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.4.3. </span>（参考）ファンシーインデックス参照<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h3>
 <p>インデックス参照では1つの要素だけにしかアクセスできなかった．
 また，配列のスライスでは，複数の要素を抽出できたが，連続した要素や1つおきの要素など規則的な抽出しか実現できなかった．
 そこで，任意の要素を複数抽出する方法として，ファンシーインデックス参照がある．
@@ -2168,7 +2163,7 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </div>
 </section>
 <section id="id18">
-<h3><span class="section-number">3.4.4. </span>配列への代入<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.4.4. </span>配列への代入<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h3>
 <p>インデックス参照やスライスによって抽出した配列要素に代入すると，元の配列が変更される．
 この機能を用いると，NumPy配列の１部分を変更することができる．</p>
 <p><strong>1次元の場合</strong></p>
@@ -2279,7 +2274,7 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </div>
 </section>
 <section id="id19">
-<h3><span class="section-number">3.4.5. </span>演習問題<a class="headerlink" href="#id19" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.4.5. </span>演習問題<a class="headerlink" href="#id19" title="Permalink to this headline">#</a></h3>
 <p>以下の配列<code class="docutils literal notranslate"><span class="pre">x</span></code>に対し，インデックス参照とスライスを用いて指定された１部分を抽出せよ．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2405,10 +2400,10 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </section>
 </section>
 <section id="id20">
-<h2><span class="section-number">3.5. </span>条件付き抽出<a class="headerlink" href="#id20" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.5. </span>条件付き抽出<a class="headerlink" href="#id20" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <section id="id21">
-<h3><span class="section-number">3.5.1. </span>ブールインデックス参照<a class="headerlink" href="#id21" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.5.1. </span>ブールインデックス参照<a class="headerlink" href="#id21" title="Permalink to this headline">#</a></h3>
 <p><strong>ブールインデックス参照とは？</strong></p>
 <p>次のような任意の配列を考える．</p>
 <div class="cell docutils container">
@@ -2706,7 +2701,7 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </div>
 </section>
 <section id="id22">
-<h3><span class="section-number">3.5.2. </span>（参考）条件を満たす要素のインデックスを取得<a class="headerlink" href="#id22" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.5.2. </span>（参考）条件を満たす要素のインデックスを取得<a class="headerlink" href="#id22" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">np.where</span></code>関数を用いると，配列の中で条件を満たす要素のインデックスを取得することができる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2744,7 +2739,7 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 つまり，条件を満たすインデックスは<code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0),</span> <span class="pre">(0,</span> <span class="pre">1),</span> <span class="pre">(0,</span> <span class="pre">2)</span></code>である．</p>
 </section>
 <section id="id23">
-<h3><span class="section-number">3.5.3. </span>演習問題<a class="headerlink" href="#id23" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.5.3. </span>演習問題<a class="headerlink" href="#id23" title="Permalink to this headline">#</a></h3>
 <p>以下の配列<code class="docutils literal notranslate"><span class="pre">x</span></code>から指定した条件を満たす要素を抽出せよ</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2883,10 +2878,10 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </section>
 </section>
 <section id="id24">
-<h2><span class="section-number">3.6. </span>配列の形状変更<a class="headerlink" href="#id24" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.6. </span>配列の形状変更<a class="headerlink" href="#id24" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <section id="id25">
-<h3><span class="section-number">3.6.1. </span>要素数を保った形状変更<a class="headerlink" href="#id25" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.6.1. </span>要素数を保った形状変更<a class="headerlink" href="#id25" title="Permalink to this headline">#</a></h3>
 <p>配列のサイズ（全要素数）を保ったまま形状（次元数）を変更するには<code class="docutils literal notranslate"><span class="pre">reshape</span></code>メソッドを用いる．
 例えば，1次元配列を3行3列の配列に変更するには次のようにする．</p>
 <div class="cell docutils container">
@@ -2963,7 +2958,7 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </div>
 </section>
 <section id="id26">
-<h3><span class="section-number">3.6.2. </span>配列の連結<a class="headerlink" href="#id26" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.6.2. </span>配列の連結<a class="headerlink" href="#id26" title="Permalink to this headline">#</a></h3>
 <p>複数のNumpy配列を連結するには，<code class="docutils literal notranslate"><span class="pre">concatenate</span></code>関数を用いる．
 また，同様の機能を持つ関数として，<code class="docutils literal notranslate"><span class="pre">block</span></code>関数，<code class="docutils literal notranslate"><span class="pre">vstack</span></code>関数，<code class="docutils literal notranslate"><span class="pre">hstack</span></code>関数がある．</p>
 <p><strong>concatenate関数</strong></p>
@@ -3111,7 +3106,7 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </div>
 </section>
 <section id="id27">
-<h3><span class="section-number">3.6.3. </span>配列の削除<a class="headerlink" href="#id27" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.6.3. </span>配列の削除<a class="headerlink" href="#id27" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">np.delete</span></code>関数で配列から任意の行や列を削除できる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3188,10 +3183,10 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </section>
 </section>
 <section id="id28">
-<h2><span class="section-number">3.7. </span>NumPy配列の演算<a class="headerlink" href="#id28" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.7. </span>NumPy配列の演算<a class="headerlink" href="#id28" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <section id="ufunc">
-<h3><span class="section-number">3.7.1. </span>ユニバーサル関数（ufunc）<a class="headerlink" href="#ufunc" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.7.1. </span>ユニバーサル関数（ufunc）<a class="headerlink" href="#ufunc" title="Permalink to this headline">#</a></h3>
 <p>NumPy配列の演算（加減乗除など）はリストと同じように<code class="docutils literal notranslate"><span class="pre">for</span></code>文などで実装すると非常に低速になってしまう．そこで，高速な演算が可能な<strong>ユニバーサル関数</strong>が用意されている．これは，<strong>配列に対して１つの関数を実行するだけで，全ての要素に対して演算が行われる機能</strong>である．例えば，以下のように1000万個の数値が格納された1次元のNumPy配列があるとする．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3252,7 +3247,7 @@ Wall time: 9.8 ms
 <p>このように，NumPyのユニバーサル関数を使った演算は，配列のサイズが大きくなるにつれてfor文を用いた場合よりもずっと効率的になる．そこで，<strong>Pythonのプログラムでfor文を見つけたら，まずはNumPyのユニバーサル関数で置き換えられるかどうかを検討することが重要である</strong>．</p>
 </section>
 <section id="id29">
-<h3><span class="section-number">3.7.2. </span>配列の演算規則<a class="headerlink" href="#id29" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.7.2. </span>配列の演算規則<a class="headerlink" href="#id29" title="Permalink to this headline">#</a></h3>
 <p>NumPy配列の演算規則は以下のようにまとめられる：</p>
 <ul class="simple">
 <li><p>NumPy配列と数値の演算は，配列の全ての要素に演算が適用される</p></li>
@@ -3606,7 +3601,7 @@ ndim: 2
 </div>
 </section>
 <section id="id30">
-<h3><span class="section-number">3.7.3. </span>様々なユニバーサル関数<a class="headerlink" href="#id30" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.7.3. </span>様々なユニバーサル関数<a class="headerlink" href="#id30" title="Permalink to this headline">#</a></h3>
 <p><strong>並び替え（ソート）：<code class="docutils literal notranslate"><span class="pre">np.sort</span></code></strong></p>
 <p>元の配列を変更せずにソートされた配列を得るには<code class="docutils literal notranslate"><span class="pre">np.sort</span></code>関数を使用する．</p>
 <div class="cell docutils container">
@@ -3916,7 +3911,7 @@ ndim: 2
 </div>
 </section>
 <section id="id31">
-<h3><span class="section-number">3.7.4. </span>配列の集計<a class="headerlink" href="#id31" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.7.4. </span>配列の集計<a class="headerlink" href="#id31" title="Permalink to this headline">#</a></h3>
 <p>データが格納された配列から平均値などの統計量を求めるためのさまざまな集計関数が用意されている．
 NumPyの主要な集計関数を表に示す．
 ほとんどの集計関数には欠損値（NaN値）を無視して計算を行うNaNセーフ版が用意されている．</p>
@@ -4142,7 +4137,7 @@ NumPyの主要な集計関数を表に示す．
 </section>
 </section>
 <section id="id32">
-<h2><span class="section-number">3.8. </span>ファイル入出力<a class="headerlink" href="#id32" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.8. </span>ファイル入出力<a class="headerlink" href="#id32" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <p><strong>ファイルへの保存</strong></p>
 <p>NumPy配列<code class="docutils literal notranslate"><span class="pre">x</span></code>をファイルに書き出すには<code class="docutils literal notranslate"><span class="pre">np.savetxt</span></code>関数を用いる．</p>
@@ -4199,7 +4194,7 @@ NumPyの主要な集計関数を表に示す．
 <p><code class="docutils literal notranslate"><span class="pre">np.loadtxt</span></code>には引数として区切り文字<code class="docutils literal notranslate"><span class="pre">delimiter</span></code>，データ型<code class="docutils literal notranslate"><span class="pre">dtype</span></code>，エンコーディング<code class="docutils literal notranslate"><span class="pre">encoding</span></code>などが指定できる．<code class="docutils literal notranslate"><span class="pre">delimiter</span></code>を省略するとデフォルト値のスペース’ ‘となる．</p>
 </section>
 <section id="id33">
-<h2><span class="section-number">3.9. </span>レポート問題<a class="headerlink" href="#id33" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.9. </span>レポート問題<a class="headerlink" href="#id33" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <p><strong>問題A</strong></p>
 <p>以下のように，母平均5，母標準偏差0.5の正規分布に従うデータから100個を抽出した．</p>
@@ -4411,17 +4406,17 @@ $<span class="math notranslate nohighlight">\(
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="2_environment.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="1_introduction.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">2. </span>プログラミング環境の構築</p>
+            <p class="prev-next-title"><span class="section-number">1. </span>イントロダクション</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="4_pandas.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Pandasの基礎</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Pandasの基礎</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
