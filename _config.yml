@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: Programming for Sports Data Analysis
-# author: 成塚拓真（Takuma Narizuka）
+author: ""
 copyright: "2022- by 成塚拓真（Takuma Narizuka）"
 # logo: logo.png
 exclude_patterns: [_build, README.md, .DS_Store]
