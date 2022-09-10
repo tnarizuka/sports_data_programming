@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="ja">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -42,6 +42,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -50,12 +51,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="3. NumPyの基礎" href="3_numpy.html" />
     <link rel="prev" title="1. イントロダクション" href="1_introduction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="ja">
     
 
     <!-- Google Analytics -->
@@ -627,13 +628,13 @@ title="Print to PDF"
 </div>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">2. </span>プログラミング環境の構築<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">2. </span>プログラミング環境の構築<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">#</a></h1>
 <section id="anaconda">
-<h2><span class="section-number">2.1. </span>Anacondaのインストール<a class="headerlink" href="#anaconda" title="Permalink to this headline">#</a></h2>
-<p>既に「プログラミング基礎」の授業内でAnacondaをインストールしているはずなので，以下ではインストールの概要だけ述べる．詳細は<a class="reference external" href="https://www.python.jp/install/anaconda/windows/install.html">Python.jp</a>や<a class="reference external" href="https://www.javadrive.jp/python/install/index5.html">Let’sプログラミング</a>などが参考になる．</p>
+<h2><span class="section-number">2.1. </span>Anacondaのインストール<a class="headerlink" href="#anaconda" title="このヘッドラインへのパーマリンク">#</a></h2>
+<p>既に「プログラミング基礎」の授業内でAnacondaをインストールしているはずなので，以下ではインストールの概要だけ述べる．詳細は<a class="reference external" href="https://www.python.jp/install/anaconda/windows/install.html">Python.jp</a>や<a class="reference external" href="https://www.javadrive.jp/python/install/index5.html">Let'sプログラミング</a>などが参考になる．</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.anaconda.com/products/individual">Anacondaの公式サイト</a>にアクセスする</p></li>
-<li><p>下にスクロールし，”Anaconda Installers”から環境に応じたインストーラをダウンロードする</p></li>
+<li><p>下にスクロールし，&quot;Anaconda Installers&quot;から環境に応じたインストーラをダウンロードする</p></li>
 <li><p>ダウンロードしたインストーラをクリックし，画面の指示に従う</p>
 <ul>
 <li><p>途中で，<code class="docutils literal notranslate"><span class="pre">add</span> <span class="pre">Anaconda</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">system</span> <span class="pre">Pass</span> <span class="pre">environment</span> <span class="pre">variable</span></code>にチェックを入れてPathの設定を行う</p></li>
@@ -643,7 +644,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="maplotlib">
-<h2><span class="section-number">2.2. </span>Maplotlibの日本語対応<a class="headerlink" href="#maplotlib" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.2. </span>Maplotlibの日本語対応<a class="headerlink" href="#maplotlib" title="このヘッドラインへのパーマリンク">#</a></h2>
 <p>Matplotlibはグラフ作成のためのライブラリである（詳しくは基礎編で解説する）．
 Matplotlibは標準で日本語に対応していないので，ここでは日本語対応する方法を解説する．
 日本語対応する方法には以下の2つが存在する（詳しくは<a class="reference external" href="https://ai-inter1.com/matplotlib-japanize/">こちら</a>）：</p>
@@ -680,7 +681,7 @@ japanize_matplotlibはPythonのモジュールなので，最初にインスト�
 </ul>
 </section>
 <section id="id2">
-<h2><span class="section-number">2.3. </span>作業フォルダの作成<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.3. </span>作業フォルダの作成<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">#</a></h2>
 <p>データ分析では，様々なファイルを扱わなければならない．
 例えば，本講義では，Pythonのソースコード（<code class="docutils literal notranslate"><span class="pre">.py</span></code>ファイル），Jupyter NoteBook（<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>ファイル），データ（<code class="docutils literal notranslate"><span class="pre">.csv</span></code>ファイル），図（<code class="docutils literal notranslate"><span class="pre">.pdf</span></code>ファイル）などのファイルを扱うことになる．
 これらのファイルが自分のPC内のどこに保存されているかを把握しておかないと，ファイルを探すだけで時間を取られてしまい，時間の無駄である．
@@ -711,12 +712,12 @@ japanize_matplotlibはPythonのモジュールなので，最初にインスト�
     <span class="o">-</span> <span class="p">[</span><span class="n">others</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>例えば，[2_environment]というフォルダの中には，”.ipynb”ファイル（このページの上部からダウンロード可）が保存されている．</p>
+<p>例えば，[2_environment]というフォルダの中には，&quot;.ipynb&quot;ファイル（このページの上部からダウンロード可）が保存されている．</p>
 </section>
 <section id="path">
-<h2><span class="section-number">2.4. </span>パス（Path）について<a class="headerlink" href="#path" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.4. </span>パス（Path）について<a class="headerlink" href="#path" title="このヘッドラインへのパーマリンク">#</a></h2>
 <section id="id3">
-<h3><span class="section-number">2.4.1. </span>パスとは何か？<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.4.1. </span>パスとは何か？<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>Pythonプログラムの実行，自分のPC上のファイルの読み込み，加工したデータの保存を行うには，対象となるファイルの在り処，つまりアドレスが分からないといけない．
 このアドレスを指定する文字列のことをパス（Path）と呼ぶ．</p>
 <p>パスはフォルダの階層構造を区切り文字によって区切った形式で表される．
@@ -726,29 +727,29 @@ C:¥Users¥username¥work¥test.txt
 G:¥マイドライブ
 </pre></div>
 </div>
-<p>ここで，それぞれのパスの先頭には”C”や”G”などの文字が付いている．
-これは，最も上の階層であるドライブ名を表す文字で，エクスプローラーを開いてナビゲーションウィンドウからPCアイコンをクリックすると表示される［例えば，”C”はCドライブを意味し，ローカルディスク（C:）と表示されているものに対応する］．
-また，フォルダの階層の区切りは”¥”（またはバックスラッシュ”&quot;）によって表されており，”¥”の隣にはフォルダの名前が記載されている．
-例えば，１番目のパスは，Cドライブの中にある”Program Files”というフォルダのパスを表す．
-また，2番目のパスは”test.txt”というファイルのパスを表す．
-3番目は先頭の文字が”G”となっているが，これはGoogle Driveのパスを表している．</p>
+<p>ここで，それぞれのパスの先頭には&quot;C&quot;や&quot;G&quot;などの文字が付いている．
+これは，最も上の階層であるドライブ名を表す文字で，エクスプローラーを開いてナビゲーションウィンドウからPCアイコンをクリックすると表示される［例えば，&quot;C&quot;はCドライブを意味し，ローカルディスク（C:）と表示されているものに対応する］．
+また，フォルダの階層の区切りは&quot;¥&quot;（またはバックスラッシュ&quot;\&quot;）によって表されており，&quot;¥&quot;の隣にはフォルダの名前が記載されている．
+例えば，１番目のパスは，Cドライブの中にある&quot;Program Files&quot;というフォルダのパスを表す．
+また，2番目のパスは&quot;test.txt&quot;というファイルのパスを表す．
+3番目は先頭の文字が&quot;G&quot;となっているが，これはGoogle Driveのパスを表している．</p>
 </section>
 <section id="id4">
-<h3><span class="section-number">2.4.2. </span>パスの取得方法<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.4.2. </span>パスの取得方法<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>Windowsでは，パスをコピーしたいファイルやフォルダに対し，shiftキーを押しながら右クリックし「パスのコピー」を選択すればよい．</p>
 </section>
 <section id="windowspython">
-<h3><span class="section-number">2.4.3. </span>WindowsのPythonでパスを指定する際の注意<a class="headerlink" href="#windowspython" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.4.3. </span>WindowsのPythonでパスを指定する際の注意<a class="headerlink" href="#windowspython" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>Windows環境においてパスをコピーして貼り付けると
 <code class="docutils literal notranslate"><span class="pre">&quot;C:\Users\username\OneDrive\sport_data&quot;</span></code>
-のように区切り文字がバックスラッシュ”&quot;または”¥”になるはずである．
-ところが，pythonではバックスラッシュ”&quot;と文字を組み合わせたエスケープシーケンスいう特別な文字列が存在し，例えば，”\n”は改行，”\t”はタブを表すエスケープシーケンスである．
-これにより，上の例の中にある”\t”の部分はパスの区切りではなくエスケープシーケンスとして認識され，エラーが出ることがある（特に，pythonでファイルの入出力を行うとき）．</p>
+のように区切り文字がバックスラッシュ&quot;\&quot;または&quot;¥&quot;になるはずである．
+ところが，pythonではバックスラッシュ&quot;\&quot;と文字を組み合わせたエスケープシーケンスいう特別な文字列が存在し，例えば，&quot;\n&quot;は改行，&quot;\t&quot;はタブを表すエスケープシーケンスである．
+これにより，上の例の中にある&quot;\t&quot;の部分はパスの区切りではなくエスケープシーケンスとして認識され，エラーが出ることがある（特に，pythonでファイルの入出力を行うとき）．</p>
 <p>これを回避するには以下の方法がある：</p>
 <ol class="simple">
-<li><p>［推奨］r”C:\Users\username\OneDrive\sport_data”とする（raw文字列）</p></li>
-<li><p>バックスラッシュ”&quot;をスラッシュ”/”に書き換える</p></li>
-<li><p>バックスラッシュ”&quot;を”\”に書き換える</p></li>
+<li><p>［推奨］r&quot;C:\Users\username\OneDrive\sport_data&quot;とする（raw文字列）</p></li>
+<li><p>バックスラッシュ&quot;\&quot;をスラッシュ&quot;/&quot;に書き換える</p></li>
+<li><p>バックスラッシュ&quot;\&quot;を&quot;\\&quot;に書き換える</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -807,7 +808,7 @@ G:¥マイドライブ
 </div>
 </section>
 <section id="id5">
-<h3><span class="section-number">2.4.4. </span>絶対パスと相対パス<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.4.4. </span>絶対パスと相対パス<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>まず，以下のようなプログラムをPythonスクリプト（<a class="reference external" href="http://test.py">test.py</a>）に保存する（<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1htV_JZw26qMvnefhc1YGZfhZCiYMojmk">ダウンロードはこちら</a>）．</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
@@ -840,24 +841,24 @@ G:¥マイドライブ
 <span class="o">%</span><span class="n">run</span> <span class="s2">&quot;./2_environment/test.py&quot;</span>             <span class="c1"># 実行</span>
 </pre></div>
 </div>
-<p>2つ目の方法では，まず<code class="docutils literal notranslate"><span class="pre">os.chdir</span></code>コマンドで<code class="docutils literal notranslate"><span class="pre">&quot;C:/Users/username/OneDrive/sport_data&quot;</span></code>という作業フォルダに移動してから，さらに”./2_environment/test.py”を実行している．
+<p>2つ目の方法では，まず<code class="docutils literal notranslate"><span class="pre">os.chdir</span></code>コマンドで<code class="docutils literal notranslate"><span class="pre">&quot;C:/Users/username/OneDrive/sport_data&quot;</span></code>という作業フォルダに移動してから，さらに&quot;./2_environment/test.py&quot;を実行している．
 このとき，現在の居場所（今の場合は[sport_data]フォルダ）のことをカレントディレクトリと呼ぶ．
-また，スクリプトファイルのパスは”./2_environment/test.py”のように指定されるが，これを<strong>相対パス</strong>と呼ぶ．
-相対パスは，カレントディレクトリからの相対的な位置関係を表しており，”.”というのがカレントディレクトリのパスを表す省略記号である．
+また，スクリプトファイルのパスは&quot;./2_environment/test.py&quot;のように指定されるが，これを<strong>相対パス</strong>と呼ぶ．
+相対パスは，カレントディレクトリからの相対的な位置関係を表しており，&quot;.&quot;というのがカレントディレクトリのパスを表す省略記号である．
 相対パスを用いると，パスが短くなるので便利であるが，カレントディレクトリがどこなのかを認識しておく必要がある．</p>
 </section>
 </section>
 <section id="jupyter-lab">
-<h2><span class="section-number">2.5. </span>Jupyter Lab<a class="headerlink" href="#jupyter-lab" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.5. </span>Jupyter Lab<a class="headerlink" href="#jupyter-lab" title="このヘッドラインへのパーマリンク">#</a></h2>
 <p>Anacondaをインストールすると，自動的にJupyter NotebookとJupyter Labが使えるようになる．
 本講義ではJupyter Labの方を用いる．</p>
 <section id="id6">
-<h3><span class="section-number">2.5.1. </span>Jupyter Labの起動方法<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.5.1. </span>Jupyter Labの起動方法<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">#</a></h3>
 <ol class="simple">
 <li><p>ターミナル（またはコマンドプロンプト）から起動</p>
 <ul class="simple">
 <li><p>次のコマンドを実行：<code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">lab</span> <span class="pre">&quot;起動ディレクトリのパス&quot;</span></code></p></li>
-<li><p>起動ディレクトリのパスは省略可（デフォルトでは”C:/Users/username”）</p></li>
+<li><p>起動ディレクトリのパスは省略可（デフォルトでは&quot;C:/Users/username&quot;）</p></li>
 </ul>
 </li>
 <li><p>Anaconda Navigatorから起動</p>
@@ -872,7 +873,7 @@ G:¥マイドライブ
 </ul>
 </section>
 <section id="ipynb">
-<h3><span class="section-number">2.5.2. </span>.ipynbファイルの起動方法<a class="headerlink" href="#ipynb" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.5.2. </span>.ipynbファイルの起動方法<a class="headerlink" href="#ipynb" title="このヘッドラインへのパーマリンク">#</a></h3>
 <ul class="simple">
 <li><p>.ipynbファイルをダウンロードし，作業フォルダに保存する．</p>
 <ul>
@@ -885,7 +886,7 @@ G:¥マイドライブ
 </ul>
 </section>
 <section id="id7">
-<h3><span class="section-number">2.5.3. </span>Jupyter Labの運用方法<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.5.3. </span>Jupyter Labの運用方法<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>Jupyter Labで作業する際には，以下の手順でカレントディレクトリを作業フォルダに変更しておくと良い：</p>
 <ol class="simple">
 <li><p>エクスプローラー上で，作業フォルダをshiftを押しながら右クリックし，パスのコピーを選択</p></li>
@@ -936,16 +937,16 @@ japanize_matplotlibがうまくインストールされていれば，ラベル�
 </ul>
 </section>
 <section id="id8">
-<h3><span class="section-number">2.5.4. </span>（参考）便利な機能<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.5.4. </span>（参考）便利な機能<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p><strong>Jupyterのconfigファイル</strong></p>
 <ul class="simple">
 <li><p>ターミナルで以下を実行する</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span> <span class="pre">--generate-config</span></code></p></li>
-<li><p>“C:\Users\username.jupyter”の中に”jupyter_notebook_config.py”というファイルができる．</p></li>
+<li><p>&quot;C:\Users\username\.jupyter&quot;の中に&quot;jupyter_notebook_config.py&quot;というファイルができる．</p></li>
 </ul>
 </li>
-<li><p>“jupyter_notebook_config.py”を開いて以下を追加</p>
+<li><p>&quot;jupyter_notebook_config.py&quot;を開いて以下を追加</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">c=get_config()</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">c.NotebookApp.notebook_dir=&quot;起動ディレクトリのパス&quot;</span></code></p></li>
@@ -959,10 +960,10 @@ japanize_matplotlibがうまくインストールされていれば，ラベル�
 <li><p>ターミナルで以下を実行する</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">ipython</span> <span class="pre">profile</span> <span class="pre">create</span> <span class="pre">profile_name</span></code></p></li>
-<li><p>“C:\Users\username.ipython\prifile_name”に”startup”フォルダが作成される．</p></li>
+<li><p>&quot;C:\Users\username.ipython\prifile_name&quot;に&quot;startup&quot;フォルダが作成される．</p></li>
 </ul>
 </li>
-<li><p>startupフォルダの中に”00.ipy”というファイル（スタートアップスクリプト）を作り，自動実行したいコマンドを記述する．</p></li>
+<li><p>startupフォルダの中に&quot;00.ipy&quot;というファイル（スタートアップスクリプト）を作り，自動実行したいコマンドを記述する．</p></li>
 <li><p>例えば，以下はよく使うので自動importしておくと良い</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -989,7 +990,7 @@ japanize_matplotlibがうまくインストールされていれば，ラベル�
     <span class="n">my_func</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>つまり，このPythonスクリプトのパスは”C:\Users\username\OneDrive\sport_data\module\my_module.py”となる．</p>
+<p>つまり，このPythonスクリプトのパスは&quot;C:\Users\username\OneDrive\sport_data\module\my_module.py&quot;となる．</p>
 <p>これを単にPythonスクリプトとして実行すると，<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__':</span></code>以下のコマンドが実行される：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">run</span> <span class="s2">&quot;./module/my_module.py&quot;</span>
 </pre></div>
@@ -1009,7 +1010,7 @@ japanize_matplotlibがうまくインストールされていれば，ラベル�
 </section>
 </section>
 <section id="windows-terminal">
-<h2><span class="section-number">2.6. </span>（任意）Windows Terminalのインストール<a class="headerlink" href="#windows-terminal" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.6. </span>（任意）Windows Terminalのインストール<a class="headerlink" href="#windows-terminal" title="このヘッドラインへのパーマリンク">#</a></h2>
 <p>プログラミングをする上でコマンドによる操作は避けて通れない．
 Windowsにはコマンドプロンプトというコマンドラインツールが搭載されているが，使いづらいのでWindows Terminalをインストールすることを推奨する．
 （コマンドプロンプトでも可）</p>
@@ -1020,8 +1021,8 @@ Windowsにはコマンドプロンプトというコマンドラインツール�
 </ul>
 <p><strong>設定</strong></p>
 <ul>
-<li><p>左下の検索をクリックし，”ターミナル”と検索</p></li>
-<li><p>検索結果の中から”ターミナル”を右クリックし”管理者として実行”</p></li>
+<li><p>左下の検索をクリックし，&quot;ターミナル&quot;と検索</p></li>
+<li><p>検索結果の中から&quot;ターミナル&quot;を右クリックし&quot;管理者として実行&quot;</p></li>
 <li><p>以下のコマンドを実行</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Set</span><span class="o">-</span><span class="n">ExecutionPolicy</span> <span class="n">RemoteSigned</span>
 </pre></div>
@@ -1034,9 +1035,9 @@ Windowsにはコマンドプロンプトというコマンドラインツール�
 </ul>
 </section>
 <section id="google-colab">
-<h2><span class="section-number">2.7. </span>（参考）Google Colab<a class="headerlink" href="#google-colab" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.7. </span>（参考）Google Colab<a class="headerlink" href="#google-colab" title="このヘッドラインへのパーマリンク">#</a></h2>
 <p>Google Colab（正式名称はGoogle Colaboratoty）はgoogleが提供するPython実行環境であり，Jupyter Notebookがベースになっている．
-実際，Google Colabで作成したノートブックは”.ipynb形式”で保存されるので，相互互換性がある．
+実際，Google Colabで作成したノートブックは&quot;.ipynb形式&quot;で保存されるので，相互互換性がある．
 Google Colabの特徴は以下の通りである：</p>
 <ul class="simple">
 <li><p>ブラウザ上で動作する</p></li>
@@ -1053,7 +1054,7 @@ Google Colabの特徴は以下の通りである：</p>
 また，GPUが無料で使用可能なので，重い計算を行う際にも重宝する．
 本講義では，基本的にJupyter Labを用いるが，Google Colabを用いても問題ない．</p>
 <section id="google-colabjupyter-notebook">
-<h3><span class="section-number">2.7.1. </span>Google colabでjupyter notebookを開く<a class="headerlink" href="#google-colabjupyter-notebook" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.7.1. </span>Google colabでjupyter notebookを開く<a class="headerlink" href="#google-colabjupyter-notebook" title="このヘッドラインへのパーマリンク">#</a></h3>
 <ul class="simple">
 <li><p>Google Driveを開いて作業フォルダに移動</p></li>
 <li><p>既存の<code class="docutils literal notranslate"><span class="pre">.ipynbファイル</span></code>を選択するとGoogle Colabが開く</p></li>
@@ -1065,7 +1066,7 @@ Google Colabの特徴は以下の通りである：</p>
 </ul>
 </section>
 <section id="import">
-<h3><span class="section-number">2.7.2. </span>必要なモジュールをimportする<a class="headerlink" href="#import" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.7.2. </span>必要なモジュールをimportする<a class="headerlink" href="#import" title="このヘッドラインへのパーマリンク">#</a></h3>
 <ul>
 <li><p>google colabにインストールされていないモジュール（japanize_matplotlibなど）</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install japanize-matplotlib
@@ -1081,7 +1082,7 @@ import japanize_matplotlib
 </ul>
 </section>
 <section id="google-drive">
-<h3><span class="section-number">2.7.3. </span>Google Driveをマウントする<a class="headerlink" href="#google-drive" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.7.3. </span>Google Driveをマウントする<a class="headerlink" href="#google-drive" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>Google Driveに保存した自作モジュールやファイルにアクセスしたい場合はGoogle Driveをマウントする必要がある．</p>
 <ul>
 <li><p>以下を実行する</p>
@@ -1095,7 +1096,7 @@ import japanize_matplotlib
 </ul>
 </section>
 <section id="id9">
-<h3><span class="section-number">2.7.4. </span>（任意）自作モジュールをimportする<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.7.4. </span>（任意）自作モジュールをimportする<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/content/drive/My Drive/***&#39;</span><span class="p">)</span>
 
@@ -1105,7 +1106,7 @@ import japanize_matplotlib
 <p>※ なお，自作モジュールの変更を反映したい場合は［ランタイムを出荷時設定にリセット］し，再度マウントする</p>
 </section>
 <section id="matplotlib">
-<h3><span class="section-number">2.7.5. </span>（任意）matplotlibのスタイルファイルを読み込む<a class="headerlink" href="#matplotlib" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.7.5. </span>（任意）matplotlibのスタイルファイルを読み込む<a class="headerlink" href="#matplotlib" title="このヘッドラインへのパーマリンク">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;/content/drive/My Drive/***/matplotlibrc&#39;</span><span class="p">)</span>
 </pre></div>
@@ -1141,16 +1142,16 @@ import japanize_matplotlib
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="1_introduction.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="1_introduction.html" title="前へ ページ">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-subtitle">前へ</p>
             <p class="prev-next-title"><span class="section-number">1. </span>イントロダクション</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="3_numpy.html" title="next page">
+    <a class='right-next' id="next-link" href="3_numpy.html" title="次へ ページ">
     <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-subtitle">次へ</p>
         <p class="prev-next-title"><span class="section-number">3. </span>NumPyの基礎</p>
     </div>
     <i class="fas fa-angle-right"></i>
@@ -1162,7 +1163,6 @@ import japanize_matplotlib
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-      &copy; Copyright 2022-present by 成塚拓真（Takuma Narizuka）.<br/>
     <div class="extra_footer">
       © Copyright 2022-present by 成塚拓真 (Takuma Narizuka). この作品は<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ja">CC BY-NC-ND 4.0</a>の下に提供する．</a>ただし，作品中のコードは<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供する．
 
