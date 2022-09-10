@@ -861,14 +861,14 @@ G:¥マイドライブ
 </ol>
 <p>このとき，ファイルのパスを指定する方法には以下の2通りが存在する．</p>
 <p><strong>1. 絶対パス</strong></p>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">run</span> <span class="s2">&quot;C:\Users\parar\OneDrive\sport_data</span><span class="se">\2</span><span class="s2">_environment</span><span class="se">\t</span><span class="s2">est.py&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">run</span> <span class="s2">&quot;C:\Users\parar\OneDrive\sport_data</span><span class="se">\2</span><span class="s2">_environment</span><span class="se">\t</span><span class="s2">est.py&quot;</span>
 </pre></div>
 </div>
 <p>この方法では，最も上の階層であるドライブ名（ここではCドライブ）から始まるパスを指定しており，これを<strong>絶対パス</strong>と呼ぶ．
 「パスのコピー」によって取得されるのはこの絶対パスである．
 よって，絶対パスを使っておけばエラーは出にくいが，PCの奥深くにあるフォルダだとパスが長くなるという問題がある．</p>
 <p><strong>2.相対パス</strong></p>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\parar\OneDrive\sport_data&quot;</span><span class="p">)</span> <span class="c1"># カレントディレクトリの移動</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\parar\OneDrive\sport_data&quot;</span><span class="p">)</span> <span class="c1"># カレントディレクトリの移動</span>
 <span class="o">%</span><span class="n">run</span> <span class="s2">&quot;./2_environment/test.py&quot;</span>             <span class="c1"># 実行</span>
 </pre></div>
 </div>
@@ -996,7 +996,7 @@ japanize_matplotlibがうまくインストールされていれば，ラベル�
 </li>
 <li><p>startupフォルダの中に”00.ipy”というファイル（スタートアップスクリプト）を作り，自動実行したいコマンドを記述する．</p></li>
 <li><p>例えば，以下はよく使うので自動importしておくと良い</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1023,19 +1023,19 @@ japanize_matplotlibがうまくインストールされていれば，ラベル�
 </div>
 <p>つまり，このPythonスクリプトのパスは”C:\Users\username\OneDrive\sport_data\module\my_module.py”となる．</p>
 <p>これを単にPythonスクリプトとして実行すると，<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__':</span></code>以下のコマンドが実行される：</p>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">run</span> <span class="s2">&quot;./module/my_module.py&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">run</span> <span class="s2">&quot;./module/my_module.py&quot;</span>
 </pre></div>
 </div>
 <p>一方，これをモジュールとしてインポートするには以下のようにする：</p>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">module.my_module</span> <span class="k">as</span> <span class="nn">mm</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">module.my_module</span> <span class="k">as</span> <span class="nn">mm</span>
 </pre></div>
 </div>
 <p>この状態で<code class="docutils literal notranslate"><span class="pre">my_module</span></code>内の関数<code class="docutils literal notranslate"><span class="pre">my_func()</span></code>を以下のように<code class="docutils literal notranslate"><span class="pre">mm.my_func()</span></code>として実行できる：</p>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">mm</span><span class="o">.</span><span class="n">my_func</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mm</span><span class="o">.</span><span class="n">my_func</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>スタートアップスクリプト内にautoreloadの設定を書いている場合は，ローカルで<code class="docutils literal notranslate"><span class="pre">my_module.py</span></code>を書き換えたら即座に変更内容が反映されるはずである．</p>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">mm</span><span class="o">.</span><span class="n">my_func</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mm</span><span class="o">.</span><span class="n">my_func</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
@@ -1051,14 +1051,15 @@ Windowsにはコマンドプロンプトというコマンドラインツール�
 <li><p>Windows11の場合は標準搭載されている．</p></li>
 </ul>
 <p><strong>設定</strong></p>
-<ul class="simple">
+<ul>
 <li><p>左下の検索をクリックし，”ターミナル”と検索</p></li>
 <li><p>検索結果の中から”ターミナル”を右クリックし”管理者として実行”</p></li>
-<li><p>以下のコマンドを実行</p></li>
-</ul>
+<li><p>以下のコマンドを実行</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Set</span><span class="o">-</span><span class="n">ExecutionPolicy</span> <span class="n">RemoteSigned</span>
 </pre></div>
 </div>
+</li>
+</ul>
 <p><strong>実行</strong></p>
 <ul class="simple">
 <li><p>タスクバーにピン留めしておいて，そこから実行すると良い</p></li>
