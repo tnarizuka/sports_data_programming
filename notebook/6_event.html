@@ -663,6 +663,18 @@ title="Print to PDF"
     <span class="kn">import</span> <span class="nn">japanize_matplotlib</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="k">pass</span>
+
+<span class="c1"># 表示設定</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.precision&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>    <span class="c1"># 小数点以下の表示桁</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>   <span class="c1"># 表示する行数の上限</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># 表示する列数の上限</span>
+<span class="o">%</span><span class="k">precision</span> 3
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;%.3f&#39;
 </pre></div>
 </div>
 </div>
@@ -670,7 +682,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># （必須）カレントディレクトリの変更（自分の作業フォルダのパスをコピーして入力する）</span>
-<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\parar\OneDrive\sport_data&quot;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -922,13 +934,7 @@ Pappalardoデータセットには，各試合のイベントログの他，下�
       <th></th>
       <th>game_id</th>
       <th>league</th>
-      <th>section</th>
-      <th>date</th>
-      <th>venue</th>
-      <th>away</th>
-      <th>away_id</th>
-      <th>home</th>
-      <th>home_id</th>
+      <th>...</th>
       <th>away_score</th>
       <th>home_score</th>
     </tr>
@@ -938,13 +944,7 @@ Pappalardoデータセットには，各試合のイベントログの他，下�
       <th>0</th>
       <td>2499719</td>
       <td>England</td>
-      <td>1</td>
-      <td>2017-08-11</td>
-      <td>Emirates_Stadium</td>
-      <td>Leicester_City</td>
-      <td>1631</td>
-      <td>Arsenal</td>
-      <td>1609</td>
+      <td>...</td>
       <td>3</td>
       <td>4</td>
     </tr>
@@ -952,18 +952,13 @@ Pappalardoデータセットには，各試合のイベントログの他，下�
       <th>1</th>
       <td>2499723</td>
       <td>England</td>
-      <td>1</td>
-      <td>2017-08-12</td>
-      <td>Goodison_Park</td>
-      <td>Stoke_City</td>
-      <td>1639</td>
-      <td>Everton</td>
-      <td>1623</td>
+      <td>...</td>
       <td>0</td>
       <td>1</td>
     </tr>
   </tbody>
 </table>
+<p>2 rows × 11 columns</p>
 </div></div></div>
 </div>
 <p>このデータの各行には2017年度ヨーロッパリーグで行われた試合の情報が収められている．
@@ -1513,8 +1508,7 @@ Arsenal
       <th></th>
       <th>name</th>
       <th>team_id</th>
-      <th>gf</th>
-      <th>ga</th>
+      <th>...</th>
       <th>gd</th>
       <th>pt</th>
     </tr>
@@ -1524,13 +1518,13 @@ Arsenal
       <th>0</th>
       <td>Arsenal</td>
       <td>1609</td>
-      <td>74</td>
-      <td>51</td>
+      <td>...</td>
       <td>23</td>
       <td>63</td>
     </tr>
   </tbody>
 </table>
+<p>1 rows × 6 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -1626,8 +1620,7 @@ Arsenal
       <th></th>
       <th>name</th>
       <th>team_id</th>
-      <th>gf</th>
-      <th>ga</th>
+      <th>...</th>
       <th>gd</th>
       <th>pt</th>
     </tr>
@@ -1637,8 +1630,7 @@ Arsenal
       <th>0</th>
       <td>Manchester_City</td>
       <td>1625</td>
-      <td>106</td>
-      <td>27</td>
+      <td>...</td>
       <td>79</td>
       <td>100</td>
     </tr>
@@ -1646,8 +1638,7 @@ Arsenal
       <th>1</th>
       <td>Manchester_United</td>
       <td>1611</td>
-      <td>68</td>
-      <td>28</td>
+      <td>...</td>
       <td>40</td>
       <td>81</td>
     </tr>
@@ -1655,8 +1646,7 @@ Arsenal
       <th>2</th>
       <td>Tottenham_Hotspur</td>
       <td>1624</td>
-      <td>74</td>
-      <td>36</td>
+      <td>...</td>
       <td>38</td>
       <td>77</td>
     </tr>
@@ -1664,8 +1654,7 @@ Arsenal
       <th>3</th>
       <td>Liverpool</td>
       <td>1612</td>
-      <td>84</td>
-      <td>38</td>
+      <td>...</td>
       <td>46</td>
       <td>75</td>
     </tr>
@@ -1673,8 +1662,7 @@ Arsenal
       <th>4</th>
       <td>Chelsea</td>
       <td>1610</td>
-      <td>62</td>
-      <td>38</td>
+      <td>...</td>
       <td>24</td>
       <td>70</td>
     </tr>
@@ -1682,8 +1670,7 @@ Arsenal
       <th>5</th>
       <td>Arsenal</td>
       <td>1609</td>
-      <td>74</td>
-      <td>51</td>
+      <td>...</td>
       <td>23</td>
       <td>63</td>
     </tr>
@@ -1691,8 +1678,7 @@ Arsenal
       <th>6</th>
       <td>Burnley</td>
       <td>1646</td>
-      <td>36</td>
-      <td>39</td>
+      <td>...</td>
       <td>-3</td>
       <td>54</td>
     </tr>
@@ -1700,8 +1686,7 @@ Arsenal
       <th>7</th>
       <td>Everton</td>
       <td>1623</td>
-      <td>44</td>
-      <td>58</td>
+      <td>...</td>
       <td>-14</td>
       <td>49</td>
     </tr>
@@ -1709,8 +1694,7 @@ Arsenal
       <th>8</th>
       <td>Leicester_City</td>
       <td>1631</td>
-      <td>56</td>
-      <td>60</td>
+      <td>...</td>
       <td>-4</td>
       <td>47</td>
     </tr>
@@ -1718,8 +1702,7 @@ Arsenal
       <th>9</th>
       <td>AFC_Bournemouth</td>
       <td>1659</td>
-      <td>45</td>
-      <td>61</td>
+      <td>...</td>
       <td>-16</td>
       <td>44</td>
     </tr>
@@ -1727,8 +1710,7 @@ Arsenal
       <th>10</th>
       <td>Crystal_Palace</td>
       <td>1628</td>
-      <td>45</td>
-      <td>55</td>
+      <td>...</td>
       <td>-10</td>
       <td>44</td>
     </tr>
@@ -1736,8 +1718,7 @@ Arsenal
       <th>11</th>
       <td>Newcastle_United</td>
       <td>1613</td>
-      <td>39</td>
-      <td>47</td>
+      <td>...</td>
       <td>-8</td>
       <td>44</td>
     </tr>
@@ -1745,8 +1726,7 @@ Arsenal
       <th>12</th>
       <td>West_Ham_United</td>
       <td>1633</td>
-      <td>48</td>
-      <td>68</td>
+      <td>...</td>
       <td>-20</td>
       <td>42</td>
     </tr>
@@ -1754,8 +1734,7 @@ Arsenal
       <th>13</th>
       <td>Watford</td>
       <td>1644</td>
-      <td>44</td>
-      <td>64</td>
+      <td>...</td>
       <td>-20</td>
       <td>41</td>
     </tr>
@@ -1763,8 +1742,7 @@ Arsenal
       <th>14</th>
       <td>Brighton_&amp;_Hove_Albion</td>
       <td>1651</td>
-      <td>34</td>
-      <td>54</td>
+      <td>...</td>
       <td>-20</td>
       <td>40</td>
     </tr>
@@ -1772,8 +1750,7 @@ Arsenal
       <th>15</th>
       <td>Huddersfield_Town</td>
       <td>1673</td>
-      <td>28</td>
-      <td>58</td>
+      <td>...</td>
       <td>-30</td>
       <td>37</td>
     </tr>
@@ -1781,8 +1758,7 @@ Arsenal
       <th>16</th>
       <td>Southampton</td>
       <td>1619</td>
-      <td>37</td>
-      <td>56</td>
+      <td>...</td>
       <td>-19</td>
       <td>36</td>
     </tr>
@@ -1790,8 +1766,7 @@ Arsenal
       <th>17</th>
       <td>Stoke_City</td>
       <td>1639</td>
-      <td>35</td>
-      <td>68</td>
+      <td>...</td>
       <td>-33</td>
       <td>33</td>
     </tr>
@@ -1799,8 +1774,7 @@ Arsenal
       <th>18</th>
       <td>Swansea_City</td>
       <td>10531</td>
-      <td>28</td>
-      <td>56</td>
+      <td>...</td>
       <td>-28</td>
       <td>33</td>
     </tr>
@@ -1808,13 +1782,13 @@ Arsenal
       <th>19</th>
       <td>West_Bromwich_Albion</td>
       <td>1627</td>
-      <td>31</td>
-      <td>56</td>
+      <td>...</td>
       <td>-25</td>
       <td>31</td>
     </tr>
   </tbody>
 </table>
+<p>20 rows × 6 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -1835,22 +1809,24 @@ Arsenal
 <p><strong>二項分布からポアソン分布へ</strong></p>
 <p>成功確率が<span class="math notranslate nohighlight">\(p\)</span>の試行を独立に<span class="math notranslate nohighlight">\(n\)</span>回繰り返すことを考える．
 例えば，サイコロを振って特定の目が出ることを成功とすると，<span class="math notranslate nohighlight">\(p=1/6\)</span>である．
-いま，<span class="math notranslate nohighlight">\(n\)</span>回中<span class="math notranslate nohighlight">\(x\)</span>回成功する確率を<span class="math notranslate nohighlight">\(f(x)\)</span>とすると，<span class="math notranslate nohighlight">\(f(x)\)</span>は二項分布
-$<span class="math notranslate nohighlight">\(
+いま，<span class="math notranslate nohighlight">\(n\)</span>回中<span class="math notranslate nohighlight">\(x\)</span>回成功する確率を<span class="math notranslate nohighlight">\(f(x)\)</span>とすると，<span class="math notranslate nohighlight">\(f(x)\)</span>は二項分布</p>
+<div class="math notranslate nohighlight">
+\[
     f(x) = \binom{n}{x}p^{x}(1-p)^{n-x}
-\)</span><span class="math notranslate nohighlight">\(
-になることが知られている．
-この式において，\)</span> p^{x}(1-p)^{n-x} <span class="math notranslate nohighlight">\(は成功が\)</span> x <span class="math notranslate nohighlight">\(回，失敗が\)</span> n-x <span class="math notranslate nohighlight">\(回生じる確率を意味する．
-また，\)</span> \binom{n}{x} <span class="math notranslate nohighlight">\(は\)</span> n <span class="math notranslate nohighlight">\(個から\)</span> x <span class="math notranslate nohighlight">\(を取り出す組み合わせの数\)</span> <em>{n}C</em>{x} <span class="math notranslate nohighlight">\(を表し，\)</span> n $回の中で何回目に成功するかの場合の数に対応する．</p>
+\]</div>
+<p>になることが知られている．
+この式において，<span class="math notranslate nohighlight">\( p^{x}(1-p)^{n-x} \)</span>は成功が<span class="math notranslate nohighlight">\( x \)</span>回，失敗が<span class="math notranslate nohighlight">\( n-x \)</span>回生じる確率を意味する．
+また，<span class="math notranslate nohighlight">\( \binom{n}{x} \)</span>は<span class="math notranslate nohighlight">\( n \)</span>個から<span class="math notranslate nohighlight">\( x \)</span>を取り出す組み合わせの数<span class="math notranslate nohighlight">\( _{n}C_{x} \)</span>を表し，<span class="math notranslate nohighlight">\( n \)</span>回の中で何回目に成功するかの場合の数に対応する．</p>
 <p>いま，成功確率<span class="math notranslate nohighlight">\( p \)</span>が小さく，かつ試行回数<span class="math notranslate nohighlight">\( n \)</span>が大きい極限を考える．
 ただし，極限を取る際に発散しないように平均値が一定値<span class="math notranslate nohighlight">\( np=m \)</span>になるようにする．
-このような条件で<span class="math notranslate nohighlight">\(n\)</span>回中<span class="math notranslate nohighlight">\(x\)</span>回成功する確率<span class="math notranslate nohighlight">\(f(x)\)</span>は，二項分布の式に<span class="math notranslate nohighlight">\( np=m \)</span>を代入し，極限<span class="math notranslate nohighlight">\( p\to 0,\ n\to \infty \)</span>を取ることで
-$<span class="math notranslate nohighlight">\(
+このような条件で<span class="math notranslate nohighlight">\(n\)</span>回中<span class="math notranslate nohighlight">\(x\)</span>回成功する確率<span class="math notranslate nohighlight">\(f(x)\)</span>は，二項分布の式に<span class="math notranslate nohighlight">\( np=m \)</span>を代入し，極限<span class="math notranslate nohighlight">\( p\to 0,\ n\to \infty \)</span>を取ることで</p>
+<div class="math notranslate nohighlight">
+\[
 f(x) = \frac{m^{x}}{x!} \mathrm{e}^{-m}
-\)</span><span class="math notranslate nohighlight">\(
-と求まる．
-これを**ポアソン分布**と呼ぶ．
-ポアソン分布は1つのパラメータ\)</span> m <span class="math notranslate nohighlight">\(だけで特徴づけられ，**期待値と分散はともに\)</span> m $となる**．
+\]</div>
+<p>と求まる．
+これを<strong>ポアソン分布</strong>と呼ぶ．
+ポアソン分布は1つのパラメータ<span class="math notranslate nohighlight">\( m \)</span>だけで特徴づけられ，<strong>期待値と分散はともに<span class="math notranslate nohighlight">\( m \)</span>となる</strong>．
 ポアソン分布はその導出過程より，<strong>一定の期間内に発生確率の小さい稀な現象を多数回試行（観測）した場合に，その発生回数が従う分布である</strong>．
 実際，以下の現象は全てポアソン分布に従うことが知られている：</p>
 <ul class="simple">
@@ -1896,13 +1872,7 @@ f(x) = \frac{m^{x}}{x!} \mathrm{e}^{-m}
       <th></th>
       <th>game_id</th>
       <th>league</th>
-      <th>section</th>
-      <th>date</th>
-      <th>venue</th>
-      <th>away</th>
-      <th>away_id</th>
-      <th>home</th>
-      <th>home_id</th>
+      <th>...</th>
       <th>away_score</th>
       <th>home_score</th>
     </tr>
@@ -1912,13 +1882,7 @@ f(x) = \frac{m^{x}}{x!} \mathrm{e}^{-m}
       <th>0</th>
       <td>2499719</td>
       <td>England</td>
-      <td>1</td>
-      <td>2017-08-11</td>
-      <td>Emirates_Stadium</td>
-      <td>Leicester_City</td>
-      <td>1631</td>
-      <td>Arsenal</td>
-      <td>1609</td>
+      <td>...</td>
       <td>3</td>
       <td>4</td>
     </tr>
@@ -1926,18 +1890,13 @@ f(x) = \frac{m^{x}}{x!} \mathrm{e}^{-m}
       <th>1</th>
       <td>2499723</td>
       <td>England</td>
-      <td>1</td>
-      <td>2017-08-12</td>
-      <td>Goodison_Park</td>
-      <td>Stoke_City</td>
-      <td>1639</td>
-      <td>Everton</td>
-      <td>1623</td>
+      <td>...</td>
       <td>0</td>
       <td>1</td>
     </tr>
   </tbody>
 </table>
+<p>2 rows × 11 columns</p>
 </div></div></div>
 </div>
 <p>この得点データを用いて，リーグごとにアウェイチームとホームチームの得点傾向を調べてみよう．
@@ -1957,11 +1916,11 @@ f(x) = \frac{m^{x}}{x!} \mathrm{e}^{-m}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>away_score    1.147368
-home_score    1.531579
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>away_score    1.147
+home_score    1.532
 dtype: float64
-away_score    1.387196
-home_score    1.795834
+away_score    1.387
+home_score    1.796
 dtype: float64
 </pre></div>
 </div>
@@ -1976,11 +1935,11 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>away_score    1.189474
-home_score    1.528947
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>away_score    1.189
+home_score    1.529
 dtype: float64
-away_score    1.267435
-home_score    1.817102
+away_score    1.267
+home_score    1.817
 dtype: float64
 </pre></div>
 </div>
@@ -1995,11 +1954,11 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>away_score    1.192810
-home_score    1.601307
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>away_score    1.193
+home_score    1.601
 dtype: float64
-away_score    1.290571
-home_score    1.643802
+away_score    1.291
+home_score    1.644
 dtype: float64
 </pre></div>
 </div>
@@ -2014,11 +1973,11 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>away_score    1.221053
-home_score    1.455263
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>away_score    1.221
+home_score    1.455
 dtype: float64
-away_score    1.412748
-home_score    1.720948
+away_score    1.413
+home_score    1.721
 dtype: float64
 </pre></div>
 </div>
@@ -2033,11 +1992,11 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>away_score    1.147368
-home_score    1.547368
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>away_score    1.147
+home_score    1.547
 dtype: float64
-away_score    1.408304
-home_score    1.900125
+away_score    1.408
+home_score    1.900
 dtype: float64
 </pre></div>
 </div>
@@ -2069,7 +2028,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_68_0.png" src="../_images/6_event_68_0.png" />
+<img alt="../_images/6_event_69_0.png" src="../_images/6_event_69_0.png" />
 </div>
 </div>
 <p>次に，上のヒストグラムがポアソン分布に従っているか調べるため，試合データから求めた平均値をパラメータとするポアソン分布を描いてみる．
@@ -2090,10 +2049,10 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x13eba5730&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1c671e6a0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/6_event_70_1.png" src="../_images/6_event_70_1.png" />
+<img alt="../_images/6_event_71_1.png" src="../_images/6_event_71_1.png" />
 </div>
 </div>
 <p>上のグラフを見比べると，確かに似た分布になっていることが分かる．
@@ -2123,7 +2082,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_72_0.png" src="../_images/6_event_72_0.png" />
+<img alt="../_images/6_event_73_0.png" src="../_images/6_event_73_0.png" />
 </div>
 </div>
 <p>実データ（棒グラフ）とポアソン分布（折れ線）の概形はおおよそ一致していることが分かる．
@@ -2285,16 +2244,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th></th>
       <th>id</th>
       <th>game_id</th>
-      <th>half</th>
-      <th>t</th>
-      <th>team_id</th>
-      <th>player_id</th>
-      <th>event</th>
-      <th>event_id</th>
-      <th>subevent</th>
-      <th>subevent_id</th>
-      <th>x1</th>
-      <th>y1</th>
+      <th>...</th>
       <th>x2</th>
       <th>y2</th>
     </tr>
@@ -2304,16 +2254,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>0</th>
       <td>177959171</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>2.758649</td>
-      <td>1609</td>
-      <td>25413</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>simple_pass</td>
-      <td>85.0</td>
-      <td>49.0</td>
-      <td>49.0</td>
+      <td>...</td>
       <td>31.0</td>
       <td>78.0</td>
     </tr>
@@ -2321,16 +2262,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>1</th>
       <td>177959172</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>4.946850</td>
-      <td>1609</td>
-      <td>370224</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>high_pass</td>
-      <td>83.0</td>
-      <td>31.0</td>
-      <td>78.0</td>
+      <td>...</td>
       <td>51.0</td>
       <td>75.0</td>
     </tr>
@@ -2338,16 +2270,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>2</th>
       <td>177959173</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>6.542188</td>
-      <td>1609</td>
-      <td>3319</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>head_pass</td>
-      <td>82.0</td>
-      <td>51.0</td>
-      <td>75.0</td>
+      <td>...</td>
       <td>35.0</td>
       <td>71.0</td>
     </tr>
@@ -2355,16 +2278,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>3</th>
       <td>177959174</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>8.143395</td>
-      <td>1609</td>
-      <td>120339</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>head_pass</td>
-      <td>82.0</td>
-      <td>35.0</td>
-      <td>71.0</td>
+      <td>...</td>
       <td>41.0</td>
       <td>95.0</td>
     </tr>
@@ -2372,21 +2286,13 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>4</th>
       <td>177959175</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>10.302366</td>
-      <td>1609</td>
-      <td>167145</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>simple_pass</td>
-      <td>85.0</td>
-      <td>41.0</td>
-      <td>95.0</td>
+      <td>...</td>
       <td>72.0</td>
       <td>88.0</td>
     </tr>
   </tbody>
 </table>
+<p>5 rows × 14 columns</p>
 </div></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">EV</span></code>には380試合分のイベントログが含まれており，その行数は643150にのぼる．
@@ -2484,7 +2390,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$Y$&#39;)
 </pre></div>
 </div>
-<img alt="../_images/6_event_90_1.png" src="../_images/6_event_90_1.png" />
+<img alt="../_images/6_event_91_1.png" src="../_images/6_event_91_1.png" />
 </div>
 </div>
 <p><strong>イベントタグ</strong></p>
@@ -2515,23 +2421,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th></th>
       <th>id</th>
       <th>goal</th>
-      <th>own_goal</th>
-      <th>opportunity</th>
-      <th>assist</th>
-      <th>keypass</th>
-      <th>left</th>
-      <th>right</th>
-      <th>head/body</th>
-      <th>free_space_r</th>
       <th>...</th>
-      <th>interception</th>
-      <th>sliding_tackle</th>
-      <th>red_card</th>
-      <th>yellow_card</th>
-      <th>second_yellow_card</th>
-      <th>accurate</th>
-      <th>not_accurate</th>
-      <th>counter_attack</th>
       <th>dangerous_ball_lost</th>
       <th>blocked</th>
     </tr>
@@ -2541,23 +2431,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>0</th>
       <td>177959171</td>
       <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -2565,23 +2439,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>1</th>
       <td>177959172</td>
       <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -2589,23 +2447,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>2</th>
       <td>177959173</td>
       <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -2613,23 +2455,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>3</th>
       <td>177959174</td>
       <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -2637,23 +2463,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>4</th>
       <td>177959175</td>
       <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -2740,16 +2550,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th></th>
       <th>id</th>
       <th>game_id</th>
-      <th>half</th>
-      <th>t</th>
-      <th>team_id</th>
-      <th>player_id</th>
-      <th>event</th>
-      <th>event_id</th>
-      <th>subevent</th>
-      <th>subevent_id</th>
-      <th>x1</th>
-      <th>y1</th>
+      <th>...</th>
       <th>x2</th>
       <th>y2</th>
     </tr>
@@ -2759,16 +2560,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>0</th>
       <td>177959171</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>2.758649</td>
-      <td>1609</td>
-      <td>25413</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>simple_pass</td>
-      <td>85.0</td>
-      <td>49.0</td>
-      <td>49.0</td>
+      <td>...</td>
       <td>31.0</td>
       <td>78.0</td>
     </tr>
@@ -2776,16 +2568,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>1</th>
       <td>177959172</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>4.946850</td>
-      <td>1609</td>
-      <td>370224</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>high_pass</td>
-      <td>83.0</td>
-      <td>31.0</td>
-      <td>78.0</td>
+      <td>...</td>
       <td>51.0</td>
       <td>75.0</td>
     </tr>
@@ -2793,16 +2576,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>2</th>
       <td>177959173</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>6.542188</td>
-      <td>1609</td>
-      <td>3319</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>head_pass</td>
-      <td>82.0</td>
-      <td>51.0</td>
-      <td>75.0</td>
+      <td>...</td>
       <td>35.0</td>
       <td>71.0</td>
     </tr>
@@ -2810,16 +2584,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>3</th>
       <td>177959174</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>8.143395</td>
-      <td>1609</td>
-      <td>120339</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>head_pass</td>
-      <td>82.0</td>
-      <td>35.0</td>
-      <td>71.0</td>
+      <td>...</td>
       <td>41.0</td>
       <td>95.0</td>
     </tr>
@@ -2827,21 +2592,13 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>4</th>
       <td>177959175</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>10.302366</td>
-      <td>1609</td>
-      <td>167145</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>simple_pass</td>
-      <td>85.0</td>
-      <td>41.0</td>
-      <td>95.0</td>
+      <td>...</td>
       <td>72.0</td>
       <td>88.0</td>
     </tr>
   </tbody>
 </table>
+<p>5 rows × 14 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -2871,23 +2628,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th></th>
       <th>id</th>
       <th>goal</th>
-      <th>own_goal</th>
-      <th>opportunity</th>
-      <th>assist</th>
-      <th>keypass</th>
-      <th>left</th>
-      <th>right</th>
-      <th>head/body</th>
-      <th>free_space_r</th>
       <th>...</th>
-      <th>interception</th>
-      <th>sliding_tackle</th>
-      <th>red_card</th>
-      <th>yellow_card</th>
-      <th>second_yellow_card</th>
-      <th>accurate</th>
-      <th>not_accurate</th>
-      <th>counter_attack</th>
       <th>dangerous_ball_lost</th>
       <th>blocked</th>
     </tr>
@@ -2897,23 +2638,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>0</th>
       <td>177959171</td>
       <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -2921,23 +2646,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>1</th>
       <td>177959172</td>
       <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -2945,23 +2654,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>2</th>
       <td>177959173</td>
       <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -2969,23 +2662,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>3</th>
       <td>177959174</td>
       <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -2993,23 +2670,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>4</th>
       <td>177959175</td>
       <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -3046,16 +2707,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th></th>
       <th>id</th>
       <th>game_id</th>
-      <th>half</th>
-      <th>t</th>
-      <th>team_id</th>
-      <th>player_id</th>
-      <th>event</th>
-      <th>event_id</th>
-      <th>subevent</th>
-      <th>subevent_id</th>
-      <th>x1</th>
-      <th>y1</th>
+      <th>...</th>
       <th>x2</th>
       <th>y2</th>
     </tr>
@@ -3065,16 +2717,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>896</th>
       <td>177960132</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>2814.014522</td>
-      <td>1631</td>
-      <td>8653</td>
-      <td>others_on_the_ball</td>
-      <td>7</td>
-      <td>touch</td>
-      <td>72.0</td>
-      <td>14.0</td>
-      <td>49.0</td>
+      <td>...</td>
       <td>11.0</td>
       <td>61.0</td>
     </tr>
@@ -3082,16 +2725,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>897</th>
       <td>177960129</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>2814.484544</td>
-      <td>1609</td>
-      <td>14869</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>simple_pass</td>
-      <td>85.0</td>
-      <td>89.0</td>
-      <td>39.0</td>
+      <td>...</td>
       <td>92.0</td>
       <td>50.0</td>
     </tr>
@@ -3099,16 +2733,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>898</th>
       <td>177960130</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>2815.900791</td>
-      <td>1609</td>
-      <td>7945</td>
-      <td>shot</td>
-      <td>10</td>
-      <td>shot</td>
-      <td>100.0</td>
-      <td>92.0</td>
-      <td>50.0</td>
+      <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -3116,16 +2741,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>899</th>
       <td>177960121</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>2817.604704</td>
-      <td>1631</td>
-      <td>8480</td>
-      <td>save_attempt</td>
-      <td>9</td>
-      <td>reflexes</td>
-      <td>90.0</td>
-      <td>100.0</td>
-      <td>100.0</td>
+      <td>...</td>
       <td>8.0</td>
       <td>50.0</td>
     </tr>
@@ -3133,21 +2749,13 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>900</th>
       <td>177960127</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>2852.557381</td>
-      <td>1631</td>
-      <td>14853</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>simple_pass</td>
-      <td>85.0</td>
-      <td>31.0</td>
-      <td>24.0</td>
+      <td>...</td>
       <td>100.0</td>
       <td>100.0</td>
     </tr>
   </tbody>
 </table>
+<p>5 rows × 14 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -3178,16 +2786,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th></th>
       <th>id</th>
       <th>game_id</th>
-      <th>half</th>
-      <th>t</th>
-      <th>team_id</th>
-      <th>player_id</th>
-      <th>event</th>
-      <th>event_id</th>
-      <th>subevent</th>
-      <th>subevent_id</th>
-      <th>x1</th>
-      <th>y1</th>
+      <th>...</th>
       <th>x2</th>
       <th>y2</th>
     </tr>
@@ -3197,16 +2796,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>6</th>
       <td>177959186</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>13.961228</td>
-      <td>1631</td>
-      <td>8653</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>head_pass</td>
-      <td>82.0</td>
-      <td>23.0</td>
-      <td>25.0</td>
+      <td>...</td>
       <td>39.0</td>
       <td>15.0</td>
     </tr>
@@ -3214,16 +2804,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>7</th>
       <td>177959189</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>14.765321</td>
-      <td>1631</td>
-      <td>8013</td>
-      <td>duel</td>
-      <td>1</td>
-      <td>air_duel</td>
-      <td>10.0</td>
-      <td>39.0</td>
-      <td>15.0</td>
+      <td>...</td>
       <td>33.0</td>
       <td>20.0</td>
     </tr>
@@ -3231,16 +2812,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>8</th>
       <td>177961218</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>14.765321</td>
-      <td>1609</td>
-      <td>0</td>
-      <td>duel</td>
-      <td>1</td>
-      <td>air_duel</td>
-      <td>10.0</td>
-      <td>61.0</td>
-      <td>85.0</td>
+      <td>...</td>
       <td>67.0</td>
       <td>80.0</td>
     </tr>
@@ -3248,16 +2820,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>9</th>
       <td>177959178</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>15.320341</td>
-      <td>1609</td>
-      <td>167145</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>head_pass</td>
-      <td>82.0</td>
-      <td>67.0</td>
-      <td>80.0</td>
+      <td>...</td>
       <td>59.0</td>
       <td>61.0</td>
     </tr>
@@ -3265,21 +2828,13 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>10</th>
       <td>177959179</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>18.051875</td>
-      <td>1609</td>
-      <td>49876</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>head_pass</td>
-      <td>82.0</td>
-      <td>59.0</td>
-      <td>61.0</td>
+      <td>...</td>
       <td>45.0</td>
       <td>45.0</td>
     </tr>
   </tbody>
 </table>
+<p>5 rows × 14 columns</p>
 </div></div></div>
 </div>
 <p><strong>特定のイベントの抽出</strong></p>
@@ -3314,16 +2869,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th></th>
       <th>id</th>
       <th>game_id</th>
-      <th>half</th>
-      <th>t</th>
-      <th>team_id</th>
-      <th>player_id</th>
-      <th>event</th>
-      <th>event_id</th>
-      <th>subevent</th>
-      <th>subevent_id</th>
-      <th>x1</th>
-      <th>y1</th>
+      <th>...</th>
       <th>x2</th>
       <th>y2</th>
     </tr>
@@ -3333,16 +2879,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>0</th>
       <td>177959171</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>2.758649</td>
-      <td>1609</td>
-      <td>25413</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>simple_pass</td>
-      <td>85.0</td>
-      <td>49.0</td>
-      <td>49.0</td>
+      <td>...</td>
       <td>31.0</td>
       <td>78.0</td>
     </tr>
@@ -3350,16 +2887,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>1</th>
       <td>177959172</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>4.946850</td>
-      <td>1609</td>
-      <td>370224</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>high_pass</td>
-      <td>83.0</td>
-      <td>31.0</td>
-      <td>78.0</td>
+      <td>...</td>
       <td>51.0</td>
       <td>75.0</td>
     </tr>
@@ -3367,16 +2895,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>2</th>
       <td>177959173</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>6.542188</td>
-      <td>1609</td>
-      <td>3319</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>head_pass</td>
-      <td>82.0</td>
-      <td>51.0</td>
-      <td>75.0</td>
+      <td>...</td>
       <td>35.0</td>
       <td>71.0</td>
     </tr>
@@ -3384,16 +2903,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>3</th>
       <td>177959174</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>8.143395</td>
-      <td>1609</td>
-      <td>120339</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>head_pass</td>
-      <td>82.0</td>
-      <td>35.0</td>
-      <td>71.0</td>
+      <td>...</td>
       <td>41.0</td>
       <td>95.0</td>
     </tr>
@@ -3401,21 +2911,13 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>4</th>
       <td>177959175</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>10.302366</td>
-      <td>1609</td>
-      <td>167145</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>simple_pass</td>
-      <td>85.0</td>
-      <td>41.0</td>
-      <td>95.0</td>
+      <td>...</td>
       <td>72.0</td>
       <td>88.0</td>
     </tr>
   </tbody>
 </table>
+<p>5 rows × 14 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -3446,16 +2948,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th></th>
       <th>id</th>
       <th>game_id</th>
-      <th>half</th>
-      <th>t</th>
-      <th>team_id</th>
-      <th>player_id</th>
-      <th>event</th>
-      <th>event_id</th>
-      <th>subevent</th>
-      <th>subevent_id</th>
-      <th>x1</th>
-      <th>y1</th>
+      <th>...</th>
       <th>x2</th>
       <th>y2</th>
     </tr>
@@ -3465,16 +2958,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>0</th>
       <td>177959171</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>2.758649</td>
-      <td>1609</td>
-      <td>25413</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>simple_pass</td>
-      <td>85.0</td>
-      <td>49.0</td>
-      <td>49.0</td>
+      <td>...</td>
       <td>31.0</td>
       <td>78.0</td>
     </tr>
@@ -3482,16 +2966,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>4</th>
       <td>177959175</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>10.302366</td>
-      <td>1609</td>
-      <td>167145</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>simple_pass</td>
-      <td>85.0</td>
-      <td>41.0</td>
-      <td>95.0</td>
+      <td>...</td>
       <td>72.0</td>
       <td>88.0</td>
     </tr>
@@ -3499,16 +2974,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>5</th>
       <td>177959177</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>12.548934</td>
-      <td>1609</td>
-      <td>3319</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>simple_pass</td>
-      <td>85.0</td>
-      <td>72.0</td>
-      <td>88.0</td>
+      <td>...</td>
       <td>77.0</td>
       <td>75.0</td>
     </tr>
@@ -3516,16 +2982,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>17</th>
       <td>177959196</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>29.980898</td>
-      <td>1631</td>
-      <td>265366</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>simple_pass</td>
-      <td>85.0</td>
-      <td>29.0</td>
-      <td>26.0</td>
+      <td>...</td>
       <td>37.0</td>
       <td>8.0</td>
     </tr>
@@ -3533,21 +2990,13 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>18</th>
       <td>177959197</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>31.163870</td>
-      <td>1631</td>
-      <td>8013</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>simple_pass</td>
-      <td>85.0</td>
-      <td>37.0</td>
-      <td>8.0</td>
+      <td>...</td>
       <td>23.0</td>
       <td>5.0</td>
     </tr>
   </tbody>
 </table>
+<p>5 rows × 14 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -3578,16 +3027,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th></th>
       <th>id</th>
       <th>game_id</th>
-      <th>half</th>
-      <th>t</th>
-      <th>team_id</th>
-      <th>player_id</th>
-      <th>event</th>
-      <th>event_id</th>
-      <th>subevent</th>
-      <th>subevent_id</th>
-      <th>x1</th>
-      <th>y1</th>
+      <th>...</th>
       <th>x2</th>
       <th>y2</th>
     </tr>
@@ -3597,16 +3037,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>46</th>
       <td>177959212</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>94.595788</td>
-      <td>1609</td>
-      <td>25413</td>
-      <td>shot</td>
-      <td>10</td>
-      <td>shot</td>
-      <td>100.0</td>
-      <td>88.0</td>
-      <td>41.0</td>
+      <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -3614,16 +3045,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>47</th>
       <td>177959226</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>96.970614</td>
-      <td>1631</td>
-      <td>8480</td>
-      <td>save_attempt</td>
-      <td>9</td>
-      <td>reflexes</td>
-      <td>90.0</td>
-      <td>100.0</td>
-      <td>100.0</td>
+      <td>...</td>
       <td>12.0</td>
       <td>59.0</td>
     </tr>
@@ -3631,16 +3053,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>91</th>
       <td>177959280</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>254.745027</td>
-      <td>1631</td>
-      <td>14763</td>
-      <td>shot</td>
-      <td>10</td>
-      <td>shot</td>
-      <td>100.0</td>
-      <td>96.0</td>
-      <td>52.0</td>
+      <td>...</td>
       <td>100.0</td>
       <td>100.0</td>
     </tr>
@@ -3648,16 +3061,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>92</th>
       <td>177959249</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>256.547834</td>
-      <td>1609</td>
-      <td>7882</td>
-      <td>save_attempt</td>
-      <td>9</td>
-      <td>reflexes</td>
-      <td>90.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <td>...</td>
       <td>4.0</td>
       <td>48.0</td>
     </tr>
@@ -3665,21 +3069,13 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>554</th>
       <td>177959759</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>1710.855093</td>
-      <td>1631</td>
-      <td>12829</td>
-      <td>shot</td>
-      <td>10</td>
-      <td>shot</td>
-      <td>100.0</td>
-      <td>94.0</td>
-      <td>54.0</td>
+      <td>...</td>
       <td>100.0</td>
       <td>100.0</td>
     </tr>
   </tbody>
 </table>
+<p>5 rows × 14 columns</p>
 </div></div></div>
 </div>
 <p><strong>イベントタグを用いた抽出</strong></p>
@@ -3713,16 +3109,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th></th>
       <th>id</th>
       <th>game_id</th>
-      <th>half</th>
-      <th>t</th>
-      <th>team_id</th>
-      <th>player_id</th>
-      <th>event</th>
-      <th>event_id</th>
-      <th>subevent</th>
-      <th>subevent_id</th>
-      <th>x1</th>
-      <th>y1</th>
+      <th>...</th>
       <th>x2</th>
       <th>y2</th>
     </tr>
@@ -3732,16 +3119,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>0</th>
       <td>177959171</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>2.758649</td>
-      <td>1609</td>
-      <td>25413</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>simple_pass</td>
-      <td>85.0</td>
-      <td>49.0</td>
-      <td>49.0</td>
+      <td>...</td>
       <td>31.0</td>
       <td>78.0</td>
     </tr>
@@ -3749,16 +3127,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>1</th>
       <td>177959172</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>4.946850</td>
-      <td>1609</td>
-      <td>370224</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>high_pass</td>
-      <td>83.0</td>
-      <td>31.0</td>
-      <td>78.0</td>
+      <td>...</td>
       <td>51.0</td>
       <td>75.0</td>
     </tr>
@@ -3766,16 +3135,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>2</th>
       <td>177959173</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>6.542188</td>
-      <td>1609</td>
-      <td>3319</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>head_pass</td>
-      <td>82.0</td>
-      <td>51.0</td>
-      <td>75.0</td>
+      <td>...</td>
       <td>35.0</td>
       <td>71.0</td>
     </tr>
@@ -3783,16 +3143,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>3</th>
       <td>177959174</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>8.143395</td>
-      <td>1609</td>
-      <td>120339</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>head_pass</td>
-      <td>82.0</td>
-      <td>35.0</td>
-      <td>71.0</td>
+      <td>...</td>
       <td>41.0</td>
       <td>95.0</td>
     </tr>
@@ -3800,16 +3151,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>4</th>
       <td>177959175</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>10.302366</td>
-      <td>1609</td>
-      <td>167145</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>simple_pass</td>
-      <td>85.0</td>
-      <td>41.0</td>
-      <td>95.0</td>
+      <td>...</td>
       <td>72.0</td>
       <td>88.0</td>
     </tr>
@@ -3820,30 +3162,12 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <td>...</td>
       <td>...</td>
       <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
     </tr>
     <tr>
       <th>1739</th>
       <td>177961023</td>
       <td>2499719</td>
-      <td>2</td>
-      <td>2865.714949</td>
-      <td>1631</td>
-      <td>26150</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>head_pass</td>
-      <td>82.0</td>
-      <td>65.0</td>
-      <td>94.0</td>
+      <td>...</td>
       <td>72.0</td>
       <td>83.0</td>
     </tr>
@@ -3851,16 +3175,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>1740</th>
       <td>177961024</td>
       <td>2499719</td>
-      <td>2</td>
-      <td>2866.965786</td>
-      <td>1631</td>
-      <td>12829</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>simple_pass</td>
-      <td>85.0</td>
-      <td>72.0</td>
-      <td>83.0</td>
+      <td>...</td>
       <td>69.0</td>
       <td>74.0</td>
     </tr>
@@ -3868,16 +3183,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>1759</th>
       <td>177961037</td>
       <td>2499719</td>
-      <td>2</td>
-      <td>2985.152095</td>
-      <td>1631</td>
-      <td>8488</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>head_pass</td>
-      <td>82.0</td>
-      <td>20.0</td>
-      <td>77.0</td>
+      <td>...</td>
       <td>25.0</td>
       <td>72.0</td>
     </tr>
@@ -3885,16 +3191,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>1762</th>
       <td>177961039</td>
       <td>2499719</td>
-      <td>2</td>
-      <td>2990.768201</td>
-      <td>1631</td>
-      <td>8653</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>simple_pass</td>
-      <td>85.0</td>
-      <td>11.0</td>
-      <td>68.0</td>
+      <td>...</td>
       <td>7.0</td>
       <td>53.0</td>
     </tr>
@@ -3902,16 +3199,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>1764</th>
       <td>177961035</td>
       <td>2499719</td>
-      <td>2</td>
-      <td>2994.900590</td>
-      <td>1609</td>
-      <td>49876</td>
-      <td>pass</td>
-      <td>8</td>
-      <td>head_pass</td>
-      <td>82.0</td>
-      <td>54.0</td>
-      <td>51.0</td>
+      <td>...</td>
       <td>73.0</td>
       <td>58.0</td>
     </tr>
@@ -3948,16 +3236,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th></th>
       <th>id</th>
       <th>game_id</th>
-      <th>half</th>
-      <th>t</th>
-      <th>team_id</th>
-      <th>player_id</th>
-      <th>event</th>
-      <th>event_id</th>
-      <th>subevent</th>
-      <th>subevent_id</th>
-      <th>x1</th>
-      <th>y1</th>
+      <th>...</th>
       <th>x2</th>
       <th>y2</th>
     </tr>
@@ -3967,16 +3246,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>46</th>
       <td>177959212</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>94.595788</td>
-      <td>1609</td>
-      <td>25413</td>
-      <td>shot</td>
-      <td>10</td>
-      <td>shot</td>
-      <td>100.0</td>
-      <td>88.0</td>
-      <td>41.0</td>
+      <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -3984,16 +3254,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>91</th>
       <td>177959280</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>254.745027</td>
-      <td>1631</td>
-      <td>14763</td>
-      <td>shot</td>
-      <td>10</td>
-      <td>shot</td>
-      <td>100.0</td>
-      <td>96.0</td>
-      <td>52.0</td>
+      <td>...</td>
       <td>100.0</td>
       <td>100.0</td>
     </tr>
@@ -4001,16 +3262,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>554</th>
       <td>177959759</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>1710.855093</td>
-      <td>1631</td>
-      <td>12829</td>
-      <td>shot</td>
-      <td>10</td>
-      <td>shot</td>
-      <td>100.0</td>
-      <td>94.0</td>
-      <td>54.0</td>
+      <td>...</td>
       <td>100.0</td>
       <td>100.0</td>
     </tr>
@@ -4018,16 +3270,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>898</th>
       <td>177960130</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>2815.900791</td>
-      <td>1609</td>
-      <td>7945</td>
-      <td>shot</td>
-      <td>10</td>
-      <td>shot</td>
-      <td>100.0</td>
-      <td>92.0</td>
-      <td>50.0</td>
+      <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -4035,16 +3278,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>1107</th>
       <td>177960379</td>
       <td>2499719</td>
-      <td>2</td>
-      <td>634.312236</td>
-      <td>1631</td>
-      <td>12829</td>
-      <td>shot</td>
-      <td>10</td>
-      <td>shot</td>
-      <td>100.0</td>
-      <td>92.0</td>
-      <td>54.0</td>
+      <td>...</td>
       <td>100.0</td>
       <td>100.0</td>
     </tr>
@@ -4052,16 +3286,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>1570</th>
       <td>177960849</td>
       <td>2499719</td>
-      <td>2</td>
-      <td>2231.119656</td>
-      <td>1609</td>
-      <td>7870</td>
-      <td>shot</td>
-      <td>10</td>
-      <td>shot</td>
-      <td>100.0</td>
-      <td>94.0</td>
-      <td>63.0</td>
+      <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -4069,21 +3294,13 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
       <th>1613</th>
       <td>177960902</td>
       <td>2499719</td>
-      <td>2</td>
-      <td>2374.620655</td>
-      <td>1609</td>
-      <td>26010</td>
-      <td>shot</td>
-      <td>10</td>
-      <td>shot</td>
-      <td>100.0</td>
-      <td>91.0</td>
-      <td>44.0</td>
+      <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
   </tbody>
 </table>
+<p>7 rows × 14 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -4131,7 +3348,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_116_0.png" src="../_images/6_event_116_0.png" />
+<img alt="../_images/6_event_117_0.png" src="../_images/6_event_117_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -4144,7 +3361,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_117_0.png" src="../_images/6_event_117_0.png" />
+<img alt="../_images/6_event_118_0.png" src="../_images/6_event_118_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -4157,7 +3374,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_118_0.png" src="../_images/6_event_118_0.png" />
+<img alt="../_images/6_event_119_0.png" src="../_images/6_event_119_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -4170,7 +3387,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_119_0.png" src="../_images/6_event_119_0.png" />
+<img alt="../_images/6_event_120_0.png" src="../_images/6_event_120_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -4183,7 +3400,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_120_0.png" src="../_images/6_event_120_0.png" />
+<img alt="../_images/6_event_121_0.png" src="../_images/6_event_121_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -4196,7 +3413,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_121_0.png" src="../_images/6_event_121_0.png" />
+<img alt="../_images/6_event_122_0.png" src="../_images/6_event_122_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -4209,7 +3426,7 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_122_0.png" src="../_images/6_event_122_0.png" />
+<img alt="../_images/6_event_123_0.png" src="../_images/6_event_123_0.png" />
 </div>
 </div>
 </section>
@@ -4253,12 +3470,12 @@ f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
 Mohame_Salah      142
 C_Eriksen          97
 Richarlison        92
-K_D_Bruyne         91
 S_Agüero           91
+K_D_Bruyne         91
 A_Sánchez          85
-Robert_Firmino     80
-R_Lukaku           80
 R_Sterling         80
+R_Lukaku           80
+Robert_Firmino     80
 Name: player_id, dtype: int64
 </pre></div>
 </div>
@@ -4301,14 +3518,14 @@ Name: player_id, dtype: int64
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>K_D_Bruyne      16
 L_Sané          13
+R_Mahrez        10
 R_Sterling      10
 Davi_Silva      10
-R_Mahrez        10
 H_Mkhitaryan     9
 D_Alli           9
 C_Eriksen        9
-M_Özil           8
-P_Pogba          8
+Mohame_Salah     8
+P_Groß           8
 Name: player_id, dtype: int64
 </pre></div>
 </div>
@@ -4333,7 +3550,7 @@ R_Lukaku          16
 Robert_Firmino    15
 A_Lacazette       14
 Gabrie_Jesus      13
-E_Hazard          12
+G_Murray          12
 Name: player_id, dtype: int64
 </pre></div>
 </div>
@@ -4415,19 +3632,9 @@ Name: player_id, dtype: int64
       <th></th>
       <th>id</th>
       <th>game_id</th>
-      <th>half</th>
-      <th>t</th>
-      <th>team_id</th>
-      <th>player_id</th>
-      <th>event</th>
-      <th>event_id</th>
-      <th>subevent</th>
-      <th>subevent_id</th>
-      <th>x1</th>
-      <th>y1</th>
+      <th>...</th>
       <th>x2</th>
       <th>y2</th>
-      <th>tmp</th>
     </tr>
   </thead>
   <tbody>
@@ -4435,94 +3642,45 @@ Name: player_id, dtype: int64
       <th>7</th>
       <td>177959189</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>14.765321</td>
-      <td>1631</td>
-      <td>8013</td>
-      <td>duel</td>
-      <td>1</td>
-      <td>air_duel</td>
-      <td>10.0</td>
-      <td>61.0</td>
-      <td>85.0</td>
+      <td>...</td>
       <td>67.0</td>
       <td>80.0</td>
-      <td>NaN</td>
     </tr>
     <tr>
       <th>8</th>
       <td>177961218</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>14.765321</td>
-      <td>1609</td>
-      <td>0</td>
-      <td>duel</td>
-      <td>1</td>
-      <td>air_duel</td>
-      <td>10.0</td>
-      <td>61.0</td>
-      <td>85.0</td>
+      <td>...</td>
       <td>67.0</td>
       <td>80.0</td>
-      <td>NaN</td>
     </tr>
     <tr>
       <th>12</th>
       <td>177959191</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>21.878309</td>
-      <td>1631</td>
-      <td>8653</td>
-      <td>duel</td>
-      <td>1</td>
-      <td>air_duel</td>
-      <td>10.0</td>
-      <td>71.0</td>
-      <td>54.0</td>
+      <td>...</td>
       <td>50.0</td>
       <td>59.0</td>
-      <td>NaN</td>
     </tr>
     <tr>
       <th>13</th>
       <td>177959181</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>22.551816</td>
-      <td>1609</td>
-      <td>25413</td>
-      <td>duel</td>
-      <td>1</td>
-      <td>air_duel</td>
-      <td>10.0</td>
-      <td>71.0</td>
-      <td>54.0</td>
+      <td>...</td>
       <td>50.0</td>
       <td>59.0</td>
-      <td>NaN</td>
     </tr>
     <tr>
       <th>22</th>
       <td>177959205</td>
       <td>2499719</td>
-      <td>1</td>
-      <td>38.191874</td>
-      <td>1631</td>
-      <td>12829</td>
-      <td>duel</td>
-      <td>1</td>
-      <td>ground_loose_ball_duel</td>
-      <td>13.0</td>
-      <td>33.0</td>
-      <td>78.0</td>
+      <td>...</td>
       <td>29.0</td>
       <td>85.0</td>
-      <td>NaN</td>
     </tr>
   </tbody>
 </table>
+<p>5 rows × 14 columns</p>
 </div></div></div>
 </div>
 <p>これは，ボール保持チームが特定できないためと考えられる．
@@ -4574,7 +3732,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_148_0.png" src="../_images/6_event_148_0.png" />
+<img alt="../_images/6_event_149_0.png" src="../_images/6_event_149_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -4584,7 +3742,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_149_0.png" src="../_images/6_event_149_0.png" />
+<img alt="../_images/6_event_150_0.png" src="../_images/6_event_150_0.png" />
 </div>
 </div>
 </section>
@@ -4713,8 +3871,7 @@ Name: player_id, dtype: int64
       <th></th>
       <th>player_id</th>
       <th>team_id</th>
-      <th>player_id2</th>
-      <th>team_id2</th>
+      <th>...</th>
       <th>name</th>
       <th>name2</th>
     </tr>
@@ -4724,8 +3881,7 @@ Name: player_id, dtype: int64
       <th>0</th>
       <td>25413</td>
       <td>1609</td>
-      <td>370224</td>
-      <td>1609</td>
+      <td>...</td>
       <td>A_Lacazette</td>
       <td>R_Holding</td>
     </tr>
@@ -4733,8 +3889,7 @@ Name: player_id, dtype: int64
       <th>1</th>
       <td>370224</td>
       <td>1609</td>
-      <td>3319</td>
-      <td>1609</td>
+      <td>...</td>
       <td>R_Holding</td>
       <td>M_Özil</td>
     </tr>
@@ -4742,8 +3897,7 @@ Name: player_id, dtype: int64
       <th>2</th>
       <td>3319</td>
       <td>1609</td>
-      <td>120339</td>
-      <td>1609</td>
+      <td>...</td>
       <td>M_Özil</td>
       <td>Mohame_Elneny</td>
     </tr>
@@ -4751,8 +3905,7 @@ Name: player_id, dtype: int64
       <th>3</th>
       <td>120339</td>
       <td>1609</td>
-      <td>167145</td>
-      <td>1609</td>
+      <td>...</td>
       <td>Mohame_Elneny</td>
       <td>Bellerín</td>
     </tr>
@@ -4760,13 +3913,13 @@ Name: player_id, dtype: int64
       <th>4</th>
       <td>167145</td>
       <td>1609</td>
-      <td>3319</td>
-      <td>1609</td>
+      <td>...</td>
       <td>Bellerín</td>
       <td>M_Özil</td>
     </tr>
   </tbody>
 </table>
+<p>5 rows × 6 columns</p>
 </div></div></div>
 </div>
 <p><strong>パス数行列の作成</strong></p>
@@ -4827,7 +3980,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_167_0.png" src="../_images/6_event_167_0.png" />
+<img alt="../_images/6_event_168_0.png" src="../_images/6_event_168_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -4837,7 +3990,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_168_0.png" src="../_images/6_event_168_0.png" />
+<img alt="../_images/6_event_169_0.png" src="../_images/6_event_169_0.png" />
 </div>
 </div>
 </section>

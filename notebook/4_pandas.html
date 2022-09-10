@@ -716,7 +716,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># （必須）カレントディレクトリの変更（自分の作業フォルダのパスをコピーして入力する）</span>
-<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\parar\OneDrive\sport_data&quot;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1112,8 +1112,8 @@ DataFrameは（Excelのような）テーブル形式の構造を持ち，以下
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 相対パスを指定してcsvファイルに保存する</span>
-<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\parar\OneDrive\sport_data&quot;</span><span class="p">)</span>  <span class="c1"># カレントディレクトリをsport_dataに変更</span>
-<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./4_pandas/df_sample.csv&#39;</span><span class="p">,</span>\           <span class="c1"># sport_dataからの相対パスを指定</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data&#39;</span><span class="p">)</span>  <span class="c1"># カレントディレクトリをsport_dataに変更</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./4_pandas/df_sample.csv&#39;</span><span class="p">,</span>            <span class="c1"># sport_dataからの相対パスを指定</span>
           <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1171,19 +1171,76 @@ DataFrameは（Excelのような）テーブル形式の構造を持ち，以下
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 絶対パスを指定してcsvファイルをDataFrameに読み込む</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\parar\OneDrive\sport_data\4_pandas\df_sample.csv&quot;</span><span class="p">,</span>\
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data/4_pandas/df_sample.csv&quot;</span><span class="p">,</span>\
                  <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">df</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>t</th>
+      <th>player</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>2</td>
+      <td>ozora</td>
+      <td>5.0</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>64</td>
+      <td>misaki</td>
+      <td>20.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>350</td>
+      <td>wakabayashi</td>
+      <td>10.5</td>
+      <td>50.5</td>
+    </tr>
+    <tr>
+      <th>D</th>
+      <td>600</td>
+      <td>hyuga</td>
+      <td>32.5</td>
+      <td>2.5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>相対パス</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 相対パスを指定してcsvファイルをDataFrameに読み込む</span>
-<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\parar\OneDrive\sport_data&quot;</span><span class="p">)</span>  <span class="c1"># カレントディレクトリをsport_dataに変更</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./4_pandas/df_sample.csv&#39;</span><span class="p">,</span>\    <span class="c1"># sport_dataからの相対パスを指定</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data&#39;</span><span class="p">)</span>  <span class="c1"># カレントディレクトリをsport_dataに変更</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./4_pandas/df_sample.csv&#39;</span><span class="p">,</span>    <span class="c1"># sport_dataからの相対パスを指定</span>
                  <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">df</span>
 </pre></div>
@@ -1876,8 +1933,8 @@ dtype: object
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t             64
 player    misaki
-x             20
-y              1
+x           20.0
+y            1.0
 Name: B, dtype: object
 </pre></div>
 </div>
@@ -2086,8 +2143,8 @@ Name: player, dtype: object
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t             2
 player    ozora
-x             5
-y            10
+x           5.0
+y          10.0
 Name: A, dtype: object
 </pre></div>
 </div>
@@ -2529,7 +2586,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.25
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.250
 </pre></div>
 </div>
 </div>
@@ -2542,7 +2599,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.25
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.250
 </pre></div>
 </div>
 </div>
@@ -2555,7 +2612,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.25
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.250
 </pre></div>
 </div>
 </div>
@@ -2597,22 +2654,12 @@ dtype: float64
       <th></th>
       <th>name</th>
       <th>team_id</th>
-      <th>role</th>
-      <th>height</th>
-      <th>weight</th>
-      <th>foot</th>
-      <th>nationality</th>
-      <th>birth_area</th>
+      <th>...</th>
       <th>birthday</th>
       <th>league</th>
     </tr>
     <tr>
       <th>player_id</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -2625,12 +2672,7 @@ dtype: float64
       <th>3319</th>
       <td>M_Özil</td>
       <td>1609</td>
-      <td>MD</td>
-      <td>180.0</td>
-      <td>76.0</td>
-      <td>left</td>
-      <td>Germany</td>
-      <td>Germany</td>
+      <td>...</td>
       <td>1988/10/15</td>
       <td>England</td>
     </tr>
@@ -2638,12 +2680,7 @@ dtype: float64
       <th>3560</th>
       <td>Nach_Monreal</td>
       <td>1609</td>
-      <td>DF</td>
-      <td>179.0</td>
-      <td>72.0</td>
-      <td>left</td>
-      <td>Spain</td>
-      <td>Spain</td>
+      <td>...</td>
       <td>1986/02/26</td>
       <td>England</td>
     </tr>
@@ -2651,12 +2688,7 @@ dtype: float64
       <th>7855</th>
       <td>L_Koscielny</td>
       <td>1609</td>
-      <td>DF</td>
-      <td>186.0</td>
-      <td>75.0</td>
-      <td>right</td>
-      <td>Poland</td>
-      <td>France</td>
+      <td>...</td>
       <td>1985/09/10</td>
       <td>England</td>
     </tr>
@@ -2664,12 +2696,7 @@ dtype: float64
       <th>7870</th>
       <td>A_Ramsey</td>
       <td>1609</td>
-      <td>MD</td>
-      <td>183.0</td>
-      <td>76.0</td>
-      <td>right</td>
-      <td>Wales</td>
-      <td>Wales</td>
+      <td>...</td>
       <td>1990/12/26</td>
       <td>England</td>
     </tr>
@@ -2677,12 +2704,7 @@ dtype: float64
       <th>7882</th>
       <td>P_Čech</td>
       <td>1609</td>
-      <td>GK</td>
-      <td>196.0</td>
-      <td>90.0</td>
-      <td>left</td>
-      <td>Czec_Republic</td>
-      <td>Czec_Republic</td>
+      <td>...</td>
       <td>1982/05/20</td>
       <td>England</td>
     </tr>
@@ -2693,22 +2715,12 @@ dtype: float64
       <td>...</td>
       <td>...</td>
       <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
     </tr>
     <tr>
       <th>266885</th>
       <td>M_Olunga</td>
       <td>756</td>
-      <td>FW</td>
-      <td>188.0</td>
-      <td>80.0</td>
-      <td>left</td>
-      <td>Kenya</td>
-      <td>Kenya</td>
+      <td>...</td>
       <td>1994/03/26</td>
       <td>Spain</td>
     </tr>
@@ -2716,12 +2728,7 @@ dtype: float64
       <th>282448</th>
       <td>Alei_García</td>
       <td>756</td>
-      <td>MD</td>
-      <td>173.0</td>
-      <td>74.0</td>
-      <td>right</td>
-      <td>Spain</td>
-      <td>Spain</td>
+      <td>...</td>
       <td>1997/06/28</td>
       <td>Spain</td>
     </tr>
@@ -2729,12 +2736,7 @@ dtype: float64
       <th>366374</th>
       <td>K_Soni</td>
       <td>756</td>
-      <td>MD</td>
-      <td>182.0</td>
-      <td>77.0</td>
-      <td>left</td>
-      <td>Cameroon</td>
-      <td>Cameroon</td>
+      <td>...</td>
       <td>1998/04/17</td>
       <td>Spain</td>
     </tr>
@@ -2742,12 +2744,7 @@ dtype: float64
       <th>443324</th>
       <td>Dougla_Luiz</td>
       <td>756</td>
-      <td>MD</td>
-      <td>178.0</td>
-      <td>65.0</td>
-      <td>right</td>
-      <td>Brazil</td>
-      <td>Brazil</td>
+      <td>...</td>
       <td>1998/05/09</td>
       <td>Spain</td>
     </tr>
@@ -2755,12 +2752,7 @@ dtype: float64
       <th>508686</th>
       <td>M_Lizak</td>
       <td>756</td>
-      <td>GK</td>
-      <td>192.0</td>
-      <td>78.0</td>
-      <td>NaN</td>
-      <td>Poland</td>
-      <td>Poland</td>
+      <td>...</td>
       <td>1996/07/15</td>
       <td>Spain</td>
     </tr>
@@ -3612,22 +3604,12 @@ Name: t, dtype: bool
       <th></th>
       <th>name</th>
       <th>team_id</th>
-      <th>role</th>
-      <th>height</th>
-      <th>weight</th>
-      <th>foot</th>
-      <th>nationality</th>
-      <th>birth_area</th>
+      <th>...</th>
       <th>birthday</th>
       <th>league</th>
     </tr>
     <tr>
       <th>player_id</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -3640,12 +3622,7 @@ Name: t, dtype: bool
       <th>3319</th>
       <td>M_Özil</td>
       <td>1609</td>
-      <td>MD</td>
-      <td>180.0</td>
-      <td>76.0</td>
-      <td>left</td>
-      <td>Germany</td>
-      <td>Germany</td>
+      <td>...</td>
       <td>1988/10/15</td>
       <td>England</td>
     </tr>
@@ -3653,12 +3630,7 @@ Name: t, dtype: bool
       <th>3560</th>
       <td>Nach_Monreal</td>
       <td>1609</td>
-      <td>DF</td>
-      <td>179.0</td>
-      <td>72.0</td>
-      <td>left</td>
-      <td>Spain</td>
-      <td>Spain</td>
+      <td>...</td>
       <td>1986/02/26</td>
       <td>England</td>
     </tr>
@@ -3666,12 +3638,7 @@ Name: t, dtype: bool
       <th>7855</th>
       <td>L_Koscielny</td>
       <td>1609</td>
-      <td>DF</td>
-      <td>186.0</td>
-      <td>75.0</td>
-      <td>right</td>
-      <td>Poland</td>
-      <td>France</td>
+      <td>...</td>
       <td>1985/09/10</td>
       <td>England</td>
     </tr>
@@ -3679,12 +3646,7 @@ Name: t, dtype: bool
       <th>7870</th>
       <td>A_Ramsey</td>
       <td>1609</td>
-      <td>MD</td>
-      <td>183.0</td>
-      <td>76.0</td>
-      <td>right</td>
-      <td>Wales</td>
-      <td>Wales</td>
+      <td>...</td>
       <td>1990/12/26</td>
       <td>England</td>
     </tr>
@@ -3692,12 +3654,7 @@ Name: t, dtype: bool
       <th>7882</th>
       <td>P_Čech</td>
       <td>1609</td>
-      <td>GK</td>
-      <td>196.0</td>
-      <td>90.0</td>
-      <td>left</td>
-      <td>Czec_Republic</td>
-      <td>Czec_Republic</td>
+      <td>...</td>
       <td>1982/05/20</td>
       <td>England</td>
     </tr>
@@ -3708,22 +3665,12 @@ Name: t, dtype: bool
       <td>...</td>
       <td>...</td>
       <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
     </tr>
     <tr>
       <th>266885</th>
       <td>M_Olunga</td>
       <td>756</td>
-      <td>FW</td>
-      <td>188.0</td>
-      <td>80.0</td>
-      <td>left</td>
-      <td>Kenya</td>
-      <td>Kenya</td>
+      <td>...</td>
       <td>1994/03/26</td>
       <td>Spain</td>
     </tr>
@@ -3731,12 +3678,7 @@ Name: t, dtype: bool
       <th>282448</th>
       <td>Alei_García</td>
       <td>756</td>
-      <td>MD</td>
-      <td>173.0</td>
-      <td>74.0</td>
-      <td>right</td>
-      <td>Spain</td>
-      <td>Spain</td>
+      <td>...</td>
       <td>1997/06/28</td>
       <td>Spain</td>
     </tr>
@@ -3744,12 +3686,7 @@ Name: t, dtype: bool
       <th>366374</th>
       <td>K_Soni</td>
       <td>756</td>
-      <td>MD</td>
-      <td>182.0</td>
-      <td>77.0</td>
-      <td>left</td>
-      <td>Cameroon</td>
-      <td>Cameroon</td>
+      <td>...</td>
       <td>1998/04/17</td>
       <td>Spain</td>
     </tr>
@@ -3757,12 +3694,7 @@ Name: t, dtype: bool
       <th>443324</th>
       <td>Dougla_Luiz</td>
       <td>756</td>
-      <td>MD</td>
-      <td>178.0</td>
-      <td>65.0</td>
-      <td>right</td>
-      <td>Brazil</td>
-      <td>Brazil</td>
+      <td>...</td>
       <td>1998/05/09</td>
       <td>Spain</td>
     </tr>
@@ -3770,12 +3702,7 @@ Name: t, dtype: bool
       <th>508686</th>
       <td>M_Lizak</td>
       <td>756</td>
-      <td>GK</td>
-      <td>192.0</td>
-      <td>78.0</td>
-      <td>NaN</td>
-      <td>Poland</td>
-      <td>Poland</td>
+      <td>...</td>
       <td>1996/07/15</td>
       <td>Spain</td>
     </tr>
@@ -3785,10 +3712,45 @@ Name: t, dtype: bool
 </div></div></div>
 </div>
 <p>身長（<code class="docutils literal notranslate"><span class="pre">height</span></code>）が2m以上の選手を抽出せよ</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>国籍（<code class="docutils literal notranslate"><span class="pre">nationality</span></code>）が日本の選手を抽出せよ</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>国籍（<code class="docutils literal notranslate"><span class="pre">nationality</span></code>）がケニアの選手を抽出せよ</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>出生地（<code class="docutils literal notranslate"><span class="pre">birth_area</span></code>）がケニアの選手を抽出せよ</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>利き足（<code class="docutils literal notranslate"><span class="pre">foot</span></code>）が右（<code class="docutils literal notranslate"><span class="pre">right</span></code>）の選手の身長と体重を抽出せよ</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>スペインリーグに所属し，ポジション（<code class="docutils literal notranslate"><span class="pre">role</span></code>）がフォワードの選手を抽出せよ<br>
 ※ まず<code class="docutils literal notranslate"><span class="pre">df['role'].unique()</span></code>によって，<code class="docutils literal notranslate"><span class="pre">role</span></code>列に含まれる値を確認する</p>
 <div class="cell docutils container">
@@ -3804,10 +3766,45 @@ Name: t, dtype: bool
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>所属リーグ名（<code class="docutils literal notranslate"><span class="pre">league</span></code>）と出生地名（<code class="docutils literal notranslate"><span class="pre">birth_area</span></code>）が同じ選手を抽出し，先頭から10行だけ表示せよ</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p><code class="docutils literal notranslate"><span class="pre">league</span></code>列内の<code class="docutils literal notranslate"><span class="pre">England</span></code>を<code class="docutils literal notranslate"><span class="pre">イングランド</span></code>に変更せよ</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>イタリアリーグのデータだけ抽出し，<code class="docutils literal notranslate"><span class="pre">player_Italy.csv</span></code>という名前でcsvファイルに保存せよ．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>自分の好きな条件でデータを抽出せよ</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="id14">
@@ -4234,10 +4231,10 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0.000000
-1    0.750000
-2    0.857143
-3    0.900000
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0.000
+1    0.750
+2    0.857
+3    0.900
 dtype: float64
 </pre></div>
 </div>
@@ -4645,26 +4642,26 @@ Name: c, dtype: float64
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.000000</td>
-      <td>0.500000</td>
+      <td>0.000</td>
+      <td>0.500</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.600000</td>
-      <td>0.800000</td>
+      <td>0.600</td>
+      <td>0.800</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.750000</td>
-      <td>0.875000</td>
+      <td>0.750</td>
+      <td>0.875</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.818182</td>
-      <td>0.909091</td>
+      <td>0.818</td>
+      <td>0.909</td>
       <td>1.0</td>
     </tr>
   </tbody>
@@ -4827,38 +4824,38 @@ Name: c, dtype: float64
   <tbody>
     <tr>
       <th>0</th>
-      <td>60</td>
-      <td>0</td>
-      <td>43</td>
-      <td>73</td>
+      <td>69</td>
+      <td>88</td>
+      <td>23</td>
+      <td>20</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2</td>
-      <td>2</td>
-      <td>70</td>
-      <td>44</td>
+      <td>96</td>
+      <td>97</td>
+      <td>75</td>
+      <td>28</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>18</td>
-      <td>99</td>
-      <td>22</td>
-      <td>27</td>
+      <td>92</td>
+      <td>91</td>
+      <td>65</td>
+      <td>51</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>47</td>
-      <td>12</td>
-      <td>44</td>
-      <td>57</td>
+      <td>91</td>
+      <td>11</td>
+      <td>81</td>
+      <td>90</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>6</td>
-      <td>7</td>
-      <td>72</td>
-      <td>60</td>
+      <td>2</td>
+      <td>12</td>
+      <td>47</td>
+      <td>62</td>
     </tr>
   </tbody>
 </table>
@@ -4872,10 +4869,10 @@ Name: c, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    60
-b    99
-c    72
-d    73
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    96
+b    97
+c    81
+d    90
 dtype: int64
 </pre></div>
 </div>
@@ -4889,11 +4886,11 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    73
-1    70
-2    99
-3    57
-4    72
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    88
+1    97
+2    92
+3    91
+4    62
 dtype: int64
 </pre></div>
 </div>
@@ -4907,10 +4904,10 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    133
-b    120
-c    251
-d    261
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    350
+b    299
+c    291
+d    251
 dtype: int64
 </pre></div>
 </div>
@@ -4924,11 +4921,11 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    176
-1    118
-2    166
-3    160
-4    145
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    200
+1    296
+2    299
+3    273
+4    123
 dtype: int64
 </pre></div>
 </div>
@@ -4942,10 +4939,10 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    26.6
-b    24.0
-c    50.2
-d    52.2
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    70.0
+b    59.8
+c    58.2
+d    50.2
 dtype: float64
 </pre></div>
 </div>
@@ -4959,11 +4956,11 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    44.00
-1    29.50
-2    41.50
-3    40.00
-4    36.25
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    50.00
+1    74.00
+2    74.75
+3    68.25
+4    30.75
 dtype: float64
 </pre></div>
 </div>
@@ -4977,10 +4974,10 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    22.957352
-b    37.730624
-c    18.723248
-d    15.612815
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    35.287
+b    39.544
+c    21.037
+d    25.015
 dtype: float64
 </pre></div>
 </div>
@@ -5028,31 +5025,31 @@ dtype: float64
     </tr>
     <tr>
       <th>1</th>
-      <td>-58.0</td>
-      <td>2.0</td>
       <td>27.0</td>
-      <td>-29.0</td>
+      <td>9.0</td>
+      <td>52.0</td>
+      <td>8.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>16.0</td>
-      <td>97.0</td>
-      <td>-48.0</td>
-      <td>-17.0</td>
+      <td>-4.0</td>
+      <td>-6.0</td>
+      <td>-10.0</td>
+      <td>23.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>29.0</td>
-      <td>-87.0</td>
-      <td>22.0</td>
-      <td>30.0</td>
+      <td>-1.0</td>
+      <td>-80.0</td>
+      <td>16.0</td>
+      <td>39.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>-41.0</td>
-      <td>-5.0</td>
-      <td>28.0</td>
-      <td>3.0</td>
+      <td>-89.0</td>
+      <td>1.0</td>
+      <td>-34.0</td>
+      <td>-28.0</td>
     </tr>
   </tbody>
 </table>
@@ -5088,22 +5085,12 @@ dtype: float64
       <th></th>
       <th>name</th>
       <th>team_id</th>
-      <th>role</th>
-      <th>height</th>
-      <th>weight</th>
-      <th>foot</th>
-      <th>nationality</th>
-      <th>birth_area</th>
+      <th>...</th>
       <th>birthday</th>
       <th>league</th>
     </tr>
     <tr>
       <th>player_id</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -5116,12 +5103,7 @@ dtype: float64
       <th>3319</th>
       <td>M_Özil</td>
       <td>1609</td>
-      <td>MD</td>
-      <td>180.0</td>
-      <td>76.0</td>
-      <td>left</td>
-      <td>Germany</td>
-      <td>Germany</td>
+      <td>...</td>
       <td>1988/10/15</td>
       <td>England</td>
     </tr>
@@ -5129,12 +5111,7 @@ dtype: float64
       <th>3560</th>
       <td>Nach_Monreal</td>
       <td>1609</td>
-      <td>DF</td>
-      <td>179.0</td>
-      <td>72.0</td>
-      <td>left</td>
-      <td>Spain</td>
-      <td>Spain</td>
+      <td>...</td>
       <td>1986/02/26</td>
       <td>England</td>
     </tr>
@@ -5142,12 +5119,7 @@ dtype: float64
       <th>7855</th>
       <td>L_Koscielny</td>
       <td>1609</td>
-      <td>DF</td>
-      <td>186.0</td>
-      <td>75.0</td>
-      <td>right</td>
-      <td>Poland</td>
-      <td>France</td>
+      <td>...</td>
       <td>1985/09/10</td>
       <td>England</td>
     </tr>
@@ -5155,12 +5127,7 @@ dtype: float64
       <th>7870</th>
       <td>A_Ramsey</td>
       <td>1609</td>
-      <td>MD</td>
-      <td>183.0</td>
-      <td>76.0</td>
-      <td>right</td>
-      <td>Wales</td>
-      <td>Wales</td>
+      <td>...</td>
       <td>1990/12/26</td>
       <td>England</td>
     </tr>
@@ -5168,12 +5135,7 @@ dtype: float64
       <th>7882</th>
       <td>P_Čech</td>
       <td>1609</td>
-      <td>GK</td>
-      <td>196.0</td>
-      <td>90.0</td>
-      <td>left</td>
-      <td>Czec_Republic</td>
-      <td>Czec_Republic</td>
+      <td>...</td>
       <td>1982/05/20</td>
       <td>England</td>
     </tr>
@@ -5184,22 +5146,12 @@ dtype: float64
       <td>...</td>
       <td>...</td>
       <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
     </tr>
     <tr>
       <th>266885</th>
       <td>M_Olunga</td>
       <td>756</td>
-      <td>FW</td>
-      <td>188.0</td>
-      <td>80.0</td>
-      <td>left</td>
-      <td>Kenya</td>
-      <td>Kenya</td>
+      <td>...</td>
       <td>1994/03/26</td>
       <td>Spain</td>
     </tr>
@@ -5207,12 +5159,7 @@ dtype: float64
       <th>282448</th>
       <td>Alei_García</td>
       <td>756</td>
-      <td>MD</td>
-      <td>173.0</td>
-      <td>74.0</td>
-      <td>right</td>
-      <td>Spain</td>
-      <td>Spain</td>
+      <td>...</td>
       <td>1997/06/28</td>
       <td>Spain</td>
     </tr>
@@ -5220,12 +5167,7 @@ dtype: float64
       <th>366374</th>
       <td>K_Soni</td>
       <td>756</td>
-      <td>MD</td>
-      <td>182.0</td>
-      <td>77.0</td>
-      <td>left</td>
-      <td>Cameroon</td>
-      <td>Cameroon</td>
+      <td>...</td>
       <td>1998/04/17</td>
       <td>Spain</td>
     </tr>
@@ -5233,12 +5175,7 @@ dtype: float64
       <th>443324</th>
       <td>Dougla_Luiz</td>
       <td>756</td>
-      <td>MD</td>
-      <td>178.0</td>
-      <td>65.0</td>
-      <td>right</td>
-      <td>Brazil</td>
-      <td>Brazil</td>
+      <td>...</td>
       <td>1998/05/09</td>
       <td>Spain</td>
     </tr>
@@ -5246,12 +5183,7 @@ dtype: float64
       <th>508686</th>
       <td>M_Lizak</td>
       <td>756</td>
-      <td>GK</td>
-      <td>192.0</td>
-      <td>78.0</td>
-      <td>NaN</td>
-      <td>Poland</td>
-      <td>Poland</td>
+      <td>...</td>
       <td>1996/07/15</td>
       <td>Spain</td>
     </tr>
@@ -5268,7 +5200,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>height    176.785714
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>height    176.786
 dtype: float64
 </pre></div>
 </div>
@@ -5282,7 +5214,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>height    182.401786
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>height    182.402
 dtype: float64
 </pre></div>
 </div>
@@ -5296,8 +5228,8 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>height    182.747514
-weight     76.712465
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>height    182.748
+weight     76.712
 dtype: float64
 </pre></div>
 </div>
@@ -5311,8 +5243,8 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>height    181.559801
-weight     75.357737
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>height    181.560
+weight     75.358
 dtype: float64
 </pre></div>
 </div>
@@ -5346,22 +5278,12 @@ dtype: float64
       <th></th>
       <th>name</th>
       <th>team_id</th>
-      <th>role</th>
-      <th>height</th>
-      <th>weight</th>
-      <th>foot</th>
-      <th>nationality</th>
-      <th>birth_area</th>
+      <th>...</th>
       <th>birthday</th>
       <th>league</th>
     </tr>
     <tr>
       <th>player_id</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -5374,17 +5296,13 @@ dtype: float64
       <th>283062</th>
       <td>V_Milinković-Savić</td>
       <td>3185</td>
-      <td>GK</td>
-      <td>202.0</td>
-      <td>92.0</td>
-      <td>right</td>
-      <td>Serbia</td>
-      <td>Spain</td>
+      <td>...</td>
       <td>1997/02/20</td>
       <td>Italy</td>
     </tr>
   </tbody>
 </table>
+<p>1 rows × 10 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -5415,22 +5333,12 @@ dtype: float64
       <th></th>
       <th>name</th>
       <th>team_id</th>
-      <th>role</th>
-      <th>height</th>
-      <th>weight</th>
-      <th>foot</th>
-      <th>nationality</th>
-      <th>birth_area</th>
+      <th>...</th>
       <th>birthday</th>
       <th>league</th>
     </tr>
     <tr>
       <th>player_id</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -5443,12 +5351,7 @@ dtype: float64
       <th>8488</th>
       <td>W_Morgan</td>
       <td>1631</td>
-      <td>DF</td>
-      <td>186.0</td>
-      <td>101.0</td>
-      <td>right</td>
-      <td>Jamaica</td>
-      <td>England</td>
+      <td>...</td>
       <td>1984/01/21</td>
       <td>England</td>
     </tr>
@@ -5456,17 +5359,13 @@ dtype: float64
       <th>8726</th>
       <td>A_Begović</td>
       <td>1659</td>
-      <td>GK</td>
-      <td>199.0</td>
-      <td>101.0</td>
-      <td>right</td>
-      <td>Canada</td>
-      <td>Bosnia-Herzegovina</td>
+      <td>...</td>
       <td>1987/06/20</td>
       <td>England</td>
     </tr>
   </tbody>
 </table>
+<p>2 rows × 10 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -6267,6 +6166,7 @@ dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>half</th>
       <th>t</th>
       <th>player</th>
       <th>x</th>
@@ -6276,6 +6176,7 @@ dtype: float64
   <tbody>
     <tr>
       <th>0</th>
+      <td>2</td>
       <td>64</td>
       <td>misaki</td>
       <td>20.0</td>
@@ -6283,6 +6184,7 @@ dtype: float64
     </tr>
     <tr>
       <th>1</th>
+      <td>1</td>
       <td>350</td>
       <td>wakabayashi</td>
       <td>10.5</td>
@@ -6290,6 +6192,7 @@ dtype: float64
     </tr>
     <tr>
       <th>2</th>
+      <td>1</td>
       <td>2</td>
       <td>ozora</td>
       <td>5.0</td>
@@ -6297,6 +6200,7 @@ dtype: float64
     </tr>
     <tr>
       <th>3</th>
+      <td>2</td>
       <td>600</td>
       <td>hyuga</td>
       <td>32.5</td>
@@ -6332,6 +6236,7 @@ dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>half</th>
       <th>t</th>
       <th>player</th>
       <th>x</th>
@@ -6341,6 +6246,7 @@ dtype: float64
   <tbody>
     <tr>
       <th>3</th>
+      <td>2</td>
       <td>600</td>
       <td>hyuga</td>
       <td>32.5</td>
@@ -6348,6 +6254,7 @@ dtype: float64
     </tr>
     <tr>
       <th>2</th>
+      <td>1</td>
       <td>2</td>
       <td>ozora</td>
       <td>5.0</td>
@@ -6355,6 +6262,7 @@ dtype: float64
     </tr>
     <tr>
       <th>1</th>
+      <td>1</td>
       <td>350</td>
       <td>wakabayashi</td>
       <td>10.5</td>
@@ -6362,6 +6270,7 @@ dtype: float64
     </tr>
     <tr>
       <th>0</th>
+      <td>2</td>
       <td>64</td>
       <td>misaki</td>
       <td>20.0</td>
@@ -6397,6 +6306,7 @@ dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>half</th>
       <th>player</th>
       <th>t</th>
       <th>x</th>
@@ -6406,6 +6316,7 @@ dtype: float64
   <tbody>
     <tr>
       <th>2</th>
+      <td>1</td>
       <td>ozora</td>
       <td>2</td>
       <td>5.0</td>
@@ -6413,6 +6324,7 @@ dtype: float64
     </tr>
     <tr>
       <th>0</th>
+      <td>2</td>
       <td>misaki</td>
       <td>64</td>
       <td>20.0</td>
@@ -6420,6 +6332,7 @@ dtype: float64
     </tr>
     <tr>
       <th>1</th>
+      <td>1</td>
       <td>wakabayashi</td>
       <td>350</td>
       <td>10.5</td>
@@ -6427,6 +6340,7 @@ dtype: float64
     </tr>
     <tr>
       <th>3</th>
+      <td>2</td>
       <td>hyuga</td>
       <td>600</td>
       <td>32.5</td>
@@ -7410,8 +7324,7 @@ dtype: float64
       <th></th>
       <th>a</th>
       <th>b</th>
-      <th>c</th>
-      <th>a</th>
+      <th>...</th>
       <th>b</th>
       <th>c</th>
     </tr>
@@ -7421,8 +7334,7 @@ dtype: float64
       <th>0</th>
       <td>0</td>
       <td>1</td>
-      <td>2</td>
-      <td>0</td>
+      <td>...</td>
       <td>1</td>
       <td>2</td>
     </tr>
@@ -7430,13 +7342,13 @@ dtype: float64
       <th>1</th>
       <td>3</td>
       <td>4</td>
-      <td>5</td>
-      <td>3</td>
+      <td>...</td>
       <td>4</td>
       <td>5</td>
     </tr>
   </tbody>
 </table>
+<p>2 rows × 6 columns</p>
 </div></div></div>
 </div>
 <p>行ラベルが一部異なる場合，新たな行が追加される</p>
@@ -7468,8 +7380,7 @@ dtype: float64
       <th></th>
       <th>a</th>
       <th>b</th>
-      <th>c</th>
-      <th>d</th>
+      <th>...</th>
       <th>e</th>
       <th>f</th>
     </tr>
@@ -7479,8 +7390,7 @@ dtype: float64
       <th>0</th>
       <td>0.0</td>
       <td>1.0</td>
-      <td>2.0</td>
-      <td>NaN</td>
+      <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
@@ -7488,8 +7398,7 @@ dtype: float64
       <th>1</th>
       <td>3.0</td>
       <td>4.0</td>
-      <td>5.0</td>
-      <td>6.0</td>
+      <td>...</td>
       <td>7.0</td>
       <td>8.0</td>
     </tr>
@@ -7497,13 +7406,13 @@ dtype: float64
       <th>2</th>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>9.0</td>
+      <td>...</td>
       <td>10.0</td>
       <td>11.0</td>
     </tr>
   </tbody>
 </table>
+<p>3 rows × 6 columns</p>
 </div></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">join='inner'</span></code>を指定すると，ラベルが共通の行だけが残る．</p>
@@ -7535,8 +7444,7 @@ dtype: float64
       <th></th>
       <th>a</th>
       <th>b</th>
-      <th>c</th>
-      <th>d</th>
+      <th>...</th>
       <th>e</th>
       <th>f</th>
     </tr>
@@ -7546,13 +7454,13 @@ dtype: float64
       <th>1</th>
       <td>3</td>
       <td>4</td>
-      <td>5</td>
-      <td>6</td>
+      <td>...</td>
       <td>7</td>
       <td>8</td>
     </tr>
   </tbody>
 </table>
+<p>1 rows × 6 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -8120,9 +8028,23 @@ dtype: bool
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">player_all.csv</span></code>ファイルを<code class="docutils literal notranslate"><span class="pre">df</span></code>に読み込め</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">df</span></code>の先頭から2行を表示せよ</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <ul class="simple">
 <li><p>肥満度を表す指標としてBMIが知られている．BMIは身長と体重を用いて以下で定義される：
 $<span class="math notranslate nohighlight">\(
