@@ -861,42 +861,16 @@ G:¥マイドライブ
 </ol>
 <p>このとき，ファイルのパスを指定する方法には以下の2通りが存在する．</p>
 <p><strong>1. 絶対パス</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> &quot;C:\Users\parar\OneDrive\sport_data\2_environment\test.py&quot;
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">run</span> <span class="s2">&quot;C:\Users\parar\OneDrive\sport_data</span><span class="se">\2</span><span class="s2">_environment</span><span class="se">\t</span><span class="s2">est.py&quot;</span>
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>test0
-test1
-test2
-test3
-test4
-</pre></div>
-</div>
-</div>
 </div>
 <p>この方法では，最も上の階層であるドライブ名（ここではCドライブ）から始まるパスを指定しており，これを<strong>絶対パス</strong>と呼ぶ．
 「パスのコピー」によって取得されるのはこの絶対パスである．
 よって，絶対パスを使っておけばエラーは出にくいが，PCの奥深くにあるフォルダだとパスが長くなるという問題がある．</p>
 <p><strong>2.相対パス</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\parar\OneDrive\sport_data&quot;</span><span class="p">)</span> <span class="c1"># カレントディレクトリの移動</span>
-<span class="o">%</span><span class="k">run</span> &quot;./2_environment/test.py&quot;             # 実行
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\parar\OneDrive\sport_data&quot;</span><span class="p">)</span> <span class="c1"># カレントディレクトリの移動</span>
+<span class="o">%</span><span class="n">run</span> <span class="s2">&quot;./2_environment/test.py&quot;</span>             <span class="c1"># 実行</span>
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>test0
-test1
-test2
-test3
-test4
-</pre></div>
-</div>
-</div>
 </div>
 <p>2つ目の方法では，まず<code class="docutils literal notranslate"><span class="pre">os.chdir</span></code>コマンドで<code class="docutils literal notranslate"><span class="pre">&quot;C:/Users/username/OneDrive/sport_data&quot;</span></code>という作業フォルダに移動してから，さらに”./2_environment/test.py”を実行している．
 このとき，現在の居場所（今の場合は[sport_data]フォルダ）のことをカレントディレクトリと呼ぶ．

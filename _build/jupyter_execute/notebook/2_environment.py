@@ -199,11 +199,9 @@ print("C:\\Users\\username\\OneDrive\\sport_data")
 
 # **1. 絶対パス**
 
-# In[32]:
-
-
-get_ipython().run_line_magic('run', '"C:\\Users\\parar\\OneDrive\\sport_data\\2_environment\\test.py"')
-
+# ```py
+# %run "C:\Users\parar\OneDrive\sport_data\2_environment\test.py"
+# ```
 
 # この方法では，最も上の階層であるドライブ名（ここではCドライブ）から始まるパスを指定しており，これを**絶対パス**と呼ぶ．
 # 「パスのコピー」によって取得されるのはこの絶対パスである．
@@ -211,12 +209,10 @@ get_ipython().run_line_magic('run', '"C:\\Users\\parar\\OneDrive\\sport_data\\2_
 
 # **2.相対パス**
 
-# In[33]:
-
-
-os.chdir(r"C:\Users\parar\OneDrive\sport_data") # カレントディレクトリの移動
-get_ipython().run_line_magic('run', '"./2_environment/test.py"             # 実行')
-
+# ```py
+# os.chdir(r"C:\Users\parar\OneDrive\sport_data") # カレントディレクトリの移動
+# %run "./2_environment/test.py"             # 実行
+# ```
 
 # 2つ目の方法では，まず`os.chdir`コマンドで`"C:/Users/username/OneDrive/sport_data"`という作業フォルダに移動してから，さらに"./2_environment/test.py"を実行している．
 # このとき，現在の居場所（今の場合は[sport_data]フォルダ）のことをカレントディレクトリと呼ぶ．
