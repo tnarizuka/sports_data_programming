@@ -43,7 +43,7 @@ html:
 #######################################################################################
 # Launch button settings
 launch_buttons:
-  notebook_interface        : "jupyterlab" # The interface interactive links will activate ["classic", "jupyterlab"]
+  notebook_interface : "jupyterlab" # The interface interactive links will activate ["classic", "jupyterlab"]
 
 # Define the name of the latex output file for PDF builds
 latex:
