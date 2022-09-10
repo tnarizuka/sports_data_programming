@@ -693,8 +693,8 @@ title="Print to PDF"
 <li><p><code class="docutils literal notranslate"><span class="pre">np.mean</span></code>関数と<code class="docutils literal notranslate"><span class="pre">np.average</span></code>関数を使わずに<code class="docutils literal notranslate"><span class="pre">x</span></code>の標本平均を求め，上の結果と一致することを確かめよ（NumPyの他の関数は用いても良い）．
 ただし，データ<span class="math notranslate nohighlight">\(x = (x_{1}, x_{2}, \ldots, x_{n})\)</span>に対して，標本平均<span class="math notranslate nohighlight">\(\bar{x}\)</span>は以下で定義される：</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-9ead5059-5d97-4c87-b0e9-999f1f8b36cc">
-<span class="eqno">(1)<a class="headerlink" href="#equation-9ead5059-5d97-4c87-b0e9-999f1f8b36cc" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e17f268f-0ac0-4d1c-8739-dc47b05bc279">
+<span class="eqno">(1)<a class="headerlink" href="#equation-e17f268f-0ac0-4d1c-8739-dc47b05bc279" title="Permalink to this equation">#</a></span>\[\begin{align}
     \bar{x} &amp;= \frac{1}{n} \sum_{i=1}^{n} x_{i} = \frac{x_{1}+x_{2}+\cdots+x_{n}}{n}
 \end{align}\]</div>
 <div class="cell docutils container">
@@ -895,6 +895,14 @@ $<span class="math notranslate nohighlight">\(
 </section>
 <section id="pandas">
 <h2>Pandasに関する問題<a class="headerlink" href="#pandas" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 表示設定</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># 表示する列数の上限</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>次のcsvファイルをダウンロードせよ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP">player_all.csv</a> <br>
 このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
 ※ 本データはPappalardoデータセットを加工したものである（詳細は<a class="reference external" href="https://rtwqzpj5uefb1pvzmprbnq-on.drv.tw/document/%E8%AC%9B%E7%BE%A9/%E7%AB%8B%E6%AD%A3/%E3%82%B9%E3%83%9B%E3%82%9A%E3%83%BC%E3%83%84%E3%83%86%E3%82%99%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%83%95%E3%82%9A%E3%83%AD%E3%82%AF%E3%82%99%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%AF%E3%82%99/6_event.html">イベントデータの解析</a>）．</p>
@@ -929,22 +937,12 @@ $<span class="math notranslate nohighlight">\(
       <th></th>
       <th>name</th>
       <th>team_id</th>
-      <th>role</th>
-      <th>height</th>
-      <th>weight</th>
-      <th>foot</th>
-      <th>nationality</th>
-      <th>birth_area</th>
+      <th>...</th>
       <th>birthday</th>
       <th>league</th>
     </tr>
     <tr>
       <th>player_id</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -957,12 +955,7 @@ $<span class="math notranslate nohighlight">\(
       <th>3319</th>
       <td>M_Özil</td>
       <td>1609</td>
-      <td>MD</td>
-      <td>180.0</td>
-      <td>76.0</td>
-      <td>left</td>
-      <td>Germany</td>
-      <td>Germany</td>
+      <td>...</td>
       <td>1988/10/15</td>
       <td>England</td>
     </tr>
@@ -970,12 +963,7 @@ $<span class="math notranslate nohighlight">\(
       <th>3560</th>
       <td>Nach_Monreal</td>
       <td>1609</td>
-      <td>DF</td>
-      <td>179.0</td>
-      <td>72.0</td>
-      <td>left</td>
-      <td>Spain</td>
-      <td>Spain</td>
+      <td>...</td>
       <td>1986/02/26</td>
       <td>England</td>
     </tr>
@@ -983,12 +971,7 @@ $<span class="math notranslate nohighlight">\(
       <th>7855</th>
       <td>L_Koscielny</td>
       <td>1609</td>
-      <td>DF</td>
-      <td>186.0</td>
-      <td>75.0</td>
-      <td>right</td>
-      <td>Poland</td>
-      <td>France</td>
+      <td>...</td>
       <td>1985/09/10</td>
       <td>England</td>
     </tr>
@@ -996,12 +979,7 @@ $<span class="math notranslate nohighlight">\(
       <th>7870</th>
       <td>A_Ramsey</td>
       <td>1609</td>
-      <td>MD</td>
-      <td>183.0</td>
-      <td>76.0</td>
-      <td>right</td>
-      <td>Wales</td>
-      <td>Wales</td>
+      <td>...</td>
       <td>1990/12/26</td>
       <td>England</td>
     </tr>
@@ -1009,12 +987,7 @@ $<span class="math notranslate nohighlight">\(
       <th>7882</th>
       <td>P_Čech</td>
       <td>1609</td>
-      <td>GK</td>
-      <td>196.0</td>
-      <td>90.0</td>
-      <td>left</td>
-      <td>Czec_Republic</td>
-      <td>Czec_Republic</td>
+      <td>...</td>
       <td>1982/05/20</td>
       <td>England</td>
     </tr>
@@ -1025,22 +998,12 @@ $<span class="math notranslate nohighlight">\(
       <td>...</td>
       <td>...</td>
       <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
     </tr>
     <tr>
       <th>266885</th>
       <td>M_Olunga</td>
       <td>756</td>
-      <td>FW</td>
-      <td>188.0</td>
-      <td>80.0</td>
-      <td>left</td>
-      <td>Kenya</td>
-      <td>Kenya</td>
+      <td>...</td>
       <td>1994/03/26</td>
       <td>Spain</td>
     </tr>
@@ -1048,12 +1011,7 @@ $<span class="math notranslate nohighlight">\(
       <th>282448</th>
       <td>Alei_García</td>
       <td>756</td>
-      <td>MD</td>
-      <td>173.0</td>
-      <td>74.0</td>
-      <td>right</td>
-      <td>Spain</td>
-      <td>Spain</td>
+      <td>...</td>
       <td>1997/06/28</td>
       <td>Spain</td>
     </tr>
@@ -1061,12 +1019,7 @@ $<span class="math notranslate nohighlight">\(
       <th>366374</th>
       <td>K_Soni</td>
       <td>756</td>
-      <td>MD</td>
-      <td>182.0</td>
-      <td>77.0</td>
-      <td>left</td>
-      <td>Cameroon</td>
-      <td>Cameroon</td>
+      <td>...</td>
       <td>1998/04/17</td>
       <td>Spain</td>
     </tr>
@@ -1074,12 +1027,7 @@ $<span class="math notranslate nohighlight">\(
       <th>443324</th>
       <td>Dougla_Luiz</td>
       <td>756</td>
-      <td>MD</td>
-      <td>178.0</td>
-      <td>65.0</td>
-      <td>right</td>
-      <td>Brazil</td>
-      <td>Brazil</td>
+      <td>...</td>
       <td>1998/05/09</td>
       <td>Spain</td>
     </tr>
@@ -1087,12 +1035,7 @@ $<span class="math notranslate nohighlight">\(
       <th>508686</th>
       <td>M_Lizak</td>
       <td>756</td>
-      <td>GK</td>
-      <td>192.0</td>
-      <td>78.0</td>
-      <td>NaN</td>
-      <td>Poland</td>
-      <td>Poland</td>
+      <td>...</td>
       <td>1996/07/15</td>
       <td>Spain</td>
     </tr>
@@ -1131,22 +1074,12 @@ $<span class="math notranslate nohighlight">\(
       <th></th>
       <th>name</th>
       <th>team_id</th>
-      <th>role</th>
-      <th>height</th>
-      <th>weight</th>
-      <th>foot</th>
-      <th>nationality</th>
-      <th>birth_area</th>
+      <th>...</th>
       <th>birthday</th>
       <th>league</th>
     </tr>
     <tr>
       <th>player_id</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -1159,12 +1092,7 @@ $<span class="math notranslate nohighlight">\(
       <th>3319</th>
       <td>M_Özil</td>
       <td>1609</td>
-      <td>MD</td>
-      <td>180.0</td>
-      <td>76.0</td>
-      <td>left</td>
-      <td>Germany</td>
-      <td>Germany</td>
+      <td>...</td>
       <td>1988/10/15</td>
       <td>England</td>
     </tr>
@@ -1172,17 +1100,13 @@ $<span class="math notranslate nohighlight">\(
       <th>3560</th>
       <td>Nach_Monreal</td>
       <td>1609</td>
-      <td>DF</td>
-      <td>179.0</td>
-      <td>72.0</td>
-      <td>left</td>
-      <td>Spain</td>
-      <td>Spain</td>
+      <td>...</td>
       <td>1986/02/26</td>
       <td>England</td>
     </tr>
   </tbody>
 </table>
+<p>2 rows × 10 columns</p>
 </div></div></div>
 </div>
 <ul class="simple">
@@ -1260,24 +1184,12 @@ Name: height, Length: 2439, dtype: float64
       <th></th>
       <th>name</th>
       <th>team_id</th>
-      <th>role</th>
-      <th>height</th>
-      <th>weight</th>
-      <th>foot</th>
-      <th>nationality</th>
-      <th>birth_area</th>
-      <th>birthday</th>
+      <th>...</th>
       <th>league</th>
       <th>BMI</th>
     </tr>
     <tr>
       <th>player_id</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -1290,18 +1202,13 @@ Name: height, Length: 2439, dtype: float64
       <th>447254</th>
       <td>R_Harper</td>
       <td>1627</td>
-      <td>MD</td>
-      <td>188.0</td>
-      <td>64.0</td>
-      <td>right</td>
-      <td>England</td>
-      <td>England</td>
-      <td>2000/03/08</td>
+      <td>...</td>
       <td>England</td>
       <td>18.107741</td>
     </tr>
   </tbody>
 </table>
+<p>1 rows × 11 columns</p>
 </div></div></div>
 </div>
 <ul class="simple">
@@ -1526,7 +1433,7 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;体重 [kg]&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/2022_report_answer_82_1.png" src="../../_images/2022_report_answer_82_1.png" />
+<img alt="../../_images/2022_report_answer_83_1.png" src="../../_images/2022_report_answer_83_1.png" />
 </div>
 </div>
 <p><strong>問題B：身長のヒストグラム</strong></p>
@@ -1566,7 +1473,7 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(150.0, 210.0)
 </pre></div>
 </div>
-<img alt="../../_images/2022_report_answer_85_1.png" src="../../_images/2022_report_answer_85_1.png" />
+<img alt="../../_images/2022_report_answer_86_1.png" src="../../_images/2022_report_answer_86_1.png" />
 </div>
 </div>
 </section>
