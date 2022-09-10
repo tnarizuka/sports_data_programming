@@ -65,7 +65,7 @@
 
 # - `os`モジュールをインポートせよ
 
-# In[3]:
+# In[39]:
 
 
 import os
@@ -73,7 +73,7 @@ import os
 
 # - `os.chdir`を用いてカレントディレクトリを適当な作業フォルダに変更せよ
 
-# In[4]:
+# In[40]:
 
 
 os.chdir(r'/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data')
@@ -81,7 +81,7 @@ os.chdir(r'/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_
 
 # - NumPyを`np`，Pandasを`pd`という名前でインポートせよ
 
-# In[5]:
+# In[41]:
 
 
 import numpy as np
@@ -90,7 +90,7 @@ import pandas as pd
 
 # - matplotlib.pyplotを`plt`という名前でインポートせよ
 
-# In[6]:
+# In[42]:
 
 
 import matplotlib.pyplot as plt
@@ -107,7 +107,7 @@ import matplotlib.pyplot as plt
 # 
 # 以下のように，母平均5，母標準偏差0.5の正規分布に従うデータから100個を抽出した．
 
-# In[7]:
+# In[43]:
 
 
 np.random.seed(seed=33)
@@ -117,13 +117,13 @@ x
 
 # このデータに対し，`np.mean`関数と`np.std`関数を用いて標本平均と標本標準偏差を求めると以下のようになった．
 
-# In[8]:
+# In[44]:
 
 
 np.mean(x)
 
 
-# In[9]:
+# In[45]:
 
 
 np.std(x)
@@ -135,7 +135,7 @@ np.std(x)
 #     \bar{x} &= \frac{1}{n} \sum_{i=1}^{n} x_{i} = \frac{x_{1}+x_{2}+\cdots+x_{n}}{n}
 # \end{align}
 
-# In[10]:
+# In[46]:
 
 
 np.sum(x)/x.size
@@ -150,7 +150,7 @@ np.sum(x)/x.size
 #     = \sqrt{ \frac{(x_{1}-\bar{x})^2+(x_{2}-\bar{x})^2+\cdots+(x_{n}-\bar{x})^2}{n} }
 # $$
 
-# In[11]:
+# In[47]:
 
 
 np.sqrt(np.sum((x-np.mean(x))**2)/x.size)
@@ -166,7 +166,7 @@ np.sqrt(np.sum((x-np.mean(x))**2)/x.size)
 
 # - 以下を適当に修正し，ダウンロードしたファイルをNumPy配列`D`に読み込め：
 
-# In[12]:
+# In[48]:
 
 
 # csvファイルのパスを指定する
@@ -180,7 +180,7 @@ D
 
 # - 選手IDが-1となっている要素はダミーデータである．`D`からダミーデータを削除し，改めて配列`D`とせよ．
 
-# In[13]:
+# In[49]:
 
 
 D = D[D[:, 0]!=-1]
@@ -188,7 +188,7 @@ D = D[D[:, 0]!=-1]
 
 # - データに含まれる選手数を調べよ．
 
-# In[14]:
+# In[50]:
 
 
 len(D)
@@ -197,7 +197,7 @@ len(D)
 # - 選手IDが703の選手の身長と体重を調べよ．<br>
 # ※ この選手は吉田麻也選手である．2017年時点の体重と現在の体重を比較してみよ．
 
-# In[15]:
+# In[51]:
 
 
 D[D[:, 0]==703]
@@ -205,7 +205,7 @@ D[D[:, 0]==703]
 
 # - 配列Dから選手ID，身長，体重のデータを抽出し，それぞれI, H, Wという配列に格納せよ．
 
-# In[16]:
+# In[52]:
 
 
 I = D[:, 0]
@@ -217,14 +217,14 @@ W = D[:, 2]
 #     - `H`を昇順（小→大）に並び替え，先頭と末尾の要素を抽出する
 #     - `np.min`，`np.max`関数を用いる
 
-# In[17]:
+# In[53]:
 
 
 # Hを昇順に並び替えて先頭と末尾の要素を抽出
 np.sort(H)[0], np.sort(H)[-1]
 
 
-# In[18]:
+# In[54]:
 
 
 # np.min, np.maxを用いる
@@ -241,21 +241,21 @@ np.min(H), np.max(H)
 #     ※ この選手はRekeem Jordan Harper選手である．<br>
 #     ※ 日本肥満学会の基準では，BMIが18.5未満の場合を痩せ型と定義している．
 
-# In[19]:
+# In[55]:
 
 
 # Hの単位をcm -> m
 H2 = H/100
 
 
-# In[20]:
+# In[56]:
 
 
 # BMIを求める
 BMI = W/(H2**2)
 
 
-# In[21]:
+# In[57]:
 
 
 # BMIが18.5未満を抽出
@@ -264,13 +264,20 @@ D[BMI < 18.5]
 
 # ## Pandasに関する問題
 
+# In[58]:
+
+
+# 表示設定
+pd.set_option('display.max_columns', 5)  # 表示する列数の上限
+
+
 # 次のcsvファイルをダウンロードせよ：[player_all.csv](https://drive.google.com/uc?export=download&id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP) <br>
 # このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
 # ※ 本データはPappalardoデータセットを加工したものである（詳細は[イベントデータの解析](https://rtwqzpj5uefb1pvzmprbnq-on.drv.tw/document/講義/立正/スポーツデータ分析のためのプログラミング/6_event.html)）．
 
 # - 以下を適当に修正し，`player_all.csv`ファイルを`df`に読み込め
 
-# In[22]:
+# In[59]:
 
 
 df = pd.read_csv('./report/player_all.csv', header=0, index_col='player_id', na_values=0)
@@ -279,7 +286,7 @@ df
 
 # - `df`の先頭から2行を表示せよ
 
-# In[23]:
+# In[60]:
 
 
 df.head(2)
@@ -295,21 +302,21 @@ df.head(2)
 #     ※ この選手はRekeem Jordan Harper選手である．<br>
 #     ※ 日本肥満学会の基準では，BMIが18.5未満の場合を痩せ型と定義している．
 
-# In[24]:
+# In[61]:
 
 
 # 'height'の単位をcm->m
 df['height']/100
 
 
-# In[25]:
+# In[62]:
 
 
 # BMIを求めて'BMI'列を作成
 df['BMI'] = df['weight']/(df['height']/100)**2
 
 
-# In[26]:
+# In[63]:
 
 
 # BMIが18.5未満の選手を抽出
@@ -318,34 +325,34 @@ df.loc[df['BMI'] < 18.5]
 
 #  - ポジション（`role`）ごとに，身長，体重，BMIの平均値を計算せよ．<br>
 
-# In[27]:
+# In[64]:
 
 
 df['role'].unique()
 
 
-# In[28]:
+# In[65]:
 
 
 # ディフェンダー（'DF'）
 df.loc[df['role']=='DF', ['height', 'weight', 'BMI']].mean()
 
 
-# In[29]:
+# In[66]:
 
 
 # ミッドフィルダー（'MF'）
 df.loc[df['role']=='MD', ['height', 'weight', 'BMI']].mean()
 
 
-# In[30]:
+# In[67]:
 
 
 # フォワード（'FW'）
 df.loc[df['role']=='FW', ['height', 'weight', 'BMI']].mean()
 
 
-# In[31]:
+# In[68]:
 
 
 # キーパー（'GK'）
@@ -354,7 +361,7 @@ df.loc[df['role']=='GK', ['height', 'weight', 'BMI']].mean()
 
 # ※ groupbyを用いると１行で書ける
 
-# In[32]:
+# In[69]:
 
 
 df.groupby('role').mean()
@@ -376,7 +383,7 @@ df.groupby('role').mean()
 
 # 方法１
 
-# In[33]:
+# In[70]:
 
 
 data1 = df.loc[df['league']=='England', 'weight'].dropna()
@@ -389,7 +396,7 @@ D = [data1, data2, data3, data3, data4, data5]
 
 # 方法２（for文）
 
-# In[34]:
+# In[71]:
 
 
 D = []
@@ -399,7 +406,7 @@ for l in df['league'].unique():
 
 # 方法３（リスト内包表記）
 
-# In[35]:
+# In[72]:
 
 
 D = [df.loc[df['league']==l, 'weight'].dropna() for l in df['league'].unique()]
@@ -409,7 +416,7 @@ D = [df.loc[df['league']==l, 'weight'].dropna() for l in df['league'].unique()]
 
 # ※ 講義資料のコードをほぼそのまま利用できます
 
-# In[36]:
+# In[73]:
 
 
 # 箱ひげ図のプロット
@@ -433,7 +440,7 @@ ax.set_ylabel('体重 [kg]', fontsize=12)
 
 # ※ 講義資料のコードをほぼそのまま利用できます
 
-# In[37]:
+# In[74]:
 
 
 H_e = df.loc[df['league']=='England', 'height'].dropna()
