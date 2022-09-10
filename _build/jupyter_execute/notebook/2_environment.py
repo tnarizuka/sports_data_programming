@@ -32,7 +32,7 @@ os.chdir(r"C:\Users\parar\OneDrive\sport_data")
 # - [Anacondaの公式サイト](https://www.anaconda.com/products/individual)にアクセスする
 # - 下にスクロールし，"Anaconda Installers"から環境に応じたインストーラをダウンロードする
 # - ダウンロードしたインストーラをクリックし，画面の指示に従う
-#     - 途中で，"add Anaconda to the system Pass environment variable"にチェックを入れてPathの設定を行う
+#     - 途中で，`add Anaconda to the system Pass environment variable`にチェックを入れてPathの設定を行う
 # - Anaconda Navigatorが使えるか確認する
 
 # ## Maplotlibの日本語対応
@@ -50,23 +50,20 @@ os.chdir(r"C:\Users\parar\OneDrive\sport_data")
 
 # **japanize_matplotlibのインストール（詳しくは[こちら](https://pypi.org/project/japanize-matplotlib/)）**
 # 
-# - pipでインストール
-#     - ターミナルを開いて以下のコマンドを実行し，AnacondaのインストールされているフォルダのPathを取得する
-#         ```
-#         conda info -e
-#         # conda environmentsL
-#         #
-#         base    *     C:\Users\username\anaconda3
-#         ```
-#     - 取得したAnaconda環境をactivateする
-#         - `*`の右に表示された文字列（フォルダのパス）をコピーして以下を実行
-#         - `activate "フォルダのパス"`
-#         - これでanaconda環境にpipコマンドでインストール可能になる
-#     - 以下のコマンドを実行してインストールする
-#         - `pip install japanize-matplotlib`
-# 
-# - condaでインストール
-#     - 今は対応していない様子
+# - ターミナルを開いて以下のコマンドを実行し，AnacondaのインストールされているフォルダのPathを取得する
+#     ```
+#     conda info -e
+#     ---
+#     # conda environmentsL
+#     #
+#     base  * C:\Users\username\anaconda3
+#     ```
+# - 取得したAnaconda環境をactivateする
+#     - `base * `の右に表示された文字列（フォルダのパス）をコピーして以下を実行
+#     - `activate "フォルダのパス"`
+#     - これでanaconda環境にpipコマンドでインストール可能になる
+# - 以下のコマンドを実行してインストールする
+#     - `pip install japanize-matplotlib`
 
 # ## 作業フォルダの作成
 

@@ -1170,7 +1170,7 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </div>
 </div>
 <figure class="align-default" id="fig-matrix">
-<a class="reference internal image-reference" href="../_images/matrix.png"><img alt="../_images/matrix.png" src="../_images/matrix.png" style="height: 250px;" /></a>
+<a class="reference internal image-reference" href="../_images/matrix.png"><img alt="../_images/matrix.png" src="../_images/matrix.png" style="height: 200px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 3.1 </span><span class="caption-text">行列の例</span><a class="headerlink" href="#fig-matrix" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -4292,13 +4292,34 @@ NumPyの主要な集計関数を表に示す．
 <ul class="simple">
 <li><p>選手IDが-1となっている要素はダミーデータである．<code class="docutils literal notranslate"><span class="pre">D</span></code>からダミーデータを削除し，改めて配列<code class="docutils literal notranslate"><span class="pre">D</span></code>とせよ．</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <ul class="simple">
 <li><p>データに含まれる選手数を調べよ．</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <ul class="simple">
 <li><p>選手IDが703の選手の身長と体重を調べよ．<br>
 ※ この選手は吉田麻也選手である．2017年時点の体重と現在の体重を比較してみよ．</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <ul class="simple">
 <li><p>配列Dから選手ID，身長，体重のデータを抽出し，それぞれI, H, Wという配列に格納せよ．</p></li>
 </ul>
@@ -4334,18 +4355,14 @@ NumPyの主要な集計関数を表に示す．
 </div>
 </div>
 <ul class="simple">
-<li><p>肥満度を表す指標としてBMIが知られている．BMIは身長と体重を用いて以下で定義される：
-$<span class="math notranslate nohighlight">\(
-  \mathrm{BMI} = \frac{体重 [kg]}{(身長 [m])^2}
-\)</span>$</p>
-<ul>
-<li><p>身長の単位をcmからmに変換し，<code class="docutils literal notranslate"><span class="pre">H2</span></code>に格納せよ．</p></li>
-<li><p>配列<code class="docutils literal notranslate"><span class="pre">W</span></code>と<code class="docutils literal notranslate"><span class="pre">H2</span></code>からBMIを求め，<code class="docutils literal notranslate"><span class="pre">BMI</span></code>という配列に格納せよ．</p></li>
-<li><p>BMIが18.5未満の選手が１人いる．この選手のIDを調べよ．<br>
-※ この選手はRekeem Jordan Harper選手である．<br>
-※ 日本肥満学会の基準では，BMIが18.5未満の場合を痩せ型と定義している．</p></li>
+<li><p>肥満度を表す指標としてBMIが知られている．BMIは身長と体重を用いて以下で定義される：</p></li>
 </ul>
-</li>
+<div class="amsmath math notranslate nohighlight" id="equation-957b0623-076d-4e41-b602-478315412f01">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-957b0623-076d-4e41-b602-478315412f01" title="Permalink to this equation">#</a></span>\[\begin{align}
+    \mathrm{BMI} = \frac{体重 [kg]}{(身長 [m])^2}
+\end{align}\]</div>
+<ul class="simple">
+<li><p>身長の単位をcmからmに変換し，<code class="docutils literal notranslate"><span class="pre">H2</span></code>に格納せよ．</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4355,6 +4372,9 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 </div>
+<ul class="simple">
+<li><p>配列<code class="docutils literal notranslate"><span class="pre">W</span></code>と<code class="docutils literal notranslate"><span class="pre">H2</span></code>からBMIを求め，<code class="docutils literal notranslate"><span class="pre">BMI</span></code>という配列に格納せよ．</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># BMIを求める</span>
@@ -4363,6 +4383,11 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 </div>
+<ul class="simple">
+<li><p>BMIが18.5未満の選手が１人いる．この選手のIDを調べよ．<br>
+※ この選手はRekeem Jordan Harper選手である．<br>
+※ 日本肥満学会の基準では，BMIが18.5未満の場合を痩せ型と定義している．</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># BMIが18.5未満を抽出</span>

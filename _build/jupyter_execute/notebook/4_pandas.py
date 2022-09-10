@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[3]:
 
 
 # （必須）モジュールのインポート
@@ -17,9 +17,9 @@ except:
 
 # 表示設定
 np.set_printoptions(suppress=True, precision=3)
-pd.set_option('precision', 3)    # 小数点以下の表示桁
-pd.set_option('max_rows', 150)   # 表示する行数の上限
-pd.set_option('max_columns', 20) # 表示する列数の上限
+pd.set_option('display.precision', 3)    # 小数点以下の表示桁
+pd.set_option('display.max_rows', 150)   # 表示する行数の上限
+pd.set_option('display.max_columns', 5)  # 表示する列数の上限
 get_ipython().run_line_magic('precision', '3')
 
 
@@ -642,7 +642,7 @@ df
 # In[ ]:
 
 
-
+# 解答欄
 
 
 # DataFrameの末尾2行を取得せよ
@@ -650,7 +650,7 @@ df
 # In[ ]:
 
 
-
+# 解答欄
 
 
 # `index`（行ラベル）を取得せよ
@@ -658,7 +658,7 @@ df
 # In[ ]:
 
 
-
+# 解答欄
 
 
 # `columns`（列ラベル）を取得せよ
@@ -666,7 +666,7 @@ df
 # In[ ]:
 
 
-
+# 解答欄
 
 
 # `iloc`属性を用いて行番号が114の行を抽出せよ
@@ -674,7 +674,7 @@ df
 # In[ ]:
 
 
-
+# 解答欄
 
 
 # `iloc`属性を用いて行番号が1416~1936までの行を抽出せよ<br>
@@ -683,7 +683,7 @@ df
 # In[ ]:
 
 
-
+# 解答欄
 
 
 # `iloc`属性を用いて列番号が4の列を抽出せよ
@@ -691,7 +691,7 @@ df
 # In[ ]:
 
 
-
+# 解答欄
 
 
 # `iloc`属性を用いて列番号が4以上の列を抽出せよ
@@ -699,7 +699,7 @@ df
 # In[ ]:
 
 
-
+# 解答欄
 
 
 # 角括弧`[]`を用いて`weight`列を抽出せよ
@@ -707,7 +707,7 @@ df
 # In[ ]:
 
 
-
+# 解答欄
 
 
 # 角括弧`[]`を用いて`nationarity`列を抽出せよ
@@ -715,7 +715,7 @@ df
 # In[ ]:
 
 
-
+# 解答欄
 
 
 # 角括弧`[]`を用いて`team_id`列，`height`列，`weight`列を抽出せよ<br>
@@ -724,7 +724,7 @@ df
 # In[ ]:
 
 
-
+# 解答欄
 
 
 # `loc`属性を用いてindex（行ラベル）が703の行を抽出せよ
@@ -732,7 +732,7 @@ df
 # In[ ]:
 
 
-
+# 解答欄
 
 
 # `loc`属性を用いて`weight`列を抽出せよ
@@ -740,7 +740,7 @@ df
 # In[ ]:
 
 
-
+# 解答欄
 
 
 # `loc`属性を用いてindex（行ラベル）が61941，8747，283062の行を抽出せよ<br>
@@ -749,7 +749,7 @@ df
 # In[ ]:
 
 
-
+# 解答欄
 
 
 # `loc`属性を用いて`index`（行ラベル）が703で`columns`（列ラベル）が`name`，`weight`，`height`の要素を抽出せよ
@@ -757,7 +757,7 @@ df
 # In[ ]:
 
 
-
+# 解答欄
 
 
 # `index`（行ラベル）が以下の番号の選手は全て日本人である：

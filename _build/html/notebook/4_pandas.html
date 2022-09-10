@@ -700,9 +700,9 @@ title="Print to PDF"
 
 <span class="c1"># 表示設定</span>
 <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;precision&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>    <span class="c1"># 小数点以下の表示桁</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;max_rows&#39;</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>   <span class="c1"># 表示する行数の上限</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;max_columns&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="c1"># 表示する列数の上限</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.precision&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>    <span class="c1"># 小数点以下の表示桁</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>   <span class="c1"># 表示する行数の上限</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># 表示する列数の上限</span>
 <span class="o">%</span><span class="k">precision</span> 3
 </pre></div>
 </div>
@@ -2770,23 +2770,128 @@ dtype: float64
 </div></div></div>
 </div>
 <p>DataFrameの先頭2行を取得せよ</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>DataFrameの末尾2行を取得せよ</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p><code class="docutils literal notranslate"><span class="pre">index</span></code>（行ラベル）を取得せよ</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p><code class="docutils literal notranslate"><span class="pre">columns</span></code>（列ラベル）を取得せよ</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p><code class="docutils literal notranslate"><span class="pre">iloc</span></code>属性を用いて行番号が114の行を抽出せよ</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p><code class="docutils literal notranslate"><span class="pre">iloc</span></code>属性を用いて行番号が1416~1936までの行を抽出せよ<br>
 ※ これはイタリアリーグのデータである</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p><code class="docutils literal notranslate"><span class="pre">iloc</span></code>属性を用いて列番号が4の列を抽出せよ</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p><code class="docutils literal notranslate"><span class="pre">iloc</span></code>属性を用いて列番号が4以上の列を抽出せよ</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>角括弧<code class="docutils literal notranslate"><span class="pre">[]</span></code>を用いて<code class="docutils literal notranslate"><span class="pre">weight</span></code>列を抽出せよ</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>角括弧<code class="docutils literal notranslate"><span class="pre">[]</span></code>を用いて<code class="docutils literal notranslate"><span class="pre">nationarity</span></code>列を抽出せよ</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>角括弧<code class="docutils literal notranslate"><span class="pre">[]</span></code>を用いて<code class="docutils literal notranslate"><span class="pre">team_id</span></code>列，<code class="docutils literal notranslate"><span class="pre">height</span></code>列，<code class="docutils literal notranslate"><span class="pre">weight</span></code>列を抽出せよ<br>
 ※ これがNumPyのレポート問題で扱ったデータである．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p><code class="docutils literal notranslate"><span class="pre">loc</span></code>属性を用いてindex（行ラベル）が703の行を抽出せよ</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p><code class="docutils literal notranslate"><span class="pre">loc</span></code>属性を用いて<code class="docutils literal notranslate"><span class="pre">weight</span></code>列を抽出せよ</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p><code class="docutils literal notranslate"><span class="pre">loc</span></code>属性を用いてindex（行ラベル）が61941，8747，283062の行を抽出せよ<br>
 ※ これは身長2m以上の選手のデータである</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p><code class="docutils literal notranslate"><span class="pre">loc</span></code>属性を用いて<code class="docutils literal notranslate"><span class="pre">index</span></code>（行ラベル）が703で<code class="docutils literal notranslate"><span class="pre">columns</span></code>（列ラベル）が<code class="docutils literal notranslate"><span class="pre">name</span></code>，<code class="docutils literal notranslate"><span class="pre">weight</span></code>，<code class="docutils literal notranslate"><span class="pre">height</span></code>の要素を抽出せよ</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p><code class="docutils literal notranslate"><span class="pre">index</span></code>（行ラベル）が以下の番号の選手は全て日本人である：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">94764</span><span class="p">,</span> <span class="mi">703</span><span class="p">,</span> <span class="mi">14763</span><span class="p">,</span> <span class="mi">94695</span><span class="p">,</span> <span class="mi">94831</span><span class="p">,</span> <span class="mi">254649</span><span class="p">,</span> <span class="mi">14816</span><span class="p">,</span> <span class="mi">14749</span><span class="p">,</span> <span class="mi">391606</span><span class="p">,</span> <span class="mi">94650</span><span class="p">,</span> <span class="mi">14929</span><span class="p">,</span> <span class="mi">365880</span><span class="p">,</span> <span class="mi">14836</span><span class="p">,</span> <span class="mi">94828</span>
 </pre></div>
