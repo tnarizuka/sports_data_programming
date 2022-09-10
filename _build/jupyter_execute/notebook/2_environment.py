@@ -181,6 +181,7 @@ print("C:\\Users\\username\\OneDrive\\sport_data")
 
 # ### 絶対パスと相対パス
 # まず，以下のようなプログラムをPythonスクリプト（test.py）に保存する（[ダウンロードはこちら](https://drive.google.com/uc?export=download&id=1htV_JZw26qMvnefhc1YGZfhZCiYMojmk)）．
+# 
 # ```python
 # for i in range(5):
 #     print("test%s" % i)
@@ -199,7 +200,7 @@ print("C:\\Users\\username\\OneDrive\\sport_data")
 
 # **1. 絶対パス**
 
-# ```py
+# ```python
 # %run "C:\Users\parar\OneDrive\sport_data\2_environment\test.py"
 # ```
 
@@ -209,7 +210,7 @@ print("C:\\Users\\username\\OneDrive\\sport_data")
 
 # **2.相対パス**
 
-# ```py
+# ```python
 # os.chdir(r"C:\Users\parar\OneDrive\sport_data") # カレントディレクトリの移動
 # %run "./2_environment/test.py"             # 実行
 # ```
@@ -310,7 +311,8 @@ fig.savefig('./2_environment/graph.pdf', bbox_inches="tight", pad_inches=0.2, tr
 #     - "C:\Users\username\.ipython\prifile_name"に"startup"フォルダが作成される．
 # - startupフォルダの中に"00.ipy"というファイル（スタートアップスクリプト）を作り，自動実行したいコマンドを記述する．
 # - 例えば，以下はよく使うので自動importしておくと良い
-#     ```
+# 
+#     ```python
 #     import os
 #     import sys
 #     import matplotlib.pyplot as plt
@@ -318,6 +320,7 @@ fig.savefig('./2_environment/graph.pdf', bbox_inches="tight", pad_inches=0.2, tr
 #     import pandas as pd
 #     ```
 # - 自作のモジュール（例えば`my_module.py`）をimportして使う場合，`my_module.py`を一度jupyterでimportした後に，ローカルで`my_module.py`を変更することがよくある．このとき，ローカルで行った変更内容はjupyter側には自動で反映されない．そこで，スタートアップスクリプトに以下を加えておくと自作モジュールの変更が自動で反映される．
+#   
 #     ```
 #     %load_ext autoreload
 #     %autoreload 2
@@ -338,25 +341,25 @@ fig.savefig('./2_environment/graph.pdf', bbox_inches="tight", pad_inches=0.2, tr
 
 # これを単にPythonスクリプトとして実行すると，`if __name__ == '__main__':`以下のコマンドが実行される：
 
-# ```py
+# ```python
 # %run "./module/my_module.py"
 # ```
 
 # 一方，これをモジュールとしてインポートするには以下のようにする：
 
-# ```py
+# ```python
 # import module.my_module as mm
 # ```
 
 # この状態で`my_module`内の関数`my_func()`を以下のように`mm.my_func()`として実行できる：
 
-# ```py
+# ```python
 # mm.my_func()
 # ```
 
 # スタートアップスクリプト内にautoreloadの設定を書いている場合は，ローカルで`my_module.py`を書き換えたら即座に変更内容が反映されるはずである．
 
-# ```py
+# ```python
 # mm.my_func()
 # ```
 
@@ -374,9 +377,9 @@ fig.savefig('./2_environment/graph.pdf', bbox_inches="tight", pad_inches=0.2, tr
 # - 左下の検索をクリックし，"ターミナル"と検索
 # - 検索結果の中から"ターミナル"を右クリックし"管理者として実行"
 # - 以下のコマンドを実行
-# ```
-# Set-ExecutionPolicy RemoteSigned
-# ```
+#   ```
+#   Set-ExecutionPolicy RemoteSigned
+#   ```
 # 
 # **実行**
 # - タスクバーにピン留めしておいて，そこから実行すると良い
@@ -424,6 +427,7 @@ fig.savefig('./2_environment/graph.pdf', bbox_inches="tight", pad_inches=0.2, tr
 # Google Driveに保存した自作モジュールやファイルにアクセスしたい場合はGoogle Driveをマウントする必要がある．
 # 
 # - 以下を実行する
+#   
 #     ```python
 #     from google.colab import drive
 #     drive.mount('/content/drive')
@@ -432,6 +436,7 @@ fig.savefig('./2_environment/graph.pdf', bbox_inches="tight", pad_inches=0.2, tr
 # - 自分のGoogleアカウントを選択し，「許可」を選択
 
 # ### （任意）自作モジュールをimportする
+# 
 # ```python
 # import sys
 # sys.path.append('/content/drive/My Drive/***')
