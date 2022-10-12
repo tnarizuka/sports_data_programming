@@ -37,7 +37,7 @@ parse:
 #######################################################################################
 # HTML-specific settings
 html:
-  google_analytics_id: G-RHZE5CW8BR
+  google_analytics_id: "G-RHZE5CW8BR"
   use_issues_button: true
   use_repository_button: true
   home_page_in_navbar: false
