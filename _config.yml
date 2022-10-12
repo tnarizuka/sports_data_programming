@@ -1,11 +1,6 @@
 plugins:
   - jekyll-sitemap
 
-sitemap:
-    path: sitemap.xml
-    template: ./sitemap_template.xml
-    rel: false
-
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
