@@ -1,3 +1,6 @@
+plugins:
+  - jekyll-sitemap
+
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
