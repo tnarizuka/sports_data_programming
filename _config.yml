@@ -71,6 +71,6 @@ sphinx:
     language: ja
     html_show_copyright: false
     # bibtex_reference_style: author_year
-    html_baseurl: "https://github.com/tnarizuka/sports_data_programming/"
+    html_baseurl: "https://github.com/tnarizuka/sports_data_programming"
   extra_extensions:
     - sphinx_sitemap
