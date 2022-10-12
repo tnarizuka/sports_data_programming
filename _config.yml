@@ -1,6 +1,12 @@
 plugins:
   - jekyll-sitemap
 
+sphinx:
+  config:
+    html_baseurl: 'https://path_to_book/'
+  extra_extensions:
+    - sphinx_sitemap
+
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
