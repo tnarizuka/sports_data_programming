@@ -1,12 +1,6 @@
 plugins:
   - jekyll-sitemap
 
-sphinx:
-  config:
-    html_baseurl: 'https://github.com/tnarizuka/sports_data_programming/'
-  extra_extensions:
-    - sphinx_sitemap
-
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
@@ -77,3 +71,5 @@ sphinx:
     language: ja
     html_show_copyright: false
     # bibtex_reference_style: author_year
+  extra_extensions:
+    - sphinx_sitemap
