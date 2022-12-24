@@ -747,8 +747,7 @@ bx, by = 100, 50
 # ヒートマップの描画
 fig, ax = plt.subplots()
 ax.set_aspect('equal')
-ret = ax.hist2d(X, Y, bins=[bx, by], range=[[-10, 10], [-5, 5]],\
-                cmap='jet', cmin=1)
+ret = ax.hist2d(X, Y, bins=[bx, by], range=[[-10, 10], [-5, 5]],                cmap='jet', cmin=1)
 
 # カラーバーを追加
 fig.colorbar(ret[3], orientation='vertical', 
