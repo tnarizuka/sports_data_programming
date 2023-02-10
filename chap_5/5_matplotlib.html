@@ -1,0 +1,2400 @@
+
+<!DOCTYPE html>
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>5. Matplotlibの基礎 &#8212; Programming for Sports Data Analysis</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="6. イベントデータの解析" href="../chap_6/6_event.html" />
+    <link rel="prev" title="4. Pandasの基礎" href="../chap_4/4_pandas.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="ja">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-RHZE5CW8BR"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-RHZE5CW8BR');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Programming for Sports Data Analysis</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chap_1/1_introduction.html">
+   1. イントロダクション
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chap_2/2_environment.html">
+   2. プログラミング環境の構築
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chap_3/3_numpy.html">
+   3. NumPyの基礎
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chap_4/4_pandas.html">
+   4. Pandasの基礎
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   5. Matplotlibの基礎
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chap_6/6_event.html">
+   6. イベントデータの解析
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chap_7/7_tracking.html">
+   7. トラッキングデータの解析
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../report/report.html">
+   レポート
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../report/2022_report_answer.html">
+     2022年度レポート
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/tnarizuka/sports_data_programming/main?urlpath=tree/docs/chap_5/5_matplotlib.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/tnarizuka/sports_data_programming"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/tnarizuka/sports_data_programming/issues/new?title=Issue%20on%20page%20%2Fchap_5/5_matplotlib.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/chap_5/5_matplotlib.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   5.1. Matplotlibの基本操作
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     5.1.1. Matplotlibのインポート
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     5.1.2. プロットの基本中の基本
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     5.1.3. グラフ作成の一連の流れ
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   5.2. 様々なグラフ
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     5.2.1. 基本のプロット関数
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     5.2.2. 棒グラフ
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     5.2.3. （参考）矢印
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   5.3. グラフの装飾
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     5.3.1. 座標軸の範囲
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     5.3.2. アスペクト比
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     5.3.3. タイトルと軸ラベル
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id13">
+     5.3.4. 凡例の追加
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     5.3.5. 目盛り線の表示
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id15">
+     5.3.6. 目盛りラベル
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id16">
+     5.3.7. 演習問題
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id17">
+   5.4. 箱ひげ図とヒストグラム
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id18">
+     5.4.1. 箱ひげ図
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id19">
+     5.4.2. 1次元ヒストグラム
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id20">
+     5.4.3. 2次元ヒストグラム（ヒートマップ）
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id21">
+   5.5. レポート問題
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id22">
+   5.6. 参考
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id23">
+     5.6.1. 描画結果の出力先
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id24">
+     5.6.2. ２つのプロットスタイル
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#figureaxes">
+     5.6.3. FigureとAxesの生成
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Matplotlibの基礎</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   5.1. Matplotlibの基本操作
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     5.1.1. Matplotlibのインポート
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     5.1.2. プロットの基本中の基本
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     5.1.3. グラフ作成の一連の流れ
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   5.2. 様々なグラフ
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     5.2.1. 基本のプロット関数
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     5.2.2. 棒グラフ
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     5.2.3. （参考）矢印
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   5.3. グラフの装飾
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     5.3.1. 座標軸の範囲
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     5.3.2. アスペクト比
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     5.3.3. タイトルと軸ラベル
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id13">
+     5.3.4. 凡例の追加
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     5.3.5. 目盛り線の表示
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id15">
+     5.3.6. 目盛りラベル
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id16">
+     5.3.7. 演習問題
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id17">
+   5.4. 箱ひげ図とヒストグラム
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id18">
+     5.4.1. 箱ひげ図
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id19">
+     5.4.2. 1次元ヒストグラム
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id20">
+     5.4.3. 2次元ヒストグラム（ヒートマップ）
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id21">
+   5.5. レポート問題
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id22">
+   5.6. 参考
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id23">
+     5.6.1. 描画結果の出力先
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id24">
+     5.6.2. ２つのプロットスタイル
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#figureaxes">
+     5.6.3. FigureとAxesの生成
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># （必須）モジュールのインポート</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">japanize_matplotlib</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="c1"># 表示設定</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.precision&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>    <span class="c1"># 小数点以下の表示桁</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>   <span class="c1"># 表示する行数の上限</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># 表示する列数の上限</span>
+<span class="o">%</span><span class="k">precision</span> 3
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;%.3f&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># （必須）カレントディレクトリの変更（自分の作業フォルダのパスをコピーして入力する）</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="matplotlib">
+<h1><span class="section-number">5. </span>Matplotlibの基礎<a class="headerlink" href="#matplotlib" title="このヘッドラインへのパーマリンク">#</a></h1>
+<p>本章は主に以下の文献とウェブサイトを参考にしている：</p>
+<ul class="simple">
+<li><p>Jake VanderPlas, Pythonデータサイエンスハンドブック，オライリー，2018</p></li>
+<li><p>橋本洋志，牧野浩二，Pythonコンピュータシミュレーション入門，オーム社，2021．</p></li>
+<li><p><a class="reference external" href="https://note.nkmk.me">note.nkmk.me</a></p></li>
+<li><p><a class="reference external" href="https://www.yutaka-note.com">YutaKaのPython教室 &gt; Matplotlib</a></p></li>
+</ul>
+<p>以下のMatplotlib公式ギャラリーには様々なグラフとそのコードがまとまっている．
+この中から作成したい図に近いものを見つけ，コードを参考にすると良い．</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://matplotlib.org/stable/gallery/index.html">Matplotlib公式ギャラリー</a></p></li>
+</ul>
+<section id="id1">
+<h2><span class="section-number">5.1. </span>Matplotlibの基本操作<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">#</a></h2>
+<section id="id2">
+<h3><span class="section-number">5.1.1. </span>Matplotlibのインポート<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">#</a></h3>
+<p>Matplotlibは以下のようにインポートするのが慣例である．
+なお，日本語を使用するために，既に説明したjapanize_matplotlibもインポートしておく．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">japanize_matplotlib</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h3><span class="section-number">5.1.2. </span>プロットの基本中の基本<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">#</a></h3>
+<p>Matplotlibの最も基本的なプロット関数が<code class="docutils literal notranslate"><span class="pre">pyplot.plot</span></code>（以下，単に<code class="docutils literal notranslate"><span class="pre">plot</span></code>メソッド）である．
+プロットには２つのスタイルが存在するが，<strong>本講義ではオブジェクト指向スタイルを採用する</strong>（詳細はページ下部の<strong>参考</strong>を参照）．
+pyplotをpltという名前でインポートした場合は以下のように使用する：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">plot</span></code>メソッドは第1引数に<span class="math notranslate nohighlight">\(x\)</span>座標のデータ，第2引数に<span class="math notranslate nohighlight">\(y\)</span>座標のデータ，第3引数以降に色・マーカー・線種およびその他のオプションを指定する．
+指定するデータはリストやNumPy配列，Seriesなどに対応している．
+例えば，以下の場合は<span class="math notranslate nohighlight">\((0, 1)\)</span>，<span class="math notranslate nohighlight">\((1, -1)\)</span>，<span class="math notranslate nohighlight">\((2, 1)\)</span>，<span class="math notranslate nohighlight">\((3, -1)\)</span>に<code class="docutils literal notranslate"><span class="pre">'x'</span></code>マーカーがプロットされ，その間が線で結ばれる．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;x-&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1dac27340&gt;]
+</pre></div>
+</div>
+<img alt="../_images/5_matplotlib_11_1.png" src="../_images/5_matplotlib_11_1.png" />
+</div>
+</div>
+</section>
+<section id="id4">
+<h3><span class="section-number">5.1.3. </span>グラフ作成の一連の流れ<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">#</a></h3>
+<p>データのプロット，グラフの装飾，グラフの保存までの一連の流れは以下の通りである．</p>
+<ol>
+<li><p>FigureオブジェクトとAxesオブジェクトを生成する</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</li>
+<li><p>Axesオブジェクトのメソッドを用いてプロットする</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Axesを装飾する</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Figureを保存する</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;abc.pdf&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">pad_inches</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># FigureとAxesを生成する</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># Axesに対してプロットする</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>   <span class="c1"># 折れ線</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;rx&#39;</span><span class="p">)</span>  <span class="c1"># 赤のo</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;bo--&#39;</span><span class="p">);</span>  <span class="c1"># 青のoを点線で結ぶ</span>
+
+<span class="c1"># Axesを装飾する</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">2.1</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+
+<span class="c1"># Figureを保存する（相対パスを指定）</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./5_matplotlib/graph1.pdf&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">,</span> <span class="n">pad_inches</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5_matplotlib_13_0.png" src="../_images/5_matplotlib_13_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="id5">
+<h2><span class="section-number">5.2. </span>様々なグラフ<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">#</a></h2>
+<section id="id6">
+<h3><span class="section-number">5.2.1. </span>基本のプロット関数<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">#</a></h3>
+<p>Matplotlibの最も基本的なプロット関数が<code class="docutils literal notranslate"><span class="pre">pyplot.plot()</span></code>である．
+Axesオブジェクトを<code class="docutils literal notranslate"><span class="pre">ax</span></code>として取得したい場合，<code class="docutils literal notranslate"><span class="pre">plot</span></code>関数は以下のように実行する：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;rx-&#39;</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">plot</span></code>関数の第3引数は色・マーカー・線種を同時指定することができる．
+主要なoptionを以下にまとめる．</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>オプション名</p></th>
+<th class="head"><p>省略表記</p></th>
+<th class="head"><p>内容</p></th>
+<th class="head"><p>指定の仕方（例）</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>color</p></td>
+<td><p>c</p></td>
+<td><p>色</p></td>
+<td><p>'k'(='black'), 'r'(='red'), 'b'(='blue')</p></td>
+</tr>
+<tr class="row-odd"><td><p>linestyle</p></td>
+<td><p>ls</p></td>
+<td><p>線種</p></td>
+<td><p>'-', '--', ':' , '-.', 'None'</p></td>
+</tr>
+<tr class="row-even"><td><p>marker</p></td>
+<td><p>なし</p></td>
+<td><p>マーカーの種類</p></td>
+<td><p>'x', 'o', '^', '.', '+', 's', 'd'</p></td>
+</tr>
+<tr class="row-odd"><td><p>markersize</p></td>
+<td><p>ms</p></td>
+<td><p>マーカーのサイズ</p></td>
+<td><p>数値</p></td>
+</tr>
+<tr class="row-even"><td><p>markeredgecolor</p></td>
+<td><p>mec</p></td>
+<td><p>マーカーの境界の色</p></td>
+<td><p>色名</p></td>
+</tr>
+<tr class="row-odd"><td><p>markerfacecolor</p></td>
+<td><p>mfc</p></td>
+<td><p>マーカーの塗りつぶしの色</p></td>
+<td><p>色名</p></td>
+</tr>
+<tr class="row-even"><td><p>linewidth</p></td>
+<td><p>lw</p></td>
+<td><p>線の太さ</p></td>
+<td><p>数値</p></td>
+</tr>
+<tr class="row-odd"><td><p>alpha</p></td>
+<td><p>なし</p></td>
+<td><p>透過度</p></td>
+<td><p>0~1</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>色の指定</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">color='red'</span></code>のように色名で指定する．</p></li>
+<li><p>'red'，'green'，'blue'，'black'，'white'，'yellow'，'magenta'，'cyan'は'r'のように頭文字だけで指定できる．</p></li>
+<li><p>他の色名は<a class="reference external" href="https://matplotlib.org/stable/gallery/color/named_colors.html">ここ</a>にまとまっている．</p></li>
+<li><p>色を指定しない場合はデフォルトの色から順に指定される．</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 様々な色の指定方法</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>  <span class="c1"># 第3引数に色名を指定</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">)</span>  <span class="c1"># 第3引数に色名の頭文字を指定</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span> <span class="c1"># colorオプションに色名を指定</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">);</span> <span class="c1"># colorオプションに色名の頭文字を指定</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5_matplotlib_20_0.png" src="../_images/5_matplotlib_20_0.png" />
+</div>
+</div>
+<p><strong>マーカーの指定</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">marker='x'</span></code>のように指定する</p></li>
+<li><p>主要なマーカー：'x', 'o', '^', '.', '+', 's', 'd'</p></li>
+<li><p>他のマーカーは<a class="reference external" href="https://matplotlib.org/stable/api/markers_api.html">ここ</a>にまとまっている</p></li>
+<li><p>マーカーを指定しない場合はデフォルトのマーカーが順に指定される</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 様々なマーカー</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>   <span class="c1"># 第3引数にマーカーを指定し，サイズを10に変更</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">4</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">mec</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5_matplotlib_23_0.png" src="../_images/5_matplotlib_23_0.png" />
+</div>
+</div>
+<p><strong>線種の指定</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">linestyle='-'</span></code>のように指定する</p></li>
+<li><p>主要な線種：'-', '--', ':' , '-.', 'None'</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 様々な線種</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5_matplotlib_25_0.png" src="../_images/5_matplotlib_25_0.png" />
+</div>
+</div>
+</section>
+<section id="id7">
+<h3><span class="section-number">5.2.2. </span>棒グラフ<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">#</a></h3>
+<ul class="simple">
+<li><p>Matplotlibで棒グラフを描くには<code class="docutils literal notranslate"><span class="pre">bar</span></code>メソッドを用いる：</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>第１引数<code class="docutils literal notranslate"><span class="pre">x</span></code>には棒グラフを出力する<span class="math notranslate nohighlight">\(x\)</span>軸上の位置，第２引数<code class="docutils literal notranslate"><span class="pre">h</span></code> には高さを指定する．</p></li>
+<li><p>その他のオプションは<a class="reference external" href="https://matplotlib.org/3.5.1/api/_as_gen/matplotlib.pyplot.bar.html">ここ</a>にまとまっている．</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;edge&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BarContainer object of 5 artists&gt;
+</pre></div>
+</div>
+<img alt="../_images/5_matplotlib_28_1.png" src="../_images/5_matplotlib_28_1.png" />
+</div>
+</div>
+</section>
+<section id="id8">
+<h3><span class="section-number">5.2.3. </span>（参考）矢印<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">#</a></h3>
+<ul class="simple">
+<li><p>矢印を描くには，<code class="docutils literal notranslate"><span class="pre">quiver</span></code>メソッドを用いる．</p></li>
+<li><p>始点 <span class="math notranslate nohighlight">\((x, y)\)</span> から <span class="math notranslate nohighlight">\((u, v)\)</span> の方向に長さ<span class="math notranslate nohighlight">\(\sqrt{u^2 + v^2}\)</span>の矢印を描くには，以下のように実行する：</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;uv&#39;</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>ただし，以下のようにアスペクト比を'equal'に変更しないと見た目がずれる：</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>'angles'，'units'，'scale'などは挙動が分かりにくいので，詳しくは<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.quiver.html">ここ</a>を参照のこと．</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1つの矢印</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>  <span class="c1"># 矢印（ベクトル）の始点</span>
+<span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>  <span class="c1"># 矢印（ベクトル）の成分</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;uv&#39;</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5_matplotlib_31_0.png" src="../_images/5_matplotlib_31_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 複数の矢印</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">ar</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">ar</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>    <span class="c1"># 矢印（ベクトル）の始点</span>
+<span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">ar</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">ar</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>  <span class="c1"># 矢印（ベクトル）の成分</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;uv&#39;</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5_matplotlib_32_0.png" src="../_images/5_matplotlib_32_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="id9">
+<h2><span class="section-number">5.3. </span>グラフの装飾<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">#</a></h2>
+<p>Axesオブジェクトには<code class="docutils literal notranslate"><span class="pre">ax.plot</span></code>や<code class="docutils literal notranslate"><span class="pre">ax.bar</span></code>などのグラフを描くメソッドの他に，グラフを装飾するための様々なメソッドが用意されている．
+まずは，主要なメソッドを用いたグラフ装飾の例を示す．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;FigureとAxesの生成&#39;&#39;&#39;</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="sd">&#39;&#39;&#39;Axesに対する描画&#39;&#39;&#39;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;x-.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;^--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39; Axesの装飾 &#39;&#39;&#39;</span>
+<span class="c1"># 座標軸の範囲の設定</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># アスペクト比</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+
+<span class="c1"># タイトル</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;三角関数のグラフ&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># 軸ラベル</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;角度 $X$ [rad]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$Y$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># 凡例</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">numpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 補助目盛りの表示</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">minorticks_on</span><span class="p">()</span>
+
+<span class="c1"># 目盛線の表示</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="c1"># 目盛りラベルを文字列に変更</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;$\pi$&#39;</span><span class="p">,</span> <span class="s1">&#39;$2\pi$&#39;</span><span class="p">,</span> <span class="s1">&#39;$3\pi$&#39;</span><span class="p">])</span>
+
+<span class="c1"># 目盛りのラベルサイズ</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;Figureの保存&#39;&#39;&#39;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./5_matplotlib/multi_sin.pdf&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5_matplotlib_35_0.png" src="../_images/5_matplotlib_35_0.png" />
+</div>
+</div>
+<section id="id10">
+<h3><span class="section-number">5.3.1. </span>座標軸の範囲<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">#</a></h3>
+<ul class="simple">
+<li><p>座標軸の表示範囲を変更するには<code class="docutils literal notranslate"><span class="pre">ax.set_xlim(x_min,</span> <span class="pre">x_max)</span></code>および<code class="docutils literal notranslate"><span class="pre">ax.set_xlim(y_min,</span> <span class="pre">y_max)</span></code>を実行する．</p></li>
+<li><p>第1，第2引数には表示範囲の最小値と最大値を指定する．</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id11">
+<h3><span class="section-number">5.3.2. </span>アスペクト比<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">#</a></h3>
+<ul class="simple">
+<li><p>図の縦横比をアスペクト比と呼ぶ．</p></li>
+<li><p>デフォルトではアスペクト比が自動調整されてしまうので，円が楕円に見えるなど，出力結果が歪んでしまう．</p></li>
+<li><p>アスペクト比が<span class="math notranslate nohighlight">\(y\)</span>軸の範囲と<span class="math notranslate nohighlight">\(x\)</span>軸の範囲の比となるように設定するにには以下を実行する：</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id12">
+<h3><span class="section-number">5.3.3. </span>タイトルと軸ラベル<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">#</a></h3>
+<ul class="simple">
+<li><p>グラフにタイトルを付けるには，<code class="docutils literal notranslate"><span class="pre">ax.set_title('タイトル',</span> <span class="pre">option)</span></code>を実行する．</p></li>
+<li><p>各軸のラベルを付与するには，<code class="docutils literal notranslate"><span class="pre">ax.set_xlabel('ラベル名',</span> <span class="pre">option)</span></code>，<code class="docutils literal notranslate"><span class="pre">ax.set_ylabel('ラベル名',</span> <span class="pre">option)</span></code>を実行する．</p></li>
+<li><p>optionにはfontsizeなどを指定できる．</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;三角関数のグラフ&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;角度 $X$ [rad]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$Y$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id13">
+<h3><span class="section-number">5.3.4. </span>凡例の追加<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">#</a></h3>
+<ul class="simple">
+<li><p>凡例を表示するには，まず<code class="docutils literal notranslate"><span class="pre">plot</span></code>メソッドの<code class="docutils literal notranslate"><span class="pre">label</span></code>引数で表示したいラベル名を指定する：</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>その上で，以下のように<code class="docutils literal notranslate"><span class="pre">ax.legend(option)</span></code>を実行する：</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">numpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>主要なoptionを以下に示す</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>オプション</p></th>
+<th class="head"><p>内容</p></th>
+<th class="head"><p>指定の仕方（例）</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>loc</p></td>
+<td><p>凡例の位置</p></td>
+<td><p>'best', 'upper left', 'center', 'lower right'</p></td>
+</tr>
+<tr class="row-odd"><td><p>fontsize</p></td>
+<td><p>文字の大きさ</p></td>
+<td><p>数値</p></td>
+</tr>
+<tr class="row-even"><td><p>frameon</p></td>
+<td><p>枠で囲う</p></td>
+<td><p>True / False</p></td>
+</tr>
+<tr class="row-odd"><td><p>numpoints</p></td>
+<td><p>マーカーの数</p></td>
+<td><p>数値</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id14">
+<h3><span class="section-number">5.3.5. </span>目盛り線の表示<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">#</a></h3>
+<ul class="simple">
+<li><p>Axes内部に目盛り線を表示するには<code class="docutils literal notranslate"><span class="pre">ax.grid</span></code>メソッドを使用する．</p></li>
+<li><p>第1引数に1または0を指定することで，表示／非表示を選択できる．</p></li>
+<li><p>より細かく制御したい場合は<code class="docutils literal notranslate"><span class="pre">axis</span></code>引数と<code class="docutils literal notranslate"><span class="pre">which</span></code>引数を指定する．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">axis</span></code>引数は'x', 'y', 'both'を指定することで線を引く軸を設定できる．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">which</span></code>引数は'major', 'minor', 'both'を指定することで線を引く目盛りの種類（主目盛りと補助目盛り）を設定できる．</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 目盛線の表示</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id15">
+<h3><span class="section-number">5.3.6. </span>目盛りラベル<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">#</a></h3>
+<p>特定の目盛りだけにラベルを表示したい場合は<code class="docutils literal notranslate"><span class="pre">ax.set_xticks(x)</span></code>および<code class="docutils literal notranslate"><span class="pre">ax.set_yticks(y)</span></code>を実行する．
+これにより，<code class="docutils literal notranslate"><span class="pre">x</span></code>および<code class="docutils literal notranslate"><span class="pre">y</span></code>で指定した目盛りだけに数値が表示される．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 表示する目盛り</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>デフォルトでは，目盛りに数値が表示されるが，これを任意の文字列に変更するには<code class="docutils literal notranslate"><span class="pre">ax.set_xticklabels</span></code>を使用する：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 目盛りラベルを文字列に変更</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;$\pi$&#39;</span><span class="p">,</span> <span class="s1">&#39;$2\pi$&#39;</span><span class="p">,</span> <span class="s1">&#39;$3\pi$&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>最後に，目盛りラベルの文字サイズを変更するには<code class="docutils literal notranslate"><span class="pre">ax.tick_params</span></code>を使用する：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 目盛りのラベルサイズ</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id16">
+<h3><span class="section-number">5.3.7. </span>演習問題<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">#</a></h3>
+<p><strong>三角関数のグラフ</strong></p>
+<p>上の三角関数のグラフについて，各コマンドの条件を変えてグラフがどのように変わるか試してみよ．</p>
+<p><strong>2次関数のグラフ</strong></p>
+<p>以下の2次関数のグラフを指定した条件で作成せよ
+$<span class="math notranslate nohighlight">\(
+    f(x) = -0.2(x-1)^2 + 2
+\)</span>$</p>
+<ul class="simple">
+<li><p>上の2次関数を点線でプロット</p></li>
+<li><p>頂点の位置に赤の'x'マーカーをプロット</p></li>
+<li><p><span class="math notranslate nohighlight">\(x\)</span>軸の範囲：<span class="math notranslate nohighlight">\(-10\le x\le 10\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span>軸の範囲：<span class="math notranslate nohighlight">\(-5\le x\le 3\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x\)</span>軸に好きなラベルを設定</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span>軸に好きなラベルを設定</p></li>
+<li><p>グラフを好きな名前で保存</p></li>
+</ul>
+<p><strong>ポアソン分布のグラフ（得点分布への導入）</strong></p>
+<p>期待値<span class="math notranslate nohighlight">\(\lambda\)</span>のポアソン分布は以下で定義される：</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x) = \frac{m^x}{x!} \mathrm{e}^{-m x}
+\]</div>
+<p>Pythonにおいてポアソン分布を扱うには，まず<code class="docutils literal notranslate"><span class="pre">scipy.stats.poisson</span></code>をインポートする．
+その上で，値<span class="math notranslate nohighlight">\(x\)</span>に対してパラメータ<span class="math notranslate nohighlight">\(m\)</span>のポアソン分布を計算するには<code class="docutils literal notranslate"><span class="pre">poisson.pmf(x,</span> <span class="pre">m)</span></code>とする．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">poisson</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">poisson</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.007, 0.034, 0.084, 0.14 , 0.175, 0.175, 0.146, 0.104, 0.065,
+       0.036])
+</pre></div>
+</div>
+</div>
+</div>
+<p>ポアソン分布のグラフを以下の条件で作成せよ：</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(m=1,4,10\)</span>のポアソン分布を重ね書き</p></li>
+<li><p><span class="math notranslate nohighlight">\(m\)</span>の値ごとに異なるマーカーを用い，マーカー間は線で結ぶ</p></li>
+<li><p><span class="math notranslate nohighlight">\(x\)</span>軸の範囲：<span class="math notranslate nohighlight">\(0\le x \le 20\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span>軸の範囲：<span class="math notranslate nohighlight">\(0 \le y \le 0.4\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x\)</span>軸に好きなラベルを設定</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span>軸に好きなラベルを設定</p></li>
+<li><p>グラフを好きな名前で保存</p></li>
+</ul>
+</section>
+</section>
+<section id="id17">
+<h2><span class="section-number">5.4. </span>箱ひげ図とヒストグラム<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">#</a></h2>
+<p>複数の数値からなるデータが与えられたとき，まずは平均値，四分位数，分散・標準偏差などを求めてデータの分布をおおまかに把握するのがデータ分析の鉄則である．
+既に説明したように，NumPyやPandasを用いれば，これらの要約統計量を手軽かつ高速に求めることができる．
+ここでは，データの分布を数量的に把握するだけでなく，Matplotlibを用いて可視化する方法を説明する．
+具体的な可視化の方法として，以下の２つを扱う：</p>
+<ol class="simple">
+<li><p>要約統計量を用いてデータのばらつきを可視化する<strong>箱ひげ図</strong></p></li>
+<li><p>直接的にデータの分布を可視化する<strong>ヒストグラム</strong></p></li>
+</ol>
+<section id="id18">
+<h3><span class="section-number">5.4.1. </span>箱ひげ図<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">#</a></h3>
+<p>数値データを小さい順に並べたとき，中央に来るデータを中央値，下位半分のデータを下位データ，上半分のデータを上位データと呼ぶ．
+ただし，データ数が奇数個の場合には中央値を除いて半分に分ける．
+また，下位データの中央値を第１四分位数，上位データの中央値を第３四分位数と呼ぶ．
+最小値，第１四分位数，中央値，第３四分位数，最大値によってデータのばらつきを表す方法は<strong>五数要約</strong>と呼ばれる．
+なお，データ数が偶数個の場合には，中央に来る２つの値の平均値を中央値とするのが一般的である．</p>
+<figure class="align-default" id="fig-five-number">
+<a class="reference internal image-reference" href="../_images/five_number.png"><img alt="../_images/five_number.png" src="../_images/five_number.png" style="height: 200px;" /></a>
+<figcaption>
+<p><span class="caption-number">図 5.1 </span><span class="caption-text">五数要約の例</span><a class="headerlink" href="#fig-five-number" title="この画像へのパーマリンク">#</a></p>
+</figcaption>
+</figure>
+<p><strong>箱ひげ図</strong>とは，五数要約の結果を可視化した図のことである．
+箱ひげ図は以下の手順で描く（テューキーの方式）：</p>
+<ol class="simple">
+<li><p>データの第１四分位数から第３四分位数の間に箱を描く</p></li>
+<li><p>中央値の位置に線を引く</p></li>
+<li><p>箱から箱の長さ（四分位範囲）の1.5倍を超えて離れた点を外れ値と見なし，白丸で描く．</p></li>
+<li><p>外れ値でないものの最大値と最小値から箱まで線（ひげ）を引く．</p></li>
+</ol>
+<figure class="align-default" id="fig-box-plot">
+<a class="reference internal image-reference" href="../_images/box_plot.png"><img alt="../_images/box_plot.png" src="../_images/box_plot.png" style="height: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">図 5.2 </span><span class="caption-text">箱ひげ図の例</span><a class="headerlink" href="#fig-box-plot" title="この画像へのパーマリンク">#</a></p>
+</figcaption>
+</figure>
+<p>Matplotlibには箱ひげ図を描くための<code class="docutils literal notranslate"><span class="pre">ax.boxplot</span></code>メソッドが用意されている：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">boxplot</span><span class="p">([</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">option</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>第１引数に複数のデータを与えると，データごとの箱ひげ図を並べて表示することができる．
+主要なオプションを以下に示す（その他は<a class="reference external" href="https://matplotlib.org/3.5.1/api/_as_gen/matplotlib.pyplot.boxplot.html">ここ</a>を参照）．</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>オプション</p></th>
+<th class="head"><p>内容</p></th>
+<th class="head"><p>指定の仕方（例）</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>whis</p></td>
+<td><p>箱から何倍離れた点を外れ値と見なすか（デフォルトは1.5）</p></td>
+<td><p>数値</p></td>
+</tr>
+<tr class="row-odd"><td><p>widths</p></td>
+<td><p>箱の幅</p></td>
+<td><p>数値</p></td>
+</tr>
+<tr class="row-even"><td><p>vert</p></td>
+<td><p>箱の回転</p></td>
+<td><p>True/False</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># データの作成</span>
+<span class="n">data1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">data2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>PandasのDataFaremeには要約統計量を一度に計算する<code class="docutils literal notranslate"><span class="pre">describe</span></code>メソッドが用意されている．
+これを用いて，まずは要約統計量を求めてみよう．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;data1&#39;</span><span class="p">:</span><span class="n">data1</span><span class="p">,</span> <span class="s1">&#39;data2&#39;</span><span class="p">:</span><span class="n">data2</span><span class="p">})</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data1</th>
+      <th>data2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>100.000</td>
+      <td>100.000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>-0.022</td>
+      <td>2.334</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.975</td>
+      <td>2.169</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>-2.646</td>
+      <td>-3.637</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>-0.757</td>
+      <td>0.523</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>0.013</td>
+      <td>2.553</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>0.705</td>
+      <td>3.903</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>3.711</td>
+      <td>7.776</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 箱ひげ図のプロット</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">boxplot</span><span class="p">([</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">],</span> <span class="n">whis</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">widths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">vert</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 横軸の目盛りラベル</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s1">&#39;data1&#39;</span><span class="p">,</span> <span class="s1">&#39;data2&#39;</span><span class="p">])</span>
+
+<span class="c1"># 軸のラベル</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$X$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$Y$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$Y$&#39;)
+</pre></div>
+</div>
+<img alt="../_images/5_matplotlib_70_1.png" src="../_images/5_matplotlib_70_1.png" />
+</div>
+</div>
+</section>
+<section id="id19">
+<h3><span class="section-number">5.4.2. </span>1次元ヒストグラム<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">#</a></h3>
+<p>データの分布の傾向（ある値のデータがどのくらいあるか）を表す方法として，箱ひげ図ではデータを要約しすぎてしまい適切にその特徴を表せないことがある．
+そこで，より詳細に分布の傾向を可視化する方法として度数分布表やそれを可視化した**ヒストグラム（度数分布図）**がある．
+度数分布とは，値を0以上10未満，10以上20未満などのいくつかの区間（<strong>階級</strong>，<strong>ビン</strong>）に分けてそれぞれの区間に含まれるデータの個数（<strong>度数</strong>）をまとめたもので，横軸に階級の代表値（<strong>階級値</strong>），縦軸に度数をとったグラフがヒストグラムである．
+なお，ヒストグラムの横軸には各階級の最小と最大を表示する場合や，階級の最小値や中央値を示す場合がある．
+また，縦軸には度数ではなく相対度数（度数/データ数）を取ることもある．</p>
+<p>Matplotlibで1次元ヒストグラムを描画するには<code class="docutils literal notranslate"><span class="pre">ax.hist</span></code>メソッドを用いる：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>第１引数には数値データを与える．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bins</span></code>引数には，ヒストグラムの階級数（または各階級の左端の値）を指定する．</p></li>
+<li><p>例えば，<code class="docutils literal notranslate"><span class="pre">bins=n</span></code>とした場合，１つの階級の大きさは<code class="docutils literal notranslate"><span class="pre">(最大値-最小値)</span> <span class="pre">/</span> <span class="pre">n</span></code>となる．</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># データの作成</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># ヒストグラムの描画</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>  <span class="c1"># 階級数10</span>
+
+<span class="c1"># 軸のラベル</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$X$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">130</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">10</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5_matplotlib_74_0.png" src="../_images/5_matplotlib_74_0.png" />
+</div>
+</div>
+<p>以下は上のヒストグラムに対応する度数分布表である．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">ret</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ret</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">+</span><span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">f</span><span class="p">,</span> <span class="n">f</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)],</span>
+          <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;最小&#39;</span><span class="p">,</span> <span class="s1">&#39;最大&#39;</span><span class="p">,</span> <span class="s1">&#39;階級値&#39;</span><span class="p">,</span> <span class="s1">&#39;度数&#39;</span><span class="p">,</span> <span class="s1">&#39;相対度数&#39;</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>最小</th>
+      <th>最大</th>
+      <th>階級値</th>
+      <th>度数</th>
+      <th>相対度数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>138.103</td>
+      <td>144.180</td>
+      <td>141.142</td>
+      <td>4.0</td>
+      <td>0.004</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>144.180</td>
+      <td>150.258</td>
+      <td>147.219</td>
+      <td>15.0</td>
+      <td>0.015</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>150.258</td>
+      <td>156.336</td>
+      <td>153.297</td>
+      <td>70.0</td>
+      <td>0.070</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>156.336</td>
+      <td>162.413</td>
+      <td>159.374</td>
+      <td>148.0</td>
+      <td>0.148</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>162.413</td>
+      <td>168.491</td>
+      <td>165.452</td>
+      <td>205.0</td>
+      <td>0.205</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>168.491</td>
+      <td>174.568</td>
+      <td>171.529</td>
+      <td>226.0</td>
+      <td>0.226</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>174.568</td>
+      <td>180.646</td>
+      <td>177.607</td>
+      <td>181.0</td>
+      <td>0.181</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>180.646</td>
+      <td>186.723</td>
+      <td>183.684</td>
+      <td>114.0</td>
+      <td>0.114</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>186.723</td>
+      <td>192.801</td>
+      <td>189.762</td>
+      <td>31.0</td>
+      <td>0.031</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>192.801</td>
+      <td>198.878</td>
+      <td>195.839</td>
+      <td>6.0</td>
+      <td>0.006</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>ヒストグラムの装飾</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">ax.hist</span></code>メソッドにも，色やスタイルを変更するためのオプションが多数用意されている．
+主要なオプションを以下にまとめる．</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>オプション</p></th>
+<th class="head"><p>内容</p></th>
+<th class="head"><p>指定の仕方（例）</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>histtype</p></td>
+<td><p>ヒストグラムのスタイル</p></td>
+<td><p>'bar', 'step', 'stepfilled', 'barstacked'</p></td>
+</tr>
+<tr class="row-odd"><td><p>color</p></td>
+<td><p>塗りつぶしの色</p></td>
+<td><p>色名</p></td>
+</tr>
+<tr class="row-even"><td><p>edgecolor</p></td>
+<td><p>枠線の色</p></td>
+<td><p>色名</p></td>
+</tr>
+<tr class="row-odd"><td><p>linewidth</p></td>
+<td><p>枠線の太さ</p></td>
+<td><p>数値</p></td>
+</tr>
+<tr class="row-even"><td><p>linestyle</p></td>
+<td><p>線種</p></td>
+<td><p>'-', '--', '-.', ':'</p></td>
+</tr>
+<tr class="row-odd"><td><p>rwidth</p></td>
+<td><p>バーの幅</p></td>
+<td><p>数値（0~1）</p></td>
+</tr>
+<tr class="row-even"><td><p>align</p></td>
+<td><p>バーの中央を階級のどこに合わせるか</p></td>
+<td><p>'left'（階級の左端）, 'mid'（階級の中央＝デフォルト）, 'right'（階級の右端）</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># データの作成</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> 
+              <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+              <span class="c1"># bins=[-4, -3, -2, -1, 0, 1, 2, 3, 4], # 階級の左端の値を指定する場合</span>
+              <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span>  <span class="c1"># ヒストグラムのスタイルを棒グラフに</span>
+              <span class="n">color</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span>       <span class="c1"># バーの色をシアンに</span>
+              <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>   <span class="c1"># バーの枠線の色を黒に</span>
+              <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>     <span class="c1"># バーの枠線の太さを1に</span>
+              <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span>  <span class="c1"># 枠線を点線に</span>
+              <span class="p">)</span>
+
+<span class="c1"># 軸のラベル</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$X$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">130</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">10</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5_matplotlib_79_0.png" src="../_images/5_matplotlib_79_0.png" />
+</div>
+</div>
+<p><strong>ヒストグラムのタイプ</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">density</span></code>オプションにより，ヒストグラムの縦軸を相対度数に変更することができる．
+また，<code class="docutils literal notranslate"><span class="pre">cumulative</span></code>オプションにより，縦軸を累積度数に変更することができる．</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>オプション</p></th>
+<th class="head"><p>内容</p></th>
+<th class="head"><p>指定の仕方（例）</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>density</p></td>
+<td><p>Trueの場合は縦軸を相対度数に変更</p></td>
+<td><p>True/False</p></td>
+</tr>
+<tr class="row-odd"><td><p>cumulative</p></td>
+<td><p>Trueの場合は縦軸を累積度数に変更</p></td>
+<td><p>1（下側累積）, 0, -1（上側累積）</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># データの作成</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> 
+              <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+              <span class="c1"># bins=[-4, -3, -2, -1, 0, 1, 2, 3, 4], # 階級の左端の値を指定する場合</span>
+              <span class="n">density</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>      <span class="c1"># 縦軸を相対度数に変更</span>
+              <span class="n">cumulative</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># 上側累積に変更  </span>
+              <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span>
+              <span class="p">)</span>
+
+<span class="c1"># 軸のラベル</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$X$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Relative Frequency&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">130</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">10</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5_matplotlib_82_0.png" src="../_images/5_matplotlib_82_0.png" />
+</div>
+</div>
+</section>
+<section id="id20">
+<h3><span class="section-number">5.4.3. </span>2次元ヒストグラム（ヒートマップ）<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">#</a></h3>
+<p>データ分析では，２つの変数間の相関を見たり，2次元データの分布を可視化する場面がよくあり，このような場合にもヒストグラムが活躍する．
+例えば，サッカーの試合においてフィールド上の各位置のシュート頻度を可視化したい場合，<span class="math notranslate nohighlight">\((x, y)\)</span>という2次元の座標データに対してシュート頻度（度数）を対応付ければ良い．
+このような2次元ヒストグラムを可視化する方法の１つがヒートマップである．</p>
+<p>Matplotlibでヒートマップを可視化するには，<code class="docutils literal notranslate"><span class="pre">hist2d</span></code>メソッドを用いる：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bins</span></code>引数には<span class="math notranslate nohighlight">\(x\)</span>方向と<span class="math notranslate nohighlight">\(y\)</span>方向のbinの数（データの分割数），またはbinの左端の値をリストで指定する．</p>
+<ul>
+<li><p>例えば，<code class="docutils literal notranslate"><span class="pre">bins=10</span></code>とした場合には<span class="math notranslate nohighlight">\(x,\ y\)</span>方向共に10個のbinに分割する．</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bins=[10,</span> <span class="pre">20]</span></code>とした場合には<span class="math notranslate nohighlight">\(x\)</span>方向を10個，<span class="math notranslate nohighlight">\(y\)</span>方向を20個のbinに分割する．</p>
+<ul>
+<li><p>実際に実行すると，各binの度数に応じて色分けされた図が表示される．</p></li>
+</ul>
+</li>
+<li><p>その他，主要なオプションを以下にまとめる．</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>オプション</p></th>
+<th class="head"><p>内容</p></th>
+<th class="head"><p>指定の仕方（例）</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>range</p></td>
+<td><p>対象とするデータの範囲</p></td>
+<td><p>[[x_min, x_max], [y_min, y_max]]</p></td>
+</tr>
+<tr class="row-odd"><td><p>density</p></td>
+<td><p>度数の規格化</p></td>
+<td><p>True/False</p></td>
+</tr>
+<tr class="row-even"><td><p>cmin</p></td>
+<td><p>表示するbinの度数の最小値</p></td>
+<td><p>数値</p></td>
+</tr>
+<tr class="row-odd"><td><p>cmax</p></td>
+<td><p>表示するbinの度数の最大値</p></td>
+<td><p>数値</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># データの作成</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 散布図</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1d99ec1f0&gt;]
+</pre></div>
+</div>
+<img alt="../_images/5_matplotlib_86_1.png" src="../_images/5_matplotlib_86_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ヒートマップ</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> 
+                <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>  <span class="c1"># 100x50のbinに分割する</span>
+                <span class="nb">range</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]],</span> 
+                <span class="n">density</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>  <span class="c1"># 度数</span>
+                <span class="n">cmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>     <span class="c1"># 度数が1以上のbinだけ表示</span>
+                <span class="n">cmax</span><span class="o">=</span><span class="mi">1000</span>   <span class="c1"># 度数が1000以下のbinだけ表示</span>
+                <span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5_matplotlib_87_0.png" src="../_images/5_matplotlib_87_0.png" />
+</div>
+</div>
+<p><strong>ヒートマップの装飾と<a class="reference external" href="https://matplotlib.org/3.5.0/api/_as_gen/matplotlib.pyplot.colorbar.html">カラーバーの追加</a></strong></p>
+<p>ヒートマップの色は各binの度数に対応している．
+この色はカラーマップと呼ばれ，<code class="docutils literal notranslate"><span class="pre">cmap='カラーマップの名前'</span></code>のように指定できる．
+主要なカラーマップには'jet'（デフォルト），'rainbow'，'gray'，'autumn'などがある．
+その他のカラーマップは<a class="reference external" href="https://matplotlib.org/3.5.1/tutorials/colors/colormaps.html">ここ</a>を参照のこと．</p>
+<p>カラーマップと度数の対応はカラーバーとして可視化できる．
+ヒートマップにカラーバーを追加するにはFigureオブジェクトの<code class="docutils literal notranslate"><span class="pre">colorbar</span></code>メソッド用い，以下のように実行する：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="n">bx</span><span class="p">,</span> <span class="n">by</span><span class="p">],</span> <span class="n">option</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ret</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">option</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>ここで，<code class="docutils literal notranslate"><span class="pre">colorbar</span></code>メソッドの第１引数には<code class="docutils literal notranslate"><span class="pre">hist2d</span></code>メソッドの戻り値の第3成分を指定する．
+また，カラーバーの位置や大きさを調整するには，以下のオプションを使用する．</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>オプション</p></th>
+<th class="head"><p>内容</p></th>
+<th class="head"><p>指定の仕方（例）</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>orientation</p></td>
+<td><p>カラーバーの向き</p></td>
+<td><p>'vertical' / 'horizontal'</p></td>
+</tr>
+<tr class="row-odd"><td><p>shrink</p></td>
+<td><p>カラーバーの拡大率</p></td>
+<td><p>数値</p></td>
+</tr>
+<tr class="row-even"><td><p>aspect</p></td>
+<td><p>カラーバーの縦横比</p></td>
+<td><p>数値</p></td>
+</tr>
+<tr class="row-odd"><td><p>pad</p></td>
+<td><p>カラーバーの位置</p></td>
+<td><p>数値</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># データの生成</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
+<span class="n">bx</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span>
+
+<span class="c1"># ヒートマップの描画</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="n">bx</span><span class="p">,</span> <span class="n">by</span><span class="p">],</span> <span class="nb">range</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]],</span>\
+                <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># カラーバーを追加</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ret</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span> 
+             <span class="n">shrink</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x1d9a6a0a0&gt;
+</pre></div>
+</div>
+<img alt="../_images/5_matplotlib_90_1.png" src="../_images/5_matplotlib_90_1.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="id21">
+<h2><span class="section-number">5.5. </span>レポート問題<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">#</a></h2>
+<p>次のcsvファイルをダウンロードし，作業フォルダ（例えば<code class="docutils literal notranslate"><span class="pre">OneDrive/sport_data/5_matplotlib</span></code>）に移動せよ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP">player_all.csv</a> <br>
+このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
+※ 本データはPappalardoデータセットを加工したものである（詳細は<a class="reference external" href="https://rtwqzpj5uefb1pvzmprbnq-on.drv.tw/document/%E8%AC%9B%E7%BE%A9/%E7%AB%8B%E6%AD%A3/%E3%82%B9%E3%83%9B%E3%82%9A%E3%83%BC%E3%83%84%E3%83%86%E3%82%99%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%83%95%E3%82%9A%E3%83%AD%E3%82%AF%E3%82%99%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%AF%E3%82%99/6_event.html">イベントデータの解析</a>）．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./5_matplotlib/player_all.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;player_id&#39;</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>team_id</th>
+      <th>...</th>
+      <th>birthday</th>
+      <th>league</th>
+    </tr>
+    <tr>
+      <th>player_id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3319</th>
+      <td>M_Özil</td>
+      <td>1609</td>
+      <td>...</td>
+      <td>1988/10/15</td>
+      <td>England</td>
+    </tr>
+    <tr>
+      <th>3560</th>
+      <td>Nach_Monreal</td>
+      <td>1609</td>
+      <td>...</td>
+      <td>1986/02/26</td>
+      <td>England</td>
+    </tr>
+    <tr>
+      <th>7855</th>
+      <td>L_Koscielny</td>
+      <td>1609</td>
+      <td>...</td>
+      <td>1985/09/10</td>
+      <td>England</td>
+    </tr>
+    <tr>
+      <th>7870</th>
+      <td>A_Ramsey</td>
+      <td>1609</td>
+      <td>...</td>
+      <td>1990/12/26</td>
+      <td>England</td>
+    </tr>
+    <tr>
+      <th>7882</th>
+      <td>P_Čech</td>
+      <td>1609</td>
+      <td>...</td>
+      <td>1982/05/20</td>
+      <td>England</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>266885</th>
+      <td>M_Olunga</td>
+      <td>756</td>
+      <td>...</td>
+      <td>1994/03/26</td>
+      <td>Spain</td>
+    </tr>
+    <tr>
+      <th>282448</th>
+      <td>Alei_García</td>
+      <td>756</td>
+      <td>...</td>
+      <td>1997/06/28</td>
+      <td>Spain</td>
+    </tr>
+    <tr>
+      <th>366374</th>
+      <td>K_Soni</td>
+      <td>756</td>
+      <td>...</td>
+      <td>1998/04/17</td>
+      <td>Spain</td>
+    </tr>
+    <tr>
+      <th>443324</th>
+      <td>Dougla_Luiz</td>
+      <td>756</td>
+      <td>...</td>
+      <td>1998/05/09</td>
+      <td>Spain</td>
+    </tr>
+    <tr>
+      <th>508686</th>
+      <td>M_Lizak</td>
+      <td>756</td>
+      <td>...</td>
+      <td>1996/07/15</td>
+      <td>Spain</td>
+    </tr>
+  </tbody>
+</table>
+<p>2439 rows × 10 columns</p>
+</div></div></div>
+</div>
+<p><strong>問題A：体重の箱ひげ図</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">England</span></code>リーグに所属する選手の体重のデータから欠損値を除外したデータは以下で取得できる．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;league&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;England&#39;</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p>全てのリーグに対して同様のデータを求め，以下のようなリストを作成せよ</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="o">=</span> <span class="p">[</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>リスト<code class="docutils literal notranslate"><span class="pre">D</span></code>を用いて，体重の箱ひげ図をリーグ別に作成せよ．ただし，横軸の目盛りをリーグ名とせよ．</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>問題B：身長のヒストグラム</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">England</span></code>リーグに所属する選手の身長のヒストグラムを以下の条件で作成せよ：</p>
+<ul>
+<li><p>横軸のラベル：<code class="docutils literal notranslate"><span class="pre">height</span> <span class="pre">[cm]</span></code></p></li>
+<li><p>縦軸のラベル：<code class="docutils literal notranslate"><span class="pre">Frequency</span></code></p></li>
+<li><p>階級の数：10</p></li>
+<li><p>その他の装飾は自由</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id22">
+<h2><span class="section-number">5.6. </span>参考<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">#</a></h2>
+<section id="id23">
+<h3><span class="section-number">5.6.1. </span>描画結果の出力先<a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">#</a></h3>
+<p>Matplotlibは使う環境によってグラフを画面に出力する方法が異なる．
+ここではJupyter NotebookとPythonスクリプトでの出力方法を解説する．</p>
+<p><strong>（推奨）Jupyter Labで実行し，Notebook内に表示する</strong></p>
+<p>Jupyterのマジックコマンド<code class="docutils literal notranslate"><span class="pre">%matplotlib</span></code>の後に<code class="docutils literal notranslate"><span class="pre">inline</span></code>を指定すると，コードセルの下に描画結果が表示される．
+デフォルトではこの設定になっているはずである．</p>
+<p><strong>※ 一番最後のコマンドにセミコロンを付けることがある．これは，不要な文字列が出力されるのを防ぐ（隠す）ためである．</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># notebook内に出力する</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5_matplotlib_105_0.png" src="../_images/5_matplotlib_105_0.png" />
+</div>
+</div>
+<p><strong>（参考）Jupyter Labで実行し，別ウインドウに表示する</strong></p>
+<p>Jupyterのマジックコマンド<code class="docutils literal notranslate"><span class="pre">%matplotlib</span></code>の後に<code class="docutils literal notranslate"><span class="pre">tk</span></code>を指定すると，描画結果が別画面に出力される．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 別ウインドウに出力する</span>
+<span class="o">%</span><span class="k">matplotlib</span> tk
+</pre></div>
+</div>
+</div>
+</div>
+<p>なお，'inline'や'tk'はバックエンドと呼ばれ，以下が利用可能である．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 現在のバックエンドを確認</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">get_backend</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TkAgg
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 利用可能なバックエンドのリストを表示</span>
+<span class="o">%</span><span class="k">matplotlib</span> --list
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Available matplotlib backends: [&#39;tk&#39;, &#39;gtk&#39;, &#39;gtk3&#39;, &#39;gtk4&#39;, &#39;wx&#39;, &#39;qt4&#39;, &#39;qt5&#39;, &#39;qt6&#39;, &#39;qt&#39;, &#39;osx&#39;, &#39;nbagg&#39;, &#39;notebook&#39;, &#39;agg&#39;, &#39;svg&#39;, &#39;pdf&#39;, &#39;ps&#39;, &#39;inline&#39;, &#39;ipympl&#39;, &#39;widget&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id24">
+<h3><span class="section-number">5.6.2. </span>２つのプロットスタイル<a class="headerlink" href="#id24" title="このヘッドラインへのパーマリンク">#</a></h3>
+<p><strong>FigureとAxes</strong></p>
+<p>Matplotlibの描画エリアは下図のようにFigureオブジェクト, Axesオブジェクトという要素で構成されている．
+Figureは描画エリア全体を表し，その中に複数のAxes（座標軸）が存在するという構造になっている．
+グラフのプロットや装飾はAxesオブジェクト（座標軸）のメソッドを用いて行う．</p>
+<figure class="align-default" id="fig-fig-axes">
+<a class="reference internal image-reference" href="../_images/fig_axes.png"><img alt="../_images/fig_axes.png" src="../_images/fig_axes.png" style="height: 250px;" /></a>
+<figcaption>
+<p><span class="caption-number">図 5.3 </span><span class="caption-text">MatplotlibにおけるFigureオブジェクトとAxesオブジェクト</span><a class="headerlink" href="#fig-fig-axes" title="この画像へのパーマリンク">#</a></p>
+</figcaption>
+</figure>
+<p>Matplotlibには２つのプロットスタイルが存在し，方法１を<strong>オブジェクト指向スタイル</strong>，方法２を<strong>MATLABスタイル</strong>と呼ぶ．
+オブジェクト指向スタイルでは，FigureオブジェクトとAxesオブジェクトを明示的に生成し，生成したオブジェクトのメソッドを用いてグラフを作成する．
+この方法は，ややコードが長くなるが，グラフの細部の調整を行いたい場合に便利である．
+一方，MATLABスタイルはFigureオブジェクトとAxesオブジェクトを明示的に生成しないので，手軽にプロットできるが，複雑なグラフや細かい調整を行うには不便である．
+<strong>本講義では，オブジェクト指向スタイルを採用する．</strong></p>
+<p><strong>（推奨）方法１：オブジェクト指向スタイル</strong></p>
+<p>オブジェクト指向スタイルでは，FigureオブジェクトとAxesオブジェクトを明示的に生成した上で，生成したオブジェクトのメソッドを用いてプロットを行う．
+基本的には以下の手順に従う．</p>
+<ol>
+<li><p>FigureオブジェクトとAxesオブジェクトを生成する</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</li>
+<li><p>Axesオブジェクトのメソッドを用いてプロットする</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Axesを装飾する</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Figureを保存する</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;abc.pdf&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">pad_inches</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># FigureとAxesを生成する</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="c1"># Axesに対してプロットする</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="c1"># Axesを装飾する</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+
+<span class="c1"># Figureを保存する</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./5_matplotlib/1_axes.pdf&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">,</span> <span class="n">pad_inches</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>（非推奨）方法２：MATLABスタイル</strong></p>
+<p>MATLABスタイルの場合，FigureとAxesの生成は自動的に行われる．
+オブジェクト指向スタイルでは生成したAxesに対して<code class="docutils literal notranslate"><span class="pre">ax.plot()</span></code>のようにプロットしたが，
+MATLABスタイルでは，プロット，装飾，保存など全てのコマンドが<code class="docutils literal notranslate"><span class="pre">plt.</span></code>から始まる．
+特に，グラフの装飾のコマンドに<code class="docutils literal notranslate"><span class="pre">set_</span></code>が付かないことに注意する．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットする</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="c1"># Axesを装飾する</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+
+<span class="c1"># Figureを保存する</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./5_matplotlib/1_axes.pdf&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">,</span> <span class="n">pad_inches</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="figureaxes">
+<h3><span class="section-number">5.6.3. </span>FigureとAxesの生成<a class="headerlink" href="#figureaxes" title="このヘッドラインへのパーマリンク">#</a></h3>
+<p><strong>FigureとAxesを同時に生成</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">plt.subplots(nrows,</span> <span class="pre">ncols,</span> <span class="pre">option)</span></code>により，FigureとAxesを同時に生成できる．
+通常は<code class="docutils literal notranslate"><span class="pre">nrows</span></code>と<code class="docutils literal notranslate"><span class="pre">ncols</span></code>を省略し，<code class="docutils literal notranslate"><span class="pre">fig,</span> <span class="pre">ax</span> <span class="pre">=</span> <span class="pre">plt.subplots()</span></code>のようにして1つのAxesだけを生成する．
+複数のAxesを生成した場合は<code class="docutils literal notranslate"><span class="pre">nrows</span></code>に縦方向の分割数，<code class="docutils literal notranslate"><span class="pre">ncols</span></code>に横方向の分割数を指定する．
+例えば，<code class="docutils literal notranslate"><span class="pre">nrows=2,</span> <span class="pre">ncols=3</span></code>とすると，2×3=6個のAxesが生成される．
+これ以外に以下のオプションがある．</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>オプション</p></th>
+<th class="head"><p>内容</p></th>
+<th class="head"><p>指定の仕方</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>figsize</p></td>
+<td><p>Figureのサイズ</p></td>
+<td><p>(width, height)</p></td>
+</tr>
+<tr class="row-odd"><td><p>facecolor</p></td>
+<td><p>背景の色</p></td>
+<td><p>'white'（デフォルト）, 'red'など</p></td>
+</tr>
+<tr class="row-even"><td><p>tight_layout</p></td>
+<td><p>余白の自動調整</p></td>
+<td><p>True or False</p></td>
+</tr>
+<tr class="row-odd"><td><p>linewidth</p></td>
+<td><p>枠線の太さ</p></td>
+<td><p>数値</p></td>
+</tr>
+<tr class="row-even"><td><p>edgecolor</p></td>
+<td><p>枠線の色</p></td>
+<td><p>'black', Noneなど</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Figureと1つのAxesを生成する</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="c1"># Axesに対してプロットする</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="c1"># Axesを装飾する</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+
+<span class="c1"># Figureを保存する</span>
+<span class="c1"># fig.savefig(&#39;./5_matplotlib/1_axes.pdf&#39;, bbox_inches=&quot;tight&quot;, pad_inches=0.2, transparent=True, dpi=300)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Y&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;複数のAxes&#39;&#39;&#39;</span>
+
+<span class="c1"># Figureと複数のAxesを生成する</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Axesに対してプロットする</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="c1"># Axesを装飾する</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+
+<span class="c1"># Figureを保存する</span>
+<span class="c1"># fig.savefig(&#39;./5_matplotlib/2_axes.pdf&#39;, bbox_inches=&#39;tight&#39;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Y&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Figureを生成して，後からAxesを追加</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">fig</span> <span class="pre">=</span> <span class="pre">plt.figure()</span></code>でFigureのみを生成できる．オプションは<code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code>と同じ．
+また，<code class="docutils literal notranslate"><span class="pre">fig.add_subplot(LMN)</span></code>でAxesを1つずつ追加できる．
+ここで，Lは行方向の分割数，Mは列方向の分割数，Nは追加したいAxesの番号を表す．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Figureの生成</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># Axesの追加</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+
+<span class="c1"># Axesに対するプロット</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="c1"># Axesの装飾</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+
+<span class="c1"># Figureの保存</span>
+<span class="c1"># fig.savefig(&#39;./5_matplotlib/2_axes.pdf&#39;, bbox_inches=&#39;tight&#39;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Y&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chap_5"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../chap_4/4_pandas.html" title="前へ ページ">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">前へ</p>
+            <p class="prev-next-title"><span class="section-number">4. </span>Pandasの基礎</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../chap_6/6_event.html" title="次へ ページ">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">次へ</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>イベントデータの解析</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    <div class="extra_footer">
+      © Copyright 2022-present by 成塚拓真 (Takuma Narizuka). この講義ノートは<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ja">CC BY-NC-ND 4.0</a>の下に提供する．</a>ただし，コード部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供する．
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
