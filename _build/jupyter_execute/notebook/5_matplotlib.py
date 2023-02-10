@@ -943,7 +943,6 @@ plt.savefig('./5_matplotlib/1_axes.pdf', bbox_inches="tight", pad_inches=0.2, tr
 
 
 # ### FigureとAxesの生成
-# ---
 
 # **FigureとAxesを同時に生成**
 
