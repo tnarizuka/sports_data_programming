@@ -16,13 +16,6 @@ except:
     pass
 
 
-# In[1]:
-
-
-# （必須）カレントディレクトリの変更（自分の作業フォルダのパスをコピーして入力する）
-os.chdir(r'/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data')
-
-
 # # プログラミング環境の構築
 
 # ## Anacondaのインストール
@@ -38,17 +31,26 @@ os.chdir(r'/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_
 # ## Maplotlibの日本語対応
 # 
 # Matplotlibはグラフ作成のためのライブラリである（詳しくは基礎編で解説する）．
-# Matplotlibは標準で日本語に対応していないので，ここでは日本語対応する方法を解説する．
-# 日本語対応する方法には以下の2つが存在する（詳しくは[こちら](https://ai-inter1.com/matplotlib-japanize/)）：
-#     
-#     1. japanize_matplotlib を利用する
-#     2. MatplotlibのFontPropertiesを利用する
-# 
-# ここでは，1. japanize_matplotlibを利用する方法を説明する．
-# japanize_matplotlibはPythonのモジュールなので，最初にインストールしておけば，あとは他のモジュールと同じように`import japanize_matplotlib`とするだけで日本語が使用可能になる．
-# ただし，使用可能なフォントはIPAexゴシックだけなので，フォントにこだわりたい場合は2.の方法をおすすめする．
+# Matplotlibは標準で日本語に対応していないので，ここでは日本語対応する方法を2つ紹介する．
 
-# **japanize_matplotlibのインストール（詳しくは[こちら](https://pypi.org/project/japanize-matplotlib/)）**
+# **方法1：`rcParams`に使用するフォント名を指定する**
+# 
+# 以下のように，`matplotlib.pyplot`をインポートしておき，`plt.rcParams['font.family']`に日本語フォントを指定する．
+# 使用可能なフォントは環境によって異なるが，Windowsの場合は`'MS Gothic'`，`'Meiryo'`などを指定する．
+# Macの場合は`'Hiragino Sans'`を指定する．
+
+# In[1]:
+
+
+# 日本語フォントの設定（Mac:'Hiragino Sans', Windows:'MS Gothic'）
+plt.rcParams['font.family'] = 'Hiragino Sans'
+
+
+# **方法２：japanize_matplotlibのインストール（詳しくは[こちら](https://pypi.org/project/japanize-matplotlib/)）**
+# 
+# japanize_matplotlibはPythonのモジュールなので，最初にインストールしておけば，あとは他のモジュールと同じように`import japanize_matplotlib`とするだけで日本語が使用可能になる．
+# ただし，使用可能なフォントはIPAexゴシックだけなので，フォントにこだわりたい場合は1.の方法をおすすめする．
+# 
 # 
 # - ターミナルを開いて以下のコマンドを実行し，AnacondaのインストールされているフォルダのPathを取得する
 #     ```
@@ -68,7 +70,7 @@ os.chdir(r'/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_
 # ## 作業フォルダの作成
 
 # データ分析では，様々なファイルを扱わなければならない．
-# 例えば，本講義では，Pythonのソースコード（`.py`ファイル），Jupyter NoteBook（`.ipynb`ファイル），データ（`.csv`ファイル），図（`.pdf`ファイル）などのファイルを扱うことになる．
+# 例えば，本講義では，Pythonのソースコード（`.py`），Jupyter NoteBook（`.ipynb`），データ（`.csv`），図（`.pdf`や`.png`）などのファイルを扱うことになる．
 # これらのファイルが自分のPC内のどこに保存されているかを把握しておかないと，ファイルを探すだけで時間を取られてしまい，時間の無駄である．
 # データ分析を始める際にまず行うべきことは，PC内のフォルダやファイルを整理することである．
 
@@ -125,7 +127,9 @@ os.chdir(r'/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_
 
 # ### パスの取得方法
 # 
-# Windowsでは，パスをコピーしたいファイルやフォルダに対し，shiftキーを押しながら右クリックし「パスのコピー」を選択すればよい．
+# Windowsでは，パスをコピーしたいファイルやフォルダを右クリックし，「パスのコピー」を選択すれば良い．
+# 
+# ※ Windows10まではshiftキーを押しながら右クリックし「パスのコピー」を選択する．
 
 # ### WindowsのPythonでパスを指定する際の注意
 # 
@@ -134,8 +138,8 @@ os.chdir(r'/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_
 # "C:\Users\username\OneDrive\sport_data"
 # ``
 # のように区切り文字がバックスラッシュ"\\"または"¥"になるはずである．
-# ところが，pythonではバックスラッシュ"\\"と文字を組み合わせたエスケープシーケンスいう特別な文字列が存在し，例えば，"\n"は改行，"\t"はタブを表すエスケープシーケンスである．
-# これにより，上の例の中にある"\t"の部分はパスの区切りではなくエスケープシーケンスとして認識され，エラーが出ることがある（特に，pythonでファイルの入出力を行うとき）．
+# ところが，pythonにはバックスラッシュ"\\"と文字を組み合わせたエスケープシーケンスいう特別な文字列が存在し，例えば，"\n"は改行，"\t"はタブを表すエスケープシーケンスとなる．
+# これにより，パスの中にある"\t"の部分はパスの区切りではなくエスケープシーケンスとして認識され，エラーが出ることがある（特に，pythonでファイルの入出力を行うとき）．
 # 
 # これを回避するには以下の方法がある：
 # 1. ［推奨］r"C:\Users\username\OneDrive\sport_data"とする（raw文字列）
@@ -171,45 +175,52 @@ print("C:\\Users\\username\\OneDrive\\sport_data")
 
 
 # ### 絶対パスと相対パス
-# まず，以下のようなプログラムをPythonスクリプト（test.py）に保存する（[ダウンロードはこちら](https://drive.google.com/uc?export=download&id=1htV_JZw26qMvnefhc1YGZfhZCiYMojmk)）．
 # 
-# ```python
-# for i in range(5):
-#     print("test%s" % i)
-# ```
+# パスを使用する場面の具体例として，matplotlibで描画した図を指定したフォルダ内に保存する場合を考える．
+# まず，以下のプログラムを実行する．
 
-# ここでは，Pythonスクリプトファイルのパス（保存先）が`"C:\Users\username\OneDrive\sport_data\2_environment\test.py"`であるとする．
-# これを実行するには以下の方法がある：
-# 
-# 1. ipythonまたはJupyterで実行する
-#     - `%run "ファイルのパス"`
-# 
-# 2. ターミナル（またはコマンドプロンプト）で実行する
-#     - `python "ファイルのパス"`
-# 
-# このとき，ファイルのパスを指定する方法には以下の2通りが存在する．
+# In[8]:
 
-# **1. 絶対パス**
 
-# ```python
-# %run "C:\Users\parar\OneDrive\sport_data\2_environment\test.py"
-# ```
+fig, ax = plt.subplots(figsize=(3.5, 3))
+x = np.arange(-np.pi, np.pi, 0.01)
+ax.plot(x, np.sin(x))
+
+
+# 実行がうまくいけば，サイン関数が出力されるはずである．
+# 出力された図を自分の作業フォルダに保存するには，`fig.savefig(path)`のように保存先のパスを指定すれば良い．
+# このとき，パスの指定方法には以下の２つの方法が存在する．
+
+# **1. 絶対パスによる指定**
+
+# In[9]:
+
+
+fig.savefig('/Users/narizuka/work/document/lecture/rissho/sport_programming/book/chap_2/graph.pdf')
+
 
 # この方法では，最も上の階層であるドライブ名（ここではCドライブ）から始まるパスを指定しており，これを**絶対パス**と呼ぶ．
 # 「パスのコピー」によって取得されるのはこの絶対パスである．
 # よって，絶対パスを使っておけばエラーは出にくいが，PCの奥深くにあるフォルダだとパスが長くなるという問題がある．
 
-# **2.相対パス**
+# **2.相対パスによる指定**
 
+# In[10]:
+
+
+fig.savefig("./graph2.pdf")
+
+
+# 2つ目の方法では，パスが`'.'`から始まっているが，これは現在の居場所（**カレントディレクトリ**と呼ぶ）のパスを意味する．
+# デフォルトではカレントディレクトリは`.ipynb`ファイルが保存されているフォルダとなる．
+# このように，カレントディレクトリのパス`'.'`から始まるパスを**相対パス**と呼ぶ．
+# カレントディレクトリは以下のコマンドにより任意のフォルダに変更することができる．
+# 
 # ```python
-# os.chdir(r"C:\Users\parar\OneDrive\sport_data") # カレントディレクトリの移動
-# %run "./2_environment/test.py"             # 実行
+# import os
+# os.chdir(path)
 # ```
-
-# 2つ目の方法では，まず`os.chdir`コマンドで`"C:/Users/username/OneDrive/sport_data"`という作業フォルダに移動してから，さらに"./2_environment/test.py"を実行している．
-# このとき，現在の居場所（今の場合は[sport_data]フォルダ）のことをカレントディレクトリと呼ぶ．
-# また，スクリプトファイルのパスは"./2_environment/test.py"のように指定されるが，これを**相対パス**と呼ぶ．
-# 相対パスは，カレントディレクトリからの相対的な位置関係を表しており，"."というのがカレントディレクトリのパスを表す省略記号である．
+# 
 # 相対パスを用いると，パスが短くなるので便利であるが，カレントディレクトリがどこなのかを認識しておく必要がある．
 
 # ## Jupyter Lab
@@ -219,16 +230,16 @@ print("C:\\Users\\username\\OneDrive\\sport_data")
 
 # ### Jupyter Labの起動方法
 # 
-# 1. ターミナル（またはコマンドプロンプト）から起動
-#     - 次のコマンドを実行：`jupyter lab "起動ディレクトリのパス"`
-#     - 起動ディレクトリのパスは省略可（デフォルトでは"C:/Users/username"）
-#     
-# 2. Anaconda Navigatorから起動
+# 1. Anaconda Navigatorから起動
 #     - ［スタートメニュー］→［Anaconda Navigator (anaconda3)］
 #     - ［Jupyter Lab］をクリック
 # - 初期状態ではLauncherが起動するので，NotebookからPython 3を選択する
+# 
+# 2. ターミナル（コマンドプロンプト）から起動
+#     - 次のコマンドを実行：`jupyter lab "起動ディレクトリのパス"`
+#     - 起動ディレクトリのパスは省略可（デフォルトでは"C:/Users/username"）    
 
-# ### .ipynbファイルの起動方法
+# ### ノートブック（.ipynbファイル）を開く方法
 
 # - .ipynbファイルをダウンロードし，作業フォルダに保存する．
 #     - 講義ノート冒頭のDLリンクをクリックし，ダウンロードアイコンをクリック
@@ -236,44 +247,7 @@ print("C:\\Users\\username\\OneDrive\\sport_data")
 # - Jupyter Labを起動し，左上のフォルダアイコンをクリックする．
 # - .ipynbファイルを保存した作業フォルダに移動し，.ipynbファイルをダブルクリックする．
 
-# ### Jupyter Labの運用方法
-
-# Jupyter Labで作業する際には，以下の手順でカレントディレクトリを作業フォルダに変更しておくと良い：
-# 1. エクスプローラー上で，作業フォルダをshiftを押しながら右クリックし，パスのコピーを選択
-# 2. コピーしたパスの先頭に`r`を付けて`os.chdir(r"作業フォルダのパス")`のように実行
-
-# In[7]:
-
-
-import os
-os.chdir(r'/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data')
-
-
-# これにより，[sport_data]内部のフォルダには相対パスでアクセスすることができるようになる．
-# 例えば，Matplotlibで作成した図を[sport_data][2_environment]に保存したい場合は以下のようにする．
-# japanize_matplotlibがうまくインストールされていれば，ラベルに日本語が表示されるはずである．
-
-# In[8]:
-
-
-import numpy as np
-import matplotlib.pyplot as plt
-try:
-    import japanize_matplotlib
-except:
-    pass
-
-fig, ax = plt.subplots(figsize=(3.5, 3))
-x = np.arange(-np.pi, np.pi, 0.01)
-ax.plot(x, np.sin(x))
-
-ax.set_xlabel('x軸', fontsize=14)
-ax.set_ylabel('y軸', fontsize=14)
-
-fig.savefig('./2_environment/graph.pdf', bbox_inches="tight", pad_inches=0.2, transparent=True, dpi=300)
-
-
-# **JupyterとPythonスクリプトの使い分け**
+# ### （参考）JupyterとPythonスクリプトの使い分け
 # 
 #  Jupyterは短いコードを逐次実行しながら結果を確認するのには適しているが，コードが長くなると分かりにくくなる．そこで，コードが長くなってきたら関数やクラスに適宜まとめてスクリプト（`.py`ファイル）に保存すると良い．保存したスクリプトはNumPyやPandasと同じようにimportできるので，Jupyter上ではimportしたスクリプト内の関数を実行するだけにすると結果が整理しやすい．その際，以下に説明する自作モジュールの自動リロードの設定をしておくと便利である．
 #  
