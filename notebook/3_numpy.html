@@ -822,7 +822,6 @@ title="Print to PDF"
 </ul>
 <section id="id1">
 <h2><span class="section-number">3.1. </span>Numpyとは？<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">#</a></h2>
-<hr class="docutils" />
 <section id="id2">
 <h3><span class="section-number">3.1.1. </span>NumPyとは？<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>スポーツのデータセットは画像，ドキュメント，数値測定結果，など様々なフォーマットを持つが，これらは数値や文字列を格納した配列として扱うことができる．例えば，競技を撮影した動画はフレーム単位ではデジタル画像として表されている．デジタル画像は2次元配列として表され，配列の各要素が各ピクセルの輝度（RGB値）に対応している．また，選手の位置情報は <span class="math notranslate nohighlight">\((x, y, z)\)</span> の時系列データとなっているので，これも実数値の2次元配列として表すことができる．</p>
@@ -1034,7 +1033,6 @@ float64
 </section>
 <section id="id7">
 <h2><span class="section-number">3.2. </span>ベクトルと行列について<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">#</a></h2>
-<hr class="docutils" />
 <p>2年次には線形代数が必修科目となっている．線形代数では主にベクトルと行列を扱うが，これらはデータ分析をする上で避けて通ることができない．実は，NumPyはベクトルや行列を扱うためのパッケージといっても過言ではない．以下，ベクトルと行列について超簡単に説明する．</p>
 <section id="id8">
 <h3><span class="section-number">3.2.1. </span>ベクトル<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">#</a></h3>
@@ -1175,7 +1173,6 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </section>
 <section id="id10">
 <h2><span class="section-number">3.3. </span>NumPy配列の構築<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">#</a></h2>
-<hr class="docutils" />
 <section id="id11">
 <h3><span class="section-number">3.3.1. </span>リストを変換する<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>リストからNumPy配列を作るには，<code class="docutils literal notranslate"><span class="pre">np.array</span></code>関数を用いる</p>
@@ -1692,7 +1689,6 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </section>
 <section id="id14">
 <h2><span class="section-number">3.4. </span>NumPy配列の操作<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">#</a></h2>
-<hr class="docutils" />
 <section id="id15">
 <h3><span class="section-number">3.4.1. </span>配列のインデックス参照<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>配列中の要素が先頭から何番目かを表すのがインデックスである．
@@ -2391,7 +2387,6 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </section>
 <section id="id20">
 <h2><span class="section-number">3.5. </span>条件付き抽出<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">#</a></h2>
-<hr class="docutils" />
 <section id="id21">
 <h3><span class="section-number">3.5.1. </span>ブールインデックス参照<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p><strong>ブールインデックス参照とは？</strong></p>
@@ -2869,7 +2864,6 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </section>
 <section id="id24">
 <h2><span class="section-number">3.6. </span>配列の形状変更<a class="headerlink" href="#id24" title="このヘッドラインへのパーマリンク">#</a></h2>
-<hr class="docutils" />
 <section id="id25">
 <h3><span class="section-number">3.6.1. </span>要素数を保った形状変更<a class="headerlink" href="#id25" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>配列のサイズ（全要素数）を保ったまま形状（次元数）を変更するには<code class="docutils literal notranslate"><span class="pre">reshape</span></code>メソッドを用いる．
@@ -3174,7 +3168,6 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </section>
 <section id="id28">
 <h2><span class="section-number">3.7. </span>NumPy配列の演算<a class="headerlink" href="#id28" title="このヘッドラインへのパーマリンク">#</a></h2>
-<hr class="docutils" />
 <section id="ufunc">
 <h3><span class="section-number">3.7.1. </span>ユニバーサル関数（ufunc）<a class="headerlink" href="#ufunc" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>NumPy配列の演算（加減乗除など）はリストと同じように<code class="docutils literal notranslate"><span class="pre">for</span></code>文などで実装すると非常に低速になってしまう．そこで，高速な演算が可能な<strong>ユニバーサル関数</strong>が用意されている．これは，<strong>配列に対して１つの関数を実行するだけで，全ての要素に対して演算が行われる機能</strong>である．例えば，以下のように1000万個の数値が格納された1次元のNumPy配列があるとする．</p>
@@ -4128,7 +4121,6 @@ NumPyの主要な集計関数を表に示す．
 </section>
 <section id="id32">
 <h2><span class="section-number">3.8. </span>ファイル入出力<a class="headerlink" href="#id32" title="このヘッドラインへのパーマリンク">#</a></h2>
-<hr class="docutils" />
 <p><strong>ファイルへの保存</strong></p>
 <p>NumPy配列<code class="docutils literal notranslate"><span class="pre">x</span></code>をファイルに書き出すには<code class="docutils literal notranslate"><span class="pre">np.savetxt</span></code>関数を用いる．</p>
 <div class="cell docutils container">
@@ -4185,7 +4177,6 @@ NumPyの主要な集計関数を表に示す．
 </section>
 <section id="id33">
 <h2><span class="section-number">3.9. </span>レポート問題<a class="headerlink" href="#id33" title="このヘッドラインへのパーマリンク">#</a></h2>
-<hr class="docutils" />
 <p><strong>問題A</strong></p>
 <p>以下のように，母平均5，母標準偏差0.5の正規分布に従うデータから100個を抽出した．</p>
 <div class="cell docutils container">
@@ -4353,8 +4344,8 @@ NumPyの主要な集計関数を表に示す．
 <ul class="simple">
 <li><p>肥満度を表す指標としてBMIが知られている．BMIは身長と体重を用いて以下で定義される：</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-169055fd-fbd0-4feb-9fae-4b9cae597266">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-169055fd-fbd0-4feb-9fae-4b9cae597266" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-894416bc-1c5b-4204-a4a1-f422043c3569">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-894416bc-1c5b-4204-a4a1-f422043c3569" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
     \mathrm{BMI} = \frac{体重 [kg]}{(身長 [m])^2}
 \end{align}\]</div>
 <ul class="simple">
