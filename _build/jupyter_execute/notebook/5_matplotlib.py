@@ -44,7 +44,6 @@ os.chdir(r'/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_
 # - [Matplotlib公式ギャラリー](https://matplotlib.org/stable/gallery/index.html)
 
 # ## Matplotlibの基本操作
-# ---
 
 # ### Matplotlibのインポート
 # 
@@ -126,7 +125,6 @@ fig.savefig('./5_matplotlib/graph1.pdf', bbox_inches="tight", pad_inches=0.2, tr
 
 
 # ## 様々なグラフ
-# ---
 
 # ### 基本のプロット関数
 
@@ -263,7 +261,6 @@ ax.set_xlim([0, 3]); plt.ylim([0, 3]);
 
 
 # ## グラフの装飾
-# ---
 
 # Axesオブジェクトには`ax.plot`や`ax.bar`などのグラフを描くメソッドの他に，グラフを装飾するための様々なメソッドが用意されている．
 # まずは，主要なメソッドを用いたグラフ装飾の例を示す．
@@ -457,7 +454,6 @@ poisson.pmf(x, 5)
 # - グラフを好きな名前で保存
 
 # ## 箱ひげ図とヒストグラム
-# ---
 
 # 複数の数値からなるデータが与えられたとき，まずは平均値，四分位数，分散・標準偏差などを求めてデータの分布をおおまかに把握するのがデータ分析の鉄則である．
 # 既に説明したように，NumPyやPandasを用いれば，これらの要約統計量を手軽かつ高速に求めることができる．
