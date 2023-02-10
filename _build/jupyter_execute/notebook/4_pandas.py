@@ -39,7 +39,6 @@ os.chdir(r'/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_
 # # Pandasの基礎
 
 # ## Pandasとは？
-# ---
 
 # ### Pandasのインポート
 # 
@@ -83,7 +82,6 @@ pd.DataFrame({'t':[2, 64, 350, 600],
 # また，データの可視化はPandasでもできるが，より多機能なMatplotlibを用いることを推奨する．
 
 # ## DataFrameオブジェクト
-# ---
 
 # NumPyではデータをndarrayオブジェクト（NumPy配列）に格納し，様々な処理を行なった．
 # Pandasでも2次元のデータを扱うための専用のオブジェクトDataFrameが用意されている．
@@ -786,7 +784,7 @@ df
 
 
 # ## 条件付き抽出
-# ---
+# 
 # DataFrameからある条件を満たす行や列を抽出する方法として，ブールインデックス参照がある．<br>
 # ※ この他にも`where`メソッド，`query`メソッドなどがある．
 
@@ -1032,7 +1030,6 @@ df['role'].unique()
 
 
 # ## データの演算と集計
-# ---
 
 # ### 演算規則
 # 
@@ -1331,7 +1328,6 @@ df.loc[df['weight']==df['weight'].max()]
 
 
 # ## データの整形
-# ---
 
 # In[348]:
 
@@ -1769,7 +1765,6 @@ df.loc[df.duplicated(keep='last', subset=None)]
 
 
 # ## レポート問題
-# ---
 
 # 次のcsvファイルをダウンロードし，作業フォルダ（例えば`OneDrive/sport_data/4_pandas`）に移動せよ：[player_all.csv](https://drive.google.com/uc?export=download&id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP) <br>
 # このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
