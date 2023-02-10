@@ -8,18 +8,18 @@ parts:
 - caption:
   numbered: 3
   chapters:
-  - file: notebook/1_introduction.ipynb
-  - file: notebook/2_environment.ipynb
-  - file: notebook/3_numpy.ipynb
-  - file: notebook/4_pandas.ipynb
-  - file: notebook/5_matplotlib.ipynb
-  - file: notebook/6_event.ipynb
-  - file: notebook/7_tracking.ipynb
+  - file: chap_1/1_introduction.ipynb
+  - file: chap_2/2_environment.ipynb
+  - file: chap_3/3_numpy.ipynb
+  - file: chap_4/4_pandas.ipynb
+  - file: chap_5/5_matplotlib.ipynb
+  - file: chap_6/6_event.ipynb
+  - file: chap_7/7_tracking.ipynb
 
 - caption:
   numbered: False
   chapters:
   # - file: notebook/reference.md
-  - file: notebook/report/report.md
+  - file: report/report.md
     sections:
-      - file: notebook/report/2022_report_answer.ipynb
+      - file: report/2022_report_answer.ipynb
