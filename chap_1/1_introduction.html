@@ -220,35 +220,6 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/tnarizuka/sports_data_programming/main?urlpath=tree/docs/chap_1/1_introduction.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -316,7 +287,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/chap_1/1_introduction.ipynb"
+        <a href="../_sources/chap_1/1_introduction.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -327,7 +298,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="headerbtn__text-container">.md</span>
 </a>
 
       </li>
@@ -492,31 +463,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># （必須）モジュールのインポート</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">japanize_matplotlib</span>
-<span class="k">except</span><span class="p">:</span>
-    <span class="k">pass</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># （必須）カレントディレクトリの変更（自分の作業フォルダのパスをコピーして入力する）</span>
-<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\parar\OneDrive\sport_data&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section class="tex2jax_ignore mathjax_ignore" id="id1">
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">1. </span>イントロダクション<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">#</a></h1>
 <section id="id2">
 <h2><span class="section-number">1.1. </span>スポーツデータ分析とは？<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">#</a></h2>
@@ -660,7 +607,7 @@ title="Print to PDF"
     - パソコンを整理する（後述）
     - 使いやすい環境にカスタマイズする
     - キーボードショートカットを覚える
-    
+
 - 最低限の基本機能だけ覚える
     - プログラミング基礎の内容
         - リストの操作，辞書，for文，if文，関数
@@ -672,7 +619,7 @@ title="Print to PDF"
 
 - 手を動かす
     - 実際にデータ分析をするようになるとすぐに上達する
-    
+
 - 環境を整える
     - 椅子
     - サブディスプレイ
