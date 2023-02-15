@@ -10,7 +10,5 @@
 - 曜日・時限：第１期・月曜・２限
 
 
-
-## [講義ノート](https://tnarizuka.github.io/sports_data_programming/)
-
-本講義ノートは[Jupyter Book](https://jupyterbook.org/en/stable/intro.html)を用いて作られています
+## 教材
+- [講義ノート](https://tnarizuka.github.io/sports_data_programming/)
