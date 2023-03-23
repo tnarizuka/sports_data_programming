@@ -2033,11 +2033,12 @@ dtype: float64
 </div>
 </div>
 <p>次に，上のヒストグラムがポアソン分布に従っているか調べるため，試合データから求めた平均値をパラメータとするポアソン分布を描いてみる．
-イングランド・プレミアリーグのホームチームの平均得点は1.53であったので，
-$<span class="math notranslate nohighlight">\(
-f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
-\)</span>$
-のグラフを描けば良い．</p>
+イングランド・プレミアリーグのホームチームの平均得点は1.53であったので，</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x) = \frac{1.53^{x}}{x!} \mathrm{e}^{-1.53}
+\]</div>
+<p>のグラフを描けば良い．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">poisson</span>
