@@ -60,7 +60,7 @@
 - ネットワーク解析
     - networkx
 - 空間データ処理
-    - shapely
+    - GeoPandas, shapely
 - 機械学習
     - scikit-learn
 
