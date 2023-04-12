@@ -62,7 +62,7 @@
 - 空間データ処理
     - GeoPandas, shapely
 - 機械学習
-    - scikit-learn
+    - scikit-learn, TensorFlow, 
 
 ## 講義の概要
 
