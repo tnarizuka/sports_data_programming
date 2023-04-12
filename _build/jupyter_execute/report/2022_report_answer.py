@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # 2022年度レポート
-
-# ## レポートの諸注意
+# # レポートの諸注意
 
 # **回答方法**
 # 
@@ -38,7 +36,7 @@
 #     - 上に加え，実践編に関する課題に答えている
 #     - 来年度成塚のゼミを志望する場合はここまでできることが望ましい
 
-# ## 基礎知識に関する問題
+# # 基礎知識に関する問題
 
 # - 新しいマークダウンセルを下に追加し，セル内に好きな文章を記述せよ．
 #     - これは解答例です．
@@ -65,7 +63,7 @@
 
 # - `os`モジュールをインポートせよ
 
-# In[39]:
+# In[1]:
 
 
 import os
@@ -73,15 +71,15 @@ import os
 
 # - `os.chdir`を用いてカレントディレクトリを適当な作業フォルダに変更せよ
 
-# In[40]:
+# In[2]:
 
 
-os.chdir(r'/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data')
+os.chdir('/Users/narizuka/work/document/講義/立正/スポーツデータ分析のためのプログラミング/sport_data')
 
 
 # - NumPyを`np`，Pandasを`pd`という名前でインポートせよ
 
-# In[41]:
+# In[3]:
 
 
 import numpy as np
@@ -90,7 +88,7 @@ import pandas as pd
 
 # - matplotlib.pyplotを`plt`という名前でインポートせよ
 
-# In[42]:
+# In[4]:
 
 
 import matplotlib.pyplot as plt
@@ -101,13 +99,13 @@ import matplotlib.pyplot as plt
 #     - ファイルの拡張子を手動で変更するのはNG
 #     - 自分のPCで開けないファイルは他の人も開けないので，提出前に確認すること
 
-# ## NumPyに関する問題
+# # NumPyに関する問題
 
 # **問題A**
 # 
 # 以下のように，母平均5，母標準偏差0.5の正規分布に従うデータから100個を抽出した．
 
-# In[43]:
+# In[6]:
 
 
 np.random.seed(seed=33)
@@ -117,13 +115,13 @@ x
 
 # このデータに対し，`np.mean`関数と`np.std`関数を用いて標本平均と標本標準偏差を求めると以下のようになった．
 
-# In[44]:
+# In[7]:
 
 
 np.mean(x)
 
 
-# In[45]:
+# In[8]:
 
 
 np.std(x)
@@ -135,7 +133,7 @@ np.std(x)
 #     \bar{x} &= \frac{1}{n} \sum_{i=1}^{n} x_{i} = \frac{x_{1}+x_{2}+\cdots+x_{n}}{n}
 # \end{align}
 
-# In[46]:
+# In[10]:
 
 
 np.sum(x)/x.size
@@ -143,14 +141,13 @@ np.sum(x)/x.size
 
 # - `np.std`関数と`np.var`関数を使わずに`x`の標本標準偏差を求め，上の結果と一致することを確かめよ（NumPyの他の関数は用いても良い）．
 # ただし，データ$x = (x_{1}, x_{2}, \ldots, x_{n})$に対して，標本標準偏差$\bar{\sigma}$は以下で定義される：
-# 
 # $$
 #     \bar{\sigma} 
 #     = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (x_{i} - \bar{x})^2}
 #     = \sqrt{ \frac{(x_{1}-\bar{x})^2+(x_{2}-\bar{x})^2+\cdots+(x_{n}-\bar{x})^2}{n} }
 # $$
 
-# In[47]:
+# In[11]:
 
 
 np.sqrt(np.sum((x-np.mean(x))**2)/x.size)
@@ -166,7 +163,7 @@ np.sqrt(np.sum((x-np.mean(x))**2)/x.size)
 
 # - 以下を適当に修正し，ダウンロードしたファイルをNumPy配列`D`に読み込め：
 
-# In[48]:
+# In[13]:
 
 
 # csvファイルのパスを指定する
@@ -180,7 +177,7 @@ D
 
 # - 選手IDが-1となっている要素はダミーデータである．`D`からダミーデータを削除し，改めて配列`D`とせよ．
 
-# In[49]:
+# In[17]:
 
 
 D = D[D[:, 0]!=-1]
@@ -188,7 +185,7 @@ D = D[D[:, 0]!=-1]
 
 # - データに含まれる選手数を調べよ．
 
-# In[50]:
+# In[32]:
 
 
 len(D)
@@ -197,7 +194,7 @@ len(D)
 # - 選手IDが703の選手の身長と体重を調べよ．<br>
 # ※ この選手は吉田麻也選手である．2017年時点の体重と現在の体重を比較してみよ．
 
-# In[51]:
+# In[22]:
 
 
 D[D[:, 0]==703]
@@ -205,7 +202,7 @@ D[D[:, 0]==703]
 
 # - 配列Dから選手ID，身長，体重のデータを抽出し，それぞれI, H, Wという配列に格納せよ．
 
-# In[52]:
+# In[23]:
 
 
 I = D[:, 0]
@@ -217,14 +214,14 @@ W = D[:, 2]
 #     - `H`を昇順（小→大）に並び替え，先頭と末尾の要素を抽出する
 #     - `np.min`，`np.max`関数を用いる
 
-# In[53]:
+# In[25]:
 
 
 # Hを昇順に並び替えて先頭と末尾の要素を抽出
 np.sort(H)[0], np.sort(H)[-1]
 
 
-# In[54]:
+# In[26]:
 
 
 # np.min, np.maxを用いる
@@ -241,35 +238,28 @@ np.min(H), np.max(H)
 #     ※ この選手はRekeem Jordan Harper選手である．<br>
 #     ※ 日本肥満学会の基準では，BMIが18.5未満の場合を痩せ型と定義している．
 
-# In[55]:
+# In[27]:
 
 
 # Hの単位をcm -> m
 H2 = H/100
 
 
-# In[56]:
+# In[33]:
 
 
 # BMIを求める
 BMI = W/(H2**2)
 
 
-# In[57]:
+# In[34]:
 
 
 # BMIが18.5未満を抽出
 D[BMI < 18.5]
 
 
-# ## Pandasに関する問題
-
-# In[58]:
-
-
-# 表示設定
-pd.set_option('display.max_columns', 5)  # 表示する列数の上限
-
+# # Pandasに関する問題
 
 # 次のcsvファイルをダウンロードせよ：[player_all.csv](https://drive.google.com/uc?export=download&id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP) <br>
 # このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
@@ -277,7 +267,7 @@ pd.set_option('display.max_columns', 5)  # 表示する列数の上限
 
 # - 以下を適当に修正し，`player_all.csv`ファイルを`df`に読み込め
 
-# In[59]:
+# In[35]:
 
 
 df = pd.read_csv('./report/player_all.csv', header=0, index_col='player_id', na_values=0)
@@ -286,7 +276,7 @@ df
 
 # - `df`の先頭から2行を表示せよ
 
-# In[60]:
+# In[36]:
 
 
 df.head(2)
@@ -302,21 +292,21 @@ df.head(2)
 #     ※ この選手はRekeem Jordan Harper選手である．<br>
 #     ※ 日本肥満学会の基準では，BMIが18.5未満の場合を痩せ型と定義している．
 
-# In[61]:
+# In[38]:
 
 
 # 'height'の単位をcm->m
 df['height']/100
 
 
-# In[62]:
+# In[39]:
 
 
 # BMIを求めて'BMI'列を作成
 df['BMI'] = df['weight']/(df['height']/100)**2
 
 
-# In[63]:
+# In[41]:
 
 
 # BMIが18.5未満の選手を抽出
@@ -325,34 +315,34 @@ df.loc[df['BMI'] < 18.5]
 
 #  - ポジション（`role`）ごとに，身長，体重，BMIの平均値を計算せよ．<br>
 
-# In[64]:
+# In[42]:
 
 
 df['role'].unique()
 
 
-# In[65]:
+# In[45]:
 
 
 # ディフェンダー（'DF'）
 df.loc[df['role']=='DF', ['height', 'weight', 'BMI']].mean()
 
 
-# In[66]:
+# In[46]:
 
 
 # ミッドフィルダー（'MF'）
 df.loc[df['role']=='MD', ['height', 'weight', 'BMI']].mean()
 
 
-# In[67]:
+# In[47]:
 
 
 # フォワード（'FW'）
 df.loc[df['role']=='FW', ['height', 'weight', 'BMI']].mean()
 
 
-# In[68]:
+# In[48]:
 
 
 # キーパー（'GK'）
@@ -361,13 +351,13 @@ df.loc[df['role']=='GK', ['height', 'weight', 'BMI']].mean()
 
 # ※ groupbyを用いると１行で書ける
 
-# In[69]:
+# In[98]:
 
 
 df.groupby('role').mean()
 
 
-# ## Matplotlibに関する問題
+# # Matplotlibに関する問題
 
 # 4.で用いた[player_all.csv](https://drive.google.com/uc?export=download&id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP)について，次の問いに答えよ．
 
@@ -383,7 +373,7 @@ df.groupby('role').mean()
 
 # 方法１
 
-# In[70]:
+# In[65]:
 
 
 data1 = df.loc[df['league']=='England', 'weight'].dropna()
@@ -396,7 +386,7 @@ D = [data1, data2, data3, data3, data4, data5]
 
 # 方法２（for文）
 
-# In[71]:
+# In[77]:
 
 
 D = []
@@ -406,7 +396,7 @@ for l in df['league'].unique():
 
 # 方法３（リスト内包表記）
 
-# In[72]:
+# In[79]:
 
 
 D = [df.loc[df['league']==l, 'weight'].dropna() for l in df['league'].unique()]
@@ -416,7 +406,7 @@ D = [df.loc[df['league']==l, 'weight'].dropna() for l in df['league'].unique()]
 
 # ※ 講義資料のコードをほぼそのまま利用できます
 
-# In[73]:
+# In[97]:
 
 
 # 箱ひげ図のプロット
@@ -440,7 +430,7 @@ ax.set_ylabel('体重 [kg]', fontsize=12)
 
 # ※ 講義資料のコードをほぼそのまま利用できます
 
-# In[74]:
+# In[99]:
 
 
 H_e = df.loc[df['league']=='England', 'height'].dropna()
@@ -461,7 +451,7 @@ ax.set_ylabel('Frequency', fontsize=12)
 ax.set_xlim(150, 210)
 
 
-# ## 実践編に関する課題
+# # 実践編に関する課題
 
 # 授業内で扱ったデータをPythonを用いて自由に解析し，解析結果をまとめよ．
 # - 解析内容は些細なことでも良い

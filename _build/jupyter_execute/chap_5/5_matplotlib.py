@@ -547,6 +547,7 @@ ax.set_ylabel('$Y$', fontsize=15)
 # また，縦軸には度数ではなく相対度数（度数/データ数）を取ることもある．
 
 # Matplotlibで1次元ヒストグラムを描画するには`ax.hist`メソッドを用いる：
+# 
 # ```python
 # ax.hist(data, bins, option)
 # ```
