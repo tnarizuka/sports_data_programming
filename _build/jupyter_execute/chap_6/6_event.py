@@ -22,13 +22,6 @@ pd.set_option('display.max_columns', 5)  # 表示する列数の上限
 get_ipython().run_line_magic('precision', '3')
 
 
-# In[71]:
-
-
-# （必須）カレントディレクトリの変更（自分の作業フォルダのパスをコピーして入力する）
-os.chdir(r'/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data')
-
-
 # # イベントデータの解析
 
 # ## データセット

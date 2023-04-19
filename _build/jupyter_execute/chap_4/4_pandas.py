@@ -22,13 +22,6 @@ pd.set_option('display.max_columns', 5)  # 表示する列数の上限
 get_ipython().run_line_magic('precision', '3')
 
 
-# In[215]:
-
-
-# （必須）カレントディレクトリの変更（自分の作業フォルダのパスをコピーして入力する）
-os.chdir(r'/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data')
-
-
 # 本章は以下の文献とウェブサイトを参考にしています：
 # - 株式会社ロンバート・増田秀人，現場で使える！pandsデータ前処理入門，翔泳社，2020．
 # - Wes McKinney, Pythonによるデータ分析入門，オライリー，2018

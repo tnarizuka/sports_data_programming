@@ -19,13 +19,6 @@ np.set_printoptions(suppress=True, precision=3)
 get_ipython().run_line_magic('precision', '3')
 
 
-# In[2]:
-
-
-# （必須）カレントディレクトリの変更（自分の作業フォルダのパスをコピーして入力する）
-os.chdir(r'/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data')
-
-
 # # NumPyの基礎
 
 # 本章は以下の文献とウェブサイトを参考にしています：
