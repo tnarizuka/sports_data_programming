@@ -10,10 +10,9 @@ import numpy as np
 import pandas as pd
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-try:
-    import japanize_matplotlib
-except:
-    pass
+
+# 日本語フォントの設定（Mac:'Hiragino Sans', Windows:'MS Gothic'）
+plt.rcParams['font.family'] = 'Hiragino Sans'
 
 # 表示設定
 np.set_printoptions(suppress=True, precision=3)
@@ -744,8 +743,7 @@ bx, by = 100, 50
 # ヒートマップの描画
 fig, ax = plt.subplots()
 ax.set_aspect('equal')
-ret = ax.hist2d(X, Y, bins=[bx, by], range=[[-10, 10], [-5, 5]],\
-                cmap='jet', cmin=1)
+ret = ax.hist2d(X, Y, bins=[bx, by], range=[[-10, 10], [-5, 5]],                cmap='jet', cmin=1)
 
 # カラーバーを追加
 fig.colorbar(ret[3], orientation='vertical', 

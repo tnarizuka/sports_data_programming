@@ -10,10 +10,9 @@ import numpy as np
 import pandas as pd
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-try:
-    import japanize_matplotlib
-except:
-    pass
+
+# 日本語フォントの設定（Mac:'Hiragino Sans', Windows:'MS Gothic'）
+plt.rcParams['font.family'] = 'Hiragino Sans'
 
 # 表示設定
 np.set_printoptions(suppress=True, precision=3)
@@ -188,8 +187,7 @@ df = pd.DataFrame({'t':[2, 64, 350, 600],
 
 
 # 絶対パスを指定してcsvファイルに保存する
-df.to_csv(r"C:\Users\parar\OneDrive\sport_data\4_pandas\df_sample.csv",\
-          header=True, index=True, encoding='shift-jis', columns=df.columns)
+df.to_csv(r"C:\Users\parar\OneDrive\sport_data\4_pandas\df_sample.csv",          header=True, index=True, encoding='shift-jis', columns=df.columns)
 
 
 # 相対パス
@@ -228,8 +226,7 @@ df.to_csv('./4_pandas/df_sample.csv',            # sport_dataからの相対パ�
 
 
 # 絶対パスを指定してcsvファイルをDataFrameに読み込む
-df = pd.read_csv(r"/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data/4_pandas/df_sample.csv",\
-                 header=0, index_col=0, usecols=None)
+df = pd.read_csv(r"/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data/4_pandas/df_sample.csv",                 header=0, index_col=0, usecols=None)
 df
 
 
@@ -341,8 +338,7 @@ df.fillna(0)
 
 
 # DataFrameの読み込み
-df = pd.read_csv('./4_pandas/df_sample.csv',\
-                 header=0, index_col=0, usecols=None)
+df = pd.read_csv('./4_pandas/df_sample.csv',                 header=0, index_col=0, usecols=None)
 
 
 # **NumPy配列を取得：`values`属性**
@@ -415,8 +411,7 @@ df.dtypes
 
 
 # csvファイルをDataFrameに読み込む
-df = pd.read_csv('./4_pandas/df_sample.csv',\
-                 header=0, index_col=0, usecols=None)
+df = pd.read_csv('./4_pandas/df_sample.csv',                 header=0, index_col=0, usecols=None)
 df
 
 
@@ -561,8 +556,7 @@ df.tail(2)
 # In[257]:
 
 
-df = pd.read_csv('./4_pandas/df_sample.csv',\
-                 header=0, index_col=0, usecols=None)
+df = pd.read_csv('./4_pandas/df_sample.csv',                 header=0, index_col=0, usecols=None)
 df['t']
 
 
@@ -800,8 +794,7 @@ df
 # In[285]:
 
 
-df = pd.read_csv('./4_pandas/df_sample.csv',\
-                 header=0, index_col=0, usecols=None)
+df = pd.read_csv('./4_pandas/df_sample.csv',                 header=0, index_col=0, usecols=None)
 df
 
 
@@ -1338,8 +1331,7 @@ df.loc[df['weight']==df['weight'].max()]
 # In[348]:
 
 
-df = pd.read_csv('./4_pandas/df_sample.csv',\
-                 header=0, index_col=0, usecols=None)
+df = pd.read_csv('./4_pandas/df_sample.csv',                 header=0, index_col=0, usecols=None)
 df
 
 
@@ -1414,9 +1406,7 @@ df.drop(columns=['t', 'player'])
 # In[355]:
 
 
-dict_data = {'t':[2, 64, 350, 600],\
-             'player':['ozora', 'misaki', 'wakabayashi', 'hyuga'],\
-             'x':[5.0, 20.0, 10.5, 32.5],
+dict_data = {'t':[2, 64, 350, 600],             'player':['ozora', 'misaki', 'wakabayashi', 'hyuga'],             'x':[5.0, 20.0, 10.5, 32.5],
              'y':[10.0, 1.0, 50.5, 2.5]}
 df = pd.DataFrame(dict_data, index=[2, 0, 1, 3])
 df

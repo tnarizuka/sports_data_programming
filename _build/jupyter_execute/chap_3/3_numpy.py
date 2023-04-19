@@ -10,10 +10,9 @@ import numpy as np
 import pandas as pd
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-try:
-    import japanize_matplotlib
-except:
-    pass
+
+# 日本語フォントの設定（Mac:'Hiragino Sans', Windows:'MS Gothic'）
+plt.rcParams['font.family'] = 'Hiragino Sans'
 
 # 表示設定
 np.set_printoptions(suppress=True, precision=3)
@@ -1548,7 +1547,7 @@ D
 # In[9]:
 
 
-get_ipython().run_cell_magic('time', '', 'M = 0\nfor i in range(len(D)):\n    M += D[i]\n    \nM / len(D)\n')
+get_ipython().run_cell_magic('time', '', 'M = 0\nfor i in range(len(D)):\n    M += D[i]\n    \nM / len(D)')
 
 
 # 実行結果を見ると，平均を求めるという単純な演算であるにも関わらず，3秒近く時間がかかっている（実行時間はPCのスペックによって変動する）．これは，データ数が非常に大きいことが原因である．
@@ -1558,7 +1557,7 @@ get_ipython().run_cell_magic('time', '', 'M = 0\nfor i in range(len(D)):\n    M 
 # In[10]:
 
 
-get_ipython().run_cell_magic('time', '', 'np.mean(D)\n')
+get_ipython().run_cell_magic('time', '', 'np.mean(D)')
 
 
 # この場合の実行時間は約10msとなり，for文を用いた場合の1/100以下となっていることがわかる（実行時間はPCのスペックによって変動する）．
