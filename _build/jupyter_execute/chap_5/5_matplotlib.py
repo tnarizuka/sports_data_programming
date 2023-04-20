@@ -744,7 +744,7 @@ fig.colorbar(ret[3], orientation='vertical',
              shrink=0.4, aspect=10, pad=0.05)
 
 
-# ## レポート問題
+# ## 演習問題
 
 # 次のcsvファイルをダウンロードし，作業フォルダ（例えば`OneDrive/sport_data/5_matplotlib`）に移動せよ：[player_all.csv](https://drive.google.com/uc?export=download&id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP) <br>
 # このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
