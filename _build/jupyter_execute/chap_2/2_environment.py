@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[5]:
 
 
 # （必須）モジュールのインポート
@@ -83,6 +83,44 @@ plt.rcParams['font.family'] = 'Hiragino Sans'
 # - Jupyter Labを起動し，左上のフォルダアイコンをクリックする．
 # - .ipynbファイルを保存した作業フォルダに移動し，`.ipynb`ファイルをダブルクリックする．
 
+# ## Maplotlibの日本語対応
+# 
+# Matplotlibはグラフ作成のためのライブラリである（詳しくは基礎編で解説する）．
+# Matplotlibは標準で日本語に対応していないので，ここでは日本語対応する方法を2つ紹介する．
+
+# **方法1：`rcParams`に使用するフォント名を指定する**
+# 
+# 以下のように，`matplotlib.pyplot`をインポートしておき，`plt.rcParams['font.family']`に日本語フォントを指定する．
+# 使用可能なフォントは環境によって異なるが，Windowsの場合は`'MS Gothic'`，`'Meiryo'`などを指定する．
+# Macの場合は`'Hiragino Sans'`を指定する．
+
+# In[3]:
+
+
+# 日本語フォントの設定（Mac:'Hiragino Sans', Windows:'MS Gothic'）
+plt.rcParams['font.family'] = 'MS Gothic'
+
+
+# **方法2： japanize_matplotlib を利用する（詳しくは[こちら](https://pypi.org/project/japanize-matplotlib/)）**
+# 
+# japanize_matplotlibはPythonのモジュールなので，最初にインストールしておけば，あとは他のモジュールと同じように`import japanize_matplotlib`とするだけで日本語が使用可能になる．
+# ただし，使用可能なフォントはIPAexゴシックだけなので，フォントにこだわりたい場合は方法１をおすすめする．
+# 
+# <!-- **japanize_matplotlibのインストール（詳しくは[こちら](https://pypi.org/project/japanize-matplotlib/)）** -->
+# 
+# - ターミナルを開いて以下のコマンドを実行し，AnacondaのインストールされているフォルダのPathを取得する
+#     ```
+#     conda info -e
+#     ```
+# - `*`の右に表示された文字列（フォルダのパス）をコピーして以下を実行
+#   ```zsh
+#   activate "フォルダのパス"
+#   ```
+# - 以下のコマンドを実行してインストールする
+#     ```zsh
+#     pip install japanize-matplotlib
+#     ```
+
 # ## パス（Path）について
 # 
 # ### パスとは何か？
@@ -102,12 +140,13 @@ plt.rcParams['font.family'] = 'Hiragino Sans'
 # パスを使用する場面の具体例として，matplotlibで描画した図を指定したフォルダ内に保存する場合を考える．
 # まず，以下のプログラムを実行する．
 
-# In[2]:
+# In[6]:
 
 
 fig, ax = plt.subplots(figsize=(3.5, 3))
 x = np.arange(-np.pi, np.pi, 0.01)
-ax.plot(x, np.sin(x));
+ax.plot(x, np.sin(x))
+ax.set_xlabel('X軸'); ax.set_ylabel('Y軸')
 
 
 # 実行がうまくいけば，サイン関数が出力されるはずである．
@@ -152,41 +191,3 @@ fig.savefig("./graph2.pdf")
 # ```
 # 
 # 相対パスを用いると，パスが短くなるので便利であるが，カレントディレクトリがどこなのかを認識しておく必要がある．
-
-# ## Maplotlibの日本語対応
-# 
-# Matplotlibはグラフ作成のためのライブラリである（詳しくは基礎編で解説する）．
-# Matplotlibは標準で日本語に対応していないので，ここでは日本語対応する方法を2つ紹介する．
-
-# **方法1：`rcParams`に使用するフォント名を指定する**
-# 
-# 以下のように，`matplotlib.pyplot`をインポートしておき，`plt.rcParams['font.family']`に日本語フォントを指定する．
-# 使用可能なフォントは環境によって異なるが，Windowsの場合は`'MS Gothic'`，`'Meiryo'`などを指定する．
-# Macの場合は`'Hiragino Sans'`を指定する．
-
-# In[ ]:
-
-
-# 日本語フォントの設定（Mac:'Hiragino Sans', Windows:'MS Gothic'）
-plt.rcParams['font.family'] = 'Hiragino Sans'
-
-
-# **方法2： japanize_matplotlib を利用する（詳しくは[こちら](https://pypi.org/project/japanize-matplotlib/)）**
-# 
-# japanize_matplotlibはPythonのモジュールなので，最初にインストールしておけば，あとは他のモジュールと同じように`import japanize_matplotlib`とするだけで日本語が使用可能になる．
-# ただし，使用可能なフォントはIPAexゴシックだけなので，フォントにこだわりたい場合は方法１をおすすめする．
-# 
-# <!-- **japanize_matplotlibのインストール（詳しくは[こちら](https://pypi.org/project/japanize-matplotlib/)）** -->
-# 
-# - ターミナルを開いて以下のコマンドを実行し，AnacondaのインストールされているフォルダのPathを取得する
-#     ```
-#     conda info -e
-#     ```
-# - `*`の右に表示された文字列（フォルダのパス）をコピーして以下を実行
-#   ```zsh
-#   activate "フォルダのパス"
-#   ```
-# - 以下のコマンドを実行してインストールする
-#     ```zsh
-#     pip install japanize-matplotlib
-#     ```
