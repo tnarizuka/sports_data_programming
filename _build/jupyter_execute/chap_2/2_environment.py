@@ -119,7 +119,8 @@ ax.plot(x, np.sin(x));
 # In[ ]:
 
 
-fig.savefig(r"C:\Users\narizuka\OneDrive\work\2_environment\graph.pdf")
+# 自分の作業フォルダのパスをコピーして貼り付ける
+fig.savefig(r"C:\Users\narizuka\OneDrive\sport_data\2_environment\graph.pdf")
 
 
 # この方法では，最も上の階層であるドライブ名（ここではCドライブ）から始まるパスを指定しており，これを**絶対パス**と呼ぶ．
