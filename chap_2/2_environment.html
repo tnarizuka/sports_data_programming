@@ -419,6 +419,11 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#maplotlib">
+   2.5. Maplotlibの日本語対応
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -481,6 +486,11 @@ title="Print to PDF"
     </ul>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#maplotlib">
+   2.5. Maplotlibの日本語対応
+  </a>
  </li>
 </ul>
 
@@ -654,6 +664,44 @@ Windowsで絶対パスを取得するには，パスをコピーしたいファ�
 <p>相対パスを用いると，パスが短くなるので便利であるが，カレントディレクトリがどこなのかを認識しておく必要がある．</p>
 </section>
 </section>
+</section>
+<section id="maplotlib">
+<h2><span class="section-number">2.5. </span>Maplotlibの日本語対応<a class="headerlink" href="#maplotlib" title="このヘッドラインへのパーマリンク">#</a></h2>
+<p>Matplotlibはグラフ作成のためのライブラリである（詳しくは基礎編で解説する）．
+Matplotlibは標準で日本語に対応していないので，ここでは日本語対応する方法を2つ紹介する．</p>
+<p><strong>方法1：<code class="docutils literal notranslate"><span class="pre">rcParams</span></code>に使用するフォント名を指定する</strong></p>
+<p>以下のように，<code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>をインポートしておき，<code class="docutils literal notranslate"><span class="pre">plt.rcParams['font.family']</span></code>に日本語フォントを指定する．
+使用可能なフォントは環境によって異なるが，Windowsの場合は<code class="docutils literal notranslate"><span class="pre">'MS</span> <span class="pre">Gothic'</span></code>，<code class="docutils literal notranslate"><span class="pre">'Meiryo'</span></code>などを指定する．
+Macの場合は<code class="docutils literal notranslate"><span class="pre">'Hiragino</span> <span class="pre">Sans'</span></code>を指定する．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 日本語フォントの設定（Mac:&#39;Hiragino Sans&#39;, Windows:&#39;MS Gothic&#39;）</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Hiragino Sans&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>方法2： japanize_matplotlib を利用する（詳しくは<a class="reference external" href="https://pypi.org/project/japanize-matplotlib/">こちら</a>）</strong></p>
+<p>japanize_matplotlibはPythonのモジュールなので，最初にインストールしておけば，あとは他のモジュールと同じように<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">japanize_matplotlib</span></code>とするだけで日本語が使用可能になる．
+ただし，使用可能なフォントはIPAexゴシックだけなので，フォントにこだわりたい場合は方法１をおすすめする．</p>
+<!-- **japanize_matplotlibのインストール（詳しくは[こちら](https://pypi.org/project/japanize-matplotlib/)）** -->
+<ul>
+<li><p>ターミナルを開いて以下のコマンドを実行し，AnacondaのインストールされているフォルダのPathを取得する</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">info</span> <span class="o">-</span><span class="n">e</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code>の右に表示された文字列（フォルダのパス）をコピーして以下を実行</p>
+<div class="highlight-zsh notranslate"><div class="highlight"><pre><span></span>activate <span class="s2">&quot;フォルダのパス&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>以下のコマンドを実行してインストールする</p>
+<div class="highlight-zsh notranslate"><div class="highlight"><pre><span></span>pip install japanize-matplotlib
+</pre></div>
+</div>
+</li>
+</ul>
 </section>
 </section>
 
