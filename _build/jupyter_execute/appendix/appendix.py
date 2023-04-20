@@ -3,50 +3,13 @@
 
 # # 付録
 
-# ## Maplotlibの日本語対応
-# 
-# Matplotlibはグラフ作成のためのライブラリである（詳しくは基礎編で解説する）．
-# Matplotlibは標準で日本語に対応していないので，ここでは日本語対応する方法を2つ紹介する．
-
-# **方法1：`rcParams`に使用するフォント名を指定する**
-# 
-# 以下のように，`matplotlib.pyplot`をインポートしておき，`plt.rcParams['font.family']`に日本語フォントを指定する．
-# 使用可能なフォントは環境によって異なるが，Windowsの場合は`'MS Gothic'`，`'Meiryo'`などを指定する．
-# Macの場合は`'Hiragino Sans'`を指定する．
-
-# In[ ]:
-
-
-# 日本語フォントの設定（Mac:'Hiragino Sans', Windows:'MS Gothic'）
-plt.rcParams['font.family'] = 'Hiragino Sans'
-
-
-# **方法2： japanize_matplotlib を利用する（詳しくは[こちら](https://pypi.org/project/japanize-matplotlib/)）**
-# 
-# japanize_matplotlibはPythonのモジュールなので，最初にインストールしておけば，あとは他のモジュールと同じように`import japanize_matplotlib`とするだけで日本語が使用可能になる．
-# ただし，使用可能なフォントはIPAexゴシックだけなので，フォントにこだわりたい場合は方法１をおすすめする．
-# 
-# <!-- **japanize_matplotlibのインストール（詳しくは[こちら](https://pypi.org/project/japanize-matplotlib/)）** -->
-# 
-# - ターミナルを開いて以下のコマンドを実行し，AnacondaのインストールされているフォルダのPathを取得する
-#     ```
-#     conda info -e
-#     ```
-# - `*`の右に表示された文字列（フォルダのパス）をコピーして以下を実行
-#   ```zsh
-#   activate "フォルダのパス"
-#   ```
-# - 以下のコマンドを実行してインストールする
-#     ```zsh
-#     pip install japanize-matplotlib
-#     ```
-
 # ## JupyterとPythonスクリプトの使い分け
 # 
 #  Jupyterは短いコードを逐次実行しながら結果を確認するのには適しているが，コードが長くなると分かりにくくなる．そこで，コードが長くなってきたら関数やクラスに適宜まとめてスクリプト（`.py`ファイル）に保存すると良い．保存したスクリプトはNumPyやPandasと同じようにimportできるので，Jupyter上ではimportしたスクリプト内の関数を実行するだけにすると結果が整理しやすい．その際，以下に説明する自作モジュールの自動リロードの設定をしておくと便利である．
 #  
 # ※ ローカル環境で`.py`ファイルを編集するにはエディタを使用する．Windowsに標準搭載されているメモ帳を使うのが最も手軽だが，非常に使いづらいので推奨しない．まずは自分の好みに合うエディタを探すことを推奨する．よく使われるエディタは以下の通り：
-# - Visual Studio Code
+# 
+# - Visual Studio Code（推奨）
 # - Atom
 # - Sublime Text
 
