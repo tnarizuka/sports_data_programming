@@ -637,11 +637,11 @@ Macの場合は<code class="docutils literal notranslate"><span class="pre">'Hir
 <p>Pythonプログラムの実行，自分のPC上のファイルの読み込み，加工したデータの保存を行うには，対象となるファイルの在り処，つまりアドレスが分からないといけない．
 このアドレスを指定する文字列のことをパス（Path）と呼ぶ．
 Windowsの場合，パスはフォルダの階層構造を区切り文字<code class="docutils literal notranslate"><span class="pre">¥</span></code>（またはバックスラッシュ<code class="docutils literal notranslate"><span class="pre">\</span></code>）によって区切った形式で以下のように表される：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>C:¥ユーザー¥ドキュメント
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>C:¥Users¥narizuka
 </pre></div>
 </div>
 <p>フォルダの階層の区切りは<code class="docutils literal notranslate"><span class="pre">¥</span></code>（またはバックスラッシュ<code class="docutils literal notranslate"><span class="pre">\\</span></code>）によって表されており，<code class="docutils literal notranslate"><span class="pre">¥</span></code>の隣にはフォルダの名前が記載されている．
-上の例は，Cドライブ（<code class="docutils literal notranslate"><span class="pre">C:</span></code>）の中にある<code class="docutils literal notranslate"><span class="pre">ユーザー</span></code>フォルダの中の<code class="docutils literal notranslate"><span class="pre">ドキュメント</span></code>フォルダのパスを表す．</p>
+上の例は，Cドライブ（<code class="docutils literal notranslate"><span class="pre">C:</span></code>）の<code class="docutils literal notranslate"><span class="pre">Users</span></code>フォルダの中の<code class="docutils literal notranslate"><span class="pre">narizuka</span></code>フォルダのパスを表す．</p>
 </section>
 <section id="id4">
 <h3><span class="section-number">2.5.2. </span>絶対パスと相対パス<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">#</a></h3>
@@ -671,7 +671,7 @@ Windowsの場合，パスはフォルダの階層構造を区切り文字<code c
 <h4>1. 絶対パスによる指定<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 自分の作業フォルダのパスをコピーして貼り付ける</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 自分の作業フォルダの絶対パスをコピーして貼り付ける</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\narizuka\OneDrive\sport_data\2_environment\graph.pdf&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -690,7 +690,8 @@ Windowsで絶対パスを取得するには，パスをコピーしたいファ�
 <h4>2. 相対パスによる指定<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;./graph2.pdf&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 相対パスを指定する（バックスラッシュを区切り文字にすれば先頭のrは必要ない）</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;./graph2.pdf&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

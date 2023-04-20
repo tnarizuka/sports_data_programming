@@ -129,11 +129,11 @@ plt.rcParams['font.family'] = 'MS Gothic'
 # Windowsの場合，パスはフォルダの階層構造を区切り文字`¥`（またはバックスラッシュ`\`）によって区切った形式で以下のように表される：
 # 
 # ```
-# C:¥ユーザー¥ドキュメント
+# C:¥Users¥narizuka
 # ```
 
 # フォルダの階層の区切りは`¥`（またはバックスラッシュ`\\`）によって表されており，`¥`の隣にはフォルダの名前が記載されている．
-# 上の例は，Cドライブ（`C:`）の中にある`ユーザー`フォルダの中の`ドキュメント`フォルダのパスを表す．
+# 上の例は，Cドライブ（`C:`）の`Users`フォルダの中の`narizuka`フォルダのパスを表す．
 
 # ### 絶対パスと相対パス
 # パスには絶対パスと相対パスの2種類が存在する．
@@ -158,7 +158,7 @@ ax.set_xlabel('X軸'); ax.set_ylabel('Y軸')
 # In[ ]:
 
 
-# 自分の作業フォルダのパスをコピーして貼り付ける
+# 自分の作業フォルダの絶対パスをコピーして貼り付ける
 fig.savefig(r"C:\Users\narizuka\OneDrive\sport_data\2_environment\graph.pdf")
 
 
@@ -177,6 +177,7 @@ fig.savefig(r"C:\Users\narizuka\OneDrive\sport_data\2_environment\graph.pdf")
 # In[ ]:
 
 
+# 相対パスを指定する（バックスラッシュを区切り文字にすれば先頭のrは必要ない）
 fig.savefig("./graph2.pdf")
 
 
