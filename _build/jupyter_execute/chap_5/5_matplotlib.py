@@ -40,17 +40,12 @@ get_ipython().run_line_magic('precision', '3')
 # ### Matplotlibのインポート
 # 
 # Matplotlibは以下のようにインポートするのが慣例である．
-# なお，日本語を使用するために，既に説明したjapanize_matplotlibもインポートしておく．
 
 # In[68]:
 
 
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-try:
-    import japanize_matplotlib
-except:
-    pass
 
 
 # ### プロットの基本中の基本
@@ -736,7 +731,8 @@ bx, by = 100, 50
 # ヒートマップの描画
 fig, ax = plt.subplots()
 ax.set_aspect('equal')
-ret = ax.hist2d(X, Y, bins=[bx, by], range=[[-10, 10], [-5, 5]],                cmap='jet', cmin=1)
+ret = ax.hist2d(X, Y, bins=[bx, by], range=[[-10, 10], [-5, 5]],\
+                cmap='jet', cmin=1)
 
 # カラーバーを追加
 fig.colorbar(ret[3], orientation='vertical', 

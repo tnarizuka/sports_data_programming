@@ -17,11 +17,15 @@
 # 
 # ### Jupyterのconfigファイル
 # - ターミナルで以下を実行する
-#     - `jupyter notebook --generate-config`
-#     - "C:\Users\username\\.jupyter"の中に"jupyter_notebook_config.py"というファイルができる．
-# - "jupyter_notebook_config.py"を開いて以下を追加
-#     - `c=get_config()`
-#     - `c.NotebookApp.notebook_dir="起動ディレクトリのパス"`
+#     ```
+#     jupyter notebook --generate-config
+#     ```
+#     - `C:\Users\username\.jupyter`の中に`jupyter_notebook_config.py`というファイルができる．
+# - `jupyter_notebook_config.py`を開いて以下を追加
+#     ```
+#     c=get_config()
+#     c.NotebookApp.notebook_dir="起動ディレクトリのパス"
+#     ```
 # - これにより，Jupyter Labを起動したときに指定したフォルダが開かれる
 
 # ### Ipythonのプロファイル
@@ -29,9 +33,11 @@
 # Ipythonプロファイルを作成すると，jupyterの起動時に自動実行したいコマンドを設定できる．
 # 
 # - ターミナルで以下を実行する
-#     - `ipython profile create profile_name`
-#     - "C:\Users\username\.ipython\prifile_name"に"startup"フォルダが作成される．
-# - startupフォルダの中に"00.ipy"というファイル（スタートアップスクリプト）を作り，自動実行したいコマンドを記述する．
+#     ```
+#     ipython profile create profile_name
+#     ```
+#     - `C:\Users\username\.ipython\prifile_name`に`startup`フォルダが作成される．
+# - `startup`フォルダの中に`00.ipy`というファイル（スタートアップスクリプト）を作り，自動実行したいコマンドを記述する．
 # - 例えば，以下はよく使うので自動importしておくと良い
 # 
 #     ```python
@@ -49,7 +55,7 @@
 #     %matplotlib inline
 #     ```
 
-# 例として，[sport_data]フォルダの中に[module]フォルダを作り，以下のプログラムを`my_module.py`として保存する．
+# 例として，`sport_data`フォルダの中に`module`フォルダを作り，以下のプログラムを`my_module.py`として保存する．
 # 
 # ```python
 # def my_func():
@@ -59,7 +65,7 @@
 # if __name__ == '__main__':
 #     my_func()
 # ```
-# つまり，このPythonスクリプトのパスは"C:\Users\username\OneDrive\sport_data\module\my_module.py"となる．
+# つまり，このPythonスクリプトのパスは`C:\Users\username\OneDrive\sport_data\module\my_module.py`となる．
 
 # これを単にPythonスクリプトとして実行すると，`if __name__ == '__main__':`以下のコマンドが実行される：
 
