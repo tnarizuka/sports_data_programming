@@ -1838,7 +1838,7 @@ f(x) = \frac{m^{x}}{x!} \mathrm{e}^{-m}
 <p>まずは<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A">game.csv</a>をダウンロードして作業フォルダ（例えば<code class="docutils literal notranslate"><span class="pre">OneDrive/sport_data/6_event</span></code>）に移動し，<code class="docutils literal notranslate"><span class="pre">GM</span></code>という名前のDataFrameに読み込む．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GM</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./6_event/game.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GM</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./game.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">GM</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2005,8 +2005,10 @@ dtype: float64
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">GM</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">GM</span><span class="p">[</span><span class="s1">&#39;league&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;England&#39;</span><span class="p">,</span> <span class="s1">&#39;home_score&#39;</span><span class="p">]</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> 
-        <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="c1"># 階級の左端の値を指定する</span>
+        <span class="n">bins</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="c1"># 階級の左端の値を指定する</span>
+        <span class="n">align</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>    <span class="c1"># バーの中央を階級の左端に合わせる</span>
         <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span>  <span class="c1"># ヒストグラムのスタイル</span>
         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>    <span class="c1"># バーの色</span>
         <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>   <span class="c1"># バーの枠線の色</span>
@@ -2015,12 +2017,12 @@ dtype: float64
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;1試合の得点&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;試合数&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">2</span><span class="p">));</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_68_0.png" src="../_images/6_event_68_0.png" />
+<img alt="../_images/6_event_67_0.png" src="../_images/6_event_67_0.png" />
 </div>
 </div>
 <p>次に，上のヒストグラムがポアソン分布に従っているか調べるため，試合データから求めた平均値をパラメータとするポアソン分布を描いてみる．
@@ -2035,17 +2037,17 @@ dtype: float64
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">poisson</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
-<span class="n">fx</span> <span class="o">=</span> <span class="n">poisson</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">fx</span> <span class="o">=</span> <span class="n">poisson</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fx</span><span class="p">,</span> <span class="s1">&#39;-ok&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1c671e6a0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1ca4d21c0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/6_event_70_1.png" src="../_images/6_event_70_1.png" />
+<img alt="../_images/6_event_69_1.png" src="../_images/6_event_69_1.png" />
 </div>
 </div>
 <p>上のグラフを見比べると，確かに似た分布になっていることが分かる．
@@ -2056,26 +2058,27 @@ dtype: float64
 <span class="n">data</span> <span class="o">=</span> <span class="n">GM</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">GM</span><span class="p">[</span><span class="s1">&#39;league&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;England&#39;</span><span class="p">,</span> <span class="s1">&#39;home_score&#39;</span><span class="p">]</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> 
-        <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="c1"># 階級の左端の値を指定する</span>
+        <span class="n">bins</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="c1"># 階級の左端の値を指定する</span>
+        <span class="n">align</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>    <span class="c1"># バーの中央を階級の左端に合わせる</span>
         <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span>  <span class="c1"># ヒストグラムのスタイル</span>
         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>    <span class="c1"># バーの色</span>
         <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>   <span class="c1"># バーの枠線の色</span>
         <span class="n">rwidth</span><span class="o">=</span><span class="mf">0.5</span>
         <span class="p">)</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">fx</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">size</span> <span class="o">*</span> <span class="n">poisson</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fx</span><span class="p">,</span> <span class="s1">&#39;-ok&#39;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;1試合の得点&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;試合数&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">2</span><span class="p">));</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_72_0.png" src="../_images/6_event_72_0.png" />
+<img alt="../_images/6_event_71_0.png" src="../_images/6_event_71_0.png" />
 </div>
 </div>
 <p>実データ（棒グラフ）とポアソン分布（折れ線）の概形はおおよそ一致していることが分かる．
@@ -2383,7 +2386,7 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$Y$&#39;)
 </pre></div>
 </div>
-<img alt="../_images/6_event_90_1.png" src="../_images/6_event_90_1.png" />
+<img alt="../_images/6_event_89_1.png" src="../_images/6_event_89_1.png" />
 </div>
 </div>
 <p><strong>イベントタグ</strong></p>
@@ -3341,7 +3344,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_116_0.png" src="../_images/6_event_116_0.png" />
+<img alt="../_images/6_event_115_0.png" src="../_images/6_event_115_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3354,7 +3357,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_117_0.png" src="../_images/6_event_117_0.png" />
+<img alt="../_images/6_event_116_0.png" src="../_images/6_event_116_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3367,7 +3370,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_118_0.png" src="../_images/6_event_118_0.png" />
+<img alt="../_images/6_event_117_0.png" src="../_images/6_event_117_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3380,7 +3383,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_119_0.png" src="../_images/6_event_119_0.png" />
+<img alt="../_images/6_event_118_0.png" src="../_images/6_event_118_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3393,7 +3396,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_120_0.png" src="../_images/6_event_120_0.png" />
+<img alt="../_images/6_event_119_0.png" src="../_images/6_event_119_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3406,7 +3409,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_121_0.png" src="../_images/6_event_121_0.png" />
+<img alt="../_images/6_event_120_0.png" src="../_images/6_event_120_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3419,7 +3422,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_122_0.png" src="../_images/6_event_122_0.png" />
+<img alt="../_images/6_event_121_0.png" src="../_images/6_event_121_0.png" />
 </div>
 </div>
 </section>
@@ -3725,7 +3728,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_148_0.png" src="../_images/6_event_148_0.png" />
+<img alt="../_images/6_event_147_0.png" src="../_images/6_event_147_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3735,7 +3738,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_149_0.png" src="../_images/6_event_149_0.png" />
+<img alt="../_images/6_event_148_0.png" src="../_images/6_event_148_0.png" />
 </div>
 </div>
 </section>
@@ -3973,7 +3976,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_167_0.png" src="../_images/6_event_167_0.png" />
+<img alt="../_images/6_event_166_0.png" src="../_images/6_event_166_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3983,7 +3986,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_168_0.png" src="../_images/6_event_168_0.png" />
+<img alt="../_images/6_event_167_0.png" src="../_images/6_event_167_0.png" />
 </div>
 </div>
 </section>
