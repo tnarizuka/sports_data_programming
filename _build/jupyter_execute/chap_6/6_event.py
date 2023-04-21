@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[70]:
+# In[1]:
 
 
 # （必須）モジュールのインポート
@@ -380,12 +380,6 @@ Rank
 
 # ### ポアソン分布
 
-# In[ ]:
-
-
-
-
-
 # **二項分布からポアソン分布へ**
 # 
 # 成功確率が$p$の試行を独立に$n$回繰り返すことを考える．
@@ -429,10 +423,10 @@ Rank
 
 # まずは[game.csv](https://drive.google.com/uc?export=download&id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A)をダウンロードして作業フォルダ（例えば`OneDrive/sport_data/6_event`）に移動し，`GM`という名前のDataFrameに読み込む．
 
-# In[87]:
+# In[4]:
 
 
-GM = pd.read_csv('./6_event/game.csv', header=0)
+GM = pd.read_csv('./game.csv', header=0)
 GM.head(2)
 
 
@@ -489,14 +483,16 @@ print(GM.loc[GM['league']=='Spain', ['away_score', 'home_score']].var())
 # そこで，リーグ別にホームチームの得点のヒストグラムを求めてみよう．
 # 以下はイングランド・プレミアリーグのホームチームの得点分布である．
 
-# In[93]:
+# In[10]:
 
 
 data = GM.loc[GM['league']=='England', 'home_score']
 
 fig, ax = plt.subplots(figsize=(4,3))
+x = np.arange(data.max()+1)
 ax.hist(data, 
-        bins=np.arange(data.max()+2)-0.5, # 階級の左端の値を指定する
+        bins=k, # 階級の左端の値を指定する
+        align='left',    # バーの中央を階級の左端に合わせる
         histtype='bar',  # ヒストグラムのスタイル
         color='gray',    # バーの色
         edgecolor='k',   # バーの枠線の色
@@ -505,7 +501,7 @@ ax.hist(data,
 
 ax.set_xlabel('1試合の得点', fontsize=12)
 ax.set_ylabel('試合数', fontsize=12)
-ax.set_xticks(np.arange(data.max()+2));
+ax.set_xticks(x);
 
 
 # 次に，上のヒストグラムがポアソン分布に従っているか調べるため，試合データから求めた平均値をパラメータとするポアソン分布を描いてみる．
@@ -517,42 +513,43 @@ ax.set_xticks(np.arange(data.max()+2));
 # 
 # のグラフを描けば良い．
 
-# In[94]:
+# In[9]:
 
 
 from scipy.stats import poisson
 
 fig, ax = plt.subplots(figsize=(4,3))
-x = np.arange(0, 9)
-fx = poisson.pmf(x, data.mean())
+x = np.arange(data.max()+1)
+fx = poisson.pmf(k, data.mean())
 ax.plot(x, fx, '-ok')
 
 
 # 上のグラフを見比べると，確かに似た分布になっていることが分かる．
 # そこで，最後に２つのグラフを合わせよう．
 
-# In[95]:
+# In[11]:
 
 
 from scipy.stats import poisson
 data = GM.loc[GM['league']=='England', 'home_score']
 
 fig, ax = plt.subplots(figsize=(4,3))
+x = np.arange(data.max()+1)
 ax.hist(data, 
-        bins=np.arange(data.max()+2)-0.5, # 階級の左端の値を指定する
+        bins=k, # 階級の左端の値を指定する
+        align='left',    # バーの中央を階級の左端に合わせる
         histtype='bar',  # ヒストグラムのスタイル
         color='gray',    # バーの色
         edgecolor='k',   # バーの枠線の色
         rwidth=0.5
         )
 
-x = np.arange(data.max()+2)
 fx = data.size * poisson.pmf(x, data.mean())
 ax.plot(x, fx, '-ok')
 
 ax.set_xlabel('1試合の得点', fontsize=12)
 ax.set_ylabel('試合数', fontsize=12)
-ax.set_xticks(np.arange(data.max()+2));
+ax.set_xticks(x);
 
 
 # 実データ（棒グラフ）とポアソン分布（折れ線）の概形はおおよそ一致していることが分かる．
