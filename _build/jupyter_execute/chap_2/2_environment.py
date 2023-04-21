@@ -159,7 +159,7 @@ ax.set_xlabel('X軸'); ax.set_ylabel('Y軸')
 
 
 # 自分の作業フォルダの絶対パスをコピーして貼り付ける
-fig.savefig(r"C:\Users\narizuka\OneDrive\sport_data\2_environment\graph.pdf")
+fig.savefig(r"C:\Users\narizuka\OneDrive\sport_data\2_environment\graph.pdf", bbox_inches="tight")
 
 
 # この方法では，最も上の階層であるドライブ名（ここではCドライブ）から始まるパスを指定しており，これを**絶対パス**と呼ぶ．
@@ -178,7 +178,7 @@ fig.savefig(r"C:\Users\narizuka\OneDrive\sport_data\2_environment\graph.pdf")
 
 
 # 相対パスを指定する（バックスラッシュを区切り文字にすれば先頭のrは必要ない）
-fig.savefig("./graph2.pdf")
+fig.savefig("./graph2.pdf", bbox_inches="tight")
 
 
 # 2つ目の方法では，パスが`'.'`から始まっているが，これは現在の居場所（**カレントディレクトリ**と呼ぶ）のパスを意味する．
