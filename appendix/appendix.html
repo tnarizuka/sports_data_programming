@@ -528,18 +528,20 @@ title="Print to PDF"
 <h2>便利な機能<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">#</a></h2>
 <section id="jupyterconfig">
 <h3>Jupyterのconfigファイル<a class="headerlink" href="#jupyterconfig" title="このヘッドラインへのパーマリンク">#</a></h3>
-<ul class="simple">
-<li><p>ターミナルで以下を実行する</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span> <span class="pre">--generate-config</span></code></p></li>
-<li><p>&quot;C:\Users\username\.jupyter&quot;の中に&quot;jupyter_notebook_config.py&quot;というファイルができる．</p></li>
+<li><p>ターミナルで以下を実行する</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">notebook</span> <span class="o">--</span><span class="n">generate</span><span class="o">-</span><span class="n">config</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">C:\Users\username\.jupyter</span></code>の中に<code class="docutils literal notranslate"><span class="pre">jupyter_notebook_config.py</span></code>というファイルができる．</p></li>
 </ul>
 </li>
-<li><p>&quot;jupyter_notebook_config.py&quot;を開いて以下を追加</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">c=get_config()</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">c.NotebookApp.notebook_dir=&quot;起動ディレクトリのパス&quot;</span></code></p></li>
-</ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">jupyter_notebook_config.py</span></code>を開いて以下を追加</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">=</span><span class="n">get_config</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">NotebookApp</span><span class="o">.</span><span class="n">notebook_dir</span><span class="o">=</span><span class="s2">&quot;起動ディレクトリのパス&quot;</span>
+</pre></div>
+</div>
 </li>
 <li><p>これにより，Jupyter Labを起動したときに指定したフォルダが開かれる</p></li>
 </ul>
@@ -549,12 +551,14 @@ title="Print to PDF"
 <p>Ipythonプロファイルを作成すると，jupyterの起動時に自動実行したいコマンドを設定できる．</p>
 <ul>
 <li><p>ターミナルで以下を実行する</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipython</span> <span class="n">profile</span> <span class="n">create</span> <span class="n">profile_name</span>
+</pre></div>
+</div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">ipython</span> <span class="pre">profile</span> <span class="pre">create</span> <span class="pre">profile_name</span></code></p></li>
-<li><p>&quot;C:\Users\username.ipython\prifile_name&quot;に&quot;startup&quot;フォルダが作成される．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">C:\Users\username\.ipython\prifile_name</span></code>に<code class="docutils literal notranslate"><span class="pre">startup</span></code>フォルダが作成される．</p></li>
 </ul>
 </li>
-<li><p>startupフォルダの中に&quot;00.ipy&quot;というファイル（スタートアップスクリプト）を作り，自動実行したいコマンドを記述する．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">startup</span></code>フォルダの中に<code class="docutils literal notranslate"><span class="pre">00.ipy</span></code>というファイル（スタートアップスクリプト）を作り，自動実行したいコマンドを記述する．</p></li>
 <li><p>例えば，以下はよく使うので自動importしておくと良い</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -572,7 +576,7 @@ title="Print to PDF"
 </div>
 </li>
 </ul>
-<p>例として，[sport_data]フォルダの中に[module]フォルダを作り，以下のプログラムを<code class="docutils literal notranslate"><span class="pre">my_module.py</span></code>として保存する．</p>
+<p>例として，<code class="docutils literal notranslate"><span class="pre">sport_data</span></code>フォルダの中に<code class="docutils literal notranslate"><span class="pre">module</span></code>フォルダを作り，以下のプログラムを<code class="docutils literal notranslate"><span class="pre">my_module.py</span></code>として保存する．</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_func</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
@@ -581,7 +585,7 @@ title="Print to PDF"
     <span class="n">my_func</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>つまり，このPythonスクリプトのパスは&quot;C:\Users\username\OneDrive\sport_data\module\my_module.py&quot;となる．</p>
+<p>つまり，このPythonスクリプトのパスは<code class="docutils literal notranslate"><span class="pre">C:\Users\username\OneDrive\sport_data\module\my_module.py</span></code>となる．</p>
 <p>これを単にPythonスクリプトとして実行すると，<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__':</span></code>以下のコマンドが実行される：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">run</span> <span class="s2">&quot;./module/my_module.py&quot;</span>
 </pre></div>
