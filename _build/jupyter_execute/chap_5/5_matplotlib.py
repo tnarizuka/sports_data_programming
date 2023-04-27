@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 plt.rcParams['font.family'] = 'Hiragino Sans'
 
 # 表示設定
-np.set_printoptions(suppress=True, precision=3)
+np.set_printoptions(suppress=True, precision=3)  # 指数表記にしない
 pd.set_option('display.precision', 3)    # 小数点以下の表示桁
 pd.set_option('display.max_rows', 150)   # 表示する行数の上限
 pd.set_option('display.max_columns', 5)  # 表示する列数の上限
@@ -831,7 +831,7 @@ get_ipython().run_line_magic('matplotlib', 'tk')
 
 # なお，'inline'や'tk'はバックエンドと呼ばれ，以下が利用可能である．
 
-# In[97]:
+# In[ ]:
 
 
 # 現在のバックエンドを確認
