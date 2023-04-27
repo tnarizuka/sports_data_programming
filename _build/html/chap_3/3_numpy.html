@@ -965,7 +965,7 @@ Wall time: 409 µs
 </section>
 <section id="id4">
 <h3><span class="section-number">3.1.4. </span>NumPy配列の型<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>データ型を明示的に指定したい場合には<code class="docutils literal notranslate"><span class="pre">dtype</span></code>キーワードを用いる．<code class="docutils literal notranslate"><span class="pre">dtype</span></code>で指定できる主要なデータ型は</p>
+<p>データ型を明示的に指定したい場合には<code class="docutils literal notranslate"><span class="pre">dtype</span></code>キーワードを用いる．<code class="docutils literal notranslate"><span class="pre">dtype</span></code>で指定できる主要なデータ型は以下の通りである：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">int</span></code>（整数）</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">float</span></code>（浮動小数，実数を使う場合）</p></li>
@@ -973,7 +973,7 @@ Wall time: 409 µs
 <li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>（0か1）</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">str</span></code>（文字列）</p></li>
 </ul>
-<p>などである．より詳しく<code class="docutils literal notranslate"><span class="pre">float64</span></code>のようにビット長を指定することもできるが省略するとデフォルトのビット長が指定される．なお，文字列を扱いたい場合はリストかPandasを用いるのが良い．</p>
+<p>より詳しく<code class="docutils literal notranslate"><span class="pre">float64</span></code>のようにビット長を指定することもできるが省略するとデフォルトのビット長が指定される．なお，文字列を扱いたい場合はリストかPandasを用いるのが良い．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
@@ -996,20 +996,6 @@ Wall time: 409 µs
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1., 2., 3., 4.])
-</pre></div>
-</div>
-</div>
-</div>
-<p>NumPy配列のデータ型を調べたい場合は<code class="docutils literal notranslate"><span class="pre">dtype</span></code>属性を用いる．</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 配列のデータ型を取得する</span>
-<span class="n">x</span><span class="o">.</span><span class="n">dtype</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype(&#39;int64&#39;)
 </pre></div>
 </div>
 </div>
@@ -1125,9 +1111,9 @@ float64
 <h3><span class="section-number">3.1.6. </span>演習問題<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">np.array</span></code>関数を用いて様々なデータ型の配列を作成せよ</p></li>
-<li><p>作成した配列の属性を取得せよ</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">astype</span></code>メソッドを用いて作成した配列のデータ型を変更せよ</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">dtype</span></code>メソッドを用いて変更した配列のデータ型を確認せよ</p></li>
+<li><p>作成した配列について，いくつかの属性を取得せよ</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">astype</span></code>メソッドを用いて，作成した配列のデータ型を変更せよ</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dtype</span></code>メソッドを用いて，変更した配列のデータ型を確認せよ</p></li>
 </ul>
 </section>
 </section>
@@ -1136,7 +1122,7 @@ float64
 <p>2年次には線形代数が必修科目となっている．線形代数では主にベクトルと行列を扱うが，これらはデータ分析をする上で避けて通ることができない．実は，NumPyはベクトルや行列を扱うためのパッケージといっても過言ではない．以下，ベクトルと行列について超簡単に説明する．</p>
 <section id="id8">
 <h3><span class="section-number">3.2.1. </span>ベクトル<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>以下のように数字を並べたものをベクトルと呼ぶ：</p>
+<p>以下のように数字を1方向に並べたものをベクトルと呼ぶ：</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
     \left(
@@ -1149,7 +1135,7 @@ float64
     (1, 2, 3, 4)
 \end{split}\]</div>
 <p>１つ目は数字が縦に並んでいるので縦ベクトル，２つ目は横ベクトルと呼ぶ．</p>
-<p>ベクトルを構成する数を成分と呼ぶ．例えば，上の縦ベクトルは第0成分が1，第1成分が2，第2成分が3である．NumPyでは，横ベクトルは1次元のNumPy配列，縦ベクトルは2次元のNumPy配列によって以下のように実現できる：</p>
+<p>ベクトルを構成する各要素を成分と呼ぶ．例えば，上の縦ベクトルは第0成分が1，第1成分が2，第2成分が3である．NumPyでは，横ベクトルは1次元のNumPy配列，縦ベクトルは2次元のNumPy配列によって以下のように実現できる：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
@@ -1186,7 +1172,7 @@ float64
 </section>
 <section id="id9">
 <h3><span class="section-number">3.2.2. </span>行列<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>ベクトルは数を一方向に並べたものであったが，以下のように数を縦と横に並べたものを考える：</p>
+<p>ベクトルは数字を一方向に並べたものであったが，以下のように数字を縦と横に並べたものを考える：</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
     \left(
@@ -1197,9 +1183,9 @@ float64
 	\end{array}
 \right)
 \end{split}\]</div>
-<p>これを行列と呼ぶ．
-行列はベクトルを並べたものと捉えることもできる．</p>
-<p>上の行列を横方向に切ると，</p>
+<p>これを行列と呼ぶ．</p>
+<p>行列はベクトルを並べたものと捉えることもできる．
+上の行列を横方向に切ると，以下のように３つのベクトルに分割することができる：</p>
 <div class="math notranslate nohighlight">
 \[
     \left(
@@ -1218,8 +1204,8 @@ float64
 	\end{array}
 \right)
 \]</div>
-<p>に分割することができるが，<strong>これらを行と呼び，それぞれを0から始まる行番号によって0行，1行，2行などという．
-NumPyおよびPandasでは，行番号が増減する方向を<code class="docutils literal notranslate"><span class="pre">axis=0</span></code>と表す．</strong></p>
+<p>これらを<strong>行</strong>と呼び，それぞれを0から始まる行番号によって0行，1行，2行などという．
+NumPyおよびPandasでは，行番号が増減する方向を<code class="docutils literal notranslate"><span class="pre">axis=0</span></code>と表す．</p>
 <p>一方，行列を縦方向に切ると</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1245,9 +1231,10 @@ NumPyおよびPandasでは，行番号が増減する方向を<code class="docut
 	\end{array}
     \right)
 \end{split}\]</div>
-<p>に分割することができるが，<strong>これを列と呼び，それぞれを0から始まる列番号によって0列，1列，2列などという．
-NumPyおよびPandasでは，列番号が増減する方向を<code class="docutils literal notranslate"><span class="pre">axis=1</span></code>と表す．</strong></p>
-<p>行列の形状は行数と列数の組み合わせで <span class="math notranslate nohighlight">\( 3\times 3 \)</span> 行列などと表す．また，行列の成分（要素）は行番号 <span class="math notranslate nohighlight">\( i \)</span> と列番号 <span class="math notranslate nohighlight">\( j \)</span> を用いて <span class="math notranslate nohighlight">\( (i, j) \)</span> 成分（要素）などと表す．例えば，上の行列の <span class="math notranslate nohighlight">\((0, 1)\)</span> 成分は2である．</p>
+<p>に分割することができる．
+これを<strong>列</strong>と呼び，それぞれを0から始まる列番号によって0列，1列，2列などという．
+NumPyおよびPandasでは，列番号が増減する方向を<code class="docutils literal notranslate"><span class="pre">axis=1</span></code>と表す．</p>
+<p>行列の形状は行数と列数の組み合わせで <span class="math notranslate nohighlight">\( 3\times 3 \)</span> 行列などと表す（１つ目の3は行数，２つ目の3は列数）．また，行列の成分は行番号 <span class="math notranslate nohighlight">\( i \)</span> と列番号 <span class="math notranslate nohighlight">\( j \)</span> を用いて <span class="math notranslate nohighlight">\( (i, j) \)</span> 成分などと表す．例えば，上の行列の <span class="math notranslate nohighlight">\((0, 1)\)</span> 成分は2である．</p>
 <p>行列は2次元のNumPy配列によって以下のように実現できる：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4444,8 +4431,8 @@ NumPyの主要な集計関数を表に示す．
 <ul class="simple">
 <li><p>肥満度を表す指標としてBMIが知られている．BMIは身長と体重を用いて以下で定義される：</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-f6d3c1ca-9fa8-4927-9df9-a0ecc5b2dadb">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-f6d3c1ca-9fa8-4927-9df9-a0ecc5b2dadb" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-713bef97-728e-4ef4-b8cc-5f08472292a0">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-713bef97-728e-4ef4-b8cc-5f08472292a0" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
     \mathrm{BMI} = \frac{体重 [kg]}{(身長 [m])^2}
 \end{align}\]</div>
 <ul class="simple">
