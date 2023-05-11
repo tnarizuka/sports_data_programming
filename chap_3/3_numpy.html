@@ -2092,10 +2092,10 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 <h3><span class="section-number">3.4.1. </span>配列のインデックス参照<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>配列中の要素が先頭から何番目かを表す番号を<strong>インデックス</strong>と呼ぶ．
 1次元配列は1つのインデックス，2次元配列は2つのインデックス（行番号と列番号に対応するインデックス）によって指定する．
-Pythonでは<strong>インデックスは0から始まる</strong>ことに注意する．</p>
-<p>インデックスを用いると，配列から１部分を取り出すことができる．
+Pythonでは<strong>インデックスが0から始まる</strong>ことに注意する．</p>
+<p>インデックスを用いると，配列の１部分を取り出すことができる．
 これを<strong>インデックス参照</strong>と呼ぶ．
-NumPy配列に対するインデックス参照の方法はPythonリストの場合と同様であり，必要なインデックスを角カッコ<code class="docutils literal notranslate"><span class="pre">[]</span></code>で指定することで<span class="math notranslate nohighlight">\(i\)</span>番目要素にアクセスできる．</p>
+NumPy配列に対するインデックス参照の方法はPythonリストの場合と同様であり，必要なインデックスを角カッコ<code class="docutils literal notranslate"><span class="pre">[]</span></code>で指定することで <span class="math notranslate nohighlight">\(i\)</span> 番目要素にアクセスできる．</p>
 <section id="id21">
 <h4>1次元配列の場合<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">#</a></h4>
 <div class="cell docutils container">
@@ -2126,7 +2126,7 @@ NumPy配列に対するインデックス参照の方法はPythonリストの場
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1番目要素</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 4番目要素</span>
 <span class="n">x1</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -2154,9 +2154,9 @@ NumPy配列に対するインデックス参照の方法はPythonリストの場
 </section>
 <section id="id22">
 <h4>2次元配列の場合<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">#</a></h4>
-<p>2次元配列では，カンマで区切ってarr[0, 0]のようにアクセスする．
+<p>2次元配列では，カンマで区切って<code class="docutils literal notranslate"><span class="pre">arr[0,</span> <span class="pre">0]</span></code>のようにアクセスする．
 行番号→列番号の順番で指定する．</p>
-<p>※ arr[0][0]のように指定することもできるが非推奨．</p>
+<p>※ <code class="docutils literal notranslate"><span class="pre">arr[0][0]</span></code>のように指定することもできるが非推奨．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
@@ -4131,8 +4131,8 @@ NumPyの主要な集計関数を表に示す．
 <ul class="simple">
 <li><p>肥満度を表す指標としてBMIが知られている．BMIは身長と体重を用いて以下で定義される：</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-484bb8d6-934c-4e38-9a31-5b2754a7efac">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-484bb8d6-934c-4e38-9a31-5b2754a7efac" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-653ef09c-6dac-46c4-923a-285d2532b1fa">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-653ef09c-6dac-46c4-923a-285d2532b1fa" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
     \mathrm{BMI} = \frac{体重 [kg]}{(身長 [m])^2}
 \end{align}\]</div>
 <ul class="simple">
