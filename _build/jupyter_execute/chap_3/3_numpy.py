@@ -1861,8 +1861,7 @@ np.savetxt(r"C:\Users\parar\OneDrive\sport_data\3_numpy\array_ex.csv", x, fmt='%
 
 
 # 相対パスで指定する方法
-os.chdir(r"C:\Users\parar\OneDrive\sport_data")  # カレントディレクトリをsport_dataに変更
-np.savetxt('./3_numpy/array_ex.csv', x, fmt='%d', delimiter=',')  # sport_dataからの相対パスを指定
+np.savetxt('./array_ex.csv', x, fmt='%d', delimiter=',')  # sport_dataからの相対パスを指定
 
 
 # `np.savetxt`にはフォーマット`fmt`，区切り文字`delimiter`，エンコーディング`encoding`などを指定できる．
@@ -1887,8 +1886,7 @@ arr
 
 
 # 相対パスで指定する方法
-os.chdir(r"C:\Users\parar\OneDrive\sport_data")  # カレントディレクトリをsport_dataに変更
-arr = np.loadtxt('./3_numpy/array_ex.csv', delimiter=',', dtype='float')  # sport_dataからの相対パスを指定
+arr = np.loadtxt('./array_ex.csv', delimiter=',', dtype='float')  # sport_dataからの相対パスを指定
 arr
 
 
