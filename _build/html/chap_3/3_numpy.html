@@ -4205,20 +4205,9 @@ NumPyの主要な集計関数を表に示す．
 </div>
 </div>
 </div>
-<p>絶対パス</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 絶対パスで指定する方法</span>
-<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\parar\OneDrive\sport_data\3_numpy\array_ex.csv&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>相対パス</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 相対パスで指定する方法</span>
-<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;./array_ex.csv&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>  <span class="c1"># sport_dataからの相対パスを指定</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;./array_ex.csv&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>  <span class="c1"># sport_dataからの相対パスを指定</span>
 </pre></div>
 </div>
 </div>
@@ -4228,21 +4217,9 @@ NumPyの主要な集計関数を表に示す．
 <section id="id57">
 <h3><span class="section-number">3.8.2. </span>ファイルからの読み込み<a class="headerlink" href="#id57" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>テキスト形式のデータをNumPy配列に読み込むには<code class="docutils literal notranslate"><span class="pre">np.loadtxt</span></code>関数を用いる．</p>
-<p>絶対パス</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 絶対パスで指定する方法</span>
-<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\parar\OneDrive\sport_data\3_numpy\array_ex.csv&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
-<span class="n">arr</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>相対パス</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 相対パスで指定する方法</span>
-<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;./array_ex.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>  <span class="c1"># sport_dataからの相対パスを指定</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;./array_ex.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>  <span class="c1"># sport_dataからの相対パスを指定</span>
 <span class="n">arr</span>
 </pre></div>
 </div>
@@ -4420,8 +4397,8 @@ NumPyの主要な集計関数を表に示す．
 <ul class="simple">
 <li><p>肥満度を表す指標としてBMIが知られている．BMIは身長と体重を用いて以下で定義される：</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-0ca40781-9836-4cb5-bb00-e3318758c921">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-0ca40781-9836-4cb5-bb00-e3318758c921" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7548c93e-bde9-4500-aa75-a9b592746db0">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-7548c93e-bde9-4500-aa75-a9b592746db0" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
     \mathrm{BMI} = \frac{体重 [kg]}{(身長 [m])^2}
 \end{align}\]</div>
 <ul class="simple">

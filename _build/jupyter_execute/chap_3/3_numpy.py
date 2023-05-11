@@ -1846,21 +1846,9 @@ np.max(x2, axis=1)
 x = np.arange(25).reshape(5, 5)
 
 
-# 絶対パス
-
-# In[ ]:
-
-
-# 絶対パスで指定する方法
-np.savetxt(r"C:\Users\parar\OneDrive\sport_data\3_numpy\array_ex.csv", x, fmt='%d', delimiter=',')
-
-
-# 相対パス
-
 # In[96]:
 
 
-# 相対パスで指定する方法
 np.savetxt('./array_ex.csv', x, fmt='%d', delimiter=',')  # sport_dataからの相対パスを指定
 
 
@@ -1870,22 +1858,9 @@ np.savetxt('./array_ex.csv', x, fmt='%d', delimiter=',')  # sport_dataからの�
 
 # テキスト形式のデータをNumPy配列に読み込むには`np.loadtxt`関数を用いる．
 
-# 絶対パス
-
-# In[ ]:
-
-
-# 絶対パスで指定する方法
-arr = np.loadtxt(r"C:\Users\parar\OneDrive\sport_data\3_numpy\array_ex.csv", delimiter=',', dtype='float')
-arr
-
-
-# 相対パス
-
 # In[41]:
 
 
-# 相対パスで指定する方法
 arr = np.loadtxt('./array_ex.csv', delimiter=',', dtype='float')  # sport_dataからの相対パスを指定
 arr
 
