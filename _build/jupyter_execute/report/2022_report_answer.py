@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # レポートの諸注意
+# # 2022年度レポート
+
+# ## レポートの諸注意
 
 # **回答方法**
 # 
@@ -36,7 +38,7 @@
 #     - 上に加え，実践編に関する課題に答えている
 #     - 来年度成塚のゼミを志望する場合はここまでできることが望ましい
 
-# # 基礎知識に関する問題
+# ## 基礎知識に関する問題
 
 # - 新しいマークダウンセルを下に追加し，セル内に好きな文章を記述せよ．
 #     - これは解答例です．
@@ -99,7 +101,7 @@ import matplotlib.pyplot as plt
 #     - ファイルの拡張子を手動で変更するのはNG
 #     - 自分のPCで開けないファイルは他の人も開けないので，提出前に確認すること
 
-# # NumPyに関する問題
+# ## NumPyに関する問題
 
 # **問題A**
 # 
@@ -259,7 +261,7 @@ BMI = W/(H2**2)
 D[BMI < 18.5]
 
 
-# # Pandasに関する問題
+# ## Pandasに関する問題
 
 # 次のcsvファイルをダウンロードせよ：[player_all.csv](https://drive.google.com/uc?export=download&id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP) <br>
 # このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
@@ -357,7 +359,7 @@ df.loc[df['role']=='GK', ['height', 'weight', 'BMI']].mean()
 df.groupby('role').mean()
 
 
-# # Matplotlibに関する問題
+# ## Matplotlibに関する問題
 
 # 4.で用いた[player_all.csv](https://drive.google.com/uc?export=download&id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP)について，次の問いに答えよ．
 
@@ -451,7 +453,7 @@ ax.set_ylabel('Frequency', fontsize=12)
 ax.set_xlim(150, 210)
 
 
-# # 実践編に関する課題
+# ## 実践編に関する課題
 
 # 授業内で扱ったデータをPythonを用いて自由に解析し，解析結果をまとめよ．
 # - 解析内容は些細なことでも良い
