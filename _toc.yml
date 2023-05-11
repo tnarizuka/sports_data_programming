@@ -17,7 +17,7 @@ parts:
   - file: chap_7/7_tracking.ipynb
 
 - caption:
-  numbered: False
+  numbered: 3
   chapters:
   # - file: notebook/reference.md
   - file: appendix/appendix.ipynb
