@@ -807,7 +807,7 @@ x2[:, 1:]
 
 # ### ファンシーインデックス参照
 # 
-# {ref}`numpy_fancy_index`
+# 付録を参照のこと：{ref}`numpy_fancy_index`
 
 # ### 配列への代入
 
