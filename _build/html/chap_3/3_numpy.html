@@ -2739,7 +2739,7 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0,  2,  2, 91, 65])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([60, 38, 96, 82, 34])
 </pre></div>
 </div>
 </div>
@@ -2748,12 +2748,12 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index_bool</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
-<span class="n">index_bool</span><span class="o">.</span><span class="n">dtype</span>
+<span class="n">index_bool</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype(&#39;bool&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([False,  True, False,  True, False])
 </pre></div>
 </div>
 </div>
@@ -2768,7 +2768,7 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 2, 91])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([38, 82])
 </pre></div>
 </div>
 </div>
@@ -2786,8 +2786,8 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([45, 87,  1, 23, 50, 86, 19, 54, 24, 64, 77, 73,  1,  9, 64, 23, 39,
-       68, 81, 91])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([74, 20, 31, 55, 42, 43, 52, 34,  9, 30, 43, 14, 53, 27, 15,  8, 15,
+       44, 28, 10])
 </pre></div>
 </div>
 </div>
@@ -2801,9 +2801,9 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ True, False,  True,  True, False, False,  True, False,  True,
-       False, False, False,  True,  True, False,  True,  True, False,
-       False, False])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([False,  True,  True, False,  True,  True, False,  True,  True,
+        True,  True,  True, False,  True,  True,  True,  True,  True,
+        True,  True])
 </pre></div>
 </div>
 </div>
@@ -2816,7 +2816,20 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([45,  1, 23, 19, 24,  1,  9, 23, 39])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([20, 31, 42, 43, 34,  9, 30, 43, 14, 27, 15,  8, 15, 44, 28, 10])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 50未満の要素の抽出（条件を直接指定）</span>
+<span class="n">x1</span><span class="p">[</span><span class="n">x1</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([20, 31, 42, 43, 34,  9, 30, 43, 14, 27, 15,  8, 15, 44, 28, 10])
 </pre></div>
 </div>
 </div>
@@ -4190,8 +4203,8 @@ NumPyの主要な集計関数を表に示す．
 <ul class="simple">
 <li><p>肥満度を表す指標としてBMIが知られている．BMIは身長と体重を用いて以下で定義される：</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-c2da122f-cfb6-40a7-a431-b8123811b1c1">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-c2da122f-cfb6-40a7-a431-b8123811b1c1" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9c1cf1a7-e639-4ec7-a357-446e3226e44b">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-9c1cf1a7-e639-4ec7-a357-446e3226e44b" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
     \mathrm{BMI} = \frac{体重 [kg]}{(身長 [m])^2}
 \end{align}\]</div>
 <ul class="simple">
