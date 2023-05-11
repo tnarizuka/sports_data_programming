@@ -376,15 +376,15 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#jupyterpython">
-   JupyterとPythonスクリプトの使い分け
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   便利な機能
+   プログラミング環境
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jupyterpython">
+     JupyterとPythonスクリプトの使い分け
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#jupyterconfig">
      Jupyterのconfigファイル
@@ -395,37 +395,61 @@ title="Print to PDF"
      Ipythonのプロファイル
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#google-colab">
+     Google Colab
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#google-colabjupyter-notebook">
+       Google colabでjupyter notebookを開く
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#import">
+       必要なモジュールをimportする
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#google-drive">
+       Google Driveをマウントする
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       自作モジュールをimportする
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#matplotlib">
+       matplotlibのスタイルファイルを読み込む
+      </a>
+     </li>
+    </ul>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#google-colab">
-   Google Colab
+  <a class="reference internal nav-link" href="#numpy">
+   NumPy
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#google-colabjupyter-notebook">
-     Google colabでjupyter notebookを開く
+    <a class="reference internal nav-link" href="#id4">
+     ファンシーインデックス参照
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#import">
-     必要なモジュールをimportする
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#google-drive">
-     Google Driveをマウントする
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     （任意）自作モジュールをimportする
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#matplotlib">
-     （任意）matplotlibのスタイルファイルを読み込む
-    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id5">
+       1次元配列の場合
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id6">
+       ２次元配列の場合
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -449,15 +473,15 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#jupyterpython">
-   JupyterとPythonスクリプトの使い分け
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   便利な機能
+   プログラミング環境
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jupyterpython">
+     JupyterとPythonスクリプトの使い分け
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#jupyterconfig">
      Jupyterのconfigファイル
@@ -468,37 +492,61 @@ title="Print to PDF"
      Ipythonのプロファイル
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#google-colab">
+     Google Colab
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#google-colabjupyter-notebook">
+       Google colabでjupyter notebookを開く
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#import">
+       必要なモジュールをimportする
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#google-drive">
+       Google Driveをマウントする
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       自作モジュールをimportする
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#matplotlib">
+       matplotlibのスタイルファイルを読み込む
+      </a>
+     </li>
+    </ul>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#google-colab">
-   Google Colab
+  <a class="reference internal nav-link" href="#numpy">
+   NumPy
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#google-colabjupyter-notebook">
-     Google colabでjupyter notebookを開く
+    <a class="reference internal nav-link" href="#id4">
+     ファンシーインデックス参照
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#import">
-     必要なモジュールをimportする
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#google-drive">
-     Google Driveをマウントする
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     （任意）自作モジュールをimportする
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#matplotlib">
-     （任意）matplotlibのスタイルファイルを読み込む
-    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id5">
+       1次元配列の場合
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id6">
+       ２次元配列の場合
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -514,8 +562,10 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>付録<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">#</a></h1>
+<section id="id2">
+<h2>プログラミング環境<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">#</a></h2>
 <section id="jupyterpython">
-<h2>JupyterとPythonスクリプトの使い分け<a class="headerlink" href="#jupyterpython" title="このヘッドラインへのパーマリンク">#</a></h2>
+<h3>JupyterとPythonスクリプトの使い分け<a class="headerlink" href="#jupyterpython" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>Jupyterは短いコードを逐次実行しながら結果を確認するのには適しているが，コードが長くなると分かりにくくなる．そこで，コードが長くなってきたら関数やクラスに適宜まとめてスクリプト（<code class="docutils literal notranslate"><span class="pre">.py</span></code>ファイル）に保存すると良い．保存したスクリプトはNumPyやPandasと同じようにimportできるので，Jupyter上ではimportしたスクリプト内の関数を実行するだけにすると結果が整理しやすい．その際，以下に説明する自作モジュールの自動リロードの設定をしておくと便利である．</p>
 <p>※ ローカル環境で<code class="docutils literal notranslate"><span class="pre">.py</span></code>ファイルを編集するにはエディタを使用する．Windowsに標準搭載されているメモ帳を使うのが最も手軽だが，非常に使いづらいので推奨しない．まずは自分の好みに合うエディタを探すことを推奨する．よく使われるエディタは以下の通り：</p>
 <ul class="simple">
@@ -524,8 +574,6 @@ title="Print to PDF"
 <li><p>Sublime Text</p></li>
 </ul>
 </section>
-<section id="id2">
-<h2>便利な機能<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">#</a></h2>
 <section id="jupyterconfig">
 <h3>Jupyterのconfigファイル<a class="headerlink" href="#jupyterconfig" title="このヘッドラインへのパーマリンク">#</a></h3>
 <ul>
@@ -603,9 +651,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </section>
-</section>
 <section id="google-colab">
-<h2>Google Colab<a class="headerlink" href="#google-colab" title="このヘッドラインへのパーマリンク">#</a></h2>
+<h3>Google Colab<a class="headerlink" href="#google-colab" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>Google Colab（正式名称はGoogle Colaboratoty）はgoogleが提供するPython実行環境であり，Jupyter Notebookがベースになっている．
 実際，Google Colabで作成したノートブックは&quot;.ipynb形式&quot;で保存されるので，相互互換性がある．
 Google Colabの特徴は以下の通りである：</p>
@@ -624,7 +671,7 @@ Google Colabの特徴は以下の通りである：</p>
 また，GPUが無料で使用可能なので，重い計算を行う際にも重宝する．
 本講義では，基本的にJupyter Labを用いるが，Google Colabを用いても問題ない．</p>
 <section id="google-colabjupyter-notebook">
-<h3>Google colabでjupyter notebookを開く<a class="headerlink" href="#google-colabjupyter-notebook" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h4>Google colabでjupyter notebookを開く<a class="headerlink" href="#google-colabjupyter-notebook" title="このヘッドラインへのパーマリンク">#</a></h4>
 <ul class="simple">
 <li><p>Google Driveを開いて作業フォルダに移動</p></li>
 <li><p>既存の<code class="docutils literal notranslate"><span class="pre">.ipynbファイル</span></code>を選択するとGoogle Colabが開く</p></li>
@@ -636,7 +683,7 @@ Google Colabの特徴は以下の通りである：</p>
 </ul>
 </section>
 <section id="import">
-<h3>必要なモジュールをimportする<a class="headerlink" href="#import" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h4>必要なモジュールをimportする<a class="headerlink" href="#import" title="このヘッドラインへのパーマリンク">#</a></h4>
 <ul>
 <li><p>google colabにインストールされていないモジュール（japanize_matplotlibなど）</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install japanize-matplotlib
@@ -652,7 +699,7 @@ import japanize_matplotlib
 </ul>
 </section>
 <section id="google-drive">
-<h3>Google Driveをマウントする<a class="headerlink" href="#google-drive" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h4>Google Driveをマウントする<a class="headerlink" href="#google-drive" title="このヘッドラインへのパーマリンク">#</a></h4>
 <p>Google Driveに保存した自作モジュールやファイルにアクセスしたい場合はGoogle Driveをマウントする必要がある．</p>
 <ul>
 <li><p>以下を実行する</p>
@@ -666,7 +713,7 @@ import japanize_matplotlib
 </ul>
 </section>
 <section id="id3">
-<h3>（任意）自作モジュールをimportする<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h4>自作モジュールをimportする<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/content/drive/My Drive/***&#39;</span><span class="p">)</span>
 
@@ -676,11 +723,158 @@ import japanize_matplotlib
 <p>※ なお，自作モジュールの変更を反映したい場合は［ランタイムを出荷時設定にリセット］し，再度マウントする</p>
 </section>
 <section id="matplotlib">
-<h3>（任意）matplotlibのスタイルファイルを読み込む<a class="headerlink" href="#matplotlib" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h4>matplotlibのスタイルファイルを読み込む<a class="headerlink" href="#matplotlib" title="このヘッドラインへのパーマリンク">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;/content/drive/My Drive/***/matplotlibrc&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</section>
+</section>
+</section>
+<section id="numpy">
+<h2>NumPy<a class="headerlink" href="#numpy" title="このヘッドラインへのパーマリンク">#</a></h2>
+<section id="id4">
+<h3>ファンシーインデックス参照<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">#</a></h3>
+<p>インデックス参照では1つの要素だけにしかアクセスできなかった．
+また，配列のスライスでは，複数の要素を抽出できたが，連続した要素や1つおきの要素など規則的な抽出しか実現できなかった．
+そこで，任意の要素を複数抽出する方法として，ファンシーインデックス参照がある．
+これは，複数のインデックスを配列として指定するという方法であり，NumPy配列特有の機能である．</p>
+<section id="id5">
+<h4>1次元配列の場合<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([77, 18, 27, 83, 37, 71, 88, 15, 55,  6])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3番目,4番目,7番目要素</span>
+<span class="n">x</span><span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([83, 37, 15])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3番目,7番目,4番目要素（順番が異なる）</span>
+<span class="n">x</span><span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([83, 15, 37])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3番目要素を5個</span>
+<span class="n">x</span><span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([83, 83, 83, 83, 83])
+</pre></div>
+</div>
+</div>
+</div>
+<p>以下のように，インデックスを2次元配列で与えると，抽出された配列も同じ形状となる．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2次元のインデックス配列を与える</span>
+<span class="n">x</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[83, 15],
+       [37, 71]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id6">
+<h4>２次元配列の場合<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">#</a></h4>
+<p>通常のインデックス参照と同様に，行→列の順で指定する．
+1次元のインデックス配列を指定すると，複数の行を抽出できる．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">3</span><span class="p">],</span>
+               <span class="p">[</span> <span class="mi">4</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>  <span class="mi">7</span><span class="p">],</span>
+               <span class="p">[</span> <span class="mi">8</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">]])</span>
+<span class="n">x2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0,  1,  2,  3],
+       [ 4,  5,  6,  7],
+       [ 8,  9, 10, 11]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 第0行と第2行を抽出</span>
+<span class="n">x2</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0,  1,  2,  3],
+       [ 8,  9, 10, 11]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>複数の列を抽出するには，スライスと組み合わせる．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 第1列と第3列を抽出</span>
+<span class="n">x2</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1,  3],
+       [ 5,  7],
+       [ 9, 11]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>2次元配列の複数の要素を一辺に抽出することもできる．
+例えば，以下は<code class="docutils literal notranslate"><span class="pre">x2[0,</span> <span class="pre">2],</span> <span class="pre">x2[1,</span> <span class="pre">1],</span> <span class="pre">x2[2,</span> <span class="pre">3]</span></code>を抽出する例である．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x2</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 2,  5, 11])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 </section>
