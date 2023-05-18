@@ -4114,15 +4114,15 @@ Wall time: 10.1 ms
     = \sqrt{ \frac{(x_{1}-\bar{x})^2+(x_{2}-\bar{x})^2+\cdots+(x_{n}-\bar{x})^2}{n} }
 \]</div>
 <p><strong>問題B</strong></p>
-<p>次のcsvファイルをダウンロードし，作業フォルダに移動せよ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1C1jhTLnDg7ES3QClTf6LL34f8vXq-JgQ">player_England.csv</a> <br>
+<p>次のcsvファイルをダウンロードし，カレントディレクトリに保存せよ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1C1jhTLnDg7ES3QClTf6LL34f8vXq-JgQ">player_England.csv</a> <br>
 このファイルには，2017年度にイングランド・プレミアリーグに所属していた選手の選手ID，身長，体重のデータが保存されている．
 ただし，身長の単位はcm，体重の単位はkgである．</p>
 <p>※ 本データはPappalardoデータセットを加工したものである（詳細は<a class="reference internal" href="../chap_6/6_event.html#pappalardo"><span class="std std-ref">Pappalardoデータセット</span></a>）．</p>
 <p>まず，このファイルをNumPy配列<code class="docutils literal notranslate"><span class="pre">D</span></code>に読み込む：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># csvファイルのパスを指定する</span>
-<span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;./3_numpy/player_England.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># csvファイルを読み込む</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;./player_England.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
 <span class="n">D</span>
 </pre></div>
 </div>
@@ -4174,7 +4174,7 @@ Wall time: 10.1 ms
 </div>
 </div>
 <ul class="simple">
-<li><p>配列Dから選手ID，身長，体重のデータを抽出し，それぞれI, H, Wという配列に格納せよ．</p></li>
+<li><p>配列Dから選手ID，身長，体重のデータを抽出し，それぞれ<code class="docutils literal notranslate"><span class="pre">I</span></code>, <code class="docutils literal notranslate"><span class="pre">H</span></code>, <code class="docutils literal notranslate"><span class="pre">W</span></code>という配列に格納せよ．</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4188,7 +4188,7 @@ Wall time: 10.1 ms
 <ul class="simple">
 <li><p>以下の方法により，身長の最小値，最大値を求めよ</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">H</span></code>を昇順（小→大）に並び替え，先頭と末尾の要素を抽出する</p></li>
+<li><p>配列<code class="docutils literal notranslate"><span class="pre">H</span></code>を昇順（小→大）に並び替え，先頭と末尾の要素を抽出する</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">np.min</span></code>，<code class="docutils literal notranslate"><span class="pre">np.max</span></code>関数を用いる</p></li>
 </ul>
 </li>
@@ -4210,8 +4210,8 @@ Wall time: 10.1 ms
 <ul class="simple">
 <li><p>肥満度を表す指標としてBMIが知られている．BMIは身長と体重を用いて以下で定義される：</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-73fe0013-a60c-4165-af3a-4072f96139e4">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-73fe0013-a60c-4165-af3a-4072f96139e4" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-20b31871-167d-4656-aabb-320289262a55">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-20b31871-167d-4656-aabb-320289262a55" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
     \mathrm{BMI} = \frac{体重 [kg]}{(身長 [m])^2}
 \end{align}\]</div>
 <ul class="simple">
