@@ -1841,7 +1841,7 @@ np.std(x)
 
 # **問題B**
 
-# 次のcsvファイルをダウンロードし，作業フォルダに移動せよ：[player_England.csv](https://drive.google.com/uc?export=download&id=1C1jhTLnDg7ES3QClTf6LL34f8vXq-JgQ) <br>
+# 次のcsvファイルをダウンロードし，カレントディレクトリに保存せよ：[player_England.csv](https://drive.google.com/uc?export=download&id=1C1jhTLnDg7ES3QClTf6LL34f8vXq-JgQ) <br>
 # このファイルには，2017年度にイングランド・プレミアリーグに所属していた選手の選手ID，身長，体重のデータが保存されている．
 # ただし，身長の単位はcm，体重の単位はkgである．
 # 
@@ -1849,11 +1849,11 @@ np.std(x)
 
 # まず，このファイルをNumPy配列`D`に読み込む：
 
-# In[3]:
+# In[97]:
 
 
-# csvファイルのパスを指定する
-D = np.loadtxt('./3_numpy/player_England.csv', delimiter=',', dtype='int')
+# csvファイルを読み込む
+D = np.loadtxt('./player_England.csv', delimiter=',', dtype='int')
 D
 
 
@@ -1886,7 +1886,7 @@ D
 # 解答欄
 
 
-# - 配列Dから選手ID，身長，体重のデータを抽出し，それぞれI, H, Wという配列に格納せよ．
+# - 配列Dから選手ID，身長，体重のデータを抽出し，それぞれ`I`, `H`, `W`という配列に格納せよ．
 
 # In[62]:
 
@@ -1897,7 +1897,7 @@ W =
 
 
 # - 以下の方法により，身長の最小値，最大値を求めよ
-#     - `H`を昇順（小→大）に並び替え，先頭と末尾の要素を抽出する
+#     - 配列`H`を昇順（小→大）に並び替え，先頭と末尾の要素を抽出する
 #     - `np.min`，`np.max`関数を用いる
 
 # In[ ]:
