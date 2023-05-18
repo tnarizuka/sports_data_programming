@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[3]:
 
 
 # （必須）モジュールのインポート
@@ -39,7 +39,7 @@ get_ipython().run_line_magic('precision', '3')
 # 
 # NumPyは他のパッケージと同様にimportすることができる．Numpyは`np`という名前で以下のようにimportするのが慣例である：
 
-# In[3]:
+# In[4]:
 
 
 import numpy as np
@@ -55,7 +55,7 @@ import numpy as np
 # リストは以下のように整数と文字列など複数の型を同時に格納することができ，多次元にすることも可能である．
 # また，行ごとに異なるサイズにすることも可能である．
 
-# In[4]:
+# In[5]:
 
 
 [[1, 'a', 10.0], [2, 'b']]
@@ -65,7 +65,7 @@ import numpy as np
 # 
 # NumPy配列を生成する方法は後ほど詳しく説明するが，`np.array`関数を用いて組み込みリストを変換するのが基本である．
 
-# In[5]:
+# In[6]:
 
 
 np.array([[1, 2], [3, 4]])
@@ -81,13 +81,13 @@ np.array([[1, 2], [3, 4]])
 # 
 # ※マジックコマンド`%%time`を使用することで，セル全体のコードの実行時間を測定することができる．
 
-# In[16]:
+# In[9]:
 
 
-get_ipython().run_cell_magic('time', '', 'x_list = []\nfor i in range(10000):\n    x_list.append(i)\nprint(x_list)\n')
+get_ipython().run_cell_magic('time', '', 'x_list = []\nfor i in range(10000):\n    x_list.append(i)\nprint(np.array(x_list))\n')
 
 
-# In[7]:
+# In[10]:
 
 
 get_ipython().run_cell_magic('time', '', 'x_numpy = np.arange(10000)\nprint(x_numpy)\n')
@@ -99,13 +99,13 @@ get_ipython().run_cell_magic('time', '', 'x_numpy = np.arange(10000)\nprint(x_nu
 # リストで同じ結果を得るためにはfor文を用いなければならないが，pythonではループ処理が非常に遅くかつコードが煩雑になるため，二重の意味で致命的である．
 # 以下は，配列の各要素を2倍するコードをリストとNumpy配列で実装した例である．
 
-# In[8]:
+# In[11]:
 
 
-get_ipython().run_cell_magic('time', '', 'for i in range(len(x_list)):\n    x_list[i] = x_list[i] * 2\nprint(x_list)\n')
+get_ipython().run_cell_magic('time', '', 'for i in range(len(x_list)):\n    x_list[i] = x_list[i] * 2\nprint(np.array(x_list))\n')
 
 
-# In[9]:
+# In[12]:
 
 
 get_ipython().run_cell_magic('time', '', 'x_numpy = x_numpy * 2\nprint(x_numpy)\n')
@@ -116,7 +116,7 @@ get_ipython().run_cell_magic('time', '', 'x_numpy = x_numpy * 2\nprint(x_numpy)\
 # 例えば配列をソートしたいとき，NumPyや類似のパッケージを使わない場合は自分でソート関数を作る必要があるが，それが上手く高速に動く保証はない．
 # 一方，NumPyには予め`np.sort`関数が用意されているためこれを用いるだけで済み，さらにアルゴリズムを選択することもできる．
 
-# In[15]:
+# In[13]:
 
 
 # 0~10までの整数をランダムに生成して，ソートする
@@ -1312,7 +1312,7 @@ x
 
 # NumPy配列の演算（加減乗除など）はリストと同じように`for`文などで実装すると非常に低速になってしまう．そこで，高速な演算が可能な**ユニバーサル関数**が用意されている．これは，**配列に対して１つの関数を実行するだけで，全ての要素に対して演算が行われる機能**である．例えば，以下のように1000万個の数値が格納された1次元のNumPy配列があるとする．
 
-# In[6]:
+# In[2]:
 
 
 np.random.seed(seed=7)
