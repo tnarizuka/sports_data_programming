@@ -26,6 +26,7 @@ get_ipython().run_line_magic('precision', '3')
 
 # ## データセット
 
+# (pappalardo)=
 # ### Pappalardoデータセット
 
 # Pappalardoデータセットはサッカーのイベントデータをまとめた大規模データセットであり，[CC BY 4.0ライセンス](https://creativecommons.org/licenses/by/4.0/deed.ja)の下で提供されている．

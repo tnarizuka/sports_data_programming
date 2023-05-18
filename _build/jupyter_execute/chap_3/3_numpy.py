@@ -1610,12 +1610,12 @@ np.exp(x)
 
 # #### 対数関数
 
-# In[62]:
+# In[64]:
 
 
-# 自然対数（底がe）
-x = np.exp([1, 2, 3])
-np.log(x)
+# 底が2
+x = np.array([2**2, 2**3, 2**4])
+np.log2(x)
 
 
 # In[63]:
@@ -1626,12 +1626,12 @@ x = np.array([10**2, 10**3, 10**4])
 np.log10(x)
 
 
-# In[64]:
+# In[62]:
 
 
-# 底が2
-x = np.array([2**2, 2**3, 2**4])
-np.log2(x)
+# 自然対数（底がe）
+x = np.exp([1, 2, 3])
+np.log(x)
 
 
 # ### 配列の集計
@@ -1788,30 +1788,31 @@ arr
 # 
 # 以下のように，母平均5，母標準偏差0.5の正規分布に従うデータから100個を抽出した．
 
-# In[81]:
+# In[93]:
 
 
-np.random.seed(seed=33)
+# 配列の生成
+np.random.seed(seed=45)
 x = np.random.normal(5, 0.5, 100)
 x
 
 
 # このデータに対し，`np.mean`関数と`np.std`関数を用いて標本平均と標本標準偏差を求めると以下のようになった．
 
-# In[82]:
+# In[94]:
 
 
 np.mean(x)
 
 
-# In[83]:
+# In[95]:
 
 
 np.std(x)
 
 
 # - `np.mean`関数と`np.average`関数を使わずに`x`の標本平均を求め，上の結果と一致することを確かめよ（NumPyの他の関数は用いても良い）．
-# ただし，データ$x = (x_{1}, x_{2}, \ldots, x_{n})$に対して，標本平均$\bar{x}$は以下で定義される：
+# ただし，データ $ x = (x_{1}, x_{2}, \ldots, x_{n}) $ に対して，標本平均 $ \bar{x} $ は以下で定義される：
 # 
 # $$
 #     \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_{i} = \frac{x_{1}+x_{2}+\cdots+x_{n}}{n}
@@ -1824,7 +1825,7 @@ np.std(x)
 
 
 # - `np.std`関数と`np.var`関数を使わずに`x`の標本標準偏差を求め，上の結果と一致することを確かめよ（NumPyの他の関数は用いても良い）．
-# ただし，データ$x = (x_{1}, x_{2}, \ldots, x_{n})$に対して，標本標準偏差$\bar{\sigma}$は以下で定義される：
+# ただし，データ $ x = (x_{1}, x_{2}, \ldots, x_{n}) $ に対して，標本標準偏差 $ \bar{\sigma} $ は以下で定義される：
 # 
 # $$
 #     \bar{\sigma} 
@@ -1840,11 +1841,11 @@ np.std(x)
 
 # **問題B**
 
-# 次のcsvファイルをダウンロードし，作業フォルダ（例えば`OneDrive/sport_data/3_numpy`）に移動せよ：[player_England.csv](https://drive.google.com/uc?export=download&id=1C1jhTLnDg7ES3QClTf6LL34f8vXq-JgQ) <br>
+# 次のcsvファイルをダウンロードし，作業フォルダに移動せよ：[player_England.csv](https://drive.google.com/uc?export=download&id=1C1jhTLnDg7ES3QClTf6LL34f8vXq-JgQ) <br>
 # このファイルには，2017年度にイングランド・プレミアリーグに所属していた選手の選手ID，身長，体重のデータが保存されている．
 # ただし，身長の単位はcm，体重の単位はkgである．
 # 
-# ※ 本データはPappalardoデータセットを加工したものである（詳細は[イベントデータの解析](https://rtwqzpj5uefb1pvzmprbnq-on.drv.tw/document/講義/立正/スポーツデータ分析のためのプログラミング/6_event.html)）．
+# ※ 本データはPappalardoデータセットを加工したものである（詳細は{ref}`pappalardo`）．
 
 # まず，このファイルをNumPy配列`D`に読み込む：
 

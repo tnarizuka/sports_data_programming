@@ -3733,14 +3733,14 @@ Wall time: 10.1 ms
 <h4>対数関数<a class="headerlink" href="#id48" title="このヘッドラインへのパーマリンク">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 自然対数（底がe）</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-<span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 底が2</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1., 2., 3.])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2., 3., 4.])
 </pre></div>
 </div>
 </div>
@@ -3761,14 +3761,14 @@ Wall time: 10.1 ms
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 底が2</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">4</span><span class="p">])</span>
-<span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 自然対数（底がe）</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2., 3., 4.])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1., 2., 3.])
 </pre></div>
 </div>
 </div>
@@ -4046,25 +4046,26 @@ Wall time: 10.1 ms
 <p>以下のように，母平均5，母標準偏差0.5の正規分布に従うデータから100個を抽出した．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">33</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 配列の生成</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">x</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4.841, 4.199, 4.232, 4.715, 4.892, 5.127, 4.925, 6.005, 4.952,
-       5.211, 4.887, 4.681, 4.992, 5.522, 4.458, 3.897, 4.524, 5.416,
-       4.5  , 5.172, 5.773, 5.345, 3.977, 5.167, 4.679, 4.889, 4.385,
-       5.103, 5.411, 4.753, 4.296, 4.392, 5.867, 4.897, 4.633, 5.387,
-       4.611, 4.793, 4.427, 5.163, 5.   , 5.709, 4.926, 4.697, 4.407,
-       5.228, 4.581, 4.927, 4.659, 5.744, 4.453, 4.173, 4.988, 4.818,
-       4.759, 5.37 , 5.306, 5.246, 5.896, 4.658, 5.527, 4.692, 5.219,
-       3.595, 4.673, 5.264, 5.466, 4.944, 4.44 , 5.496, 5.815, 4.05 ,
-       5.031, 5.24 , 5.19 , 4.244, 5.145, 5.048, 4.854, 5.428, 5.467,
-       4.789, 5.795, 4.468, 6.052, 4.455, 5.742, 4.455, 5.302, 5.471,
-       4.69 , 5.407, 4.55 , 4.76 , 5.115, 5.098, 5.268, 5.342, 6.411,
-       5.458])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([5.013, 5.13 , 4.802, 4.898, 4.364, 3.702, 5.145, 4.563, 5.197,
+       5.468, 4.992, 5.13 , 4.263, 5.401, 4.125, 4.752, 4.496, 5.013,
+       4.939, 4.227, 4.697, 4.303, 4.686, 5.166, 4.229, 5.835, 4.75 ,
+       5.337, 6.124, 4.173, 4.763, 4.849, 4.534, 5.555, 4.905, 5.639,
+       4.723, 5.177, 4.78 , 4.788, 5.114, 5.29 , 4.573, 4.579, 4.672,
+       4.927, 4.294, 4.865, 5.565, 4.33 , 4.875, 5.882, 4.704, 4.546,
+       5.136, 4.998, 5.427, 4.205, 5.028, 5.053, 4.955, 4.643, 5.102,
+       5.602, 5.042, 5.082, 5.187, 4.887, 4.664, 5.157, 5.742, 5.326,
+       4.884, 5.592, 5.46 , 5.608, 4.058, 5.111, 5.908, 5.871, 4.97 ,
+       4.705, 4.589, 4.974, 4.957, 5.216, 4.902, 4.67 , 4.877, 4.895,
+       4.747, 4.281, 4.898, 4.716, 4.826, 4.485, 5.293, 5.186, 3.796,
+       5.482])
 </pre></div>
 </div>
 </div>
@@ -4077,7 +4078,7 @@ Wall time: 10.1 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.980955414556336
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.930
 </pre></div>
 </div>
 </div>
@@ -4089,14 +4090,14 @@ Wall time: 10.1 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5156253322316987
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.465
 </pre></div>
 </div>
 </div>
 </div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">np.mean</span></code>関数と<code class="docutils literal notranslate"><span class="pre">np.average</span></code>関数を使わずに<code class="docutils literal notranslate"><span class="pre">x</span></code>の標本平均を求め，上の結果と一致することを確かめよ（NumPyの他の関数は用いても良い）．
-ただし，データ<span class="math notranslate nohighlight">\(x = (x_{1}, x_{2}, \ldots, x_{n})\)</span>に対して，標本平均<span class="math notranslate nohighlight">\(\bar{x}\)</span>は以下で定義される：</p></li>
+ただし，データ <span class="math notranslate nohighlight">\( x = (x_{1}, x_{2}, \ldots, x_{n}) \)</span> に対して，標本平均 <span class="math notranslate nohighlight">\( \bar{x} \)</span> は以下で定義される：</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -4104,7 +4105,7 @@ Wall time: 10.1 ms
 \]</div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">np.std</span></code>関数と<code class="docutils literal notranslate"><span class="pre">np.var</span></code>関数を使わずに<code class="docutils literal notranslate"><span class="pre">x</span></code>の標本標準偏差を求め，上の結果と一致することを確かめよ（NumPyの他の関数は用いても良い）．
-ただし，データ<span class="math notranslate nohighlight">\(x = (x_{1}, x_{2}, \ldots, x_{n})\)</span>に対して，標本標準偏差<span class="math notranslate nohighlight">\(\bar{\sigma}\)</span>は以下で定義される：</p></li>
+ただし，データ <span class="math notranslate nohighlight">\( x = (x_{1}, x_{2}, \ldots, x_{n}) \)</span> に対して，標本標準偏差 <span class="math notranslate nohighlight">\( \bar{\sigma} \)</span> は以下で定義される：</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -4113,10 +4114,10 @@ Wall time: 10.1 ms
     = \sqrt{ \frac{(x_{1}-\bar{x})^2+(x_{2}-\bar{x})^2+\cdots+(x_{n}-\bar{x})^2}{n} }
 \]</div>
 <p><strong>問題B</strong></p>
-<p>次のcsvファイルをダウンロードし，作業フォルダ（例えば<code class="docutils literal notranslate"><span class="pre">OneDrive/sport_data/3_numpy</span></code>）に移動せよ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1C1jhTLnDg7ES3QClTf6LL34f8vXq-JgQ">player_England.csv</a> <br>
+<p>次のcsvファイルをダウンロードし，作業フォルダに移動せよ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1C1jhTLnDg7ES3QClTf6LL34f8vXq-JgQ">player_England.csv</a> <br>
 このファイルには，2017年度にイングランド・プレミアリーグに所属していた選手の選手ID，身長，体重のデータが保存されている．
 ただし，身長の単位はcm，体重の単位はkgである．</p>
-<p>※ 本データはPappalardoデータセットを加工したものである（詳細は<a class="reference external" href="https://rtwqzpj5uefb1pvzmprbnq-on.drv.tw/document/%E8%AC%9B%E7%BE%A9/%E7%AB%8B%E6%AD%A3/%E3%82%B9%E3%83%9B%E3%82%9A%E3%83%BC%E3%83%84%E3%83%86%E3%82%99%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%83%95%E3%82%9A%E3%83%AD%E3%82%AF%E3%82%99%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%AF%E3%82%99/6_event.html">イベントデータの解析</a>）．</p>
+<p>※ 本データはPappalardoデータセットを加工したものである（詳細は<a class="reference internal" href="../chap_6/6_event.html#pappalardo"><span class="std std-ref">Pappalardoデータセット</span></a>）．</p>
 <p>まず，このファイルをNumPy配列<code class="docutils literal notranslate"><span class="pre">D</span></code>に読み込む：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4209,8 +4210,8 @@ Wall time: 10.1 ms
 <ul class="simple">
 <li><p>肥満度を表す指標としてBMIが知られている．BMIは身長と体重を用いて以下で定義される：</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-73674947-c9ca-4d56-b27d-b89ef1844830">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-73674947-c9ca-4d56-b27d-b89ef1844830" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-73fe0013-a60c-4165-af3a-4072f96139e4">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-73fe0013-a60c-4165-af3a-4072f96139e4" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
     \mathrm{BMI} = \frac{体重 [kg]}{(身長 [m])^2}
 \end{align}\]</div>
 <ul class="simple">
