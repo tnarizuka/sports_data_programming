@@ -86,7 +86,7 @@ pd.DataFrame({'t':[2, 64, 350, 600],
 
 # ```{figure} ../figure/dataframe.png
 # ---
-# height: 250px
+# height: 300px
 # name: fig:dataframe
 # ---
 # DataFrameの例
