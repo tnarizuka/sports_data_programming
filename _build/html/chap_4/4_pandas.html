@@ -739,14 +739,14 @@ title="Print to PDF"
 <h3><span class="section-number">4.1.2. </span>PandasとNumPyの違い<a class="headerlink" href="#pandasnumpy" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>前章では，NumPyを用いて多次元配列を扱う方法を解説した．NumPyでは数値データの処理を非常に高速に実現することができた．一方，Pandas（パンダス）も基本的には多次元配列を扱うためのライブラリであり，PandasとNumPyを相互に変換することもできる．しかし，PandasにはNumPyと異なる以下のような特徴がある：</p>
 <ol class="simple">
-<li><p>行と列にラベルが付与される</p></li>
-<li><p>異なる型のデータ（数値や文字列）を扱うための機能を備えている</p></li>
+<li><p>行と列にラベル（行と列の名前）が付与される</p></li>
+<li><p>列ごとに異なる型のデータ（数値や文字列）を混在させることができる</p></li>
 <li><p>欠損値の処理やデータの整形のための機能を備えている</p></li>
 <li><p>様々な形式のデータに対するファイル入出力機能を備えている</p></li>
 <li><p>データの可視化機能を備えている</p></li>
 </ol>
-<p>スポーツデータは文字列や数値など様々な型のデータを含み，分析を行うためにはデータを扱いやすい形に整形する必要がある．
-例えば，以下は，典型的なサッカーのイベントデータをPandasに読み込んだものである．</p>
+<p>スポーツデータには文字列や数値など様々な型のデータが含まれるため，こうしたデータを整形したり集約したりするにはNumPyよりもPandasを用いた方が便利である．</p>
+<p>例えば，以下は，典型的なサッカーのイベントデータをPandasのDataFrameという形式（後述）で表したものである．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;t&#39;</span><span class="p">:[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">350</span><span class="p">,</span> <span class="mi">600</span><span class="p">],</span>
@@ -821,8 +821,8 @@ title="Print to PDF"
 </table>
 </div></div></div>
 </div>
-<p>このデータは1つの行が１イベントに対応しており，0から3までの行ラベル（<strong>＝index</strong>）が付与されている．
-また，各列には時刻（整数型），選手名（文字列型），位置座標（浮動小数），など異なるデータ型が混在しており，それぞれに<code class="docutils literal notranslate"><span class="pre">&quot;t&quot;</span></code>，<code class="docutils literal notranslate"><span class="pre">&quot;player&quot;</span></code>，<code class="docutils literal notranslate"><span class="pre">&quot;position&quot;</span></code>，<code class="docutils literal notranslate"><span class="pre">&quot;x&quot;</span></code>，<code class="docutils literal notranslate"><span class="pre">&quot;y&quot;</span></code>という列ラベル（<strong>＝columns</strong>）が付与されている．
+<p>このデータは１つの行が１イベントに対応しており，0から3までの行ラベル（<strong>＝index</strong>）が付与されている．
+また，各列には時刻（整数型），選手名（文字列型），位置座標（浮動小数点型），など異なるデータ型が混在しており，それぞれに<code class="docutils literal notranslate"><span class="pre">'t'</span></code>，<code class="docutils literal notranslate"><span class="pre">'player'&quot;</span></code>，<code class="docutils literal notranslate"><span class="pre">'position'</span></code>，<code class="docutils literal notranslate"><span class="pre">'x'</span></code>，<code class="docutils literal notranslate"><span class="pre">'y'</span></code>という列ラベル（<strong>＝columns</strong>）が付与されている．
 このデータを処理するためには，NumPyではなくPandasを用いた方が便利そうだと直感的に分かるだろう．</p>
 <!-- また，トラッキングデータには様々な選手の位置座標が時系列として記録されており，多くの欠損値を含む．このようなデータを処理するためには，NumPyを用いるよりも上に挙げた機能を備えたPandasを用いる方が便利である． -->
 <p>なお，ラベルの付いていない巨大な数値データを扱いたい場合や3次元以上の数値データを扱いたい場合など，NumPyを用いた方が良い場面ももちろんある．
