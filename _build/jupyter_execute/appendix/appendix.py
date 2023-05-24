@@ -570,3 +570,237 @@ sr.loc['A']
 # iloc属性で0番目要素を取り出す
 sr.iloc[0]
 
+
+# ### 指定したラベルの順に並べ替える：`reindex`メソッド
+# 
+# `reindex`メソッドを用いると，指定した行・列ラベルの順番にDataFrameを並べ替えることができる．<br>
+# なお，単にラベルを昇順・降順に並べ替えたい場合は既に説明した`sort_index`メソッドを用いた方が良い．
+
+# In[ ]:
+
+
+# 指定した行ラベルの順に並び替え
+df.reindex(index=[0, 1, 2, 3])
+
+
+# In[ ]:
+
+
+# 指定した列ラベルの順に並び替え
+df.reindex(columns=['c', 'a', 'b'])
+
+
+# In[ ]:
+
+
+# 新たなラベルの指定
+df.reindex(index=[0, 1, 2, 3, 4, 5])
+
+
+# In[ ]:
+
+
+# 新たなラベルを指定し，欠損値を穴埋め
+df.reindex(index=[0, 1, 2, 3, 4, 5], fill_value=0)
+
+
+# ### データの結合
+# 
+# 複数のDataFrameがあったとき，これらを結合する方法として，`concat`関数，`merge`関数，`join`関数が用意されている．
+# `concat`関数は縦方向と横方向に連結ができる．
+# 一方，`merge`関数と`join`関数は横方向に連結する関数であり，`merge`関数は特定の列，`join`関数はindexを基準に連結する．
+# ここでは，`concat`関数だけを説明する．
+
+# **`concat`関数**
+# 
+# `concat`関数は次の形式で実行する：
+# ```python
+# pd.concat([df1, df2, ...], axis=0, join='outer')
+# ```
+# `axis`引数に0を指定すると縦方向，1を指定すると横方向に連結される（デフォルトは0）．
+# `join`引数は`'outer'`または`'inner'`を指定する（デフォルトは`'outer'`）．挙動は以下で説明する．
+
+# In[ ]:
+
+
+df1 = pd.DataFrame(np.arange(0, 6).reshape(2, 3),
+                   columns=['a', 'b', 'c'])
+df1
+
+
+# In[ ]:
+
+
+# 列ラベルが一部異なるDataFrame
+df2 = pd.DataFrame(np.arange(6, 12).reshape(2, 3),
+                   columns=['a', 'e', 'f'])
+df2
+
+
+# In[ ]:
+
+
+# 行ラベルが一部異なるDataFrame
+df3 = pd.DataFrame(np.arange(6, 12).reshape(2, 3), 
+                   columns=['d', 'e', 'f'],
+                   index=[1, 2])
+df3
+
+
+# **縦方向の連結（`axis=0`）**
+
+# 縦に連結する場合は`axis=0`を指定する．列ラベル（columns）が同じ場合，そのまま縦に連結される．連結するDataFrameは2個以上でも良い．
+
+# In[ ]:
+
+
+# 縦に連結（列ラベルが同じ場合）
+pd.concat([df1, df1, df1], axis=0)
+
+
+# 列ラベルが一部異なる場合，新たな列が追加される．
+
+# In[ ]:
+
+
+# 縦に連結（列ラベルが一部異なる場合）
+pd.concat([df1, df2], axis=0)
+
+
+# `join='inner'`を指定すると，ラベルが共通の列だけが残る．
+
+# In[ ]:
+
+
+# 縦に連結（列ラベルが一部異なる場合）
+pd.concat([df1, df2], axis=0, join='inner')
+
+
+# **横方向の連結（axis=1）**
+
+# 横に連結する場合は`axis=1`を指定する．行ラベル（index）が同じ場合，そのまま横に連結される．
+
+# In[ ]:
+
+
+# 横に連結（行ラベルが同じ場合）
+pd.concat([df1, df1], axis=1)
+
+
+# 行ラベルが一部異なる場合，新たな行が追加される
+
+# In[ ]:
+
+
+# 横に連結（行ラベルが一部異なる場合）
+pd.concat([df1, df3], axis=1)
+
+
+# `join='inner'`を指定すると，ラベルが共通の行だけが残る．
+
+# In[ ]:
+
+
+# 横に連結（行ラベルが同じ場合）
+pd.concat([df1, df3], axis=1, join='inner')
+
+
+# ### データの重複処理
+
+# **重複データの削除（`drop_duplicates`メソッド）**
+
+# pandasで重複したデータを削除するには`drop_duplicates`メソッドを用いる．`drop_duplicates`メソッドは以下のように指定する：
+# ```
+#     df.drop_duplicates(keep='first', subset=['列名1', '列名2', ...])
+# ```
+# `keep`引数は重複した複数行のうち，削除しないで残す（keepする）行を指定する．デフォルトでは`keep='first'`となっており，重複した行のうち最初の行が残る．`keep='last'`とすると最後の行が残り，`keep=False`とすれば重複する全ての行が削除される．
+# また，デフォルトでは全ての列の値が一致しているときに重複と見なされるが，特定の列だけで判断したい場合は`subset`引数に列名のリストを指定する．
+
+# In[ ]:
+
+
+dict_data = {'t':[2, 64, 64, 350, 600, 600, 600],    
+             'player':['ozora', 'misaki', 'misaki', 'wakabayashi', 'hyuga', 'hyuga', 'hyuga'],
+             'x':[5.0, 20.0, 20.0, 10.5, 32.5, 32.5, 32.5],
+             'y':[10.0, 1.0, 1.0, 50.5, 2.5, 2.5, 2.5]}
+df = pd.DataFrame(dict_data)
+df
+
+
+# In[ ]:
+
+
+# 重複する最初の行を残す
+df.drop_duplicates(keep='first', subset=None)
+
+
+# In[ ]:
+
+
+# 重複する最後の行を残す
+df.drop_duplicates(keep='last', subset=None)
+
+
+# In[ ]:
+
+
+# 重複する全ての行を削除
+df.drop_duplicates(keep=False, subset=None)
+
+
+# **重複データの検出（`duplicated`メソッド）**
+
+# 重複したデータを検出するには`duplicated`メソッドを用いる．`duplicated`メソッドは以下のように指定する：
+# ```
+#     df.duplicated(keep='first', subset=['列名1', '列名2', ...])
+# ```
+# `duplicated`メソッドを適用すると，重複した行をTrue，それ以外の行をFalseとするブール値のSeriesが得られる．
+# `keep`引数は重複した複数行のうち，検出しない行を指定する（重複を削除するときに残る行なのでkeep)．デフォルトでは`keep='first'`となっており，重複した行のうち最初の行がFalseとなる．`keep='last'`とすると最後の行がFalseとなり，`keep=False`とすれば重複する全ての行がTrueとなる．
+# また，デフォルトでは全ての列の値が一致しているときに重複と見なされるが，特定の列だけで判断したい場合は`subset`引数に列名のリストを指定する．
+
+# In[ ]:
+
+
+df.duplicated(keep=False, subset=None)
+
+
+# In[ ]:
+
+
+df.duplicated(keep='first', subset=None)
+
+
+# In[ ]:
+
+
+df.duplicated(keep='last', subset=None)
+
+
+# In[ ]:
+
+
+df.duplicated(keep=False, subset=['t', 'player', 'x'])
+
+
+# 重複した行はブールインデックス参照によって抽出できる．
+
+# In[ ]:
+
+
+# 重複する全ての行を検出
+df.loc[df.duplicated(keep=False, subset=None)]
+
+
+# In[ ]:
+
+
+# 重複する最初の行は検出しない
+df.loc[df.duplicated(keep='first', subset=None)]
+
+
+# In[ ]:
+
+
+# 重複する最後の行は検出しない
+df.loc[df.duplicated(keep='last', subset=None)]
+

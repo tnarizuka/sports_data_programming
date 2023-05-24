@@ -380,18 +380,18 @@ df.dtypes
 # 
 # DataFrameの一部を参照する方法として，主に以下がある：
 # 
-# - 行・列番号による参照：`iloc`属性
+# - 行・列番号による参照：`iloc`属性（NumPyのインデックス参照と同じ）
 # - 行・列ラベルによる参照：`loc`属性，角括弧`[]`
 # - 先頭・末尾から数行を抽出：`head`メソッド，`tail`メソッド
 # 
 # 以下で説明するように，基本的には`iloc`属性と`loc`属性を用い，角括弧は列を選択する場合だけに使用することを推奨する．
-# 特に`loc`属性を用いた参照方法はPandas特有であり，かつ頻繁に使用する．
+# 特に`loc`属性を用いた参照方法はPandas特有であり，かつ頻繁に使用するので必ず理解したほうが良い．
 
-# In[242]:
+# In[29]:
 
 
 # csvファイルをDataFrameに読み込む
-df = pd.read_csv('./4_pandas/df_sample.csv',\
+df = pd.read_csv('./df_sample.csv',\
                  header=0, index_col=0, usecols=None)
 df
 
@@ -404,35 +404,35 @@ df
 # ```
 # 基本的にはNumPyのインデックス参照と同様であり，スライスにも対応している．
 
-# In[243]:
+# In[30]:
 
 
 # 第1行の参照（列番号は省略可）
 df.iloc[1]
 
 
-# In[244]:
+# In[31]:
 
 
 # 第1列の参照（df['player']と同じ）
 df.iloc[:, 1]
 
 
-# In[245]:
+# In[32]:
 
 
 # 第1~3行の参照
 df.iloc[1:4]
 
 
-# In[246]:
+# In[33]:
 
 
 # 第1行と3行の参照
 df.iloc[[1, 3]]
 
 
-# In[247]:
+# In[34]:
 
 
 # 第0列〜2列の参照
@@ -448,35 +448,35 @@ df.iloc[:, :3]
 # これはNumPyにはないPandas特有の方法である．
 # なお，特定の行を参照する場合，列ラベルは省略できる．
 
-# In[248]:
+# In[35]:
 
 
 # 'A'行を参照（列ラベルは省略可）
 df.loc['A']
 
 
-# In[249]:
+# In[38]:
 
 
-# 複数の行を参照
+# 複数の行を参照（括弧を二重にする）
 df.loc[['A', 'C']]
 
 
-# In[250]:
+# In[39]:
 
 
 # 複数の列を参照（df[['x', 'y']]と同じ）
 df.loc[:, ['x', 'y']]
 
 
-# In[251]:
+# In[40]:
 
 
 # 行ラベルが'A'，列ラベルが't'の要素を参照
 df.loc['A', 't']
 
 
-# In[252]:
+# In[41]:
 
 
 # 複数の行ラベルと列ラベルの指定
@@ -487,9 +487,9 @@ df.loc[['A', 'C'], ['x', 'y']]
 
 # 角括弧を使って`df['t']`とすることで`'t'`というラベルの列を取り出すことができる．
 # 
-# ※ スライスなどにも対応しているが，`loc`属性の使用を推奨
+# ※ スライスなどにも対応しているが，`loc`属性の使用を推奨する
 
-# In[253]:
+# In[42]:
 
 
 # 't'列の参照（df.loc[:, 't']と同じ）
@@ -498,7 +498,7 @@ df['t']
 
 # 複数の列ラベルをリストで指定すると，複数の列を取り出すことができる．
 
-# In[254]:
+# In[43]:
 
 
 # 'x'と'y'列の参照（df.loc[:, ['x', 'y']]と同じ）
@@ -509,7 +509,7 @@ df[['x', 'y']]
 # 
 # DataFrame`df`の先頭から`n`行だけ抽出したい場合は`df.head(n)`とする．
 
-# In[255]:
+# In[44]:
 
 
 # 先頭から2行だけ抽出
@@ -520,7 +520,7 @@ df.head(2)
 # 
 # DataFrame`df`の末尾から`n`行だけ抽出したい場合は`df.tail(n)`とする．
 
-# In[256]:
+# In[45]:
 
 
 # 末尾から2行だけ抽出
@@ -529,9 +529,9 @@ df.tail(2)
 
 # ### 演習問題
 
-# 次のcsvファイルをダウンロードし，作業フォルダ（例えば`OneDrive/sport_data/4_pandas`）に移動せよ：[player_all.csv](https://drive.google.com/uc?export=download&id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP) <br>
+# 次のcsvファイルをダウンロードし，カレントディレクトリに保存せよ：[player_all.csv](https://drive.google.com/uc?export=download&id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP) <br>
 # このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
-# ※ 本データはPappalardoデータセットを加工したものである（詳細は[イベントデータの解析](https://rtwqzpj5uefb1pvzmprbnq-on.drv.tw/document/講義/立正/スポーツデータ分析のためのプログラミング/6_event.html)）．
+# ※ 本データはPappalardoデータセットを加工したものである（詳細は{ref}`pappalardo`）．
 
 # まず，ダウンロードしたcsvファイルを`df`に読み込む．<br>
 
@@ -540,7 +540,7 @@ df.tail(2)
 
 # index_col='player_id'：選手IDを行ラベル（index）に設定
 # na_values=0：身長`height`と体重`weight`が0の要素を欠損値`NaN`で置き換える
-df = pd.read_csv('./4_pandas/player_all.csv', header=0, index_col='player_id', na_values=0)
+df = pd.read_csv('./player_all.csv', header=0, index_col='player_id', na_values=0)
 df
 
 
@@ -700,16 +700,16 @@ df
 # ## 条件付き抽出
 # 
 # DataFrameからある条件を満たす行や列を抽出する方法として，ブールインデックス参照がある．<br>
-# ※ この他にも`where`メソッド，`query`メソッドなどがある．
+# ※ この他にも`where`メソッド，`query`メソッドなどがあるがここでは扱わない
 
 # ### ブールインデックスの取得
 
 # DataFrameにおけるブールインデックス参照は基本的にはNumPyと同様である．
 
-# In[285]:
+# In[46]:
 
 
-df = pd.read_csv('./4_pandas/df_sample.csv',\
+df = pd.read_csv('./df_sample.csv',\
                  header=0, index_col=0, usecols=None)
 df
 
@@ -843,16 +843,16 @@ df2
 
 # ### 演習問題
 
-# 次のcsvファイルをダウンロードし，作業フォルダ（例えば`OneDrive/sport_data/4_pandas`）に移動せよ：[player_all.csv](https://drive.google.com/uc?export=download&id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP) <br>
+# 次のcsvファイルをダウンロードし，カレントディレクトリに保存せよ：[player_all.csv](https://drive.google.com/uc?export=download&id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP) <br>
 # このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
-# ※ 本データはPappalardoデータセットを加工したものである（詳細は[イベントデータの解析](https://rtwqzpj5uefb1pvzmprbnq-on.drv.tw/document/講義/立正/スポーツデータ分析のためのプログラミング/6_event.html)）．
+# ※ 本データはPappalardoデータセットを加工したものである（詳細は{ref}`pappalardo`）．
 
 # In[301]:
 
 
 # index_col='player_id'：選手IDを行ラベル（index）に設定
 # na_values=0：身長`height`と体重`weight`が0の要素を欠損値`NaN`で置き換える
-df = pd.read_csv('./4_pandas/player_all.csv', header=0, index_col='player_id', na_values=0)
+df = pd.read_csv('./player_all.csv', header=0, index_col='player_id', na_values=0)
 df
 
 
@@ -1196,7 +1196,7 @@ df.diff(periods=1, axis=0)
 # In[341]:
 
 
-df = pd.read_csv('./4_pandas/player_all.csv', header=0, index_col='player_id', na_values=0)
+df = pd.read_csv('./player_all.csv', header=0, index_col='player_id', na_values=0)
 df
 
 
@@ -1244,10 +1244,10 @@ df.loc[df['weight']==df['weight'].max()]
 
 # ## データの整形
 
-# In[348]:
+# In[47]:
 
 
-df = pd.read_csv('./4_pandas/df_sample.csv',\
+df = pd.read_csv('./df_sample.csv',\
                  header=0, index_col=0, usecols=None)
 df
 
@@ -1320,7 +1320,7 @@ df.drop(columns=['t', 'player'])
 
 # Pandasには特定の列の値によってデータを並び替える`sort_values`メソッドと，行ラベル（index）によってデータを並び替える`sort_index`メソッドが用意されている．
 
-# In[355]:
+# In[48]:
 
 
 dict_data = {'t':[2, 64, 350, 600],\
@@ -1446,240 +1446,6 @@ df.reset_index(drop=0)
 
 # 元のindexを削除
 df.reset_index(drop=1)
-
-
-# **（参考）指定したラベルの順に並べ替える：`reindex`メソッド**
-# 
-# `reindex`メソッドを用いると，指定した行・列ラベルの順番にDataFrameを並べ替えることができる．<br>
-# なお，単にラベルを昇順・降順に並べ替えたい場合は既に説明した`sort_index`メソッドを用いた方が良い．
-
-# In[367]:
-
-
-# 指定した行ラベルの順に並び替え
-df.reindex(index=[0, 1, 2, 3])
-
-
-# In[368]:
-
-
-# 指定した列ラベルの順に並び替え
-df.reindex(columns=['c', 'a', 'b'])
-
-
-# In[369]:
-
-
-# 新たなラベルの指定
-df.reindex(index=[0, 1, 2, 3, 4, 5])
-
-
-# In[370]:
-
-
-# 新たなラベルを指定し，欠損値を穴埋め
-df.reindex(index=[0, 1, 2, 3, 4, 5], fill_value=0)
-
-
-# ### （参考）データの結合
-# 
-# 複数のDataFrameがあったとき，これらを結合する方法として，`concat`関数，`merge`関数，`join`関数が用意されている．
-# `concat`関数は縦方向と横方向に連結ができる．
-# 一方，`merge`関数と`join`関数は横方向に連結する関数であり，`merge`関数は特定の列，`join`関数はindexを基準に連結する．
-# ここでは，`concat`関数だけを説明する．
-
-# **`concat`関数**
-# 
-# `concat`関数は次の形式で実行する：
-# ```python
-# pd.concat([df1, df2, ...], axis=0, join='outer')
-# ```
-# `axis`引数に0を指定すると縦方向，1を指定すると横方向に連結される（デフォルトは0）．
-# `join`引数は`'outer'`または`'inner'`を指定する（デフォルトは`'outer'`）．挙動は以下で説明する．
-
-# In[371]:
-
-
-df1 = pd.DataFrame(np.arange(0, 6).reshape(2, 3),
-                   columns=['a', 'b', 'c'])
-df1
-
-
-# In[372]:
-
-
-# 列ラベルが一部異なるDataFrame
-df2 = pd.DataFrame(np.arange(6, 12).reshape(2, 3),
-                   columns=['a', 'e', 'f'])
-df2
-
-
-# In[373]:
-
-
-# 行ラベルが一部異なるDataFrame
-df3 = pd.DataFrame(np.arange(6, 12).reshape(2, 3), 
-                   columns=['d', 'e', 'f'],
-                   index=[1, 2])
-df3
-
-
-# **縦方向の連結（`axis=0`）**
-
-# 縦に連結する場合は`axis=0`を指定する．列ラベル（columns）が同じ場合，そのまま縦に連結される．連結するDataFrameは2個以上でも良い．
-
-# In[374]:
-
-
-# 縦に連結（列ラベルが同じ場合）
-pd.concat([df1, df1, df1], axis=0)
-
-
-# 列ラベルが一部異なる場合，新たな列が追加される．
-
-# In[375]:
-
-
-# 縦に連結（列ラベルが一部異なる場合）
-pd.concat([df1, df2], axis=0)
-
-
-# `join='inner'`を指定すると，ラベルが共通の列だけが残る．
-
-# In[376]:
-
-
-# 縦に連結（列ラベルが一部異なる場合）
-pd.concat([df1, df2], axis=0, join='inner')
-
-
-# **横方向の連結（axis=1）**
-
-# 横に連結する場合は`axis=1`を指定する．行ラベル（index）が同じ場合，そのまま横に連結される．
-
-# In[377]:
-
-
-# 横に連結（行ラベルが同じ場合）
-pd.concat([df1, df1], axis=1)
-
-
-# 行ラベルが一部異なる場合，新たな行が追加される
-
-# In[378]:
-
-
-# 横に連結（行ラベルが一部異なる場合）
-pd.concat([df1, df3], axis=1)
-
-
-# `join='inner'`を指定すると，ラベルが共通の行だけが残る．
-
-# In[379]:
-
-
-# 横に連結（行ラベルが同じ場合）
-pd.concat([df1, df3], axis=1, join='inner')
-
-
-# ### （参考）データの重複処理
-
-# **重複データの削除（`drop_duplicates`メソッド）**
-
-# pandasで重複したデータを削除するには`drop_duplicates`メソッドを用いる．`drop_duplicates`メソッドは以下のように指定する：
-# ```
-#     df.drop_duplicates(keep='first', subset=['列名1', '列名2', ...])
-# ```
-# `keep`引数は重複した複数行のうち，削除しないで残す（keepする）行を指定する．デフォルトでは`keep='first'`となっており，重複した行のうち最初の行が残る．`keep='last'`とすると最後の行が残り，`keep=False`とすれば重複する全ての行が削除される．
-# また，デフォルトでは全ての列の値が一致しているときに重複と見なされるが，特定の列だけで判断したい場合は`subset`引数に列名のリストを指定する．
-
-# In[380]:
-
-
-dict_data = {'t':[2, 64, 64, 350, 600, 600, 600],    
-             'player':['ozora', 'misaki', 'misaki', 'wakabayashi', 'hyuga', 'hyuga', 'hyuga'],
-             'x':[5.0, 20.0, 20.0, 10.5, 32.5, 32.5, 32.5],
-             'y':[10.0, 1.0, 1.0, 50.5, 2.5, 2.5, 2.5]}
-df = pd.DataFrame(dict_data)
-df
-
-
-# In[381]:
-
-
-# 重複する最初の行を残す
-df.drop_duplicates(keep='first', subset=None)
-
-
-# In[382]:
-
-
-# 重複する最後の行を残す
-df.drop_duplicates(keep='last', subset=None)
-
-
-# In[383]:
-
-
-# 重複する全ての行を削除
-df.drop_duplicates(keep=False, subset=None)
-
-
-# **重複データの検出（`duplicated`メソッド）**
-
-# 重複したデータを検出するには`duplicated`メソッドを用いる．`duplicated`メソッドは以下のように指定する：
-# ```
-#     df.duplicated(keep='first', subset=['列名1', '列名2', ...])
-# ```
-# `duplicated`メソッドを適用すると，重複した行をTrue，それ以外の行をFalseとするブール値のSeriesが得られる．
-# `keep`引数は重複した複数行のうち，検出しない行を指定する（重複を削除するときに残る行なのでkeep)．デフォルトでは`keep='first'`となっており，重複した行のうち最初の行がFalseとなる．`keep='last'`とすると最後の行がFalseとなり，`keep=False`とすれば重複する全ての行がTrueとなる．
-# また，デフォルトでは全ての列の値が一致しているときに重複と見なされるが，特定の列だけで判断したい場合は`subset`引数に列名のリストを指定する．
-
-# In[384]:
-
-
-df.duplicated(keep=False, subset=None)
-
-
-# In[385]:
-
-
-df.duplicated(keep='first', subset=None)
-
-
-# In[386]:
-
-
-df.duplicated(keep='last', subset=None)
-
-
-# In[387]:
-
-
-df.duplicated(keep=False, subset=['t', 'player', 'x'])
-
-
-# 重複した行はブールインデックス参照によって抽出できる．
-
-# In[388]:
-
-
-# 重複する全ての行を検出
-df.loc[df.duplicated(keep=False, subset=None)]
-
-
-# In[389]:
-
-
-# 重複する最初の行は検出しない
-df.loc[df.duplicated(keep='first', subset=None)]
-
-
-# In[390]:
-
-
-# 重複する最後の行は検出しない
-df.loc[df.duplicated(keep='last', subset=None)]
 
 
 # ## 演習問題
