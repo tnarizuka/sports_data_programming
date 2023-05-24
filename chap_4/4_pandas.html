@@ -848,7 +848,7 @@ DataFrameは（Excelのような）テーブル形式の構造を持ち，以下
 </figure>
 <section id="id3">
 <h3><span class="section-number">4.2.1. </span>DataFrameの生成<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>DataFrameを生成するには，<code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>関数を用いる：</p>
+<p>DataFrameを生成するには，以下のように<code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>関数を用いる：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -908,7 +908,7 @@ DataFrameは（Excelのような）テーブル形式の構造を持ち，以下
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NumPy配列の変換</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">5</span><span class="p">),</span>
              <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
              <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">])</span>
 </pre></div>
@@ -941,14 +941,14 @@ DataFrameは（Excelのような）テーブル形式の構造を持ち，以下
   <tbody>
     <tr>
       <th>0</th>
-      <td>0</td>
-      <td>1</td>
-      <td>2</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>3</td>
-      <td>4</td>
+      <td>5</td>
+      <td>5</td>
       <td>5</td>
     </tr>
   </tbody>
@@ -965,12 +965,15 @@ DataFrameは（Excelのような）テーブル形式の構造を持ち，以下
              <span class="s1">&#39;player&#39;</span><span class="p">:[</span><span class="s1">&#39;ozora&#39;</span><span class="p">,</span> <span class="s1">&#39;misaki&#39;</span><span class="p">,</span> <span class="s1">&#39;wakabayashi&#39;</span><span class="p">,</span> <span class="s1">&#39;hyuga&#39;</span><span class="p">],</span>
              <span class="s1">&#39;x&#39;</span><span class="p">:[</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">10.5</span><span class="p">,</span> <span class="mf">32.5</span><span class="p">],</span>
              <span class="s1">&#39;y&#39;</span><span class="p">:[</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">50.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">]}</span>
-<span class="nb">list</span><span class="p">(</span><span class="n">dict_data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">dict_data</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;t&#39;, &#39;player&#39;, &#39;x&#39;, &#39;y&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;t&#39;: [2, 64, 350, 600],
+ &#39;player&#39;: [&#39;ozora&#39;, &#39;misaki&#39;, &#39;wakabayashi&#39;, &#39;hyuga&#39;],
+ &#39;x&#39;: [5.000, 20.000, 10.500, 32.500],
+ &#39;y&#39;: [10.000, 1.000, 50.500, 2.500]}
 </pre></div>
 </div>
 </div>
@@ -1088,17 +1091,6 @@ DataFrameは（Excelのような）テーブル形式の構造を持ち，以下
 </div>
 </div>
 </div>
-<p>絶対パス</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 絶対パスを指定してcsvファイルに保存する</span>
-<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\parar\OneDrive\sport_data\4_pandas\df_sample.csv&quot;</span><span class="p">,</span>\
-          <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;shift-jis&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>相対パス</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 相対パスを指定してcsvファイルに保存する</span>
@@ -1157,75 +1149,6 @@ DataFrameは（Excelのような）テーブル形式の構造を持ち，以下
 </tr>
 </tbody>
 </table>
-<p>絶対パス</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 絶対パスを指定してcsvファイルをDataFrameに読み込む</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data/4_pandas/df_sample.csv&quot;</span><span class="p">,</span>\
-                 <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="n">df</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>t</th>
-      <th>player</th>
-      <th>x</th>
-      <th>y</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>A</th>
-      <td>2</td>
-      <td>ozora</td>
-      <td>5.0</td>
-      <td>10.0</td>
-    </tr>
-    <tr>
-      <th>B</th>
-      <td>64</td>
-      <td>misaki</td>
-      <td>20.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>C</th>
-      <td>350</td>
-      <td>wakabayashi</td>
-      <td>10.5</td>
-      <td>50.5</td>
-    </tr>
-    <tr>
-      <th>D</th>
-      <td>600</td>
-      <td>hyuga</td>
-      <td>32.5</td>
-      <td>2.5</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p>相対パス</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 相対パスを指定してcsvファイルをDataFrameに読み込む</span>
