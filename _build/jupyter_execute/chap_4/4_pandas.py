@@ -93,10 +93,12 @@ pd.DataFrame({'t':[2, 64, 350, 600],
 # ```
 
 # ### DataFrameの生成
-# DataFrameを生成するには，`pd.DataFrame`関数を用いる：
+# DataFrameを生成するには，以下のように`pd.DataFrame`関数を用いる：
+# 
 # ```python
 # pd.DataFrame(data, index=[0, 1], columns=['A', 'B', 'C'])
 # ```
+# 
 # `pd.DataFrame`の第１引数`data`にはリスト，NumPy配列，辞書などを指定できる．
 # また，オプションとして，行ラベルを表す`index`と列ラベルを表す`columns`を指定することができる．
 
@@ -104,7 +106,7 @@ pd.DataFrame({'t':[2, 64, 350, 600],
 # 
 # 
 
-# In[218]:
+# In[6]:
 
 
 # リストの変換
@@ -113,11 +115,11 @@ pd.DataFrame([[1,2,3], [4,5,6]],
              columns=['A', 'B', 'C'])
 
 
-# In[219]:
+# In[8]:
 
 
 # NumPy配列の変換
-pd.DataFrame(np.arange(6).reshape(2, 3),
+pd.DataFrame(np.full([2, 3], 5),
              index=[0, 1],
              columns=['A', 'B', 'C'])
 
@@ -127,7 +129,7 @@ pd.DataFrame(np.arange(6).reshape(2, 3),
 # `data`として辞書を指定すると，辞書のkeyが列ラベル`columns`となる．
 # 行ラベル`index`はオプションとして指定する．
 
-# In[220]:
+# In[9]:
 
 
 # 辞書データ
@@ -135,10 +137,10 @@ dict_data = {'t':[2, 64, 350, 600],
              'player':['ozora', 'misaki', 'wakabayashi', 'hyuga'],
              'x':[5.0, 20.0, 10.5, 32.5],
              'y':[10.0, 1.0, 50.5, 2.5]}
-list(dict_data.keys())
+dict_data
 
 
-# In[221]:
+# In[10]:
 
 
 # 辞書による生成
@@ -175,18 +177,6 @@ df = pd.DataFrame({'t':[2, 64, 350, 600],
                    index=['A', 'B', 'C', 'D'])
 
 
-# 絶対パス
-
-# In[223]:
-
-
-# 絶対パスを指定してcsvファイルに保存する
-df.to_csv(r"C:\Users\parar\OneDrive\sport_data\4_pandas\df_sample.csv",\
-          header=True, index=True, encoding='shift-jis', columns=df.columns)
-
-
-# 相対パス
-
 # In[224]:
 
 
@@ -214,19 +204,6 @@ df.to_csv('./4_pandas/df_sample.csv',            # sport_dataからの相対パ�
 # | na_values | 欠損値で置き換える値（デフォルトでは' 'や'NaN'など） | ['None', '?']など |
 # | na_filter | 欠損値での置き換えの有無（デフォルトはTrue） | True/False |
 # | encoding | エンコーディング | 'utf-8', 'shift-jis'など |
-
-# 絶対パス
-
-# In[225]:
-
-
-# 絶対パスを指定してcsvファイルをDataFrameに読み込む
-df = pd.read_csv(r"/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data/4_pandas/df_sample.csv",\
-                 header=0, index_col=0, usecols=None)
-df
-
-
-# 相対パス
 
 # In[226]:
 
