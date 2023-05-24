@@ -149,14 +149,16 @@ pd.DataFrame(dict_data, index=['A', 'B', 'C', 'D'])
 
 # ### DataFrameのファイル入出力
 
-# Pandasでデータ分析を行う場合，外部のファイルから直接データを読み込んだり，整形したデータを改めてファイルに保存することが多い．特に，データ分析で最もよく用いられるのがcsv形式のファイルである．csvとはカンマで区切られたテキストファイルを指す略称で，Excelで読み込むこともできる．
+# Pandasでデータ分析を行う場合，外部のファイルから直接データを読み込んだり，整形したデータを改めてファイルに保存することが多い．特に，データ分析で最もよく用いられるのがcsv形式のファイルである．csvとはカンマで区切られたテキストファイルを指す略称で，Excelで編集することもできる．
 
 # **csvファイルに保存する**
 # 
-# まず，DataFrameをcsvファイルに保存するには`to_csv`メソッドを用いる：
+# まず，DataFrameをcsvファイルに保存するには，以下のように`to_csv`メソッドを用いる：
+# 
 # ```python
-#     df.to_csv('***/***.csv',  option)
+#     df.to_csv('***.csv',  option)
 # ```
+# 
 # 第1引数には保存先ファイルのパスを指定し，第２引数以降にオプションを指定する．
 
 # | オプション名 | 説明 | 指定の仕方 |
@@ -166,7 +168,7 @@ pd.DataFrame(dict_data, index=['A', 'B', 'C', 'D'])
 # | encoding | エンコーディング | 'utf-8', 'shift-jis'など |
 # | columns | 出力する列 | ['A', 'B']など |
 
-# In[222]:
+# In[11]:
 
 
 # DataFrameを生成する
@@ -177,21 +179,22 @@ df = pd.DataFrame({'t':[2, 64, 350, 600],
                    index=['A', 'B', 'C', 'D'])
 
 
-# In[224]:
+# In[12]:
 
 
-# 相対パスを指定してcsvファイルに保存する
-os.chdir(r'/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data')  # カレントディレクトリをsport_dataに変更
-df.to_csv('./4_pandas/df_sample.csv',            # sport_dataからの相対パスを指定
+# 相対パスを指定してカレントディレクトリに保存する
+df.to_csv('./df_sample.csv', # ipynbファイルと同じフォルダに保存
           header=True, index=True, encoding='utf-8', columns=df.columns)
 
 
 # **csvファイルを読み込む**
 # 
 # 次に，csvファイルを読み込むには`pd.read_csv`関数を用いる：
+# 
 # ```python
-#     pd.read_csv('***/***.csv', option)
+#     pd.read_csv('***.csv', option)
 # ```
+# 
 # 第1引数にcsvファイルのパスを指定し，第２引数以降にoptionを指定する．
 
 # | オプション名 | 説明 | 指定の仕方 |
@@ -205,12 +208,11 @@ df.to_csv('./4_pandas/df_sample.csv',            # sport_dataからの相対パ�
 # | na_filter | 欠損値での置き換えの有無（デフォルトはTrue） | True/False |
 # | encoding | エンコーディング | 'utf-8', 'shift-jis'など |
 
-# In[226]:
+# In[13]:
 
 
 # 相対パスを指定してcsvファイルをDataFrameに読み込む
-os.chdir(r'/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data')  # カレントディレクトリをsport_dataに変更
-df = pd.read_csv('./4_pandas/df_sample.csv',    # sport_dataからの相対パスを指定
+df = pd.read_csv('./df_sample.csv',
                  header=0, index_col=0, usecols=None)
 df
 

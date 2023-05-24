@@ -1046,10 +1046,10 @@ DataFrameは（Excelのような）テーブル形式の構造を持ち，以下
 </section>
 <section id="id4">
 <h3><span class="section-number">4.2.2. </span>DataFrameのファイル入出力<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>Pandasでデータ分析を行う場合，外部のファイルから直接データを読み込んだり，整形したデータを改めてファイルに保存することが多い．特に，データ分析で最もよく用いられるのがcsv形式のファイルである．csvとはカンマで区切られたテキストファイルを指す略称で，Excelで読み込むこともできる．</p>
+<p>Pandasでデータ分析を行う場合，外部のファイルから直接データを読み込んだり，整形したデータを改めてファイルに保存することが多い．特に，データ分析で最もよく用いられるのがcsv形式のファイルである．csvとはカンマで区切られたテキストファイルを指す略称で，Excelで編集することもできる．</p>
 <p><strong>csvファイルに保存する</strong></p>
-<p>まず，DataFrameをcsvファイルに保存するには<code class="docutils literal notranslate"><span class="pre">to_csv</span></code>メソッドを用いる：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;***/***.csv&#39;</span><span class="p">,</span>  <span class="n">option</span><span class="p">)</span>
+<p>まず，DataFrameをcsvファイルに保存するには，以下のように<code class="docutils literal notranslate"><span class="pre">to_csv</span></code>メソッドを用いる：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;***.csv&#39;</span><span class="p">,</span>  <span class="n">option</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>第1引数には保存先ファイルのパスを指定し，第２引数以降にオプションを指定する．</p>
@@ -1093,9 +1093,8 @@ DataFrameは（Excelのような）テーブル形式の構造を持ち，以下
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 相対パスを指定してcsvファイルに保存する</span>
-<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data&#39;</span><span class="p">)</span>  <span class="c1"># カレントディレクトリをsport_dataに変更</span>
-<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./4_pandas/df_sample.csv&#39;</span><span class="p">,</span>            <span class="c1"># sport_dataからの相対パスを指定</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 相対パスを指定してカレントディレクトリに保存する</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./df_sample.csv&#39;</span><span class="p">,</span> <span class="c1"># ipynbファイルと同じフォルダに保存</span>
           <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1103,7 +1102,7 @@ DataFrameは（Excelのような）テーブル形式の構造を持ち，以下
 </div>
 <p><strong>csvファイルを読み込む</strong></p>
 <p>次に，csvファイルを読み込むには<code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code>関数を用いる：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;***/***.csv&#39;</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;***.csv&#39;</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>第1引数にcsvファイルのパスを指定し，第２引数以降にoptionを指定する．</p>
@@ -1152,8 +1151,7 @@ DataFrameは（Excelのような）テーブル形式の構造を持ち，以下
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 相対パスを指定してcsvファイルをDataFrameに読み込む</span>
-<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/Users/narizuka/work/document/lecture/rissho/sport_programming/sport_data&#39;</span><span class="p">)</span>  <span class="c1"># カレントディレクトリをsport_dataに変更</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./4_pandas/df_sample.csv&#39;</span><span class="p">,</span>    <span class="c1"># sport_dataからの相対パスを指定</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./df_sample.csv&#39;</span><span class="p">,</span>
                  <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">df</span>
 </pre></div>
