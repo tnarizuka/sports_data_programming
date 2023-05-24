@@ -501,3 +501,72 @@ x2_2
 # 形状(3, 3)と(2, 1)：エラーが出る
 x2_2 + y1
 
+
+# ## Pandas
+
+# ### Seriesオブジェクト
+
+# Pandasには，DataFrameの他に1次元のデータを扱うためのSeriesオブジェクトが用意されている．DataFrameには行ラベルindexと列ラベルcolumnsが付与されたが，**Seriesにはindexだけが付与される**．**SeriesはDataFrameから特定の1列を抜き出したものであり，基本的な操作方法はDataFrameと同じである**．実際のデータ分析においてSeriesを単体で用いることはあまりないが，DataFrameを１列だけ取り出したり，ブールインデックスを扱ったりすると遭遇する．
+
+# SeriesはDataFrameから1列または1行を取り出すことで生成できる．
+# また，`pd.Series`関数により，リスト，NumPy配列，辞書などから生成することもできる．
+
+# In[ ]:
+
+
+df = pd.read_csv('./4_pandas/df_sample.csv',\
+                 header=0, index_col=0, usecols=None)
+df['t']
+
+
+# In[ ]:
+
+
+type(df['t'])
+
+
+# In[ ]:
+
+
+# リストから作成
+sr = pd.Series([0.25, 0.5, 0.75, 1.0],
+               index = ['A', 'B', 'C', 'D'])
+sr
+
+
+# Seriesオブジェクトの属性や参照の方法はDataFrameと同じである．
+
+# In[ ]:
+
+
+# NumPy配列に変換
+sr.values
+
+
+# In[ ]:
+
+
+# ラベルを取得
+sr.index
+
+
+# In[ ]:
+
+
+# ラベル'A'の要素を取り出す
+sr['A']
+
+
+# In[ ]:
+
+
+# loc属性でラベル'A'の要素を取り出す
+sr.loc['A']
+
+
+# In[ ]:
+
+
+# iloc属性で0番目要素を取り出す
+sr.iloc[0]
+
