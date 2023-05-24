@@ -495,6 +495,27 @@ title="Print to PDF"
      Seriesオブジェクト
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reindex">
+     指定したラベルの順に並べ替える：
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       reindex
+      </span>
+     </code>
+     メソッド
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id13">
+     データの結合
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     データの重複処理
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -634,6 +655,27 @@ title="Print to PDF"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#series">
      Seriesオブジェクト
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reindex">
+     指定したラベルの順に並べ替える：
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       reindex
+      </span>
+     </code>
+     メソッド
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id13">
+     データの結合
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     データの重複処理
     </a>
    </li>
   </ul>
@@ -1540,6 +1582,1358 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</div>
+</section>
+<section id="reindex">
+<h3>指定したラベルの順に並べ替える：<code class="docutils literal notranslate"><span class="pre">reindex</span></code>メソッド<a class="headerlink" href="#reindex" title="このヘッドラインへのパーマリンク">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">reindex</span></code>メソッドを用いると，指定した行・列ラベルの順番にDataFrameを並べ替えることができる．<br>
+なお，単にラベルを昇順・降順に並べ替えたい場合は既に説明した<code class="docutils literal notranslate"><span class="pre">sort_index</span></code>メソッドを用いた方が良い．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 指定した行ラベルの順に並び替え</span>
+<span class="n">df</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>b</th>
+      <th>c</th>
+      <th>a</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9</td>
+      <td>10</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>6</td>
+      <td>7</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 指定した列ラベルの順に並び替え</span>
+<span class="n">df</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>c</th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>4</td>
+      <td>5</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7</td>
+      <td>8</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10</td>
+      <td>11</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 新たなラベルの指定</span>
+<span class="n">df</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>b</th>
+      <th>c</th>
+      <th>a</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9.0</td>
+      <td>10.0</td>
+      <td>11.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>6.0</td>
+      <td>7.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 新たなラベルを指定し，欠損値を穴埋め</span>
+<span class="n">df</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>b</th>
+      <th>c</th>
+      <th>a</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9</td>
+      <td>10</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>6</td>
+      <td>7</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="id13">
+<h3>データの結合<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">#</a></h3>
+<p>複数のDataFrameがあったとき，これらを結合する方法として，<code class="docutils literal notranslate"><span class="pre">concat</span></code>関数，<code class="docutils literal notranslate"><span class="pre">merge</span></code>関数，<code class="docutils literal notranslate"><span class="pre">join</span></code>関数が用意されている．
+<code class="docutils literal notranslate"><span class="pre">concat</span></code>関数は縦方向と横方向に連結ができる．
+一方，<code class="docutils literal notranslate"><span class="pre">merge</span></code>関数と<code class="docutils literal notranslate"><span class="pre">join</span></code>関数は横方向に連結する関数であり，<code class="docutils literal notranslate"><span class="pre">merge</span></code>関数は特定の列，<code class="docutils literal notranslate"><span class="pre">join</span></code>関数はindexを基準に連結する．
+ここでは，<code class="docutils literal notranslate"><span class="pre">concat</span></code>関数だけを説明する．</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">concat</span></code>関数</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">concat</span></code>関数は次の形式で実行する：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">axis</span></code>引数に0を指定すると縦方向，1を指定すると横方向に連結される（デフォルトは0）．
+<code class="docutils literal notranslate"><span class="pre">join</span></code>引数は<code class="docutils literal notranslate"><span class="pre">'outer'</span></code>または<code class="docutils literal notranslate"><span class="pre">'inner'</span></code>を指定する（デフォルトは<code class="docutils literal notranslate"><span class="pre">'outer'</span></code>）．挙動は以下で説明する．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+                   <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">])</span>
+<span class="n">df1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 列ラベルが一部異なるDataFrame</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+                   <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">])</span>
+<span class="n">df2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>e</th>
+      <th>f</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>6</td>
+      <td>7</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9</td>
+      <td>10</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 行ラベルが一部異なるDataFrame</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> 
+                   <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">],</span>
+                   <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">df3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>d</th>
+      <th>e</th>
+      <th>f</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>6</td>
+      <td>7</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9</td>
+      <td>10</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>縦方向の連結（<code class="docutils literal notranslate"><span class="pre">axis=0</span></code>）</strong></p>
+<p>縦に連結する場合は<code class="docutils literal notranslate"><span class="pre">axis=0</span></code>を指定する．列ラベル（columns）が同じ場合，そのまま縦に連結される．連結するDataFrameは2個以上でも良い．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 縦に連結（列ラベルが同じ場合）</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df1</span><span class="p">,</span> <span class="n">df1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>列ラベルが一部異なる場合，新たな列が追加される．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 縦に連結（列ラベルが一部異なる場合）</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>e</th>
+      <th>f</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.0</td>
+      <td>11.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">join='inner'</span></code>を指定すると，ラベルが共通の列だけが残る．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 縦に連結（列ラベルが一部異なる場合）</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>横方向の連結（axis=1）</strong></p>
+<p>横に連結する場合は<code class="docutils literal notranslate"><span class="pre">axis=1</span></code>を指定する．行ラベル（index）が同じ場合，そのまま横に連結される．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 横に連結（行ラベルが同じ場合）</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>...</th>
+      <th>b</th>
+      <th>c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3</td>
+      <td>4</td>
+      <td>...</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+<p>2 rows × 6 columns</p>
+</div></div></div>
+</div>
+<p>行ラベルが一部異なる場合，新たな行が追加される</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 横に連結（行ラベルが一部異なる場合）</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df3</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>...</th>
+      <th>e</th>
+      <th>f</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>...</td>
+      <td>7.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>10.0</td>
+      <td>11.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 6 columns</p>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">join='inner'</span></code>を指定すると，ラベルが共通の行だけが残る．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 横に連結（行ラベルが同じ場合）</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df3</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>...</th>
+      <th>e</th>
+      <th>f</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>3</td>
+      <td>4</td>
+      <td>...</td>
+      <td>7</td>
+      <td>8</td>
+    </tr>
+  </tbody>
+</table>
+<p>1 rows × 6 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="id14">
+<h3>データの重複処理<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">#</a></h3>
+<p><strong>重複データの削除（<code class="docutils literal notranslate"><span class="pre">drop_duplicates</span></code>メソッド）</strong></p>
+<p>pandasで重複したデータを削除するには<code class="docutils literal notranslate"><span class="pre">drop_duplicates</span></code>メソッドを用いる．<code class="docutils literal notranslate"><span class="pre">drop_duplicates</span></code>メソッドは以下のように指定する：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;列名1&#39;</span><span class="p">,</span> <span class="s1">&#39;列名2&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">keep</span></code>引数は重複した複数行のうち，削除しないで残す（keepする）行を指定する．デフォルトでは<code class="docutils literal notranslate"><span class="pre">keep='first'</span></code>となっており，重複した行のうち最初の行が残る．<code class="docutils literal notranslate"><span class="pre">keep='last'</span></code>とすると最後の行が残り，<code class="docutils literal notranslate"><span class="pre">keep=False</span></code>とすれば重複する全ての行が削除される．
+また，デフォルトでは全ての列の値が一致しているときに重複と見なされるが，特定の列だけで判断したい場合は<code class="docutils literal notranslate"><span class="pre">subset</span></code>引数に列名のリストを指定する．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dict_data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;t&#39;</span><span class="p">:[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">350</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">],</span>    
+             <span class="s1">&#39;player&#39;</span><span class="p">:[</span><span class="s1">&#39;ozora&#39;</span><span class="p">,</span> <span class="s1">&#39;misaki&#39;</span><span class="p">,</span> <span class="s1">&#39;misaki&#39;</span><span class="p">,</span> <span class="s1">&#39;wakabayashi&#39;</span><span class="p">,</span> <span class="s1">&#39;hyuga&#39;</span><span class="p">,</span> <span class="s1">&#39;hyuga&#39;</span><span class="p">,</span> <span class="s1">&#39;hyuga&#39;</span><span class="p">],</span>
+             <span class="s1">&#39;x&#39;</span><span class="p">:[</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">10.5</span><span class="p">,</span> <span class="mf">32.5</span><span class="p">,</span> <span class="mf">32.5</span><span class="p">,</span> <span class="mf">32.5</span><span class="p">],</span>
+             <span class="s1">&#39;y&#39;</span><span class="p">:[</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">50.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">]}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dict_data</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>t</th>
+      <th>player</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>ozora</td>
+      <td>5.0</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>64</td>
+      <td>misaki</td>
+      <td>20.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>64</td>
+      <td>misaki</td>
+      <td>20.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>350</td>
+      <td>wakabayashi</td>
+      <td>10.5</td>
+      <td>50.5</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>600</td>
+      <td>hyuga</td>
+      <td>32.5</td>
+      <td>2.5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>600</td>
+      <td>hyuga</td>
+      <td>32.5</td>
+      <td>2.5</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>600</td>
+      <td>hyuga</td>
+      <td>32.5</td>
+      <td>2.5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 重複する最初の行を残す</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>t</th>
+      <th>player</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>ozora</td>
+      <td>5.0</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>64</td>
+      <td>misaki</td>
+      <td>20.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>350</td>
+      <td>wakabayashi</td>
+      <td>10.5</td>
+      <td>50.5</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>600</td>
+      <td>hyuga</td>
+      <td>32.5</td>
+      <td>2.5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 重複する最後の行を残す</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s1">&#39;last&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>t</th>
+      <th>player</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>ozora</td>
+      <td>5.0</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>64</td>
+      <td>misaki</td>
+      <td>20.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>350</td>
+      <td>wakabayashi</td>
+      <td>10.5</td>
+      <td>50.5</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>600</td>
+      <td>hyuga</td>
+      <td>32.5</td>
+      <td>2.5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 重複する全ての行を削除</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>t</th>
+      <th>player</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>ozora</td>
+      <td>5.0</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>350</td>
+      <td>wakabayashi</td>
+      <td>10.5</td>
+      <td>50.5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>重複データの検出（<code class="docutils literal notranslate"><span class="pre">duplicated</span></code>メソッド）</strong></p>
+<p>重複したデータを検出するには<code class="docutils literal notranslate"><span class="pre">duplicated</span></code>メソッドを用いる．<code class="docutils literal notranslate"><span class="pre">duplicated</span></code>メソッドは以下のように指定する：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;列名1&#39;</span><span class="p">,</span> <span class="s1">&#39;列名2&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">duplicated</span></code>メソッドを適用すると，重複した行をTrue，それ以外の行をFalseとするブール値のSeriesが得られる．
+<code class="docutils literal notranslate"><span class="pre">keep</span></code>引数は重複した複数行のうち，検出しない行を指定する（重複を削除するときに残る行なのでkeep)．デフォルトでは<code class="docutils literal notranslate"><span class="pre">keep='first'</span></code>となっており，重複した行のうち最初の行がFalseとなる．<code class="docutils literal notranslate"><span class="pre">keep='last'</span></code>とすると最後の行がFalseとなり，<code class="docutils literal notranslate"><span class="pre">keep=False</span></code>とすれば重複する全ての行がTrueとなる．
+また，デフォルトでは全ての列の値が一致しているときに重複と見なされるが，特定の列だけで判断したい場合は<code class="docutils literal notranslate"><span class="pre">subset</span></code>引数に列名のリストを指定する．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    False
+1     True
+2     True
+3    False
+4     True
+5     True
+6     True
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    False
+1    False
+2     True
+3    False
+4    False
+5     True
+6     True
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s1">&#39;last&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    False
+1     True
+2    False
+3    False
+4     True
+5     True
+6    False
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="s1">&#39;player&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    False
+1     True
+2     True
+3    False
+4     True
+5     True
+6     True
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<p>重複した行はブールインデックス参照によって抽出できる．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 重複する全ての行を検出</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>t</th>
+      <th>player</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>64</td>
+      <td>misaki</td>
+      <td>20.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>64</td>
+      <td>misaki</td>
+      <td>20.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>600</td>
+      <td>hyuga</td>
+      <td>32.5</td>
+      <td>2.5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>600</td>
+      <td>hyuga</td>
+      <td>32.5</td>
+      <td>2.5</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>600</td>
+      <td>hyuga</td>
+      <td>32.5</td>
+      <td>2.5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 重複する最初の行は検出しない</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>t</th>
+      <th>player</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>64</td>
+      <td>misaki</td>
+      <td>20.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>600</td>
+      <td>hyuga</td>
+      <td>32.5</td>
+      <td>2.5</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>600</td>
+      <td>hyuga</td>
+      <td>32.5</td>
+      <td>2.5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 重複する最後の行は検出しない</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s1">&#39;last&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>t</th>
+      <th>player</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>64</td>
+      <td>misaki</td>
+      <td>20.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>600</td>
+      <td>hyuga</td>
+      <td>32.5</td>
+      <td>2.5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>600</td>
+      <td>hyuga</td>
+      <td>32.5</td>
+      <td>2.5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 </section>
