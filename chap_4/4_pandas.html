@@ -1225,7 +1225,7 @@ Pandasではpythonの組み込み定数である<code class="docutils literal no
 ※ 無限大を表す<code class="docutils literal notranslate"><span class="pre">inf</span></code>はデフォルトでは欠損値として扱われない．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 欠損値を含むDataFrame</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 欠損値を含むDataFrameの作成</span>
 <span class="kn">import</span> <span class="nn">math</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span> <span class="p">[</span><span class="n">math</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
 <span class="n">df</span>
@@ -1652,7 +1652,7 @@ Pandasではpythonの組み込み定数である<code class="docutils literal no
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DataFrameの読み込み</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./4_pandas/df_sample.csv&#39;</span><span class="p">,</span>\
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./df_sample.csv&#39;</span><span class="p">,</span>\
                  <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </pre></div>
 </div>
