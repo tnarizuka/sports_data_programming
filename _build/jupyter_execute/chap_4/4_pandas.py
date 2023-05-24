@@ -226,10 +226,10 @@ df
 # Pandasではpythonの組み込み定数である`None`や`math.nan`，`np.nan`は全て欠損値として扱われる．<br>
 # ※ 無限大を表す`inf`はデフォルトでは欠損値として扱われない．
 
-# In[227]:
+# In[14]:
 
 
-# 欠損値を含むDataFrame
+# 欠損値を含むDataFrameの作成
 import math
 df = pd.DataFrame([[1., None, np.nan], [math.nan, 2, 3]])
 df
@@ -239,13 +239,13 @@ df
 
 # `NaN`の検出には`isna`メソッドまたは`pd.isnull`関数を用いる．どちらも動作は同じで，`NaN`の箇所がTrue，それ以外がFalseとなる．
 
-# In[228]:
+# In[15]:
 
 
 df.isna()
 
 
-# In[229]:
+# In[16]:
 
 
 pd.isnull(df)
@@ -254,14 +254,16 @@ pd.isnull(df)
 # **欠損値の削除**
 
 # 欠損値の削除には`dropna`メソッドを用いる：
+# 
 # ```python
 # df.dropna(axis=0, how='any')
 # ```
+# 
 # 引数に`axis=0`を指定した場合は行，`axis=1`の場合は列が削除される．
 # 引数に`how='any'`を指定した場合，行／列に`NaN`が１つでも含まれれば削除される．
 # 一方，`how='all'`の場合，行／列の全ての要素が`NaN`の場合に削除される．
 
-# In[230]:
+# In[17]:
 
 
 df = pd.DataFrame(np.array([[np.nan, 1, 2], [3, np.nan, 5], [6, 7, 8], [np.nan, np.nan, np.nan]]),
@@ -269,21 +271,21 @@ df = pd.DataFrame(np.array([[np.nan, 1, 2], [3, np.nan, 5], [6, 7, 8], [np.nan, 
 df
 
 
-# In[231]:
+# In[18]:
 
 
 # 欠損値を１つでも含む行を削除
 df.dropna(axis=0, how='any')
 
 
-# In[232]:
+# In[19]:
 
 
 # 欠損値を１つでも含む列を削除
 df.dropna(axis=1, how='any')
 
 
-# In[233]:
+# In[20]:
 
 
 # 全ての要素が欠損値である行を削除
@@ -293,12 +295,14 @@ df.dropna(axis=0, how='all')
 # **欠損値の置換**
 
 # 欠損値`NaN`を他の値で置換するには`fillna`メソッドを用いる：
+# 
 # ```python
 #     df.fillna(value=置換後の値)
 # ```
+# 
 # valueに数値を指定すると，全ての欠損値がその数値で置換される．
 
-# In[234]:
+# In[21]:
 
 
 # 欠損値を0で置換
@@ -309,11 +313,11 @@ df.fillna(0)
 
 # DataFrameに対して，`df.属性名`とすることで，`df`の様々な情報を取得できる．
 
-# In[235]:
+# In[22]:
 
 
 # DataFrameの読み込み
-df = pd.read_csv('./4_pandas/df_sample.csv',\
+df = pd.read_csv('./df_sample.csv',\
                  header=0, index_col=0, usecols=None)
 
 
@@ -322,7 +326,7 @@ df = pd.read_csv('./4_pandas/df_sample.csv',\
 # `values`属性を用いると，値をNumPy配列として取り出すことができる．<br>
 # ※ 複数の型が混在するDataFrameの場合，取り出したNumPy配列はobject型という特殊な型になる．
 
-# In[236]:
+# In[23]:
 
 
 # 値をNumPy配列として取り出す
@@ -333,14 +337,14 @@ df.values
 
 # DataFrameの行ラベルと列ラベルは`index`属性と`columns`属性で抽出できる．
 
-# In[237]:
+# In[24]:
 
 
 # 行ラベル
 df.index
 
 
-# In[238]:
+# In[25]:
 
 
 # 列ラベル
@@ -351,21 +355,21 @@ df.columns
 
 # DataFrameにはその他に以下の属性がある．
 
-# In[239]:
+# In[26]:
 
 
 # DataFrameの要素数
 df.size
 
 
-# In[240]:
+# In[27]:
 
 
 # DataFrameの形状
 df.shape
 
 
-# In[241]:
+# In[28]:
 
 
 # 各列のデータ型
