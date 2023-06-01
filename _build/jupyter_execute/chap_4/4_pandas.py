@@ -177,14 +177,7 @@ df
 # 
 # 第1引数には保存先ファイルのパスを指定し，第２引数以降にオプションを指定する．
 
-# | オプション名 | 説明 | 指定の仕方 |
-# | ---- | ---- | ---- | 
-# | header | 列ラベルの有無 | True/False |
-# | index | 行ラベルの有無 | True/False |
-# | encoding | エンコーディング | 'utf-8', 'shift-jis'など |
-# | columns | 出力する列 | ['A', 'B']など |
-
-# In[7]:
+# In[20]:
 
 
 # DataFrameを生成する
@@ -195,12 +188,16 @@ df = pd.DataFrame({'t':[2, 64, 350, 600],
                    index=['A', 'B', 'C', 'D'])
 
 
-# In[8]:
+# In[21]:
 
 
 # 相対パスを指定してカレントディレクトリに保存する
 df.to_csv('./df_sample.csv', # ipynbファイルと同じフォルダに保存
-          header=True, index=True, encoding='utf-8', columns=df.columns)
+          header=True, # 列ラベルを出力する
+          index=True,  # 行ラベルを出力する
+          encoding='utf-8', # 文字コードを指定する
+          columns=df.columns # 出力する列を指定する
+          )
 
 
 # **csvファイルを読み込む**
@@ -213,23 +210,16 @@ df.to_csv('./df_sample.csv', # ipynbファイルと同じフォルダに保存
 # 
 # 第1引数にcsvファイルのパスを指定し，第２引数以降にoptionを指定する．
 
-# | オプション名 | 説明 | 指定の仕方 |
-# | ---- | ---- | ---- | 
-# | header | 列ラベルに使う行 | 行番号 |
-# | names | 列ラベルの指定（header=Noneとともに使用） | 列ラベル |
-# | index_col | 行ラベルに使う列 | 列番号／列名 |
-# | usecols | 読み込む列 | 列番号／列名 |
-# | skiprows | 除外する行 | 行番号 |
-# | na_values | 欠損値で置き換える値（デフォルトでは' 'や'NaN'など） | ['None', '?']など |
-# | na_filter | 欠損値での置き換えの有無（デフォルトはTrue） | True/False |
-# | encoding | エンコーディング | 'utf-8', 'shift-jis'など |
-
-# In[9]:
+# In[22]:
 
 
 # 相対パスを指定してcsvファイルをDataFrameに読み込む
 df = pd.read_csv('./df_sample.csv',
-                 header=0, index_col=0, usecols=None)
+                 header=0,      # 第0行目を列ラベルとする
+                 index_col=0,   # 第0列目を行ラベルとする
+                 usecols=None,  # 読み込む列を指定する
+                 na_values=None # 欠損値として認識する文字列を指定する
+                 )
 df
 
 
