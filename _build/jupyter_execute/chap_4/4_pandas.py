@@ -217,98 +217,6 @@ df = pd.read_csv('./df_sample.csv',
 df
 
 
-# ### 欠損値について
-
-# **欠損値とは？**
-
-# データが何らかの事情で欠落している箇所を欠損値と呼ぶ．
-# Pandasにおいて，欠損値は`NaN`と表示される（'Not a Number'の略）．
-# Pandasでは，空白値の他，pythonの組み込み定数である`None`や`math.nan`，`np.nan`は全て欠損値として扱われる．<br>
-# ※ 無限大を表す`inf`はデフォルトでは欠損値として扱われない．
-
-# In[10]:
-
-
-# 欠損値を含むDataFrameの作成
-import math
-df = pd.DataFrame([[1., None, np.nan], [math.nan, 2, 3]])
-df
-
-
-# **欠損値の検出**
-
-# `NaN`の検出には`isna`メソッドまたは`pd.isnull`関数を用いる．どちらも動作は同じで，`NaN`の箇所がTrue，それ以外がFalseとなる．
-
-# In[15]:
-
-
-df.isna()
-
-
-# In[16]:
-
-
-pd.isnull(df)
-
-
-# **欠損値の削除**
-
-# 欠損値の削除には`dropna`メソッドを用いる：
-# 
-# ```python
-# df.dropna(axis=0, how='any')
-# ```
-# 
-# 引数に`axis=0`を指定した場合は行，`axis=1`の場合は列が削除される．
-# 引数に`how='any'`を指定した場合，行／列に`NaN`が１つでも含まれれば削除される．
-# 一方，`how='all'`の場合，行／列の全ての要素が`NaN`の場合に削除される．
-
-# In[17]:
-
-
-df = pd.DataFrame(np.array([[np.nan, 1, 2], [3, np.nan, 5], [6, 7, 8], [np.nan, np.nan, np.nan]]),
-                  columns=['a', 'b', 'c'])
-df
-
-
-# In[18]:
-
-
-# 欠損値を１つでも含む行を削除
-df.dropna(axis=0, how='any')
-
-
-# In[19]:
-
-
-# 欠損値を１つでも含む列を削除
-df.dropna(axis=1, how='any')
-
-
-# In[20]:
-
-
-# 全ての要素が欠損値である行を削除
-df.dropna(axis=0, how='all')
-
-
-# **欠損値の置換**
-
-# 欠損値`NaN`を他の値で置換するには`fillna`メソッドを用いる：
-# 
-# ```python
-#     df.fillna(value=置換後の値)
-# ```
-# 
-# valueに数値を指定すると，全ての欠損値がその数値で置換される．
-
-# In[21]:
-
-
-# 欠損値を0で置換
-df.fillna(0)
-
-
 # ### DataFrameの属性
 
 # DataFrameに対して，`df.属性名`とすることで，`df`の様々な情報を取得できる．
@@ -841,13 +749,105 @@ df2.loc[df['t'] > 64, ['x', 'y']] = 0
 df2
 
 
+# ### 欠損値について
+
+# **欠損値とは？**
+
+# データが何らかの事情で欠落している箇所を欠損値と呼ぶ．
+# Pandasにおいて，欠損値は`NaN`と表示される（'Not a Number'の略）．
+# Pandasでは，空白値の他，pythonの組み込み定数である`None`や`math.nan`，`np.nan`は全て欠損値として扱われる．<br>
+# ※ 無限大を表す`inf`はデフォルトでは欠損値として扱われない．
+
+# In[ ]:
+
+
+# 欠損値を含むDataFrameの作成
+import math
+df = pd.DataFrame([[1., None, np.nan], [math.nan, 2, 3]])
+df
+
+
+# **欠損値の検出**
+
+# `NaN`の検出には`isna`メソッドまたは`pd.isnull`関数を用いる．どちらも動作は同じで，`NaN`の箇所がTrue，それ以外がFalseとなる．
+
+# In[ ]:
+
+
+df.isna()
+
+
+# In[ ]:
+
+
+pd.isnull(df)
+
+
+# **欠損値の削除**
+
+# 欠損値の削除には`dropna`メソッドを用いる：
+# 
+# ```python
+# df.dropna(axis=0, how='any')
+# ```
+# 
+# 引数に`axis=0`を指定した場合は行，`axis=1`の場合は列が削除される．
+# 引数に`how='any'`を指定した場合，行／列に`NaN`が１つでも含まれれば削除される．
+# 一方，`how='all'`の場合，行／列の全ての要素が`NaN`の場合に削除される．
+
+# In[ ]:
+
+
+df = pd.DataFrame(np.array([[np.nan, 1, 2], [3, np.nan, 5], [6, 7, 8], [np.nan, np.nan, np.nan]]),
+                  columns=['a', 'b', 'c'])
+df
+
+
+# In[ ]:
+
+
+# 欠損値を１つでも含む行を削除
+df.dropna(axis=0, how='any')
+
+
+# In[ ]:
+
+
+# 欠損値を１つでも含む列を削除
+df.dropna(axis=1, how='any')
+
+
+# In[ ]:
+
+
+# 全ての要素が欠損値である行を削除
+df.dropna(axis=0, how='all')
+
+
+# **欠損値の置換**
+
+# 欠損値`NaN`を他の値で置換するには`fillna`メソッドを用いる：
+# 
+# ```python
+#     df.fillna(value=置換後の値)
+# ```
+# 
+# valueに数値を指定すると，全ての欠損値がその数値で置換される．
+
+# In[ ]:
+
+
+# 欠損値を0で置換
+df.fillna(0)
+
+
 # ### 演習問題
 
 # 次のcsvファイルをダウンロードし，カレントディレクトリに保存せよ：[player_all.csv](https://drive.google.com/uc?export=download&id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP) <br>
 # このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
 # ※ 本データはPappalardoデータセットを加工したものである（詳細は{ref}`pappalardo`）．
 
-# In[301]:
+# In[ ]:
 
 
 # index_col='player_id'：選手IDを行ラベル（index）に設定
@@ -1450,7 +1450,7 @@ df.reset_index(drop=1)
 
 # ## 演習問題
 
-# 次のcsvファイルをダウンロードし，作業フォルダ（例えば`OneDrive/sport_data/4_pandas`）に移動せよ：[player_all.csv](https://drive.google.com/uc?export=download&id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP) <br>
+# 次のcsvファイルをダウンロードし，カレントディレクトリに保存せよ：[player_all.csv](https://drive.google.com/uc?export=download&id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP)  <br>
 # このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
 # ※ 本データはPappalardoデータセットを加工したものである（詳細は[イベントデータの解析](https://rtwqzpj5uefb1pvzmprbnq-on.drv.tw/document/講義/立正/スポーツデータ分析のためのプログラミング/6_event.html)）．
 
