@@ -147,6 +147,22 @@ dict_data
 pd.DataFrame(dict_data, index=['A', 'B', 'C', 'D'])
 
 
+# ### 欠損値について
+
+# データが何らかの事情で欠落している箇所を欠損値と呼ぶ．
+# Pandasにおいて，欠損値は`NaN`と表示される（'Not a Number'の略）．
+# Pandasでは，空白値の他，pythonの組み込み定数である`None`や`math.nan`，`np.nan`は全て欠損値として扱われる．<br>
+# ※ 無限大を表す`inf`はデフォルトでは欠損値として扱われない．
+
+# In[ ]:
+
+
+# 欠損値を含むDataFrameの作成
+import math
+df = pd.DataFrame([[1., None, np.nan], [math.nan, 2, 3]])
+df
+
+
 # ### DataFrameのファイル入出力
 
 # Pandasでデータ分析を行う場合，外部のファイルから直接データを読み込んだり，整形したデータを改めてファイルに保存することが多い．特に，データ分析で最もよく用いられるのがcsv形式のファイルである．csvとはカンマで区切られたテキストファイルを指す略称で，Excelで編集することもできる．
@@ -443,7 +459,7 @@ df.tail(2)
 
 # まず，ダウンロードしたcsvファイルを`df`に読み込む．<br>
 
-# In[265]:
+# In[12]:
 
 
 # index_col='player_id'：選手IDを行ラベル（index）に設定
@@ -749,23 +765,7 @@ df2.loc[df['t'] > 64, ['x', 'y']] = 0
 df2
 
 
-# ### 欠損値について
-
-# **欠損値とは？**
-
-# データが何らかの事情で欠落している箇所を欠損値と呼ぶ．
-# Pandasにおいて，欠損値は`NaN`と表示される（'Not a Number'の略）．
-# Pandasでは，空白値の他，pythonの組み込み定数である`None`や`math.nan`，`np.nan`は全て欠損値として扱われる．<br>
-# ※ 無限大を表す`inf`はデフォルトでは欠損値として扱われない．
-
-# In[ ]:
-
-
-# 欠損値を含むDataFrameの作成
-import math
-df = pd.DataFrame([[1., None, np.nan], [math.nan, 2, 3]])
-df
-
+# ### 欠損値の処理
 
 # **欠損値の検出**
 
