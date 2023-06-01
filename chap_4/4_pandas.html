@@ -1435,7 +1435,7 @@ DataFrameの一部分を参照する方法として，主に以下がある：</
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">行番号</span><span class="p">,</span> <span class="n">列番号</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>基本的にはNumPyのインデックス参照と同様であり，スライスにも対応している．</p>
+<p>これは，基本的にNumPyのインデックス参照と同様であり，スライスにも対応している．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 第1行の参照（列番号は省略可）</span>
@@ -1455,7 +1455,7 @@ Name: B, dtype: object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 第1列の参照（df[&#39;player&#39;]と同じ）</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 第1列の参照</span>
 <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1472,7 +1472,7 @@ Name: player, dtype: object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 第1~3行の参照</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 第1~3行の参照（スライス）</span>
 <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1528,6 +1528,7 @@ Name: player, dtype: object
 </table>
 </div></div></div>
 </div>
+<p>複数の行番号，列番号を指定するには角括弧<code class="docutils literal notranslate"><span class="pre">[]</span></code>を二重にする．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 第1行と3行の参照</span>
@@ -1573,6 +1574,61 @@ Name: player, dtype: object
       <td>600</td>
       <td>hyuga</td>
       <td>32.5</td>
+      <td>2.5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 第1列と3列の参照</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>player</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>ozora</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>misaki</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>wakabayashi</td>
+      <td>50.5</td>
+    </tr>
+    <tr>
+      <th>D</th>
+      <td>hyuga</td>
       <td>2.5</td>
     </tr>
   </tbody>
@@ -1648,6 +1704,70 @@ Name: player, dtype: object
 なお，特定の行を参照する場合，列ラベルは省略できる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>t</th>
+      <th>player</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>2</td>
+      <td>ozora</td>
+      <td>5.0</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>64</td>
+      <td>misaki</td>
+      <td>20.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>350</td>
+      <td>wakabayashi</td>
+      <td>10.5</td>
+      <td>50.5</td>
+    </tr>
+    <tr>
+      <th>D</th>
+      <td>600</td>
+      <td>hyuga</td>
+      <td>32.5</td>
+      <td>2.5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># &#39;A&#39;行を参照（列ラベルは省略可）</span>
 <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span>
 </pre></div>
@@ -1665,7 +1785,7 @@ Name: A, dtype: object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 複数の行を参照（括弧を二重にする）</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 複数の行を参照（角括弧を二重にする）</span>
 <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
@@ -1716,7 +1836,7 @@ Name: A, dtype: object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 複数の列を参照（df[[&#39;x&#39;, &#39;y&#39;]]と同じ）</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 複数の列を参照</span>
 <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
@@ -1828,8 +1948,8 @@ Name: A, dtype: object
 </div></div></div>
 </div>
 <p><strong>角括弧<code class="docutils literal notranslate"><span class="pre">[]</span></code>による列の抽出</strong></p>
-<p>角括弧を使って<code class="docutils literal notranslate"><span class="pre">df['t']</span></code>とすることで<code class="docutils literal notranslate"><span class="pre">'t'</span></code>というラベルの列を取り出すことができる．</p>
-<p>※ スライスなどにも対応しているが，<code class="docutils literal notranslate"><span class="pre">loc</span></code>属性の使用を推奨する</p>
+<p>角括弧を使って<code class="docutils literal notranslate"><span class="pre">df['t']</span></code>とすることで<code class="docutils literal notranslate"><span class="pre">'t'</span></code>というラベルの列を取り出すことができる．
+ただし，ラベルを用いて列を抽出する場合に限る．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># &#39;t&#39;列の参照（df.loc[:, &#39;t&#39;]と同じ）</span>
@@ -1903,8 +2023,11 @@ Name: t, dtype: int64
 </table>
 </div></div></div>
 </div>
-<p><strong>先頭から数行だけ抽出：<code class="docutils literal notranslate"><span class="pre">head</span></code>メソッド</strong></p>
-<p>DataFrame<code class="docutils literal notranslate"><span class="pre">df</span></code>の先頭から<code class="docutils literal notranslate"><span class="pre">n</span></code>行だけ抽出したい場合は<code class="docutils literal notranslate"><span class="pre">df.head(n)</span></code>とする．</p>
+<p><strong>先頭または末尾から数行だけ抽出：<code class="docutils literal notranslate"><span class="pre">head</span></code>メソッド，<code class="docutils literal notranslate"><span class="pre">tail</span></code>メソッド</strong></p>
+<ul class="simple">
+<li><p>DataFrame<code class="docutils literal notranslate"><span class="pre">df</span></code>の先頭から<code class="docutils literal notranslate"><span class="pre">n</span></code>行だけ抽出したい場合は<code class="docutils literal notranslate"><span class="pre">df.head(n)</span></code>とする．</p></li>
+<li><p>DataFrame<code class="docutils literal notranslate"><span class="pre">df</span></code>の末尾から<code class="docutils literal notranslate"><span class="pre">n</span></code>行だけ抽出したい場合は<code class="docutils literal notranslate"><span class="pre">df.tail(n)</span></code>とする．</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 先頭から2行だけ抽出</span>
@@ -1956,8 +2079,6 @@ Name: t, dtype: int64
 </table>
 </div></div></div>
 </div>
-<p><strong>末尾から数行だけ抽出：<code class="docutils literal notranslate"><span class="pre">tail</span></code>メソッド</strong></p>
-<p>DataFrame<code class="docutils literal notranslate"><span class="pre">df</span></code>の末尾から<code class="docutils literal notranslate"><span class="pre">n</span></code>行だけ抽出したい場合は<code class="docutils literal notranslate"><span class="pre">df.tail(n)</span></code>とする．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 末尾から2行だけ抽出</span>
@@ -2160,6 +2281,61 @@ Name: t, dtype: int64
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>team_id</th>
+      <th>...</th>
+      <th>birthday</th>
+      <th>league</th>
+    </tr>
+    <tr>
+      <th>player_id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3319</th>
+      <td>M_Özil</td>
+      <td>1609</td>
+      <td>...</td>
+      <td>1988/10/15</td>
+      <td>England</td>
+    </tr>
+    <tr>
+      <th>3560</th>
+      <td>Nach_Monreal</td>
+      <td>1609</td>
+      <td>...</td>
+      <td>1986/02/26</td>
+      <td>England</td>
+    </tr>
+  </tbody>
+</table>
+<p>2 rows × 10 columns</p>
+</div></div></div>
 </div>
 <p>DataFrameの末尾2行を取得せよ</p>
 <div class="cell docutils container">
@@ -2259,7 +2435,7 @@ Name: t, dtype: int64
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">loc</span></code>属性を用いてindex（行ラベル）が61941，8747，283062の行を抽出せよ<br>
+<p><code class="docutils literal notranslate"><span class="pre">loc</span></code>属性を用いてindex（行ラベル）が61941，8747，283062で<code class="docutils literal notranslate"><span class="pre">columns</span></code>（列ラベル）が<code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">height</span></code>の要素を抽出せよ<br>
 ※ これは身長2m以上の選手のデータである</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2988,21 +3164,38 @@ Name: t, dtype: bool
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>0</th>
-      <th>1</th>
-      <th>2</th>
+      <th>t</th>
+      <th>player</th>
+      <th>x</th>
+      <th>y</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
+      <th>A</th>
       <td>False</td>
-      <td>True</td>
-      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>True</td>
+      <th>B</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>D</th>
+      <td>False</td>
+      <td>False</td>
       <td>False</td>
       <td>False</td>
     </tr>
@@ -3035,21 +3228,38 @@ Name: t, dtype: bool
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>0</th>
-      <th>1</th>
-      <th>2</th>
+      <th>t</th>
+      <th>player</th>
+      <th>x</th>
+      <th>y</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
+      <th>A</th>
       <td>False</td>
-      <td>True</td>
-      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>True</td>
+      <th>B</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>D</th>
+      <td>False</td>
+      <td>False</td>
       <td>False</td>
       <td>False</td>
     </tr>
