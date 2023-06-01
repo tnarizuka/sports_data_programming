@@ -231,8 +231,7 @@ df
 
 
 # DataFrameの読み込み
-df = pd.read_csv('./df_sample.csv',\
-                 header=0, index_col=0)
+df = pd.read_csv('./df_sample.csv', header=0, index_col=0)
 df
 
 
@@ -300,12 +299,11 @@ df.dtypes
 # 
 # このうち，`loc`属性を用いたラベルによる参照はPandas特有であり，かつ頻繁に使用するので必ず理解したほうが良い．
 
-# In[29]:
+# In[33]:
 
 
 # csvファイルをDataFrameに読み込む
-df = pd.read_csv('./df_sample.csv',\
-                 header=0, index_col=0, usecols=None)
+df = pd.read_csv('./df_sample.csv', header=0, index_col=0)
 df
 
 
@@ -622,8 +620,7 @@ df
 # In[46]:
 
 
-df = pd.read_csv('./df_sample.csv',\
-                 header=0, index_col=0, usecols=None)
+df = pd.read_csv('./df_sample.csv', header=0, index_col=0)
 df
 
 
@@ -1236,8 +1233,7 @@ df.loc[df['weight']==df['weight'].max()]
 # In[47]:
 
 
-df = pd.read_csv('./df_sample.csv',\
-                 header=0, index_col=0, usecols=None)
+df = pd.read_csv('./df_sample.csv', header=0, index_col=0)
 df
 
 
