@@ -56,7 +56,7 @@ import pandas as pd
 
 # 例えば，以下は，典型的なサッカーのイベントデータをPandasのDataFrameという形式（後述）で表したものである．
 
-# In[5]:
+# In[2]:
 
 
 pd.DataFrame({'t':[2, 64, 350, 600],
@@ -106,7 +106,7 @@ pd.DataFrame({'t':[2, 64, 350, 600],
 # 
 # 
 
-# In[6]:
+# In[3]:
 
 
 # リストの変換
@@ -115,7 +115,7 @@ pd.DataFrame([[1,2,3], [4,5,6]],
              columns=['A', 'B', 'C'])
 
 
-# In[8]:
+# In[4]:
 
 
 # NumPy配列の変換
@@ -129,7 +129,7 @@ pd.DataFrame(np.full([2, 3], 5),
 # `data`として辞書を指定すると，辞書のkeyが列ラベル`columns`となる．
 # 行ラベル`index`はオプションとして指定する．
 
-# In[9]:
+# In[5]:
 
 
 # 辞書データ
@@ -140,7 +140,7 @@ dict_data = {'t':[2, 64, 350, 600],
 dict_data
 
 
-# In[10]:
+# In[6]:
 
 
 # 辞書による生成
@@ -168,7 +168,7 @@ pd.DataFrame(dict_data, index=['A', 'B', 'C', 'D'])
 # | encoding | エンコーディング | 'utf-8', 'shift-jis'など |
 # | columns | 出力する列 | ['A', 'B']など |
 
-# In[11]:
+# In[7]:
 
 
 # DataFrameを生成する
@@ -179,7 +179,7 @@ df = pd.DataFrame({'t':[2, 64, 350, 600],
                    index=['A', 'B', 'C', 'D'])
 
 
-# In[12]:
+# In[8]:
 
 
 # 相対パスを指定してカレントディレクトリに保存する
@@ -208,7 +208,7 @@ df.to_csv('./df_sample.csv', # ipynbファイルと同じフォルダに保存
 # | na_filter | 欠損値での置き換えの有無（デフォルトはTrue） | True/False |
 # | encoding | エンコーディング | 'utf-8', 'shift-jis'など |
 
-# In[13]:
+# In[9]:
 
 
 # 相対パスを指定してcsvファイルをDataFrameに読み込む
@@ -223,10 +223,10 @@ df
 
 # データが何らかの事情で欠落している箇所を欠損値と呼ぶ．
 # Pandasにおいて，欠損値は`NaN`と表示される（'Not a Number'の略）．
-# Pandasではpythonの組み込み定数である`None`や`math.nan`，`np.nan`は全て欠損値として扱われる．<br>
+# Pandasでは，空白値の他，pythonの組み込み定数である`None`や`math.nan`，`np.nan`は全て欠損値として扱われる．<br>
 # ※ 無限大を表す`inf`はデフォルトでは欠損値として扱われない．
 
-# In[14]:
+# In[10]:
 
 
 # 欠損値を含むDataFrameの作成
