@@ -193,9 +193,9 @@ df = pd.DataFrame({'t':[2, 64, 350, 600],
 
 # 相対パスを指定してカレントディレクトリに保存する
 df.to_csv('./df_sample.csv', # ipynbファイルと同じフォルダに保存
-          header=True, # 列ラベルを出力する
-          index=True,  # 行ラベルを出力する
-          encoding='utf-8', # 文字コードを指定する
+          header=True,       # 列ラベルを出力する
+          index=True,        # 行ラベルを出力する
+          encoding='utf-8',  # 文字コードを指定する
           columns=df.columns # 出力する列を指定する
           )
 
@@ -227,12 +227,13 @@ df
 
 # DataFrameに対して，`df.属性名`とすることで，`df`の様々な情報を取得できる．
 
-# In[22]:
+# In[24]:
 
 
 # DataFrameの読み込み
 df = pd.read_csv('./df_sample.csv',\
-                 header=0, index_col=0, usecols=None)
+                 header=0, index_col=0)
+df
 
 
 # **NumPy配列を取得：`values`属性**
@@ -240,7 +241,7 @@ df = pd.read_csv('./df_sample.csv',\
 # `values`属性を用いると，値をNumPy配列として取り出すことができる．<br>
 # ※ 複数の型が混在するDataFrameの場合，取り出したNumPy配列はobject型という特殊な型になる．
 
-# In[23]:
+# In[25]:
 
 
 # 値をNumPy配列として取り出す
@@ -251,14 +252,14 @@ df.values
 
 # DataFrameの行ラベルと列ラベルは`index`属性と`columns`属性で抽出できる．
 
-# In[24]:
+# In[26]:
 
 
 # 行ラベル
 df.index
 
 
-# In[25]:
+# In[27]:
 
 
 # 列ラベル
@@ -267,23 +268,21 @@ df.columns
 
 # **その他の属性**
 
-# DataFrameにはその他に以下の属性がある．
-
-# In[26]:
+# In[28]:
 
 
 # DataFrameの要素数
 df.size
 
 
-# In[27]:
+# In[29]:
 
 
 # DataFrameの形状
 df.shape
 
 
-# In[28]:
+# In[30]:
 
 
 # 各列のデータ型
@@ -292,14 +291,14 @@ df.dtypes
 
 # ### DataFrameの参照
 # 
-# DataFrameの一部を参照する方法として，主に以下がある：
+# DataFrameも，NumPy配列のように配列の一部分を参照することができる．
+# ただし，DataFrameには行番号・列番号の他に，行ラベル・列ラベルが存在するため，以下のようにこれらを区別する必要がある：
+# DataFrameの一部分を参照する方法として，主に以下がある：
 # 
 # - 行・列番号による参照：`iloc`属性（NumPyのインデックス参照と同じ）
 # - 行・列ラベルによる参照：`loc`属性，角括弧`[]`
-# - 先頭・末尾から数行を抽出：`head`メソッド，`tail`メソッド
 # 
-# 以下で説明するように，基本的には`iloc`属性と`loc`属性を用い，角括弧は列を選択する場合だけに使用することを推奨する．
-# 特に`loc`属性を用いた参照方法はPandas特有であり，かつ頻繁に使用するので必ず理解したほうが良い．
+# このうち，`loc`属性を用いたラベルによる参照はPandas特有であり，かつ頻繁に使用するので必ず理解したほうが良い．
 
 # In[29]:
 

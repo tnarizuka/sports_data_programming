@@ -1106,9 +1106,9 @@ Pandasでは，空白値の他，pythonの組み込み定数である<code class
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 相対パスを指定してカレントディレクトリに保存する</span>
 <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./df_sample.csv&#39;</span><span class="p">,</span> <span class="c1"># ipynbファイルと同じフォルダに保存</span>
-          <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="c1"># 列ラベルを出力する</span>
-          <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># 行ラベルを出力する</span>
-          <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="c1"># 文字コードを指定する</span>
+          <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>       <span class="c1"># 列ラベルを出力する</span>
+          <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>        <span class="c1"># 行ラベルを出力する</span>
+          <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span>  <span class="c1"># 文字コードを指定する</span>
           <span class="n">columns</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="c1"># 出力する列を指定する</span>
           <span class="p">)</span>
 </pre></div>
@@ -1200,10 +1200,68 @@ Pandasでは，空白値の他，pythonの組み込み定数である<code class
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DataFrameの読み込み</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./df_sample.csv&#39;</span><span class="p">,</span>\
-                 <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+                 <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>t</th>
+      <th>player</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>2</td>
+      <td>ozora</td>
+      <td>5.0</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>64</td>
+      <td>misaki</td>
+      <td>20.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>350</td>
+      <td>wakabayashi</td>
+      <td>10.5</td>
+      <td>50.5</td>
+    </tr>
+    <tr>
+      <th>D</th>
+      <td>600</td>
+      <td>hyuga</td>
+      <td>32.5</td>
+      <td>2.5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p><strong>NumPy配列を取得：<code class="docutils literal notranslate"><span class="pre">values</span></code>属性</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">values</span></code>属性を用いると，値をNumPy配列として取り出すことができる．<br>
@@ -1253,7 +1311,6 @@ Pandasでは，空白値の他，pythonの組み込み定数である<code class
 </div>
 </div>
 <p><strong>その他の属性</strong></p>
-<p>DataFrameにはその他に以下の属性がある．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DataFrameの要素数</span>
@@ -1300,14 +1357,14 @@ dtype: object
 </section>
 <section id="id7">
 <h3><span class="section-number">4.2.5. </span>DataFrameの参照<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>DataFrameの一部を参照する方法として，主に以下がある：</p>
+<p>DataFrameも，NumPy配列のように配列の一部分を参照することができる．
+ただし，DataFrameには行番号・列番号の他に，行ラベル・列ラベルが存在するため，以下のようにこれらを区別する必要がある：
+DataFrameの一部分を参照する方法として，主に以下がある：</p>
 <ul class="simple">
 <li><p>行・列番号による参照：<code class="docutils literal notranslate"><span class="pre">iloc</span></code>属性（NumPyのインデックス参照と同じ）</p></li>
 <li><p>行・列ラベルによる参照：<code class="docutils literal notranslate"><span class="pre">loc</span></code>属性，角括弧<code class="docutils literal notranslate"><span class="pre">[]</span></code></p></li>
-<li><p>先頭・末尾から数行を抽出：<code class="docutils literal notranslate"><span class="pre">head</span></code>メソッド，<code class="docutils literal notranslate"><span class="pre">tail</span></code>メソッド</p></li>
 </ul>
-<p>以下で説明するように，基本的には<code class="docutils literal notranslate"><span class="pre">iloc</span></code>属性と<code class="docutils literal notranslate"><span class="pre">loc</span></code>属性を用い，角括弧は列を選択する場合だけに使用することを推奨する．
-特に<code class="docutils literal notranslate"><span class="pre">loc</span></code>属性を用いた参照方法はPandas特有であり，かつ頻繁に使用するので必ず理解したほうが良い．</p>
+<p>このうち，<code class="docutils literal notranslate"><span class="pre">loc</span></code>属性を用いたラベルによる参照はPandas特有であり，かつ頻繁に使用するので必ず理解したほうが良い．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># csvファイルをDataFrameに読み込む</span>
