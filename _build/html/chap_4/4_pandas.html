@@ -681,8 +681,8 @@ title="Print to PDF"
 <span class="c1"># 表示設定</span>
 <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.precision&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>    <span class="c1"># 小数点以下の表示桁</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>   <span class="c1"># 表示する行数の上限</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># 表示する列数の上限</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>   <span class="c1"># 表示する行数の上限</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># 表示する列数の上限</span>
 <span class="o">%</span><span class="k">precision</span> 3
 </pre></div>
 </div>
@@ -2281,61 +2281,6 @@ Name: t, dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>name</th>
-      <th>team_id</th>
-      <th>...</th>
-      <th>birthday</th>
-      <th>league</th>
-    </tr>
-    <tr>
-      <th>player_id</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>3319</th>
-      <td>M_Özil</td>
-      <td>1609</td>
-      <td>...</td>
-      <td>1988/10/15</td>
-      <td>England</td>
-    </tr>
-    <tr>
-      <th>3560</th>
-      <td>Nach_Monreal</td>
-      <td>1609</td>
-      <td>...</td>
-      <td>1986/02/26</td>
-      <td>England</td>
-    </tr>
-  </tbody>
-</table>
-<p>2 rows × 10 columns</p>
-</div></div></div>
 </div>
 <p>DataFrameの末尾2行を取得せよ</p>
 <div class="cell docutils container">
@@ -3137,144 +3082,6 @@ Name: t, dtype: bool
 </section>
 <section id="id13">
 <h3><span class="section-number">4.3.4. </span>欠損値の処理<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p><strong>欠損値の検出</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">NaN</span></code>の検出には<code class="docutils literal notranslate"><span class="pre">isna</span></code>メソッドまたは<code class="docutils literal notranslate"><span class="pre">pd.isnull</span></code>関数を用いる．どちらも動作は同じで，<code class="docutils literal notranslate"><span class="pre">NaN</span></code>の箇所がTrue，それ以外がFalseとなる．</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>t</th>
-      <th>player</th>
-      <th>x</th>
-      <th>y</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>A</th>
-      <td>False</td>
-      <td>False</td>
-      <td>False</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>B</th>
-      <td>False</td>
-      <td>False</td>
-      <td>False</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>C</th>
-      <td>False</td>
-      <td>False</td>
-      <td>False</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>D</th>
-      <td>False</td>
-      <td>False</td>
-      <td>False</td>
-      <td>False</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>t</th>
-      <th>player</th>
-      <th>x</th>
-      <th>y</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>A</th>
-      <td>False</td>
-      <td>False</td>
-      <td>False</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>B</th>
-      <td>False</td>
-      <td>False</td>
-      <td>False</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>C</th>
-      <td>False</td>
-      <td>False</td>
-      <td>False</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>D</th>
-      <td>False</td>
-      <td>False</td>
-      <td>False</td>
-      <td>False</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p><strong>欠損値の削除</strong></p>
-<p>欠損値の削除には<code class="docutils literal notranslate"><span class="pre">dropna</span></code>メソッドを用いる：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>引数に<code class="docutils literal notranslate"><span class="pre">axis=0</span></code>を指定した場合は行，<code class="docutils literal notranslate"><span class="pre">axis=1</span></code>の場合は列が削除される．
-引数に<code class="docutils literal notranslate"><span class="pre">how='any'</span></code>を指定した場合，行／列に<code class="docutils literal notranslate"><span class="pre">NaN</span></code>が１つでも含まれれば削除される．
-一方，<code class="docutils literal notranslate"><span class="pre">how='all'</span></code>の場合，行／列の全ての要素が<code class="docutils literal notranslate"><span class="pre">NaN</span></code>の場合に削除される．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]]),</span>
@@ -3336,6 +3143,134 @@ Name: t, dtype: bool
 </table>
 </div></div></div>
 </div>
+<p><strong>欠損値の検出</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">NaN</span></code>の検出には<code class="docutils literal notranslate"><span class="pre">isna</span></code>メソッドまたは<code class="docutils literal notranslate"><span class="pre">pd.isnull</span></code>関数を用いる．どちらも動作は同じで，<code class="docutils literal notranslate"><span class="pre">NaN</span></code>の箇所がTrue，それ以外がFalseとなる．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>欠損値の削除</strong></p>
+<p>欠損値の削除には<code class="docutils literal notranslate"><span class="pre">dropna</span></code>メソッドを用いる：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>引数に<code class="docutils literal notranslate"><span class="pre">axis=0</span></code>を指定した場合は行，<code class="docutils literal notranslate"><span class="pre">axis=1</span></code>の場合は列が削除される．
+引数に<code class="docutils literal notranslate"><span class="pre">how='any'</span></code>を指定した場合，行／列に<code class="docutils literal notranslate"><span class="pre">NaN</span></code>が１つでも含まれれば削除される．
+一方，<code class="docutils literal notranslate"><span class="pre">how='all'</span></code>の場合，行／列の全ての要素が<code class="docutils literal notranslate"><span class="pre">NaN</span></code>の場合に削除される．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 欠損値を１つでも含む行を削除</span>
@@ -3558,6 +3493,198 @@ Name: t, dtype: bool
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>team_id</th>
+      <th>role</th>
+      <th>height</th>
+      <th>weight</th>
+      <th>foot</th>
+      <th>nationality</th>
+      <th>birth_area</th>
+      <th>birthday</th>
+      <th>league</th>
+    </tr>
+    <tr>
+      <th>player_id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3319</th>
+      <td>M_Özil</td>
+      <td>1609</td>
+      <td>MD</td>
+      <td>180.0</td>
+      <td>76.0</td>
+      <td>left</td>
+      <td>Germany</td>
+      <td>Germany</td>
+      <td>1988/10/15</td>
+      <td>England</td>
+    </tr>
+    <tr>
+      <th>3560</th>
+      <td>Nach_Monreal</td>
+      <td>1609</td>
+      <td>DF</td>
+      <td>179.0</td>
+      <td>72.0</td>
+      <td>left</td>
+      <td>Spain</td>
+      <td>Spain</td>
+      <td>1986/02/26</td>
+      <td>England</td>
+    </tr>
+    <tr>
+      <th>7855</th>
+      <td>L_Koscielny</td>
+      <td>1609</td>
+      <td>DF</td>
+      <td>186.0</td>
+      <td>75.0</td>
+      <td>right</td>
+      <td>Poland</td>
+      <td>France</td>
+      <td>1985/09/10</td>
+      <td>England</td>
+    </tr>
+    <tr>
+      <th>7870</th>
+      <td>A_Ramsey</td>
+      <td>1609</td>
+      <td>MD</td>
+      <td>183.0</td>
+      <td>76.0</td>
+      <td>right</td>
+      <td>Wales</td>
+      <td>Wales</td>
+      <td>1990/12/26</td>
+      <td>England</td>
+    </tr>
+    <tr>
+      <th>7882</th>
+      <td>P_Čech</td>
+      <td>1609</td>
+      <td>GK</td>
+      <td>196.0</td>
+      <td>90.0</td>
+      <td>left</td>
+      <td>Czec_Republic</td>
+      <td>Czec_Republic</td>
+      <td>1982/05/20</td>
+      <td>England</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>266885</th>
+      <td>M_Olunga</td>
+      <td>756</td>
+      <td>FW</td>
+      <td>188.0</td>
+      <td>80.0</td>
+      <td>left</td>
+      <td>Kenya</td>
+      <td>Kenya</td>
+      <td>1994/03/26</td>
+      <td>Spain</td>
+    </tr>
+    <tr>
+      <th>282448</th>
+      <td>Alei_García</td>
+      <td>756</td>
+      <td>MD</td>
+      <td>173.0</td>
+      <td>74.0</td>
+      <td>right</td>
+      <td>Spain</td>
+      <td>Spain</td>
+      <td>1997/06/28</td>
+      <td>Spain</td>
+    </tr>
+    <tr>
+      <th>366374</th>
+      <td>K_Soni</td>
+      <td>756</td>
+      <td>MD</td>
+      <td>182.0</td>
+      <td>77.0</td>
+      <td>left</td>
+      <td>Cameroon</td>
+      <td>Cameroon</td>
+      <td>1998/04/17</td>
+      <td>Spain</td>
+    </tr>
+    <tr>
+      <th>443324</th>
+      <td>Dougla_Luiz</td>
+      <td>756</td>
+      <td>MD</td>
+      <td>178.0</td>
+      <td>65.0</td>
+      <td>right</td>
+      <td>Brazil</td>
+      <td>Brazil</td>
+      <td>1998/05/09</td>
+      <td>Spain</td>
+    </tr>
+    <tr>
+      <th>508686</th>
+      <td>M_Lizak</td>
+      <td>756</td>
+      <td>GK</td>
+      <td>192.0</td>
+      <td>78.0</td>
+      <td>NaN</td>
+      <td>Poland</td>
+      <td>Poland</td>
+      <td>1996/07/15</td>
+      <td>Spain</td>
+    </tr>
+  </tbody>
+</table>
+<p>2439 rows × 10 columns</p>
+</div></div></div>
 </div>
 <p>身長（<code class="docutils literal notranslate"><span class="pre">height</span></code>）が2m以上の選手を抽出せよ</p>
 <div class="cell docutils container">
