@@ -955,14 +955,14 @@ df['role'].unique()
 # Pandasの基本的な演算規則はNumPyと似ているが，DataFrame（Series）にはラベルが付与されているのでやや挙動が異なる．
 # 四則演算については`+`，`-`，`/`，`*`などの演算子で実現できるが，`df.add`や`df.sub`などの算術メソッドを用いると，より細かい制御が可能である．
 
-# In[313]:
+# In[83]:
 
 
 df1 = pd.DataFrame(np.arange(12).reshape(4, 3), columns=['a', 'b', 'c'], dtype='float')
 df1
 
 
-# In[314]:
+# In[84]:
 
 
 df2 = pd.DataFrame(2*np.ones(15).reshape(5, 3), columns=['a', 'b', 'd'])
@@ -973,28 +973,28 @@ df2
 
 # DataFrame（およびSeries）と数値の演算は全ての要素に演算が適用される．
 
-# In[315]:
+# In[85]:
 
 
 # 1を足す
 df1 + 1
 
 
-# In[316]:
+# In[86]:
 
 
 # 1を足す（addメソッドを用いる）
 df1.add(1)
 
 
-# In[317]:
+# In[87]:
 
 
 # 2を掛ける
 df1 * 2
 
 
-# In[318]:
+# In[88]:
 
 
 # 2を掛ける（mulメソッドを用いる）
@@ -1003,35 +1003,35 @@ df1.mul(2)
 
 # **列（Series）同士の演算**
 
-# In[319]:
+# In[89]:
 
 
 # 'a'列と'b'列の和
 df1['a'] + df1['b']
 
 
-# In[320]:
+# In[90]:
 
 
 # 'a'列と'b'列の積
 df1['a'] * df1['b']
 
 
-# In[321]:
+# In[91]:
 
 
 # 'a'列と'b'列の割り算
 df1['a'] / df1['b']
 
 
-# In[322]:
+# In[92]:
 
 
 # 'c'列を２乗する
 df1['c']**2
 
 
-# In[323]:
+# In[93]:
 
 
 # 'a'列から5を引いて2乗する
@@ -1043,31 +1043,33 @@ df1['c']**2
 # 行ラベル（index）と列ラベル（columns）が同じ要素同士で演算が行われる．
 # 異なるラベルが存在する場合は列と行が拡張され，欠損値`NaN`となる．
 
-# In[324]:
+# In[94]:
 
 
 # ラベルが同じDataFrame同士の足し算
 df1+df1
 
 
-# In[325]:
+# In[95]:
 
 
 # ラベルが異なるDataFrame間の足し算
+# 共通する'a', 'b'列は足し算されるが，df1にしかない'c'列とdf2にしかない'd'列は欠損値となる
 df1+df2
 
 
 # **DataFrameとSeries（特定の列）の演算**
 
-# In[326]:
+# In[97]:
 
 
 df1
 
 
-# In[327]:
+# In[98]:
 
 
+# df1の'c'列をs1として抽出
 s1 = df1['c']
 s1
 
@@ -1075,28 +1077,28 @@ s1
 # DataFrameの各列とSeriesの演算を行いたい場合は算術メソッドを用いて`axis=0`を指定する．<br>
 # ※ 各種算術メソッドでは，デフォルトで`axis=1`となっているので注意．
 
-# In[328]:
+# In[103]:
 
 
 # 各列にs1を加える
 df1.add(s1, axis=0)
 
 
-# In[329]:
+# In[104]:
 
 
 # 各列からs1を引く
 df1.sub(s1, axis=0)
 
 
-# In[330]:
+# In[105]:
 
 
 # 各列をs1で割る
 df1.div(s1, axis=0)
 
 
-# In[331]:
+# In[106]:
 
 
 # 各列にs1を掛ける
@@ -1124,117 +1126,117 @@ df1.mul(s1, axis=0)
 # | diff | 階差 | periods（何行前との差を取るか） |
 # | cumusum | 累積和 |
 
-# In[332]:
+# In[108]:
 
 
 df = pd.DataFrame(np.random.randint(0, 100, [5, 4]),
-                  columns=list('abcd'))
+                  columns=['a', 'b', 'c', 'd'])
 df
 
 
-# In[333]:
+# In[109]:
 
 
 # 各列の最大値
 df.max(axis=0)
 
 
-# In[334]:
+# In[110]:
 
 
 # 各行の最大値
 df.max(axis=1)
 
 
-# In[335]:
+# In[111]:
 
 
 # 各列の和
 df.sum(axis=0)
 
 
-# In[336]:
+# In[112]:
 
 
 # 各行の和
 df.sum(axis=1)
 
 
-# In[337]:
+# In[113]:
 
 
 # 各列の平均
 df.mean(axis=0)
 
 
-# In[338]:
+# In[114]:
 
 
 # 各行の平均
 df.mean(axis=1)
 
 
-# In[339]:
+# In[115]:
 
 
 # 各列の標本標準偏差
 df.std(ddof=0, axis=0)
 
 
-# In[340]:
+# In[117]:
 
 
-# 1行前との差分
-df.diff(periods=1, axis=0)
+# 2行前との差分
+df.diff(periods=2, axis=0)
 
 
 # **条件付き抽出したデータの集計**
 # 
 # まず，演習問題で扱った`"player_all.csv"`を`df`に読み込む
 
-# In[341]:
+# In[118]:
 
 
 df = pd.read_csv('./player_all.csv', header=0, index_col='player_id', na_values=0)
 df
 
 
-# In[342]:
+# In[124]:
 
 
 # 国籍が'Japan'の選手の平均身長
 df.loc[df['nationality']=='Japan', ['height']].mean()
 
 
-# In[343]:
+# In[125]:
 
 
 # 国籍が'England'の選手の平均身長
 df.loc[df['nationality']=='England', ['height']].mean()
 
 
-# In[344]:
+# In[126]:
 
 
 # 右利きの選手の平均身長と平均体重
 df.loc[df['foot']=='right', ['height', 'weight']].mean()
 
 
-# In[345]:
+# In[127]:
 
 
 # 左利きの選手の平均身長と平均体重
 df.loc[df['foot']=='left', ['height', 'weight']].mean()
 
 
-# In[346]:
+# In[128]:
 
 
 # 身長が最大の選手
 df.loc[df['height']==df['height'].max()]
 
 
-# In[347]:
+# In[129]:
 
 
 # 体重が最大の選手
@@ -1243,7 +1245,7 @@ df.loc[df['weight']==df['weight'].max()]
 
 # ## データの整形
 
-# In[47]:
+# In[130]:
 
 
 df = pd.read_csv('./df_sample.csv', header=0, index_col=0)
@@ -1260,7 +1262,7 @@ df
 # 
 # ※ この他に，列を追加する`assin`メソッド，行を追加する`append`メソッドがあるがここでは触れない．
 
-# In[349]:
+# In[131]:
 
 
 # loc属性による'z'列の追加
@@ -1269,7 +1271,7 @@ df2.loc[:, 'z'] = 5
 df2
 
 
-# In[350]:
+# In[132]:
 
 
 # 角括弧による'z'列の追加
@@ -1278,7 +1280,7 @@ df2['z'] = [1,2,3,4]
 df2
 
 
-# In[351]:
+# In[133]:
 
 
 # loc属性による'E'行の追加
@@ -1293,21 +1295,21 @@ df2
 # 行を削除する場合は`df.drop(index=['行名1', '行名2'])`とする．<br>
 # ※ バージョン0.21.0より前の場合は`axis`引数を指定する必要がある．
 
-# In[352]:
+# In[134]:
 
 
 # 'B'行の削除
 df.drop(index=['B'])
 
 
-# In[353]:
+# In[135]:
 
 
 # 't'列の削除
 df.drop(columns=['t'])
 
 
-# In[354]:
+# In[136]:
 
 
 # 't'列と'player'列の削除
@@ -1339,7 +1341,7 @@ df
 # ラベル名を複数指定すると，まず1つ目のラベルでソートし，その後順に2つ目以降のラベルでソートされる．
 # また，ソートの方向は`axis`引数で指定し，特定の列でソートする場合には`axis=0`，特定の行でソートする場合には`axis=1`を指定する．
 
-# In[356]:
+# In[137]:
 
 
 dict_data = {'half': [1, 2, 1, 2],
@@ -1351,21 +1353,11 @@ df = pd.DataFrame(dict_data, index=[2, 0, 1, 3])
 df
 
 
-# In[357]:
+# In[138]:
 
 
 # 'half'列，'t'列の順にソート
 df.sort_values(['half', 't'], axis=0, ascending=True)
-
-
-# 特定の行を用いてソートする場合，数値と文字列が混在する可能性が高いが，この場合はエラーになる．以下は'player'列を削除してから第2行の値でソートしている．
-
-# In[358]:
-
-
-# 'half'列，'t'列の順にソート
-df2 = df.drop(['player'], axis=1)
-df2.sort_values(by=2, axis=1, ascending=True)
 
 
 # **行・列ラベルによるソート：`sort_index`メソッド**
@@ -1376,21 +1368,21 @@ df2.sort_values(by=2, axis=1, ascending=True)
 # ```
 # 行ラベルか列ラベルかは`axis`引数で指定する．並び替えの方法（昇順か降順）は`ascending`引数に指定し，Trueの場合は昇順，Falseの場合は降順となる．
 
-# In[359]:
+# In[139]:
 
 
 # 行ラベルの昇順でソート
 df.sort_index(axis=0, ascending=True)
 
 
-# In[360]:
+# In[140]:
 
 
 # 行ラベルの降順でソート
 df.sort_index(axis=0, ascending=False)
 
 
-# In[361]:
+# In[141]:
 
 
 # 列ラベルの昇順でソート
@@ -1399,7 +1391,7 @@ df.sort_index(axis=1, ascending=True)
 
 # ### 行ラベル・列ラベルの変更
 
-# In[362]:
+# In[142]:
 
 
 df = pd.DataFrame(np.arange(12).reshape(4, 3),
@@ -1410,17 +1402,19 @@ df
 
 # **`index`属性・`columns`属性への代入**
 
-# In[363]:
+# In[145]:
 
 
+# 行ラベルを変更する
 df2 = df.copy()
 df2.index = ['A', 'B', 'C', 'D']
 df2
 
 
-# In[364]:
+# In[146]:
 
 
+# 列ラベルを変更する
 df2 = df.copy()
 df2.columns = [0, 1, 2]
 df2
@@ -1432,14 +1426,14 @@ df2
 # デフォルトでは`drop`引数が0になっており，元のindexが新たな列としてDataFrameに残る．
 # 元のindexを削除したい場合は`drop=1`を指定する．
 
-# In[365]:
+# In[147]:
 
 
 # 元のindexを残す
 df.reset_index(drop=0)
 
 
-# In[366]:
+# In[148]:
 
 
 # 元のindexを削除
