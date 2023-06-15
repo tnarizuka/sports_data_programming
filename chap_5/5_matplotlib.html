@@ -1000,36 +1000,31 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </ul>
 <section id="id10">
 <h3><span class="section-number">5.3.1. </span>目盛り線の表示<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 <ul class="simple">
-<li><p>Axes内部に目盛り線を表示するには<code class="docutils literal notranslate"><span class="pre">ax.grid</span></code>メソッドを使用する．</p></li>
-<li><p>第1引数に1または0を指定することで，表示／非表示を選択できる．</p></li>
-<li><p>より細かく制御したい場合は<code class="docutils literal notranslate"><span class="pre">axis</span></code>引数と<code class="docutils literal notranslate"><span class="pre">which</span></code>引数を指定する．</p></li>
+<li><p>第１引数に1または0を指定することで，表示／非表示を選択できる．</p></li>
+<li><p>より細かく制御したい場合は<code class="docutils literal notranslate"><span class="pre">axis</span></code>引数と<code class="docutils literal notranslate"><span class="pre">which</span></code>引数を指定する．</p>
+<ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">axis</span></code>引数は'x', 'y', 'both'を指定することで線を引く軸を設定できる．</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">which</span></code>引数は'major', 'minor', 'both'を指定することで線を引く目盛りの種類（主目盛りと補助目盛り）を設定できる．</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 目盛線の表示</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
+</li>
+</ul>
 </section>
 <section id="id11">
 <h3><span class="section-number">5.3.2. </span>目盛りラベル<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>特定の目盛りだけにラベルを表示したい場合は<code class="docutils literal notranslate"><span class="pre">ax.set_xticks(x)</span></code>および<code class="docutils literal notranslate"><span class="pre">ax.set_yticks(y)</span></code>を実行する．
-これにより，<code class="docutils literal notranslate"><span class="pre">x</span></code>および<code class="docutils literal notranslate"><span class="pre">y</span></code>で指定した目盛りだけに数値が表示される．</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 表示する目盛り</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">])</span>
-</pre></div>
-</div>
-<p>デフォルトでは，目盛りに数値が表示されるが，これを任意の文字列に変更するには<code class="docutils literal notranslate"><span class="pre">ax.set_xticklabels</span></code>を使用する：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 目盛りラベルを文字列に変更</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">])</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;$\pi$&#39;</span><span class="p">,</span> <span class="s1">&#39;$2\pi$&#39;</span><span class="p">,</span> <span class="s1">&#39;$3\pi$&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-<p>最後に，目盛りラベルの文字サイズを変更するには<code class="docutils literal notranslate"><span class="pre">ax.tick_params</span></code>を使用する：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 目盛りのラベルサイズ</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 </pre></div>
 </div>
+<ul class="simple">
+<li><p>第１引数に目盛りを表示したい位置をリストで指定する．</p></li>
+<li><p>デフォルトでは，目盛りに数値が表示されるが，これを任意の文字列に変更するには<code class="docutils literal notranslate"><span class="pre">ax.set_xticklabels</span></code>を使用する．</p></li>
+<li><p>目盛りラベルの文字サイズを変更するには<code class="docutils literal notranslate"><span class="pre">ax.tick_params</span></code>を使用する．</p></li>
+</ul>
 </section>
 <section id="id12">
 <h3><span class="section-number">5.3.3. </span>演習問題<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">#</a></h3>
@@ -1253,7 +1248,7 @@ $<span class="math notranslate nohighlight">\(
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$Y$&#39;)
 </pre></div>
 </div>
-<img alt="../_images/5_matplotlib_69_1.png" src="../_images/5_matplotlib_69_1.png" />
+<img alt="../_images/5_matplotlib_65_1.png" src="../_images/5_matplotlib_65_1.png" />
 </div>
 </div>
 </section>
@@ -1291,7 +1286,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_73_0.png" src="../_images/5_matplotlib_73_0.png" />
+<img alt="../_images/5_matplotlib_69_0.png" src="../_images/5_matplotlib_69_0.png" />
 </div>
 </div>
 <p>以下は上のヒストグラムに対応する度数分布表である．</p>
@@ -1481,7 +1476,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_78_0.png" src="../_images/5_matplotlib_78_0.png" />
+<img alt="../_images/5_matplotlib_74_0.png" src="../_images/5_matplotlib_74_0.png" />
 </div>
 </div>
 <p><strong>ヒストグラムのタイプ</strong></p>
@@ -1528,7 +1523,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_81_0.png" src="../_images/5_matplotlib_81_0.png" />
+<img alt="../_images/5_matplotlib_77_0.png" src="../_images/5_matplotlib_77_0.png" />
 </div>
 </div>
 </section>
@@ -1602,7 +1597,7 @@ $<span class="math notranslate nohighlight">\(
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1d99ec1f0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/5_matplotlib_85_1.png" src="../_images/5_matplotlib_85_1.png" />
+<img alt="../_images/5_matplotlib_81_1.png" src="../_images/5_matplotlib_81_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1621,7 +1616,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_86_0.png" src="../_images/5_matplotlib_86_0.png" />
+<img alt="../_images/5_matplotlib_82_0.png" src="../_images/5_matplotlib_82_0.png" />
 </div>
 </div>
 <p><strong>ヒートマップの装飾と<a class="reference external" href="https://matplotlib.org/3.5.0/api/_as_gen/matplotlib.pyplot.colorbar.html">カラーバーの追加</a></strong></p>
@@ -1686,7 +1681,7 @@ $<span class="math notranslate nohighlight">\(
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x1d9a6a0a0&gt;
 </pre></div>
 </div>
-<img alt="../_images/5_matplotlib_89_1.png" src="../_images/5_matplotlib_89_1.png" />
+<img alt="../_images/5_matplotlib_85_1.png" src="../_images/5_matplotlib_85_1.png" />
 </div>
 </div>
 </section>
