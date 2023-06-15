@@ -259,8 +259,8 @@ fig.savefig('./multi_sin.pdf', bbox_inches='tight');
 # **座標軸の範囲**
 
 # ```python
-#     ax.set_xlim(0, 10)
-#     ax.set_ylim(-3, 3)
+# ax.set_xlim(0, 10)
+# ax.set_ylim(-3, 3)
 # ```
 # 
 # - 第1，第2引数には表示範囲の最小値と最大値を指定する．
@@ -268,7 +268,7 @@ fig.savefig('./multi_sin.pdf', bbox_inches='tight');
 # **アスペクト比**
 
 # ```python
-#     ax.set_aspect('equal')
+# ax.set_aspect('equal')
 # ```
 # 
 # - 図の縦横比をアスペクト比と呼ぶ．
@@ -278,9 +278,9 @@ fig.savefig('./multi_sin.pdf', bbox_inches='tight');
 # **タイトルと軸ラベル**
 
 # ```python
-#     ax.set_title('三角関数のグラフ', fontsize=15)
-#     ax.set_xlabel('角度 $X$ [rad]', fontsize=15)
-#     ax.set_ylabel('$Y$', fontsize=15)
+# ax.set_title('三角関数のグラフ', fontsize=15)
+# ax.set_xlabel('角度 $X$ [rad]', fontsize=15)
+# ax.set_ylabel('$Y$', fontsize=15)
 # ```
 # 
 # - 第１引数にラベル名を指定する．
@@ -288,26 +288,21 @@ fig.savefig('./multi_sin.pdf', bbox_inches='tight');
 
 # **凡例の追加**
 
-# - 凡例を表示するには，まず`plot`メソッドの`label`引数で表示したいラベル名を指定する：
+# ```python
+# ax.plot(x, np.sin(x), '-', label='A')
+# ax.legend(numpoints=1, loc='best', frameon=True)
+# ```
 # 
-#     ```python
-#     ax.plot(x, np.sin(x), '-', label='A')
-#     ```
-#     
-# - その上で，以下のように`ax.legend(option)`を実行する：
-# 
-#     ```python
-#     ax.legend(numpoints=1, loc='best', frameon=True)
-#     ```
-#     
+# - まず，`plot`メソッドの`label`引数で表示したいラベル名を指定する．
+# - その上で，以下のように`ax.legend(option)`を実行する．
 # - 主要なoptionを以下に示す
 # 
-# | オプション |  内容 | 指定の仕方（例） | 
-# | ---- | ---- | ---- |
-# | loc | 凡例の位置 | 'best', 'upper left', 'center', 'lower right' |
-# | fontsize | 文字の大きさ | 数値 |
-# | frameon | 枠で囲う | True / False |
-# | numpoints | マーカーの数 | 数値 |
+#     | オプション |  内容 | 指定の仕方（例） | 
+#     | ---- | ---- | ---- |
+#     | loc | 凡例の位置 | 'best', 'upper left', 'center', 'lower right' |
+#     | fontsize | 文字の大きさ | 数値 |
+#     | frameon | 枠で囲う | True / False |
+#     | numpoints | マーカーの数 | 数値 |
 
 # ### 目盛り線の表示
 
