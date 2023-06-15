@@ -170,15 +170,6 @@ ax.plot(x, x+3, ls='-.');
 
 # ### 棒グラフ
 
-# - Matplotlibで棒グラフを描くには`bar`メソッドを用いる：
-#     
-#     ```python
-#     ax.bar(x, h, width=1.0, option)
-#     ```
-#     
-# - 第１引数`x`には棒グラフを出力する$x$軸上の位置，第２引数`h` には高さを指定する．
-# - その他のオプションは[ここ](https://matplotlib.org/3.5.1/api/_as_gen/matplotlib.pyplot.bar.html)にまとまっている．
-
 # In[24]:
 
 
@@ -189,17 +180,11 @@ h = np.arange(1, 6, 1)
 ax.bar(x, h, width=0.2, align='edge', color='w', edgecolor='b');
 
 
-# ### 矢印
+# - 棒グラフを描くには`bar`メソッドを用いる．
+# - 第１引数`x`には棒グラフを出力する$x$軸上の位置，第２引数`h` には高さを指定する．
+# - その他のオプションは[ここ](https://matplotlib.org/3.5.1/api/_as_gen/matplotlib.pyplot.bar.html)にまとまっている．
 
-# - 矢印を描くには，`quiver`メソッドを用いる．
-# - 始点 $(x, y)$ から $(u, v)$ の方向に長さ$\sqrt{u^2 + v^2}$の矢印を描くには，以下のように実行する：
-#     
-#     ```python
-#     ax.quiver(x, y, u, v, angles='uv', units='xy', scale=1, width=1)
-#     ax.set_aspect('equal')
-#     ```
-# - ただし，必ずアスペクト比を'equal'に変更しないと見た目がずれる．
-# - 'angles'，'units'，'scale'などは挙動が分かりにくいので，詳しくは[ここ](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.quiver.html)を参照のこと．
+# ### 矢印
 
 # In[17]:
 
@@ -214,18 +199,10 @@ ax.quiver(x, y, u, v, angles='uv', units='xy', scale=1, width=0.1)
 ax.set_xlim([0, 3]); plt.ylim([0, 3]);
 
 
-# In[23]:
-
-
-# 複数の矢印
-x, y = ar([0, 1]), ar([0, 2])    # 矢印（ベクトル）の始点
-u, v = ar([1, 1]), ar([2, 0.5])  # 矢印（ベクトル）の成分
-
-fig, ax = plt.subplots()
-ax.set_aspect('equal')
-ax.quiver(x, y, u, v, angles='uv', units='xy', scale=1, width=0.05)
-ax.set_xlim([0, 3]); plt.ylim([0, 3]);
-
+# - 矢印を描くには，`quiver`メソッドを用いる．
+# - 始点 $(x, y)$ から $(u, v)$ の方向に長さ$\sqrt{u^2 + v^2}$の矢印を描く
+# - ただし，必ずアスペクト比を'equal'に変更しないと見た目がずれる．
+# - 'angles'，'units'，'scale'などは挙動が分かりにくいので，詳しくは[ここ](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.quiver.html)を参照のこと．
 
 # ## グラフの装飾
 
