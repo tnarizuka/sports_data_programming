@@ -195,14 +195,9 @@ ax.bar(x, h, width=0.2, align='edge', color='w', edgecolor='b');
 #     
 #     ```python
 #     ax.quiver(x, y, u, v, angles='uv', units='xy', scale=1, width=1)
-#     ```
-#     
-# - ただし，以下のようにアスペクト比を'equal'に変更しないと見た目がずれる：
-#     
-#     ```python
 #     ax.set_aspect('equal')
 #     ```
-#     
+# - ただし，必ずアスペクト比を'equal'に変更しないと見た目がずれる．
 # - 'angles'，'units'，'scale'などは挙動が分かりにくいので，詳しくは[ここ](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.quiver.html)を参照のこと．
 
 # In[17]:
