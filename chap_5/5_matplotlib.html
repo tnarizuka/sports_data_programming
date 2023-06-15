@@ -935,36 +935,31 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </div>
 <p><strong>座標軸の範囲</strong></p>
-<ul>
-<li><p>座標軸の表示範囲を変更するには<code class="docutils literal notranslate"><span class="pre">ax.set_xlim(x_min,</span> <span class="pre">x_max)</span></code>および<code class="docutils literal notranslate"><span class="pre">ax.set_xlim(y_min,</span> <span class="pre">y_max)</span></code>を実行する．</p></li>
-<li><p>第1，第2引数には表示範囲の最小値と最大値を指定する．</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
-</li>
+<ul class="simple">
+<li><p>第1，第2引数には表示範囲の最小値と最大値を指定する．</p></li>
 </ul>
 <p><strong>アスペクト比</strong></p>
-<ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
 <li><p>図の縦横比をアスペクト比と呼ぶ．</p></li>
 <li><p>デフォルトではアスペクト比が自動調整されてしまうので，円が楕円に見えるなど，出力結果が歪んでしまう．</p></li>
-<li><p>アスペクト比が<span class="math notranslate nohighlight">\(y\)</span>軸の範囲と<span class="math notranslate nohighlight">\(x\)</span>軸の範囲の比となるように設定するにには以下を実行する：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</li>
+<li><p>アスペクト比が <span class="math notranslate nohighlight">\(y\)</span> 軸の範囲と <span class="math notranslate nohighlight">\(x\)</span> 軸の範囲の比となるように設定するにには以下を実行する：</p></li>
 </ul>
 <p><strong>タイトルと軸ラベル</strong></p>
-<ul>
-<li><p>グラフにタイトルを付けるには，<code class="docutils literal notranslate"><span class="pre">ax.set_title('タイトル',</span> <span class="pre">option)</span></code>を実行する．</p></li>
-<li><p>各軸のラベルを付与するには，<code class="docutils literal notranslate"><span class="pre">ax.set_xlabel('ラベル名',</span> <span class="pre">option)</span></code>，<code class="docutils literal notranslate"><span class="pre">ax.set_ylabel('ラベル名',</span> <span class="pre">option)</span></code>を実行する．</p></li>
-<li><p>optionにはfontsizeなどを指定できる．</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;三角関数のグラフ&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;角度 $X$ [rad]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$Y$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;三角関数のグラフ&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;角度 $X$ [rad]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$Y$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 </pre></div>
 </div>
-</li>
+<ul class="simple">
+<li><p>第１引数にラベル名を指定する．</p></li>
+<li><p>第２引数以降にfontsizeなどのoptionを指定する．</p></li>
 </ul>
 <p><strong>凡例の追加</strong></p>
 <ul>
