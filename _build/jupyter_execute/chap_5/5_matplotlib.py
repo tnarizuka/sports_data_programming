@@ -99,8 +99,8 @@ fig.savefig('./sample_graph.pdf', bbox_inches="tight", pad_inches=0.2, transpare
 # ```python
 # ax.plot(x, y, 'rx-', option)
 # ```
-# **`plot`関数の第3引数は色・マーカー・線種を同時指定することができる．**
-# 主要なoptionを以下にまとめる．
+# **`plot`メソッドの第3引数は色・マーカー・線種を同時指定することができる．**
+# それ以外の主要なoptionを以下にまとめる．
 
 # | オプション名 | 省略表記 | 内容 | 指定の仕方（例） | 
 # | ---- | ---- | ---- | ---- |
