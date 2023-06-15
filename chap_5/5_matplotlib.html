@@ -416,7 +416,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     5.2.3. （参考）矢印
+     5.2.3. 矢印
     </a>
    </li>
   </ul>
@@ -548,7 +548,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     5.2.3. （参考）矢印
+     5.2.3. 矢印
     </a>
    </li>
   </ul>
@@ -743,8 +743,8 @@ title="Print to PDF"
 <h2><span class="section-number">5.2. </span>様々なグラフ<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">#</a></h2>
 <section id="id6">
 <h3><span class="section-number">5.2.1. </span>基本のプロット関数<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>Matplotlibの最も基本的なプロット関数が<code class="docutils literal notranslate"><span class="pre">pyplot.plot()</span></code>である．
-Axesオブジェクトを<code class="docutils literal notranslate"><span class="pre">ax</span></code>として取得した場合，<code class="docutils literal notranslate"><span class="pre">plot</span></code>関数は以下のように実行する：</p>
+<p>Matplotlibの最も基本的なプロット関数が<code class="docutils literal notranslate"><span class="pre">plot</span></code>メソッドである．
+Axesオブジェクトを<code class="docutils literal notranslate"><span class="pre">ax</span></code>として取得した場合は以下のように実行する：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;rx-&#39;</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -900,7 +900,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </section>
 <section id="id8">
-<h3><span class="section-number">5.2.3. </span>（参考）矢印<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3><span class="section-number">5.2.3. </span>矢印<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">#</a></h3>
 <ul class="simple">
 <li><p>矢印を描くには，<code class="docutils literal notranslate"><span class="pre">quiver</span></code>メソッドを用いる．</p></li>
 <li><p>始点 <span class="math notranslate nohighlight">\((x, y)\)</span> から <span class="math notranslate nohighlight">\((u, v)\)</span> の方向に長さ<span class="math notranslate nohighlight">\(\sqrt{u^2 + v^2}\)</span>の矢印を描くには，以下のように実行する：</p></li>
@@ -942,7 +942,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;uv&#39;</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;uv&#39;</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span>
 </pre></div>
 </div>
