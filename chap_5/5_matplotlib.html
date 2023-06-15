@@ -872,15 +872,6 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </section>
 <section id="id7">
 <h3><span class="section-number">5.2.2. </span>棒グラフ<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">#</a></h3>
-<ul>
-<li><p>Matplotlibで棒グラフを描くには<code class="docutils literal notranslate"><span class="pre">bar</span></code>メソッドを用いる：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
-</pre></div>
-</div>
-</li>
-<li><p>第１引数<code class="docutils literal notranslate"><span class="pre">x</span></code>には棒グラフを出力する<span class="math notranslate nohighlight">\(x\)</span>軸上の位置，第２引数<code class="docutils literal notranslate"><span class="pre">h</span></code> には高さを指定する．</p></li>
-<li><p>その他のオプションは<a class="reference external" href="https://matplotlib.org/3.5.1/api/_as_gen/matplotlib.pyplot.bar.html">ここ</a>にまとまっている．</p></li>
-</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
@@ -892,23 +883,17 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_28_0.png" src="../_images/5_matplotlib_28_0.png" />
+<img alt="../_images/5_matplotlib_27_0.png" src="../_images/5_matplotlib_27_0.png" />
 </div>
 </div>
+<ul class="simple">
+<li><p>棒グラフを描くには<code class="docutils literal notranslate"><span class="pre">bar</span></code>メソッドを用いる．</p></li>
+<li><p>第１引数<code class="docutils literal notranslate"><span class="pre">x</span></code>には棒グラフを出力する<span class="math notranslate nohighlight">\(x\)</span>軸上の位置，第２引数<code class="docutils literal notranslate"><span class="pre">h</span></code> には高さを指定する．</p></li>
+<li><p>その他のオプションは<a class="reference external" href="https://matplotlib.org/3.5.1/api/_as_gen/matplotlib.pyplot.bar.html">ここ</a>にまとまっている．</p></li>
+</ul>
 </section>
 <section id="id8">
 <h3><span class="section-number">5.2.3. </span>矢印<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">#</a></h3>
-<ul>
-<li><p>矢印を描くには，<code class="docutils literal notranslate"><span class="pre">quiver</span></code>メソッドを用いる．</p></li>
-<li><p>始点 <span class="math notranslate nohighlight">\((x, y)\)</span> から <span class="math notranslate nohighlight">\((u, v)\)</span> の方向に長さ<span class="math notranslate nohighlight">\(\sqrt{u^2 + v^2}\)</span>の矢印を描くには，以下のように実行する：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;uv&#39;</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</li>
-<li><p>ただし，必ずアスペクト比を'equal'に変更しないと見た目がずれる．</p></li>
-<li><p>'angles'，'units'，'scale'などは挙動が分かりにくいので，詳しくは<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.quiver.html">ここ</a>を参照のこと．</p></li>
-</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1つの矢印</span>
@@ -923,26 +908,15 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_31_0.png" src="../_images/5_matplotlib_31_0.png" />
+<img alt="../_images/5_matplotlib_30_0.png" src="../_images/5_matplotlib_30_0.png" />
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 複数の矢印</span>
-<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">ar</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">ar</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>    <span class="c1"># 矢印（ベクトル）の始点</span>
-<span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">ar</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">ar</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>  <span class="c1"># 矢印（ベクトル）の成分</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;uv&#39;</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_32_0.png" src="../_images/5_matplotlib_32_0.png" />
-</div>
-</div>
+<ul class="simple">
+<li><p>矢印を描くには，<code class="docutils literal notranslate"><span class="pre">quiver</span></code>メソッドを用いる．</p></li>
+<li><p>始点 <span class="math notranslate nohighlight">\((x, y)\)</span> から <span class="math notranslate nohighlight">\((u, v)\)</span> の方向に長さ<span class="math notranslate nohighlight">\(\sqrt{u^2 + v^2}\)</span>の矢印を描く</p></li>
+<li><p>ただし，必ずアスペクト比を'equal'に変更しないと見た目がずれる．</p></li>
+<li><p>'angles'，'units'，'scale'などは挙動が分かりにくいので，詳しくは<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.quiver.html">ここ</a>を参照のこと．</p></li>
+</ul>
 </section>
 </section>
 <section id="id9">
@@ -997,7 +971,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_35_0.png" src="../_images/5_matplotlib_35_0.png" />
+<img alt="../_images/5_matplotlib_34_0.png" src="../_images/5_matplotlib_34_0.png" />
 </div>
 </div>
 <section id="id10">
@@ -1334,7 +1308,7 @@ $<span class="math notranslate nohighlight">\(
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$Y$&#39;)
 </pre></div>
 </div>
-<img alt="../_images/5_matplotlib_70_1.png" src="../_images/5_matplotlib_70_1.png" />
+<img alt="../_images/5_matplotlib_69_1.png" src="../_images/5_matplotlib_69_1.png" />
 </div>
 </div>
 </section>
@@ -1372,7 +1346,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_74_0.png" src="../_images/5_matplotlib_74_0.png" />
+<img alt="../_images/5_matplotlib_73_0.png" src="../_images/5_matplotlib_73_0.png" />
 </div>
 </div>
 <p>以下は上のヒストグラムに対応する度数分布表である．</p>
@@ -1562,7 +1536,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_79_0.png" src="../_images/5_matplotlib_79_0.png" />
+<img alt="../_images/5_matplotlib_78_0.png" src="../_images/5_matplotlib_78_0.png" />
 </div>
 </div>
 <p><strong>ヒストグラムのタイプ</strong></p>
@@ -1609,7 +1583,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_82_0.png" src="../_images/5_matplotlib_82_0.png" />
+<img alt="../_images/5_matplotlib_81_0.png" src="../_images/5_matplotlib_81_0.png" />
 </div>
 </div>
 </section>
@@ -1683,7 +1657,7 @@ $<span class="math notranslate nohighlight">\(
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1d99ec1f0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/5_matplotlib_86_1.png" src="../_images/5_matplotlib_86_1.png" />
+<img alt="../_images/5_matplotlib_85_1.png" src="../_images/5_matplotlib_85_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1702,7 +1676,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_87_0.png" src="../_images/5_matplotlib_87_0.png" />
+<img alt="../_images/5_matplotlib_86_0.png" src="../_images/5_matplotlib_86_0.png" />
 </div>
 </div>
 <p><strong>ヒートマップの装飾と<a class="reference external" href="https://matplotlib.org/3.5.0/api/_as_gen/matplotlib.pyplot.colorbar.html">カラーバーの追加</a></strong></p>
@@ -1767,7 +1741,7 @@ $<span class="math notranslate nohighlight">\(
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x1d9a6a0a0&gt;
 </pre></div>
 </div>
-<img alt="../_images/5_matplotlib_90_1.png" src="../_images/5_matplotlib_90_1.png" />
+<img alt="../_images/5_matplotlib_89_1.png" src="../_images/5_matplotlib_89_1.png" />
 </div>
 </div>
 </section>
