@@ -258,35 +258,33 @@ fig.savefig('./multi_sin.pdf', bbox_inches='tight');
 
 # **座標軸の範囲**
 
-# - 座標軸の表示範囲を変更するには`ax.set_xlim(x_min, x_max)`および`ax.set_xlim(y_min, y_max)`を実行する．
-# - 第1，第2引数には表示範囲の最小値と最大値を指定する．
-# 
-#     ```python
+# ```python
 #     ax.set_xlim(0, 10)
 #     ax.set_ylim(-3, 3)
-#     ```
+# ```
+# 
+# - 第1，第2引数には表示範囲の最小値と最大値を指定する．
 
 # **アスペクト比**
 
+# ```python
+#     ax.set_aspect('equal')
+# ```
+# 
 # - 図の縦横比をアスペクト比と呼ぶ．
 # - デフォルトではアスペクト比が自動調整されてしまうので，円が楕円に見えるなど，出力結果が歪んでしまう．
-# - アスペクト比が$y$軸の範囲と$x$軸の範囲の比となるように設定するにには以下を実行する：
-# 
-#     ```python
-#     ax.set_aspect('equal')
-#     ```
+# - アスペクト比が $y$ 軸の範囲と $x$ 軸の範囲の比となるように設定するにには以下を実行する：
 
 # **タイトルと軸ラベル**
 
-# - グラフにタイトルを付けるには，`ax.set_title('タイトル', option)`を実行する．
-# - 各軸のラベルを付与するには，`ax.set_xlabel('ラベル名', option)`，`ax.set_ylabel('ラベル名', option)`を実行する．
-# - optionにはfontsizeなどを指定できる．
-# 
-#     ```python
+# ```python
 #     ax.set_title('三角関数のグラフ', fontsize=15)
 #     ax.set_xlabel('角度 $X$ [rad]', fontsize=15)
 #     ax.set_ylabel('$Y$', fontsize=15)
-#     ```
+# ```
+# 
+# - 第１引数にラベル名を指定する．
+# - 第２引数以降にfontsizeなどのoptionを指定する．
 
 # **凡例の追加**
 
