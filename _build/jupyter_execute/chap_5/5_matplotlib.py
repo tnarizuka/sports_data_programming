@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[66]:
+# In[1]:
 
 
 # （必須）モジュールのインポート
@@ -12,13 +12,13 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 
 # 日本語フォントの設定（Mac:'Hiragino Sans', Windows:'MS Gothic'）
-plt.rcParams['font.family'] = 'Hiragino Sans'
+plt.rcParams['font.family'] = 'MS Gothic'
 
 # 表示設定
-np.set_printoptions(suppress=True, precision=3)  # 指数表記にしない
+np.set_printoptions(suppress=True, precision=3)
 pd.set_option('display.precision', 3)    # 小数点以下の表示桁
-pd.set_option('display.max_rows', 150)   # 表示する行数の上限
-pd.set_option('display.max_columns', 5)  # 表示する列数の上限
+pd.set_option('display.max_rows', 50)   # 表示する行数の上限
+pd.set_option('display.max_columns', 10)  # 表示する列数の上限
 get_ipython().run_line_magic('precision', '3')
 
 
@@ -41,7 +41,7 @@ get_ipython().run_line_magic('precision', '3')
 # 
 # Matplotlibは以下のようにインポートするのが慣例である．
 
-# In[68]:
+# In[2]:
 
 
 import matplotlib as mpl
@@ -50,23 +50,24 @@ import matplotlib.pyplot as plt
 
 # ### プロットの基本中の基本
 
-# Matplotlibの最も基本的なプロット関数が`pyplot.plot`（以下，単に`plot`メソッド）である．
+# Matplotlibの最も基本的なプロット関数が`plt.plot`（以下，単に`plot`メソッド）である．
 # プロットには２つのスタイルが存在するが，**本講義ではオブジェクト指向スタイルを採用する**（詳細はページ下部の**参考**を参照）．
-# pyplotをpltという名前でインポートした場合は以下のように使用する：
+# `pyplot`を`plt`という名前でインポートした場合は以下のように使用する：
+# 
 # ```python
 # fig, ax = plt.subplots()
 # ax.plot(x, y, option)
 # ```
 
-# `plot`メソッドは第1引数に$x$座標のデータ，第2引数に$y$座標のデータ，第3引数以降に色・マーカー・線種およびその他のオプションを指定する．
-# 指定するデータはリストやNumPy配列，Seriesなどに対応している．
-# 例えば，以下の場合は$(0, 1)$，$(1, -1)$，$(2, 1)$，$(3, -1)$に`'x'`マーカーがプロットされ，その間が線で結ばれる．
+# `plot`メソッドは第1引数に $x$ 座標のデータ，第2引数に $y$ 座標のデータ，第3引数以降に色・マーカー・線種およびその他のオプションを指定する．
+# 指定するデータはリストやNumPy配列などに対応している．
+# 例えば，以下の場合は $ (0, 1) $，$ (1, -1) $，$ (2, 1) $，$ (3, -1) $ に `'x'` マーカーがプロットされ，その間が線で結ばれる．
 
-# In[69]:
+# In[4]:
 
 
 fig, ax = plt.subplots()
-ax.plot([0, 1, 2, 3], [1, -1, 1, -1], 'x-')
+ax.plot([0, 1, 2, 3], [1, -1, 1, -1], 'x-');
 
 
 # ### グラフ作成の一連の流れ

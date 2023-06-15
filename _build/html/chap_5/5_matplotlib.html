@@ -686,13 +686,13 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="c1"># 日本語フォントの設定（Mac:&#39;Hiragino Sans&#39;, Windows:&#39;MS Gothic&#39;）</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Hiragino Sans&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;MS Gothic&#39;</span>
 
 <span class="c1"># 表示設定</span>
-<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># 指数表記にしない</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.precision&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>    <span class="c1"># 小数点以下の表示桁</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>   <span class="c1"># 表示する行数の上限</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># 表示する列数の上限</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>   <span class="c1"># 表示する行数の上限</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># 表示する列数の上限</span>
 <span class="o">%</span><span class="k">precision</span> 3
 </pre></div>
 </div>
@@ -733,28 +733,25 @@ title="Print to PDF"
 </section>
 <section id="id3">
 <h3><span class="section-number">5.1.2. </span>プロットの基本中の基本<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>Matplotlibの最も基本的なプロット関数が<code class="docutils literal notranslate"><span class="pre">pyplot.plot</span></code>（以下，単に<code class="docutils literal notranslate"><span class="pre">plot</span></code>メソッド）である．
+<p>Matplotlibの最も基本的なプロット関数が<code class="docutils literal notranslate"><span class="pre">plt.plot</span></code>（以下，単に<code class="docutils literal notranslate"><span class="pre">plot</span></code>メソッド）である．
 プロットには２つのスタイルが存在するが，<strong>本講義ではオブジェクト指向スタイルを採用する</strong>（詳細はページ下部の<strong>参考</strong>を参照）．
-pyplotをpltという名前でインポートした場合は以下のように使用する：</p>
+<code class="docutils literal notranslate"><span class="pre">pyplot</span></code>を<code class="docutils literal notranslate"><span class="pre">plt</span></code>という名前でインポートした場合は以下のように使用する：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">plot</span></code>メソッドは第1引数に<span class="math notranslate nohighlight">\(x\)</span>座標のデータ，第2引数に<span class="math notranslate nohighlight">\(y\)</span>座標のデータ，第3引数以降に色・マーカー・線種およびその他のオプションを指定する．
-指定するデータはリストやNumPy配列，Seriesなどに対応している．
-例えば，以下の場合は<span class="math notranslate nohighlight">\((0, 1)\)</span>，<span class="math notranslate nohighlight">\((1, -1)\)</span>，<span class="math notranslate nohighlight">\((2, 1)\)</span>，<span class="math notranslate nohighlight">\((3, -1)\)</span>に<code class="docutils literal notranslate"><span class="pre">'x'</span></code>マーカーがプロットされ，その間が線で結ばれる．</p>
+<p><code class="docutils literal notranslate"><span class="pre">plot</span></code>メソッドは第1引数に <span class="math notranslate nohighlight">\(x\)</span> 座標のデータ，第2引数に <span class="math notranslate nohighlight">\(y\)</span> 座標のデータ，第3引数以降に色・マーカー・線種およびその他のオプションを指定する．
+指定するデータはリストやNumPy配列などに対応している．
+例えば，以下の場合は <span class="math notranslate nohighlight">\( (0, 1) \)</span>，<span class="math notranslate nohighlight">\( (1, -1) \)</span>，<span class="math notranslate nohighlight">\( (2, 1) \)</span>，<span class="math notranslate nohighlight">\( (3, -1) \)</span> に <code class="docutils literal notranslate"><span class="pre">'x'</span></code> マーカーがプロットされ，その間が線で結ばれる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;x-&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;x-&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1dac27340&gt;]
-</pre></div>
-</div>
-<img alt="../_images/5_matplotlib_10_1.png" src="../_images/5_matplotlib_10_1.png" />
+<img alt="../_images/5_matplotlib_10_0.png" src="../_images/5_matplotlib_10_0.png" />
 </div>
 </div>
 </section>
