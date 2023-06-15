@@ -518,6 +518,28 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id15">
+   Matplotlib
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matplotlib-output">
+     描画結果の出力先
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id17">
+     ２つのプロットスタイル
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#figureaxes">
+     FigureとAxesの生成
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
     </nav>
@@ -676,6 +698,28 @@ title="Print to PDF"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id14">
      データの重複処理
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id15">
+   Matplotlib
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matplotlib-output">
+     描画結果の出力先
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id17">
+     ２つのプロットスタイル
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#figureaxes">
+     FigureとAxesの生成
     </a>
    </li>
   </ul>
@@ -1431,28 +1475,10 @@ ndim: 2
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-
-
-
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-
-
-
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">304</span><span class="o">-</span><span class="mf">3848842e8117</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-
-
-
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># 形状(3, 3)と(2, 1)</span>
-
-
-
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">x2_2</span> <span class="o">+</span> <span class="n">y1</span>
-
-
-
-
-
-
+<span class="nn">/Users/narizuka/work/document/lecture/rissho/sport_programming/book/appendix/appendix.ipynb セル 84</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/narizuka/work/document/lecture/rissho/sport_programming/book/appendix/appendix.ipynb#Y146sZmlsZQ%3D%3D?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="c1"># 形状(3, 3)と(2, 1)：エラーが出る</span>
+<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/narizuka/work/document/lecture/rissho/sport_programming/book/appendix/appendix.ipynb#Y146sZmlsZQ%3D%3D?line=1&#39;</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">x2_2</span> <span class="o">+</span> <span class="n">y1</span>
 
 <span class="ne">ValueError</span>: operands could not be broadcast together with shapes (3,3) (2,1) 
 </pre></div>
@@ -2934,6 +2960,283 @@ dtype: bool
   </tbody>
 </table>
 </div></div></div>
+</div>
+</section>
+</section>
+<section id="id15">
+<h2>Matplotlib<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">#</a></h2>
+<section id="matplotlib-output">
+<span id="id16"></span><h3>描画結果の出力先<a class="headerlink" href="#matplotlib-output" title="このヘッドラインへのパーマリンク">#</a></h3>
+<p>Matplotlibは使う環境によってグラフを画面に出力する方法が異なる．
+ここではJupyter NotebookとPythonスクリプトでの出力方法を解説する．</p>
+<p><strong>（推奨）Jupyter Labで実行し，Notebook内に表示する</strong></p>
+<p>Jupyterのマジックコマンド<code class="docutils literal notranslate"><span class="pre">%matplotlib</span></code>の後に<code class="docutils literal notranslate"><span class="pre">inline</span></code>を指定すると，コードセルの下に描画結果が表示される．
+デフォルトではこの設定になっているはずである．</p>
+<p><strong>※ 一番最後のコマンドにセミコロンを付けることがある．これは，不要な文字列が出力されるのを防ぐ（隠す）ためである．</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># notebook内に出力する</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/appendix_143_0.png" src="../_images/appendix_143_0.png" />
+</div>
+</div>
+<p><strong>（参考）Jupyter Labで実行し，別ウインドウに表示する</strong></p>
+<p>Jupyterのマジックコマンド<code class="docutils literal notranslate"><span class="pre">%matplotlib</span></code>の後に<code class="docutils literal notranslate"><span class="pre">tk</span></code>を指定すると，描画結果が別画面に出力される．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 別ウインドウに出力する</span>
+<span class="o">%</span><span class="k">matplotlib</span> tk
+</pre></div>
+</div>
+</div>
+</div>
+<p>なお，'inline'や'tk'はバックエンドと呼ばれ，以下が利用可能である．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 現在のバックエンドを確認</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">get_backend</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TkAgg
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 利用可能なバックエンドのリストを表示</span>
+<span class="o">%</span><span class="k">matplotlib</span> --list
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Available matplotlib backends: [&#39;tk&#39;, &#39;gtk&#39;, &#39;gtk3&#39;, &#39;gtk4&#39;, &#39;wx&#39;, &#39;qt4&#39;, &#39;qt5&#39;, &#39;qt6&#39;, &#39;qt&#39;, &#39;osx&#39;, &#39;nbagg&#39;, &#39;notebook&#39;, &#39;agg&#39;, &#39;svg&#39;, &#39;pdf&#39;, &#39;ps&#39;, &#39;inline&#39;, &#39;ipympl&#39;, &#39;widget&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id17">
+<h3>２つのプロットスタイル<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">#</a></h3>
+<p><strong>FigureとAxes</strong></p>
+<p>Matplotlibの描画エリアは下図のようにFigureオブジェクト, Axesオブジェクトという要素で構成されている．
+Figureは描画エリア全体を表し，その中に複数のAxes（座標軸）が存在するという構造になっている．
+グラフのプロットや装飾はAxesオブジェクト（座標軸）のメソッドを用いて行う．</p>
+<figure class="align-default" id="fig-fig-axes">
+<a class="reference internal image-reference" href="../_images/fig_axes.png"><img alt="../_images/fig_axes.png" src="../_images/fig_axes.png" style="height: 250px;" /></a>
+<figcaption>
+<p><span class="caption-number">図 1 </span><span class="caption-text">MatplotlibにおけるFigureオブジェクトとAxesオブジェクト</span><a class="headerlink" href="#fig-fig-axes" title="この画像へのパーマリンク">#</a></p>
+</figcaption>
+</figure>
+<p>Matplotlibには２つのプロットスタイルが存在し，方法１を<strong>オブジェクト指向スタイル</strong>，方法２を<strong>MATLABスタイル</strong>と呼ぶ．
+オブジェクト指向スタイルでは，FigureオブジェクトとAxesオブジェクトを明示的に生成し，生成したオブジェクトのメソッドを用いてグラフを作成する．
+この方法は，ややコードが長くなるが，グラフの細部の調整を行いたい場合に便利である．
+一方，MATLABスタイルはFigureオブジェクトとAxesオブジェクトを明示的に生成しないので，手軽にプロットできるが，複雑なグラフや細かい調整を行うには不便である．
+<strong>本講義では，オブジェクト指向スタイルを採用する．</strong></p>
+<p><strong>（推奨）方法１：オブジェクト指向スタイル</strong></p>
+<p>オブジェクト指向スタイルでは，FigureオブジェクトとAxesオブジェクトを明示的に生成した上で，生成したオブジェクトのメソッドを用いてプロットを行う．
+基本的には以下の手順に従う．</p>
+<ol>
+<li><p>FigureオブジェクトとAxesオブジェクトを生成する</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</li>
+<li><p>Axesオブジェクトのメソッドを用いてプロットする</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Axesを装飾する</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Figureを保存する</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;abc.pdf&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">pad_inches</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># FigureとAxesを生成する</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="c1"># Axesに対してプロットする</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="c1"># Axesを装飾する</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+
+<span class="c1"># Figureを保存する</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./5_matplotlib/1_axes.pdf&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">,</span> <span class="n">pad_inches</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>（非推奨）方法２：MATLABスタイル</strong></p>
+<p>MATLABスタイルの場合，FigureとAxesの生成は自動的に行われる．
+オブジェクト指向スタイルでは生成したAxesに対して<code class="docutils literal notranslate"><span class="pre">ax.plot()</span></code>のようにプロットしたが，
+MATLABスタイルでは，プロット，装飾，保存など全てのコマンドが<code class="docutils literal notranslate"><span class="pre">plt.</span></code>から始まる．
+特に，グラフの装飾のコマンドに<code class="docutils literal notranslate"><span class="pre">set_</span></code>が付かないことに注意する．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットする</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="c1"># Axesを装飾する</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+
+<span class="c1"># Figureを保存する</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./5_matplotlib/1_axes.pdf&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">,</span> <span class="n">pad_inches</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="figureaxes">
+<h3>FigureとAxesの生成<a class="headerlink" href="#figureaxes" title="このヘッドラインへのパーマリンク">#</a></h3>
+<p><strong>FigureとAxesを同時に生成</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">plt.subplots(nrows,</span> <span class="pre">ncols,</span> <span class="pre">option)</span></code>により，FigureとAxesを同時に生成できる．
+通常は<code class="docutils literal notranslate"><span class="pre">nrows</span></code>と<code class="docutils literal notranslate"><span class="pre">ncols</span></code>を省略し，<code class="docutils literal notranslate"><span class="pre">fig,</span> <span class="pre">ax</span> <span class="pre">=</span> <span class="pre">plt.subplots()</span></code>のようにして1つのAxesだけを生成する．
+複数のAxesを生成した場合は<code class="docutils literal notranslate"><span class="pre">nrows</span></code>に縦方向の分割数，<code class="docutils literal notranslate"><span class="pre">ncols</span></code>に横方向の分割数を指定する．
+例えば，<code class="docutils literal notranslate"><span class="pre">nrows=2,</span> <span class="pre">ncols=3</span></code>とすると，2×3=6個のAxesが生成される．
+これ以外に以下のオプションがある．</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>オプション</p></th>
+<th class="head"><p>内容</p></th>
+<th class="head"><p>指定の仕方</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>figsize</p></td>
+<td><p>Figureのサイズ</p></td>
+<td><p>(width, height)</p></td>
+</tr>
+<tr class="row-odd"><td><p>facecolor</p></td>
+<td><p>背景の色</p></td>
+<td><p>'white'（デフォルト）, 'red'など</p></td>
+</tr>
+<tr class="row-even"><td><p>tight_layout</p></td>
+<td><p>余白の自動調整</p></td>
+<td><p>True or False</p></td>
+</tr>
+<tr class="row-odd"><td><p>linewidth</p></td>
+<td><p>枠線の太さ</p></td>
+<td><p>数値</p></td>
+</tr>
+<tr class="row-even"><td><p>edgecolor</p></td>
+<td><p>枠線の色</p></td>
+<td><p>'black', Noneなど</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Figureと1つのAxesを生成する</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="c1"># Axesに対してプロットする</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="c1"># Axesを装飾する</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+
+<span class="c1"># Figureを保存する</span>
+<span class="c1"># fig.savefig(&#39;./5_matplotlib/1_axes.pdf&#39;, bbox_inches=&quot;tight&quot;, pad_inches=0.2, transparent=True, dpi=300)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Y&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;複数のAxes&#39;&#39;&#39;</span>
+
+<span class="c1"># Figureと複数のAxesを生成する</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Axesに対してプロットする</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="c1"># Axesを装飾する</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+
+<span class="c1"># Figureを保存する</span>
+<span class="c1"># fig.savefig(&#39;./5_matplotlib/2_axes.pdf&#39;, bbox_inches=&#39;tight&#39;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Y&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Figureを生成して，後からAxesを追加</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">fig</span> <span class="pre">=</span> <span class="pre">plt.figure()</span></code>でFigureのみを生成できる．オプションは<code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code>と同じ．
+また，<code class="docutils literal notranslate"><span class="pre">fig.add_subplot(LMN)</span></code>でAxesを1つずつ追加できる．
+ここで，Lは行方向の分割数，Mは列方向の分割数，Nは追加したいAxesの番号を表す．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Figureの生成</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># Axesの追加</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+
+<span class="c1"># Axesに対するプロット</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="c1"># Axesの装飾</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+
+<span class="c1"># Figureの保存</span>
+<span class="c1"># fig.savefig(&#39;./5_matplotlib/2_axes.pdf&#39;, bbox_inches=&#39;tight&#39;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Y&#39;)
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>

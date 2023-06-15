@@ -436,7 +436,7 @@ np.delete(x, [1, 3], axis=1)
 #     - 2つの配列の各次元の長さが異なる場合，サイズが1の次元に限り他方の配列に合うようにサイズを引き伸ばす．
 #     - これにより形状が合わない場合はエラーとなる．
 
-# In[ ]:
+# In[4]:
 
 
 x2 = np.array([[1,2,3], [4,5,6]])
@@ -445,7 +445,7 @@ print('ndim:', x2.ndim)
 x2
 
 
-# In[ ]:
+# In[5]:
 
 
 y1 = np.array([[1], [2]])
@@ -454,7 +454,7 @@ print('ndim:', y1.ndim)
 y1
 
 
-# In[ ]:
+# In[6]:
 
 
 z1 = np.array([1, 2, 3])
@@ -463,21 +463,21 @@ print('ndim:', z1.ndim)
 z1
 
 
-# In[ ]:
+# In[7]:
 
 
 # 形状(2, 3)と(2, 1)
 x2+y1
 
 
-# In[ ]:
+# In[8]:
 
 
 # 形状(2, 3)と(1, 3)
 x2+z1
 
 
-# In[ ]:
+# In[9]:
 
 
 # 形状(2, 1)と(1, 3)
@@ -486,7 +486,7 @@ y1+z1
 
 # 以下はエラーになる
 
-# In[ ]:
+# In[10]:
 
 
 x2_2 = np.array([[1,2,3], [4,5,6], [7,8,9]])
@@ -495,7 +495,7 @@ print('ndim:', x2_2.ndim)
 x2_2
 
 
-# In[ ]:
+# In[11]:
 
 
 # 形状(3, 3)と(2, 1)：エラーが出る
@@ -803,4 +803,233 @@ df.loc[df.duplicated(keep='first', subset=None)]
 
 # 重複する最後の行は検出しない
 df.loc[df.duplicated(keep='last', subset=None)]
+
+
+# ## Matplotlib
+
+# (matplotlib_output)=
+# ### 描画結果の出力先
+# 
+# Matplotlibは使う環境によってグラフを画面に出力する方法が異なる．
+# ここではJupyter NotebookとPythonスクリプトでの出力方法を解説する．
+
+# **（推奨）Jupyter Labで実行し，Notebook内に表示する**
+
+# Jupyterのマジックコマンド`%matplotlib`の後に`inline`を指定すると，コードセルの下に描画結果が表示される．
+# デフォルトではこの設定になっているはずである．
+# 
+# **※ 一番最後のコマンドにセミコロンを付けることがある．これは，不要な文字列が出力されるのを防ぐ（隠す）ためである．**
+
+# In[ ]:
+
+
+# notebook内に出力する
+get_ipython().run_line_magic('matplotlib', 'inline')
+
+
+# In[ ]:
+
+
+fig, ax = plt.subplots()
+x = np.linspace(0, 2*np.pi)
+plt.plot(x, np.sin(x));
+
+
+# **（参考）Jupyter Labで実行し，別ウインドウに表示する**
+
+# Jupyterのマジックコマンド`%matplotlib`の後に`tk`を指定すると，描画結果が別画面に出力される．
+
+# In[ ]:
+
+
+# 別ウインドウに出力する
+get_ipython().run_line_magic('matplotlib', 'tk')
+
+
+# なお，'inline'や'tk'はバックエンドと呼ばれ，以下が利用可能である．
+
+# In[ ]:
+
+
+# 現在のバックエンドを確認
+print(matplotlib.get_backend())
+
+
+# In[ ]:
+
+
+# 利用可能なバックエンドのリストを表示
+get_ipython().run_line_magic('matplotlib', '--list')
+
+
+# ### ２つのプロットスタイル
+
+# **FigureとAxes**
+
+# Matplotlibの描画エリアは下図のようにFigureオブジェクト, Axesオブジェクトという要素で構成されている．
+# Figureは描画エリア全体を表し，その中に複数のAxes（座標軸）が存在するという構造になっている．
+# グラフのプロットや装飾はAxesオブジェクト（座標軸）のメソッドを用いて行う．
+
+# ```{figure} ../figure/fig_axes.png
+# ---
+# height: 250px
+# name: fig:fig_axes
+# ---
+# MatplotlibにおけるFigureオブジェクトとAxesオブジェクト
+# ```
+
+# Matplotlibには２つのプロットスタイルが存在し，方法１を**オブジェクト指向スタイル**，方法２を**MATLABスタイル**と呼ぶ．
+# オブジェクト指向スタイルでは，FigureオブジェクトとAxesオブジェクトを明示的に生成し，生成したオブジェクトのメソッドを用いてグラフを作成する．
+# この方法は，ややコードが長くなるが，グラフの細部の調整を行いたい場合に便利である．
+# 一方，MATLABスタイルはFigureオブジェクトとAxesオブジェクトを明示的に生成しないので，手軽にプロットできるが，複雑なグラフや細かい調整を行うには不便である．
+# **本講義では，オブジェクト指向スタイルを採用する．**
+
+# **（推奨）方法１：オブジェクト指向スタイル**
+
+# オブジェクト指向スタイルでは，FigureオブジェクトとAxesオブジェクトを明示的に生成した上で，生成したオブジェクトのメソッドを用いてプロットを行う．
+# 基本的には以下の手順に従う．
+
+# 1. FigureオブジェクトとAxesオブジェクトを生成する
+#     ```python
+#     fig, ax = plt.subplots(figsize=(4, 3))
+#     ```
+# 2. Axesオブジェクトのメソッドを用いてプロットする
+#     ```python
+#     ax.plot(x, y, option)
+#     ax.bar(x, y, option)
+#     ```
+# 3. Axesを装飾する
+#     ```python
+#     ax.set_xlim(xmin, xmax)
+#     ax.set_xlabel('X')
+#     ```
+# 4. Figureを保存する
+#     ```python
+#     fig.savefig('abc.pdf', dpi=80, transparent=True, bbox_inches='tight', pad_inches=0.2)
+#     ```
+
+# In[ ]:
+
+
+# FigureとAxesを生成する
+fig, ax = plt.subplots()
+
+# Axesに対してプロットする
+x = np.linspace(0, 2*np.pi)
+ax.plot(x, np.sin(x))
+ax.plot(x, np.cos(x))
+
+# Axesを装飾する
+ax.set_xlabel('X'); ax.set_ylabel('Y')
+
+# Figureを保存する
+fig.savefig('./5_matplotlib/1_axes.pdf', bbox_inches="tight", pad_inches=0.2, transparent=True, dpi=300)
+
+
+# **（非推奨）方法２：MATLABスタイル**
+
+# MATLABスタイルの場合，FigureとAxesの生成は自動的に行われる．
+# オブジェクト指向スタイルでは生成したAxesに対して`ax.plot()`のようにプロットしたが，
+# MATLABスタイルでは，プロット，装飾，保存など全てのコマンドが`plt.`から始まる．
+# 特に，グラフの装飾のコマンドに`set_`が付かないことに注意する．
+
+# In[ ]:
+
+
+# プロットする
+x = np.linspace(0, 2*np.pi)
+plt.plot(x, np.sin(x))
+plt.plot(x, 2*np.sin(x))
+
+# Axesを装飾する
+plt.xlabel('X'); plt.ylabel('Y')
+
+# Figureを保存する
+plt.savefig('./5_matplotlib/1_axes.pdf', bbox_inches="tight", pad_inches=0.2, transparent=True, dpi=300)
+
+
+# ### FigureとAxesの生成
+
+# **FigureとAxesを同時に生成**
+
+# `plt.subplots(nrows, ncols, option)`により，FigureとAxesを同時に生成できる．
+# 通常は`nrows`と`ncols`を省略し，`fig, ax = plt.subplots()`のようにして1つのAxesだけを生成する．
+# 複数のAxesを生成した場合は`nrows`に縦方向の分割数，`ncols`に横方向の分割数を指定する．
+# 例えば，`nrows=2, ncols=3`とすると，2×3=6個のAxesが生成される．
+# これ以外に以下のオプションがある．
+
+# | オプション | 内容 | 指定の仕方 |
+# | ---- | ---- | ---- | 
+# | figsize | Figureのサイズ | (width, height) |
+# | facecolor | 背景の色 | 'white'（デフォルト）, 'red'など |
+# | tight_layout | 余白の自動調整 | True or False |
+# | linewidth | 枠線の太さ | 数値 |
+# | edgecolor | 枠線の色 | 'black', Noneなど |
+
+# In[ ]:
+
+
+# Figureと1つのAxesを生成する
+fig, ax = plt.subplots()
+
+# Axesに対してプロットする
+x = np.linspace(0, 2*np.pi)
+ax.plot(x, np.sin(x))
+ax.plot(x, np.cos(x))
+
+# Axesを装飾する
+ax.set_xlabel('X'); ax.set_ylabel('Y')
+
+# Figureを保存する
+# fig.savefig('./5_matplotlib/1_axes.pdf', bbox_inches="tight", pad_inches=0.2, transparent=True, dpi=300)
+
+
+# In[ ]:
+
+
+'''複数のAxes'''
+
+# Figureと複数のAxesを生成する
+fig, axs = plt.subplots(1, 2, figsize=(7, 2), facecolor='white', tight_layout=True)
+
+# Axesに対してプロットする
+x = np.linspace(0, 2*np.pi)
+axs[0].plot(x, np.sin(x))
+axs[1].plot(x, np.cos(x))
+
+# Axesを装飾する
+axs[0].set_xlabel('X'); axs[0].set_ylabel('Y')
+axs[1].set_xlabel('X'); axs[1].set_ylabel('Y')
+
+# Figureを保存する
+# fig.savefig('./5_matplotlib/2_axes.pdf', bbox_inches='tight')
+
+
+# **Figureを生成して，後からAxesを追加**
+
+# `fig = plt.figure()`でFigureのみを生成できる．オプションは`plt.subplots()`と同じ．
+# また，`fig.add_subplot(LMN)`でAxesを1つずつ追加できる．
+# ここで，Lは行方向の分割数，Mは列方向の分割数，Nは追加したいAxesの番号を表す．
+
+# In[ ]:
+
+
+# Figureの生成
+fig = plt.figure(figsize=(7, 2))
+
+# Axesの追加
+ax1 = fig.add_subplot(121)
+ax2 = fig.add_subplot(122)
+
+# Axesに対するプロット
+x = np.linspace(0, 2*np.pi)
+ax1.plot(x, np.sin(x))
+ax2.plot(x, np.cos(x))
+
+# Axesの装飾
+ax1.set_xlabel('X'); ax1.set_ylabel('Y')
+ax2.set_xlabel('X'); ax2.set_ylabel('Y')
+
+# Figureの保存
+# fig.savefig('./5_matplotlib/2_axes.pdf', bbox_inches='tight')
 
