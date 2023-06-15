@@ -109,7 +109,7 @@ fig.savefig('./sample_graph.pdf', bbox_inches="tight", pad_inches=0.2, transpare
 
 # | オプション名 | 省略表記 | 内容 | 指定の仕方（例） | 
 # | ---- | ---- | ---- | ---- |
-# | color | c | 色 | `k`(='black'), 'r'(='red') |
+# | color | c | 色 | 'k'(='black'), 'r'(='red'), 'b'(='blue') |
 # | linestyle | ls | 線種 | '-', '--', ':' , '-.', 'None' |
 # | marker | なし |マーカーの種類 | 'x', 'o', '^', '.', '+', 's', 'd' |
 # | markersize | ms | マーカーのサイズ | 数値 |
