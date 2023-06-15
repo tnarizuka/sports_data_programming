@@ -901,20 +901,18 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </section>
 <section id="id8">
 <h3><span class="section-number">5.2.3. </span>矢印<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">#</a></h3>
-<ul class="simple">
+<ul>
 <li><p>矢印を描くには，<code class="docutils literal notranslate"><span class="pre">quiver</span></code>メソッドを用いる．</p></li>
-<li><p>始点 <span class="math notranslate nohighlight">\((x, y)\)</span> から <span class="math notranslate nohighlight">\((u, v)\)</span> の方向に長さ<span class="math notranslate nohighlight">\(\sqrt{u^2 + v^2}\)</span>の矢印を描くには，以下のように実行する：</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;uv&#39;</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<li><p>始点 <span class="math notranslate nohighlight">\((x, y)\)</span> から <span class="math notranslate nohighlight">\((u, v)\)</span> の方向に長さ<span class="math notranslate nohighlight">\(\sqrt{u^2 + v^2}\)</span>の矢印を描くには，以下のように実行する：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;uv&#39;</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>ただし，以下のようにアスペクト比を'equal'に変更しないと見た目がずれる：</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+</li>
+<li><p>ただし，以下のようにアスペクト比を'equal'に変更しないと見た目がずれる：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<ul class="simple">
+</li>
 <li><p>'angles'，'units'，'scale'などは挙動が分かりにくいので，詳しくは<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.quiver.html">ここ</a>を参照のこと．</p></li>
 </ul>
 <div class="cell docutils container">
