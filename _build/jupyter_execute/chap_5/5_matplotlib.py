@@ -297,12 +297,12 @@ fig.savefig('./multi_sin.pdf', bbox_inches='tight');
 # - その上で，以下のように`ax.legend(option)`を実行する．
 # - 主要なoptionを以下に示す
 # 
-#     | オプション |  内容 | 指定の仕方（例） | 
-#     | ---- | ---- | ---- |
-#     | loc | 凡例の位置 | 'best', 'upper left', 'center', 'lower right' |
-#     | fontsize | 文字の大きさ | 数値 |
-#     | frameon | 枠で囲う | True / False |
-#     | numpoints | マーカーの数 | 数値 |
+# | オプション |  内容 | 指定の仕方（例） | 
+# | ---- | ---- | ---- |
+# | loc | 凡例の位置 | 'best', 'upper left', 'center', 'lower right' |
+# | fontsize | 文字の大きさ | 数値 |
+# | frameon | 枠で囲う | True / False |
+# | numpoints | マーカーの数 | 数値 |
 
 # ### 目盛り線の表示
 # 
