@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[28]:
 
 
 # （必須）モジュールのインポート
@@ -12,7 +12,7 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 
 # 日本語フォントの設定（Mac:'Hiragino Sans', Windows:'MS Gothic'）
-plt.rcParams['font.family'] = 'MS Gothic'
+plt.rcParams['font.family'] = 'Hiragino Sans'
 
 # 表示設定
 np.set_printoptions(suppress=True, precision=3)
@@ -209,7 +209,7 @@ ax.set_xlim([0, 3]); plt.ylim([0, 3]);
 # グラフを装飾するには`ax.メソッド名`のように装飾メソッドを呼び出す．
 # 以下に主要なメソッドを用いたグラフ装飾の例を示す．
 
-# In[77]:
+# In[29]:
 
 
 '''FigureとAxesの生成'''
@@ -253,53 +253,55 @@ ax.set_xticklabels(['0', '$\pi$', '$2\pi$', '$3\pi$'])
 ax.tick_params(axis='both', labelsize=12)
 
 '''Figureの保存'''
-fig.savefig('./5_matplotlib/multi_sin.pdf', bbox_inches='tight')
+fig.savefig('./multi_sin.pdf', bbox_inches='tight');
 
 
-# ### 座標軸の範囲
+# **座標軸の範囲**
 
 # - 座標軸の表示範囲を変更するには`ax.set_xlim(x_min, x_max)`および`ax.set_xlim(y_min, y_max)`を実行する．
 # - 第1，第2引数には表示範囲の最小値と最大値を指定する．
 # 
-# ```python
-# ax.set_xlim(0, 10)
-# ax.set_ylim(-3, 3)
-# ```
+#     ```python
+#     ax.set_xlim(0, 10)
+#     ax.set_ylim(-3, 3)
+#     ```
 
-# ### アスペクト比
+# **アスペクト比**
 
 # - 図の縦横比をアスペクト比と呼ぶ．
 # - デフォルトではアスペクト比が自動調整されてしまうので，円が楕円に見えるなど，出力結果が歪んでしまう．
 # - アスペクト比が$y$軸の範囲と$x$軸の範囲の比となるように設定するにには以下を実行する：
 # 
-# ```python
-# ax.set_aspect('equal')
-# ```
+#     ```python
+#     ax.set_aspect('equal')
+#     ```
 
-# ### タイトルと軸ラベル
+# **タイトルと軸ラベル**
 
 # - グラフにタイトルを付けるには，`ax.set_title('タイトル', option)`を実行する．
 # - 各軸のラベルを付与するには，`ax.set_xlabel('ラベル名', option)`，`ax.set_ylabel('ラベル名', option)`を実行する．
 # - optionにはfontsizeなどを指定できる．
 # 
-# ```python
-# ax.set_title('三角関数のグラフ', fontsize=15)
-# ax.set_xlabel('角度 $X$ [rad]', fontsize=15)
-# ax.set_ylabel('$Y$', fontsize=15)
-# ```
+#     ```python
+#     ax.set_title('三角関数のグラフ', fontsize=15)
+#     ax.set_xlabel('角度 $X$ [rad]', fontsize=15)
+#     ax.set_ylabel('$Y$', fontsize=15)
+#     ```
 
-# ### 凡例の追加
+# **凡例の追加**
 
 # - 凡例を表示するには，まず`plot`メソッドの`label`引数で表示したいラベル名を指定する：
 # 
-# ```python
-# ax.plot(x, np.sin(x), '-', label='A')
-# ```
+#     ```python
+#     ax.plot(x, np.sin(x), '-', label='A')
+#     ```
+#     
 # - その上で，以下のように`ax.legend(option)`を実行する：
 # 
-# ```python
-# ax.legend(numpoints=1, loc='best', frameon=True)
-# ```
+#     ```python
+#     ax.legend(numpoints=1, loc='best', frameon=True)
+#     ```
+#     
 # - 主要なoptionを以下に示す
 # 
 # | オプション |  内容 | 指定の仕方（例） | 
