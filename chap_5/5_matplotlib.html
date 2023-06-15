@@ -935,15 +935,15 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </div>
 <p><strong>座標軸の範囲</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>第1，第2引数には表示範囲の最小値と最大値を指定する．</p></li>
 </ul>
 <p><strong>アスペクト比</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -952,9 +952,9 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <li><p>アスペクト比が <span class="math notranslate nohighlight">\(y\)</span> 軸の範囲と <span class="math notranslate nohighlight">\(x\)</span> 軸の範囲の比となるように設定するにには以下を実行する：</p></li>
 </ul>
 <p><strong>タイトルと軸ラベル</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;三角関数のグラフ&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;角度 $X$ [rad]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$Y$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;三角関数のグラフ&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;角度 $X$ [rad]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$Y$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -962,19 +962,14 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <li><p>第２引数以降にfontsizeなどのoptionを指定する．</p></li>
 </ul>
 <p><strong>凡例の追加</strong></p>
-<ul>
-<li><p>凡例を表示するには，まず<code class="docutils literal notranslate"><span class="pre">plot</span></code>メソッドの<code class="docutils literal notranslate"><span class="pre">label</span></code>引数で表示したいラベル名を指定する：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">numpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-</li>
-<li><p>その上で，以下のように<code class="docutils literal notranslate"><span class="pre">ax.legend(option)</span></code>を実行する：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">numpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</li>
-<li><p>主要なoptionを以下に示す</p></li>
-</ul>
+<ul>
+<li><p>まず，<code class="docutils literal notranslate"><span class="pre">plot</span></code>メソッドの<code class="docutils literal notranslate"><span class="pre">label</span></code>引数で表示したいラベル名を指定する．</p></li>
+<li><p>その上で，以下のように<code class="docutils literal notranslate"><span class="pre">ax.legend(option)</span></code>を実行する．</p></li>
+<li><p>主要なoptionを以下に示す</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>オプション</p></th>
@@ -1001,6 +996,8 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </tr>
 </tbody>
 </table>
+</li>
+</ul>
 <section id="id10">
 <h3><span class="section-number">5.3.1. </span>目盛り線の表示<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">#</a></h3>
 <ul class="simple">
