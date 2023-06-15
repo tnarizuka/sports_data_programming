@@ -364,12 +364,12 @@ fig.savefig('./multi_sin.pdf', bbox_inches='tight');
 # - Pythonにおいてポアソン分布を扱うには，まず`scipy.stats.poisson`をインポートする．
 # - その上で，値 $x$ に対してパラメータ $lmd$ のポアソン分布を計算するには `poisson.pmf(x, lmd)` とする．
 
-# In[35]:
+# In[36]:
 
 
 from scipy.stats import poisson
 x = np.arange(0, 10)
-poisson.pmf(x, 5)
+poisson.pmf(x, 5);
 
 
 # ポアソン分布のグラフを以下の条件で作成せよ：
