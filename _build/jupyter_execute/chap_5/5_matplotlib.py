@@ -358,13 +358,13 @@ fig.savefig('./multi_sin.pdf', bbox_inches='tight');
 # 期待値$\lambda$のポアソン分布は以下で定義される：
 # 
 # $$
-#     f(x) = \frac{m^x}{x!} \mathrm{e}^{-m x}
+#     f(x) = \frac{\lambda^x}{x!} \mathrm{e}^{-\lambda x}
 # $$
 
-# Pythonにおいてポアソン分布を扱うには，まず`scipy.stats.poisson`をインポートする．
-# その上で，値$x$に対してパラメータ$m$のポアソン分布を計算するには`poisson.pmf(x, m)`とする．
+# - Pythonにおいてポアソン分布を扱うには，まず`scipy.stats.poisson`をインポートする．
+# - その上で，値 $x$ に対してパラメータ $lmd$ のポアソン分布を計算するには `poisson.pmf(x, lmd)` とする．
 
-# In[78]:
+# In[35]:
 
 
 from scipy.stats import poisson
@@ -373,12 +373,13 @@ poisson.pmf(x, 5)
 
 
 # ポアソン分布のグラフを以下の条件で作成せよ：
-# - $m=1,4,10$のポアソン分布を重ね書き
-# - $m$の値ごとに異なるマーカーを用い，マーカー間は線で結ぶ
+# - $\lambda=1,4,10$のポアソン分布を重ね書き
+# - $\lambda$の値ごとに異なるマーカーを用い，マーカー間は線で結ぶ
 # - $x$軸の範囲：$0\le x \le 20$
 # - $y$軸の範囲：$0 \le y \le 0.4$
 # - $x$軸に好きなラベルを設定
 # - $y$軸に好きなラベルを設定
+# - 凡例を表示
 # - グラフを好きな名前で保存
 
 # ## 箱ひげ図とヒストグラム
