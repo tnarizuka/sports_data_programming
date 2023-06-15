@@ -177,7 +177,7 @@ ax.plot(x, x+3, ls='-.');
 
 # - Matplotlibで棒グラフを描くには`bar`メソッドを用いる：
 #     ```python
-#         ax.bar(x, h, width=1.0, option)
+#     ax.bar(x, h, width=1.0, option)
 #     ```
 #     
 # - 第１引数`x`には棒グラフを出力する$x$軸上の位置，第２引数`h` には高さを指定する．
@@ -190,7 +190,7 @@ fig, ax = plt.subplots()
 
 x = np.arange(5)
 h = np.arange(1, 6, 1)
-ax.bar(x, h, width=0.2, align='edge', color='w', edgecolor='b')
+ax.bar(x, h, width=0.2, align='edge', color='w', edgecolor='b');
 
 
 # ### （参考）矢印
