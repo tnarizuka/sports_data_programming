@@ -35,6 +35,8 @@ get_ipython().run_line_magic('precision', '3')
 # この中から作成したい図に近いものを見つけ，コードを参考にすると良い．
 # - [Matplotlib公式ギャラリー](https://matplotlib.org/stable/gallery/index.html)
 
+# **※ 一番最後のコマンドにセミコロンを付けることがある．これは，不要な文字列が出力されるのを防ぐ（隠す）ためである．**
+
 # ## Matplotlibの基本操作
 
 # ### Matplotlibのインポート

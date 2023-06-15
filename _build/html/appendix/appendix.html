@@ -529,7 +529,7 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id17">
+    <a class="reference internal nav-link" href="#matplotlib-style">
      ２つのプロットスタイル
     </a>
    </li>
@@ -713,7 +713,7 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id17">
+    <a class="reference internal nav-link" href="#matplotlib-style">
      ２つのプロットスタイル
     </a>
    </li>
@@ -2969,10 +2969,9 @@ dtype: bool
 <span id="id16"></span><h3>描画結果の出力先<a class="headerlink" href="#matplotlib-output" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>Matplotlibは使う環境によってグラフを画面に出力する方法が異なる．
 ここではJupyter NotebookとPythonスクリプトでの出力方法を解説する．</p>
-<p><strong>（推奨）Jupyter Labで実行し，Notebook内に表示する</strong></p>
+<p><strong>（デフォルト）Jupyter Labで実行し，Notebook内に表示する</strong></p>
 <p>Jupyterのマジックコマンド<code class="docutils literal notranslate"><span class="pre">%matplotlib</span></code>の後に<code class="docutils literal notranslate"><span class="pre">inline</span></code>を指定すると，コードセルの下に描画結果が表示される．
 デフォルトではこの設定になっているはずである．</p>
-<p><strong>※ 一番最後のコマンドにセミコロンを付けることがある．これは，不要な文字列が出力されるのを防ぐ（隠す）ためである．</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># notebook内に出力する</span>
@@ -2993,7 +2992,7 @@ dtype: bool
 <img alt="../_images/appendix_143_0.png" src="../_images/appendix_143_0.png" />
 </div>
 </div>
-<p><strong>（参考）Jupyter Labで実行し，別ウインドウに表示する</strong></p>
+<p><strong>Jupyter Labで実行し，別ウインドウに表示する</strong></p>
 <p>Jupyterのマジックコマンド<code class="docutils literal notranslate"><span class="pre">%matplotlib</span></code>の後に<code class="docutils literal notranslate"><span class="pre">tk</span></code>を指定すると，描画結果が別画面に出力される．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3031,8 +3030,8 @@ dtype: bool
 </div>
 </div>
 </section>
-<section id="id17">
-<h3>２つのプロットスタイル<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">#</a></h3>
+<section id="matplotlib-style">
+<span id="id17"></span><h3>２つのプロットスタイル<a class="headerlink" href="#matplotlib-style" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p><strong>FigureとAxes</strong></p>
 <p>Matplotlibの描画エリアは下図のようにFigureオブジェクト, Axesオブジェクトという要素で構成されている．
 Figureは描画エリア全体を表し，その中に複数のAxes（座標軸）が存在するという構造になっている．

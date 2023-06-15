@@ -813,12 +813,10 @@ df.loc[df.duplicated(keep='last', subset=None)]
 # Matplotlibは使う環境によってグラフを画面に出力する方法が異なる．
 # ここではJupyter NotebookとPythonスクリプトでの出力方法を解説する．
 
-# **（推奨）Jupyter Labで実行し，Notebook内に表示する**
+# **（デフォルト）Jupyter Labで実行し，Notebook内に表示する**
 
 # Jupyterのマジックコマンド`%matplotlib`の後に`inline`を指定すると，コードセルの下に描画結果が表示される．
 # デフォルトではこの設定になっているはずである．
-# 
-# **※ 一番最後のコマンドにセミコロンを付けることがある．これは，不要な文字列が出力されるのを防ぐ（隠す）ためである．**
 
 # In[ ]:
 
@@ -835,11 +833,11 @@ x = np.linspace(0, 2*np.pi)
 plt.plot(x, np.sin(x));
 
 
-# **（参考）Jupyter Labで実行し，別ウインドウに表示する**
+# **Jupyter Labで実行し，別ウインドウに表示する**
 
 # Jupyterのマジックコマンド`%matplotlib`の後に`tk`を指定すると，描画結果が別画面に出力される．
 
-# In[ ]:
+# In[12]:
 
 
 # 別ウインドウに出力する
@@ -848,20 +846,21 @@ get_ipython().run_line_magic('matplotlib', 'tk')
 
 # なお，'inline'や'tk'はバックエンドと呼ばれ，以下が利用可能である．
 
-# In[ ]:
+# In[13]:
 
 
 # 現在のバックエンドを確認
 print(matplotlib.get_backend())
 
 
-# In[ ]:
+# In[14]:
 
 
 # 利用可能なバックエンドのリストを表示
 get_ipython().run_line_magic('matplotlib', '--list')
 
 
+# (matplotlib_style)=
 # ### ２つのプロットスタイル
 
 # **FigureとAxes**
