@@ -94,8 +94,8 @@ fig.savefig('./sample_graph.pdf', bbox_inches="tight", pad_inches=0.2, transpare
 
 # ### 基本のプロット関数
 
-# Matplotlibの最も基本的なプロット関数が`pyplot.plot()`である．
-# Axesオブジェクトを`ax`として取得した場合，`plot`関数は以下のように実行する：
+# Matplotlibの最も基本的なプロット関数が`plot`メソッドである．
+# Axesオブジェクトを`ax`として取得した場合は以下のように実行する：
 # ```python
 # ax.plot(x, y, 'rx-', option)
 # ```
@@ -188,7 +188,7 @@ h = np.arange(1, 6, 1)
 ax.bar(x, h, width=0.2, align='edge', color='w', edgecolor='b');
 
 
-# ### （参考）矢印
+# ### 矢印
 
 # - 矢印を描くには，`quiver`メソッドを用いる．
 # - 始点 $(x, y)$ から $(u, v)$ の方向に長さ$\sqrt{u^2 + v^2}$の矢印を描くには，以下のように実行する：
@@ -201,7 +201,7 @@ ax.bar(x, h, width=0.2, align='edge', color='w', edgecolor='b');
 # ```
 # - 'angles'，'units'，'scale'などは挙動が分かりにくいので，詳しくは[ここ](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.quiver.html)を参照のこと．
 
-# In[75]:
+# In[17]:
 
 
 # 1つの矢印
@@ -214,7 +214,7 @@ ax.quiver(x, y, u, v, angles='uv', units='xy', scale=1, width=0.1)
 ax.set_xlim([0, 3]); plt.ylim([0, 3]);
 
 
-# In[76]:
+# In[23]:
 
 
 # 複数の矢印
@@ -223,7 +223,7 @@ u, v = ar([1, 1]), ar([2, 0.5])  # 矢印（ベクトル）の成分
 
 fig, ax = plt.subplots()
 ax.set_aspect('equal')
-ax.quiver(x, y, u, v, angles='uv', units='xy', scale=1, width=0.1)
+ax.quiver(x, y, u, v, angles='uv', units='xy', scale=1, width=0.05)
 ax.set_xlim([0, 3]); plt.ylim([0, 3]);
 
 
