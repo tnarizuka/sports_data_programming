@@ -467,7 +467,7 @@ ax.set_xticklabels(['data1', 'data2'])
 
 # 軸のラベル
 ax.set_xlabel('$X$', fontsize=15)
-ax.set_ylabel('$Y$', fontsize=15)
+ax.set_ylabel('$Y$', fontsize=15);
 
 
 # ### 1次元ヒストグラム
@@ -624,7 +624,7 @@ Y = np.random.normal(loc=0, scale=1, size=100000)
 # 散布図
 fig, ax = plt.subplots()
 ax.set_aspect('equal')
-ax.plot(X, Y, '.', ms=0.1, alpha=0.3)
+ax.plot(X, Y, '.', ms=0.1, alpha=0.3);
 
 
 # In[88]:
@@ -681,7 +681,7 @@ ret = ax.hist2d(X, Y, bins=[bx, by], range=[[-10, 10], [-5, 5]],\
 
 # カラーバーを追加
 fig.colorbar(ret[3], orientation='vertical', 
-             shrink=0.4, aspect=10, pad=0.05)
+             shrink=0.4, aspect=10, pad=0.05);
 
 
 # ## 演習問題
@@ -733,3 +733,8 @@ df
 
 # 解答欄
 
+
+# **問題C：身長と体重の散布図**
+# 
+# - 横軸に身長，縦軸に体重をとった散布図を作成せよ．
+# - 横軸に身長，縦軸に体重をとったヒートマップを作成せよ．
