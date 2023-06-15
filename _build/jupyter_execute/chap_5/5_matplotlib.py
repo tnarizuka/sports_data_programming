@@ -186,17 +186,19 @@ ax.bar(x, h, width=0.2, align='edge', color='w', edgecolor='b');
 
 # ### 矢印
 
-# In[17]:
+# In[51]:
 
 
-# 1つの矢印
-x, y = 0, 0  # 矢印（ベクトル）の始点
-u, v = 1, 2  # 矢印（ベクトル）の成分
+# ２つの矢印
+X = [0, 1]
+Y = [0, 2]
+U = [1, 2]
+V = [2, 0.5]
 
 fig, ax = plt.subplots()
-ax.set_aspect('equal')
-ax.quiver(x, y, u, v, angles='uv', units='xy', scale=1, width=0.1)
-ax.set_xlim([0, 3]); plt.ylim([0, 3]);
+ax.quiver(X, Y, U, V, angles='uv', units='xy', scale=1, width=0.1)
+ax.set_xlim([0, 3]); plt.ylim([0, 3])
+ax.set_aspect('equal');
 
 
 # - 矢印を描くには，`quiver`メソッドを用いる．
@@ -397,8 +399,10 @@ poisson.pmf(x, 5);
 #   U: -3.1, -4.0, -1.9, -2.7, -2.9, -3.0, -1.0, -1.6, -0.0, -3.3
 #   V: -1.1, 1.6, 2.0, -0.0, -0.7, 1.3, 1.1, 1.5, 3.3, -0.8
 #   ```
+#   - `scale=0.5`，`width=0.005`とする
 # - $x$ 軸の範囲：$0\le x \le 105$
 # - $y$ 軸の範囲：$0 \le y \le 68$
+# - アスペクト比を1にする
 
 # ## 箱ひげ図とヒストグラム
 
