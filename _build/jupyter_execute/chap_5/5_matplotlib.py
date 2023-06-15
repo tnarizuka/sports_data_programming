@@ -65,36 +65,17 @@ import matplotlib.pyplot as plt
 # 指定するデータはリストやNumPy配列などに対応している．
 # 例えば，以下の場合は $ (0, 1) $，$ (1, -1) $，$ (2, 1) $，$ (3, -1) $ に `'x'` マーカーがプロットされ，その間が線で結ばれる．
 
-# In[4]:
+# In[6]:
 
 
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(3, 3))
 ax.plot([0, 1, 2, 3], [1, -1, 1, -1], 'x-');
 
 
 # ### グラフ作成の一連の流れ
 # データのプロット，グラフの装飾，グラフの保存までの一連の流れは以下の通りである．
-# 
-# 1. FigureオブジェクトとAxesオブジェクトを生成する
-#     ```python
-#     fig, ax = plt.subplots(figsize=(3, 3))
-#     ```
-# 2. Axesオブジェクトのメソッドを用いてプロットする
-#     ```python
-#     ax.plot(x, y, option)
-#     ax.bar(x, y, option)
-#     ```
-# 3. Axesを装飾する
-#     ```python
-#     ax.set_xlim(xmin, xmax)
-#     ax.set_xlabel('X')
-#     ```
-# 4. Figureを保存する
-#     ```python
-#     fig.savefig('abc.pdf', dpi=80, transparent=True, bbox_inches='tight', pad_inches=0.2)
-#     ```
 
-# In[70]:
+# In[7]:
 
 
 # FigureとAxesを生成する
@@ -111,7 +92,7 @@ ax.set_xlim(0, 2*np.pi); ax.set_ylim(-2.1, 2.1)
 ax.set_xlabel('X'); ax.set_ylabel('Y')
 
 # Figureを保存する（相対パスを指定）
-fig.savefig('./5_matplotlib/graph1.pdf', bbox_inches="tight", pad_inches=0.2, transparent=True, dpi=300)
+fig.savefig('./sample_graph.pdf', bbox_inches="tight", pad_inches=0.2, transparent=True, dpi=300)
 
 
 # ## 様々なグラフ
@@ -119,7 +100,7 @@ fig.savefig('./5_matplotlib/graph1.pdf', bbox_inches="tight", pad_inches=0.2, tr
 # ### 基本のプロット関数
 
 # Matplotlibの最も基本的なプロット関数が`pyplot.plot()`である．
-# Axesオブジェクトを`ax`として取得したい場合，`plot`関数は以下のように実行する：
+# Axesオブジェクトを`ax`として取得した場合，`plot`関数は以下のように実行する：
 # ```python
 # ax.plot(x, y, 'rx-', option)
 # ```
@@ -144,11 +125,11 @@ fig.savefig('./5_matplotlib/graph1.pdf', bbox_inches="tight", pad_inches=0.2, tr
 # - 他の色名は[ここ](https://matplotlib.org/stable/gallery/color/named_colors.html)にまとまっている．
 # - 色を指定しない場合はデフォルトの色から順に指定される．
 
-# In[71]:
+# In[10]:
 
 
 # 様々な色の指定方法
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(3, 3))
 x = np.arange(0, 10)
 ax.plot(x, x, 'red')  # 第3引数に色名を指定
 ax.plot(x, x+1, 'g')  # 第3引数に色名の頭文字を指定
@@ -163,11 +144,11 @@ ax.plot(x, x+3, c='k'); # colorオプションに色名の頭文字を指定
 # - 他のマーカーは[ここ](https://matplotlib.org/stable/api/markers_api.html)にまとまっている
 # - マーカーを指定しない場合はデフォルトのマーカーが順に指定される
 
-# In[72]:
+# In[12]:
 
 
 # 様々なマーカー
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(3, 3))
 x = np.arange(0, 10)
 ax.plot(x, x, 'x', ms=10)   # 第3引数にマーカーを指定し，サイズを10に変更
 ax.plot(x, x+1, '.', ms=3)
@@ -195,9 +176,10 @@ ax.plot(x, x+3, ls='-.');
 # ### 棒グラフ
 
 # - Matplotlibで棒グラフを描くには`bar`メソッドを用いる：
-# ```python
-#     ax.bar(x, h, width=1.0, option)
-# ```
+#     ```python
+#         ax.bar(x, h, width=1.0, option)
+#     ```
+#     
 # - 第１引数`x`には棒グラフを出力する$x$軸上の位置，第２引数`h` には高さを指定する．
 # - その他のオプションは[ここ](https://matplotlib.org/3.5.1/api/_as_gen/matplotlib.pyplot.bar.html)にまとまっている．
 
