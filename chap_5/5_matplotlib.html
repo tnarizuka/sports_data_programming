@@ -1048,10 +1048,12 @@ $<span class="math notranslate nohighlight">\(
 <p>期待値<span class="math notranslate nohighlight">\(\lambda\)</span>のポアソン分布は以下で定義される：</p>
 <div class="math notranslate nohighlight">
 \[
-    f(x) = \frac{m^x}{x!} \mathrm{e}^{-m x}
+    f(x) = \frac{\lambda^x}{x!} \mathrm{e}^{-\lambda x}
 \]</div>
-<p>Pythonにおいてポアソン分布を扱うには，まず<code class="docutils literal notranslate"><span class="pre">scipy.stats.poisson</span></code>をインポートする．
-その上で，値<span class="math notranslate nohighlight">\(x\)</span>に対してパラメータ<span class="math notranslate nohighlight">\(m\)</span>のポアソン分布を計算するには<code class="docutils literal notranslate"><span class="pre">poisson.pmf(x,</span> <span class="pre">m)</span></code>とする．</p>
+<ul class="simple">
+<li><p>Pythonにおいてポアソン分布を扱うには，まず<code class="docutils literal notranslate"><span class="pre">scipy.stats.poisson</span></code>をインポートする．</p></li>
+<li><p>その上で，値 <span class="math notranslate nohighlight">\(x\)</span> に対してパラメータ <span class="math notranslate nohighlight">\(lmd\)</span> のポアソン分布を計算するには <code class="docutils literal notranslate"><span class="pre">poisson.pmf(x,</span> <span class="pre">lmd)</span></code> とする．</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">poisson</span>
@@ -1069,12 +1071,13 @@ $<span class="math notranslate nohighlight">\(
 </div>
 <p>ポアソン分布のグラフを以下の条件で作成せよ：</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(m=1,4,10\)</span>のポアソン分布を重ね書き</p></li>
-<li><p><span class="math notranslate nohighlight">\(m\)</span>の値ごとに異なるマーカーを用い，マーカー間は線で結ぶ</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda=1,4,10\)</span>のポアソン分布を重ね書き</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda\)</span>の値ごとに異なるマーカーを用い，マーカー間は線で結ぶ</p></li>
 <li><p><span class="math notranslate nohighlight">\(x\)</span>軸の範囲：<span class="math notranslate nohighlight">\(0\le x \le 20\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(y\)</span>軸の範囲：<span class="math notranslate nohighlight">\(0 \le y \le 0.4\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(x\)</span>軸に好きなラベルを設定</p></li>
 <li><p><span class="math notranslate nohighlight">\(y\)</span>軸に好きなラベルを設定</p></li>
+<li><p>凡例を表示</p></li>
 <li><p>グラフを好きな名前で保存</p></li>
 </ul>
 </section>
