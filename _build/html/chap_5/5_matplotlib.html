@@ -697,13 +697,14 @@ title="Print to PDF"
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">plot</span></code>メソッドは第1引数に <span class="math notranslate nohighlight">\(x\)</span> 座標のデータ，第2引数に <span class="math notranslate nohighlight">\(y\)</span> 座標のデータ，第3引数以降に色・マーカー・線種およびその他のオプションを指定する．
-指定するデータはリストやNumPy配列などに対応している．
-例えば，以下の場合は <span class="math notranslate nohighlight">\( (0, 1) \)</span>，<span class="math notranslate nohighlight">\( (1, -1) \)</span>，<span class="math notranslate nohighlight">\( (2, 1) \)</span>，<span class="math notranslate nohighlight">\( (3, -1) \)</span> に <code class="docutils literal notranslate"><span class="pre">'x'</span></code> マーカーがプロットされ，その間が線で結ばれる．</p>
+<p><code class="docutils literal notranslate"><span class="pre">plot</span></code>メソッドは第1引数に <span class="math notranslate nohighlight">\(x\)</span> 座標のデータ，第2引数に <span class="math notranslate nohighlight">\(y\)</span> 座標のデータを指定する．
+指定するデータはリストやNumPy配列などに対応している．</p>
+<p>また，第3引数には色・マーカー・線種を同時に指定することができる．
+例えば，<code class="docutils literal notranslate"><span class="pre">'bx-'</span></code>とすると，青のマーカー<code class="docutils literal notranslate"><span class="pre">'x'</span></code>をプロットし，それらを実線で結ぶ．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;x-&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;bx-&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -750,7 +751,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;rx-&#39;</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">plot</span></code>関数の第3引数は色・マーカー・線種を同時指定することができる．
+<p><strong><code class="docutils literal notranslate"><span class="pre">plot</span></code>関数の第3引数は色・マーカー・線種を同時指定することができる．</strong>
 主要なoptionを以下にまとめる．</p>
 <table class="colwidths-auto table">
 <thead>
@@ -829,7 +830,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <p><strong>マーカーの指定</strong></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">marker='x'</span></code>のように指定する</p></li>
-<li><p>主要なマーカー：'x', 'o', '^', '.', '+', 's', 'd'</p></li>
+<li><p>主要なマーカーは'x', 'o', '^', '.', '+', 's', 'd'</p></li>
 <li><p>他のマーカーは<a class="reference external" href="https://matplotlib.org/stable/api/markers_api.html">ここ</a>にまとまっている</p></li>
 <li><p>マーカーを指定しない場合はデフォルトのマーカーが順に指定される</p></li>
 </ul>
