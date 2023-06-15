@@ -429,7 +429,7 @@ poisson.pmf(x, 5);
 # ```
 # 
 # - 第１引数に複数のデータを与えると，データごとの箱ひげ図を並べて表示することができる．
-# - 主要なオプションは以下の通り（その他は[ここ](https://matplotlib.org/3.5.1/api/_as_gen/matplotlib.pyplot.boxplot.html)を参照）．
+# - 主要なオプションは以下の通り（その他は[ここ](https://matplotlib.org/3.5.1/api/_as_gen/matplotlib.pyplot.boxplot.html)を参照）．<br>
 # 
 #     | オプション |  内容 | 指定の仕方（例） | 
 #     | ---- | ---- | ---- |
