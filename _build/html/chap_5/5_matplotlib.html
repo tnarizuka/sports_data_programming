@@ -1052,7 +1052,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 \]</div>
 <ul class="simple">
 <li><p>Pythonにおいてポアソン分布を扱うには，まず<code class="docutils literal notranslate"><span class="pre">scipy.stats.poisson</span></code>をインポートする．</p></li>
-<li><p>その上で，値 <span class="math notranslate nohighlight">\(x\)</span> に対してパラメータ <span class="math notranslate nohighlight">\(lmd\)</span> のポアソン分布を計算するには <code class="docutils literal notranslate"><span class="pre">poisson.pmf(x,</span> <span class="pre">lmd)</span></code> とする．</p></li>
+<li><p>その上で，値 <span class="math notranslate nohighlight">\(x\)</span> に対してパラメータ <span class="math notranslate nohighlight">\(\mathrm{lmd}\)</span> のポアソン分布を計算するには <code class="docutils literal notranslate"><span class="pre">poisson.pmf(x,</span> <span class="pre">lmd)</span></code> とする．</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1067,12 +1067,30 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\lambda=1,4,10\)</span>のポアソン分布を重ね書きする</p></li>
 <li><p><span class="math notranslate nohighlight">\(\lambda\)</span>の値ごとに異なるマーカーを用い，マーカー間は線で結ぶ</p></li>
-<li><p><span class="math notranslate nohighlight">\(x\)</span>軸の範囲：<span class="math notranslate nohighlight">\(0\le x \le 20\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(y\)</span>軸の範囲：<span class="math notranslate nohighlight">\(0 \le y \le 0.4\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x\)</span> 軸の範囲：<span class="math notranslate nohighlight">\(0\le x \le 20\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span> 軸の範囲：<span class="math notranslate nohighlight">\(0 \le y \le 0.4\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(x\)</span>軸に好きなラベルを設定する</p></li>
 <li><p><span class="math notranslate nohighlight">\(y\)</span>軸に好きなラベルを設定する</p></li>
 <li><p>凡例を表示する</p></li>
 <li><p>グラフを好きな名前で保存する</p></li>
+</ul>
+<p><strong>選手の位置と速度ベクトルの描画</strong></p>
+<p>以下の条件で，グラフを作成せよ</p>
+<ul>
+<li><p>以下の座標にマーカーをプロットする：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">:</span> <span class="mf">60.0</span><span class="p">,</span> <span class="mf">22.2</span><span class="p">,</span> <span class="mf">28.4</span><span class="p">,</span> <span class="mf">33.7</span><span class="p">,</span> <span class="mf">21.1</span><span class="p">,</span> <span class="mf">22.1</span><span class="p">,</span> <span class="mf">32.7</span><span class="p">,</span> <span class="mf">18.3</span><span class="p">,</span> <span class="mf">24.2</span><span class="p">,</span> <span class="mf">64.3</span>
+<span class="n">Y</span><span class="p">:</span> <span class="mf">31.2</span><span class="p">,</span> <span class="mf">27.3</span><span class="p">,</span> <span class="mf">25.7</span><span class="p">,</span> <span class="mf">28.0</span><span class="p">,</span> <span class="mf">35.3</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">,</span> <span class="mf">15.9</span><span class="p">,</span> <span class="mf">19.4</span><span class="p">,</span> <span class="mf">21.0</span><span class="p">,</span> <span class="mf">26.1</span>
+</pre></div>
+</div>
+</li>
+<li><p>上の座標を始点として，以下のベクトルをプロットする：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="p">:</span> <span class="o">-</span><span class="mf">3.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.9</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.9</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.6</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.3</span>
+<span class="n">V</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8</span>
+</pre></div>
+</div>
+</li>
+<li><p><span class="math notranslate nohighlight">\(x\)</span> 軸の範囲：<span class="math notranslate nohighlight">\(0\le x \le 105\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span> 軸の範囲：<span class="math notranslate nohighlight">\(0 \le y \le 68\)</span></p></li>
 </ul>
 </section>
 </section>
@@ -1247,7 +1265,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$Y$&#39;)
 </pre></div>
 </div>
-<img alt="../_images/5_matplotlib_65_1.png" src="../_images/5_matplotlib_65_1.png" />
+<img alt="../_images/5_matplotlib_64_1.png" src="../_images/5_matplotlib_64_1.png" />
 </div>
 </div>
 </section>
@@ -1285,7 +1303,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_69_0.png" src="../_images/5_matplotlib_69_0.png" />
+<img alt="../_images/5_matplotlib_68_0.png" src="../_images/5_matplotlib_68_0.png" />
 </div>
 </div>
 <p>以下は上のヒストグラムに対応する度数分布表である．</p>
@@ -1475,7 +1493,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_74_0.png" src="../_images/5_matplotlib_74_0.png" />
+<img alt="../_images/5_matplotlib_73_0.png" src="../_images/5_matplotlib_73_0.png" />
 </div>
 </div>
 <p><strong>ヒストグラムのタイプ</strong></p>
@@ -1522,7 +1540,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_77_0.png" src="../_images/5_matplotlib_77_0.png" />
+<img alt="../_images/5_matplotlib_76_0.png" src="../_images/5_matplotlib_76_0.png" />
 </div>
 </div>
 </section>
@@ -1596,7 +1614,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1d99ec1f0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/5_matplotlib_81_1.png" src="../_images/5_matplotlib_81_1.png" />
+<img alt="../_images/5_matplotlib_80_1.png" src="../_images/5_matplotlib_80_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1615,7 +1633,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_82_0.png" src="../_images/5_matplotlib_82_0.png" />
+<img alt="../_images/5_matplotlib_81_0.png" src="../_images/5_matplotlib_81_0.png" />
 </div>
 </div>
 <p><strong>ヒートマップの装飾と<a class="reference external" href="https://matplotlib.org/3.5.0/api/_as_gen/matplotlib.pyplot.colorbar.html">カラーバーの追加</a></strong></p>
@@ -1680,7 +1698,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x1d9a6a0a0&gt;
 </pre></div>
 </div>
-<img alt="../_images/5_matplotlib_85_1.png" src="../_images/5_matplotlib_85_1.png" />
+<img alt="../_images/5_matplotlib_84_1.png" src="../_images/5_matplotlib_84_1.png" />
 </div>
 </div>
 </section>
