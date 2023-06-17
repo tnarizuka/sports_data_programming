@@ -1282,14 +1282,18 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 度数分布とは，値を0以上10未満，10以上20未満などのいくつかの区間（<strong>階級</strong>，<strong>ビン</strong>）に分けてそれぞれの区間に含まれるデータの個数（<strong>度数</strong>）をまとめたもので，横軸に階級の代表値（<strong>階級値</strong>），縦軸に度数をとったグラフがヒストグラムである．
 なお，ヒストグラムの横軸には各階級の最小と最大を表示する場合や，階級の最小値や中央値を示す場合がある．
 また，縦軸には度数ではなく相対度数（度数/データ数）を取ることもある．</p>
-<p>Matplotlibで1次元ヒストグラムを描画するには<code class="docutils literal notranslate"><span class="pre">ax.hist</span></code>メソッドを用いる：</p>
+<p>Matplotlibで1次元ヒストグラムを描画するには<code class="docutils literal notranslate"><span class="pre">ax.hist()</span></code>を用いる：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>第１引数には数値データを与える．</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">bins</span></code>引数には，ヒストグラムの階級数（または各階級の左端の値）を指定する．</p></li>
-<li><p>例えば，<code class="docutils literal notranslate"><span class="pre">bins=n</span></code>とした場合，１つの階級の大きさは<code class="docutils literal notranslate"><span class="pre">(最大値-最小値)</span> <span class="pre">/</span> <span class="pre">n</span></code>となる．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bins</span></code>引数には，以下を指定できる：</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">bins=n</span></code>とした場合，<span class="math notranslate nohighlight">\( n \)</span> 個の等間隔の階級に分ける．１つの階級の大きさは <code class="docutils literal notranslate"><span class="pre">(最大値-最小値)</span> <span class="pre">/</span> <span class="pre">n</span></code> となる．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bins=[0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>とした場合，階級の境界は<code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1),</span> <span class="pre">[1,</span> <span class="pre">2),</span> <span class="pre">[2,</span> <span class="pre">3]</span></code>となる（最後だけ右端を含むことに注意）．</p></li>
+</ul>
+</li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
