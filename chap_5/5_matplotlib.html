@@ -1215,38 +1215,38 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
     </tr>
     <tr>
       <th>mean</th>
-      <td>-0.022</td>
-      <td>2.334</td>
+      <td>0.143</td>
+      <td>1.955</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>0.975</td>
-      <td>2.169</td>
+      <td>0.871</td>
+      <td>2.053</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>-2.646</td>
-      <td>-3.637</td>
+      <td>-2.227</td>
+      <td>-4.666</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>-0.757</td>
-      <td>0.523</td>
+      <td>-0.460</td>
+      <td>0.574</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>0.013</td>
-      <td>2.553</td>
+      <td>0.075</td>
+      <td>1.958</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>0.705</td>
-      <td>3.903</td>
+      <td>0.747</td>
+      <td>3.462</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>3.711</td>
-      <td>7.776</td>
+      <td>2.029</td>
+      <td>5.854</td>
     </tr>
   </tbody>
 </table>
@@ -1268,10 +1268,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$Y$&#39;)
-</pre></div>
-</div>
-<img alt="../_images/5_matplotlib_64_1.png" src="../_images/5_matplotlib_64_1.png" />
+<img alt="../_images/5_matplotlib_64_0.png" src="../_images/5_matplotlib_64_0.png" />
 </div>
 </div>
 </section>
@@ -1304,6 +1301,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <span class="c1"># ヒストグラムの描画</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>  <span class="c1"># 階級数10</span>
+<span class="c1"># ret = ax.hist(data, bins=[130, 140, 150, 160, 170, 180, 190, 200], color=&#39;gray&#39;, edgecolor=&#39;k&#39;)</span>
 
 <span class="c1"># 軸のラベル</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$X$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
@@ -1486,12 +1484,11 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> 
-              <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-              <span class="c1"># bins=[-4, -3, -2, -1, 0, 1, 2, 3, 4], # 階級の左端の値を指定する場合</span>
+              <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">130</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="c1"># 階級の左端の値を指定する場合</span>
               <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span>  <span class="c1"># ヒストグラムのスタイルを棒グラフに</span>
               <span class="n">color</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span>       <span class="c1"># バーの色をシアンに</span>
               <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>   <span class="c1"># バーの枠線の色を黒に</span>
-              <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>     <span class="c1"># バーの枠線の太さを1に</span>
+              <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>   <span class="c1"># バーの枠線の太さを1に</span>
               <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span>  <span class="c1"># 枠線を点線に</span>
               <span class="p">)</span>
 
@@ -1536,7 +1533,6 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> 
               <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-              <span class="c1"># bins=[-4, -3, -2, -1, 0, 1, 2, 3, 4], # 階級の左端の値を指定する場合</span>
               <span class="n">density</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>      <span class="c1"># 縦軸を相対度数に変更</span>
               <span class="n">cumulative</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># 上側累積に変更  </span>
               <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span>
