@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[28]:
+# In[1]:
 
 
 # （必須）モジュールのインポート
@@ -368,7 +368,7 @@ fig.savefig('./multi_sin.pdf', bbox_inches='tight');
 # - Pythonにおいてポアソン分布を扱うには，まず`scipy.stats.poisson`をインポートする．
 # - その上で，値 $x$ に対してパラメータ $\mathrm{lmd}$ のポアソン分布を計算するには `poisson.pmf(x, lmd)` とする．
 
-# In[36]:
+# In[2]:
 
 
 from scipy.stats import poisson
@@ -460,7 +460,7 @@ poisson.pmf(x, 5);
 # | widths | 箱の幅 | 数値 |
 # | vert | 箱の回転 | True/False |
 
-# In[79]:
+# In[3]:
 
 
 # データの作成
@@ -471,13 +471,13 @@ data2 = np.random.normal(loc=2, scale=2, size=100)
 # PandasのDataFaremeには要約統計量を一度に計算する`describe`メソッドが用意されている．
 # これを用いて，まずは要約統計量を求めてみよう．
 
-# In[80]:
+# In[4]:
 
 
 pd.DataFrame({'data1':data1, 'data2':data2}).describe()
 
 
-# In[81]:
+# In[5]:
 
 
 # 箱ひげ図のプロット
@@ -510,7 +510,7 @@ ax.set_ylabel('$Y$', fontsize=15);
 #   - `bins=n`とした場合，$ n $ 個の等間隔の階級に分ける．１つの階級の大きさは `(最大値-最小値) / n` となる．
 #   - `bins=[0, 1, 2, 3]`とした場合，階級の境界は`[0, 1), [1, 2), [2, 3]`となる（最後だけ右端を含むことに注意）．
 
-# In[82]:
+# In[8]:
 
 
 # データの作成
@@ -520,6 +520,7 @@ data = np.random.normal(170, 10, 1000)
 # ヒストグラムの描画
 fig, ax = plt.subplots()
 ret = ax.hist(data, bins=10, color='gray', edgecolor='k')  # 階級数10
+# ret = ax.hist(data, bins=[130, 140, 150, 160, 170, 180, 190, 200], color='gray', edgecolor='k')
 
 # 軸のラベル
 ax.set_xlabel('$X$', fontsize=15)
@@ -529,7 +530,7 @@ ax.set_xticks(np.arange(130, 210, 10));
 
 # 以下は上のヒストグラムに対応する度数分布表である．
 
-# In[83]:
+# In[9]:
 
 
 f, x = ret[0], ret[1]
@@ -553,7 +554,7 @@ df
 # | rwidth | バーの幅 | 数値（0~1） |
 # | align | バーの中央を階級のどこに合わせるか | 'left'（階級の左端）, 'mid'（階級の中央＝デフォルト）, 'right'（階級の右端） |
 
-# In[84]:
+# In[11]:
 
 
 # データの作成
@@ -562,12 +563,11 @@ data = np.random.normal(170, 10, 1000)
 
 fig, ax = plt.subplots()
 ret = ax.hist(data, 
-              bins=10,
-              # bins=[-4, -3, -2, -1, 0, 1, 2, 3, 4], # 階級の左端の値を指定する場合
+              bins=np.arange(130, 200, 5), # 階級の左端の値を指定する場合
               histtype='bar',  # ヒストグラムのスタイルを棒グラフに
               color='c',       # バーの色をシアンに
               edgecolor='k',   # バーの枠線の色を黒に
-              linewidth=0.5,     # バーの枠線の太さを1に
+              linewidth=0.5,   # バーの枠線の太さを1に
               linestyle='--',  # 枠線を点線に
               )
 
@@ -587,7 +587,7 @@ ax.set_xticks(np.arange(130, 210, 10));
 # | density | Trueの場合は縦軸を相対度数に変更 | True/False |
 # | cumulative | Trueの場合は縦軸を累積度数に変更 | 1（下側累積）, 0, -1（上側累積） |
 
-# In[85]:
+# In[12]:
 
 
 # データの作成
@@ -597,7 +597,6 @@ data = np.random.normal(170, 10, 1000)
 fig, ax = plt.subplots()
 ret = ax.hist(data, 
               bins=10,
-              # bins=[-4, -3, -2, -1, 0, 1, 2, 3, 4], # 階級の左端の値を指定する場合
               density=1,      # 縦軸を相対度数に変更
               cumulative=-1,  # 上側累積に変更  
               histtype='bar', color='c', ec='k', lw=0.5, ls='--'

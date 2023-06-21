@@ -490,7 +490,7 @@ print(GM.loc[GM['league']=='Spain', ['away_score', 'home_score']].var())
 data = GM.loc[GM['league']=='England', 'home_score']
 
 fig, ax = plt.subplots(figsize=(4,3))
-x = np.arange(data.max()+1)
+x = np.arange(data.max()+2)
 ax.hist(data, 
         bins=k, # 階級の左端の値を指定する
         align='left',    # バーの中央を階級の左端に合わせる
@@ -520,7 +520,7 @@ ax.set_xticks(x);
 from scipy.stats import poisson
 
 fig, ax = plt.subplots(figsize=(4,3))
-x = np.arange(data.max()+1)
+x = np.arange(data.max()+2)
 fx = poisson.pmf(k, data.mean())
 ax.plot(x, fx, '-ok')
 
@@ -535,7 +535,7 @@ from scipy.stats import poisson
 data = GM.loc[GM['league']=='England', 'home_score']
 
 fig, ax = plt.subplots(figsize=(4,3))
-x = np.arange(data.max()+1)
+x = np.arange(data.max()+2)
 ax.hist(data, 
         bins=k, # 階級の左端の値を指定する
         align='left',    # バーの中央を階級の左端に合わせる
