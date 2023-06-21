@@ -632,7 +632,7 @@ ax.set_xticks(np.arange(130, 210, 10));
 # | cmin | 表示するbinの度数の最小値 | 数値 |
 # | cmax | 表示するbinの度数の最大値 | 数値 |
 
-# In[86]:
+# In[13]:
 
 
 # データの作成
@@ -640,7 +640,7 @@ X = np.random.normal(loc=0, scale=2, size=100000)
 Y = np.random.normal(loc=0, scale=1, size=100000)
 
 
-# In[87]:
+# In[14]:
 
 
 # 散布図
@@ -649,7 +649,7 @@ ax.set_aspect('equal')
 ax.plot(X, Y, '.', ms=0.1, alpha=0.3);
 
 
-# In[88]:
+# In[15]:
 
 
 # ヒートマップ
@@ -708,14 +708,14 @@ fig.colorbar(ret[3], orientation='vertical',
 
 # ## 演習問題
 
-# 次のcsvファイルをダウンロードし，作業フォルダ（例えば`OneDrive/sport_data/5_matplotlib`）に移動せよ：[player_all.csv](https://drive.google.com/uc?export=download&id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP) <br>
+# 次のcsvファイルをダウンロードし，カレントディレクトリに移動せよ：[player_all.csv](https://drive.google.com/uc?export=download&id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP) <br>
 # このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
 # ※ 本データはPappalardoデータセットを加工したものである（詳細は[イベントデータの解析](https://rtwqzpj5uefb1pvzmprbnq-on.drv.tw/document/講義/立正/スポーツデータ分析のためのプログラミング/6_event.html)）．
 
-# In[90]:
+# In[17]:
 
 
-df = pd.read_csv('./5_matplotlib/player_all.csv', header=0, index_col='player_id', na_values=0)
+df = pd.read_csv('./player_all.csv', header=0, index_col='player_id', na_values=0)
 df
 
 

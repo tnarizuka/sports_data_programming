@@ -1617,10 +1617,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1d99ec1f0&gt;]
-</pre></div>
-</div>
-<img alt="../_images/5_matplotlib_80_1.png" src="../_images/5_matplotlib_80_1.png" />
+<img alt="../_images/5_matplotlib_80_0.png" src="../_images/5_matplotlib_80_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1711,12 +1708,12 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </section>
 <section id="id17">
 <h2><span class="section-number">5.5. </span>演習問題<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">#</a></h2>
-<p>次のcsvファイルをダウンロードし，作業フォルダ（例えば<code class="docutils literal notranslate"><span class="pre">OneDrive/sport_data/5_matplotlib</span></code>）に移動せよ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP">player_all.csv</a> <br>
+<p>次のcsvファイルをダウンロードし，カレントディレクトリに移動せよ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP">player_all.csv</a> <br>
 このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
 ※ 本データはPappalardoデータセットを加工したものである（詳細は<a class="reference external" href="https://rtwqzpj5uefb1pvzmprbnq-on.drv.tw/document/%E8%AC%9B%E7%BE%A9/%E7%AB%8B%E6%AD%A3/%E3%82%B9%E3%83%9B%E3%82%9A%E3%83%BC%E3%83%84%E3%83%86%E3%82%99%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%83%95%E3%82%9A%E3%83%AD%E3%82%AF%E3%82%99%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%AF%E3%82%99/6_event.html">イベントデータの解析</a>）．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./5_matplotlib/player_all.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;player_id&#39;</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./player_all.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;player_id&#39;</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">df</span>
 </pre></div>
 </div>
@@ -1742,12 +1739,22 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
       <th></th>
       <th>name</th>
       <th>team_id</th>
-      <th>...</th>
+      <th>role</th>
+      <th>height</th>
+      <th>weight</th>
+      <th>foot</th>
+      <th>nationality</th>
+      <th>birth_area</th>
       <th>birthday</th>
       <th>league</th>
     </tr>
     <tr>
       <th>player_id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -1760,7 +1767,12 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
       <th>3319</th>
       <td>M_Özil</td>
       <td>1609</td>
-      <td>...</td>
+      <td>MD</td>
+      <td>180.0</td>
+      <td>76.0</td>
+      <td>left</td>
+      <td>Germany</td>
+      <td>Germany</td>
       <td>1988/10/15</td>
       <td>England</td>
     </tr>
@@ -1768,7 +1780,12 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
       <th>3560</th>
       <td>Nach_Monreal</td>
       <td>1609</td>
-      <td>...</td>
+      <td>DF</td>
+      <td>179.0</td>
+      <td>72.0</td>
+      <td>left</td>
+      <td>Spain</td>
+      <td>Spain</td>
       <td>1986/02/26</td>
       <td>England</td>
     </tr>
@@ -1776,7 +1793,12 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
       <th>7855</th>
       <td>L_Koscielny</td>
       <td>1609</td>
-      <td>...</td>
+      <td>DF</td>
+      <td>186.0</td>
+      <td>75.0</td>
+      <td>right</td>
+      <td>Poland</td>
+      <td>France</td>
       <td>1985/09/10</td>
       <td>England</td>
     </tr>
@@ -1784,7 +1806,12 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
       <th>7870</th>
       <td>A_Ramsey</td>
       <td>1609</td>
-      <td>...</td>
+      <td>MD</td>
+      <td>183.0</td>
+      <td>76.0</td>
+      <td>right</td>
+      <td>Wales</td>
+      <td>Wales</td>
       <td>1990/12/26</td>
       <td>England</td>
     </tr>
@@ -1792,7 +1819,12 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
       <th>7882</th>
       <td>P_Čech</td>
       <td>1609</td>
-      <td>...</td>
+      <td>GK</td>
+      <td>196.0</td>
+      <td>90.0</td>
+      <td>left</td>
+      <td>Czec_Republic</td>
+      <td>Czec_Republic</td>
       <td>1982/05/20</td>
       <td>England</td>
     </tr>
@@ -1803,12 +1835,22 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
       <td>...</td>
       <td>...</td>
       <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
       <th>266885</th>
       <td>M_Olunga</td>
       <td>756</td>
-      <td>...</td>
+      <td>FW</td>
+      <td>188.0</td>
+      <td>80.0</td>
+      <td>left</td>
+      <td>Kenya</td>
+      <td>Kenya</td>
       <td>1994/03/26</td>
       <td>Spain</td>
     </tr>
@@ -1816,7 +1858,12 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
       <th>282448</th>
       <td>Alei_García</td>
       <td>756</td>
-      <td>...</td>
+      <td>MD</td>
+      <td>173.0</td>
+      <td>74.0</td>
+      <td>right</td>
+      <td>Spain</td>
+      <td>Spain</td>
       <td>1997/06/28</td>
       <td>Spain</td>
     </tr>
@@ -1824,7 +1871,12 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
       <th>366374</th>
       <td>K_Soni</td>
       <td>756</td>
-      <td>...</td>
+      <td>MD</td>
+      <td>182.0</td>
+      <td>77.0</td>
+      <td>left</td>
+      <td>Cameroon</td>
+      <td>Cameroon</td>
       <td>1998/04/17</td>
       <td>Spain</td>
     </tr>
@@ -1832,7 +1884,12 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
       <th>443324</th>
       <td>Dougla_Luiz</td>
       <td>756</td>
-      <td>...</td>
+      <td>MD</td>
+      <td>178.0</td>
+      <td>65.0</td>
+      <td>right</td>
+      <td>Brazil</td>
+      <td>Brazil</td>
       <td>1998/05/09</td>
       <td>Spain</td>
     </tr>
@@ -1840,7 +1897,12 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
       <th>508686</th>
       <td>M_Lizak</td>
       <td>756</td>
-      <td>...</td>
+      <td>GK</td>
+      <td>192.0</td>
+      <td>78.0</td>
+      <td>NaN</td>
+      <td>Poland</td>
+      <td>Poland</td>
       <td>1996/07/15</td>
       <td>Spain</td>
     </tr>
