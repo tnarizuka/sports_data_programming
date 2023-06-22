@@ -1047,7 +1047,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <li><p>グラフを好きな名前で保存</p></li>
 </ul>
 <p><strong>ポアソン分布のグラフ（得点分布への導入）</strong></p>
-<p>期待値<span class="math notranslate nohighlight">\(\lambda\)</span>のポアソン分布は以下で定義される：</p>
+<p>期待値 <span class="math notranslate nohighlight">\(\lambda\)</span> のポアソン分布は以下で定義される：</p>
 <div class="math notranslate nohighlight">
 \[
     f(x) = \frac{\lambda^x}{x!} \mathrm{e}^{-\lambda x}
@@ -1060,7 +1060,13 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">poisson</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="n">poisson</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+<span class="n">poisson</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.007, 0.034, 0.084, 0.14 , 0.175, 0.175, 0.146, 0.104, 0.065,
+       0.036])
 </pre></div>
 </div>
 </div>
@@ -1180,7 +1186,8 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 これを用いて，まずは要約統計量を求めてみよう．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;data1&#39;</span><span class="p">:</span><span class="n">data1</span><span class="p">,</span> <span class="s1">&#39;data2&#39;</span><span class="p">:</span><span class="n">data2</span><span class="p">})</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;data1&#39;</span><span class="p">:</span><span class="n">data1</span><span class="p">,</span> <span class="s1">&#39;data2&#39;</span><span class="p">:</span><span class="n">data2</span><span class="p">})</span>
+<span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1215,38 +1222,38 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
     </tr>
     <tr>
       <th>mean</th>
-      <td>0.143</td>
-      <td>1.955</td>
+      <td>0.002</td>
+      <td>2.166</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>0.871</td>
-      <td>2.053</td>
+      <td>0.955</td>
+      <td>2.182</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>-2.227</td>
-      <td>-4.666</td>
+      <td>-2.537</td>
+      <td>-2.953</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>-0.460</td>
-      <td>0.574</td>
+      <td>-0.581</td>
+      <td>0.665</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>0.075</td>
-      <td>1.958</td>
+      <td>-0.019</td>
+      <td>2.054</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>0.747</td>
-      <td>3.462</td>
+      <td>0.501</td>
+      <td>3.676</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>2.029</td>
-      <td>5.854</td>
+      <td>2.769</td>
+      <td>7.681</td>
     </tr>
   </tbody>
 </table>
@@ -1515,12 +1522,12 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </thead>
 <tbody>
 <tr class="row-even"><td><p>density</p></td>
-<td><p>Trueの場合は縦軸を相対度数に変更</p></td>
+<td><p>縦軸を相対度数に変更</p></td>
 <td><p>True/False</p></td>
 </tr>
 <tr class="row-odd"><td><p>cumulative</p></td>
-<td><p>Trueの場合は縦軸を累積度数に変更</p></td>
-<td><p>1（下側累積）, 0, -1（上側累積）</p></td>
+<td><p>縦軸を累積度数に変更</p></td>
+<td><p>1（下側累積）, -1（上側累積）</p></td>
 </tr>
 </tbody>
 </table>
