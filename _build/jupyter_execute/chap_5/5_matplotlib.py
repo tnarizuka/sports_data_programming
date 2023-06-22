@@ -709,9 +709,9 @@ fig.colorbar(ret[3], orientation='vertical',
 
 # ## 演習問題
 
-# ### １次元ヒストグラム
+# #### １次元ヒストグラム
 
-# ### サッカー選手のプロフィール
+# #### サッカー選手のプロフィール
 
 # 次のcsvファイルをダウンロードし，カレントディレクトリに移動せよ：[player_all.csv](https://drive.google.com/uc?export=download&id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP) <br>
 # このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
