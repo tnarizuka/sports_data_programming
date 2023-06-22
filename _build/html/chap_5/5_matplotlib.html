@@ -1285,7 +1285,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_64_0.png" src="../_images/5_matplotlib_64_0.png" />
+<img alt="../_images/5_matplotlib_66_0.png" src="../_images/5_matplotlib_66_0.png" />
 </div>
 </div>
 </section>
@@ -1328,7 +1328,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_68_0.png" src="../_images/5_matplotlib_68_0.png" />
+<img alt="../_images/5_matplotlib_70_0.png" src="../_images/5_matplotlib_70_0.png" />
 </div>
 </div>
 <p>以下は上のヒストグラムに対応する度数分布表である．</p>
@@ -1517,7 +1517,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_73_0.png" src="../_images/5_matplotlib_73_0.png" />
+<img alt="../_images/5_matplotlib_75_0.png" src="../_images/5_matplotlib_75_0.png" />
 </div>
 </div>
 <p><strong>ヒストグラムのタイプ</strong></p>
@@ -1563,23 +1563,23 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_76_0.png" src="../_images/5_matplotlib_76_0.png" />
+<img alt="../_images/5_matplotlib_78_0.png" src="../_images/5_matplotlib_78_0.png" />
 </div>
 </div>
 </section>
 <section id="id16">
 <h3><span class="section-number">5.4.3. </span>2次元ヒストグラム（ヒートマップ）<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>データ分析では，２つの変数間の相関を見たり，2次元データの分布を可視化する場面がよくあり，このような場合にもヒストグラムが活躍する．
-例えば，サッカーの試合においてフィールド上の各位置のシュート頻度を可視化したい場合，<span class="math notranslate nohighlight">\((x, y)\)</span>という2次元の座標データに対してシュート頻度（度数）を対応付ければ良い．
+例えば，サッカーの試合においてフィールド上の各位置のシュート頻度を可視化したい場合， <span class="math notranslate nohighlight">\((x, y)\)</span> という2次元の座標データに対してシュート頻度（度数）を対応付ければ良い．
 このような2次元ヒストグラムを可視化する方法の１つがヒートマップである．</p>
 <p>Matplotlibでヒートマップを可視化するには，<code class="docutils literal notranslate"><span class="pre">hist2d</span></code>メソッドを用いる：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">bins</span></code>引数には<span class="math notranslate nohighlight">\(x\)</span>方向と<span class="math notranslate nohighlight">\(y\)</span>方向のbinの数（データの分割数），またはbinの左端の値をリストで指定する．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bins</span></code>引数には <span class="math notranslate nohighlight">\(x\)</span> 方向と <span class="math notranslate nohighlight">\(y\)</span> 方向のbinの数（データの分割数），またはbinの左端の値をリストで指定する．</p></li>
 <li><p>例えば，<code class="docutils literal notranslate"><span class="pre">bins=10</span></code>とした場合には<span class="math notranslate nohighlight">\(x,\ y\)</span>方向共に10個のbinに分割する．</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">bins=[10,</span> <span class="pre">20]</span></code>とした場合には<span class="math notranslate nohighlight">\(x\)</span>方向を10個，<span class="math notranslate nohighlight">\(y\)</span>方向を20個のbinに分割する．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bins=[10,</span> <span class="pre">20]</span></code>とした場合には <span class="math notranslate nohighlight">\(x\)</span> 方向を10個，<span class="math notranslate nohighlight">\(y\)</span> 方向を20個のbinに分割する．</p></li>
 <li><p>実際に実行すると，各binの度数に応じて色分けされた図が表示される．</p></li>
 <li><p>その他，主要なオプションを以下にまとめる．</p></li>
 </ul>
@@ -1628,7 +1628,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_80_0.png" src="../_images/5_matplotlib_80_0.png" />
+<img alt="../_images/5_matplotlib_82_0.png" src="../_images/5_matplotlib_82_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1647,7 +1647,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_81_0.png" src="../_images/5_matplotlib_81_0.png" />
+<img alt="../_images/5_matplotlib_83_0.png" src="../_images/5_matplotlib_83_0.png" />
 </div>
 </div>
 <p><strong>ヒートマップの装飾と<a class="reference external" href="https://matplotlib.org/3.5.0/api/_as_gen/matplotlib.pyplot.colorbar.html">カラーバーの追加</a></strong></p>
@@ -1712,7 +1712,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x1d9a6a0a0&gt;
 </pre></div>
 </div>
-<img alt="../_images/5_matplotlib_84_1.png" src="../_images/5_matplotlib_84_1.png" />
+<img alt="../_images/5_matplotlib_86_1.png" src="../_images/5_matplotlib_86_1.png" />
 </div>
 </div>
 </section>

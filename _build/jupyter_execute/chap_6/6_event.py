@@ -808,8 +808,7 @@ def event_hmap(x, y, cm='Greens'):
     ax.set_aspect(68/105)
     
     # ヒートマップの描画
-    ret = ax.hist2d(x, y,\
-                    bins=[50, 25], range=[[0, 100], [0, 100]], cmap=cm, cmin=0)
+    ret = ax.hist2d(x, y,                    bins=[50, 25], range=[[0, 100], [0, 100]], cmap=cm, cmin=0)
 
     # カラーバーを追加
     fig.colorbar(ret[3], orientation='vertical', 
@@ -1143,8 +1142,7 @@ A1 = A1.astype(int)
 import seaborn
 def plot_corr_mat(mat, cm='jet'):
     fig, ax = plt.subplots(figsize=(5, 5))
-    seaborn.heatmap(mat, ax=ax, linewidths=0.1, cbar=True, annot=True,\
-                    square=True, cmap=cm, linecolor='w', cbar_kws={"shrink": .7})
+    seaborn.heatmap(mat, ax=ax, linewidths=0.1, cbar=True, annot=True,                    square=True, cmap=cm, linecolor='w', cbar_kws={"shrink": .7})
     ax.set_xticklabels(mat.columns, fontsize=8)
     ax.set_yticklabels(mat.index, fontsize=8)
     ax_clb = ax.collections[0].colorbar

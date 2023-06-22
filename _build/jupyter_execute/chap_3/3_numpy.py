@@ -84,13 +84,13 @@ np.array([[1, 2], [3, 4]])
 # In[9]:
 
 
-get_ipython().run_cell_magic('time', '', 'x_list = []\nfor i in range(10000):\n    x_list.append(i)\nprint(np.array(x_list))\n')
+get_ipython().run_cell_magic('time', '', 'x_list = []\nfor i in range(10000):\n    x_list.append(i)\nprint(np.array(x_list))')
 
 
 # In[10]:
 
 
-get_ipython().run_cell_magic('time', '', 'x_numpy = np.arange(10000)\nprint(x_numpy)\n')
+get_ipython().run_cell_magic('time', '', 'x_numpy = np.arange(10000)\nprint(x_numpy)')
 
 
 # **2. 配列全体に対する高速な演算が可能でコードがシンプル**
@@ -102,13 +102,13 @@ get_ipython().run_cell_magic('time', '', 'x_numpy = np.arange(10000)\nprint(x_nu
 # In[11]:
 
 
-get_ipython().run_cell_magic('time', '', 'for i in range(len(x_list)):\n    x_list[i] = x_list[i] * 2\nprint(np.array(x_list))\n')
+get_ipython().run_cell_magic('time', '', 'for i in range(len(x_list)):\n    x_list[i] = x_list[i] * 2\nprint(np.array(x_list))')
 
 
 # In[12]:
 
 
-get_ipython().run_cell_magic('time', '', 'x_numpy = x_numpy * 2\nprint(x_numpy)\n')
+get_ipython().run_cell_magic('time', '', 'x_numpy = x_numpy * 2\nprint(x_numpy)')
 
 
 # **3. 高速に動作する関数やメソッドが利用可能**
@@ -1325,7 +1325,7 @@ D
 # In[16]:
 
 
-get_ipython().run_cell_magic('time', '', 'M = 0\nfor i in range(len(D)):\n    M += D[i]\n    \nprint(M / len(D))\n')
+get_ipython().run_cell_magic('time', '', 'M = 0\nfor i in range(len(D)):\n    M += D[i]\n    \nprint(M / len(D))')
 
 
 # 実行結果を見ると，平均を求めるという単純な演算であるにも関わらず，数秒の時間がかかっている（実行時間はPCのスペックによって変動する）．これは，データ数が非常に大きいことが原因である．
@@ -1335,7 +1335,7 @@ get_ipython().run_cell_magic('time', '', 'M = 0\nfor i in range(len(D)):\n    M 
 # In[17]:
 
 
-get_ipython().run_cell_magic('time', '', 'np.mean(D)\n')
+get_ipython().run_cell_magic('time', '', 'np.mean(D)')
 
 
 # この場合の実行時間はfor文を用いた場合の1/100以下となっていることがわかる（実行時間はPCのスペックによって変動する）．
