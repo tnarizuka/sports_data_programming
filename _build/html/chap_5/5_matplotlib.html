@@ -463,24 +463,17 @@ title="Print to PDF"
      5.4.3. 2次元ヒストグラム（ヒートマップ）
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id17">
+     5.4.4. 演習問題
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id17">
+  <a class="reference internal nav-link" href="#id18">
    5.5. 演習問題
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id18">
-     5.5.1. １次元ヒストグラム
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id19">
-     5.5.2. サッカー選手のプロフィール
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -587,24 +580,17 @@ title="Print to PDF"
      5.4.3. 2次元ヒストグラム（ヒートマップ）
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id17">
+     5.4.4. 演習問題
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id17">
+  <a class="reference internal nav-link" href="#id18">
    5.5. 演習問題
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id18">
-     5.5.1. １次元ヒストグラム
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id19">
-     5.5.2. サッカー選手のプロフィール
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -1736,14 +1722,54 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </div>
 </section>
-</section>
 <section id="id17">
-<h2><span class="section-number">5.5. </span>演習問題<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">#</a></h2>
-<section id="id18">
-<h3><span class="section-number">5.5.1. </span>１次元ヒストグラム<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3><span class="section-number">5.4.4. </span>演習問題<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">#</a></h3>
+<p><strong>正規分布</strong></p>
+<p><strong>ポアソン分布</strong></p>
+<p>以下はパラメータ <span class="math notranslate nohighlight">\( \lambda=2 \)</span> のポアソン分布に従うデータである．
+以下の条件でヒストグラムを作成せよ</p>
+<ul class="simple">
+<li><p>階級は <span class="math notranslate nohighlight">\( [0, 1), [1, 2),..., [8, 9) \)</span></p></li>
+<li><p>縦軸は相対度数</p></li>
+<li><p><span class="math notranslate nohighlight">\( x \)</span> 軸の範囲： <span class="math notranslate nohighlight">\( 0 \le x \le 9 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( y \)</span> 軸の範囲： <span class="math notranslate nohighlight">\( 0 \le y \le 0.3 \)</span></p></li>
+<li><p>好きな色に変更</p></li>
+<li><p><span class="math notranslate nohighlight">\( \lambda=2 \)</span> のポアソン分布をヒストグラムに重ねてプロット</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">poisson.pmf(x,</span> <span class="pre">lmd)</span></code></p></li>
+</ul>
+</li>
+<li><p>グラフを好きな名前で保存</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">poisson</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">poisson</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">mu</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">density</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([0.138, 0.268, 0.27 , 0.177, 0.096, 0.035, 0.012, 0.001, 0.002]),
+ array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]),
+ &lt;BarContainer object of 9 artists&gt;)
+</pre></div>
+</div>
+<img alt="../_images/5_matplotlib_89_1.png" src="../_images/5_matplotlib_89_1.png" />
+</div>
+</div>
 </section>
-<section id="id19">
-<h3><span class="section-number">5.5.2. </span>サッカー選手のプロフィール<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">#</a></h3>
+</section>
+<section id="id18">
+<h2><span class="section-number">5.5. </span>演習問題<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">#</a></h2>
 <p>次のcsvファイルをダウンロードし，カレントディレクトリに移動せよ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP">player_all.csv</a> <br>
 このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
 ※ 本データはPappalardoデータセットを加工したものである（詳細は<a class="reference external" href="https://rtwqzpj5uefb1pvzmprbnq-on.drv.tw/document/%E8%AC%9B%E7%BE%A9/%E7%AB%8B%E6%AD%A3/%E3%82%B9%E3%83%9B%E3%82%9A%E3%83%BC%E3%83%84%E3%83%86%E3%82%99%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%83%95%E3%82%9A%E3%83%AD%E3%82%AF%E3%82%99%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%AF%E3%82%99/6_event.html">イベントデータの解析</a>）．</p>
@@ -2007,7 +2033,6 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </div>
 </div>
-</section>
 </section>
 </section>
 

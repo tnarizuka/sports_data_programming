@@ -707,11 +707,42 @@ fig.colorbar(ret[3], orientation='vertical',
              shrink=0.4, aspect=10, pad=0.05);
 
 
+# ### 演習問題
+
+# **正規分布**
+# 
+# 
+
+# **ポアソン分布**
+# 
+# 以下はパラメータ $ \lambda=2 $ のポアソン分布に従うデータである．
+# 以下の条件でヒストグラムを作成せよ
+# 
+# - 階級は $ [0, 1), [1, 2),..., [8, 9) $
+# - 縦軸は相対度数
+# - $ x $ 軸の範囲： $ 0 \le x \le 9 $
+# - $ y $ 軸の範囲： $ 0 \le y \le 0.3 $
+# - 好きな色に変更
+# - $ \lambda=2 $ のポアソン分布をヒストグラムに重ねてプロット
+#   - `poisson.pmf(x, lmd)`
+# - グラフを好きな名前で保存
+
+# In[55]:
+
+
+from scipy.stats import poisson
+np.random.seed(20)
+data = poisson.rvs(mu=2, size=1000)
+
+
+# In[57]:
+
+
+fig, ax = plt.subplots()
+ax.hist(data, bins=np.arange(0, 10, 1), density=1)
+
+
 # ## 演習問題
-
-# #### １次元ヒストグラム
-
-# #### サッカー選手のプロフィール
 
 # 次のcsvファイルをダウンロードし，カレントディレクトリに移動せよ：[player_all.csv](https://drive.google.com/uc?export=download&id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP) <br>
 # このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
