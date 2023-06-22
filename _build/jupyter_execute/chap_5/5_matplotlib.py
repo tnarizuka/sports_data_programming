@@ -723,8 +723,9 @@ fig.colorbar(ret[3], orientation='vertical',
 # - 縦軸は相対度数
 # - $ x $ 軸の範囲：$ 0 \le x \le 70 $
 # - $ y $ 軸の範囲：$ 0 \le x \le 0.1 $
-# - $ \lambda=10 $ の指数分布をヒストグラムに重ねてプロット
-#   - データ $ x $ 
+# - $ x $ 軸のラベル：$ x $
+# - $ y $ 軸のラベル：$ f(x) $
+# - 好きな色に変更
 # - グラフを好きな名前で保存
 
 # In[75]:
@@ -732,7 +733,7 @@ fig.colorbar(ret[3], orientation='vertical',
 
 from scipy.stats import expon
 np.random.seed(5)
-data = expon.rvs(loc=0, scale=10, size=1000)
+data = expon.rvs(loc=0, scale=10, size=1000) # データの生成
 
 
 # In[ ]:
@@ -754,16 +755,14 @@ ax.plot(x, expon.pdf(x, loc=0, scale=10), 'r-', lw=2)
 # - $ x $ 軸の範囲： $ 0 \le x \le 9 $
 # - $ y $ 軸の範囲： $ 0 \le y \le 0.3 $
 # - 好きな色に変更
-# - $ \lambda=2 $ のポアソン分布をヒストグラムに重ねてプロット
-#   - `poisson.pmf(x, lmd)`
 # - グラフを好きな名前で保存
 
-# In[55]:
+# In[84]:
 
 
 from scipy.stats import poisson
 np.random.seed(20)
-data = poisson.rvs(mu=2, size=1000)
+data = poisson.rvs(mu=2, size=1000) # データの生成
 
 
 # In[ ]:
