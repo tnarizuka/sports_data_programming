@@ -359,7 +359,7 @@ fig.savefig('./multi_sin.pdf', bbox_inches='tight');
 
 # **ポアソン分布のグラフ（得点分布への導入）**
 # 
-# 期待値$\lambda$のポアソン分布は以下で定義される：
+# 期待値 $\lambda$ のポアソン分布は以下で定義される：
 # 
 # $$
 #     f(x) = \frac{\lambda^x}{x!} \mathrm{e}^{-\lambda x}
@@ -368,12 +368,12 @@ fig.savefig('./multi_sin.pdf', bbox_inches='tight');
 # - Pythonにおいてポアソン分布を扱うには，まず`scipy.stats.poisson`をインポートする．
 # - その上で，値 $x$ に対してパラメータ $\mathrm{lmd}$ のポアソン分布を計算するには `poisson.pmf(x, lmd)` とする．
 
-# In[2]:
+# In[18]:
 
 
 from scipy.stats import poisson
 x = np.arange(0, 10)
-poisson.pmf(x, 5);
+poisson.pmf(x, 5)
 
 
 # ポアソン分布のグラフを以下の条件で作成せよ：
@@ -460,7 +460,7 @@ poisson.pmf(x, 5);
 # | widths | 箱の幅 | 数値 |
 # | vert | 箱の回転 | True/False |
 
-# In[3]:
+# In[20]:
 
 
 # データの作成
@@ -471,13 +471,14 @@ data2 = np.random.normal(loc=2, scale=2, size=100)
 # PandasのDataFaremeには要約統計量を一度に計算する`describe`メソッドが用意されている．
 # これを用いて，まずは要約統計量を求めてみよう．
 
-# In[4]:
+# In[21]:
 
 
-pd.DataFrame({'data1':data1, 'data2':data2}).describe()
+df = pd.DataFrame({'data1':data1, 'data2':data2})
+df.describe()
 
 
-# In[5]:
+# In[22]:
 
 
 # 箱ひげ図のプロット
@@ -584,8 +585,8 @@ ax.set_xticks(np.arange(130, 210, 10));
 # 
 # | オプション |  内容 | 指定の仕方（例） | 
 # | ---- | ---- | ---- |
-# | density | Trueの場合は縦軸を相対度数に変更 | True/False |
-# | cumulative | Trueの場合は縦軸を累積度数に変更 | 1（下側累積）, 0, -1（上側累積） |
+# | density | 縦軸を相対度数に変更 | True/False |
+# | cumulative | 縦軸を累積度数に変更 | 1（下側累積）, -1（上側累積） |
 
 # In[12]:
 
