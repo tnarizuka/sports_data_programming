@@ -359,7 +359,7 @@ fig.savefig('./multi_sin.pdf', bbox_inches='tight');
 
 # **ポアソン分布のグラフ（得点分布への導入）**
 # 
-# 期待値 $\lambda$ のポアソン分布は以下で定義される：
+# パラメータ $\lambda$ のポアソン分布は以下で定義される：
 # 
 # $$
 #     f(x) = \frac{\lambda^x}{x!} \mathrm{e}^{-\lambda x}
@@ -709,14 +709,45 @@ fig.colorbar(ret[3], orientation='vertical',
 
 # ### 演習問題
 
-# **正規分布**
+# **指数分布**
 # 
+# パラメータ $ \lambda $ の指数分布は以下で定義される：
 # 
+# $$
+#     f(x) = \frac{1}{\lambda} e^{- \frac{x}{\lambda}}
+# $$
+# 
+# パラメータ $ \lambda=10 $ の指数分布に従うデータに対して，以下の条件でヒストグラムを作成し，グラフに追加せよ．
+# 
+# - 階級数は20
+# - 縦軸は相対度数
+# - $ x $ 軸の範囲：$ 0 \le x \le 70 $
+# - $ y $ 軸の範囲：$ 0 \le x \le 0.1 $
+# - $ \lambda=10 $ の指数分布をヒストグラムに重ねてプロット
+#   - データ $ x $ 
+# - グラフを好きな名前で保存
+
+# In[75]:
+
+
+from scipy.stats import expon
+np.random.seed(5)
+data = expon.rvs(loc=0, scale=10, size=1000)
+
+
+# In[ ]:
+
+
+fig, ax = plt.subplots()
+x = np.arange(0, 70, 0.1)
+ax.plot(x, expon.pdf(x, loc=0, scale=10), 'r-', lw=2)
+
+# ヒストグラムを追加する
+
 
 # **ポアソン分布**
 # 
-# 以下はパラメータ $ \lambda=2 $ のポアソン分布に従うデータである．
-# 以下の条件でヒストグラムを作成せよ
+# パラメータ $ \lambda=2 $ のポアソン分布に従うデータに対して，以下の条件でヒストグラムを作成し，グラフに追加せよ．
 # 
 # - 階級は $ [0, 1), [1, 2),..., [8, 9) $
 # - 縦軸は相対度数
@@ -735,11 +766,14 @@ np.random.seed(20)
 data = poisson.rvs(mu=2, size=1000)
 
 
-# In[57]:
+# In[ ]:
 
 
 fig, ax = plt.subplots()
-ax.hist(data, bins=np.arange(0, 10, 1), density=1)
+x = np.arange(0, 10, 1)
+ax.plot(x, poisson.pmf(x, 2), 'r-', lw=2)
+
+# ヒストグラムを追加する
 
 
 # ## 演習問題

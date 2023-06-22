@@ -1057,7 +1057,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <li><p>グラフを好きな名前で保存</p></li>
 </ul>
 <p><strong>ポアソン分布のグラフ（得点分布への導入）</strong></p>
-<p>期待値 <span class="math notranslate nohighlight">\(\lambda\)</span> のポアソン分布は以下で定義される：</p>
+<p>パラメータ <span class="math notranslate nohighlight">\(\lambda\)</span> のポアソン分布は以下で定義される：</p>
 <div class="math notranslate nohighlight">
 \[
     f(x) = \frac{\lambda^x}{x!} \mathrm{e}^{-\lambda x}
@@ -1724,10 +1724,47 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </section>
 <section id="id17">
 <h3><span class="section-number">5.4.4. </span>演習問題<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p><strong>正規分布</strong></p>
+<p><strong>指数分布</strong></p>
+<p>パラメータ <span class="math notranslate nohighlight">\( \lambda \)</span> の指数分布は以下で定義される：</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x) = \frac{1}{\lambda} e^{- \frac{x}{\lambda}}
+\]</div>
+<p>パラメータ <span class="math notranslate nohighlight">\( \lambda=10 \)</span> の指数分布に従うデータに対して，以下の条件でヒストグラムを作成し，グラフに追加せよ．</p>
+<ul class="simple">
+<li><p>階級数は20</p></li>
+<li><p>縦軸は相対度数</p></li>
+<li><p><span class="math notranslate nohighlight">\( x \)</span> 軸の範囲：<span class="math notranslate nohighlight">\( 0 \le x \le 70 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( y \)</span> 軸の範囲：<span class="math notranslate nohighlight">\( 0 \le x \le 0.1 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \lambda=10 \)</span> の指数分布をヒストグラムに重ねてプロット</p>
+<ul>
+<li><p>データ <span class="math notranslate nohighlight">\( x \)</span></p></li>
+</ul>
+</li>
+<li><p>グラフを好きな名前で保存</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">expon</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">expon</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">expon</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># ヒストグラムを追加する</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p><strong>ポアソン分布</strong></p>
-<p>以下はパラメータ <span class="math notranslate nohighlight">\( \lambda=2 \)</span> のポアソン分布に従うデータである．
-以下の条件でヒストグラムを作成せよ</p>
+<p>パラメータ <span class="math notranslate nohighlight">\( \lambda=2 \)</span> のポアソン分布に従うデータに対して，以下の条件でヒストグラムを作成し，グラフに追加せよ．</p>
 <ul class="simple">
 <li><p>階級は <span class="math notranslate nohighlight">\( [0, 1), [1, 2),..., [8, 9) \)</span></p></li>
 <li><p>縦軸は相対度数</p></li>
@@ -1753,17 +1790,12 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">density</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">poisson</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># ヒストグラムを追加する</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([0.138, 0.268, 0.27 , 0.177, 0.096, 0.035, 0.012, 0.001, 0.002]),
- array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]),
- &lt;BarContainer object of 9 artists&gt;)
-</pre></div>
-</div>
-<img alt="../_images/5_matplotlib_89_1.png" src="../_images/5_matplotlib_89_1.png" />
 </div>
 </div>
 </section>
