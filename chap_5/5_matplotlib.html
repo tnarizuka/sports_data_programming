@@ -463,12 +463,12 @@ title="Print to PDF"
      5.4.3. 2次元ヒストグラム（ヒートマップ）
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id17">
+     5.4.4. 演習問題
+    </a>
+   </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id17">
-   5.5. 演習問題
-  </a>
  </li>
 </ul>
 
@@ -575,12 +575,12 @@ title="Print to PDF"
      5.4.3. 2次元ヒストグラム（ヒートマップ）
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id17">
+     5.4.4. 演習問題
+    </a>
+   </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id17">
-   5.5. 演習問題
-  </a>
  </li>
 </ul>
 
@@ -1487,7 +1487,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># データの作成</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="c1"># 平均170,標準偏差10の正規分布に従うデータ</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> 
@@ -1535,7 +1535,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># データの作成</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="c1"># 平均170,標準偏差10の正規分布に従うデータ</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> 
@@ -1712,9 +1712,8 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </div>
 </section>
-</section>
 <section id="id17">
-<h2><span class="section-number">5.5. </span>演習問題<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">#</a></h2>
+<h3><span class="section-number">5.4.4. </span>演習問題<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>次のcsvファイルをダウンロードし，カレントディレクトリに移動せよ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP">player_all.csv</a> <br>
 このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
 ※ 本データはPappalardoデータセットを加工したものである（詳細は<a class="reference external" href="https://rtwqzpj5uefb1pvzmprbnq-on.drv.tw/document/%E8%AC%9B%E7%BE%A9/%E7%AB%8B%E6%AD%A3/%E3%82%B9%E3%83%9B%E3%82%9A%E3%83%BC%E3%83%84%E3%83%86%E3%82%99%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%83%95%E3%82%9A%E3%83%AD%E3%82%AF%E3%82%99%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%AF%E3%82%99/6_event.html">イベントデータの解析</a>）．</p>
@@ -1978,6 +1977,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </div>
 </div>
+</section>
 </section>
 </section>
 
