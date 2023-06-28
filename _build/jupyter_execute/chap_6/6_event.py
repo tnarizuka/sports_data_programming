@@ -148,7 +148,7 @@ GM.head(2)
 # | away_score | アウェイチームのスコア |
 # | homw_score |  ホームチームのスコア |
 
-# 次に[team.csv](https://drive.google.com/uc?export=download&id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1)をダウンロードして作業フォルダ（例えば`OneDrive/sport_data/6_event`）に移動し，`TM`という名前のDataFrameに読み込む．
+# 次に[team.csv](https://drive.google.com/uc?export=download&id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1)をダウンロードしてカレントディレクトリに移動し，`TM`という名前のDataFrameに読み込む．
 
 # In[73]:
 
