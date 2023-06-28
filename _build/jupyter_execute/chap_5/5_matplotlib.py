@@ -670,7 +670,7 @@ fig, ax = plt.subplots()
 ax.set_aspect('equal')
 ret = ax.hist2d(X, Y, 
                 bins=[100, 50],  # 100x50のbinに分割する
-                range=[[-10, 10], [-5, 5]], 
+                range=[[-10, 10], [-5, 5]],  # x軸は-10~10, y軸は-5~5の範囲
                 density=0,  # 度数
                 cmin=1,     # 度数が1以上のbinだけ表示
                 cmax=1000   # 度数が1000以下のbinだけ表示
@@ -711,7 +711,8 @@ bx, by = 100, 50
 # ヒートマップの描画
 fig, ax = plt.subplots()
 ax.set_aspect('equal')
-ret = ax.hist2d(X, Y, bins=[bx, by], range=[[-10, 10], [-5, 5]],                cmap='jet', cmin=1)
+ret = ax.hist2d(X, Y, bins=[bx, by], range=[[-10, 10], [-5, 5]],\
+                cmap='jet', cmin=1)
 
 # カラーバーを追加
 fig.colorbar(ret[3], orientation='vertical', 

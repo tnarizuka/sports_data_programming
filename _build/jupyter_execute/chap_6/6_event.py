@@ -31,12 +31,23 @@ get_ipython().run_line_magic('precision', '3')
 
 # Pappalardoデータセットはサッカーのイベントデータをまとめた大規模データセットであり，[CC BY 4.0ライセンス](https://creativecommons.org/licenses/by/4.0/deed.ja)の下で提供されている．
 # 元のデータはWyscout社によって収集されたもので，それをL. Pappalardoらが編纂し2019年に公開された．
-# 2022年時点で一般公開されている数少ない大規模サッカーデータである．
-# データセットの詳細は以下の論文にまとめられている：
+# 2023年時点で一般公開されているサッカーのイベントデータセットの中では最大級である．
+# なお，データセットの詳細は以下の論文にまとめられている：
+# Pappalardoデータセットに含まれる全てのデータおよび付加情報は以下で取得できる．
 # 
-# - Pappalardo, L., Cintia, P., Rossi, A. et al. A public data set of spatio-temporal match events in soccer competitions. Sci Data 6, 236 (2019). https://doi.org/10.1038/s41597-019-0247-7
-# 
-# 本章で用いるデータセットはPappalardoデータセットを加工・整形したものである．
+# - [データセットの詳細をまとめた論文](https://doi.org/10.1038/s41597-019-0247-7)
+#   - Pappalardo, L., Cintia, P., Rossi, A. et al. A public data set of spatio-temporal match events in soccer competitions. Sci Data 6, 236 (2019).
+# - [figshare](https://figshare.com/collections/Soccer_match_event_dataset/4415000/5)
+#     - データの入手先
+#     - ページ最上部でデータセットのバージョンを選択できる（2023年6月現在の最新版はVersion 5）
+#     - ページ最下部からzipファイルやjsonファイルをダウンロードできる
+# - [Wyscout API](https://apidocs.wyscout.com)
+#     - Wyscout社のサポートページ
+#     - 各データに関する詳細な情報を掲載
+# - [日本語の解説サイト](https://exploratory.io/note/1021500949444839/Soccer-Analytics-01-Data-Description-OGp4kBq4Va/note_content/note.html
+# )
+#     - 日本語によるデータセットの詳細な説明（作成者に感謝）
+#     - 一部に情報が古い部分がある
 
 # ### データセットの内容
 # 
@@ -44,7 +55,7 @@ get_ipython().run_line_magic('precision', '3')
 # 
 # Pappalardoデータセットに含まれる試合は2017年度ヨーロッパリーグ，2018年度FIFAW杯，2016年度UEFAチャンピオンズリーグの全1941試合である．
 # 
-# | リーグ・大会名 | シーズン・年度 | 試合数 | イベント数 | 選手数 |
+# | リーグ・大会名 | シーズン | 試合数 | イベント数 | 選手数 |
 # | ---- | ---- | ---- | ---- | ---- |
 # | スペイン１部リーグ（La Liga）| 2017-2018 | 380 | 628659 | 619 |
 # | イングランド１部リーグ（Premier League）| 2017-2018 | 380 | 643150 | 603 |
@@ -55,42 +66,26 @@ get_ipython().run_line_magic('precision', '3')
 # | UEFA Euro Cup | 2016 | 51 | 78140 | 552 |
 # | 計 |  | 1941 | 3251294 | 4299 |
 
-# **データの種類**<br>
-# Pappalardoデータセットには，各試合のイベントログの他，下表のようなデータが含まれている．
-# ほとんどのデータはjson形式で提供されており，[figshare](https://figshare.com/collections/Soccer_match_event_dataset/4415000/5)からダウンロード可能である．
+# **データの種類**
+# 
+# Pappalardoデータセットには，下表のようなデータが含まれている．
 # 
 # | データ | ファイル形式 |
 # | ---- | ---- |
-# | 各試合のイベントログ．<br>パス，シュートなど主にボールに関わるイベントの発生時刻，位置，その他付加情報 | events_competition-name.json |
-# | リーグ・大会の情報 | competitions.json |
-# | 出場チームの情報 | teams.json |
-# | 出場選手の情報 | players.json |
-# | 審判の情報 | referees.json |
-# | コーチの情報 | coaches.json |
-# | イベントIDとイベント名の対応表 | eventid2name.csv |
-# | イベントに付与されるタグの説明 | tags2name.csv |
-
-# ### サポートページ
-# Pappalardoデータセットに含まれる全てのデータおよび付加情報は以下で取得できる．
-# - [figshare](https://figshare.com/collections/Soccer_match_event_dataset/4415000/5)
-#     - データの入手先
-#     - ページ最上部でデータセットのバージョンを選択できる（2022年5月現在の最新版はVersion 5）
-#     - ページ最下部からzipファイルやjsonファイルをダウンロードできる
-# - [Wyscout API](https://apidocs.wyscout.com)
-#     - Wyscout社のサポートページ
-#     - 各データ内容に関する詳細な情報を掲載
-# - [日本語の解説サイト](https://exploratory.io/note/1021500949444839/Soccer-Analytics-01-Data-Description-OGp4kBq4Va/note_content/note.html
-# )
-#     - 日本語によるデータセットの詳細な説明
-#     - 一部に情報が古い部分がある
-#     - どなたが作成されたか不明（作成者に感謝）
+# | イベントデータ．ボールに関わるイベントの発生時刻，位置，付加情報 | `events_competition-name.json` |
+# | リーグ・大会の情報 | `competitions.json` |
+# | 出場チームの情報 | `teams.json` |
+# | 出場選手の情報 | `players.json` |
+# | 審判の情報 | `referees.json` |
+# | コーチの情報 | `coaches.json` |
+# | イベントIDとイベント名の対応表 | `eventid2name.csv` |
+# | イベントに付与されるタグの説明 | `tags2name.csv` |
 
 # ### 本講義で用いる加工済みデータ
 
 # Pappalardoデータセットに含まれるオリジナルのデータはjson形式で提供されており，このままではデータ分析がしづらい．
-# そこで，まずはjson形式のデータを整形・加工し，PandasのDataFrameの形で保存する．
-# この過程は本講義で扱った知識を総動員するだけでなく，文字列の処理などより高度な技術が必要である．
-# そのため，**本講義ではデータの整形・加工の過程は省略し，加工済みデータ（csvファイル）を用いたいくつかの分析例を示す**．
+# そこで，まずはjson形式のデータを整形・加工し，PandasのDataFrameの形で保存しておくと便利である．
+# しかし，この過程は本講義で扱った知識を総動員するだけでなく，文字列の処理などの知識も必要となるため，**本講義ではデータの整形・加工の過程は省略し，加工済みデータ（csvファイル）のデータを提供することにする**．
 
 # **加工済みデータの内容**
 # 
@@ -808,7 +803,8 @@ def event_hmap(x, y, cm='Greens'):
     ax.set_aspect(68/105)
     
     # ヒートマップの描画
-    ret = ax.hist2d(x, y,                    bins=[50, 25], range=[[0, 100], [0, 100]], cmap=cm, cmin=0)
+    ret = ax.hist2d(x, y,\
+                    bins=[50, 25], range=[[0, 100], [0, 100]], cmap=cm, cmin=0)
 
     # カラーバーを追加
     fig.colorbar(ret[3], orientation='vertical', 
@@ -1142,7 +1138,8 @@ A1 = A1.astype(int)
 import seaborn
 def plot_corr_mat(mat, cm='jet'):
     fig, ax = plt.subplots(figsize=(5, 5))
-    seaborn.heatmap(mat, ax=ax, linewidths=0.1, cbar=True, annot=True,                    square=True, cmap=cm, linecolor='w', cbar_kws={"shrink": .7})
+    seaborn.heatmap(mat, ax=ax, linewidths=0.1, cbar=True, annot=True,\
+                    square=True, cmap=cm, linecolor='w', cbar_kws={"shrink": .7})
     ax.set_xticklabels(mat.columns, fontsize=8)
     ax.set_yticklabels(mat.index, fontsize=8)
     ax_clb = ax.collections[0].colorbar
