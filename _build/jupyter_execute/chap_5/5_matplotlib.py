@@ -520,10 +520,10 @@ ax.set_ylabel('$Y$', fontsize=15);
 # ```
 # - 第１引数には数値データを与える．
 # - `bins`引数には，以下を指定できる：
-#   - `bins=n`とした場合，$ n $ 個の等間隔の階級に分ける．１つの階級の大きさは `(最大値-最小値) / n` となる．
-#   - `bins=[0, 1, 2, 3]`とした場合，階級の境界は`[0, 1), [1, 2), [2, 3]`となる（最後だけ右端を含むことに注意）．
+#   - `bins=n`とした場合，$ n $ 個の等間隔の階級に分ける．１つの階級の幅は `(最大値-最小値) / n` となる．
+#   - `bins=[0, 1, 2, 3]`とした場合，階級の境界は`[0, 1), [1, 2), [2, 3]`となる（**最後だけ右端を含むことに注意**）．
 
-# In[8]:
+# In[5]:
 
 
 # データの作成
@@ -543,7 +543,7 @@ ax.set_xticks(np.arange(130, 210, 10));
 
 # 以下は上のヒストグラムに対応する度数分布表である．
 
-# In[9]:
+# In[6]:
 
 
 f, x = ret[0], ret[1]
@@ -567,7 +567,7 @@ df
 # | rwidth | バーの幅 | 数値（0~1） |
 # | align | バーの中央を階級のどこに合わせるか | 'left'（階級の左端）, 'mid'（階級の中央＝デフォルト）, 'right'（階級の右端） |
 
-# In[11]:
+# In[7]:
 
 
 # データの作成
@@ -576,7 +576,7 @@ data = np.random.normal(170, 10, 1000) # 平均170,標準偏差10の正規分布
 
 fig, ax = plt.subplots()
 ret = ax.hist(data, 
-              bins=np.arange(130, 200, 5), # 階級の左端の値を指定する場合
+              bins=[130, 140, 150, 160, 170, 180, 190, 200], # 階級の左端の値を指定する
               histtype='bar',  # ヒストグラムのスタイルを棒グラフに
               color='c',       # バーの色をシアンに
               edgecolor='k',   # バーの枠線の色を黒に
@@ -600,7 +600,7 @@ ax.set_xticks(np.arange(130, 210, 10));
 # | density | 縦軸を相対度数に変更 | True/False |
 # | cumulative | 縦軸を累積度数に変更 | 1（下側累積）, -1（上側累積） |
 
-# In[12]:
+# In[8]:
 
 
 # データの作成
@@ -609,7 +609,7 @@ data = np.random.normal(170, 10, 1000) # 平均170,標準偏差10の正規分布
 
 fig, ax = plt.subplots()
 ret = ax.hist(data, 
-              bins=10,
+              bins=[130, 140, 150, 160, 170, 180, 190, 200], # 階級の左端の値を指定する
               density=1,      # 縦軸を相対度数に変更
               cumulative=-1,  # 上側累積に変更  
               histtype='bar', color='c', ec='k', lw=0.5, ls='--'
@@ -631,21 +631,18 @@ ax.set_xticks(np.arange(130, 210, 10));
 # ```python
 # ax.hist2d(x_data, y_data, bins, option)
 # ```
-# - `bins`引数には $x$ 方向と $y$ 方向のbinの数（データの分割数），またはbinの左端の値をリストで指定する．
+# - `bins`引数には $x$ 方向と $y$ 方向のbinの数，またはbinの左端の値をリストで指定する．
 # - 例えば，`bins=10`とした場合には$x,\ y$方向共に10個のbinに分割する．
 # - `bins=[10, 20]`とした場合には $x$ 方向を10個，$y$ 方向を20個のbinに分割する．
-# - 実際に実行すると，各binの度数に応じて色分けされた図が表示される．
-# 
-# - その他，主要なオプションを以下にまとめる．
 # 
 # | オプション |  内容 | 指定の仕方（例） | 
 # | ---- | ---- | ---- |
-# | range | 対象とするデータの範囲 | [[x_min, x_max], [y_min, y_max]] |
+# | range | ヒートマップを求めるデータの範囲 | [[x_min, x_max], [y_min, y_max]] |
 # | density | 度数の規格化 | True/False |
 # | cmin | 表示するbinの度数の最小値 | 数値 |
 # | cmax | 表示するbinの度数の最大値 | 数値 |
 
-# In[13]:
+# In[9]:
 
 
 # データの作成
@@ -653,7 +650,7 @@ X = np.random.normal(loc=0, scale=2, size=100000)
 Y = np.random.normal(loc=0, scale=1, size=100000)
 
 
-# In[14]:
+# In[11]:
 
 
 # 散布図
@@ -662,7 +659,7 @@ ax.set_aspect('equal')
 ax.plot(X, Y, '.', ms=0.1, alpha=0.3);
 
 
-# In[15]:
+# In[19]:
 
 
 # ヒートマップ
@@ -670,8 +667,8 @@ fig, ax = plt.subplots()
 ax.set_aspect('equal')
 ret = ax.hist2d(X, Y, 
                 bins=[100, 50],  # 100x50のbinに分割する
-                range=[[-10, 10], [-5, 5]],  # x軸は-10~10, y軸は-5~5の範囲
-                density=0,  # 度数
+                range=[[-10, 10], [-5, 5]],  # 用いるデータの範囲
+                density=0,  # 度数を規格化しない
                 cmin=1,     # 度数が1以上のbinだけ表示
                 cmax=1000   # 度数が1000以下のbinだけ表示
                 )  
@@ -685,11 +682,13 @@ ret = ax.hist2d(X, Y,
 # その他のカラーマップは[ここ](https://matplotlib.org/3.5.1/tutorials/colors/colormaps.html)を参照のこと．
 
 # カラーマップと度数の対応はカラーバーとして可視化できる．
-# ヒートマップにカラーバーを追加するにはFigureオブジェクトの`colorbar`メソッド用い，以下のように実行する：
+# ヒートマップにカラーバーを追加するにはFigureオブジェクトの`fig.colorbar`メソッド用い，以下のように実行する：
+# 
 # ```python
 # ret = ax.hist2d(X, Y, bins=[bx, by], option)
 # fig.colorbar(ret[3], option)
 # ```
+# 
 # ここで，`colorbar`メソッドの第１引数には`hist2d`メソッドの戻り値の第3成分を指定する．
 # また，カラーバーの位置や大きさを調整するには，以下のオプションを使用する．
 # 
@@ -700,23 +699,26 @@ ret = ax.hist2d(X, Y,
 # | aspect | カラーバーの縦横比 | 数値 |
 # | pad | カラーバーの位置 | 数値 |
 
-# In[89]:
+# In[23]:
 
 
 # データの生成
 X = np.random.normal(loc=0, scale=2, size=100000)
 Y = np.random.normal(loc=0, scale=1, size=100000)
-bx, by = 100, 50
 
 # ヒートマップの描画
 fig, ax = plt.subplots()
 ax.set_aspect('equal')
-ret = ax.hist2d(X, Y, bins=[bx, by], range=[[-10, 10], [-5, 5]],\
+ret = ax.hist2d(X, Y, bins=[100, 50], range=[[-10, 10], [-5, 5]],\
                 cmap='jet', cmin=1)
 
 # カラーバーを追加
-fig.colorbar(ret[3], orientation='vertical', 
-             shrink=0.4, aspect=10, pad=0.05);
+fig.colorbar(ret[3], 
+             orientation='vertical', # カラーバーの方向
+             shrink=0.4, # カラーバーの拡大率
+             aspect=10,  # カラーバーの縦横比
+             pad=0.05    # カラーバーと図の間隔
+             );
 
 
 # ### 演習問題
