@@ -764,10 +764,7 @@ title="Print to PDF"
 <section id="id4">
 <h2><span class="section-number">7.2. </span>データの前処理<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">#</a></h2>
 <p>ここでは，Tromsø IL vs Strømsgodsetの前半のトラッキングデータを解析対象とする．
-まずは以下からトラッキングデータのcsvファイルをダウンロードし，作業フォルダ（例えばOneDrive/sport_data/7_tracking）に移動しておく：</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://datasets.simula.no/downloads/alfheim/2013-11-03/zxy/2013-11-03_tromso_stromsgodset_first.csv">https://datasets.simula.no/downloads/alfheim/2013-11-03/zxy/2013-11-03_tromso_stromsgodset_first.csv</a></p></li>
-</ul>
+まずはトラッキングデータのcsvファイル（<a class="reference external" href="https://datasets.simula.no/downloads/alfheim/2013-11-03/zxy/2013-11-03_tromso_stromsgodset_first.csv">2013-11-03_tromso_stromsgodset_first.csv</a>）をダウンロードし，カレントディレクトリに移動しておく：</p>
 <section id="id5">
 <h3><span class="section-number">7.2.1. </span>データの加工・整形<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p><strong>データの読み込み</strong></p>
@@ -775,7 +772,7 @@ title="Print to PDF"
 その際に列ラベル（<code class="docutils literal notranslate"><span class="pre">columns</span></code>）を指定しておく．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./7_tracking/2013-11-03_tromso_stromsgodset_first.csv&#39;</span><span class="p">,</span>\
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./2013-11-03_tromso_stromsgodset_first.csv&#39;</span><span class="p">,</span>\
                  <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span>\
                  <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;heading&#39;</span><span class="p">,</span><span class="s1">&#39;direction&#39;</span><span class="p">,</span><span class="s1">&#39;energy&#39;</span><span class="p">,</span><span class="s1">&#39;speed&#39;</span><span class="p">,</span><span class="s1">&#39;total_distance&#39;</span><span class="p">])</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -1344,8 +1341,8 @@ title="Print to PDF"
 <h3><span class="section-number">7.2.3. </span>データの保存<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_x2</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./7_tracking/x_1st.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
-<span class="n">df_y2</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./7_tracking/y_1st.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_x2</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./x_1st.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="n">df_y2</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./y_1st.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1366,8 +1363,8 @@ title="Print to PDF"
 <p>改めて，作成したデータを<code class="docutils literal notranslate"><span class="pre">X</span></code>，<code class="docutils literal notranslate"><span class="pre">Y</span></code>というDataFrameに読み込む．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./7_tracking/x_1st.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./7_tracking/y_1st.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./x_1st.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./y_1st.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2141,7 +2138,7 @@ V_{y}(i) = \frac{Y(i+n) - Y(i)}{0.05n}
 <h3><span class="section-number">7.4.3. </span>トラッキングデータへの応用<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>サッカーのトラッキングデータからボロノイ領域を描画するには，特定のフレームにおける選手の座標を取得し，それを母点として<code class="docutils literal notranslate"><span class="pre">Voronoi</span></code>クラスのオブジェクトを生成すれば良い．
 ただし，ボロノイ領域の描画に<code class="docutils literal notranslate"><span class="pre">voronoi_plot_2d</span></code>をそのまま用いると，無限に延びるボロノイ線が途中で切れてしまうという問題が発生する．
-そこで，ここでは<code class="docutils literal notranslate"><span class="pre">voronoi_plot_2d</span></code>のソースコード（<a class="reference external" href="https://github.com/scipy/scipy/blob/v1.8.1/scipy/spatial/_plotutils.py#L151-L265">https://github.com/scipy/scipy/blob/v1.8.1/scipy/spatial/_plotutils.py#L151-L265</a> )を参考に，独自の描画関数<code class="docutils literal notranslate"><span class="pre">my_voronoi_plot_2d</span></code>を以下のように作成する．</p>
+そこで，ここでは<a class="reference external" href="https://github.com/scipy/scipy/blob/v1.8.1/scipy/spatial/_plotutils.py#L151-L265"><code class="docutils literal notranslate"><span class="pre">voronoi_plot_2d</span></code>のソースコード</a>を参考に，独自の描画関数<code class="docutils literal notranslate"><span class="pre">my_voronoi_plot_2d</span></code>を以下のように作成する．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_voronoi_plot_2d</span><span class="p">(</span><span class="n">vor</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
@@ -2394,7 +2391,7 @@ V_{y}(i) = \frac{Y(i+n) - Y(i)}{0.05n}
 </div>
 </div>
 <p><strong>ドロネーネットワークの描画</strong></p>
-<p>scipyにはドロネーネットワークを描画する<code class="docutils literal notranslate"><span class="pre">delaunay_plot_2d</span></code>関数が用意されており，ソースコード（<a class="reference external" href="https://github.com/scipy/scipy/blob/v1.8.1/scipy/spatial/_plotutils.py#L36-L89">https://github.com/scipy/scipy/blob/v1.8.1/scipy/spatial/_plotutils.py#L36-L89</a> ）にアクセスできる．
+<p>scipyにはドロネーネットワークを描画する<code class="docutils literal notranslate"><span class="pre">delaunay_plot_2d</span></code>関数が用意されており，<a class="reference external" href="https://github.com/scipy/scipy/blob/v1.8.1/scipy/spatial/_plotutils.py#L36-L89">ソースコード</a>にアクセスできる．
 ここでは，ボロノイ領域と同様に，このソースコードを少し改変した<code class="docutils literal notranslate"><span class="pre">my_delaunay_plot_2d</span></code>関数を以下のように作成し使用する．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
