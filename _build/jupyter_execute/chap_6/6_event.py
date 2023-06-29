@@ -42,7 +42,10 @@ get_ipython().run_line_magic('precision', '3')
 
 # ## リーグ成績と順位表
 
-# 今，手元には2017年度ヨーロッパリーグ全試合の得点データ（[game.csv](https://drive.google.com/uc?export=download&id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A)）とチームプロフィール（[team.csv](https://drive.google.com/uc?export=download&id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1)）がある．
+# 以下のデータをダウンロードせよ：
+# - 全試合の得点データ：[game.csv](https://drive.google.com/uc?export=download&id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A)
+# - チームプロフィール：[team.csv](https://drive.google.com/uc?export=download&id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1)
+#   
 # これらを用いれば，チームごとに得点，失点，得失点差，勝敗などを算出することができる．
 # 各リーグの最終的な順位は勝ち点によって決まる．
 # １試合で獲得する勝ち点は勝利が3，引き分けが1，負けが0である．
@@ -55,7 +58,7 @@ get_ipython().run_line_magic('precision', '3')
 
 # ### データの読み込み
 
-# まずは[game.csv](https://drive.google.com/uc?export=download&id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A)をダウンロードしてカレントディレクトリに移動し，`GM`という名前のDataFrameに読み込む．
+# まずは [game.csv](https://drive.google.com/uc?export=download&id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A) をダウンロードしてカレントディレクトリに移動し，`GM`という名前のDataFrameに読み込む．
 
 # In[72]:
 
@@ -66,7 +69,7 @@ GM.head(2)
 
 # このデータの各行には2017年度ヨーロッパリーグで行われた試合の情報が収められている．
 # 各列の意味は下表の通りである．
-# このうち，'away_score'列と'home_score'列がアウェイチームとホームチームの得点である．
+# このうち，`away_score`列と`home_score`列がアウェイチームとホームチームの得点である．
 # 例えば，第0行はアーセナル（ホーム）対レイチェスターシティ（アウェイ）の試合情報を表し，得点は4-3であることが分かる．
 # 
 # | 変数名 | 内容 |
@@ -83,7 +86,7 @@ GM.head(2)
 # | away_score | アウェイチームのスコア |
 # | homw_score |  ホームチームのスコア |
 
-# 次に[team.csv](https://drive.google.com/uc?export=download&id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1)をダウンロードしてカレントディレクトリに移動し，`TM`という名前のDataFrameに読み込む．
+# 次に [team.csv](https://drive.google.com/uc?export=download&id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1) をダウンロードしてカレントディレクトリに移動し，`TM`という名前のDataFrameに読み込む．
 
 # In[73]:
 
@@ -116,7 +119,7 @@ TM_E = TM.loc[TM['league']=='England']
 
 # ### １チームのリーグ成績
 
-# まずはチームプロフィール`TM_E`の先頭行のチーム（アーセナル）に対し，リーグ成績を求めてみよう．
+# チームプロフィール`TM_E`の先頭行のチーム（アーセナル）に対し，リーグ成績を求めてみよう．
 # このチームのチームIDとチーム名を取得するには以下のように`iloc`属性を用いて先頭行を抽出すれば良い．
 
 # In[75]:
