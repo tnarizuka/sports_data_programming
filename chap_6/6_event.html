@@ -680,8 +680,12 @@ title="Print to PDF"
 </section>
 <section id="id4">
 <h2><span class="section-number">6.2. </span>リーグ成績と順位表<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">#</a></h2>
-<p>今，手元には2017年度ヨーロッパリーグ全試合の得点データ（<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A">game.csv</a>）とチームプロフィール（<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1">team.csv</a>）がある．
-これらを用いれば，チームごとに得点，失点，得失点差，勝敗などを算出することができる．
+<p>以下のデータをダウンロードせよ：</p>
+<ul class="simple">
+<li><p>全試合の得点データ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A">game.csv</a></p></li>
+<li><p>チームプロフィール：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1">team.csv</a></p></li>
+</ul>
+<p>これらを用いれば，チームごとに得点，失点，得失点差，勝敗などを算出することができる．
 各リーグの最終的な順位は勝ち点によって決まる．
 １試合で獲得する勝ち点は勝利が3，引き分けが1，負けが0である．
 よって，得点データを用いれば勝ち点を計算し，順位表を作成することができる．</p>
@@ -693,7 +697,7 @@ title="Print to PDF"
 </ul>
 <section id="id5">
 <h3><span class="section-number">6.2.1. </span>データの読み込み<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>まずは<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A">game.csv</a>をダウンロードしてカレントディレクトリに移動し，<code class="docutils literal notranslate"><span class="pre">GM</span></code>という名前のDataFrameに読み込む．</p>
+<p>まずは <a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A">game.csv</a> をダウンロードしてカレントディレクトリに移動し，<code class="docutils literal notranslate"><span class="pre">GM</span></code>という名前のDataFrameに読み込む．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GM</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./game.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -751,7 +755,7 @@ title="Print to PDF"
 </div>
 <p>このデータの各行には2017年度ヨーロッパリーグで行われた試合の情報が収められている．
 各列の意味は下表の通りである．
-このうち，'away_score'列と'home_score'列がアウェイチームとホームチームの得点である．
+このうち，<code class="docutils literal notranslate"><span class="pre">away_score</span></code>列と<code class="docutils literal notranslate"><span class="pre">home_score</span></code>列がアウェイチームとホームチームの得点である．
 例えば，第0行はアーセナル（ホーム）対レイチェスターシティ（アウェイ）の試合情報を表し，得点は4-3であることが分かる．</p>
 <table class="colwidths-auto table">
 <thead>
@@ -795,7 +799,7 @@ title="Print to PDF"
 </tr>
 </tbody>
 </table>
-<p>次に<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1">team.csv</a>をダウンロードしてカレントディレクトリに移動し，<code class="docutils literal notranslate"><span class="pre">TM</span></code>という名前のDataFrameに読み込む．</p>
+<p>次に <a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1">team.csv</a> をダウンロードしてカレントディレクトリに移動し，<code class="docutils literal notranslate"><span class="pre">TM</span></code>という名前のDataFrameに読み込む．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TM</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./team.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -914,7 +918,7 @@ title="Print to PDF"
 </section>
 <section id="id6">
 <h3><span class="section-number">6.2.2. </span>１チームのリーグ成績<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>まずはチームプロフィール<code class="docutils literal notranslate"><span class="pre">TM_E</span></code>の先頭行のチーム（アーセナル）に対し，リーグ成績を求めてみよう．
+<p>チームプロフィール<code class="docutils literal notranslate"><span class="pre">TM_E</span></code>の先頭行のチーム（アーセナル）に対し，リーグ成績を求めてみよう．
 このチームのチームIDとチーム名を取得するには以下のように<code class="docutils literal notranslate"><span class="pre">iloc</span></code>属性を用いて先頭行を抽出すれば良い．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
