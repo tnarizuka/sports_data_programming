@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
+# In[3]:
 
 
 # （必須）モジュールのインポート
@@ -793,7 +793,7 @@ ax.plot(x, poisson.pmf(x, 2), 'r-', lw=2)
 # このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
 # ※ 本データはPappalardoデータセットを加工したものである（詳細は[イベントデータの解析](https://rtwqzpj5uefb1pvzmprbnq-on.drv.tw/document/講義/立正/スポーツデータ分析のためのプログラミング/6_event.html)）．
 
-# In[17]:
+# In[4]:
 
 
 df = pd.read_csv('./player_all.csv', header=0, index_col='player_id', na_values=0)
