@@ -1033,13 +1033,60 @@ ax2.set_xlabel('X'); ax2.set_ylabel('Y')
 
 
 # ## イベントデータの解析
+
+# (pappalardo)=
+# ### Pappalardoデータセットの詳細
+
+# #### データセットに関する情報の入手先
 # 
-# (event_data)=
-# ### 加工済みデータの内容
+# Pappalardoデータセットに含まれる全てのデータおよび付加情報は以下で取得できる．
+# 
+# - [データセットの詳細をまとめた論文](https://doi.org/10.1038/s41597-019-0247-7)
+#   - Pappalardo, L., Cintia, P., Rossi, A. et al. A public data set of spatio-temporal match events in soccer competitions. Sci Data 6, 236 (2019).
+# - [データの入手先（figshare）](https://figshare.com/collections/Soccer_match_event_dataset/4415000/5)
+#     - ページ最上部でデータセットのバージョンを選択できる（2023年6月現在の最新版はVersion 5）
+#     - ページ最下部からzipファイルやjsonファイルをダウンロードできる
+# - [Wyscout API](https://apidocs.wyscout.com)
+#     - Wyscout社のサポートページ
+#     - 各データに関する詳細な情報を掲載
+# - [日本語の解説サイト](https://exploratory.io/note/1021500949444839/Soccer-Analytics-01-Data-Description-OGp4kBq4Va/note_content/note.html
+# )
+#     - 日本語によるデータセットの詳細な説明（作成者に感謝）
+#     - 一部に情報が古い部分がある
+
+# #### データセットの内容
+# 
+# Pappalardoデータセットに含まれる試合は2017年度ヨーロッパリーグ，2018年度FIFAW杯，2016年度UEFAチャンピオンズリーグの全1941試合である．
+# 
+# | リーグ・大会名 | シーズン | 試合数 | イベント数 | 選手数 |
+# | ---- | ---- | ---- | ---- | ---- |
+# | スペイン１部リーグ| 2017-18 | 380 | 628659 | 619 |
+# | イングランド１部リーグ| 2017-18 | 380 | 643150 | 603 |
+# | イタリア１部リーグ| 2017-18 | 380 | 647372 | 686 |
+# | ドイツ１部リーグ| 2017-18 | 380 | 519407 | 537 |
+# | フランス１部リーグ| 2017-18 | 380 | 632807 | 629 |
+# | FIFA World Cup | 2018 | 64 | 101759 | 736 |
+# | UEFA Euro Cup | 2016 | 51 | 78140 | 552 |
+# | 計 |  | 1941 | 3251294 | 4299 |
+
+# Pappalardoデータセットには，下表のようなデータが含まれている．
+# 
+# | データ | ファイル形式 |
+# | ---- | ---- |
+# | イベントデータ．ボールに関わるイベントの発生時刻，位置，付加情報 | `events_competition-name.json` |
+# | リーグ・大会の情報 | `competitions.json` |
+# | 出場チームの情報 | `teams.json` |
+# | 出場選手の情報 | `players.json` |
+# | 審判の情報 | `referees.json` |
+# | コーチの情報 | `coaches.json` |
+# | イベントIDとイベント名の対応表 | `eventid2name.csv` |
+# | イベントに付与されるタグの説明 | `tags2name.csv` |
+
+# #### 加工済みデータの内容
 # 
 # 加工済みデータの詳細およびダウンロード用リンクを以下にまとめる．<br>
 # ※ W杯とCLのデータはヨーロッパリーグと試合数が異なるので，解析対象からは除外する．
-
+# 
 # | 内容 | ファイル | ファイルサイズ |
 # | ---- | ---- | ---- |
 # | 選手のプロフィールデータ |  [player.csv](https://drive.google.com/uc?export=download&id=1rtCAL0DqW9SeslMuGFCusg8VRRWz6J_M) | 172KB |

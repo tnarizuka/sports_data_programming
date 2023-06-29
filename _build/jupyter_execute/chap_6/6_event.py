@@ -25,60 +25,13 @@ get_ipython().run_line_magic('precision', '3')
 # # イベントデータの解析
 
 # ## データセット
-
-# (pappalardo)=
+# 
 # ### Pappalardoデータセット
-
+# 
 # Pappalardoデータセットはサッカーのイベントデータをまとめた大規模データセットであり，[CC BY 4.0ライセンス](https://creativecommons.org/licenses/by/4.0/deed.ja)の下で提供されている．
 # 元のデータはWyscout社によって収集されたもので，それをL. Pappalardoらが編集し2019年に公開された．
 # 2023年時点で一般公開されているサッカーのイベントデータセットの中では最大級である．
-# なお，データセットの詳細は以下の論文にまとめられている：
-# Pappalardoデータセットに含まれる全てのデータおよび付加情報は以下で取得できる．
-# 
-# - [データセットの詳細をまとめた論文](https://doi.org/10.1038/s41597-019-0247-7)
-#   - Pappalardo, L., Cintia, P., Rossi, A. et al. A public data set of spatio-temporal match events in soccer competitions. Sci Data 6, 236 (2019).
-# - [データの入手先（figshare）](https://figshare.com/collections/Soccer_match_event_dataset/4415000/5)
-#     - ページ最上部でデータセットのバージョンを選択できる（2023年6月現在の最新版はVersion 5）
-#     - ページ最下部からzipファイルやjsonファイルをダウンロードできる
-# - [Wyscout API](https://apidocs.wyscout.com)
-#     - Wyscout社のサポートページ
-#     - 各データに関する詳細な情報を掲載
-# - [日本語の解説サイト](https://exploratory.io/note/1021500949444839/Soccer-Analytics-01-Data-Description-OGp4kBq4Va/note_content/note.html
-# )
-#     - 日本語によるデータセットの詳細な説明（作成者に感謝）
-#     - 一部に情報が古い部分がある
-
-# ### データセットの内容
-# 
-# **対象試合**
-# 
-# Pappalardoデータセットに含まれる試合は2017年度ヨーロッパリーグ，2018年度FIFAW杯，2016年度UEFAチャンピオンズリーグの全1941試合である．
-# 
-# | リーグ・大会名 | シーズン | 試合数 | イベント数 | 選手数 |
-# | ---- | ---- | ---- | ---- | ---- |
-# | スペイン１部リーグ| 2017-18 | 380 | 628659 | 619 |
-# | イングランド１部リーグ| 2017-18 | 380 | 643150 | 603 |
-# | イタリア１部リーグ| 2017-18 | 380 | 647372 | 686 |
-# | ドイツ１部リーグ| 2017-18 | 380 | 519407 | 537 |
-# | フランス１部リーグ| 2017-18 | 380 | 632807 | 629 |
-# | FIFA World Cup | 2018 | 64 | 101759 | 736 |
-# | UEFA Euro Cup | 2016 | 51 | 78140 | 552 |
-# | 計 |  | 1941 | 3251294 | 4299 |
-
-# **データの種類**
-# 
-# Pappalardoデータセットには，下表のようなデータが含まれている．
-# 
-# | データ | ファイル形式 |
-# | ---- | ---- |
-# | イベントデータ．ボールに関わるイベントの発生時刻，位置，付加情報 | `events_competition-name.json` |
-# | リーグ・大会の情報 | `competitions.json` |
-# | 出場チームの情報 | `teams.json` |
-# | 出場選手の情報 | `players.json` |
-# | 審判の情報 | `referees.json` |
-# | コーチの情報 | `coaches.json` |
-# | イベントIDとイベント名の対応表 | `eventid2name.csv` |
-# | イベントに付与されるタグの説明 | `tags2name.csv` |
+# データセットの詳細については以下の付録を参照されたい：{ref}`pappalardo`
 
 # ### 本講義で用いる加工済みデータ
 
