@@ -28,16 +28,9 @@ get_ipython().run_line_magic('precision', '3')
 # ## データセット
 
 # ### Pettersenデータセット
-
+# 
 # Pettersenデータセットはサッカーのトラッキングデータをまとめたデータセットである．
-# 試合数は3試合と少ないが，2022年時点で一般公開されている数少ない（唯一の？）サッカートラッキングデータである．
-# データセットの内容は以下の論文にまとめられている：
-# 
-# - S. A. Pettersen, D. Johansen, H. Johansen, V. Berg-Johansen, V. R. Gaddam, A. Mortensen, R. Langseth, C. Griwodz, H. K. Stensland, and P. Halvorsen: Proceedings of the 5th ACM Multimedia Systems Conference, 2014, pp. 18–23. https://doi.org/10.1145/2557642.2563677
-# - [論文PDFはこちら](https://www.researchgate.net/publication/260983291_Soccer_Video_and_Player_Position_Dataset)
-# 
-# また，全データは以下のウェブサイトからダウンロード可能である：
-# - [Alfheim - Soccer video and player position dataset](https://datasets.simula.no/alfheim/)
+# 試合数は3試合と少ないが，2022年時点で一般公開されている数少ないサッカートラッキングデータである．
 
 # ### データセットの内容
 
@@ -45,60 +38,13 @@ get_ipython().run_line_magic('precision', '3')
 # 対象となる試合はAlfheimスタジアムを本拠地とするTromsø ILの3試合である．
 # データセットには試合映像とセンサーによって取得された位置座標のデータ（トラッキングデータ）が含まれているが，トラッキングデータの取得対象はTromsø ILの選手のみである．
 # また，選手のプライバシー保護のため，トラッキングデータから選手の個人情報は除去されている．
-
-# | 日時 | 対戦カード | データの種類 | 備考 |
-# | ---- | ---- | ---- | ---- |
-# | 2013-11-03 | Tromsø IL - Strømsgodset | トラッキングデータ<br>試合映像 |  |
-# | 2013-11-07 | Tromsø IL - Anzhi | トラッキングデータ<br>試合映像 |  |
-# | 2013-11-28 | Tromsø IL - Tottenham Hotspurs | トラッキングデータ<br>試合映像<br>ボールの座標データ | 前半40分のみ<br>ボール座標は手作業で取得 |
-
-# トラッキングデータには以下の2種類の形式が用意されている：
-# - raw data：センサから取得した生データ
-# - interpolated data：時間単位を0.05秒に統一したデータ
 # 
-# トラッキングデータに含まれる変数は下表の通りである．
-# 
-# | 変数 | データ型 | 内容 | 例 |
-# | ---- | ---- | ---- | ---- |
-# | time | string | 時刻 | 18:01:09.05 |
-# | id | int | 選手の識別ID | Homeチームのみ．交代選手は新たなID． |
-# | $x$ | float | $x$座標 | 26.573 m |
-# | $y$ | float | $y$座標 | 29.436 m |
-# | heading | float | 選手の向き（センサから取得） | $y$軸からの角度（rad） |
-# | direction | float | 選手の移動方向 |  $y$軸からの角度（rad） |
-# | energy | float | エネルギー消費量 | 単位は不明 |
-# | speed | float | 選手の速さ | 0.968 m/s |
-# | total_distance | float | 試合開始からの移動距離 | 255.584 m |
-
-# **利用規約**
-# 
-# - 選手個人の再識別は禁止
-# - 選手・クラブのパフォーマンスプロファイルの作成は禁止
-# - 非営利的な研究目的での使用に限定
-
-# **トラッキングシステム**
-# 
-# 
-# - ZXYシステム
-#     - ZXY Sport Tracking system by ChyronHego (Trondheim, Norway)
-# - センサーベルト
-#     - 選手の胸下に装着
-#     - 重さ10g
-#     - 加速度センサ，ジャイロセンサ，心拍計，コンパスを搭載
-#     - 心拍データはデータセットから除外
-#     - レシーバーをスタジアム内に設置
-
-# **座標系**
+# トラッキングデータの位置座標は以下のような座標系において，1秒間に20フレーム（20fps）の解像度で取得されている．
 # 
 # - 原点：フィールドの左下
 # - $x$軸：長軸方向（$0 \le x \le 105$）
 # - $y$軸：短軸方向（$0 \le x \le 68$）
 # - 単位はm
-
-# **時間の解像度**
-# - 1フレーム=0.05秒
-# - フレームレートは20fps
-# - ※ interporated dataを用いた場合
 
 # ## データの前処理
 

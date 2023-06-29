@@ -1039,7 +1039,7 @@ ax2.set_xlabel('X'); ax2.set_ylabel('Y')
 
 # #### データセットに関する情報の入手先
 # 
-# Pappalardoデータセットに含まれる全てのデータおよび付加情報は以下で取得できる．
+# Pappalardoデータセットに含まれる全てのデータおよび付加情報は以下で入手できる．
 # 
 # - [データセットの詳細をまとめた論文](https://doi.org/10.1038/s41597-019-0247-7)
 #   - Pappalardo, L., Cintia, P., Rossi, A. et al. A public data set of spatio-temporal match events in soccer competitions. Sci Data 6, 236 (2019).
@@ -1099,3 +1099,61 @@ ax2.set_xlabel('X'); ax2.set_ylabel('Y')
 # | //（ドイツ）                            | イベントログ：[event_Germany.csv](https://drive.google.com/uc?export=download&id=17GVyiEgRFW9VZstK5LvEKLuKTuWmKe1Z) <br>イベントタグ：[event_tag_Germany.csv](https://drive.google.com/uc?export=download&id=17dGXdEp0yNH1ySRCcB9ydLxcmUAESFHy)| 47.2MB <br> 61.5MB |
 # | //（イタリア）                         | イベントログ：[event_Italy.csv](https://drive.google.com/uc?export=download&id=17C5vUbS9_zRWpgTalUNzWfP6oFXf0U3K) <br>イベントタグ：[event_tag_Italy.csv](https://drive.google.com/uc?export=download&id=17cH2MUqBDdWeBnTGK2EFYEfmB-GAxC3M)| 58.9MB <br> 76.6MB |
 # | //（スペイン）                         | イベントログ：[event_Spain.csv](https://drive.google.com/uc?export=download&id=17K-vF4xBn6GtBtFap5sIf26ZZnjs20fz) <br>イベントタグ：[event_tag_Spain.csv](https://drive.google.com/uc?export=download&id=17lGhSTFByywubBTmJKoTzrmaGLOgOZ3k)| 56.1MB <br> 74.5MB |
+
+# ## トラッキングデータの解析
+
+# (pettersen)=
+# ### Pettersenデータセットの詳細
+# 
+# #### データセットに関する情報の入手先
+# 
+# Pettersenデータセットの情報は以下で入手できる：
+# 
+# - [データの詳細をまとめた論文](https://www.researchgate.net/publication/260983291_Soccer_Video_and_Player_Position_Dataset)
+#   - S. A. Pettersen, D. Johansen, H. Johansen, V. Berg-Johansen, V. R. Gaddam, A. Mortensen, R. Langseth, C. Griwodz, H. K. Stensland, and P. Halvorsen: Proceedings of the 5th ACM Multimedia Systems Conference, 2014, pp. 18–23. https://doi.org/10.1145/2557642.2563677
+# - [データの入手先](https://datasets.simula.no/alfheim/)
+#   - Alfheim - Soccer video and player position dataset
+
+# Pettersenデータセットには以下の3試合のデータが含まれている：
+# 
+# | 日時 | 対戦カード | データの種類 | 備考 |
+# | ---- | ---- | ---- | ---- |
+# | 2013-11-03 | Tromsø IL - Strømsgodset | トラッキングデータ<br>試合映像 |  |
+# | 2013-11-07 | Tromsø IL - Anzhi | トラッキングデータ<br>試合映像 |  |
+# | 2013-11-28 | Tromsø IL - Tottenham Hotspurs | トラッキングデータ<br>試合映像<br>ボールの座標データ | 前半40分のみ<br>ボール座標は手作業で取得 |
+
+# トラッキングデータは以下の2種類の形式で用意されている：
+# - raw data：センサから取得した生データ
+# - interpolated data：時間単位を0.05秒に統一したデータ
+# 
+# トラッキングデータに含まれる変数は下表の通りである．
+# 
+# | 変数 | データ型 | 内容 | 例 |
+# | ---- | ---- | ---- | ---- |
+# | time | string | 時刻 | 18:01:09.05 |
+# | id | int | 選手の識別ID | Homeチームのみ．交代選手は新たなID． |
+# | $x$ | float | $x$座標 | 26.573 m |
+# | $y$ | float | $y$座標 | 29.436 m |
+# | heading | float | 選手の向き（センサから取得） | $y$軸からの角度（rad） |
+# | direction | float | 選手の移動方向 |  $y$軸からの角度（rad） |
+# | energy | float | エネルギー消費量 | 単位は不明 |
+# | speed | float | 選手の速さ | 0.968 m/s |
+# | total_distance | float | 試合開始からの移動距離 | 255.584 m |
+
+# **利用規約**
+# 
+# - 選手個人の再識別は禁止
+# - 選手・クラブのパフォーマンスプロファイルの作成は禁止
+# - 非営利的な研究目的での使用に限定
+
+# **トラッキングシステム**
+# 
+# 
+# - ZXYシステム
+#     - ZXY Sport Tracking system by ChyronHego (Trondheim, Norway)
+# - センサーベルト
+#     - 選手の胸下に装着
+#     - 重さ10g
+#     - 加速度センサ，ジャイロセンサ，心拍計，コンパスを搭載
+#     - 心拍データはデータセットから除外
+#     - レシーバーをスタジアム内に設置
