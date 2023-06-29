@@ -1440,7 +1440,7 @@ df.reset_index(drop=0)
 df.reset_index(drop=1)
 
 
-# ## 演習問題
+# ## 章末問題
 
 # 次のcsvファイルをダウンロードし，カレントディレクトリに保存せよ：[player_all.csv](https://drive.google.com/uc?export=download&id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP)  <br>
 # このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
