@@ -49,8 +49,7 @@ get_ipython().run_line_magic('precision', '3')
 # ## データの前処理
 
 # ここでは，Tromsø IL vs Strømsgodsetの前半のトラッキングデータを解析対象とする．
-# まずは以下からトラッキングデータのcsvファイルをダウンロードし，作業フォルダ（例えばOneDrive/sport_data/7_tracking）に移動しておく：
-# - https://datasets.simula.no/downloads/alfheim/2013-11-03/zxy/2013-11-03_tromso_stromsgodset_first.csv
+# まずはトラッキングデータのcsvファイル（[2013-11-03_tromso_stromsgodset_first.csv](https://datasets.simula.no/downloads/alfheim/2013-11-03/zxy/2013-11-03_tromso_stromsgodset_first.csv)）をダウンロードし，カレントディレクトリに移動しておく：
 
 # ### データの加工・整形
 
@@ -59,10 +58,10 @@ get_ipython().run_line_magic('precision', '3')
 # ダウンロードしたcsvファイルを`df`という名前でDataFrameに読み込む．
 # その際に列ラベル（`columns`）を指定しておく．
 
-# In[5]:
+# In[ ]:
 
 
-df = pd.read_csv('./7_tracking/2013-11-03_tromso_stromsgodset_first.csv',\
+df = pd.read_csv('./2013-11-03_tromso_stromsgodset_first.csv',\
                  header=None, encoding='utf-8',\
                  names=['time','id','x','y','heading','direction','energy','speed','total_distance'])
 df.head(2)
@@ -213,8 +212,8 @@ df_y2.head(2)
 # In[18]:
 
 
-df_x2.to_csv('./7_tracking/x_1st.csv', header=True, index=True, encoding='utf-8')
-df_y2.to_csv('./7_tracking/y_1st.csv', header=True, index=True, encoding='utf-8')
+df_x2.to_csv('./x_1st.csv', header=True, index=True, encoding='utf-8')
+df_y2.to_csv('./y_1st.csv', header=True, index=True, encoding='utf-8')
 
 
 # ### 発展問題
@@ -231,8 +230,8 @@ df_y2.to_csv('./7_tracking/y_1st.csv', header=True, index=True, encoding='utf-8'
 # In[19]:
 
 
-X = pd.read_csv('./7_tracking/x_1st.csv', encoding='utf-8', index_col=0)
-Y = pd.read_csv('./7_tracking/y_1st.csv', encoding='utf-8', index_col=0)
+X = pd.read_csv('./x_1st.csv', encoding='utf-8', index_col=0)
+Y = pd.read_csv('./y_1st.csv', encoding='utf-8', index_col=0)
 
 
 # ### データの扱い方
@@ -600,7 +599,7 @@ vor.regions
 
 # サッカーのトラッキングデータからボロノイ領域を描画するには，特定のフレームにおける選手の座標を取得し，それを母点として`Voronoi`クラスのオブジェクトを生成すれば良い．
 # ただし，ボロノイ領域の描画に`voronoi_plot_2d`をそのまま用いると，無限に延びるボロノイ線が途中で切れてしまうという問題が発生する．
-# そこで，ここでは`voronoi_plot_2d`のソースコード（https://github.com/scipy/scipy/blob/v1.8.1/scipy/spatial/_plotutils.py#L151-L265 )を参考に，独自の描画関数`my_voronoi_plot_2d`を以下のように作成する．
+# そこで，ここでは[`voronoi_plot_2d`のソースコード](https://github.com/scipy/scipy/blob/v1.8.1/scipy/spatial/_plotutils.py#L151-L265)を参考に，独自の描画関数`my_voronoi_plot_2d`を以下のように作成する．
 
 # In[40]:
 
@@ -835,7 +834,7 @@ dt = Delaunay(xy)
 
 # **ドロネーネットワークの描画**
 
-# scipyにはドロネーネットワークを描画する`delaunay_plot_2d`関数が用意されており，ソースコード（https://github.com/scipy/scipy/blob/v1.8.1/scipy/spatial/_plotutils.py#L36-L89 ）にアクセスできる．
+# scipyにはドロネーネットワークを描画する`delaunay_plot_2d`関数が用意されており，[ソースコード](https://github.com/scipy/scipy/blob/v1.8.1/scipy/spatial/_plotutils.py#L36-L89)にアクセスできる．
 # ここでは，ボロノイ領域と同様に，このソースコードを少し改変した`my_delaunay_plot_2d`関数を以下のように作成し使用する．
 
 # In[49]:
