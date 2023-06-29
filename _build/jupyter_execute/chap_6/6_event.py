@@ -37,8 +37,7 @@ get_ipython().run_line_magic('precision', '3')
 # 
 # - [データセットの詳細をまとめた論文](https://doi.org/10.1038/s41597-019-0247-7)
 #   - Pappalardo, L., Cintia, P., Rossi, A. et al. A public data set of spatio-temporal match events in soccer competitions. Sci Data 6, 236 (2019).
-# - [figshare](https://figshare.com/collections/Soccer_match_event_dataset/4415000/5)
-#     - データの入手先
+# - [データの入手先（figshare）](https://figshare.com/collections/Soccer_match_event_dataset/4415000/5)
 #     - ページ最上部でデータセットのバージョンを選択できる（2023年6月現在の最新版はVersion 5）
 #     - ページ最下部からzipファイルやjsonファイルをダウンロードできる
 # - [Wyscout API](https://apidocs.wyscout.com)
@@ -86,24 +85,7 @@ get_ipython().run_line_magic('precision', '3')
 # Pappalardoデータセットに含まれるオリジナルのデータはjson形式で提供されており，このままではデータ分析がしづらい．
 # そこで，まずはjson形式のデータを整形・加工し，PandasのDataFrameの形で保存しておくと便利である．
 # しかし，この過程は本講義で扱った知識を総動員するだけでなく，文字列の処理などの知識も必要となるため，**本講義ではデータの整形・加工の過程は省略し，加工済みデータ（csvファイル）のデータを提供することにする**．
-
-# **加工済みデータの内容**
-# 
-# 加工済みデータの詳細およびダウンロード用リンクを以下にまとめる．<br>
-# ※ W杯とCLのデータはヨーロッパリーグと試合数が異なるので，解析対象からは除外する．
-
-# | 内容 | ファイル | ファイルサイズ |
-# | ---- | ---- | ---- |
-# | 選手のプロフィールデータ |  [player.csv](https://drive.google.com/uc?export=download&id=1rtCAL0DqW9SeslMuGFCusg8VRRWz6J_M) | 172KB |
-# | チームのプロフィールデータ |  [team.csv](https://drive.google.com/uc?export=download&id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1) | 4KB |
-# | 各試合の得点データ |  [game.csv](https://drive.google.com/uc?export=download&id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A) | 156KB |
-# | イベントIDとイベント名の対応 | [event_list.csv](https://drive.google.com/uc?export=download&id=1oSDUt73paDOsORVj732rGU0vwIwGHvHJ) | 0.9KB |
-# | イベントに付与されるタグの説明 | [tag_list.csv](https://drive.google.com/uc?export=download&id=1o_tZ-y0eAYlgN1audJThoVBMN0Ta2x5f) | 2KB |
-# | 各試合のイベントデータ（イングランド） | イベントログ：[event_England.csv](https://drive.google.com/uc?export=download&id=1783Zl4IRGmiYmo-uLA1-FsZwGesOsFhg) <br>イベントタグ：[event_tag_England.csv](https://drive.google.com/uc?export=download&id=17LhNNVGZ9nsm-d3lqfBWiKmEqGitJwVI) | 58MB <br> 76.2MB |
-# | //（フランス）                         | イベントログ：[event_France.csv](https://drive.google.com/uc?export=download&id=17B8fTf8E7W56USHRObhRaeYBDqatDaft) <br> イベントタグ：[event_tag_France.csv](https://drive.google.com/uc?export=download&id=17Sq34wx_Ge_9tVyJYFup1XixwneoWjaO)| 57.6MB <br> 74.8MB |
-# | //（ドイツ）                            | イベントログ：[event_Germany.csv](https://drive.google.com/uc?export=download&id=17GVyiEgRFW9VZstK5LvEKLuKTuWmKe1Z) <br>イベントタグ：[event_tag_Germany.csv](https://drive.google.com/uc?export=download&id=17dGXdEp0yNH1ySRCcB9ydLxcmUAESFHy)| 47.2MB <br> 61.5MB |
-# | //（イタリア）                         | イベントログ：[event_Italy.csv](https://drive.google.com/uc?export=download&id=17C5vUbS9_zRWpgTalUNzWfP6oFXf0U3K) <br>イベントタグ：[event_tag_Italy.csv](https://drive.google.com/uc?export=download&id=17cH2MUqBDdWeBnTGK2EFYEfmB-GAxC3M)| 58.9MB <br> 76.6MB |
-# | //（スペイン）                         | イベントログ：[event_Spain.csv](https://drive.google.com/uc?export=download&id=17K-vF4xBn6GtBtFap5sIf26ZZnjs20fz) <br>イベントタグ：[event_tag_Spain.csv](https://drive.google.com/uc?export=download&id=17lGhSTFByywubBTmJKoTzrmaGLOgOZ3k)| 56.1MB <br> 74.5MB |
+# 加工済みデータは以下のリンクからダウンロードできる：\{numref}`event_data`
 
 # ## リーグ成績と順位表
 
@@ -125,7 +107,7 @@ get_ipython().run_line_magic('precision', '3')
 # In[72]:
 
 
-GM = pd.read_csv('./6_event/game.csv', header=0)
+GM = pd.read_csv('./game.csv', header=0)
 GM.head(2)
 
 
@@ -153,7 +135,7 @@ GM.head(2)
 # In[73]:
 
 
-TM = pd.read_csv('./6_event/team.csv', header=0)
+TM = pd.read_csv('./team.csv', header=0)
 TM.head()
 
 
@@ -568,7 +550,7 @@ ax.set_xticks(x);
 
 
 # 得点データの読み込み
-data = pd.read_csv('./6_event/score_nba.csv')
+data = pd.read_csv('./score_nba.csv')
 data.head()
 
 
@@ -598,9 +580,9 @@ data.head()
 
 
 # イベントデータと選手プロフィールの読み込み
-EV = pd.read_csv('./6_event/event_England.csv')
-EV_tag = pd.read_csv('./6_event/event_tag_England.csv')
-PL = pd.read_csv('./6_event/player.csv', header=0)
+EV = pd.read_csv('./event_England.csv')
+EV_tag = pd.read_csv('./event_tag_England.csv')
+PL = pd.read_csv('./player.csv', header=0)
 
 
 # また，以下の補助データも同じフォルダにダウンロードしておく：
