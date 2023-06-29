@@ -1304,8 +1304,8 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <li><p>第１引数には数値データを与える．</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">bins</span></code>引数には，以下を指定できる：</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">bins=n</span></code>とした場合，<span class="math notranslate nohighlight">\( n \)</span> 個の等間隔の階級に分ける．１つの階級の大きさは <code class="docutils literal notranslate"><span class="pre">(最大値-最小値)</span> <span class="pre">/</span> <span class="pre">n</span></code> となる．</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">bins=[0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>とした場合，階級の境界は<code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1),</span> <span class="pre">[1,</span> <span class="pre">2),</span> <span class="pre">[2,</span> <span class="pre">3]</span></code>となる（最後だけ右端を含むことに注意）．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bins=n</span></code>とした場合，<span class="math notranslate nohighlight">\( n \)</span> 個の等間隔の階級に分ける．１つの階級の幅は <code class="docutils literal notranslate"><span class="pre">(最大値-最小値)</span> <span class="pre">/</span> <span class="pre">n</span></code> となる．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bins=[0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>とした場合，階級の境界は<code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1),</span> <span class="pre">[1,</span> <span class="pre">2),</span> <span class="pre">[2,</span> <span class="pre">3]</span></code>となる（<strong>最後だけ右端を含むことに注意</strong>）．</p></li>
 </ul>
 </li>
 </ul>
@@ -1501,7 +1501,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> 
-              <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">130</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="c1"># 階級の左端の値を指定する場合</span>
+              <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">130</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span> <span class="c1"># 階級の左端の値を指定する</span>
               <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span>  <span class="c1"># ヒストグラムのスタイルを棒グラフに</span>
               <span class="n">color</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span>       <span class="c1"># バーの色をシアンに</span>
               <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>   <span class="c1"># バーの枠線の色を黒に</span>
@@ -1549,7 +1549,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> 
-              <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+              <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">130</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span> <span class="c1"># 階級の左端の値を指定する</span>
               <span class="n">density</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>      <span class="c1"># 縦軸を相対度数に変更</span>
               <span class="n">cumulative</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># 上側累積に変更  </span>
               <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span>
@@ -1577,11 +1577,9 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">bins</span></code>引数には <span class="math notranslate nohighlight">\(x\)</span> 方向と <span class="math notranslate nohighlight">\(y\)</span> 方向のbinの数（データの分割数），またはbinの左端の値をリストで指定する．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bins</span></code>引数には <span class="math notranslate nohighlight">\(x\)</span> 方向と <span class="math notranslate nohighlight">\(y\)</span> 方向のbinの数，またはbinの左端の値をリストで指定する．</p></li>
 <li><p>例えば，<code class="docutils literal notranslate"><span class="pre">bins=10</span></code>とした場合には<span class="math notranslate nohighlight">\(x,\ y\)</span>方向共に10個のbinに分割する．</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">bins=[10,</span> <span class="pre">20]</span></code>とした場合には <span class="math notranslate nohighlight">\(x\)</span> 方向を10個，<span class="math notranslate nohighlight">\(y\)</span> 方向を20個のbinに分割する．</p></li>
-<li><p>実際に実行すると，各binの度数に応じて色分けされた図が表示される．</p></li>
-<li><p>その他，主要なオプションを以下にまとめる．</p></li>
 </ul>
 <table class="colwidths-auto table">
 <thead>
@@ -1592,7 +1590,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </thead>
 <tbody>
 <tr class="row-even"><td><p>range</p></td>
-<td><p>対象とするデータの範囲</p></td>
+<td><p>ヒートマップを求めるデータの範囲</p></td>
 <td><p>[[x_min, x_max], [y_min, y_max]]</p></td>
 </tr>
 <tr class="row-odd"><td><p>density</p></td>
@@ -1638,8 +1636,8 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> 
                 <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>  <span class="c1"># 100x50のbinに分割する</span>
-                <span class="nb">range</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]],</span>  <span class="c1"># x軸は-10~10, y軸は-5~5の範囲</span>
-                <span class="n">density</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>  <span class="c1"># 度数</span>
+                <span class="nb">range</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]],</span>  <span class="c1"># 用いるデータの範囲</span>
+                <span class="n">density</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>  <span class="c1"># 度数を規格化しない</span>
                 <span class="n">cmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>     <span class="c1"># 度数が1以上のbinだけ表示</span>
                 <span class="n">cmax</span><span class="o">=</span><span class="mi">1000</span>   <span class="c1"># 度数が1000以下のbinだけ表示</span>
                 <span class="p">)</span>  
@@ -1656,7 +1654,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 主要なカラーマップには'jet'（デフォルト），'rainbow'，'gray'，'autumn'などがある．
 その他のカラーマップは<a class="reference external" href="https://matplotlib.org/3.5.1/tutorials/colors/colormaps.html">ここ</a>を参照のこと．</p>
 <p>カラーマップと度数の対応はカラーバーとして可視化できる．
-ヒートマップにカラーバーを追加するにはFigureオブジェクトの<code class="docutils literal notranslate"><span class="pre">colorbar</span></code>メソッド用い，以下のように実行する：</p>
+ヒートマップにカラーバーを追加するにはFigureオブジェクトの<code class="docutils literal notranslate"><span class="pre">fig.colorbar</span></code>メソッド用い，以下のように実行する：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="n">bx</span><span class="p">,</span> <span class="n">by</span><span class="p">],</span> <span class="n">option</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ret</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">option</span><span class="p">)</span>
 </pre></div>
@@ -1694,25 +1692,25 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># データの生成</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
 <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
-<span class="n">bx</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span>
 
 <span class="c1"># ヒートマップの描画</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
-<span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="n">bx</span><span class="p">,</span> <span class="n">by</span><span class="p">],</span> <span class="nb">range</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]],</span>\
+<span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="nb">range</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]],</span>\
                 <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># カラーバーを追加</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ret</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span> 
-             <span class="n">shrink</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.05</span><span class="p">);</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ret</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> 
+             <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span> <span class="c1"># カラーバーの方向</span>
+             <span class="n">shrink</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="c1"># カラーバーの拡大率</span>
+             <span class="n">aspect</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>  <span class="c1"># カラーバーの縦横比</span>
+             <span class="n">pad</span><span class="o">=</span><span class="mf">0.05</span>    <span class="c1"># カラーバーと図の間隔</span>
+             <span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x1d9a6a0a0&gt;
-</pre></div>
-</div>
-<img alt="../_images/5_matplotlib_86_1.png" src="../_images/5_matplotlib_86_1.png" />
+<img alt="../_images/5_matplotlib_86_0.png" src="../_images/5_matplotlib_86_0.png" />
 </div>
 </div>
 </section>
