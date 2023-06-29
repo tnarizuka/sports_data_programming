@@ -699,7 +699,7 @@ ret = ax.hist2d(X, Y,
 # | aspect | カラーバーの縦横比 | 数値 |
 # | pad | カラーバーの位置 | 数値 |
 
-# In[23]:
+# In[25]:
 
 
 # データの生成
@@ -709,7 +709,9 @@ Y = np.random.normal(loc=0, scale=1, size=100000)
 # ヒートマップの描画
 fig, ax = plt.subplots()
 ax.set_aspect('equal')
-ret = ax.hist2d(X, Y, bins=[100, 50], range=[[-10, 10], [-5, 5]],\
+ret = ax.hist2d(X, Y, 
+                bins=[100, 50], 
+                range=[[-10, 10], [-5, 5]],
                 cmap='jet', cmin=1)
 
 # カラーバーを追加
@@ -742,9 +744,10 @@ fig.colorbar(ret[3],
 # - 好きな色に変更
 # - グラフを好きな名前で保存
 
-# In[75]:
+# In[27]:
 
 
+# 指数分布に従うデータの生成
 from scipy.stats import expon
 np.random.seed(5)
 data = expon.rvs(loc=0, scale=10, size=1000) # データの生成
@@ -754,10 +757,12 @@ data = expon.rvs(loc=0, scale=10, size=1000) # データの生成
 
 
 fig, ax = plt.subplots()
+
+# 指数分布の確率密度関数を描画する
 x = np.arange(0, 70, 0.1)
 ax.plot(x, expon.pdf(x, loc=0, scale=10), 'r-', lw=2)
 
-# ヒストグラムを追加する
+# ヒストグラムを描画する
 
 
 # **ポアソン分布**
@@ -771,9 +776,10 @@ ax.plot(x, expon.pdf(x, loc=0, scale=10), 'r-', lw=2)
 # - 好きな色に変更
 # - グラフを好きな名前で保存
 
-# In[84]:
+# In[29]:
 
 
+# ポアソン分布に従うデータの生成
 from scipy.stats import poisson
 np.random.seed(20)
 data = poisson.rvs(mu=2, size=1000) # データの生成
@@ -783,6 +789,8 @@ data = poisson.rvs(mu=2, size=1000) # データの生成
 
 
 fig, ax = plt.subplots()
+
+# ポアソン分布の確率質量関数を描画する
 x = np.arange(0, 10, 1)
 ax.plot(x, poisson.pmf(x, 2), 'r-', lw=2)
 
@@ -795,7 +803,7 @@ ax.plot(x, poisson.pmf(x, 2), 'r-', lw=2)
 # このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
 # ※ 本データはPappalardoデータセットを加工したものである（詳細は[イベントデータの解析](https://rtwqzpj5uefb1pvzmprbnq-on.drv.tw/document/講義/立正/スポーツデータ分析のためのプログラミング/6_event.html)）．
 
-# In[4]:
+# In[33]:
 
 
 df = pd.read_csv('./player_all.csv', header=0, index_col='player_id', na_values=0)
@@ -812,7 +820,7 @@ df
 #     D = [data1, data2, ...]
 #     ```
 
-# In[91]:
+# In[43]:
 
 
 # 解答欄
@@ -820,7 +828,7 @@ df
 
 # - リスト`D`を用いて，体重の箱ひげ図をリーグ別に作成せよ．ただし，横軸の目盛りをリーグ名とせよ．
 
-# In[92]:
+# In[ ]:
 
 
 # 解答欄
@@ -833,7 +841,7 @@ df
 #     - 階級の数：10
 #     - その他の装飾は自由
 
-# In[93]:
+# In[ ]:
 
 
 # 解答欄
@@ -844,7 +852,7 @@ df
 # - 横軸に身長，縦軸に体重をとった散布図を作成せよ．
 # - 横軸に身長，縦軸に体重をとったヒートマップを作成せよ．
 
-# In[ ]:
+# In[49]:
 
 
 # 解答欄
