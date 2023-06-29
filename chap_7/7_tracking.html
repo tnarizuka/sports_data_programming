@@ -744,16 +744,7 @@ title="Print to PDF"
 <section id="pettersen">
 <h3><span class="section-number">7.1.1. </span>Pettersenデータセット<a class="headerlink" href="#pettersen" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>Pettersenデータセットはサッカーのトラッキングデータをまとめたデータセットである．
-試合数は3試合と少ないが，2022年時点で一般公開されている数少ない（唯一の？）サッカートラッキングデータである．
-データセットの内容は以下の論文にまとめられている：</p>
-<ul class="simple">
-<li><p>S. A. Pettersen, D. Johansen, H. Johansen, V. Berg-Johansen, V. R. Gaddam, A. Mortensen, R. Langseth, C. Griwodz, H. K. Stensland, and P. Halvorsen: Proceedings of the 5th ACM Multimedia Systems Conference, 2014, pp. 18–23. <a class="reference external" href="https://doi.org/10.1145/2557642.2563677">https://doi.org/10.1145/2557642.2563677</a></p></li>
-<li><p><a class="reference external" href="https://www.researchgate.net/publication/260983291_Soccer_Video_and_Player_Position_Dataset">論文PDFはこちら</a></p></li>
-</ul>
-<p>また，全データは以下のウェブサイトからダウンロード可能である：</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://datasets.simula.no/alfheim/">Alfheim - Soccer video and player position dataset</a></p></li>
-</ul>
+試合数は3試合と少ないが，2022年時点で一般公開されている数少ないサッカートラッキングデータである．</p>
 </section>
 <section id="id3">
 <h3><span class="section-number">7.1.2. </span>データセットの内容<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">#</a></h3>
@@ -761,129 +752,12 @@ title="Print to PDF"
 対象となる試合はAlfheimスタジアムを本拠地とするTromsø ILの3試合である．
 データセットには試合映像とセンサーによって取得された位置座標のデータ（トラッキングデータ）が含まれているが，トラッキングデータの取得対象はTromsø ILの選手のみである．
 また，選手のプライバシー保護のため，トラッキングデータから選手の個人情報は除去されている．</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>日時</p></th>
-<th class="head"><p>対戦カード</p></th>
-<th class="head"><p>データの種類</p></th>
-<th class="head"><p>備考</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>2013-11-03</p></td>
-<td><p>Tromsø IL - Strømsgodset</p></td>
-<td><p>トラッキングデータ<br>試合映像</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p>2013-11-07</p></td>
-<td><p>Tromsø IL - Anzhi</p></td>
-<td><p>トラッキングデータ<br>試合映像</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p>2013-11-28</p></td>
-<td><p>Tromsø IL - Tottenham Hotspurs</p></td>
-<td><p>トラッキングデータ<br>試合映像<br>ボールの座標データ</p></td>
-<td><p>前半40分のみ<br>ボール座標は手作業で取得</p></td>
-</tr>
-</tbody>
-</table>
-<p>トラッキングデータには以下の2種類の形式が用意されている：</p>
-<ul class="simple">
-<li><p>raw data：センサから取得した生データ</p></li>
-<li><p>interpolated data：時間単位を0.05秒に統一したデータ</p></li>
-</ul>
-<p>トラッキングデータに含まれる変数は下表の通りである．</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>変数</p></th>
-<th class="head"><p>データ型</p></th>
-<th class="head"><p>内容</p></th>
-<th class="head"><p>例</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>time</p></td>
-<td><p>string</p></td>
-<td><p>時刻</p></td>
-<td><p>18:01:09.05</p></td>
-</tr>
-<tr class="row-odd"><td><p>id</p></td>
-<td><p>int</p></td>
-<td><p>選手の識別ID</p></td>
-<td><p>Homeチームのみ．交代選手は新たなID．</p></td>
-</tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(x\)</span></p></td>
-<td><p>float</p></td>
-<td><p><span class="math notranslate nohighlight">\(x\)</span>座標</p></td>
-<td><p>26.573 m</p></td>
-</tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(y\)</span></p></td>
-<td><p>float</p></td>
-<td><p><span class="math notranslate nohighlight">\(y\)</span>座標</p></td>
-<td><p>29.436 m</p></td>
-</tr>
-<tr class="row-even"><td><p>heading</p></td>
-<td><p>float</p></td>
-<td><p>選手の向き（センサから取得）</p></td>
-<td><p><span class="math notranslate nohighlight">\(y\)</span>軸からの角度（rad）</p></td>
-</tr>
-<tr class="row-odd"><td><p>direction</p></td>
-<td><p>float</p></td>
-<td><p>選手の移動方向</p></td>
-<td><p><span class="math notranslate nohighlight">\(y\)</span>軸からの角度（rad）</p></td>
-</tr>
-<tr class="row-even"><td><p>energy</p></td>
-<td><p>float</p></td>
-<td><p>エネルギー消費量</p></td>
-<td><p>単位は不明</p></td>
-</tr>
-<tr class="row-odd"><td><p>speed</p></td>
-<td><p>float</p></td>
-<td><p>選手の速さ</p></td>
-<td><p>0.968 m/s</p></td>
-</tr>
-<tr class="row-even"><td><p>total_distance</p></td>
-<td><p>float</p></td>
-<td><p>試合開始からの移動距離</p></td>
-<td><p>255.584 m</p></td>
-</tr>
-</tbody>
-</table>
-<p><strong>利用規約</strong></p>
-<ul class="simple">
-<li><p>選手個人の再識別は禁止</p></li>
-<li><p>選手・クラブのパフォーマンスプロファイルの作成は禁止</p></li>
-<li><p>非営利的な研究目的での使用に限定</p></li>
-</ul>
-<p><strong>トラッキングシステム</strong></p>
-<ul class="simple">
-<li><p>ZXYシステム</p>
-<ul>
-<li><p>ZXY Sport Tracking system by ChyronHego (Trondheim, Norway)</p></li>
-</ul>
-</li>
-<li><p>センサーベルト</p>
-<ul>
-<li><p>選手の胸下に装着</p></li>
-<li><p>重さ10g</p></li>
-<li><p>加速度センサ，ジャイロセンサ，心拍計，コンパスを搭載</p></li>
-<li><p>心拍データはデータセットから除外</p></li>
-<li><p>レシーバーをスタジアム内に設置</p></li>
-</ul>
-</li>
-</ul>
-<p><strong>座標系</strong></p>
+<p>トラッキングデータの位置座標は以下のような座標系において，1秒間に20フレーム（20fps）の解像度で取得されている．</p>
 <ul class="simple">
 <li><p>原点：フィールドの左下</p></li>
 <li><p><span class="math notranslate nohighlight">\(x\)</span>軸：長軸方向（<span class="math notranslate nohighlight">\(0 \le x \le 105\)</span>）</p></li>
 <li><p><span class="math notranslate nohighlight">\(y\)</span>軸：短軸方向（<span class="math notranslate nohighlight">\(0 \le x \le 68\)</span>）</p></li>
 <li><p>単位はm</p></li>
-</ul>
-<p><strong>時間の解像度</strong></p>
-<ul class="simple">
-<li><p>1フレーム=0.05秒</p></li>
-<li><p>フレームレートは20fps</p></li>
-<li><p>※ interporated dataを用いた場合</p></li>
 </ul>
 </section>
 </section>
@@ -1341,7 +1215,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7_tracking_39_0.png" src="../_images/7_tracking_39_0.png" />
+<img alt="../_images/7_tracking_32_0.png" src="../_images/7_tracking_32_0.png" />
 </div>
 </div>
 <p>位置座標をプロットした結果を踏まえると，以下の10人が試合に出場した選手と考えられる：</p>
@@ -1852,7 +1726,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7_tracking_62_0.png" src="../_images/7_tracking_62_0.png" />
+<img alt="../_images/7_tracking_55_0.png" src="../_images/7_tracking_55_0.png" />
 </div>
 </div>
 </section>
@@ -1924,7 +1798,7 @@ Y_{c}(i) = \frac{1}{N} \sum_{u=1}^{N} Y_{u}(i), \\[10pt]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7_tracking_72_0.png" src="../_images/7_tracking_72_0.png" />
+<img alt="../_images/7_tracking_65_0.png" src="../_images/7_tracking_65_0.png" />
 </div>
 </div>
 </section>
@@ -2056,7 +1930,7 @@ V_{y}(i) = \frac{Y(i+n) - Y(i)}{0.05n}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7_tracking_84_0.png" src="../_images/7_tracking_84_0.png" />
+<img alt="../_images/7_tracking_77_0.png" src="../_images/7_tracking_77_0.png" />
 </div>
 </div>
 </section>
@@ -2155,7 +2029,7 @@ V_{y}(i) = \frac{Y(i+n) - Y(i)}{0.05n}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7_tracking_103_0.png" src="../_images/7_tracking_103_0.png" />
+<img alt="../_images/7_tracking_96_0.png" src="../_images/7_tracking_96_0.png" />
 </div>
 </div>
 <p><strong>ボロノイ領域の情報の取得</strong></p>
@@ -2341,7 +2215,7 @@ V_{y}(i) = \frac{Y(i+n) - Y(i)}{0.05n}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7_tracking_118_0.png" src="../_images/7_tracking_118_0.png" />
+<img alt="../_images/7_tracking_111_0.png" src="../_images/7_tracking_111_0.png" />
 </div>
 </div>
 </section>
@@ -2386,7 +2260,7 @@ V_{y}(i) = \frac{Y(i+n) - Y(i)}{0.05n}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7_tracking_124_0.png" src="../_images/7_tracking_124_0.png" />
+<img alt="../_images/7_tracking_117_0.png" src="../_images/7_tracking_117_0.png" />
 </div>
 </div>
 <p>プロットの結果を見て明らかなように，各選手はフィールド上を縦横無尽に動き周っていることがわかる．
@@ -2422,7 +2296,7 @@ V_{y}(i) = \frac{Y(i+n) - Y(i)}{0.05n}
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$Y$&#39;)
 </pre></div>
 </div>
-<img alt="../_images/7_tracking_130_1.png" src="../_images/7_tracking_130_1.png" />
+<img alt="../_images/7_tracking_123_1.png" src="../_images/7_tracking_123_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2449,7 +2323,7 @@ V_{y}(i) = \frac{Y(i+n) - Y(i)}{0.05n}
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$Y$&#39;)
 </pre></div>
 </div>
-<img alt="../_images/7_tracking_131_1.png" src="../_images/7_tracking_131_1.png" />
+<img alt="../_images/7_tracking_124_1.png" src="../_images/7_tracking_124_1.png" />
 </div>
 </div>
 <p>今度は選手ごとにだいたい決まった定位置（☓）を持ち，そこから標準偏差くらいの広がり（◯）を持って移動している様子が見て取れる．
@@ -2544,7 +2418,7 @@ V_{y}(i) = \frac{Y(i+n) - Y(i)}{0.05n}
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1cac55d00&gt;]
 </pre></div>
 </div>
-<img alt="../_images/7_tracking_151_1.png" src="../_images/7_tracking_151_1.png" />
+<img alt="../_images/7_tracking_144_1.png" src="../_images/7_tracking_144_1.png" />
 </div>
 </div>
 <p><strong>ドロネーネットワークの情報の取得</strong></p>
@@ -2648,7 +2522,7 @@ V_{y}(i) = \frac{Y(i+n) - Y(i)}{0.05n}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7_tracking_160_0.png" src="../_images/7_tracking_160_0.png" />
+<img alt="../_images/7_tracking_153_0.png" src="../_images/7_tracking_153_0.png" />
 </div>
 </div>
 </section>

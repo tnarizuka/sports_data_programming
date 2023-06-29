@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="レポート" href="../report/report.html" />
@@ -569,6 +571,25 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id23">
+   トラッキングデータの解析
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pettersen">
+     Pettersenデータセットの詳細
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id25">
+       データセットに関する情報の入手先
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
 </ul>
 
     </nav>
@@ -776,6 +797,25 @@ title="Print to PDF"
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id22">
        加工済みデータの内容
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id23">
+   トラッキングデータの解析
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pettersen">
+     Pettersenデータセットの詳細
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id25">
+       データセットに関する情報の入手先
       </a>
      </li>
     </ul>
@@ -3303,7 +3343,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 <span id="id19"></span><h3>Pappalardoデータセットの詳細<a class="headerlink" href="#pappalardo" title="このヘッドラインへのパーマリンク">#</a></h3>
 <section id="id20">
 <h4>データセットに関する情報の入手先<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">#</a></h4>
-<p>Pappalardoデータセットに含まれる全てのデータおよび付加情報は以下で取得できる．</p>
+<p>Pappalardoデータセットに含まれる全てのデータおよび付加情報は以下で入手できる．</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://doi.org/10.1038/s41597-019-0247-7">データセットの詳細をまとめた論文</a></p>
 <ul>
@@ -3482,6 +3522,140 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </tr>
 </tbody>
 </table>
+</section>
+</section>
+</section>
+<section id="id23">
+<h2>トラッキングデータの解析<a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">#</a></h2>
+<section id="pettersen">
+<span id="id24"></span><h3>Pettersenデータセットの詳細<a class="headerlink" href="#pettersen" title="このヘッドラインへのパーマリンク">#</a></h3>
+<section id="id25">
+<h4>データセットに関する情報の入手先<a class="headerlink" href="#id25" title="このヘッドラインへのパーマリンク">#</a></h4>
+<p>Pettersenデータセットの情報は以下で入手できる：</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.researchgate.net/publication/260983291_Soccer_Video_and_Player_Position_Dataset">データの詳細をまとめた論文</a></p>
+<ul>
+<li><p>S. A. Pettersen, D. Johansen, H. Johansen, V. Berg-Johansen, V. R. Gaddam, A. Mortensen, R. Langseth, C. Griwodz, H. K. Stensland, and P. Halvorsen: Proceedings of the 5th ACM Multimedia Systems Conference, 2014, pp. 18–23. <a class="reference external" href="https://doi.org/10.1145/2557642.2563677">https://doi.org/10.1145/2557642.2563677</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://datasets.simula.no/alfheim/">データの入手先</a></p>
+<ul>
+<li><p>Alfheim - Soccer video and player position dataset</p></li>
+</ul>
+</li>
+</ul>
+<p>Pettersenデータセットには以下の3試合のデータが含まれている：</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>日時</p></th>
+<th class="head"><p>対戦カード</p></th>
+<th class="head"><p>データの種類</p></th>
+<th class="head"><p>備考</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2013-11-03</p></td>
+<td><p>Tromsø IL - Strømsgodset</p></td>
+<td><p>トラッキングデータ<br>試合映像</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>2013-11-07</p></td>
+<td><p>Tromsø IL - Anzhi</p></td>
+<td><p>トラッキングデータ<br>試合映像</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2013-11-28</p></td>
+<td><p>Tromsø IL - Tottenham Hotspurs</p></td>
+<td><p>トラッキングデータ<br>試合映像<br>ボールの座標データ</p></td>
+<td><p>前半40分のみ<br>ボール座標は手作業で取得</p></td>
+</tr>
+</tbody>
+</table>
+<p>トラッキングデータは以下の2種類の形式で用意されている：</p>
+<ul class="simple">
+<li><p>raw data：センサから取得した生データ</p></li>
+<li><p>interpolated data：時間単位を0.05秒に統一したデータ</p></li>
+</ul>
+<p>トラッキングデータに含まれる変数は下表の通りである．</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>変数</p></th>
+<th class="head"><p>データ型</p></th>
+<th class="head"><p>内容</p></th>
+<th class="head"><p>例</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>time</p></td>
+<td><p>string</p></td>
+<td><p>時刻</p></td>
+<td><p>18:01:09.05</p></td>
+</tr>
+<tr class="row-odd"><td><p>id</p></td>
+<td><p>int</p></td>
+<td><p>選手の識別ID</p></td>
+<td><p>Homeチームのみ．交代選手は新たなID．</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(x\)</span></p></td>
+<td><p>float</p></td>
+<td><p><span class="math notranslate nohighlight">\(x\)</span>座標</p></td>
+<td><p>26.573 m</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(y\)</span></p></td>
+<td><p>float</p></td>
+<td><p><span class="math notranslate nohighlight">\(y\)</span>座標</p></td>
+<td><p>29.436 m</p></td>
+</tr>
+<tr class="row-even"><td><p>heading</p></td>
+<td><p>float</p></td>
+<td><p>選手の向き（センサから取得）</p></td>
+<td><p><span class="math notranslate nohighlight">\(y\)</span>軸からの角度（rad）</p></td>
+</tr>
+<tr class="row-odd"><td><p>direction</p></td>
+<td><p>float</p></td>
+<td><p>選手の移動方向</p></td>
+<td><p><span class="math notranslate nohighlight">\(y\)</span>軸からの角度（rad）</p></td>
+</tr>
+<tr class="row-even"><td><p>energy</p></td>
+<td><p>float</p></td>
+<td><p>エネルギー消費量</p></td>
+<td><p>単位は不明</p></td>
+</tr>
+<tr class="row-odd"><td><p>speed</p></td>
+<td><p>float</p></td>
+<td><p>選手の速さ</p></td>
+<td><p>0.968 m/s</p></td>
+</tr>
+<tr class="row-even"><td><p>total_distance</p></td>
+<td><p>float</p></td>
+<td><p>試合開始からの移動距離</p></td>
+<td><p>255.584 m</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>利用規約</strong></p>
+<ul class="simple">
+<li><p>選手個人の再識別は禁止</p></li>
+<li><p>選手・クラブのパフォーマンスプロファイルの作成は禁止</p></li>
+<li><p>非営利的な研究目的での使用に限定</p></li>
+</ul>
+<p><strong>トラッキングシステム</strong></p>
+<ul class="simple">
+<li><p>ZXYシステム</p>
+<ul>
+<li><p>ZXY Sport Tracking system by ChyronHego (Trondheim, Norway)</p></li>
+</ul>
+</li>
+<li><p>センサーベルト</p>
+<ul>
+<li><p>選手の胸下に装着</p></li>
+<li><p>重さ10g</p></li>
+<li><p>加速度センサ，ジャイロセンサ，心拍計，コンパスを搭載</p></li>
+<li><p>心拍データはデータセットから除外</p></li>
+<li><p>レシーバーをスタジアム内に設置</p></li>
+</ul>
+</li>
+</ul>
 </section>
 </section>
 </section>
