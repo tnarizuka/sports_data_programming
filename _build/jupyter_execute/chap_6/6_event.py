@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[5]:
 
 
 # （必須）モジュールのインポート
@@ -42,7 +42,7 @@ get_ipython().run_line_magic('precision', '3')
 
 # ## リーグ成績と順位表
 
-# 今，手元には2017年度ヨーロッパリーグ全試合の得点データ（ [game.csv](https://drive.google.com/uc?export=download&id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A) ）とチームプロフィール（[team.csv](https://drive.google.com/uc?export=download&id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1)）がある．
+# 今，手元には2017年度ヨーロッパリーグ全試合の得点データ（[game.csv](https://drive.google.com/uc?export=download&id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A)）とチームプロフィール（[team.csv](https://drive.google.com/uc?export=download&id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1)）がある．
 # これらを用いれば，チームごとに得点，失点，得失点差，勝敗などを算出することができる．
 # 各リーグの最終的な順位は勝ち点によって決まる．
 # １試合で獲得する勝ち点は勝利が3，引き分けが1，負けが0である．
@@ -55,7 +55,7 @@ get_ipython().run_line_magic('precision', '3')
 
 # ### データの読み込み
 
-# まずは[game.csv](https://drive.google.com/uc?export=download&id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A)をダウンロードして作業フォルダ（例えば`OneDrive/sport_data/6_event`）に移動し，`GM`という名前のDataFrameに読み込む．
+# まずは[game.csv](https://drive.google.com/uc?export=download&id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A)をダウンロードしてカレントディレクトリに移動し，`GM`という名前のDataFrameに読み込む．
 
 # In[72]:
 
