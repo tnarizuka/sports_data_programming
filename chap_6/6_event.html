@@ -470,17 +470,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id18">
-     6.4.4. 選手のランキング
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id19">
-     6.4.5. ボールの軌跡の可視化
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id20">
-     6.4.6. 選手間のパス数の可視化
+     6.4.4. ボールの軌跡の可視化
     </a>
    </li>
   </ul>
@@ -597,17 +587,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id18">
-     6.4.4. 選手のランキング
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id19">
-     6.4.5. ボールの軌跡の可視化
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id20">
-     6.4.6. 選手間のパス数の可視化
+     6.4.4. ボールの軌跡の可視化
     </a>
    </li>
   </ul>
@@ -1962,8 +1942,7 @@ dtype: float64
 </section>
 <section id="id14">
 <h2><span class="section-number">6.4. </span>イベントデータの解析<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">#</a></h2>
-<p>Pappalardoデータセットのメインデータはイベントデータである．
-イベントデータはイベントログとイベントタグの2種類から成る：</p>
+<p>Pappalardoデータセットのイベントデータはイベントログとイベントタグの2種類から成る：</p>
 <ul class="simple">
 <li><p>イベントログ</p>
 <ul>
@@ -1977,11 +1956,11 @@ dtype: float64
 </ul>
 </li>
 </ul>
-<p>イベントデータにはボールに関わるほぼ全てのプレー情報が含まれているため，詳細な試合展開を把握することができる．
+<p>イベントデータにはボールに関わるほぼ全てのプレー情報が含まれているため，これを分析すれば詳細な試合展開を把握することができる．
 イベントデータは選手プロフィールや得点データに比べて格段に情報量が多いため，その扱いの難易度も高い．
 基本的にExcelで解析するのは困難であり，Pandasの本領が最も発揮されるデータといえる．</p>
-<p>ここでは，イングランド・プレミアリーグのデータを解析対象とする．
-準備として，以下のファイルをダウンロードして作業フォルダ（例えば<code class="docutils literal notranslate"><span class="pre">OneDrive/sport_data/6_event</span></code>）に移動する：</p>
+<p>以下では，イングランド・プレミアリーグのデータを解析対象とする．
+準備として，次のファイルをダウンロードしてカレントディレクトリに移動する：</p>
 <ul class="simple">
 <li><p>イベントログ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1783Zl4IRGmiYmo-uLA1-FsZwGesOsFhg">event_England.csv</a></p></li>
 <li><p>イベントタグ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=17LhNNVGZ9nsm-d3lqfBWiKmEqGitJwVI">event_tag_England.csv</a></p></li>
@@ -1998,11 +1977,6 @@ dtype: float64
 </div>
 </div>
 </div>
-<p>また，以下の補助データも同じフォルダにダウンロードしておく：</p>
-<ul class="simple">
-<li><p>イベントリスト：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1oSDUt73paDOsORVj732rGU0vwIwGHvHJ">event_list.csv</a></p></li>
-<li><p>タグリスト：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1o_tZ-y0eAYlgN1audJThoVBMN0Ta2x5f">tag_list.csv</a></p></li>
-</ul>
 <section id="id15">
 <h3><span class="section-number">6.4.1. </span>イベントデータの詳細<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p><strong>イベントログ</strong></p>
@@ -2033,7 +2007,9 @@ dtype: float64
       <th></th>
       <th>id</th>
       <th>game_id</th>
+      <th>half</th>
       <th>...</th>
+      <th>y1</th>
       <th>x2</th>
       <th>y2</th>
     </tr>
@@ -2043,7 +2019,9 @@ dtype: float64
       <th>0</th>
       <td>177959171</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>49.0</td>
       <td>31.0</td>
       <td>78.0</td>
     </tr>
@@ -2051,7 +2029,9 @@ dtype: float64
       <th>1</th>
       <td>177959172</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>78.0</td>
       <td>51.0</td>
       <td>75.0</td>
     </tr>
@@ -2059,7 +2039,9 @@ dtype: float64
       <th>2</th>
       <td>177959173</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>75.0</td>
       <td>35.0</td>
       <td>71.0</td>
     </tr>
@@ -2067,7 +2049,9 @@ dtype: float64
       <th>3</th>
       <td>177959174</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>71.0</td>
       <td>41.0</td>
       <td>95.0</td>
     </tr>
@@ -2075,7 +2059,9 @@ dtype: float64
       <th>4</th>
       <td>177959175</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>95.0</td>
       <td>72.0</td>
       <td>88.0</td>
     </tr>
@@ -2179,7 +2165,7 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$Y$&#39;)
 </pre></div>
 </div>
-<img alt="../_images/6_event_77_1.png" src="../_images/6_event_77_1.png" />
+<img alt="../_images/6_event_76_1.png" src="../_images/6_event_76_1.png" />
 </div>
 </div>
 <p><strong>イベントタグ</strong></p>
@@ -2210,7 +2196,9 @@ dtype: float64
       <th></th>
       <th>id</th>
       <th>goal</th>
+      <th>own_goal</th>
       <th>...</th>
+      <th>counter_attack</th>
       <th>dangerous_ball_lost</th>
       <th>blocked</th>
     </tr>
@@ -2220,7 +2208,9 @@ dtype: float64
       <th>0</th>
       <td>177959171</td>
       <td>0.0</td>
+      <td>0.0</td>
       <td>...</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -2228,7 +2218,9 @@ dtype: float64
       <th>1</th>
       <td>177959172</td>
       <td>0.0</td>
+      <td>0.0</td>
       <td>...</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -2236,7 +2228,9 @@ dtype: float64
       <th>2</th>
       <td>177959173</td>
       <td>0.0</td>
+      <td>0.0</td>
       <td>...</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -2244,7 +2238,9 @@ dtype: float64
       <th>3</th>
       <td>177959174</td>
       <td>0.0</td>
+      <td>0.0</td>
       <td>...</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -2252,7 +2248,9 @@ dtype: float64
       <th>4</th>
       <td>177959175</td>
       <td>0.0</td>
+      <td>0.0</td>
       <td>...</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -2306,8 +2304,8 @@ dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 特定の試合を抽出</span>
-<span class="n">ev</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span>
-<span class="n">ev_tag</span> <span class="o">=</span> <span class="n">EV_tag</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">ev</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">2499719</span><span class="p">]</span>
+<span class="n">ev_tag</span> <span class="o">=</span> <span class="n">EV_tag</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">2499719</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -2339,7 +2337,9 @@ dtype: float64
       <th></th>
       <th>id</th>
       <th>game_id</th>
+      <th>half</th>
       <th>...</th>
+      <th>y1</th>
       <th>x2</th>
       <th>y2</th>
     </tr>
@@ -2349,7 +2349,9 @@ dtype: float64
       <th>0</th>
       <td>177959171</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>49.0</td>
       <td>31.0</td>
       <td>78.0</td>
     </tr>
@@ -2357,7 +2359,9 @@ dtype: float64
       <th>1</th>
       <td>177959172</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>78.0</td>
       <td>51.0</td>
       <td>75.0</td>
     </tr>
@@ -2365,7 +2369,9 @@ dtype: float64
       <th>2</th>
       <td>177959173</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>75.0</td>
       <td>35.0</td>
       <td>71.0</td>
     </tr>
@@ -2373,7 +2379,9 @@ dtype: float64
       <th>3</th>
       <td>177959174</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>71.0</td>
       <td>41.0</td>
       <td>95.0</td>
     </tr>
@@ -2381,7 +2389,9 @@ dtype: float64
       <th>4</th>
       <td>177959175</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>95.0</td>
       <td>72.0</td>
       <td>88.0</td>
     </tr>
@@ -2417,7 +2427,9 @@ dtype: float64
       <th></th>
       <th>id</th>
       <th>goal</th>
+      <th>own_goal</th>
       <th>...</th>
+      <th>counter_attack</th>
       <th>dangerous_ball_lost</th>
       <th>blocked</th>
     </tr>
@@ -2427,7 +2439,9 @@ dtype: float64
       <th>0</th>
       <td>177959171</td>
       <td>0.0</td>
+      <td>0.0</td>
       <td>...</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -2435,7 +2449,9 @@ dtype: float64
       <th>1</th>
       <td>177959172</td>
       <td>0.0</td>
+      <td>0.0</td>
       <td>...</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -2443,7 +2459,9 @@ dtype: float64
       <th>2</th>
       <td>177959173</td>
       <td>0.0</td>
+      <td>0.0</td>
       <td>...</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -2451,7 +2469,9 @@ dtype: float64
       <th>3</th>
       <td>177959174</td>
       <td>0.0</td>
+      <td>0.0</td>
       <td>...</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -2459,7 +2479,9 @@ dtype: float64
       <th>4</th>
       <td>177959175</td>
       <td>0.0</td>
+      <td>0.0</td>
       <td>...</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -2496,7 +2518,9 @@ dtype: float64
       <th></th>
       <th>id</th>
       <th>game_id</th>
+      <th>half</th>
       <th>...</th>
+      <th>y1</th>
       <th>x2</th>
       <th>y2</th>
     </tr>
@@ -2506,7 +2530,9 @@ dtype: float64
       <th>896</th>
       <td>177960132</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>49.0</td>
       <td>11.0</td>
       <td>61.0</td>
     </tr>
@@ -2514,7 +2540,9 @@ dtype: float64
       <th>897</th>
       <td>177960129</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>39.0</td>
       <td>92.0</td>
       <td>50.0</td>
     </tr>
@@ -2522,7 +2550,9 @@ dtype: float64
       <th>898</th>
       <td>177960130</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>50.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -2530,7 +2560,9 @@ dtype: float64
       <th>899</th>
       <td>177960121</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>100.0</td>
       <td>8.0</td>
       <td>50.0</td>
     </tr>
@@ -2538,7 +2570,9 @@ dtype: float64
       <th>900</th>
       <td>177960127</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>24.0</td>
       <td>100.0</td>
       <td>100.0</td>
     </tr>
@@ -2575,7 +2609,9 @@ dtype: float64
       <th></th>
       <th>id</th>
       <th>game_id</th>
+      <th>half</th>
       <th>...</th>
+      <th>y1</th>
       <th>x2</th>
       <th>y2</th>
     </tr>
@@ -2585,7 +2621,9 @@ dtype: float64
       <th>6</th>
       <td>177959186</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>25.0</td>
       <td>39.0</td>
       <td>15.0</td>
     </tr>
@@ -2593,7 +2631,9 @@ dtype: float64
       <th>7</th>
       <td>177959189</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>15.0</td>
       <td>33.0</td>
       <td>20.0</td>
     </tr>
@@ -2601,7 +2641,9 @@ dtype: float64
       <th>8</th>
       <td>177961218</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>85.0</td>
       <td>67.0</td>
       <td>80.0</td>
     </tr>
@@ -2609,7 +2651,9 @@ dtype: float64
       <th>9</th>
       <td>177959178</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>80.0</td>
       <td>59.0</td>
       <td>61.0</td>
     </tr>
@@ -2617,7 +2661,9 @@ dtype: float64
       <th>10</th>
       <td>177959179</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>61.0</td>
       <td>45.0</td>
       <td>45.0</td>
     </tr>
@@ -2627,9 +2673,9 @@ dtype: float64
 </div></div></div>
 </div>
 <p><strong>特定のイベントの抽出</strong></p>
-<p>イベントログ<code class="docutils literal notranslate"><span class="pre">EV</span></code>には'event'列と'subevent'列が存在する．
-'event'列は'pass'，'foul'などの大分類，'subevent'列は'simple_pass'や'high_pass'などの小分類となっている．
-'event'および'subevent'のリストは<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1oSDUt73paDOsORVj732rGU0vwIwGHvHJ">event_list.csv</a> にまとめられている．</p>
+<p>イベントログ<code class="docutils literal notranslate"><span class="pre">EV</span></code>には<code class="docutils literal notranslate"><span class="pre">'event'</span></code>列と<code class="docutils literal notranslate"><span class="pre">'subevent'</span></code>列が存在する．
+<code class="docutils literal notranslate"><span class="pre">'event'</span></code>列は<code class="docutils literal notranslate"><span class="pre">'pass'</span></code>，<code class="docutils literal notranslate"><span class="pre">'foul'</span></code>などの大分類，<code class="docutils literal notranslate"><span class="pre">'subevent'</span></code>列は<code class="docutils literal notranslate"><span class="pre">'simple_pass'</span></code>や<code class="docutils literal notranslate"><span class="pre">'high_pass'</span></code>などの小分類となっている．
+<code class="docutils literal notranslate"><span class="pre">'event'</span></code>および<code class="docutils literal notranslate"><span class="pre">'subevent'</span></code>のリストは<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1oSDUt73paDOsORVj732rGU0vwIwGHvHJ">event_list.csv</a> にまとめられている．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># event列が&#39;pass&#39;の行を抽出</span>
@@ -2658,7 +2704,9 @@ dtype: float64
       <th></th>
       <th>id</th>
       <th>game_id</th>
+      <th>half</th>
       <th>...</th>
+      <th>y1</th>
       <th>x2</th>
       <th>y2</th>
     </tr>
@@ -2668,7 +2716,9 @@ dtype: float64
       <th>0</th>
       <td>177959171</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>49.0</td>
       <td>31.0</td>
       <td>78.0</td>
     </tr>
@@ -2676,7 +2726,9 @@ dtype: float64
       <th>1</th>
       <td>177959172</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>78.0</td>
       <td>51.0</td>
       <td>75.0</td>
     </tr>
@@ -2684,7 +2736,9 @@ dtype: float64
       <th>2</th>
       <td>177959173</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>75.0</td>
       <td>35.0</td>
       <td>71.0</td>
     </tr>
@@ -2692,7 +2746,9 @@ dtype: float64
       <th>3</th>
       <td>177959174</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>71.0</td>
       <td>41.0</td>
       <td>95.0</td>
     </tr>
@@ -2700,7 +2756,9 @@ dtype: float64
       <th>4</th>
       <td>177959175</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>95.0</td>
       <td>72.0</td>
       <td>88.0</td>
     </tr>
@@ -2737,7 +2795,9 @@ dtype: float64
       <th></th>
       <th>id</th>
       <th>game_id</th>
+      <th>half</th>
       <th>...</th>
+      <th>y1</th>
       <th>x2</th>
       <th>y2</th>
     </tr>
@@ -2747,7 +2807,9 @@ dtype: float64
       <th>0</th>
       <td>177959171</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>49.0</td>
       <td>31.0</td>
       <td>78.0</td>
     </tr>
@@ -2755,7 +2817,9 @@ dtype: float64
       <th>4</th>
       <td>177959175</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>95.0</td>
       <td>72.0</td>
       <td>88.0</td>
     </tr>
@@ -2763,7 +2827,9 @@ dtype: float64
       <th>5</th>
       <td>177959177</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>88.0</td>
       <td>77.0</td>
       <td>75.0</td>
     </tr>
@@ -2771,7 +2837,9 @@ dtype: float64
       <th>17</th>
       <td>177959196</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>26.0</td>
       <td>37.0</td>
       <td>8.0</td>
     </tr>
@@ -2779,7 +2847,9 @@ dtype: float64
       <th>18</th>
       <td>177959197</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>8.0</td>
       <td>23.0</td>
       <td>5.0</td>
     </tr>
@@ -2816,7 +2886,9 @@ dtype: float64
       <th></th>
       <th>id</th>
       <th>game_id</th>
+      <th>half</th>
       <th>...</th>
+      <th>y1</th>
       <th>x2</th>
       <th>y2</th>
     </tr>
@@ -2826,7 +2898,9 @@ dtype: float64
       <th>46</th>
       <td>177959212</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>41.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -2834,7 +2908,9 @@ dtype: float64
       <th>47</th>
       <td>177959226</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>100.0</td>
       <td>12.0</td>
       <td>59.0</td>
     </tr>
@@ -2842,7 +2918,9 @@ dtype: float64
       <th>91</th>
       <td>177959280</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>52.0</td>
       <td>100.0</td>
       <td>100.0</td>
     </tr>
@@ -2850,7 +2928,9 @@ dtype: float64
       <th>92</th>
       <td>177959249</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>0.0</td>
       <td>4.0</td>
       <td>48.0</td>
     </tr>
@@ -2858,7 +2938,9 @@ dtype: float64
       <th>554</th>
       <td>177959759</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>54.0</td>
       <td>100.0</td>
       <td>100.0</td>
     </tr>
@@ -2898,7 +2980,9 @@ dtype: float64
       <th></th>
       <th>id</th>
       <th>game_id</th>
+      <th>half</th>
       <th>...</th>
+      <th>y1</th>
       <th>x2</th>
       <th>y2</th>
     </tr>
@@ -2908,7 +2992,9 @@ dtype: float64
       <th>0</th>
       <td>177959171</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>49.0</td>
       <td>31.0</td>
       <td>78.0</td>
     </tr>
@@ -2916,7 +3002,9 @@ dtype: float64
       <th>1</th>
       <td>177959172</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>78.0</td>
       <td>51.0</td>
       <td>75.0</td>
     </tr>
@@ -2924,7 +3012,9 @@ dtype: float64
       <th>2</th>
       <td>177959173</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>75.0</td>
       <td>35.0</td>
       <td>71.0</td>
     </tr>
@@ -2932,7 +3022,9 @@ dtype: float64
       <th>3</th>
       <td>177959174</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>71.0</td>
       <td>41.0</td>
       <td>95.0</td>
     </tr>
@@ -2940,7 +3032,9 @@ dtype: float64
       <th>4</th>
       <td>177959175</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>95.0</td>
       <td>72.0</td>
       <td>88.0</td>
     </tr>
@@ -2951,12 +3045,16 @@ dtype: float64
       <td>...</td>
       <td>...</td>
       <td>...</td>
+      <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
       <th>1739</th>
       <td>177961023</td>
       <td>2499719</td>
+      <td>2</td>
       <td>...</td>
+      <td>94.0</td>
       <td>72.0</td>
       <td>83.0</td>
     </tr>
@@ -2964,7 +3062,9 @@ dtype: float64
       <th>1740</th>
       <td>177961024</td>
       <td>2499719</td>
+      <td>2</td>
       <td>...</td>
+      <td>83.0</td>
       <td>69.0</td>
       <td>74.0</td>
     </tr>
@@ -2972,7 +3072,9 @@ dtype: float64
       <th>1759</th>
       <td>177961037</td>
       <td>2499719</td>
+      <td>2</td>
       <td>...</td>
+      <td>77.0</td>
       <td>25.0</td>
       <td>72.0</td>
     </tr>
@@ -2980,7 +3082,9 @@ dtype: float64
       <th>1762</th>
       <td>177961039</td>
       <td>2499719</td>
+      <td>2</td>
       <td>...</td>
+      <td>68.0</td>
       <td>7.0</td>
       <td>53.0</td>
     </tr>
@@ -2988,7 +3092,9 @@ dtype: float64
       <th>1764</th>
       <td>177961035</td>
       <td>2499719</td>
+      <td>2</td>
       <td>...</td>
+      <td>51.0</td>
       <td>73.0</td>
       <td>58.0</td>
     </tr>
@@ -3025,7 +3131,9 @@ dtype: float64
       <th></th>
       <th>id</th>
       <th>game_id</th>
+      <th>half</th>
       <th>...</th>
+      <th>y1</th>
       <th>x2</th>
       <th>y2</th>
     </tr>
@@ -3035,7 +3143,9 @@ dtype: float64
       <th>46</th>
       <td>177959212</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>41.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -3043,7 +3153,9 @@ dtype: float64
       <th>91</th>
       <td>177959280</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>52.0</td>
       <td>100.0</td>
       <td>100.0</td>
     </tr>
@@ -3051,7 +3163,9 @@ dtype: float64
       <th>554</th>
       <td>177959759</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>54.0</td>
       <td>100.0</td>
       <td>100.0</td>
     </tr>
@@ -3059,7 +3173,9 @@ dtype: float64
       <th>898</th>
       <td>177960130</td>
       <td>2499719</td>
+      <td>1</td>
       <td>...</td>
+      <td>50.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -3067,7 +3183,9 @@ dtype: float64
       <th>1107</th>
       <td>177960379</td>
       <td>2499719</td>
+      <td>2</td>
       <td>...</td>
+      <td>54.0</td>
       <td>100.0</td>
       <td>100.0</td>
     </tr>
@@ -3075,7 +3193,9 @@ dtype: float64
       <th>1570</th>
       <td>177960849</td>
       <td>2499719</td>
+      <td>2</td>
       <td>...</td>
+      <td>63.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -3083,7 +3203,9 @@ dtype: float64
       <th>1613</th>
       <td>177960902</td>
       <td>2499719</td>
+      <td>2</td>
       <td>...</td>
+      <td>44.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -3137,7 +3259,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_103_0.png" src="../_images/6_event_103_0.png" />
+<img alt="../_images/6_event_102_0.png" src="../_images/6_event_102_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3150,7 +3272,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_104_0.png" src="../_images/6_event_104_0.png" />
+<img alt="../_images/6_event_103_0.png" src="../_images/6_event_103_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3163,7 +3285,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_105_0.png" src="../_images/6_event_105_0.png" />
+<img alt="../_images/6_event_104_0.png" src="../_images/6_event_104_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3176,7 +3298,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_106_0.png" src="../_images/6_event_106_0.png" />
+<img alt="../_images/6_event_105_0.png" src="../_images/6_event_105_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3189,7 +3311,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_107_0.png" src="../_images/6_event_107_0.png" />
+<img alt="../_images/6_event_106_0.png" src="../_images/6_event_106_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3202,7 +3324,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_108_0.png" src="../_images/6_event_108_0.png" />
+<img alt="../_images/6_event_107_0.png" src="../_images/6_event_107_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3215,139 +3337,12 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_109_0.png" src="../_images/6_event_109_0.png" />
+<img alt="../_images/6_event_108_0.png" src="../_images/6_event_108_0.png" />
 </div>
 </div>
 </section>
 <section id="id18">
-<h3><span class="section-number">6.4.4. </span>選手のランキング<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>シーズンが終了すると，チームのリーグ成績と共に選手の個人成績が発表される．
-個人成績は，シュート数やゴール数などの部門別ランキングとなっている．
-ここでは，イベントデータを用いてこれらのランキングを求めてみよう．
-なお，どのようなプレーをシュートやパスと見なすかは用いるデータセットによって異なっており，
-以下で求めるランキングが公式発表されたものと完全に一致するわけではない．
-2017年度プレミアリーグの個人成績は例えば，</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://tavitt-football.com/2017-18_premier_playerstats/#i-4">https://tavitt-football.com/2017-18_premier_playerstats/#i-4</a></p></li>
-</ul>
-<p>にて確認できるが，細かい数値は本データセットから求めたものと一致しない．</p>
-<p>ランキングの作成方法は以下の通りである．</p>
-<ul class="simple">
-<li><p>ランキング項目に応じて条件付き抽出する．</p>
-<ul>
-<li><p>例えば，パス数の場合は'event'列が'pass'である行を抽出する</p></li>
-</ul>
-</li>
-<li><p>条件付き抽出後のDataFrameに対し，'player_id'ごとの出現回数を求める</p>
-<ul>
-<li><p>DataFrameの<code class="docutils literal notranslate"><span class="pre">value_counts</span></code>メソッドを用いる</p></li>
-</ul>
-</li>
-<li><p>選手プロフィール<code class="docutils literal notranslate"><span class="pre">PL</span></code>を用いて'player_id'を選手名に変換する</p></li>
-</ul>
-<p><strong>シュート数</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PR_shot</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;subevent&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;shot&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;subevent&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;free_kick_shot&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;subevent&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;penalty&#39;</span><span class="p">),</span> <span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-<span class="n">PR_shot</span> <span class="o">=</span> <span class="n">PR_shot</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">PL</span><span class="p">[[</span><span class="s1">&#39;player_id&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>  <span class="c1"># 選手IDを選手名に変換する</span>
-<span class="n">PR_shot</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>H_Kane            175
-Mohame_Salah      142
-C_Eriksen          97
-Richarlison        92
-S_Agüero           91
-K_D_Bruyne         91
-A_Sánchez          85
-R_Sterling         80
-R_Lukaku           80
-Robert_Firmino     80
-Name: player_id, dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>パス数</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PR_pass</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;pass&#39;</span><span class="p">),</span> <span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-<span class="n">PR_pass</span> <span class="o">=</span> <span class="n">PR_pass</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">PL</span><span class="p">[[</span><span class="s1">&#39;player_id&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>  <span class="c1"># 選手IDを選手名に変換する</span>
-<span class="n">PR_pass</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>G_Xhaka         2974
-N_Otamendi      2964
-Fernandinho     2842
-Azpilicueta     2713
-K_D_Bruyne      2672
-N_Matić         2456
-Davi_Silva      2382
-J_Vertonghen    2370
-K_Walker        2316
-C_Eriksen       2196
-Name: player_id, dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>アシスト数</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PR_assist</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">EV_tag</span><span class="p">[</span><span class="s1">&#39;assist&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-<span class="n">PR_assist</span> <span class="o">=</span> <span class="n">PR_assist</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">PL</span><span class="p">[[</span><span class="s1">&#39;player_id&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>  <span class="c1"># 選手IDを選手名に変換する</span>
-<span class="n">PR_assist</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>K_D_Bruyne      16
-L_Sané          13
-R_Mahrez        10
-R_Sterling      10
-Davi_Silva      10
-H_Mkhitaryan     9
-D_Alli           9
-C_Eriksen        9
-Mohame_Salah     8
-P_Groß           8
-Name: player_id, dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>ゴール数</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PR_goal</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[((</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;shot&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;free_kick&#39;</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">EV_tag</span><span class="p">[</span><span class="s1">&#39;goal&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-<span class="n">PR_goal</span> <span class="o">=</span> <span class="n">PR_goal</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">PL</span><span class="p">[[</span><span class="s1">&#39;player_id&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>  <span class="c1"># 選手IDを選手名に変換する</span>
-<span class="n">PR_goal</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mohame_Salah      32
-H_Kane            29
-S_Agüero          21
-J_Vardy           20
-R_Sterling        18
-R_Lukaku          16
-Robert_Firmino    15
-A_Lacazette       14
-Gabrie_Jesus      13
-G_Murray          12
-Name: player_id, dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="id19">
-<h3><span class="section-number">6.4.5. </span>ボールの軌跡の可視化<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3><span class="section-number">6.4.4. </span>ボールの軌跡の可視化<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>イベントデータを用いると，パスやシュートなどのイベント単位で試合展開を追跡することができる．
 ここでは，特定の試合に対し，ボールの軌跡を可視化してみよう．</p>
 <p><strong>試合の抽出</strong></p>
@@ -3521,7 +3516,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_135_0.png" src="../_images/6_event_135_0.png" />
+<img alt="../_images/6_event_123_0.png" src="../_images/6_event_123_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3531,255 +3526,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_136_0.png" src="../_images/6_event_136_0.png" />
-</div>
-</div>
-</section>
-<section id="id20">
-<h3><span class="section-number">6.4.6. </span>選手間のパス数の可視化<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>最後に，特定の試合における選手間のパス数を可視化してみよう．
-本来，このような解析にはnetworkxという専用のライブラリを使うべきだが，以下ではpandasとseabornという可視化ライブラリを用いて実装する．</p>
-<p><strong>試合の抽出</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 後のエラー対処のために明示的に.copy()を付けている</span>
-<span class="n">ev</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">ev_tag</span> <span class="o">=</span> <span class="n">EV_tag</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>パスリストの作成</strong></p>
-<p>選手間のパス数を求めるには，パスの出し手と受け手の情報が必要である．
-しかし，イベントログ<code class="docutils literal notranslate"><span class="pre">EV</span></code>にはパスの出し手の情報しかないので，受け手の情報を加える必要がある．
-イベント名が'pass'の行については，次の行の選手IDがパスの受け手に対応するので，以下のようにパスリスト<code class="docutils literal notranslate"><span class="pre">ps</span></code>を作成できる．</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;pass&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;player_id&#39;</span><span class="p">,</span> <span class="s1">&#39;team_id&#39;</span><span class="p">]]</span>
-<span class="n">ps</span><span class="p">[</span><span class="s1">&#39;player_id2&#39;</span><span class="p">],</span> <span class="n">ps</span><span class="p">[</span><span class="s1">&#39;team_id2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
-<span class="n">ps</span><span class="p">[</span><span class="s1">&#39;player_id2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">ps</span><span class="p">[</span><span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">ps</span><span class="p">[</span><span class="s1">&#39;team_id2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">ps</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>player_id</th>
-      <th>team_id</th>
-      <th>player_id2</th>
-      <th>team_id2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>25413</td>
-      <td>1609</td>
-      <td>370224</td>
-      <td>1609</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>370224</td>
-      <td>1609</td>
-      <td>3319</td>
-      <td>1609</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3319</td>
-      <td>1609</td>
-      <td>120339</td>
-      <td>1609</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>120339</td>
-      <td>1609</td>
-      <td>167145</td>
-      <td>1609</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>167145</td>
-      <td>1609</td>
-      <td>3319</td>
-      <td>1609</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p><strong>選手名の追加</strong></p>
-<p>イベントログには選手ID（'player_id'）の情報しかないので，選手プロフィール<code class="docutils literal notranslate"><span class="pre">PL</span></code>のデータを用いて選手名を追加する．
-以下のように，<code class="docutils literal notranslate"><span class="pre">replace</span></code>メソッドを用いて，選手ID（'player_id'）を選手名（'name'）に置換すれば良い．</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ps</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ps</span><span class="p">[</span><span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">PL</span><span class="p">[</span><span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">PL</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="n">ps</span><span class="p">[</span><span class="s1">&#39;name2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ps</span><span class="p">[</span><span class="s1">&#39;player_id2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">PL</span><span class="p">[</span><span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">PL</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>player_id</th>
-      <th>team_id</th>
-      <th>...</th>
-      <th>name</th>
-      <th>name2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>25413</td>
-      <td>1609</td>
-      <td>...</td>
-      <td>A_Lacazette</td>
-      <td>R_Holding</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>370224</td>
-      <td>1609</td>
-      <td>...</td>
-      <td>R_Holding</td>
-      <td>M_Özil</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3319</td>
-      <td>1609</td>
-      <td>...</td>
-      <td>M_Özil</td>
-      <td>Mohame_Elneny</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>120339</td>
-      <td>1609</td>
-      <td>...</td>
-      <td>Mohame_Elneny</td>
-      <td>Bellerín</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>167145</td>
-      <td>1609</td>
-      <td>...</td>
-      <td>Bellerín</td>
-      <td>M_Özil</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 6 columns</p>
-</div></div></div>
-</div>
-<p><strong>パス数行列の作成</strong></p>
-<p>チーム内の選手<span class="math notranslate nohighlight">\(i\)</span>と<span class="math notranslate nohighlight">\(j\)</span>間のパス数を要素とする行列をパス数行列と呼ぶことにする．
-パス数行列は非対称な行列であり，行列の<span class="math notranslate nohighlight">\((i, j)\)</span>成分は選手<span class="math notranslate nohighlight">\(i\)</span>から<span class="math notranslate nohighlight">\(j\)</span>へのパス，<span class="math notranslate nohighlight">\((j, i)\)</span>成分はその逆を表す．
-パス数行列の作成方法はいくつか考えられるが，以下では<code class="docutils literal notranslate"><span class="pre">for</span></code>文を用いて実装している．</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pl_id0</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ps</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-<span class="n">pl_id1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ps</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-<span class="n">A0</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">pl_id0</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">pl_id0</span><span class="p">)</span>
-<span class="n">A1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">pl_id1</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">pl_id1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">pl_id0</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">pl_id0</span><span class="p">:</span>
-        <span class="n">A0</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ps</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">ps</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ps</span><span class="p">[</span><span class="s1">&#39;name2&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">j</span><span class="p">)])</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">pl_id1</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">pl_id1</span><span class="p">:</span>
-        <span class="n">A1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ps</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">ps</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ps</span><span class="p">[</span><span class="s1">&#39;name2&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">j</span><span class="p">)])</span>
-        
-<span class="n">A0</span> <span class="o">=</span> <span class="n">A0</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">A1</span> <span class="o">=</span> <span class="n">A1</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>パス数行列の可視化</strong></p>
-<p>パス数行列を可視化する方法はいくつか考えられる．
-例えば，選手を点，選手間のパス数を線の太さに対応させた図で表す方法がある．
-このような図はネットワーク呼ばれ，サッカーのデータ分析における標準的な手法となっている．
-しかし，ネットワークの分析と可視化にはnetworkxなどの専用ライブラリの知識が必要となるので，ここではより直接的にヒートマップを用いた可視化方法を採用する．
-以下の<code class="docutils literal notranslate"><span class="pre">plot_corr_mat</span></code>関数は，seabornという可視化ライブラリを用いてパス数行列をヒートマップで可視化する．</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span>
-<span class="k">def</span> <span class="nf">plot_corr_mat</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">cm</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">):</span>
-    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-    <span class="n">seaborn</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>\
-                    <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">linecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">cbar_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;shrink&quot;</span><span class="p">:</span> <span class="mf">.7</span><span class="p">})</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">mat</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">mat</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-    <span class="n">ax_clb</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">colorbar</span>
-    <span class="n">ax_clb</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_corr_mat</span><span class="p">(</span><span class="n">A0</span><span class="p">,</span> <span class="s1">&#39;Reds&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/6_event_154_0.png" src="../_images/6_event_154_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_corr_mat</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="s1">&#39;Greens&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/6_event_155_0.png" src="../_images/6_event_155_0.png" />
+<img alt="../_images/6_event_124_0.png" src="../_images/6_event_124_0.png" />
 </div>
 </div>
 </section>
