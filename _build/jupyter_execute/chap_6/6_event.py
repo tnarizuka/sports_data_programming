@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[28]:
+# In[61]:
 
 
 # （必須）モジュールのインポート
@@ -12,7 +12,7 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 
 # 日本語フォントの設定（Mac:'Hiragino Sans', Windows:'MS Gothic'）
-plt.rcParams['font.family'] = 'MS Gothic'
+plt.rcParams['font.family'] = 'Hiragino Sans'
 
 # 表示設定
 np.set_printoptions(suppress=True, precision=3)
@@ -295,38 +295,37 @@ Rank
 
 # ## 得点分布
 # 
-# サッカーの特徴は得点がランダムに入る（どちらのチームがいつ得点するかが予測不能）という点であり，このランダム性こそが人々を魅了する理由と考えられる．
-# また，サッカーはほとんど点が入らないのも大きな特徴である．
-# では，こうした特徴は統計的にはどのように定量化できるだろうか？
+# サッカーは非常に得点頻度が低い競技であるが，得点がランダムに入るため常に試合から目が離せない．
+# このようなランダム性はサッカーが人々を熱狂させる理由と考えられるが，一方でランダム性の裏にはきれいな法則が隠れている．
 
 # ### ポアソン分布
 
 # **二項分布からポアソン分布へ**
 # 
-# 成功確率が$p$の試行を独立に$n$回繰り返すことを考える．
-# 例えば，サイコロを振って特定の目が出ることを成功とすると，$p=1/6$である．
-# いま，$n$回中$x$回成功する確率を$f(x)$とすると，$f(x)$は二項分布
+# 成功確率が $ p $ の試行を独立に $ n $ 回繰り返すことを考える．
+# 例えば，サイコロを振って特定の目が出ることを成功とすると，$ p=1/6 $ である．
+# いま，$ n $ 回中 $ x $ 回成功する確率を $ f(x) $ とすると，$ f(x) $ は二項分布
 # 
 # $$
 #     f(x) = \binom{n}{x}p^{x}(1-p)^{n-x}
 # $$
 # 
-# になることが知られている．
-# この式において，$ p^{x}(1-p)^{n-x} $は成功が$ x $回，失敗が$ n-x $回生じる確率を意味する．
-# また，$ \binom{n}{x} $は$ n $個から$ x $を取り出す組み合わせの数$ _{n}C_{x} $を表し，$ n $回の中で何回目に成功するかの場合の数に対応する．
+# に従う．
+# この式において，$ p^{x}(1-p)^{n-x} $ は成功が $ x $回，失敗が $ n-x $ 回生じる確率を意味する．
+# また，$ \binom{n}{x} $ は $ n $ 個から $ x $ 個を取り出す組み合わせの数 $ _{n}C_{x} $ を表し，$ n $ 回の中で何回目に成功するかの場合の数に対応する．
 
-# いま，成功確率$ p $が小さく，かつ試行回数$ n $が大きい極限を考える．
-# ただし，極限を取る際に発散しないように平均値が一定値$ np=m $になるようにする．
-# このような条件で$n$回中$x$回成功する確率$f(x)$は，二項分布の式に$ np=m $を代入し，極限$ p\to 0,\ n\to \infty $を取ることで
+# いま，成功確率 $ p $ が小さく，かつ試行回数 $ n $ が大きい極限を考える．
+# ただし，極限を取る際に発散しないように平均値が一定値 $ np=m $ になるようにする．
+# このような条件で $n$ 回中 $x$ 回成功する確率 $f(x)$ は，二項分布の式に $ np=m $ を代入し，極限 $ p\to 0,\ n\to \infty $ を取ることで
 # 
 # $$
-# f(x) = \frac{m^{x}}{x!} \mathrm{e}^{-m}
+#     f(x) = \frac{m^{x}}{x!} \mathrm{e}^{-m}
 # $$
 # 
 # と求まる．
 # これを**ポアソン分布**と呼ぶ．
-# ポアソン分布は1つのパラメータ$ m $だけで特徴づけられ，**期待値と分散はともに$ m $となる**．
-# ポアソン分布はその導出過程より，**一定の期間内に発生確率の小さい稀な現象を多数回試行（観測）した場合に，その発生回数が従う分布である**．
+# ポアソン分布は1つのパラメータ $ m $ だけで特徴づけられ，**期待値と分散はともに $ m $ となる**．
+# ポアソン分布はその導出過程より，**一定の期間内に発生確率の小さい稀な現象を多数回試行した場合に，その発生回数が従う分布である**．
 # 実際，以下の現象は全てポアソン分布に従うことが知られている：
 # - 1日の交通事故件数
 # - 1分間の放射性元素の崩壊数
@@ -335,16 +334,14 @@ Rank
 
 # **サッカーの得点分布**
 # 
-# チームの強さや試合展開など細かいことはひとまず無視し，サッカーにおける得点イベントがランダムに発生すると仮定する．
-# 特に，両チームが常に得点を目指し一瞬で得点チャンスが生まれることから，試合中のどの時点においても一定の得点確率があると見なし，得点確率$ p $の試行を何度も繰り返す現象（$ n\to \infty $）と捉えることにする．
-# また，各時点で得点する確率は非常に小さいとする（$ p \ll 1 $）．
-# 以上のような仮定を置くと，サッカーにおける1試合の得点数はポアソン分布に従うことが期待される．
+# チームの強さや試合展開など細かいことはひとまず無視し，サッカーにおける得点がランダムに発生すると仮定する．
+# このとき，試合中のどの時点においても一定の得点確率があると見なせば，サッカーは得点確率 $ p $ の小さい試行を何度も繰り返す現象（$ n\to \infty $）と見なすことができ，1試合の得点数はポアソン分布に従うことが期待される．
 
 # ### 得点データの要約
 
-# まずは[game.csv](https://drive.google.com/uc?export=download&id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A)をダウンロードして作業フォルダ（例えば`OneDrive/sport_data/6_event`）に移動し，`GM`という名前のDataFrameに読み込む．
+# まずは[game.csv](https://drive.google.com/uc?export=download&id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A)をダウンロードしてカレントディレクトリに保存し，`GM`という名前のDataFrameに読み込む．
 
-# In[4]:
+# In[47]:
 
 
 GM = pd.read_csv('./game.csv', header=0)
@@ -354,11 +351,11 @@ GM.head(2)
 # この得点データを用いて，リーグごとにアウェイチームとホームチームの得点傾向を調べてみよう．
 # 以下はアウェイチームとホームチームの得点の平均値および分散である．
 # この結果からおおよそ以下のようなことが読み取れる
-# - 1試合の得点の平均値はおおよそ1.2点くらいとなっており，サッカーが得点頻度の少ない競技であることが改めて分かる．
+# - 1試合の得点の平均値はおおよそ1.2点くらいとなっており，サッカーが得点頻度の少ない競技であることが分かる．
 # - ホームとアウェイで比べると，ホームの方がやや平均得点が高い傾向にある．
 # - 得点の平均値と分散はほぼ同じ値となっており，ポアソン分布の性質をおおよそ満たしている．
 
-# In[88]:
+# In[53]:
 
 
 # England
@@ -366,7 +363,7 @@ print(GM.loc[GM['league']=='England', ['away_score', 'home_score']].mean())
 print(GM.loc[GM['league']=='England', ['away_score', 'home_score']].var())
 
 
-# In[89]:
+# In[54]:
 
 
 # France
@@ -374,7 +371,7 @@ print(GM.loc[GM['league']=='France', ['away_score', 'home_score']].mean())
 print(GM.loc[GM['league']=='France', ['away_score', 'home_score']].var())
 
 
-# In[90]:
+# In[55]:
 
 
 # Germany
@@ -382,7 +379,7 @@ print(GM.loc[GM['league']=='Germany', ['away_score', 'home_score']].mean())
 print(GM.loc[GM['league']=='Germany', ['away_score', 'home_score']].var())
 
 
-# In[91]:
+# In[57]:
 
 
 # Italy
@@ -390,7 +387,7 @@ print(GM.loc[GM['league']=='Italy', ['away_score', 'home_score']].mean())
 print(GM.loc[GM['league']=='Italy', ['away_score', 'home_score']].var())
 
 
-# In[92]:
+# In[58]:
 
 
 # Spain
@@ -404,7 +401,7 @@ print(GM.loc[GM['league']=='Spain', ['away_score', 'home_score']].var())
 # そこで，リーグ別にホームチームの得点のヒストグラムを求めてみよう．
 # 以下はイングランド・プレミアリーグのホームチームの得点分布である．
 
-# In[10]:
+# In[70]:
 
 
 data = GM.loc[GM['league']=='England', 'home_score']
@@ -412,12 +409,12 @@ data = GM.loc[GM['league']=='England', 'home_score']
 fig, ax = plt.subplots(figsize=(4,3))
 x = np.arange(data.max()+2)
 ax.hist(data, 
-        bins=k, # 階級の左端の値を指定する
+        bins=x, # 階級の左端の値を指定する
         align='left',    # バーの中央を階級の左端に合わせる
         histtype='bar',  # ヒストグラムのスタイル
         color='gray',    # バーの色
         edgecolor='k',   # バーの枠線の色
-        rwidth=0.5
+        rwidth=0.2       # バーの幅
         )
 
 ax.set_xlabel('1試合の得点', fontsize=12)
@@ -434,21 +431,21 @@ ax.set_xticks(x);
 # 
 # のグラフを描けば良い．
 
-# In[9]:
+# In[71]:
 
 
 from scipy.stats import poisson
 
 fig, ax = plt.subplots(figsize=(4,3))
 x = np.arange(data.max()+2)
-fx = poisson.pmf(k, data.mean())
+fx = poisson.pmf(x, data.mean())
 ax.plot(x, fx, '-ok')
 
 
 # 上のグラフを見比べると，確かに似た分布になっていることが分かる．
 # そこで，最後に２つのグラフを合わせよう．
 
-# In[11]:
+# In[72]:
 
 
 from scipy.stats import poisson
@@ -457,12 +454,12 @@ data = GM.loc[GM['league']=='England', 'home_score']
 fig, ax = plt.subplots(figsize=(4,3))
 x = np.arange(data.max()+2)
 ax.hist(data, 
-        bins=k, # 階級の左端の値を指定する
+        bins=x, # 階級の左端の値を指定する
         align='left',    # バーの中央を階級の左端に合わせる
         histtype='bar',  # ヒストグラムのスタイル
         color='gray',    # バーの色
         edgecolor='k',   # バーの枠線の色
-        rwidth=0.5
+        rwidth=0.2
         )
 
 fx = data.size * poisson.pmf(x, data.mean())
@@ -480,7 +477,8 @@ ax.set_xticks(x);
 
 # ### 演習問題
 
-# - 他のリーグについて，得点分布を求めよ
+# - 他のリーグについて，ホームチーム（またはアウェイチーム）の得点分布を描画せよ．
+# - 実データから求めた平均値をパラメータとするポアソン分布を同じグラフに描画せよ．
 
 # ## イベントデータの解析
 

@@ -632,7 +632,7 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="c1"># 日本語フォントの設定（Mac:&#39;Hiragino Sans&#39;, Windows:&#39;MS Gothic&#39;）</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;MS Gothic&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Hiragino Sans&#39;</span>
 
 <span class="c1"># 表示設定</span>
 <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -1656,33 +1656,32 @@ Arsenal
 </section>
 <section id="id9">
 <h2><span class="section-number">6.3. </span>得点分布<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">#</a></h2>
-<p>サッカーの特徴は得点がランダムに入る（どちらのチームがいつ得点するかが予測不能）という点であり，このランダム性こそが人々を魅了する理由と考えられる．
-また，サッカーはほとんど点が入らないのも大きな特徴である．
-では，こうした特徴は統計的にはどのように定量化できるだろうか？</p>
+<p>サッカーは非常に得点頻度が低い競技であるが，得点がランダムに入るため常に試合から目が離せない．
+このようなランダム性はサッカーが人々を熱狂させる理由と考えられるが，一方でランダム性の裏にはきれいな法則が隠れている．</p>
 <section id="id10">
 <h3><span class="section-number">6.3.1. </span>ポアソン分布<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p><strong>二項分布からポアソン分布へ</strong></p>
-<p>成功確率が<span class="math notranslate nohighlight">\(p\)</span>の試行を独立に<span class="math notranslate nohighlight">\(n\)</span>回繰り返すことを考える．
-例えば，サイコロを振って特定の目が出ることを成功とすると，<span class="math notranslate nohighlight">\(p=1/6\)</span>である．
-いま，<span class="math notranslate nohighlight">\(n\)</span>回中<span class="math notranslate nohighlight">\(x\)</span>回成功する確率を<span class="math notranslate nohighlight">\(f(x)\)</span>とすると，<span class="math notranslate nohighlight">\(f(x)\)</span>は二項分布</p>
+<p>成功確率が <span class="math notranslate nohighlight">\( p \)</span> の試行を独立に <span class="math notranslate nohighlight">\( n \)</span> 回繰り返すことを考える．
+例えば，サイコロを振って特定の目が出ることを成功とすると，<span class="math notranslate nohighlight">\( p=1/6 \)</span> である．
+いま，<span class="math notranslate nohighlight">\( n \)</span> 回中 <span class="math notranslate nohighlight">\( x \)</span> 回成功する確率を <span class="math notranslate nohighlight">\( f(x) \)</span> とすると，<span class="math notranslate nohighlight">\( f(x) \)</span> は二項分布</p>
 <div class="math notranslate nohighlight">
 \[
     f(x) = \binom{n}{x}p^{x}(1-p)^{n-x}
 \]</div>
-<p>になることが知られている．
-この式において，<span class="math notranslate nohighlight">\( p^{x}(1-p)^{n-x} \)</span>は成功が<span class="math notranslate nohighlight">\( x \)</span>回，失敗が<span class="math notranslate nohighlight">\( n-x \)</span>回生じる確率を意味する．
-また，<span class="math notranslate nohighlight">\( \binom{n}{x} \)</span>は<span class="math notranslate nohighlight">\( n \)</span>個から<span class="math notranslate nohighlight">\( x \)</span>を取り出す組み合わせの数<span class="math notranslate nohighlight">\( _{n}C_{x} \)</span>を表し，<span class="math notranslate nohighlight">\( n \)</span>回の中で何回目に成功するかの場合の数に対応する．</p>
-<p>いま，成功確率<span class="math notranslate nohighlight">\( p \)</span>が小さく，かつ試行回数<span class="math notranslate nohighlight">\( n \)</span>が大きい極限を考える．
-ただし，極限を取る際に発散しないように平均値が一定値<span class="math notranslate nohighlight">\( np=m \)</span>になるようにする．
-このような条件で<span class="math notranslate nohighlight">\(n\)</span>回中<span class="math notranslate nohighlight">\(x\)</span>回成功する確率<span class="math notranslate nohighlight">\(f(x)\)</span>は，二項分布の式に<span class="math notranslate nohighlight">\( np=m \)</span>を代入し，極限<span class="math notranslate nohighlight">\( p\to 0,\ n\to \infty \)</span>を取ることで</p>
+<p>に従う．
+この式において，<span class="math notranslate nohighlight">\( p^{x}(1-p)^{n-x} \)</span> は成功が <span class="math notranslate nohighlight">\( x \)</span>回，失敗が <span class="math notranslate nohighlight">\( n-x \)</span> 回生じる確率を意味する．
+また，<span class="math notranslate nohighlight">\( \binom{n}{x} \)</span> は <span class="math notranslate nohighlight">\( n \)</span> 個から <span class="math notranslate nohighlight">\( x \)</span> 個を取り出す組み合わせの数 <span class="math notranslate nohighlight">\( _{n}C_{x} \)</span> を表し，<span class="math notranslate nohighlight">\( n \)</span> 回の中で何回目に成功するかの場合の数に対応する．</p>
+<p>いま，成功確率 <span class="math notranslate nohighlight">\( p \)</span> が小さく，かつ試行回数 <span class="math notranslate nohighlight">\( n \)</span> が大きい極限を考える．
+ただし，極限を取る際に発散しないように平均値が一定値 <span class="math notranslate nohighlight">\( np=m \)</span> になるようにする．
+このような条件で <span class="math notranslate nohighlight">\(n\)</span> 回中 <span class="math notranslate nohighlight">\(x\)</span> 回成功する確率 <span class="math notranslate nohighlight">\(f(x)\)</span> は，二項分布の式に <span class="math notranslate nohighlight">\( np=m \)</span> を代入し，極限 <span class="math notranslate nohighlight">\( p\to 0,\ n\to \infty \)</span> を取ることで</p>
 <div class="math notranslate nohighlight">
 \[
-f(x) = \frac{m^{x}}{x!} \mathrm{e}^{-m}
+    f(x) = \frac{m^{x}}{x!} \mathrm{e}^{-m}
 \]</div>
 <p>と求まる．
 これを<strong>ポアソン分布</strong>と呼ぶ．
-ポアソン分布は1つのパラメータ<span class="math notranslate nohighlight">\( m \)</span>だけで特徴づけられ，<strong>期待値と分散はともに<span class="math notranslate nohighlight">\( m \)</span>となる</strong>．
-ポアソン分布はその導出過程より，<strong>一定の期間内に発生確率の小さい稀な現象を多数回試行（観測）した場合に，その発生回数が従う分布である</strong>．
+ポアソン分布は1つのパラメータ <span class="math notranslate nohighlight">\( m \)</span> だけで特徴づけられ，<strong>期待値と分散はともに <span class="math notranslate nohighlight">\( m \)</span> となる</strong>．
+ポアソン分布はその導出過程より，<strong>一定の期間内に発生確率の小さい稀な現象を多数回試行した場合に，その発生回数が従う分布である</strong>．
 実際，以下の現象は全てポアソン分布に従うことが知られている：</p>
 <ul class="simple">
 <li><p>1日の交通事故件数</p></li>
@@ -1691,14 +1690,12 @@ f(x) = \frac{m^{x}}{x!} \mathrm{e}^{-m}
 <li><p>プロシア陸軍で馬に蹴られて死亡した兵士の数</p></li>
 </ul>
 <p><strong>サッカーの得点分布</strong></p>
-<p>チームの強さや試合展開など細かいことはひとまず無視し，サッカーにおける得点イベントがランダムに発生すると仮定する．
-特に，両チームが常に得点を目指し一瞬で得点チャンスが生まれることから，試合中のどの時点においても一定の得点確率があると見なし，得点確率<span class="math notranslate nohighlight">\( p \)</span>の試行を何度も繰り返す現象（<span class="math notranslate nohighlight">\( n\to \infty \)</span>）と捉えることにする．
-また，各時点で得点する確率は非常に小さいとする（<span class="math notranslate nohighlight">\( p \ll 1 \)</span>）．
-以上のような仮定を置くと，サッカーにおける1試合の得点数はポアソン分布に従うことが期待される．</p>
+<p>チームの強さや試合展開など細かいことはひとまず無視し，サッカーにおける得点がランダムに発生すると仮定する．
+このとき，試合中のどの時点においても一定の得点確率があると見なせば，サッカーは得点確率 <span class="math notranslate nohighlight">\( p \)</span> の小さい試行を何度も繰り返す現象（<span class="math notranslate nohighlight">\( n\to \infty \)</span>）と見なすことができ，1試合の得点数はポアソン分布に従うことが期待される．</p>
 </section>
 <section id="id11">
 <h3><span class="section-number">6.3.2. </span>得点データの要約<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>まずは<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A">game.csv</a>をダウンロードして作業フォルダ（例えば<code class="docutils literal notranslate"><span class="pre">OneDrive/sport_data/6_event</span></code>）に移動し，<code class="docutils literal notranslate"><span class="pre">GM</span></code>という名前のDataFrameに読み込む．</p>
+<p>まずは<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A">game.csv</a>をダウンロードしてカレントディレクトリに保存し，<code class="docutils literal notranslate"><span class="pre">GM</span></code>という名前のDataFrameに読み込む．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GM</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./game.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -1727,7 +1724,9 @@ f(x) = \frac{m^{x}}{x!} \mathrm{e}^{-m}
       <th></th>
       <th>game_id</th>
       <th>league</th>
+      <th>section</th>
       <th>...</th>
+      <th>home_id</th>
       <th>away_score</th>
       <th>home_score</th>
     </tr>
@@ -1737,7 +1736,9 @@ f(x) = \frac{m^{x}}{x!} \mathrm{e}^{-m}
       <th>0</th>
       <td>2499719</td>
       <td>England</td>
+      <td>1</td>
       <td>...</td>
+      <td>1609</td>
       <td>3</td>
       <td>4</td>
     </tr>
@@ -1745,7 +1746,9 @@ f(x) = \frac{m^{x}}{x!} \mathrm{e}^{-m}
       <th>1</th>
       <td>2499723</td>
       <td>England</td>
+      <td>1</td>
       <td>...</td>
+      <td>1623</td>
       <td>0</td>
       <td>1</td>
     </tr>
@@ -1758,7 +1761,7 @@ f(x) = \frac{m^{x}}{x!} \mathrm{e}^{-m}
 以下はアウェイチームとホームチームの得点の平均値および分散である．
 この結果からおおよそ以下のようなことが読み取れる</p>
 <ul class="simple">
-<li><p>1試合の得点の平均値はおおよそ1.2点くらいとなっており，サッカーが得点頻度の少ない競技であることが改めて分かる．</p></li>
+<li><p>1試合の得点の平均値はおおよそ1.2点くらいとなっており，サッカーが得点頻度の少ない競技であることが分かる．</p></li>
 <li><p>ホームとアウェイで比べると，ホームの方がやや平均得点が高い傾向にある．</p></li>
 <li><p>得点の平均値と分散はほぼ同じ値となっており，ポアソン分布の性質をおおよそ満たしている．</p></li>
 </ul>
@@ -1870,12 +1873,12 @@ dtype: float64
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> 
-        <span class="n">bins</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="c1"># 階級の左端の値を指定する</span>
+        <span class="n">bins</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="c1"># 階級の左端の値を指定する</span>
         <span class="n">align</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>    <span class="c1"># バーの中央を階級の左端に合わせる</span>
         <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span>  <span class="c1"># ヒストグラムのスタイル</span>
         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>    <span class="c1"># バーの色</span>
         <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>   <span class="c1"># バーの枠線の色</span>
-        <span class="n">rwidth</span><span class="o">=</span><span class="mf">0.5</span>
+        <span class="n">rwidth</span><span class="o">=</span><span class="mf">0.2</span>       <span class="c1"># バーの幅</span>
         <span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;1試合の得点&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
@@ -1901,13 +1904,13 @@ dtype: float64
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">fx</span> <span class="o">=</span> <span class="n">poisson</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="n">fx</span> <span class="o">=</span> <span class="n">poisson</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fx</span><span class="p">,</span> <span class="s1">&#39;-ok&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1ca4d21c0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1cbf03c40&gt;]
 </pre></div>
 </div>
 <img alt="../_images/6_event_59_1.png" src="../_images/6_event_59_1.png" />
@@ -1923,12 +1926,12 @@ dtype: float64
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> 
-        <span class="n">bins</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="c1"># 階級の左端の値を指定する</span>
+        <span class="n">bins</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="c1"># 階級の左端の値を指定する</span>
         <span class="n">align</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>    <span class="c1"># バーの中央を階級の左端に合わせる</span>
         <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span>  <span class="c1"># ヒストグラムのスタイル</span>
         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>    <span class="c1"># バーの色</span>
         <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>   <span class="c1"># バーの枠線の色</span>
-        <span class="n">rwidth</span><span class="o">=</span><span class="mf">0.5</span>
+        <span class="n">rwidth</span><span class="o">=</span><span class="mf">0.2</span>
         <span class="p">)</span>
 
 <span class="n">fx</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">size</span> <span class="o">*</span> <span class="n">poisson</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
@@ -1952,7 +1955,8 @@ dtype: float64
 <section id="id13">
 <h3><span class="section-number">6.3.4. </span>演習問題<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">#</a></h3>
 <ul class="simple">
-<li><p>他のリーグについて，得点分布を求めよ</p></li>
+<li><p>他のリーグについて，ホームチーム（またはアウェイチーム）の得点分布を描画せよ．</p></li>
+<li><p>実データから求めた平均値をパラメータとするポアソン分布を同じグラフに描画せよ．</p></li>
 </ul>
 </section>
 </section>
