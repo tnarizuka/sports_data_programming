@@ -24,7 +24,7 @@ get_ipython().run_line_magic('precision', '3')
 
 # # イベントデータの解析
 
-# ## データセット
+# ## イベントデータ
 # 
 # ### Pappalardoデータセット
 # 
