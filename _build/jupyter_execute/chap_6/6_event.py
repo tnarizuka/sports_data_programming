@@ -102,7 +102,7 @@ TM.head()
 # | 変数名 | 内容 |
 # | ---- | ---- |
 # | name | チームの俗称 |
-# | team_id | チームID．playersデータの'currentTeamId'+'currentNationalTeamId' |
+# | team_id | チームID|
 # | city | チームの所在都市 |
 # | country | チームの所在国 |
 # | league | チームの所属リーグ | 
