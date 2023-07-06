@@ -12,13 +12,13 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 
 # 日本語フォントの設定（Mac:'Hiragino Sans', Windows:'MS Gothic'）
-plt.rcParams['font.family'] = 'Hiragino Sans'
+plt.rcParams['font.family'] = 'MS Gothic'
 
 # 表示設定
 np.set_printoptions(suppress=True, precision=3)
 pd.set_option('display.precision', 3)    # 小数点以下の表示桁
-pd.set_option('display.max_rows', 150)   # 表示する行数の上限
-pd.set_option('display.max_columns', 5)  # 表示する列数の上限
+pd.set_option('display.max_rows', 50)   # 表示する行数の上限
+pd.set_option('display.max_columns', 10)  # 表示する列数の上限
 get_ipython().run_line_magic('precision', '3')
 
 
@@ -31,10 +31,10 @@ get_ipython().run_line_magic('precision', '3')
 # Pappalardoデータセットはサッカーのイベントデータをまとめた大規模データセットであり，[CC BY 4.0ライセンス](https://creativecommons.org/licenses/by/4.0/deed.ja)の下で提供されている．
 # 元のデータはWyscout社によって収集されたもので，それをL. Pappalardoらが編集し2019年に公開された．
 # 2023年時点で一般公開されているサッカーのイベントデータセットの中では最大級である．
-# データセットの詳細については以下の付録を参照されたい：{ref}`pappalardo`
+# データセットの詳細については以下の付録を参照のこと：{ref}`pappalardo`
 
 # ### 本講義で用いる加工済みデータ
-
+# 
 # Pappalardoデータセットはjson形式で提供されており，このままではデータ分析がしづらい．
 # そこで，予めjson形式のデータを整形・加工し，PandasのDataFrameの形で保存しておくと便利であるが，この過程は本講義で扱った知識を総動員するだけでなく，文字列の処理などの知識も必要となる．
 # **本講義ではデータの整形・加工の過程は省略し，加工済みデータ（csvファイル）のデータを提供することにする**．
@@ -42,7 +42,7 @@ get_ipython().run_line_magic('precision', '3')
 
 # ## リーグ成績と順位表
 
-# 以下のデータをダウンロードせよ：
+# 以下のデータをダウンロードし，カレントディレクトリに保存せよ：
 # - 全試合の得点データ：[game.csv](https://drive.google.com/uc?export=download&id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A)
 # - チームプロフィール：[team.csv](https://drive.google.com/uc?export=download&id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1)
 #   
@@ -60,11 +60,11 @@ get_ipython().run_line_magic('precision', '3')
 
 # まずは [game.csv](https://drive.google.com/uc?export=download&id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A) をダウンロードしてカレントディレクトリに移動し，`GM`という名前のDataFrameに読み込む．
 
-# In[72]:
+# In[8]:
 
 
 GM = pd.read_csv('./game.csv', header=0)
-GM.head(2)
+GM.head(5)
 
 
 # このデータの各行には2017年度ヨーロッパリーグで行われた試合の情報が収められている．
@@ -495,21 +495,6 @@ ax.set_xticks(x);
 
 # - 他のリーグについて，得点分布を求めよ
 
-# ### 発展問題：バスケの得点分布
-# 
-# 以下は2015年度NBAの得点データである：[score_nba.csv](https://drive.google.com/uc?export=download&id=18qfHa2OIjSmRqxFaAsFvn3O706-676Vs)<br>
-# 'away', 'home'列はアウェイチームとホームチームの得点，'total'列は両チームの得点の和を表す．
-# このデータを用いてバスケットボールの得点傾向を調べ，サッカーとの違いを考察せよ．<br>
-# **※ レポート問題として取り組んでも良い．**
-
-# In[96]:
-
-
-# 得点データの読み込み
-data = pd.read_csv('./score_nba.csv')
-data.head()
-
-
 # ## イベントデータの解析
 
 # Pappalardoデータセットのメインデータはイベントデータである．
@@ -741,7 +726,8 @@ def event_hmap(x, y, cm='Greens'):
     ax.set_aspect(68/105)
     
     # ヒートマップの描画
-    ret = ax.hist2d(x, y,                    bins=[50, 25], range=[[0, 100], [0, 100]], cmap=cm, cmin=0)
+    ret = ax.hist2d(x, y,\
+                    bins=[50, 25], range=[[0, 100], [0, 100]], cmap=cm, cmin=0)
 
     # カラーバーを追加
     fig.colorbar(ret[3], orientation='vertical', 
@@ -1075,7 +1061,8 @@ A1 = A1.astype(int)
 import seaborn
 def plot_corr_mat(mat, cm='jet'):
     fig, ax = plt.subplots(figsize=(5, 5))
-    seaborn.heatmap(mat, ax=ax, linewidths=0.1, cbar=True, annot=True,                    square=True, cmap=cm, linecolor='w', cbar_kws={"shrink": .7})
+    seaborn.heatmap(mat, ax=ax, linewidths=0.1, cbar=True, annot=True,\
+                    square=True, cmap=cm, linecolor='w', cbar_kws={"shrink": .7})
     ax.set_xticklabels(mat.columns, fontsize=8)
     ax.set_yticklabels(mat.index, fontsize=8)
     ax_clb = ax.collections[0].colorbar
