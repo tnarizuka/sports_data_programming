@@ -482,27 +482,26 @@ ax.set_xticks(x);
 
 # ## イベントデータの解析
 
-# Pappalardoデータセットのメインデータはイベントデータである．
-# イベントデータはイベントログとイベントタグの2種類から成る：
+# Pappalardoデータセットのイベントデータはイベントログとイベントタグの2種類から成る：
 # - イベントログ
 #     - パスやシュートなどのボールに関わるイベントに対して，起きた時刻，場所，関わった選手などの基本情報が紐付けられたデータ
 #     - 1試合あたり1500~2000イベント
 # - イベントタグ
 #     - イベントログの各イベントに対して，より詳細な付加情報が紐付けられたデータ
 # 
-# イベントデータにはボールに関わるほぼ全てのプレー情報が含まれているため，詳細な試合展開を把握することができる．
+# イベントデータにはボールに関わるほぼ全てのプレー情報が含まれているため，これを分析すれば詳細な試合展開を把握することができる．
 # イベントデータは選手プロフィールや得点データに比べて格段に情報量が多いため，その扱いの難易度も高い．
 # 基本的にExcelで解析するのは困難であり，Pandasの本領が最も発揮されるデータといえる．
 
-# ここでは，イングランド・プレミアリーグのデータを解析対象とする．
-# 準備として，以下のファイルをダウンロードして作業フォルダ（例えば`OneDrive/sport_data/6_event`）に移動する：
+# 以下では，イングランド・プレミアリーグのデータを解析対象とする．
+# 準備として，次のファイルをダウンロードしてカレントディレクトリに移動する：
 # - イベントログ：[event_England.csv](https://drive.google.com/uc?export=download&id=1783Zl4IRGmiYmo-uLA1-FsZwGesOsFhg)
 # - イベントタグ：[event_tag_England.csv](https://drive.google.com/uc?export=download&id=17LhNNVGZ9nsm-d3lqfBWiKmEqGitJwVI)
 # - 選手プロフィール：[player.csv](https://drive.google.com/uc?export=download&id=1rtCAL0DqW9SeslMuGFCusg8VRRWz6J_M)
 # 
 # これらを以下のように読み込んでおく．
 
-# In[97]:
+# In[98]:
 
 
 # イベントデータと選手プロフィールの読み込み
@@ -511,15 +510,11 @@ EV_tag = pd.read_csv('./event_tag_England.csv')
 PL = pd.read_csv('./player.csv', header=0)
 
 
-# また，以下の補助データも同じフォルダにダウンロードしておく：
-# - イベントリスト：[event_list.csv](https://drive.google.com/uc?export=download&id=1oSDUt73paDOsORVj732rGU0vwIwGHvHJ) 
-# - タグリスト：[tag_list.csv](https://drive.google.com/uc?export=download&id=1o_tZ-y0eAYlgN1audJThoVBMN0Ta2x5f)
-
 # ### イベントデータの詳細
 
 # **イベントログ**
 
-# In[98]:
+# In[74]:
 
 
 EV.head()
@@ -563,7 +558,7 @@ EV.head()
 # ax.set_aspect(68/105)
 # ```
 
-# In[99]:
+# In[75]:
 
 
 '''サッカーコートの描画'''
@@ -580,7 +575,7 @@ ax.set_xlabel('$X$'); ax.set_ylabel('$Y$')
 
 # **イベントタグ**
 
-# In[100]:
+# In[76]:
 
 
 EV_tag.head()
@@ -614,34 +609,34 @@ EV_tag.head()
 
 # **特定の試合・時間帯の抽出**
 
-# In[101]:
+# In[80]:
 
 
 # 特定の試合を抽出
-ev = EV.loc[EV['game_id']==EV['game_id'].unique()[0]]
-ev_tag = EV_tag.loc[EV['game_id']==EV['game_id'].unique()[0]]
+ev = EV.loc[EV['game_id']==2499719]
+ev_tag = EV_tag.loc[EV['game_id']==2499719]
 
 
-# In[102]:
+# In[81]:
 
 
 ev.head()
 
 
-# In[103]:
+# In[82]:
 
 
 ev_tag.head()
 
 
-# In[104]:
+# In[83]:
 
 
 # 前半のみ抽出
 ev.loc[ev['half']==1].tail()
 
 
-# In[105]:
+# In[84]:
 
 
 # 前半開始20秒までを抽出
@@ -650,25 +645,25 @@ ev.loc[(ev['half']==1) & (ev['t']<20)].tail()
 
 # **特定のイベントの抽出**
 
-# イベントログ`EV`には'event'列と'subevent'列が存在する．
-# 'event'列は'pass'，'foul'などの大分類，'subevent'列は'simple_pass'や'high_pass'などの小分類となっている．
-# 'event'および'subevent'のリストは[event_list.csv](https://drive.google.com/uc?export=download&id=1oSDUt73paDOsORVj732rGU0vwIwGHvHJ) にまとめられている．
+# イベントログ`EV`には`'event'`列と`'subevent'`列が存在する．
+# `'event'`列は`'pass'`，`'foul'`などの大分類，`'subevent'`列は`'simple_pass'`や`'high_pass'`などの小分類となっている．
+# `'event'`および`'subevent'`のリストは[event_list.csv](https://drive.google.com/uc?export=download&id=1oSDUt73paDOsORVj732rGU0vwIwGHvHJ) にまとめられている．
 
-# In[106]:
+# In[85]:
 
 
 # event列が'pass'の行を抽出
 ev.loc[ev['event']=='pass'].head()
 
 
-# In[107]:
+# In[86]:
 
 
 # subevent列が'simple_pass'の行を抽出
 ev.loc[ev['subevent']=='simple_pass'].head()
 
 
-# In[108]:
+# In[87]:
 
 
 # event列が'shot'の行を抽出
@@ -680,14 +675,14 @@ ev.loc[(ev_tag['goal']==1)].head()
 # イベントタグ`EV_tag`はイベントログ`EV`と同じ行数で共通の行ラベル（インデックス）を持つ．
 # よって，`EV_tag`で取得したブールインデックスを用いて`EV`から条件付き抽出することができる．
 
-# In[109]:
+# In[88]:
 
 
 # イベント名が'pass'で，'accurate'タグが1である行（成功パス）を抽出
 ev.loc[(ev['event']=='pass') & (ev_tag['accurate']==1)]
 
 
-# In[110]:
+# In[89]:
 
 
 # イベント名が'shot'で，'goal'タグが1である行（成功シュート）
@@ -700,7 +695,7 @@ ev.loc[(ev['event']=='shot') & (ev_tag['goal']==1)]
 # まず，以下のようにヒートマップを描く`event_hmap`関数を作成する．
 # この関数は，$x,\ y$座標のデータを引数として受け取り，matplotlibの`hist2d`関数を用いてヒートマップを描く．
 
-# In[111]:
+# In[90]:
 
 
 def event_hmap(x, y, cm='Greens'):
@@ -729,7 +724,7 @@ def event_hmap(x, y, cm='Greens'):
 # 特定のイベントだけを条件付き抽出してその$x,\ y$座標を`event_hmap`関数に渡せば，そのイベントが行われたフィールド上の位置をヒートマップで可視化することができる．
 # 以下にいくつかの例を示す．
 
-# In[112]:
+# In[91]:
 
 
 # パス
@@ -738,7 +733,7 @@ x, y = EV.loc[cond, 'x1'], EV.loc[cond, 'y1']
 event_hmap(x, y)
 
 
-# In[113]:
+# In[92]:
 
 
 # 特定の選手のパス
@@ -747,7 +742,7 @@ x, y = EV.loc[cond, 'x1'], EV.loc[cond, 'y1']
 event_hmap(x, y, 'Blues')
 
 
-# In[114]:
+# In[93]:
 
 
 # クロス
@@ -756,7 +751,7 @@ x, y = EV.loc[cond, 'x1'], EV.loc[cond, 'y1']
 event_hmap(x, y, 'Reds')
 
 
-# In[115]:
+# In[94]:
 
 
 # デュエル
@@ -765,7 +760,7 @@ x, y = EV.loc[cond, 'x1'], EV.loc[cond, 'y1']
 event_hmap(x, y, 'Greys')
 
 
-# In[116]:
+# In[95]:
 
 
 # デュエル（攻撃）
@@ -774,7 +769,7 @@ x, y = EV.loc[cond, 'x1'], EV.loc[cond, 'y1']
 event_hmap(x, y, 'jet')
 
 
-# In[117]:
+# In[96]:
 
 
 # シュート
@@ -783,72 +778,13 @@ x, y = EV.loc[cond, 'x1'], EV.loc[cond, 'y1']
 event_hmap(x, y)
 
 
-# In[118]:
+# In[97]:
 
 
 # シュート（成功）
 cond = (EV['event']=='shot') & (EV_tag['goal']==1)
 x, y = EV.loc[cond, 'x1'], EV.loc[cond, 'y1']
 event_hmap(x, y)
-
-
-# ### 選手のランキング
-
-# シーズンが終了すると，チームのリーグ成績と共に選手の個人成績が発表される．
-# 個人成績は，シュート数やゴール数などの部門別ランキングとなっている．
-# ここでは，イベントデータを用いてこれらのランキングを求めてみよう．
-# なお，どのようなプレーをシュートやパスと見なすかは用いるデータセットによって異なっており，
-# 以下で求めるランキングが公式発表されたものと完全に一致するわけではない．
-# 2017年度プレミアリーグの個人成績は例えば，
-# - https://tavitt-football.com/2017-18_premier_playerstats/#i-4
-# 
-# にて確認できるが，細かい数値は本データセットから求めたものと一致しない．
-
-# ランキングの作成方法は以下の通りである．
-# - ランキング項目に応じて条件付き抽出する．
-#     - 例えば，パス数の場合は'event'列が'pass'である行を抽出する
-# - 条件付き抽出後のDataFrameに対し，'player_id'ごとの出現回数を求める
-#     - DataFrameの`value_counts`メソッドを用いる
-# - 選手プロフィール`PL`を用いて'player_id'を選手名に変換する
-
-# **シュート数**
-
-# In[119]:
-
-
-PR_shot = EV.loc[(EV['subevent']=='shot') | (EV['subevent']=='free_kick_shot') | (EV['subevent']=='penalty'), 'player_id'].value_counts()
-PR_shot = PR_shot.rename(index=dict(PL[['player_id', 'name']].values))  # 選手IDを選手名に変換する
-PR_shot.iloc[:10]
-
-
-# **パス数**
-
-# In[120]:
-
-
-PR_pass = EV.loc[(EV['event']=='pass'), 'player_id'].value_counts()
-PR_pass = PR_pass.rename(index=dict(PL[['player_id', 'name']].values))  # 選手IDを選手名に変換する
-PR_pass.iloc[:10]
-
-
-# **アシスト数**
-
-# In[121]:
-
-
-PR_assist = EV.loc[(EV_tag['assist']==1), 'player_id'].value_counts()
-PR_assist = PR_assist.rename(index=dict(PL[['player_id', 'name']].values))  # 選手IDを選手名に変換する
-PR_assist.iloc[:10]
-
-
-# **ゴール数**
-
-# In[122]:
-
-
-PR_goal = EV.loc[((EV['event']=='shot') | (EV['event']=='free_kick')) & (EV_tag['goal']==1), 'player_id'].value_counts()
-PR_goal = PR_goal.rename(index=dict(PL[['player_id', 'name']].values))  # 選手IDを選手名に変換する
-PR_goal.iloc[:10]
 
 
 # ### ボールの軌跡の可視化
@@ -956,112 +892,4 @@ ball_trj(half=1, ts=50, te=100)
 
 
 ball_trj(half=2, ts=2000, te=2050)
-
-
-# ### 選手間のパス数の可視化
-
-# 最後に，特定の試合における選手間のパス数を可視化してみよう．
-# 本来，このような解析にはnetworkxという専用のライブラリを使うべきだが，以下ではpandasとseabornという可視化ライブラリを用いて実装する．
-
-# **試合の抽出**
-
-# In[130]:
-
-
-# 後のエラー対処のために明示的に.copy()を付けている
-ev = EV.loc[EV['game_id']==EV['game_id'].unique()[0]].copy()
-ev_tag = EV_tag.loc[EV['game_id']==EV['game_id'].iloc[0]].copy()
-
-
-# **パスリストの作成** 
-
-# 選手間のパス数を求めるには，パスの出し手と受け手の情報が必要である．
-# しかし，イベントログ`EV`にはパスの出し手の情報しかないので，受け手の情報を加える必要がある．
-# イベント名が'pass'の行については，次の行の選手IDがパスの受け手に対応するので，以下のようにパスリスト`ps`を作成できる．
-
-# In[131]:
-
-
-ps = ev.loc[ev['event']=='pass', ['player_id', 'team_id']]
-ps['player_id2'], ps['team_id2'] = 0, 0
-ps['player_id2'].iloc[:-1] = ps['player_id'].iloc[1:].values
-ps['team_id2'].iloc[:-1] = ps['team_id'].iloc[1:].values
-ps.head()
-
-
-# **選手名の追加**
-
-# イベントログには選手ID（'player_id'）の情報しかないので，選手プロフィール`PL`のデータを用いて選手名を追加する．
-# 以下のように，`replace`メソッドを用いて，選手ID（'player_id'）を選手名（'name'）に置換すれば良い．
-
-# In[132]:
-
-
-ps['name'] = ps['player_id'].replace(PL['player_id'].values, PL['name'].values)
-ps['name2'] = ps['player_id2'].replace(PL['player_id'].values, PL['name'].values)
-ps.head()
-
-
-# **パス数行列の作成**
-
-# チーム内の選手$i$と$j$間のパス数を要素とする行列をパス数行列と呼ぶことにする．
-# パス数行列は非対称な行列であり，行列の$(i, j)$成分は選手$i$から$j$へのパス，$(j, i)$成分はその逆を表す．
-# パス数行列の作成方法はいくつか考えられるが，以下では`for`文を用いて実装している．
-
-# In[133]:
-
-
-pl_id0 = ps.loc[ps['team_id']==tm_id[0], 'name'].unique()
-pl_id1 = ps.loc[ps['team_id']==tm_id[1], 'name'].unique()
-A0 = pd.DataFrame(index=pl_id0, columns=pl_id0)
-A1 = pd.DataFrame(index=pl_id1, columns=pl_id1)
-
-
-# In[134]:
-
-
-for i in pl_id0:
-    for j in pl_id0:
-        A0.loc[i, j] = len(ps.loc[(ps['name']==i) & (ps['name2']==j)])
-
-for i in pl_id1:
-    for j in pl_id1:
-        A1.loc[i, j] = len(ps.loc[(ps['name']==i) & (ps['name2']==j)])
-        
-A0 = A0.astype(int)
-A1 = A1.astype(int)
-
-
-# **パス数行列の可視化**
-
-# パス数行列を可視化する方法はいくつか考えられる．
-# 例えば，選手を点，選手間のパス数を線の太さに対応させた図で表す方法がある．
-# このような図はネットワーク呼ばれ，サッカーのデータ分析における標準的な手法となっている．
-# しかし，ネットワークの分析と可視化にはnetworkxなどの専用ライブラリの知識が必要となるので，ここではより直接的にヒートマップを用いた可視化方法を採用する．
-# 以下の`plot_corr_mat`関数は，seabornという可視化ライブラリを用いてパス数行列をヒートマップで可視化する．
-
-# In[135]:
-
-
-import seaborn
-def plot_corr_mat(mat, cm='jet'):
-    fig, ax = plt.subplots(figsize=(5, 5))
-    seaborn.heatmap(mat, ax=ax, linewidths=0.1, cbar=True, annot=True,\
-                    square=True, cmap=cm, linecolor='w', cbar_kws={"shrink": .7})
-    ax.set_xticklabels(mat.columns, fontsize=8)
-    ax.set_yticklabels(mat.index, fontsize=8)
-    ax_clb = ax.collections[0].colorbar
-    ax_clb.ax.tick_params(labelsize=8)
-
-
-# In[136]:
-
-
-plot_corr_mat(A0, 'Reds')
-
-
-# In[137]:
-
-
-plot_corr_mat(A1, 'Greens')
 
