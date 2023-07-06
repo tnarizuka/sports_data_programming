@@ -605,27 +605,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id29">
-     ボロノイ領域の計算と描画
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id30">
-     トラッキングデータへの応用
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id31">
      ドロネーネットワーク
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id32">
-     ドロネーネットワークの計算と描画
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id33">
-     トラッキングデータへの応用
     </a>
    </li>
   </ul>
@@ -877,27 +857,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id29">
-     ボロノイ領域の計算と描画
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id30">
-     トラッキングデータへの応用
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id31">
      ドロネーネットワーク
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id32">
-     ドロネーネットワークの計算と描画
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id33">
-     トラッキングデータへの応用
     </a>
    </li>
   </ul>
@@ -4153,9 +4113,6 @@ Name: player_id, dtype: int64
 <p><span class="caption-number">図 2 </span><span class="caption-text">ボロノイ図の例</span><a class="headerlink" href="#fig-voronoi" title="この画像へのパーマリンク">#</a></p>
 </figcaption>
 </figure>
-</section>
-<section id="id29">
-<h3>ボロノイ領域の計算と描画<a class="headerlink" href="#id29" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>Pythonには科学技術計算のためのライブラリであるSciPyが用意されており，Anacondaをインストールすれば標準で使うことができる．
 ボロノイ領域の計算には，scipy.spatialモジュールに含まれる<code class="docutils literal notranslate"><span class="pre">Voronoi</span></code>クラスおよび<code class="docutils literal notranslate"><span class="pre">voronoi_plot_2d</span></code>関数を用いる．
 まずはこれらを以下のようにインポートする．</p>
@@ -4217,7 +4174,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/appendix_228_0.png" src="../_images/appendix_228_0.png" />
+<img alt="../_images/appendix_227_0.png" src="../_images/appendix_227_0.png" />
 </div>
 </div>
 <p><strong>ボロノイ領域の情報の取得</strong></p>
@@ -4324,9 +4281,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 </div>
-</section>
-<section id="id30">
-<h3>トラッキングデータへの応用<a class="headerlink" href="#id30" title="このヘッドラインへのパーマリンク">#</a></h3>
+<p><strong>トラッキングデータへの応用</strong></p>
 <p>サッカーのトラッキングデータからボロノイ領域を描画するには，特定のフレームにおける選手の座標を取得し，それを母点として<code class="docutils literal notranslate"><span class="pre">Voronoi</span></code>クラスのオブジェクトを生成すれば良い．
 ただし，ボロノイ領域の描画に<code class="docutils literal notranslate"><span class="pre">voronoi_plot_2d</span></code>をそのまま用いると，無限に延びるボロノイ線が途中で切れてしまうという問題が発生する．
 そこで，ここでは<a class="reference external" href="https://github.com/scipy/scipy/blob/v1.8.1/scipy/spatial/_plotutils.py#L151-L265"><code class="docutils literal notranslate"><span class="pre">voronoi_plot_2d</span></code>のソースコード</a>を参考に，独自の描画関数<code class="docutils literal notranslate"><span class="pre">my_voronoi_plot_2d</span></code>を以下のように作成する．</p>
@@ -4403,12 +4358,12 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/appendix_243_0.png" src="../_images/appendix_243_0.png" />
+<img alt="../_images/appendix_242_0.png" src="../_images/appendix_242_0.png" />
 </div>
 </div>
 </section>
-<section id="id31">
-<h3>ドロネーネットワーク<a class="headerlink" href="#id31" title="このヘッドラインへのパーマリンク">#</a></h3>
+<section id="id29">
+<h3>ドロネーネットワーク<a class="headerlink" href="#id29" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>ある程度幅のある時間帯から選手の平均位置を求めてフォーメーションを可視化するには重心系で平均位置と標準偏差を求めれば良い．
 では，特定の時刻においてフォーメーションを定量化・可視化するにはどうすればよいだろうか？
 各時刻において4-4-2や3-4-3などの数字の組を割り当てるのも一つの方法かもしれないが，実はもっと便利な方法がある．
@@ -4426,9 +4381,6 @@ Name: player_id, dtype: int64
 <p><span class="caption-number">図 3 </span><span class="caption-text">ドロネーネットワークの例</span><a class="headerlink" href="#fig-delaunay" title="この画像へのパーマリンク">#</a></p>
 </figcaption>
 </figure>
-</section>
-<section id="id32">
-<h3>ドロネーネットワークの計算と描画<a class="headerlink" href="#id32" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>scipy.spatialにはドロネーネットワークを計算・描画するための<code class="docutils literal notranslate"><span class="pre">Delaunay</span></code>クラスと<code class="docutils literal notranslate"><span class="pre">delaunay_plot_2d</span></code>が用意されている．
 まずはこれらを以下のようにインポートする．</p>
 <div class="cell docutils container">
@@ -4496,7 +4448,7 @@ Name: player_id, dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1cc5983d0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/appendix_262_1.png" src="../_images/appendix_262_1.png" />
+<img alt="../_images/appendix_260_1.png" src="../_images/appendix_260_1.png" />
 </div>
 </div>
 <p><strong>ドロネーネットワークの情報の取得</strong></p>
@@ -4557,9 +4509,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 </div>
-</section>
-<section id="id33">
-<h3>トラッキングデータへの応用<a class="headerlink" href="#id33" title="このヘッドラインへのパーマリンク">#</a></h3>
+<p><strong>トラッキングデータへの応用</strong></p>
 <p>サッカーのトラッキングデータからドロネーネットワークを描画するには，特定のフレームにおける選手の座標を取得し，それを母点として<code class="docutils literal notranslate"><span class="pre">Delaunay</span></code>クラスのオブジェクトを生成すれば良い．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4600,7 +4550,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/appendix_271_0.png" src="../_images/appendix_271_0.png" />
+<img alt="../_images/appendix_269_0.png" src="../_images/appendix_269_0.png" />
 </div>
 </div>
 </section>
