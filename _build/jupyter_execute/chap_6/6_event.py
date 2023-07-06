@@ -208,11 +208,11 @@ S.loc[S['result']==0, 'point'] = 1
 # 最後に各試合のデータを集計し，総得点，総失点，総得失点差，勝ち点を計算すれば，アーセナルのリーグ成績が求められる．
 # 他のチームの成績を統合することを考えて，以下のようにDataFrameの形に整形しておく．
 
-# In[32]:
+# In[43]:
 
 
 pd.DataFrame([[tm_name, tm_id, S['goal'].sum(), S['loss'].sum(), S['diff'].sum(), S['point'].sum()]],
-              columns=['チーム', 'ID', '得点', '失点', '得失点', '勝ち点'])
+              columns=['チーム', 'ID', '得点', '失点', '得失点', '勝点'])
 
 
 # ### 全チームのリーグ成績と順位表
@@ -220,10 +220,10 @@ pd.DataFrame([[tm_name, tm_id, S['goal'].sum(), S['loss'].sum(), S['diff'].sum()
 # 全チームのリーグ成績を求めるには，`for`文を用いて上の手続きを繰り返せば良い．
 # 以下では，`Rank`という名前のDataFrameに全チームのリーグ成績を保存する．
 
-# In[33]:
+# In[40]:
 
 
-Rank = pd.DataFrame(columns=['name', 'team_id', 'gf', 'ga', 'gd', 'pt'])
+Rank = pd.DataFrame(columns=['チーム', 'ID', '得点', '失点', '得失点', '勝点'])
 for i in range(len(TM_E)):
     tm_id = TM_E['team_id'].iloc[i]
     tm_name = TM_E['name'].iloc[i]
@@ -271,17 +271,19 @@ for i in range(len(TM_E)):
 
 # 最後に，勝ち点の順にソートし，インデックスを付け直す．
 
-# In[34]:
+# In[41]:
 
 
 # ソートと再インデックス
-Rank = Rank.sort_values(['pt'], ascending=False)
+Rank = Rank.sort_values(['勝点'], ascending=False)
 Rank = Rank.reset_index(drop=1)
 
 
 # 以上により，イングランド・プレミアリーグの順位表が作成できた．
+# 
+# ※ [Wikipedia](https://ja.wikipedia.org/wiki/%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%AA%E3%83%BC%E3%82%B02017-2018)の情報とは一部合わないが，[Premier League Table, Form Guide & Season Archives](https://www.premierleague.com/tables?co=1&se=79&mw=-1&ha=-1)とは一致している．
 
-# In[35]:
+# In[42]:
 
 
 Rank

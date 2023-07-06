@@ -1316,7 +1316,7 @@ Arsenal
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="n">tm_name</span><span class="p">,</span> <span class="n">tm_id</span><span class="p">,</span> <span class="n">S</span><span class="p">[</span><span class="s1">&#39;goal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">S</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">S</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">S</span><span class="p">[</span><span class="s1">&#39;point&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()]],</span>
-              <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;チーム&#39;</span><span class="p">,</span> <span class="s1">&#39;ID&#39;</span><span class="p">,</span> <span class="s1">&#39;得点&#39;</span><span class="p">,</span> <span class="s1">&#39;失点&#39;</span><span class="p">,</span> <span class="s1">&#39;得失点&#39;</span><span class="p">,</span> <span class="s1">&#39;勝ち点&#39;</span><span class="p">])</span>
+              <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;チーム&#39;</span><span class="p">,</span> <span class="s1">&#39;ID&#39;</span><span class="p">,</span> <span class="s1">&#39;得点&#39;</span><span class="p">,</span> <span class="s1">&#39;失点&#39;</span><span class="p">,</span> <span class="s1">&#39;得失点&#39;</span><span class="p">,</span> <span class="s1">&#39;勝点&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1344,18 +1344,18 @@ Arsenal
       <th>得点</th>
       <th>失点</th>
       <th>得失点</th>
-      <th>勝ち点</th>
+      <th>勝点</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>Arsenal</td>
-      <td>1609</td>
-      <td>74</td>
-      <td>51</td>
-      <td>23</td>
-      <td>63</td>
+      <td>Swansea_City</td>
+      <td>10531</td>
+      <td>28</td>
+      <td>56</td>
+      <td>-28</td>
+      <td>33</td>
     </tr>
   </tbody>
 </table>
@@ -1368,7 +1368,7 @@ Arsenal
 以下では，<code class="docutils literal notranslate"><span class="pre">Rank</span></code>という名前のDataFrameに全チームのリーグ成績を保存する．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Rank</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;team_id&#39;</span><span class="p">,</span> <span class="s1">&#39;gf&#39;</span><span class="p">,</span> <span class="s1">&#39;ga&#39;</span><span class="p">,</span> <span class="s1">&#39;gd&#39;</span><span class="p">,</span> <span class="s1">&#39;pt&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Rank</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;チーム&#39;</span><span class="p">,</span> <span class="s1">&#39;ID&#39;</span><span class="p">,</span> <span class="s1">&#39;得点&#39;</span><span class="p">,</span> <span class="s1">&#39;失点&#39;</span><span class="p">,</span> <span class="s1">&#39;得失点&#39;</span><span class="p">,</span> <span class="s1">&#39;勝点&#39;</span><span class="p">])</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">TM_E</span><span class="p">)):</span>
     <span class="n">tm_id</span> <span class="o">=</span> <span class="n">TM_E</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="n">tm_name</span> <span class="o">=</span> <span class="n">TM_E</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -1420,13 +1420,14 @@ Arsenal
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ソートと再インデックス</span>
-<span class="n">Rank</span> <span class="o">=</span> <span class="n">Rank</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;pt&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">Rank</span> <span class="o">=</span> <span class="n">Rank</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;勝点&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">Rank</span> <span class="o">=</span> <span class="n">Rank</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>以上により，イングランド・プレミアリーグの順位表が作成できた．</p>
+<p>※ <a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%AA%E3%83%BC%E3%82%B02017-2018">Wikipedia</a>の情報とは一部合わないが，<a class="reference external" href="https://www.premierleague.com/tables?co=1&amp;se=79&amp;mw=-1&amp;ha=-1">Premier League Table, Form Guide &amp; Season Archives</a>とは一致している．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Rank</span>
@@ -1452,12 +1453,12 @@ Arsenal
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>name</th>
-      <th>team_id</th>
-      <th>gf</th>
-      <th>ga</th>
-      <th>gd</th>
-      <th>pt</th>
+      <th>チーム</th>
+      <th>ID</th>
+      <th>得点</th>
+      <th>失点</th>
+      <th>得失点</th>
+      <th>勝点</th>
     </tr>
   </thead>
   <tbody>
