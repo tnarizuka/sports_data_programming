@@ -446,45 +446,40 @@ title="Print to PDF"
      6.3.4. 演習問題
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id14">
-     6.3.5. 発展問題：バスケの得点分布
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id15">
+  <a class="reference internal nav-link" href="#id14">
    6.4. イベントデータの解析
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id16">
+    <a class="reference internal nav-link" href="#id15">
      6.4.1. イベントデータの詳細
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id17">
+    <a class="reference internal nav-link" href="#id16">
      6.4.2. イベントデータ解析の基本
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id18">
+    <a class="reference internal nav-link" href="#id17">
      6.4.3. イベント別のヒートマップ
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id19">
+    <a class="reference internal nav-link" href="#id18">
      6.4.4. 選手のランキング
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id20">
+    <a class="reference internal nav-link" href="#id19">
      6.4.5. ボールの軌跡の可視化
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id21">
+    <a class="reference internal nav-link" href="#id20">
      6.4.6. 選手間のパス数の可視化
     </a>
    </li>
@@ -578,45 +573,40 @@ title="Print to PDF"
      6.3.4. 演習問題
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id14">
-     6.3.5. 発展問題：バスケの得点分布
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id15">
+  <a class="reference internal nav-link" href="#id14">
    6.4. イベントデータの解析
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id16">
+    <a class="reference internal nav-link" href="#id15">
      6.4.1. イベントデータの詳細
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id17">
+    <a class="reference internal nav-link" href="#id16">
      6.4.2. イベントデータ解析の基本
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id18">
+    <a class="reference internal nav-link" href="#id17">
      6.4.3. イベント別のヒートマップ
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id19">
+    <a class="reference internal nav-link" href="#id18">
      6.4.4. 選手のランキング
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id20">
+    <a class="reference internal nav-link" href="#id19">
      6.4.5. ボールの軌跡の可視化
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id21">
+    <a class="reference internal nav-link" href="#id20">
      6.4.6. 選手間のパス数の可視化
     </a>
    </li>
@@ -642,13 +632,13 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="c1"># 日本語フォントの設定（Mac:&#39;Hiragino Sans&#39;, Windows:&#39;MS Gothic&#39;）</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Hiragino Sans&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;MS Gothic&#39;</span>
 
 <span class="c1"># 表示設定</span>
 <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.precision&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>    <span class="c1"># 小数点以下の表示桁</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>   <span class="c1"># 表示する行数の上限</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># 表示する列数の上限</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>   <span class="c1"># 表示する行数の上限</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># 表示する列数の上限</span>
 <span class="o">%</span><span class="k">precision</span> 3
 </pre></div>
 </div>
@@ -668,7 +658,7 @@ title="Print to PDF"
 <p>Pappalardoデータセットはサッカーのイベントデータをまとめた大規模データセットであり，<a class="reference external" href="https://creativecommons.org/licenses/by/4.0/deed.ja">CC BY 4.0ライセンス</a>の下で提供されている．
 元のデータはWyscout社によって収集されたもので，それをL. Pappalardoらが編集し2019年に公開された．
 2023年時点で一般公開されているサッカーのイベントデータセットの中では最大級である．
-データセットの詳細については以下の付録を参照されたい：<a class="reference internal" href="../appendix/appendix.html#pappalardo"><span class="std std-ref">Pappalardoデータセットの詳細</span></a></p>
+データセットの詳細については以下の付録を参照のこと：<a class="reference internal" href="../appendix/appendix.html#pappalardo"><span class="std std-ref">Pappalardoデータセットの詳細</span></a></p>
 </section>
 <section id="id3">
 <h3><span class="section-number">6.1.2. </span>本講義で用いる加工済みデータ<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">#</a></h3>
@@ -680,7 +670,7 @@ title="Print to PDF"
 </section>
 <section id="id4">
 <h2><span class="section-number">6.2. </span>リーグ成績と順位表<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">#</a></h2>
-<p>以下のデータをダウンロードせよ：</p>
+<p>以下のデータをダウンロードし，カレントディレクトリに保存せよ：</p>
 <ul class="simple">
 <li><p>全試合の得点データ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A">game.csv</a></p></li>
 <li><p>チームプロフィール：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1">team.csv</a></p></li>
@@ -701,7 +691,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GM</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./game.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">GM</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">GM</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -726,7 +716,13 @@ title="Print to PDF"
       <th></th>
       <th>game_id</th>
       <th>league</th>
+      <th>section</th>
+      <th>date</th>
+      <th>venue</th>
       <th>...</th>
+      <th>away_id</th>
+      <th>home</th>
+      <th>home_id</th>
       <th>away_score</th>
       <th>home_score</th>
     </tr>
@@ -736,7 +732,13 @@ title="Print to PDF"
       <th>0</th>
       <td>2499719</td>
       <td>England</td>
+      <td>1</td>
+      <td>2017-08-11</td>
+      <td>Emirates_Stadium</td>
       <td>...</td>
+      <td>1631</td>
+      <td>Arsenal</td>
+      <td>1609</td>
       <td>3</td>
       <td>4</td>
     </tr>
@@ -744,13 +746,61 @@ title="Print to PDF"
       <th>1</th>
       <td>2499723</td>
       <td>England</td>
+      <td>1</td>
+      <td>2017-08-12</td>
+      <td>Goodison_Park</td>
       <td>...</td>
+      <td>1639</td>
+      <td>Everton</td>
+      <td>1623</td>
       <td>0</td>
       <td>1</td>
     </tr>
+    <tr>
+      <th>2</th>
+      <td>2499724</td>
+      <td>England</td>
+      <td>1</td>
+      <td>2017-08-13</td>
+      <td>Old_Trafford</td>
+      <td>...</td>
+      <td>1633</td>
+      <td>Manchester_United</td>
+      <td>1611</td>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2499722</td>
+      <td>England</td>
+      <td>1</td>
+      <td>2017-08-12</td>
+      <td>Selhurst_Park</td>
+      <td>...</td>
+      <td>1673</td>
+      <td>Crystal_Palace</td>
+      <td>1628</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2499725</td>
+      <td>England</td>
+      <td>1</td>
+      <td>2017-08-13</td>
+      <td>St_James'_Park</td>
+      <td>...</td>
+      <td>1624</td>
+      <td>Newcastle_United</td>
+      <td>1613</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
   </tbody>
 </table>
-<p>2 rows × 11 columns</p>
+<p>5 rows × 11 columns</p>
 </div></div></div>
 </div>
 <p>このデータの各行には2017年度ヨーロッパリーグで行われた試合の情報が収められている．
@@ -1822,7 +1872,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_60_0.png" src="../_images/6_event_60_0.png" />
+<img alt="../_images/6_event_59_0.png" src="../_images/6_event_59_0.png" />
 </div>
 </div>
 <p>次に，上のヒストグラムがポアソン分布に従っているか調べるため，試合データから求めた平均値をパラメータとするポアソン分布を描いてみる．
@@ -1847,7 +1897,7 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1ca4d21c0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/6_event_62_1.png" src="../_images/6_event_62_1.png" />
+<img alt="../_images/6_event_61_1.png" src="../_images/6_event_61_1.png" />
 </div>
 </div>
 <p>上のグラフを見比べると，確かに似た分布になっていることが分かる．
@@ -1878,7 +1928,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_64_0.png" src="../_images/6_event_64_0.png" />
+<img alt="../_images/6_event_63_0.png" src="../_images/6_event_63_0.png" />
 </div>
 </div>
 <p>実データ（棒グラフ）とポアソン分布（折れ線）の概形はおおよそ一致していることが分かる．
@@ -1892,83 +1942,9 @@ dtype: float64
 <li><p>他のリーグについて，得点分布を求めよ</p></li>
 </ul>
 </section>
+</section>
 <section id="id14">
-<h3><span class="section-number">6.3.5. </span>発展問題：バスケの得点分布<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>以下は2015年度NBAの得点データである：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=18qfHa2OIjSmRqxFaAsFvn3O706-676Vs">score_nba.csv</a><br>
-'away', 'home'列はアウェイチームとホームチームの得点，'total'列は両チームの得点の和を表す．
-このデータを用いてバスケットボールの得点傾向を調べ，サッカーとの違いを考察せよ．<br>
-<strong>※ レポート問題として取り組んでも良い．</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 得点データの読み込み</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./score_nba.csv&#39;</span><span class="p">)</span>
-<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>away</th>
-      <th>home</th>
-      <th>total</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>37</td>
-      <td>37</td>
-      <td>74</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>38</td>
-      <td>37</td>
-      <td>75</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>35</td>
-      <td>41</td>
-      <td>76</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>29</td>
-      <td>36</td>
-      <td>65</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>34</td>
-      <td>39</td>
-      <td>73</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-</section>
-</section>
-<section id="id15">
-<h2><span class="section-number">6.4. </span>イベントデータの解析<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">#</a></h2>
+<h2><span class="section-number">6.4. </span>イベントデータの解析<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">#</a></h2>
 <p>Pappalardoデータセットのメインデータはイベントデータである．
 イベントデータはイベントログとイベントタグの2種類から成る：</p>
 <ul class="simple">
@@ -2010,8 +1986,8 @@ dtype: float64
 <li><p>イベントリスト：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1oSDUt73paDOsORVj732rGU0vwIwGHvHJ">event_list.csv</a></p></li>
 <li><p>タグリスト：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1o_tZ-y0eAYlgN1audJThoVBMN0Ta2x5f">tag_list.csv</a></p></li>
 </ul>
-<section id="id16">
-<h3><span class="section-number">6.4.1. </span>イベントデータの詳細<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">#</a></h3>
+<section id="id15">
+<h3><span class="section-number">6.4.1. </span>イベントデータの詳細<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p><strong>イベントログ</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2186,7 +2162,7 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$Y$&#39;)
 </pre></div>
 </div>
-<img alt="../_images/6_event_82_1.png" src="../_images/6_event_82_1.png" />
+<img alt="../_images/6_event_79_1.png" src="../_images/6_event_79_1.png" />
 </div>
 </div>
 <p><strong>イベントタグ</strong></p>
@@ -2298,8 +2274,8 @@ dtype: float64
 </tbody>
 </table>
 </section>
-<section id="id17">
-<h3><span class="section-number">6.4.2. </span>イベントデータ解析の基本<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">#</a></h3>
+<section id="id16">
+<h3><span class="section-number">6.4.2. </span>イベントデータ解析の基本<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>イベントログ<code class="docutils literal notranslate"><span class="pre">EV</span></code>とイベントタグ<code class="docutils literal notranslate"><span class="pre">EV_tag</span></code>には，ボールに関わるイベントに関するほぼ全ての情報が含まれている．
 イベントデータ解析の目的はこれらのデータから意味のある情報を抽出することである．
 イベントデータを解析する際の手順は以下のようにまとめられる：</p>
@@ -3100,8 +3076,8 @@ dtype: float64
 </div></div></div>
 </div>
 </section>
-<section id="id18">
-<h3><span class="section-number">6.4.3. </span>イベント別のヒートマップ<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">#</a></h3>
+<section id="id17">
+<h3><span class="section-number">6.4.3. </span>イベント別のヒートマップ<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>条件付き抽出の応用として，イベント別にヒートマップを描いてみよう．
 まず，以下のようにヒートマップを描く<code class="docutils literal notranslate"><span class="pre">event_hmap</span></code>関数を作成する．
 この関数は，<span class="math notranslate nohighlight">\(x,\ y\)</span>座標のデータを引数として受け取り，matplotlibの<code class="docutils literal notranslate"><span class="pre">hist2d</span></code>関数を用いてヒートマップを描く．</p>
@@ -3144,7 +3120,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_108_0.png" src="../_images/6_event_108_0.png" />
+<img alt="../_images/6_event_105_0.png" src="../_images/6_event_105_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3157,7 +3133,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_109_0.png" src="../_images/6_event_109_0.png" />
+<img alt="../_images/6_event_106_0.png" src="../_images/6_event_106_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3170,7 +3146,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_110_0.png" src="../_images/6_event_110_0.png" />
+<img alt="../_images/6_event_107_0.png" src="../_images/6_event_107_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3183,7 +3159,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_111_0.png" src="../_images/6_event_111_0.png" />
+<img alt="../_images/6_event_108_0.png" src="../_images/6_event_108_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3196,7 +3172,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_112_0.png" src="../_images/6_event_112_0.png" />
+<img alt="../_images/6_event_109_0.png" src="../_images/6_event_109_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3209,7 +3185,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_113_0.png" src="../_images/6_event_113_0.png" />
+<img alt="../_images/6_event_110_0.png" src="../_images/6_event_110_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3222,12 +3198,12 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_114_0.png" src="../_images/6_event_114_0.png" />
+<img alt="../_images/6_event_111_0.png" src="../_images/6_event_111_0.png" />
 </div>
 </div>
 </section>
-<section id="id19">
-<h3><span class="section-number">6.4.4. </span>選手のランキング<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">#</a></h3>
+<section id="id18">
+<h3><span class="section-number">6.4.4. </span>選手のランキング<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>シーズンが終了すると，チームのリーグ成績と共に選手の個人成績が発表される．
 個人成績は，シュート数やゴール数などの部門別ランキングとなっている．
 ここでは，イベントデータを用いてこれらのランキングを求めてみよう．
@@ -3353,8 +3329,8 @@ Name: player_id, dtype: int64
 </div>
 </div>
 </section>
-<section id="id20">
-<h3><span class="section-number">6.4.5. </span>ボールの軌跡の可視化<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">#</a></h3>
+<section id="id19">
+<h3><span class="section-number">6.4.5. </span>ボールの軌跡の可視化<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>イベントデータを用いると，パスやシュートなどのイベント単位で試合展開を追跡することができる．
 ここでは，特定の試合に対し，ボールの軌跡を可視化してみよう．</p>
 <p><strong>試合の抽出</strong></p>
@@ -3528,7 +3504,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_140_0.png" src="../_images/6_event_140_0.png" />
+<img alt="../_images/6_event_137_0.png" src="../_images/6_event_137_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3538,12 +3514,12 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_141_0.png" src="../_images/6_event_141_0.png" />
+<img alt="../_images/6_event_138_0.png" src="../_images/6_event_138_0.png" />
 </div>
 </div>
 </section>
-<section id="id21">
-<h3><span class="section-number">6.4.6. </span>選手間のパス数の可視化<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">#</a></h3>
+<section id="id20">
+<h3><span class="section-number">6.4.6. </span>選手間のパス数の可視化<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>最後に，特定の試合における選手間のパス数を可視化してみよう．
 本来，このような解析にはnetworkxという専用のライブラリを使うべきだが，以下ではpandasとseabornという可視化ライブラリを用いて実装する．</p>
 <p><strong>試合の抽出</strong></p>
@@ -3776,7 +3752,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_159_0.png" src="../_images/6_event_159_0.png" />
+<img alt="../_images/6_event_156_0.png" src="../_images/6_event_156_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3786,7 +3762,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_160_0.png" src="../_images/6_event_160_0.png" />
+<img alt="../_images/6_event_157_0.png" src="../_images/6_event_157_0.png" />
 </div>
 </div>
 </section>
