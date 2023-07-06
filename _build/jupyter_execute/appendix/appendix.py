@@ -1338,3 +1338,374 @@ plot_corr_mat(A1, 'Greens')
 #     - 加速度センサ，ジャイロセンサ，心拍計，コンパスを搭載
 #     - 心拍データはデータセットから除外
 #     - レシーバーをスタジアム内に設置
+
+# ### ボロノイ領域
+
+# 2次元平面上に$N$個の個体（**母点**と呼ぶ）が配置されているとき，平面上の各点を「どの母点から最も近いか」という基準で分割する．
+# このとき，母点$p$から最も近い領域のことを母点$p$の**ボロノイ領域**と呼ぶ．
+# 通常，近さの基準はユークリッド距離によって定める．
+# 下図は，５つの母点に対するボロノイ領域の例である．
+# この中で，青色で示した領域は母点$p_{4}$から最も近い領域，すなわち母点$p_{4}$のボロノイ領域である．
+# また，黒丸（●）は各母点のボロノイ領域の交点，点線は境界線を表し，それぞれ**ボロノイ点**，**ボロノイ線**と呼ばれる．
+# 
+# チームスポーツにおいては母点を選手に対応させたボロノイ領域が用いられ，各選手の支配領域と解釈される．
+# このとき，ボロノイ線は２人の選手からの距離が等しく，ボロノイ点は２人以上の選手からの距離が等しい場所を表す．
+# よって，守備側チームのボロノイ線とボロノイ点は，攻撃側チームから見ると守備の穴になりやすい場所である．
+# 
+# なお，最近では，「選手$p$から最も近い領域」を「選手$p$から最も速く到達できる領域」に拡張した**優勢領域**が盛んに研究されている．
+# 優勢領域を求めるには，各選手から平面上の全ての位置までの到達時間を計算する必要がある．
+# この計算に用いられるモデルは**運動モデル**と呼ばれ，運動方程式や機械学習に基づく様々なモデルが提案されている．
+
+# ```{figure} ../figure/voronoi.png
+# ---
+# height: 250px
+# name: fig:voronoi
+# ---
+# ボロノイ図の例
+# ```
+
+# ### ボロノイ領域の計算と描画
+
+# Pythonには科学技術計算のためのライブラリであるSciPyが用意されており，Anacondaをインストールすれば標準で使うことができる．
+# ボロノイ領域の計算には，scipy.spatialモジュールに含まれる`Voronoi`クラスおよび`voronoi_plot_2d`関数を用いる．
+# まずはこれらを以下のようにインポートする．
+
+# In[28]:
+
+
+from scipy.spatial import Voronoi, voronoi_plot_2d
+
+
+# ボロノイ領域の計算と描画の手順は以下の通りである：
+# 1. ボロノイ領域を計算したい母点の座標を取得する
+# 2. `Voronoi`クラスを用いてオブジェクト（インスタンス）を生成する
+#     ```python
+#     vor = Voronoi(xy)
+#     ```
+# 3. `voronoi_plot_2d`関数を用いてボロノイ領域を描画する
+# 4. 生成したオブジェクト`vor`の属性やメソッドを用いてボロノイ領域の情報を取得する
+
+# **母点の生成**
+
+# 母点の座標はNumPy配列の形で第0列に$x$座標，第1列に$y$座標となるように用意する．
+# 以下ではランダムに5つの母点を生成し`xy`という変数に読み込む．
+
+# In[29]:
+
+
+xy = np.random.rand(5, 2)
+xy
+
+
+# **`Voronoi`クラスによるオブジェクトの生成**
+
+# 生成した母点の座標`xy`をscipy.spatialからインポートした`Voronoi`クラスに読み込んで`vor`オブジェクトを生成する．
+
+# In[30]:
+
+
+# ボロノイ分割の計算（オブジェクトの生成）
+vor = Voronoi(xy)
+
+
+# **ボロノイ領域の描画**
+
+# ボロノイ領域の描画には`voronoi_plot_2d`関数を用いる．
+# 引数には生成した`vor`オブジェクトを渡す．
+
+# In[31]:
+
+
+fig = voronoi_plot_2d(vor)
+
+
+# **ボロノイ領域の情報の取得**
+
+# 生成した`vor`オブジェクトの属性を用いることで，ボロノイ領域の様々な情報を取得できる．
+
+# In[32]:
+
+
+# 母点の座標
+vor.points
+
+
+# In[33]:
+
+
+# ボロノイ点の座標
+vor.vertices
+
+
+# ボロノイ線の情報は`vor.ridge_vertices`により，両端にあるボロノイ点の番号として取得できる．
+# この番号は，`vor.vertices`のインデックスに対応しており，ボロノイ点が無限遠の場合は-1となる．
+
+# In[34]:
+
+
+# ボロノイ線リスト（vor.verticesのインデックスで表現）
+# -1は無限に伸びるボロノイ線のを表す
+vor.ridge_vertices
+
+
+# この例の場合，１つ目のボロノイ線は[-1, 0]なので，0番目のボロノイ点が無限遠まで延びることが分かる．
+# 以下のように無限遠点を除くボロノイ線を取得しておくと便利である．
+
+# In[35]:
+
+
+# ボロノイ線の両端にあるボロノイ点の座標
+ind_rv = np.array(vor.ridge_vertices)
+ind_rv[~np.any(ind_rv == -1, axis=1)]
+vor.vertices[ind_rv]
+
+
+# ボロノイ線と同様にして，`vor.regions`を用いると，各母点のボロノイ領域を構成するボロノイ点のリストを取得することができる：
+
+# In[36]:
+
+
+# 各ボロノイ領域を構成するボロノイ点のインデックス
+vor.regions
+
+
+# ### トラッキングデータへの応用
+
+# サッカーのトラッキングデータからボロノイ領域を描画するには，特定のフレームにおける選手の座標を取得し，それを母点として`Voronoi`クラスのオブジェクトを生成すれば良い．
+# ただし，ボロノイ領域の描画に`voronoi_plot_2d`をそのまま用いると，無限に延びるボロノイ線が途中で切れてしまうという問題が発生する．
+# そこで，ここでは[`voronoi_plot_2d`のソースコード](https://github.com/scipy/scipy/blob/v1.8.1/scipy/spatial/_plotutils.py#L151-L265)を参考に，独自の描画関数`my_voronoi_plot_2d`を以下のように作成する．
+
+# In[37]:
+
+
+def my_voronoi_plot_2d(vor, fig, ax):
+
+    # ボロノイ点の描画
+    ax.plot(vor.vertices[:, 0], vor.vertices[:, 1], '.')
+
+    # ボロノイ線の描画
+    center = vor.points.mean(axis=0)  # 母点の重心
+    for pointidx, simplex in zip(vor.ridge_points, vor.ridge_vertices):
+        simplex = np.asarray(simplex)
+
+        # 有限なボロノイ線
+        if np.all(simplex >= 0): # 両端のボロノイ点が共に有限
+            ax.plot(vor.vertices[simplex, 0], vor.vertices[simplex, 1], 'k--')
+
+        # 無限に延びるボロノイ線
+        else: # 両端のボロノイ点のどちらかが無限
+
+            # 有限なボロノイ点
+            i = simplex[simplex >= 0][0]
+
+            # ボロノイ線の両脇にある母点を結んだベクトル（ドロネー線）
+            t = vor.points[pointidx[1]] - vor.points[pointidx[0]]
+            t = t / np.linalg.norm(t)
+
+            # t（ドロネー線）に直行するベクトル
+            n = np.array([-t[1], t[0]])
+
+            # tの中点
+            midpoint = vor.points[pointidx].mean(axis=0)
+
+            # 無限遠方のボロノイ点
+            pm = np.sign(np.dot(midpoint - center, n)) # 符号
+            far_point = vor.vertices[i] + 1000 * pm * n  # 無限遠点の座標
+
+            ax.plot([vor.vertices[i,0], far_point[0]], [vor.vertices[i,1], far_point[1]], 'k--')
+
+
+# `my_voronoi_plot_2d`関数は，`vor`オブジェクトとmatplotlibの`fig, ax`オブジェクトを読み込み，ボロノイ点とボロノイ線を描画する．
+# ただし，母点の座標はmatplotlibで描画する必要がある．
+# 以下は，トラッキングデータから第$i$フレームの座標を取得し，ボロノイ領域を描画する例である．
+
+# In[ ]:
+
+
+# トラッキングデータの読み込み
+X = pd.read_csv('./x_1st.csv', encoding='utf-8', index_col=0)
+Y = pd.read_csv('./y_1st.csv', encoding='utf-8', index_col=0)
+
+# 第iフレームの座標取得
+i=5000
+x, y = X.loc[i], Y.loc[i]
+xy = np.vstack([x, y]).T
+
+# ボロノイ領域の計算（オブジェクトの生成）
+vor = Voronoi(xy)
+
+# ボロノイ領域の描画
+fig, ax = plt.subplots(figsize=(3.5, 3))
+my_voronoi_plot_2d(vor, fig, ax)
+
+# 母点の描画
+ax.plot(vor.points[:, 0], vor.points[:, 1], 'ko', mfc='None')
+
+ax.set_xlim(0, 105); ax.set_ylim(0, 68)
+ax.set_xticks([0, 105])
+ax.set_yticks([0, 68])
+ax.set_aspect('equal')
+
+
+# ### ドロネーネットワーク
+
+# ある程度幅のある時間帯から選手の平均位置を求めてフォーメーションを可視化するには重心系で平均位置と標準偏差を求めれば良い．
+# では，特定の時刻においてフォーメーションを定量化・可視化するにはどうすればよいだろうか？
+# 各時刻において4-4-2や3-4-3などの数字の組を割り当てるのも一つの方法かもしれないが，実はもっと便利な方法がある．
+# それが以下に説明するドロネーネットワークである．
+
+# 個体$p_{i}$と$p_{j}$のボロノイ領域が隣接しているときにこれらの個体同士を線で結ぶと，下のような図が作成できる．
+# これを**ドロネー図**あるいは**ドロネーネットワーク**と呼ぶ．
+# 下図を見て分かるように，ドロネーネットワークは各母点を頂点とする三角形に分割できるので，**ドロネー三角形分割**と呼ぶこともある．
+# ドロネーネットワークは線が張られた個体間に1，その他に0を割り当てた隣接行列によって定量化される．
+
+# ドロネーネットワークは平面において隣接関係を定義する方法として知られている．
+# そこで，チームスポーツにおけるフォーメーションを「選手同士の隣接関係」と捉えると，ドロネーネットワークによってフォーメーションを定量化することができる．
+# これにより，フォーメーションの可視化や時間変化の解析など様々な応用が期待される．
+
+# ```{figure} ../figure/delaunay.png
+# ---
+# height: 250px
+# name: fig:delaunay
+# ---
+# ドロネーネットワークの例
+# ```
+
+# ### ドロネーネットワークの計算と描画
+
+# scipy.spatialにはドロネーネットワークを計算・描画するための`Delaunay`クラスと`delaunay_plot_2d`が用意されている．
+# まずはこれらを以下のようにインポートする．
+
+# In[38]:
+
+
+from scipy.spatial import Delaunay, delaunay_plot_2d
+
+
+# ドロネーネットワークの計算と描画の手順はボロノイ領域と同様である：
+# 1. ドロネーネットワークを計算したい母点の座標を取得する
+# 2. `Delaunay`クラスを用いてオブジェクトを生成する
+#     ```python
+#     dt = Delaunay(xy)
+#     ```
+# 3. `delaunay_plot_2d`関数を用いてドロネーネットワークを描画する
+# 4. 生成したオブジェクト`dt`の様々な属性やメソッドを用いてドロネーネットワーク領域の情報を取得する
+
+# **母点の生成**
+
+# 母点の座標はNumPy配列の形で第0列に$x$座標，第1列に$y$座標となるように格納する．
+# 以下ではランダムに10個の母点を生成し`xy`という変数に読み込んでいる．
+
+# In[39]:
+
+
+# 母点の生成: [[x1, y1], [x2, y2], ... ,[xn, yn]]
+N = 5
+xy = np.random.rand(N, 2) 
+
+
+# **`Delaunay`クラスによるオブジェクトの生成**
+
+# 生成した母点の座標`xy`をscipy.spatialからインポートした`Delaunay`クラスに読み込んで`dt`オブジェクトを生成する．
+
+# In[40]:
+
+
+# ドロネー分割の計算
+dt = Delaunay(xy)
+
+
+# **ドロネーネットワークの描画**
+
+# scipyにはドロネーネットワークを描画する`delaunay_plot_2d`関数が用意されており，[ソースコード](https://github.com/scipy/scipy/blob/v1.8.1/scipy/spatial/_plotutils.py#L36-L89)にアクセスできる．
+# ここでは，ボロノイ領域と同様に，このソースコードを少し改変した`my_delaunay_plot_2d`関数を以下のように作成し使用する．
+
+# In[41]:
+
+
+def my_delaunay_plot_2d(dt, fig, ax):
+    x, y = dt.points.T
+    ax.triplot(x, y, dt.simplices.copy(), color='b', linestyle='-')
+
+
+# In[42]:
+
+
+# プロット
+fig, ax = plt.subplots(figsize=(3, 3))
+my_delaunay_plot_2d(dt, fig, ax)
+ax.plot(xy[:, 0], xy[:, 1], 'k^', mfc='None', ms=7)
+
+
+# **ドロネーネットワークの情報の取得**
+
+# In[43]:
+
+
+# 母点の座標の取得
+dt.points
+
+
+# In[44]:
+
+
+# 各三角形を構成する母点のインデックス
+ind_spx = dt.simplices 
+
+# 0番目の三角形を構成する3つの母点の座標
+xy[ind_spx[0]]
+
+
+# In[45]:
+
+
+# 隣接行列の作成
+A = np.zeros([N, N])
+indices, indptr = dt.vertex_neighbor_vertices
+for k in range(N):
+    nbr = indptr[indices[k]:indices[k+1]] # k番目の母点の隣接点
+    A[k][nbr] = 1
+A
+
+
+# ### トラッキングデータへの応用
+
+# サッカーのトラッキングデータからドロネーネットワークを描画するには，特定のフレームにおける選手の座標を取得し，それを母点として`Delaunay`クラスのオブジェクトを生成すれば良い．
+
+# In[ ]:
+
+
+X = pd.read_csv('./x_1st.csv', encoding='utf-8', index_col=0)
+Y = pd.read_csv('./y_1st.csv', encoding='utf-8', index_col=0)
+
+# 第iフレームの座標取得
+i=2000
+x, y = X.loc[i], Y.loc[i]
+xy = np.vstack([x, y]).T
+
+# ドロネーネットワークの計算
+dt = Delaunay(xy)
+
+# ボロノイ領域の計算
+vor = Voronoi(xy)
+
+
+# 以下はドロネーネットワークとボロノイ領域を同時に描画する例である．
+
+# In[ ]:
+
+
+fig, ax = plt.subplots(figsize=(4, 4))
+
+# 母点
+ax.plot(vor.points[:, 0], vor.points[:, 1], 'k>', mfc='None', ms=7)
+
+# ボロノイ領域
+my_voronoi_plot_2d(vor, fig, ax)
+
+# ドロネーネットワーク
+my_delaunay_plot_2d(dt, fig, ax)
+
+ax.set_xlim(0, 105); ax.set_ylim(0, 68)
+ax.set_aspect('equal')
+
