@@ -638,7 +638,7 @@ title="Print to PDF"
 <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.precision&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>    <span class="c1"># 小数点以下の表示桁</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>   <span class="c1"># 表示する行数の上限</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># 表示する列数の上限</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>  <span class="c1"># 表示する列数の上限</span>
 <span class="o">%</span><span class="k">precision</span> 3
 </pre></div>
 </div>
@@ -950,7 +950,7 @@ Arsenal
 </div>
 </div>
 </div>
-<p><strong>得点と失点</strong></p>
+<p><strong>得点・失点・得失点差</strong></p>
 <p>得点データ<code class="docutils literal notranslate"><span class="pre">GM</span></code>では，2チームをhome，awayによって区別している．
 よって，チームごとに得点と失点を集計するには，ホームゲームとアウェイゲームに分けて処理する必要がある．
 ホームゲームでは，<code class="docutils literal notranslate"><span class="pre">home_score</span></code>列が得点，<code class="docutils literal notranslate"><span class="pre">away_score</span></code>列が失点に対応し，アウェイゲームでは逆になる．
@@ -959,8 +959,8 @@ Arsenal
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 得点と失点（ホームゲーム）</span>
-<span class="n">S_h</span> <span class="o">=</span> <span class="n">GM_E</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">GM_E</span><span class="p">[</span><span class="s1">&#39;home_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;home_score&#39;</span><span class="p">,</span> <span class="s1">&#39;away_score&#39;</span><span class="p">]]</span>
-<span class="n">S_h</span> <span class="o">=</span> <span class="n">S_h</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;home_score&#39;</span><span class="p">:</span> <span class="s1">&#39;goal&#39;</span><span class="p">,</span> <span class="s1">&#39;away_score&#39;</span><span class="p">:</span> <span class="s1">&#39;loss&#39;</span><span class="p">})</span>  <span class="c1"># 列ラベルのリネーム</span>
+<span class="n">S_h</span> <span class="o">=</span> <span class="n">GM_E</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">GM_E</span><span class="p">[</span><span class="s1">&#39;home_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;home_score&#39;</span><span class="p">,</span> <span class="s1">&#39;away_score&#39;</span><span class="p">]]</span> <span class="c1"># 対象とするチームのスコアを抽出</span>
+<span class="n">S_h</span> <span class="o">=</span> <span class="n">S_h</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;home_score&#39;</span><span class="p">:</span> <span class="s1">&#39;goal&#39;</span><span class="p">,</span> <span class="s1">&#39;away_score&#39;</span><span class="p">:</span> <span class="s1">&#39;loss&#39;</span><span class="p">})</span> <span class="c1"># 列ラベルのリネーム</span>
 <span class="n">S_h</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1021,8 +1021,8 @@ Arsenal
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 得点と失点（アウェイゲーム）</span>
-<span class="n">S_a</span> <span class="o">=</span> <span class="n">GM_E</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">GM_E</span><span class="p">[</span><span class="s1">&#39;away_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;away_score&#39;</span><span class="p">,</span> <span class="s1">&#39;home_score&#39;</span><span class="p">]]</span>
-<span class="n">S_a</span> <span class="o">=</span> <span class="n">S_a</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;away_score&#39;</span><span class="p">:</span> <span class="s1">&#39;goal&#39;</span><span class="p">,</span> <span class="s1">&#39;home_score&#39;</span><span class="p">:</span> <span class="s1">&#39;loss&#39;</span><span class="p">})</span>  <span class="c1"># 列ラベルのリネーム</span>
+<span class="n">S_a</span> <span class="o">=</span> <span class="n">GM_E</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">GM_E</span><span class="p">[</span><span class="s1">&#39;away_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;away_score&#39;</span><span class="p">,</span> <span class="s1">&#39;home_score&#39;</span><span class="p">]]</span> <span class="c1"># 対象とするチームのスコアを抽出</span>
+<span class="n">S_a</span> <span class="o">=</span> <span class="n">S_a</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;away_score&#39;</span><span class="p">:</span> <span class="s1">&#39;goal&#39;</span><span class="p">,</span> <span class="s1">&#39;home_score&#39;</span><span class="p">:</span> <span class="s1">&#39;loss&#39;</span><span class="p">})</span> <span class="c1"># 列ラベルのリネーム</span>
 <span class="n">S_a</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1150,8 +1150,7 @@ Arsenal
 </div>
 <p><strong>試合結果</strong></p>
 <p>次に，試合結果の列<code class="docutils literal notranslate"><span class="pre">result</span></code>を追加する．
-ここでは，勝ちを1，引き分けを0，負けを-1に対応させることにする．
-このようにすると，各試合の結果は得失点差から求めることができる．
+勝ちを1，引き分けを0，負けを-1で表すことにすると，各試合の結果は得失点差を変換することで求められる．
 求め方は色々と考えられるが，以下では<code class="docutils literal notranslate"><span class="pre">np.sign</span></code>関数を使って正の数を1，負の数を-1に変換している．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1231,65 +1230,7 @@ Arsenal
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">S_h</span><span class="p">,</span> <span class="n">S_a</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">S</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">S</span><span class="o">.</span><span class="n">tail</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    goal  loss  diff  result
-0      4     3     1       1
-31     3     0     3       1
-51     2     0     2       1
-61     2     0     2       1
-91     2     1     1       1
-     goal  loss  diff  result
-286     1     2    -1      -1
-303     1     3    -2      -1
-335     1     2    -1      -1
-353     1     2    -1      -1
-377     1     0     1       1
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>勝ち点</strong></p>
-<p>勝ち点は勝ちの場合に3，引き分けの場合に1として計算する．</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span><span class="p">[</span><span class="s1">&#39;point&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">S</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">S</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;point&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">S</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">S</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;point&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>最終成績</strong></p>
-<p>最後に各試合のデータを集計し，総得点，総失点，総得失点差，勝ち点を計算する．</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gf</span> <span class="o">=</span> <span class="n">S</span><span class="p">[</span><span class="s1">&#39;goal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>  <span class="c1"># 総得点</span>
-<span class="n">ga</span> <span class="o">=</span> <span class="n">S</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>  <span class="c1"># 総失点</span>
-<span class="n">gd</span> <span class="o">=</span> <span class="n">S</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>  <span class="c1"># 総得失点差</span>
-<span class="n">pt</span> <span class="o">=</span> <span class="n">S</span><span class="p">[</span><span class="s1">&#39;point&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;アーセナルの最終成績&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">gf</span><span class="p">,</span> <span class="n">ga</span><span class="p">,</span> <span class="n">gd</span><span class="p">,</span> <span class="n">pt</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>アーセナルの最終成績
-74 51 23 63
-</pre></div>
-</div>
-</div>
-</div>
-<p>以上より，アーセナルのリーグ成績が計算できた．
-他のチームの成績を統合することを考えて，以下のようにDataFrameの形に整形しておく．</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="n">tm_name</span><span class="p">,</span> <span class="n">tm_id</span><span class="p">,</span> <span class="n">gf</span><span class="p">,</span> <span class="n">ga</span><span class="p">,</span> <span class="n">gd</span><span class="p">,</span> <span class="n">pt</span><span class="p">]],</span>
-              <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;team_id&#39;</span><span class="p">,</span> <span class="s1">&#39;gf&#39;</span><span class="p">,</span> <span class="s1">&#39;ga&#39;</span><span class="p">,</span> <span class="s1">&#39;gd&#39;</span><span class="p">,</span> <span class="s1">&#39;pt&#39;</span><span class="p">])</span>
+<span class="n">S</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1312,11 +1253,98 @@ Arsenal
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>name</th>
-      <th>team_id</th>
-      <th>...</th>
-      <th>gd</th>
-      <th>pt</th>
+      <th>goal</th>
+      <th>loss</th>
+      <th>diff</th>
+      <th>result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>3</td>
+      <td>0</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>勝ち点</strong></p>
+<p>勝ち点は勝ちの場合に3，引き分けの場合に1として計算する．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span><span class="p">[</span><span class="s1">&#39;point&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">S</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">S</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;point&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">S</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">S</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;point&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>最終成績</strong></p>
+<p>最後に各試合のデータを集計し，総得点，総失点，総得失点差，勝ち点を計算すれば，アーセナルのリーグ成績が求められる．
+他のチームの成績を統合することを考えて，以下のようにDataFrameの形に整形しておく．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="n">tm_name</span><span class="p">,</span> <span class="n">tm_id</span><span class="p">,</span> <span class="n">S</span><span class="p">[</span><span class="s1">&#39;goal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">S</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">S</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">S</span><span class="p">[</span><span class="s1">&#39;point&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()]],</span>
+              <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;チーム&#39;</span><span class="p">,</span> <span class="s1">&#39;ID&#39;</span><span class="p">,</span> <span class="s1">&#39;得点&#39;</span><span class="p">,</span> <span class="s1">&#39;失点&#39;</span><span class="p">,</span> <span class="s1">&#39;得失点&#39;</span><span class="p">,</span> <span class="s1">&#39;勝ち点&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>チーム</th>
+      <th>ID</th>
+      <th>得点</th>
+      <th>失点</th>
+      <th>得失点</th>
+      <th>勝ち点</th>
     </tr>
   </thead>
   <tbody>
@@ -1324,13 +1352,13 @@ Arsenal
       <th>0</th>
       <td>Arsenal</td>
       <td>1609</td>
-      <td>...</td>
+      <td>74</td>
+      <td>51</td>
       <td>23</td>
       <td>63</td>
     </tr>
   </tbody>
 </table>
-<p>1 rows × 6 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -1426,7 +1454,8 @@ Arsenal
       <th></th>
       <th>name</th>
       <th>team_id</th>
-      <th>...</th>
+      <th>gf</th>
+      <th>ga</th>
       <th>gd</th>
       <th>pt</th>
     </tr>
@@ -1436,7 +1465,8 @@ Arsenal
       <th>0</th>
       <td>Manchester_City</td>
       <td>1625</td>
-      <td>...</td>
+      <td>106</td>
+      <td>27</td>
       <td>79</td>
       <td>100</td>
     </tr>
@@ -1444,7 +1474,8 @@ Arsenal
       <th>1</th>
       <td>Manchester_United</td>
       <td>1611</td>
-      <td>...</td>
+      <td>68</td>
+      <td>28</td>
       <td>40</td>
       <td>81</td>
     </tr>
@@ -1452,7 +1483,8 @@ Arsenal
       <th>2</th>
       <td>Tottenham_Hotspur</td>
       <td>1624</td>
-      <td>...</td>
+      <td>74</td>
+      <td>36</td>
       <td>38</td>
       <td>77</td>
     </tr>
@@ -1460,7 +1492,8 @@ Arsenal
       <th>3</th>
       <td>Liverpool</td>
       <td>1612</td>
-      <td>...</td>
+      <td>84</td>
+      <td>38</td>
       <td>46</td>
       <td>75</td>
     </tr>
@@ -1468,7 +1501,8 @@ Arsenal
       <th>4</th>
       <td>Chelsea</td>
       <td>1610</td>
-      <td>...</td>
+      <td>62</td>
+      <td>38</td>
       <td>24</td>
       <td>70</td>
     </tr>
@@ -1476,7 +1510,8 @@ Arsenal
       <th>5</th>
       <td>Arsenal</td>
       <td>1609</td>
-      <td>...</td>
+      <td>74</td>
+      <td>51</td>
       <td>23</td>
       <td>63</td>
     </tr>
@@ -1484,7 +1519,8 @@ Arsenal
       <th>6</th>
       <td>Burnley</td>
       <td>1646</td>
-      <td>...</td>
+      <td>36</td>
+      <td>39</td>
       <td>-3</td>
       <td>54</td>
     </tr>
@@ -1492,7 +1528,8 @@ Arsenal
       <th>7</th>
       <td>Everton</td>
       <td>1623</td>
-      <td>...</td>
+      <td>44</td>
+      <td>58</td>
       <td>-14</td>
       <td>49</td>
     </tr>
@@ -1500,7 +1537,8 @@ Arsenal
       <th>8</th>
       <td>Leicester_City</td>
       <td>1631</td>
-      <td>...</td>
+      <td>56</td>
+      <td>60</td>
       <td>-4</td>
       <td>47</td>
     </tr>
@@ -1508,7 +1546,8 @@ Arsenal
       <th>9</th>
       <td>AFC_Bournemouth</td>
       <td>1659</td>
-      <td>...</td>
+      <td>45</td>
+      <td>61</td>
       <td>-16</td>
       <td>44</td>
     </tr>
@@ -1516,7 +1555,8 @@ Arsenal
       <th>10</th>
       <td>Crystal_Palace</td>
       <td>1628</td>
-      <td>...</td>
+      <td>45</td>
+      <td>55</td>
       <td>-10</td>
       <td>44</td>
     </tr>
@@ -1524,7 +1564,8 @@ Arsenal
       <th>11</th>
       <td>Newcastle_United</td>
       <td>1613</td>
-      <td>...</td>
+      <td>39</td>
+      <td>47</td>
       <td>-8</td>
       <td>44</td>
     </tr>
@@ -1532,7 +1573,8 @@ Arsenal
       <th>12</th>
       <td>West_Ham_United</td>
       <td>1633</td>
-      <td>...</td>
+      <td>48</td>
+      <td>68</td>
       <td>-20</td>
       <td>42</td>
     </tr>
@@ -1540,7 +1582,8 @@ Arsenal
       <th>13</th>
       <td>Watford</td>
       <td>1644</td>
-      <td>...</td>
+      <td>44</td>
+      <td>64</td>
       <td>-20</td>
       <td>41</td>
     </tr>
@@ -1548,7 +1591,8 @@ Arsenal
       <th>14</th>
       <td>Brighton_&amp;_Hove_Albion</td>
       <td>1651</td>
-      <td>...</td>
+      <td>34</td>
+      <td>54</td>
       <td>-20</td>
       <td>40</td>
     </tr>
@@ -1556,7 +1600,8 @@ Arsenal
       <th>15</th>
       <td>Huddersfield_Town</td>
       <td>1673</td>
-      <td>...</td>
+      <td>28</td>
+      <td>58</td>
       <td>-30</td>
       <td>37</td>
     </tr>
@@ -1564,7 +1609,8 @@ Arsenal
       <th>16</th>
       <td>Southampton</td>
       <td>1619</td>
-      <td>...</td>
+      <td>37</td>
+      <td>56</td>
       <td>-19</td>
       <td>36</td>
     </tr>
@@ -1572,7 +1618,8 @@ Arsenal
       <th>17</th>
       <td>Stoke_City</td>
       <td>1639</td>
-      <td>...</td>
+      <td>35</td>
+      <td>68</td>
       <td>-33</td>
       <td>33</td>
     </tr>
@@ -1580,7 +1627,8 @@ Arsenal
       <th>18</th>
       <td>Swansea_City</td>
       <td>10531</td>
-      <td>...</td>
+      <td>28</td>
+      <td>56</td>
       <td>-28</td>
       <td>33</td>
     </tr>
@@ -1588,20 +1636,20 @@ Arsenal
       <th>19</th>
       <td>West_Bromwich_Albion</td>
       <td>1627</td>
-      <td>...</td>
+      <td>31</td>
+      <td>56</td>
       <td>-25</td>
       <td>31</td>
     </tr>
   </tbody>
 </table>
-<p>20 rows × 6 columns</p>
 </div></div></div>
 </div>
 </section>
 <section id="id8">
 <h3><span class="section-number">6.2.4. </span>演習問題<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">#</a></h3>
 <ul class="simple">
-<li><p>他のリーグについて，順位表を作成せよ</p></li>
+<li><p>他のリーグについて，同様の順位表を作成せよ</p></li>
 </ul>
 </section>
 </section>
@@ -1836,7 +1884,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_59_0.png" src="../_images/6_event_59_0.png" />
+<img alt="../_images/6_event_57_0.png" src="../_images/6_event_57_0.png" />
 </div>
 </div>
 <p>次に，上のヒストグラムがポアソン分布に従っているか調べるため，試合データから求めた平均値をパラメータとするポアソン分布を描いてみる．
@@ -1861,7 +1909,7 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1ca4d21c0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/6_event_61_1.png" src="../_images/6_event_61_1.png" />
+<img alt="../_images/6_event_59_1.png" src="../_images/6_event_59_1.png" />
 </div>
 </div>
 <p>上のグラフを見比べると，確かに似た分布になっていることが分かる．
@@ -1892,7 +1940,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_63_0.png" src="../_images/6_event_63_0.png" />
+<img alt="../_images/6_event_61_0.png" src="../_images/6_event_61_0.png" />
 </div>
 </div>
 <p>実データ（棒グラフ）とポアソン分布（折れ線）の概形はおおよそ一致していることが分かる．
@@ -2126,7 +2174,7 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$Y$&#39;)
 </pre></div>
 </div>
-<img alt="../_images/6_event_79_1.png" src="../_images/6_event_79_1.png" />
+<img alt="../_images/6_event_77_1.png" src="../_images/6_event_77_1.png" />
 </div>
 </div>
 <p><strong>イベントタグ</strong></p>
@@ -3084,7 +3132,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_105_0.png" src="../_images/6_event_105_0.png" />
+<img alt="../_images/6_event_103_0.png" src="../_images/6_event_103_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3097,7 +3145,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_106_0.png" src="../_images/6_event_106_0.png" />
+<img alt="../_images/6_event_104_0.png" src="../_images/6_event_104_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3110,7 +3158,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_107_0.png" src="../_images/6_event_107_0.png" />
+<img alt="../_images/6_event_105_0.png" src="../_images/6_event_105_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3123,7 +3171,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_108_0.png" src="../_images/6_event_108_0.png" />
+<img alt="../_images/6_event_106_0.png" src="../_images/6_event_106_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3136,7 +3184,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_109_0.png" src="../_images/6_event_109_0.png" />
+<img alt="../_images/6_event_107_0.png" src="../_images/6_event_107_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3149,7 +3197,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_110_0.png" src="../_images/6_event_110_0.png" />
+<img alt="../_images/6_event_108_0.png" src="../_images/6_event_108_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3162,7 +3210,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_111_0.png" src="../_images/6_event_111_0.png" />
+<img alt="../_images/6_event_109_0.png" src="../_images/6_event_109_0.png" />
 </div>
 </div>
 </section>
@@ -3468,7 +3516,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_137_0.png" src="../_images/6_event_137_0.png" />
+<img alt="../_images/6_event_135_0.png" src="../_images/6_event_135_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3478,7 +3526,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_138_0.png" src="../_images/6_event_138_0.png" />
+<img alt="../_images/6_event_136_0.png" src="../_images/6_event_136_0.png" />
 </div>
 </div>
 </section>
@@ -3716,7 +3764,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_156_0.png" src="../_images/6_event_156_0.png" />
+<img alt="../_images/6_event_154_0.png" src="../_images/6_event_154_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3726,7 +3774,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_157_0.png" src="../_images/6_event_157_0.png" />
+<img alt="../_images/6_event_155_0.png" src="../_images/6_event_155_0.png" />
 </div>
 </div>
 </section>

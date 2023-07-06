@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[9]:
+# In[28]:
 
 
 # （必須）モジュールのインポート
@@ -18,7 +18,7 @@ plt.rcParams['font.family'] = 'MS Gothic'
 np.set_printoptions(suppress=True, precision=3)
 pd.set_option('display.precision', 3)    # 小数点以下の表示桁
 pd.set_option('display.max_rows', 50)   # 表示する行数の上限
-pd.set_option('display.max_columns', 5)  # 表示する列数の上限
+pd.set_option('display.max_columns', 7)  # 表示する列数の上限
 get_ipython().run_line_magic('precision', '3')
 
 
@@ -88,7 +88,7 @@ GM.head(5)
 
 # 次に [team.csv](https://drive.google.com/uc?export=download&id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1) をダウンロードしてカレントディレクトリに移動し，`TM`という名前のDataFrameに読み込む．
 
-# In[73]:
+# In[12]:
 
 
 TM = pd.read_csv('./team.csv', header=0)
@@ -110,7 +110,7 @@ TM.head()
 # 以下では，イングランド・プレミアリーグのデータを解析対象とする．
 # そこで，条件付き抽出を用いて，`TM`と`GM`からイングランド・プレミアリーグのデータだけ抽出する．
 
-# In[74]:
+# In[14]:
 
 
 GM_E = GM.loc[GM['league']=='England']
@@ -122,7 +122,7 @@ TM_E = TM.loc[TM['league']=='England']
 # チームプロフィール`TM_E`の先頭行のチーム（アーセナル）に対し，リーグ成績を求めてみよう．
 # このチームのチームIDとチーム名を取得するには以下のように`iloc`属性を用いて先頭行を抽出すれば良い．
 
-# In[75]:
+# In[15]:
 
 
 tm_id = TM_E['team_id'].iloc[0]
@@ -131,7 +131,7 @@ print(tm_id)
 print(tm_name)
 
 
-# **得点と失点**
+# **得点・失点・得失点差**
 # 
 # 得点データ`GM`では，2チームをhome，awayによって区別している．
 # よって，チームごとに得点と失点を集計するには，ホームゲームとアウェイゲームに分けて処理する必要がある．
@@ -139,25 +139,25 @@ print(tm_name)
 # このことに注意し，アーセナルのホームゲームの得点・失点を`S_h`，アウェイゲームの得点・失点を`S_a`に保存する．
 # また，得失点差の列`diff`を追加する．
 
-# In[76]:
+# In[16]:
 
 
 # 得点と失点（ホームゲーム）
-S_h = GM_E.loc[(GM_E['home_id']==tm_id), ['home_score', 'away_score']]
-S_h = S_h.rename(columns={'home_score': 'goal', 'away_score': 'loss'})  # 列ラベルのリネーム
+S_h = GM_E.loc[(GM_E['home_id']==tm_id), ['home_score', 'away_score']] # 対象とするチームのスコアを抽出
+S_h = S_h.rename(columns={'home_score': 'goal', 'away_score': 'loss'}) # 列ラベルのリネーム
 S_h.head()
 
 
-# In[77]:
+# In[17]:
 
 
 # 得点と失点（アウェイゲーム）
-S_a = GM_E.loc[(GM_E['away_id']==tm_id), ['away_score', 'home_score']]
-S_a = S_a.rename(columns={'away_score': 'goal', 'home_score': 'loss'})  # 列ラベルのリネーム
+S_a = GM_E.loc[(GM_E['away_id']==tm_id), ['away_score', 'home_score']] # 対象とするチームのスコアを抽出
+S_a = S_a.rename(columns={'away_score': 'goal', 'home_score': 'loss'}) # 列ラベルのリネーム
 S_a.head()
 
 
-# In[78]:
+# In[20]:
 
 
 # 得失点差列の追加
@@ -169,11 +169,10 @@ S_h.head()
 # **試合結果**
 # 
 # 次に，試合結果の列`result`を追加する．
-# ここでは，勝ちを1，引き分けを0，負けを-1に対応させることにする．
-# このようにすると，各試合の結果は得失点差から求めることができる．
+# 勝ちを1，引き分けを0，負けを-1で表すことにすると，各試合の結果は得失点差を変換することで求められる．
 # 求め方は色々と考えられるが，以下では`np.sign`関数を使って正の数を1，負の数を-1に変換している．
 
-# In[79]:
+# In[21]:
 
 
 S_h['result'] = np.sign(S_h['diff']) # ホーム
@@ -185,19 +184,18 @@ S_h.head()
 # 
 # 次に，`pd.concat`関数を使ってホームゲームとアウェイゲームのデータを統合する．
 
-# In[80]:
+# In[22]:
 
 
 S = pd.concat([S_h, S_a])
-print(S.head())
-print(S.tail())
+S.head()
 
 
 # **勝ち点**
 
 # 勝ち点は勝ちの場合に3，引き分けの場合に1として計算する．
 
-# In[81]:
+# In[23]:
 
 
 S['point'] = 0
@@ -207,27 +205,14 @@ S.loc[S['result']==0, 'point'] = 1
 
 # **最終成績**
 
-# 最後に各試合のデータを集計し，総得点，総失点，総得失点差，勝ち点を計算する．
-
-# In[82]:
-
-
-gf = S['goal'].sum()  # 総得点
-ga = S['loss'].sum()  # 総失点
-gd = S['diff'].sum()  # 総得失点差
-pt = S['point'].sum()
-print('アーセナルの最終成績')
-print(gf, ga, gd, pt)
-
-
-# 以上より，アーセナルのリーグ成績が計算できた．
+# 最後に各試合のデータを集計し，総得点，総失点，総得失点差，勝ち点を計算すれば，アーセナルのリーグ成績が求められる．
 # 他のチームの成績を統合することを考えて，以下のようにDataFrameの形に整形しておく．
 
-# In[83]:
+# In[32]:
 
 
-pd.DataFrame([[tm_name, tm_id, gf, ga, gd, pt]],
-              columns=['name', 'team_id', 'gf', 'ga', 'gd', 'pt'])
+pd.DataFrame([[tm_name, tm_id, S['goal'].sum(), S['loss'].sum(), S['diff'].sum(), S['point'].sum()]],
+              columns=['チーム', 'ID', '得点', '失点', '得失点', '勝ち点'])
 
 
 # ### 全チームのリーグ成績と順位表
@@ -235,7 +220,7 @@ pd.DataFrame([[tm_name, tm_id, gf, ga, gd, pt]],
 # 全チームのリーグ成績を求めるには，`for`文を用いて上の手続きを繰り返せば良い．
 # 以下では，`Rank`という名前のDataFrameに全チームのリーグ成績を保存する．
 
-# In[84]:
+# In[33]:
 
 
 Rank = pd.DataFrame(columns=['name', 'team_id', 'gf', 'ga', 'gd', 'pt'])
@@ -286,7 +271,7 @@ for i in range(len(TM_E)):
 
 # 最後に，勝ち点の順にソートし，インデックスを付け直す．
 
-# In[85]:
+# In[34]:
 
 
 # ソートと再インデックス
@@ -296,7 +281,7 @@ Rank = Rank.reset_index(drop=1)
 
 # 以上により，イングランド・プレミアリーグの順位表が作成できた．
 
-# In[86]:
+# In[35]:
 
 
 Rank
@@ -304,7 +289,7 @@ Rank
 
 # ### 演習問題
 
-# - 他のリーグについて，順位表を作成せよ
+# - 他のリーグについて，同様の順位表を作成せよ
 
 # ## 得点分布
 # 
