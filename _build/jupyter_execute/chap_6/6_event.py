@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[5]:
+# In[9]:
 
 
 # （必須）モジュールのインポート
@@ -18,7 +18,7 @@ plt.rcParams['font.family'] = 'MS Gothic'
 np.set_printoptions(suppress=True, precision=3)
 pd.set_option('display.precision', 3)    # 小数点以下の表示桁
 pd.set_option('display.max_rows', 50)   # 表示する行数の上限
-pd.set_option('display.max_columns', 10)  # 表示する列数の上限
+pd.set_option('display.max_columns', 5)  # 表示する列数の上限
 get_ipython().run_line_magic('precision', '3')
 
 
@@ -60,7 +60,7 @@ get_ipython().run_line_magic('precision', '3')
 
 # まずは [game.csv](https://drive.google.com/uc?export=download&id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A) をダウンロードしてカレントディレクトリに移動し，`GM`という名前のDataFrameに読み込む．
 
-# In[8]:
+# In[10]:
 
 
 GM = pd.read_csv('./game.csv', header=0)

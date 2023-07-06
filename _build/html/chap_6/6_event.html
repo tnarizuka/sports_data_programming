@@ -638,7 +638,7 @@ title="Print to PDF"
 <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.precision&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>    <span class="c1"># 小数点以下の表示桁</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>   <span class="c1"># 表示する行数の上限</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># 表示する列数の上限</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># 表示する列数の上限</span>
 <span class="o">%</span><span class="k">precision</span> 3
 </pre></div>
 </div>
@@ -716,13 +716,7 @@ title="Print to PDF"
       <th></th>
       <th>game_id</th>
       <th>league</th>
-      <th>section</th>
-      <th>date</th>
-      <th>venue</th>
       <th>...</th>
-      <th>away_id</th>
-      <th>home</th>
-      <th>home_id</th>
       <th>away_score</th>
       <th>home_score</th>
     </tr>
@@ -732,13 +726,7 @@ title="Print to PDF"
       <th>0</th>
       <td>2499719</td>
       <td>England</td>
-      <td>1</td>
-      <td>2017-08-11</td>
-      <td>Emirates_Stadium</td>
       <td>...</td>
-      <td>1631</td>
-      <td>Arsenal</td>
-      <td>1609</td>
       <td>3</td>
       <td>4</td>
     </tr>
@@ -746,13 +734,7 @@ title="Print to PDF"
       <th>1</th>
       <td>2499723</td>
       <td>England</td>
-      <td>1</td>
-      <td>2017-08-12</td>
-      <td>Goodison_Park</td>
       <td>...</td>
-      <td>1639</td>
-      <td>Everton</td>
-      <td>1623</td>
       <td>0</td>
       <td>1</td>
     </tr>
@@ -760,13 +742,7 @@ title="Print to PDF"
       <th>2</th>
       <td>2499724</td>
       <td>England</td>
-      <td>1</td>
-      <td>2017-08-13</td>
-      <td>Old_Trafford</td>
       <td>...</td>
-      <td>1633</td>
-      <td>Manchester_United</td>
-      <td>1611</td>
       <td>0</td>
       <td>4</td>
     </tr>
@@ -774,13 +750,7 @@ title="Print to PDF"
       <th>3</th>
       <td>2499722</td>
       <td>England</td>
-      <td>1</td>
-      <td>2017-08-12</td>
-      <td>Selhurst_Park</td>
       <td>...</td>
-      <td>1673</td>
-      <td>Crystal_Palace</td>
-      <td>1628</td>
       <td>3</td>
       <td>0</td>
     </tr>
@@ -788,13 +758,7 @@ title="Print to PDF"
       <th>4</th>
       <td>2499725</td>
       <td>England</td>
-      <td>1</td>
-      <td>2017-08-13</td>
-      <td>St_James'_Park</td>
       <td>...</td>
-      <td>1624</td>
-      <td>Newcastle_United</td>
-      <td>1613</td>
       <td>2</td>
       <td>0</td>
     </tr>
