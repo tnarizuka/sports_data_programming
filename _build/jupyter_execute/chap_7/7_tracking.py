@@ -25,7 +25,7 @@ get_ipython().run_line_magic('precision', '3')
 # 
 # # トラッキングデータの解析
 
-# ## データセット
+# ## トラッキングデータ
 
 # ### Pettersenデータセット
 # 
