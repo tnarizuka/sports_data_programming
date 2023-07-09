@@ -528,7 +528,7 @@ EV.head()
 # | ---- | ---- |
 # | id | １つのイベントに付与される識別ID（１行に対して１つのIDが付与される） | 
 # | game_id | 試合ID |
-# | half | 1H（前半），2H（後半），E1（延長前半），E2（延長後半），P（ペナルティ）|
+# | half | 1（前半），2（後半）|
 # | t | イベントが起きた時間（ハーフ開始からの経過時間）．単位は秒 |
 # | team_id | チームID |
 # | player_id | 選手ID |
@@ -591,11 +591,12 @@ EV_tag.head()
 # 
 # | タグ名 | 内容 |
 # | ---- | ---- |
+# | goal | 得点 | 
+# | own_goal | オウンゴール | 
+# | assist | アシスト | 
+# | key_pass | パス |
 # | accurate | イベントの成功 |
 # | not accurate | イベントの失敗 |
-# | assist | アシスト | 
-# | goal | 得点 | 
-# | own_goal | オウンゴール |  
 # 
 
 # ### イベントデータ解析の基本
@@ -603,7 +604,7 @@ EV_tag.head()
 # イベントログ`EV`とイベントタグ`EV_tag`には，ボールに関わるイベントに関するほぼ全ての情報が含まれている．
 # イベントデータ解析の目的はこれらのデータから意味のある情報を抽出することである．
 # イベントデータを解析する際の手順は以下のようにまとめられる：
-# 1. イベントログ，イベントタグから必要なデータを条件付き抽出する
+# 1. イベントログ`EV`，イベントタグ`EV_tag`から必要な行を条件付き抽出する
 # 2. 条件付き抽出したデータを集計する
 # 3. 集計したデータを可視化する
 
@@ -611,7 +612,7 @@ EV_tag.head()
 
 # **特定の試合・時間帯の抽出**
 
-# In[80]:
+# In[8]:
 
 
 # 特定の試合を抽出
@@ -619,26 +620,26 @@ ev = EV.loc[EV['game_id']==2499719]
 ev_tag = EV_tag.loc[EV['game_id']==2499719]
 
 
-# In[81]:
+# In[9]:
 
 
 ev.head()
 
 
-# In[82]:
+# In[10]:
 
 
 ev_tag.head()
 
 
-# In[83]:
+# In[14]:
 
 
 # 前半のみ抽出
 ev.loc[ev['half']==1].tail()
 
 
-# In[84]:
+# In[15]:
 
 
 # 前半開始20秒までを抽出
@@ -651,21 +652,21 @@ ev.loc[(ev['half']==1) & (ev['t']<20)].tail()
 # `'event'`列は`'pass'`，`'foul'`などの大分類，`'subevent'`列は`'simple_pass'`や`'high_pass'`などの小分類となっている．
 # `'event'`および`'subevent'`のリストは[event_list.csv](https://drive.google.com/uc?export=download&id=1oSDUt73paDOsORVj732rGU0vwIwGHvHJ) にまとめられている．
 
-# In[85]:
+# In[16]:
 
 
 # event列が'pass'の行を抽出
 ev.loc[ev['event']=='pass'].head()
 
 
-# In[86]:
+# In[17]:
 
 
 # subevent列が'simple_pass'の行を抽出
 ev.loc[ev['subevent']=='simple_pass'].head()
 
 
-# In[87]:
+# In[18]:
 
 
 # event列が'shot'の行を抽出
@@ -677,14 +678,14 @@ ev.loc[(ev_tag['goal']==1)].head()
 # イベントタグ`EV_tag`はイベントログ`EV`と同じ行数で共通の行ラベル（インデックス）を持つ．
 # よって，`EV_tag`で取得したブールインデックスを用いて`EV`から条件付き抽出することができる．
 
-# In[88]:
+# In[19]:
 
 
 # イベント名が'pass'で，'accurate'タグが1である行（成功パス）を抽出
 ev.loc[(ev['event']=='pass') & (ev_tag['accurate']==1)]
 
 
-# In[89]:
+# In[20]:
 
 
 # イベント名が'shot'で，'goal'タグが1である行（成功シュート）
@@ -697,7 +698,7 @@ ev.loc[(ev['event']=='shot') & (ev_tag['goal']==1)]
 # まず，以下のようにヒートマップを描く`event_hmap`関数を作成する．
 # この関数は，$x,\ y$座標のデータを引数として受け取り，matplotlibの`hist2d`関数を用いてヒートマップを描く．
 
-# In[90]:
+# In[21]:
 
 
 def event_hmap(x, y, cm='Greens'):
@@ -726,7 +727,7 @@ def event_hmap(x, y, cm='Greens'):
 # 特定のイベントだけを条件付き抽出してその$x,\ y$座標を`event_hmap`関数に渡せば，そのイベントが行われたフィールド上の位置をヒートマップで可視化することができる．
 # 以下にいくつかの例を示す．
 
-# In[91]:
+# In[22]:
 
 
 # パス
@@ -735,7 +736,7 @@ x, y = EV.loc[cond, 'x1'], EV.loc[cond, 'y1']
 event_hmap(x, y)
 
 
-# In[92]:
+# In[23]:
 
 
 # 特定の選手のパス
@@ -744,7 +745,7 @@ x, y = EV.loc[cond, 'x1'], EV.loc[cond, 'y1']
 event_hmap(x, y, 'Blues')
 
 
-# In[93]:
+# In[24]:
 
 
 # クロス
@@ -753,7 +754,7 @@ x, y = EV.loc[cond, 'x1'], EV.loc[cond, 'y1']
 event_hmap(x, y, 'Reds')
 
 
-# In[94]:
+# In[25]:
 
 
 # デュエル
@@ -762,16 +763,16 @@ x, y = EV.loc[cond, 'x1'], EV.loc[cond, 'y1']
 event_hmap(x, y, 'Greys')
 
 
-# In[95]:
+# In[27]:
 
 
-# デュエル（攻撃）
+# デュエル（攻撃時）
 cond = (EV['subevent']=='ground_attacking_duel')
 x, y = EV.loc[cond, 'x1'], EV.loc[cond, 'y1']
 event_hmap(x, y, 'jet')
 
 
-# In[96]:
+# In[28]:
 
 
 # シュート
@@ -780,7 +781,7 @@ x, y = EV.loc[cond, 'x1'], EV.loc[cond, 'y1']
 event_hmap(x, y)
 
 
-# In[97]:
+# In[29]:
 
 
 # シュート（成功）
