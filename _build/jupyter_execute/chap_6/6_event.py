@@ -858,3 +858,112 @@ Rank_goal = EV.loc[cond, 'player_id'].value_counts()
 Rank_goal = Rank_goal.rename(index=dict_id_name)  # 選手IDを選手名に変換する
 Rank_goal.iloc[:10]
 
+
+# ### 選手間のパス数の可視化
+
+# 最後に，特定の試合における選手間のパス数を可視化してみよう．
+# 本来，このような解析にはnetworkxという専用のライブラリを使うべきだが，以下ではpandasとseabornという可視化ライブラリを用いて実装する．
+
+# **試合の抽出**
+
+# In[ ]:
+
+
+# 後のエラー対処のために明示的に.copy()を付けている
+ev = EV.loc[EV['game_id']==EV['game_id'].unique()[0]].copy()
+ev_tag = EV_tag.loc[EV['game_id']==EV['game_id'].iloc[0]].copy()
+
+
+# **パスリストの作成** 
+
+# 選手間のパス数を求めるには，パスの出し手と受け手の情報が必要である．
+# しかし，イベントログ`EV`にはパスの出し手の情報しかないので，受け手の情報を加える必要がある．
+# イベント名が'pass'の行については，次の行の選手IDがパスの受け手に対応するので，以下のようにパスリスト`ps`を作成できる．
+
+# In[ ]:
+
+
+ps = ev.loc[ev['event']=='pass', ['player_id', 'team_id']]
+ps['player_id2'], ps['team_id2'] = 0, 0
+ps['player_id2'].iloc[:-1] = ps['player_id'].iloc[1:].values
+ps['team_id2'].iloc[:-1] = ps['team_id'].iloc[1:].values
+ps.head()
+
+
+# **選手名の追加**
+
+# イベントログには選手ID（'player_id'）の情報しかないので，選手プロフィール`PL`のデータを用いて選手名を追加する．
+# 以下のように，`replace`メソッドを用いて，選手ID（'player_id'）を選手名（'name'）に置換すれば良い．
+
+# In[ ]:
+
+
+ps['name'] = ps['player_id'].replace(PL['player_id'].values, PL['name'].values)
+ps['name2'] = ps['player_id2'].replace(PL['player_id'].values, PL['name'].values)
+ps.head()
+
+
+# **パス数行列の作成**
+
+# チーム内の選手$i$と$j$間のパス数を要素とする行列をパス数行列と呼ぶことにする．
+# パス数行列は非対称な行列であり，行列の$(i, j)$成分は選手$i$から$j$へのパス，$(j, i)$成分はその逆を表す．
+# パス数行列の作成方法はいくつか考えられるが，以下では`for`文を用いて実装している．
+
+# In[ ]:
+
+
+tm_id = ev['team_id'].unique()
+pl_id0 = ps.loc[ps['team_id']==tm_id[0], 'name'].unique()
+pl_id1 = ps.loc[ps['team_id']==tm_id[1], 'name'].unique()
+A0 = pd.DataFrame(index=pl_id0, columns=pl_id0)
+A1 = pd.DataFrame(index=pl_id1, columns=pl_id1)
+
+
+# In[ ]:
+
+
+for i in pl_id0:
+    for j in pl_id0:
+        A0.loc[i, j] = len(ps.loc[(ps['name']==i) & (ps['name2']==j)])
+
+for i in pl_id1:
+    for j in pl_id1:
+        A1.loc[i, j] = len(ps.loc[(ps['name']==i) & (ps['name2']==j)])
+        
+A0 = A0.astype(int)
+A1 = A1.astype(int)
+
+
+# **パス数行列の可視化**
+
+# パス数行列を可視化する方法はいくつか考えられる．
+# 例えば，選手を点，選手間のパス数を線の太さに対応させた図で表す方法がある．
+# このような図はネットワーク呼ばれ，サッカーのデータ分析における標準的な手法となっている．
+# しかし，ネットワークの分析と可視化にはnetworkxなどの専用ライブラリの知識が必要となるので，ここではより直接的にヒートマップを用いた可視化方法を採用する．
+# 以下の`plot_corr_mat`関数は，seabornという可視化ライブラリを用いてパス数行列をヒートマップで可視化する．
+
+# In[ ]:
+
+
+import seaborn
+def plot_corr_mat(mat, cm='jet'):
+    fig, ax = plt.subplots(figsize=(5, 5))
+    seaborn.heatmap(mat, ax=ax, linewidths=0.1, cbar=True, annot=True,\
+                    square=True, cmap=cm, linecolor='w', cbar_kws={"shrink": .7})
+    ax.set_xticklabels(mat.columns, fontsize=8)
+    ax.set_yticklabels(mat.index, fontsize=8)
+    ax_clb = ax.collections[0].colorbar
+    ax_clb.ax.tick_params(labelsize=8)
+
+
+# In[ ]:
+
+
+plot_corr_mat(A0, 'Reds')
+
+
+# In[ ]:
+
+
+plot_corr_mat(A1, 'Greens')
+
