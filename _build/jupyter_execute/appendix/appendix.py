@@ -1113,6 +1113,113 @@ ev = EV.loc[EV['game_id']==2499719]
 ev_tag = EV_tag.loc[EV['game_id']==2499719]
 
 
+# ### ボールの軌跡の可視化
+
+# イベントデータを用いると，パスやシュートなどのイベント単位で試合展開を追跡することができる．
+# ここでは，特定の試合に対し，ボールの軌跡を可視化してみよう．
+
+# **試合の抽出**
+
+# In[ ]:
+
+
+# 特定の試合を抽出
+ev = EV.loc[EV['game_id']==2499719].copy()
+ev_tag = EV_tag.loc[EV['game_id']==2499719].copy()
+
+
+# **チーム名の確認**
+
+# In[ ]:
+
+
+tm_id = ev['team_id'].unique()
+tm_id
+
+
+# **座標の反転（片方のチームだけ）**
+
+# 元のデータでは，両チームの攻撃方向が右方向に統一されている．
+# これだと，試合展開を可視化する際にわかりにくいので，一方のチームの攻撃方向が逆になるように変換する．
+# 以下のように，片方のチーム（'team_id'が1631）の$x, y$座標から最大値100を引き，絶対値を取ればよい．
+
+# In[ ]:
+
+
+ev.loc[ev['team_id']==tm_id[1], ['x1', 'x2']] = np.abs(ev.loc[ev['team_id']==tm_id[1], ['x1', 'x2']] - 100)
+ev.loc[ev['team_id']==tm_id[1], ['y1', 'y2']] = np.abs(ev.loc[ev['team_id']==tm_id[1], ['y1', 'y2']] - 100)
+
+# 座標の補正（コート外の座標を欠損値にする）
+ev.loc[(ev['x1']==0)|(ev['x2']==0), ['x2', 'y2']] = np.nan
+ev.loc[(ev['x1']==100)|(ev['x2']==100), ['x2', 'y2']] = np.nan
+
+
+# **ボールの軌跡の描画**
+
+# イベントログにはイベントの始点と終点の座標が収められており，これがおおよそボールの軌跡に対応する．
+# そこで，`matplotlib`の`plot`関数を用いてイベントの始点と終点の座標を結ぶことで，ボールの軌跡を描いてみる．
+# なお，イベント名が'duel'の場合，始点と終点の座標が同じで'team_id'が異なる2つの行が挿入されている．
+
+# In[ ]:
+
+
+ev.loc[ev['event']=='duel'].head()
+
+
+# これは，ボール保持チームが特定できないためと考えられる．
+# そこで，イベント名が'duel'の場合には一方のチームの座標だけを黒線で描画し，それ以外はチームごとに色分けして描画することにする．
+# 以下の`ball_trj`関数は，時間帯を３つの引数`half`, `ts`, `te`で指定し，その時間帯でボールの軌跡を描く．
+
+# In[ ]:
+
+
+def ball_trj(half=1, ts=0, te=50):
+    '''
+    half: 前半1， 後半2
+    ts: 始点に対応する時刻
+    te: 終点に対応する時刻
+    '''
+    fig, ax = plt.subplots(figsize=(5, 5))
+    ax.set_aspect(68/105)
+
+    ev['tmp'] = np.nan
+    cond = (ev['half']==1) & (ev['t'] > ts) & (ev['t'] < te)
+
+    # チーム0のpass
+    X0 = ev.loc[cond & (ev['team_id']==tm_id[0]) & (ev['event']!='duel'), ['x1', 'x2', 'tmp']].values.reshape(-1)
+    Y0 = ev.loc[cond & (ev['team_id']==tm_id[0]) & (ev['event']!='duel'), ['y1', 'y2', 'tmp']].values.reshape(-1)
+    ax.plot(X0, Y0, 'o-r', mfc='None')
+
+    # チーム1のpass
+    X1 = ev.loc[cond & (ev['team_id']==tm_id[1]) & (ev['event']!='duel'), ['x1', 'x2', 'tmp']].values.reshape(-1)
+    Y1 = ev.loc[cond & (ev['team_id']==tm_id[1]) & (ev['event']!='duel'), ['y1', 'y2', 'tmp']].values.reshape(-1)
+    ax.plot(X1, Y1, '^-b', mfc='None')
+
+    # duel
+    X2 = ev.loc[cond & (ev['team_id']==tm_id[1]) & (ev['event']=='duel'), ['x1', 'x2', 'tmp']].values.reshape(-1)
+    Y2 = ev.loc[cond & (ev['team_id']==tm_id[1]) & (ev['event']=='duel'), ['y1', 'y2', 'tmp']].values.reshape(-1)
+    ax.plot(X2, Y2, '-k')
+
+    # ハーフウェイライン
+    ax.plot([50, 50], [0, 100], 'k--') 
+
+    # 描画範囲とラベル
+    ax.set_xlim(0, 100); ax.set_ylim(0, 100)
+    ax.set_xlabel('$X$'); ax.set_ylabel('$Y$')
+
+
+# In[ ]:
+
+
+ball_trj(half=1, ts=100, te=200)
+
+
+# In[ ]:
+
+
+ball_trj(half=2, ts=2000, te=2050)
+
+
 # ### 選手間のパス数の可視化
 
 # 最後に，特定の試合における選手間のパス数を可視化してみよう．

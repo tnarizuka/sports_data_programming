@@ -612,12 +612,12 @@ EV_tag.head()
 
 # **特定の試合・時間帯の抽出**
 
-# In[8]:
+# In[104]:
 
 
 # 特定の試合を抽出
-ev = EV.loc[EV['game_id']==2499719]
-ev_tag = EV_tag.loc[EV['game_id']==2499719]
+ev = EV.loc[EV['game_id']==2499719].copy()
+ev_tag = EV_tag.loc[EV['game_id']==2499719].copy()
 
 
 # In[9]:
@@ -798,160 +798,63 @@ event_hmap(x, y)
 # なお，どのようなプレーをシュートやパスと見なすかは用いるデータセットによって異なっており，
 # 以下で求めるランキングが公式発表されたものと完全に一致するわけではない．
 # 2017年度プレミアリーグの個人成績は例えば，
-# - https://tavitt-football.com/2017-18_premier_playerstats/#i-4
+# - https://www.premierleague.com/stats
 # 
 # にて確認できるが，細かい数値は本データセットから求めたものと一致しない．
 
 # ランキングの作成方法は以下の通りである．
 # - ランキング項目に応じて条件付き抽出する．
-#     - 例えば，パス数の場合は'event'列が'pass'である行を抽出する
+#   - 例えば，パス数の場合は'event'列が'pass'である行を抽出する
 # - 条件付き抽出後のDataFrameに対し，'player_id'ごとの出現回数を求める
-#     - DataFrameの`value_counts`メソッドを用いる
+#   - DataFrameの`value_counts`メソッドを用いる
 # - 選手プロフィール`PL`を用いて'player_id'を選手名に変換する
+#   - 'player_id'と'name'が対応した辞書を作成し，`rename`メソッドを用いる
+
+# In[97]:
+
+
+# 'player_id'と'name'が対応した辞書
+dict_id_name = dict(PL[['player_id', 'name']].values)
+
 
 # **シュート数**
 
-# In[ ]:
+# In[99]:
 
 
-PR_shot = EV.loc[(EV['subevent']=='shot') | (EV['subevent']=='free_kick_shot') | (EV['subevent']=='penalty'), 'player_id'].value_counts()
-PR_shot = PR_shot.rename(index=dict(PL[['player_id', 'name']].values))  # 選手IDを選手名に変換する
-PR_shot.iloc[:10]
+cond = (EV['subevent']=='shot') | (EV['subevent']=='free_kick_shot') | (EV['subevent']=='penalty')
+Rank_shot = EV.loc[cond, 'player_id'].value_counts()
+Rank_shot = Rank_shot.rename(index=dict_id_name)  # 選手IDを選手名に変換する
+Rank_shot.iloc[:10]
 
 
 # **パス数**
 
-# In[ ]:
+# In[100]:
 
 
-PR_pass = EV.loc[(EV['event']=='pass'), 'player_id'].value_counts()
-PR_pass = PR_pass.rename(index=dict(PL[['player_id', 'name']].values))  # 選手IDを選手名に変換する
-PR_pass.iloc[:10]
+Rank_pass = EV.loc[(EV['event']=='pass'), 'player_id'].value_counts()
+Rank_pass = Rank_pass.rename(index=dict_id_name)  # 選手IDを選手名に変換する
+Rank_pass.iloc[:10]
 
 
 # **アシスト数**
 
-# In[ ]:
+# In[101]:
 
 
-PR_assist = EV.loc[(EV_tag['assist']==1), 'player_id'].value_counts()
-PR_assist = PR_assist.rename(index=dict(PL[['player_id', 'name']].values))  # 選手IDを選手名に変換する
-PR_assist.iloc[:10]
+Rank_assist = EV.loc[(EV_tag['assist']==1), 'player_id'].value_counts()
+Rank_assist = Rank_assist.rename(index=dict_id_name)  # 選手IDを選手名に変換する
+Rank_assist.iloc[:10]
 
 
 # **ゴール数**
 
-# In[ ]:
-
-
-PR_goal = EV.loc[((EV['event']=='shot') | (EV['event']=='free_kick')) & (EV_tag['goal']==1), 'player_id'].value_counts()
-PR_goal = PR_goal.rename(index=dict(PL[['player_id', 'name']].values))  # 選手IDを選手名に変換する
-PR_goal.iloc[:10]
-
-
-# ### ボールの軌跡の可視化
-
-# イベントデータを用いると，パスやシュートなどのイベント単位で試合展開を追跡することができる．
-# ここでは，特定の試合に対し，ボールの軌跡を可視化してみよう．
-
-# **試合の抽出**
-
-# In[100]:
-
-
-# 後のエラー対処のために明示的に.copy()を付けている
-ev = EV.loc[EV['game_id']==EV['game_id'].unique()[0]].copy()
-ev_tag = EV_tag.loc[EV['game_id']==EV['game_id'].unique()[0]].copy()
-
-
-# **チーム名の確認**
-
-# In[101]:
-
-
-tm_id = ev['team_id'].unique()
-tm_id
-
-
-# **座標の反転（片方のチーム）**
-
-# 元のデータでは，両チームの攻撃方向が右方向に統一されている．
-# これだと，試合展開を可視化する際にわかりにくいので，一方のチームの攻撃方向が逆になるように変換する．
-# 以下のように，片方のチーム（'team_id'が1631）の$x, y$座標から最大値100を引き，絶対値を取ればよい．
-
 # In[102]:
 
 
-ev.loc[ev['team_id']==tm_id[1], ['x1', 'x2']] = np.abs(ev.loc[ev['team_id']==tm_id[1], ['x1', 'x2']] - 100)
-ev.loc[ev['team_id']==tm_id[1], ['y1', 'y2']] = np.abs(ev.loc[ev['team_id']==tm_id[1], ['y1', 'y2']] - 100)
-
-# 座標の補正
-ev.loc[(ev['x1']==0)|(ev['x2']==0), ['x2', 'y2']] = np.nan
-ev.loc[(ev['x1']==100)|(ev['x2']==100), ['x2', 'y2']] = np.nan
-
-
-# **ボールの軌跡の描画**
-
-# イベントログにはイベントの始点と終点の座標が収められており，これがおおよそボールの軌跡に対応する．
-# そこで，`matplotlib`の`plot`関数を用いてイベントの始点と終点の座標を結ぶことで，ボールの軌跡を描いてみる．
-# なお，イベント名が'duel'の場合，始点と終点の座標が同じで'team_id'が異なる2つの行が挿入されている．
-
-# In[103]:
-
-
-ev.loc[ev['event']=='duel'].head()
-
-
-# これは，ボール保持チームが特定できないためと考えられる．
-# そこで，イベント名が'duel'の場合には一方のチームの座標だけを黒線で描画し，それ以外はチームごとに色分けして描画することにする．
-# 以下の`ball_trj`関数は，時間帯を３つの引数`half`, `ts`, `te`で指定し，その時間帯でボールの軌跡を描く．
-
-# In[104]:
-
-
-def ball_trj(half=1, ts=0, te=50):
-    '''
-    half: 前半1， 後半2
-    ts: 始点に対応する時刻
-    te: 終点に対応する時刻
-    '''
-    fig, ax = plt.subplots(figsize=(5, 5))
-    ax.set_aspect(68/105)
-
-    ev['tmp'] = np.nan
-    cond = (ev['half']==1) & (ev['t'] > ts) & (ev['t'] < te)
-
-    # チーム0のpass
-    X0 = ev.loc[cond & (ev['team_id']==tm_id[0]) & (ev['event']!='duel'), ['x1', 'x2', 'tmp']].values.reshape(-1)
-    Y0 = ev.loc[cond & (ev['team_id']==tm_id[0]) & (ev['event']!='duel'), ['y1', 'y2', 'tmp']].values.reshape(-1)
-    ax.plot(X0, Y0, 'o-r', mfc='None')
-
-    # チーム1のpass
-    X1 = ev.loc[cond & (ev['team_id']==tm_id[1]) & (ev['event']!='duel'), ['x1', 'x2', 'tmp']].values.reshape(-1)
-    Y1 = ev.loc[cond & (ev['team_id']==tm_id[1]) & (ev['event']!='duel'), ['y1', 'y2', 'tmp']].values.reshape(-1)
-    ax.plot(X1, Y1, '^-b', mfc='None')
-
-    # duel
-    X2 = ev.loc[cond & (ev['team_id']==tm_id[1]) & (ev['event']=='duel'), ['x1', 'x2', 'tmp']].values.reshape(-1)
-    Y2 = ev.loc[cond & (ev['team_id']==tm_id[1]) & (ev['event']=='duel'), ['y1', 'y2', 'tmp']].values.reshape(-1)
-    ax.plot(X2, Y2, '-k')
-
-    # ハーフウェイライン
-    ax.plot([50, 50], [0, 100], 'k--') 
-
-    # 描画範囲とラベル
-    ax.set_xlim(0, 100); ax.set_ylim(0, 100)
-    ax.set_xlabel('$X$'); ax.set_ylabel('$Y$')
-
-
-# In[105]:
-
-
-ball_trj(half=1, ts=50, te=100)
-
-
-# In[106]:
-
-
-ball_trj(half=2, ts=2000, te=2050)
+cond = ((EV['event']=='shot') | (EV['event']=='free_kick')) & (EV_tag['goal']==1)
+Rank_goal = EV.loc[cond, 'player_id'].value_counts()
+Rank_goal = Rank_goal.rename(index=dict_id_name)  # 選手IDを選手名に変換する
+Rank_goal.iloc[:10]
 
