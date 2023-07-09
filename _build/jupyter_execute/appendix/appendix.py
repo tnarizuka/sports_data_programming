@@ -1113,65 +1113,6 @@ ev = EV.loc[EV['game_id']==2499719]
 ev_tag = EV_tag.loc[EV['game_id']==2499719]
 
 
-# ### 選手のランキング
-
-# シーズンが終了すると，チームのリーグ成績と共に選手の個人成績が発表される．
-# 個人成績は，シュート数やゴール数などの部門別ランキングとなっている．
-# ここでは，イベントデータを用いてこれらのランキングを求めてみよう．
-# なお，どのようなプレーをシュートやパスと見なすかは用いるデータセットによって異なっており，
-# 以下で求めるランキングが公式発表されたものと完全に一致するわけではない．
-# 2017年度プレミアリーグの個人成績は例えば，
-# - https://tavitt-football.com/2017-18_premier_playerstats/#i-4
-# 
-# にて確認できるが，細かい数値は本データセットから求めたものと一致しない．
-
-# ランキングの作成方法は以下の通りである．
-# - ランキング項目に応じて条件付き抽出する．
-#     - 例えば，パス数の場合は'event'列が'pass'である行を抽出する
-# - 条件付き抽出後のDataFrameに対し，'player_id'ごとの出現回数を求める
-#     - DataFrameの`value_counts`メソッドを用いる
-# - 選手プロフィール`PL`を用いて'player_id'を選手名に変換する
-
-# **シュート数**
-
-# In[2]:
-
-
-PR_shot = EV.loc[(EV['subevent']=='shot') | (EV['subevent']=='free_kick_shot') | (EV['subevent']=='penalty'), 'player_id'].value_counts()
-PR_shot = PR_shot.rename(index=dict(PL[['player_id', 'name']].values))  # 選手IDを選手名に変換する
-PR_shot.iloc[:10]
-
-
-# **パス数**
-
-# In[3]:
-
-
-PR_pass = EV.loc[(EV['event']=='pass'), 'player_id'].value_counts()
-PR_pass = PR_pass.rename(index=dict(PL[['player_id', 'name']].values))  # 選手IDを選手名に変換する
-PR_pass.iloc[:10]
-
-
-# **アシスト数**
-
-# In[4]:
-
-
-PR_assist = EV.loc[(EV_tag['assist']==1), 'player_id'].value_counts()
-PR_assist = PR_assist.rename(index=dict(PL[['player_id', 'name']].values))  # 選手IDを選手名に変換する
-PR_assist.iloc[:10]
-
-
-# **ゴール数**
-
-# In[5]:
-
-
-PR_goal = EV.loc[((EV['event']=='shot') | (EV['event']=='free_kick')) & (EV_tag['goal']==1), 'player_id'].value_counts()
-PR_goal = PR_goal.rename(index=dict(PL[['player_id', 'name']].values))  # 選手IDを選手名に変換する
-PR_goal.iloc[:10]
-
-
 # ### 選手間のパス数の可視化
 
 # 最後に，特定の試合における選手間のパス数を可視化してみよう．
