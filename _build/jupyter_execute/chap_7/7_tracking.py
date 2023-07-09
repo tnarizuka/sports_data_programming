@@ -8,7 +8,6 @@
 import os
 import numpy as np
 import pandas as pd
-import matplotlib as mpl
 import matplotlib.pyplot as plt
 
 # 日本語フォントの設定（Mac:'Hiragino Sans', Windows:'MS Gothic'）

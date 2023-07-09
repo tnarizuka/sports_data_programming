@@ -8,7 +8,6 @@
 import os
 import numpy as np
 import pandas as pd
-import matplotlib as mpl
 import matplotlib.pyplot as plt
 
 # 日本語フォントの設定（Mac:'Hiragino Sans', Windows:'MS Gothic'）
@@ -986,4 +985,4 @@ plot_corr_mat(A1)
 # 
 # - イングランド以外のリーグについて，選手のランキングを求めよ．
 # - 他のチームに対してもパス数行列を作成し，可視化せよ．
-# - 失敗パスに対してパス数行列を作成し，可視化せよ．
+# - 相手へのパスに対してパス数行列を作成し，可視化せよ．
