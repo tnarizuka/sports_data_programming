@@ -473,11 +473,6 @@ title="Print to PDF"
      6.4.4. 選手のランキング
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id19">
-     6.4.5. ボールの軌跡の可視化
-    </a>
-   </li>
   </ul>
  </li>
 </ul>
@@ -593,11 +588,6 @@ title="Print to PDF"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id18">
      6.4.4. 選手のランキング
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id19">
-     6.4.5. ボールの軌跡の可視化
     </a>
    </li>
   </ul>
@@ -2317,8 +2307,8 @@ dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 特定の試合を抽出</span>
-<span class="n">ev</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">2499719</span><span class="p">]</span>
-<span class="n">ev_tag</span> <span class="o">=</span> <span class="n">EV_tag</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">2499719</span><span class="p">]</span>
+<span class="n">ev</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">2499719</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">ev_tag</span> <span class="o">=</span> <span class="n">EV_tag</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">2499719</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -3363,7 +3353,7 @@ dtype: float64
 以下で求めるランキングが公式発表されたものと完全に一致するわけではない．
 2017年度プレミアリーグの個人成績は例えば，</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://tavitt-football.com/2017-18_premier_playerstats/#i-4">https://tavitt-football.com/2017-18_premier_playerstats/#i-4</a></p></li>
+<li><p><a class="reference external" href="https://www.premierleague.com/stats">https://www.premierleague.com/stats</a></p></li>
 </ul>
 <p>にて確認できるが，細かい数値は本データセットから求めたものと一致しない．</p>
 <p>ランキングの作成方法は以下の通りである．</p>
@@ -3378,14 +3368,27 @@ dtype: float64
 <li><p>DataFrameの<code class="docutils literal notranslate"><span class="pre">value_counts</span></code>メソッドを用いる</p></li>
 </ul>
 </li>
-<li><p>選手プロフィール<code class="docutils literal notranslate"><span class="pre">PL</span></code>を用いて'player_id'を選手名に変換する</p></li>
+<li><p>選手プロフィール<code class="docutils literal notranslate"><span class="pre">PL</span></code>を用いて'player_id'を選手名に変換する</p>
+<ul>
+<li><p>'player_id'と'name'が対応した辞書を作成し，<code class="docutils literal notranslate"><span class="pre">rename</span></code>メソッドを用いる</p></li>
 </ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># &#39;player_id&#39;と&#39;name&#39;が対応した辞書</span>
+<span class="n">dict_id_name</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">PL</span><span class="p">[[</span><span class="s1">&#39;player_id&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p><strong>シュート数</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PR_shot</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;subevent&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;shot&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;subevent&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;free_kick_shot&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;subevent&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;penalty&#39;</span><span class="p">),</span> <span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-<span class="n">PR_shot</span> <span class="o">=</span> <span class="n">PR_shot</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">PL</span><span class="p">[[</span><span class="s1">&#39;player_id&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>  <span class="c1"># 選手IDを選手名に変換する</span>
-<span class="n">PR_shot</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cond</span> <span class="o">=</span> <span class="p">(</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;subevent&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;shot&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;subevent&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;free_kick_shot&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;subevent&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;penalty&#39;</span><span class="p">)</span>
+<span class="n">Rank_shot</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span><span class="p">,</span> <span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">Rank_shot</span> <span class="o">=</span> <span class="n">Rank_shot</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">dict_id_name</span><span class="p">)</span>  <span class="c1"># 選手IDを選手名に変換する</span>
+<span class="n">Rank_shot</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -3408,9 +3411,9 @@ Name: player_id, dtype: int64
 <p><strong>パス数</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PR_pass</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;pass&#39;</span><span class="p">),</span> <span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-<span class="n">PR_pass</span> <span class="o">=</span> <span class="n">PR_pass</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">PL</span><span class="p">[[</span><span class="s1">&#39;player_id&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>  <span class="c1"># 選手IDを選手名に変換する</span>
-<span class="n">PR_pass</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Rank_pass</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;pass&#39;</span><span class="p">),</span> <span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">Rank_pass</span> <span class="o">=</span> <span class="n">Rank_pass</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">dict_id_name</span><span class="p">)</span>  <span class="c1"># 選手IDを選手名に変換する</span>
+<span class="n">Rank_pass</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -3433,9 +3436,9 @@ Name: player_id, dtype: int64
 <p><strong>アシスト数</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PR_assist</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">EV_tag</span><span class="p">[</span><span class="s1">&#39;assist&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-<span class="n">PR_assist</span> <span class="o">=</span> <span class="n">PR_assist</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">PL</span><span class="p">[[</span><span class="s1">&#39;player_id&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>  <span class="c1"># 選手IDを選手名に変換する</span>
-<span class="n">PR_assist</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Rank_assist</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">EV_tag</span><span class="p">[</span><span class="s1">&#39;assist&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">Rank_assist</span> <span class="o">=</span> <span class="n">Rank_assist</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">dict_id_name</span><span class="p">)</span>  <span class="c1"># 選手IDを選手名に変換する</span>
+<span class="n">Rank_assist</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -3458,9 +3461,10 @@ Name: player_id, dtype: int64
 <p><strong>ゴール数</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PR_goal</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[((</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;shot&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;free_kick&#39;</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">EV_tag</span><span class="p">[</span><span class="s1">&#39;goal&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-<span class="n">PR_goal</span> <span class="o">=</span> <span class="n">PR_goal</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">PL</span><span class="p">[[</span><span class="s1">&#39;player_id&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>  <span class="c1"># 選手IDを選手名に変換する</span>
-<span class="n">PR_goal</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cond</span> <span class="o">=</span> <span class="p">((</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;shot&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;free_kick&#39;</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">EV_tag</span><span class="p">[</span><span class="s1">&#39;goal&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Rank_goal</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span><span class="p">,</span> <span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">Rank_goal</span> <span class="o">=</span> <span class="n">Rank_goal</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">dict_id_name</span><span class="p">)</span>  <span class="c1"># 選手IDを選手名に変換する</span>
+<span class="n">Rank_goal</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -3478,207 +3482,6 @@ G_Murray          12
 Name: player_id, dtype: int64
 </pre></div>
 </div>
-</div>
-</div>
-</section>
-<section id="id19">
-<h3><span class="section-number">6.4.5. </span>ボールの軌跡の可視化<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>イベントデータを用いると，パスやシュートなどのイベント単位で試合展開を追跡することができる．
-ここでは，特定の試合に対し，ボールの軌跡を可視化してみよう．</p>
-<p><strong>試合の抽出</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 後のエラー対処のために明示的に.copy()を付けている</span>
-<span class="n">ev</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">ev_tag</span> <span class="o">=</span> <span class="n">EV_tag</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>チーム名の確認</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tm_id</span> <span class="o">=</span> <span class="n">ev</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-<span class="n">tm_id</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1609, 1631])
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>座標の反転（片方のチーム）</strong></p>
-<p>元のデータでは，両チームの攻撃方向が右方向に統一されている．
-これだと，試合展開を可視化する際にわかりにくいので，一方のチームの攻撃方向が逆になるように変換する．
-以下のように，片方のチーム（'team_id'が1631）の<span class="math notranslate nohighlight">\(x, y\)</span>座標から最大値100を引き，絶対値を取ればよい．</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">100</span><span class="p">)</span>
-
-<span class="c1"># 座標の補正</span>
-<span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span><span class="o">|</span><span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;x2&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-<span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">100</span><span class="p">)</span><span class="o">|</span><span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;x2&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">100</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>ボールの軌跡の描画</strong></p>
-<p>イベントログにはイベントの始点と終点の座標が収められており，これがおおよそボールの軌跡に対応する．
-そこで，<code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>の<code class="docutils literal notranslate"><span class="pre">plot</span></code>関数を用いてイベントの始点と終点の座標を結ぶことで，ボールの軌跡を描いてみる．
-なお，イベント名が'duel'の場合，始点と終点の座標が同じで'team_id'が異なる2つの行が挿入されている．</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;duel&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>id</th>
-      <th>game_id</th>
-      <th>half</th>
-      <th>...</th>
-      <th>y1</th>
-      <th>x2</th>
-      <th>y2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>7</th>
-      <td>177959189</td>
-      <td>2499719</td>
-      <td>1</td>
-      <td>...</td>
-      <td>85.0</td>
-      <td>67.0</td>
-      <td>80.0</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>177961218</td>
-      <td>2499719</td>
-      <td>1</td>
-      <td>...</td>
-      <td>85.0</td>
-      <td>67.0</td>
-      <td>80.0</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>177959191</td>
-      <td>2499719</td>
-      <td>1</td>
-      <td>...</td>
-      <td>54.0</td>
-      <td>50.0</td>
-      <td>59.0</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>177959181</td>
-      <td>2499719</td>
-      <td>1</td>
-      <td>...</td>
-      <td>54.0</td>
-      <td>50.0</td>
-      <td>59.0</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>177959205</td>
-      <td>2499719</td>
-      <td>1</td>
-      <td>...</td>
-      <td>78.0</td>
-      <td>29.0</td>
-      <td>85.0</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 14 columns</p>
-</div></div></div>
-</div>
-<p>これは，ボール保持チームが特定できないためと考えられる．
-そこで，イベント名が'duel'の場合には一方のチームの座標だけを黒線で描画し，それ以外はチームごとに色分けして描画することにする．
-以下の<code class="docutils literal notranslate"><span class="pre">ball_trj</span></code>関数は，時間帯を３つの引数<code class="docutils literal notranslate"><span class="pre">half</span></code>, <code class="docutils literal notranslate"><span class="pre">ts</span></code>, <code class="docutils literal notranslate"><span class="pre">te</span></code>で指定し，その時間帯でボールの軌跡を描く．</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ball_trj</span><span class="p">(</span><span class="n">half</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ts</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">te</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    half: 前半1， 後半2</span>
-<span class="sd">    ts: 始点に対応する時刻</span>
-<span class="sd">    te: 終点に対応する時刻</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">68</span><span class="o">/</span><span class="mi">105</span><span class="p">)</span>
-
-    <span class="n">ev</span><span class="p">[</span><span class="s1">&#39;tmp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-    <span class="n">cond</span> <span class="o">=</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;half&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">ts</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">te</span><span class="p">)</span>
-
-    <span class="c1"># チーム0のpass</span>
-    <span class="n">X0</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;duel&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;tmp&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">Y0</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;duel&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">,</span> <span class="s1">&#39;tmp&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X0</span><span class="p">,</span> <span class="n">Y0</span><span class="p">,</span> <span class="s1">&#39;o-r&#39;</span><span class="p">,</span> <span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
-
-    <span class="c1"># チーム1のpass</span>
-    <span class="n">X1</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;duel&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;tmp&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">Y1</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;duel&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">,</span> <span class="s1">&#39;tmp&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">Y1</span><span class="p">,</span> <span class="s1">&#39;^-b&#39;</span><span class="p">,</span> <span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
-
-    <span class="c1"># duel</span>
-    <span class="n">X2</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;duel&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;tmp&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">Y2</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;duel&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">,</span> <span class="s1">&#39;tmp&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="n">Y2</span><span class="p">,</span> <span class="s1">&#39;-k&#39;</span><span class="p">)</span>
-
-    <span class="c1"># ハーフウェイライン</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">)</span> 
-
-    <span class="c1"># 描画範囲とラベル</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$X$&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$Y$&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ball_trj</span><span class="p">(</span><span class="n">half</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ts</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">te</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/6_event_134_0.png" src="../_images/6_event_134_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ball_trj</span><span class="p">(</span><span class="n">half</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ts</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">te</span><span class="o">=</span><span class="mi">2050</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/6_event_135_0.png" src="../_images/6_event_135_0.png" />
 </div>
 </div>
 </section>
