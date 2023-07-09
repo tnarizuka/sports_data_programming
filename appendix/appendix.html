@@ -571,18 +571,13 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id23">
-     選手のランキング
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id24">
      選手間のパス数の可視化
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id25">
+  <a class="reference internal nav-link" href="#id24">
    トラッキングデータの解析
   </a>
   <ul class="nav section-nav flex-column">
@@ -592,19 +587,19 @@ title="Print to PDF"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id27">
+      <a class="reference internal nav-link" href="#id26">
        データセットに関する情報の入手先
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id28">
+    <a class="reference internal nav-link" href="#id27">
      ボロノイ領域
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id29">
+    <a class="reference internal nav-link" href="#id28">
      ドロネーネットワーク
     </a>
    </li>
@@ -823,18 +818,13 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id23">
-     選手のランキング
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id24">
      選手間のパス数の可視化
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id25">
+  <a class="reference internal nav-link" href="#id24">
    トラッキングデータの解析
   </a>
   <ul class="nav section-nav flex-column">
@@ -844,19 +834,19 @@ title="Print to PDF"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id27">
+      <a class="reference internal nav-link" href="#id26">
        データセットに関する情報の入手先
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id28">
+    <a class="reference internal nav-link" href="#id27">
      ボロノイ領域
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id29">
+    <a class="reference internal nav-link" href="#id28">
      ドロネーネットワーク
     </a>
    </li>
@@ -3579,134 +3569,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </section>
 </section>
 <section id="id23">
-<h3>選手のランキング<a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>シーズンが終了すると，チームのリーグ成績と共に選手の個人成績が発表される．
-個人成績は，シュート数やゴール数などの部門別ランキングとなっている．
-ここでは，イベントデータを用いてこれらのランキングを求めてみよう．
-なお，どのようなプレーをシュートやパスと見なすかは用いるデータセットによって異なっており，
-以下で求めるランキングが公式発表されたものと完全に一致するわけではない．
-2017年度プレミアリーグの個人成績は例えば，</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://tavitt-football.com/2017-18_premier_playerstats/#i-4">https://tavitt-football.com/2017-18_premier_playerstats/#i-4</a></p></li>
-</ul>
-<p>にて確認できるが，細かい数値は本データセットから求めたものと一致しない．</p>
-<p>ランキングの作成方法は以下の通りである．</p>
-<ul class="simple">
-<li><p>ランキング項目に応じて条件付き抽出する．</p>
-<ul>
-<li><p>例えば，パス数の場合は'event'列が'pass'である行を抽出する</p></li>
-</ul>
-</li>
-<li><p>条件付き抽出後のDataFrameに対し，'player_id'ごとの出現回数を求める</p>
-<ul>
-<li><p>DataFrameの<code class="docutils literal notranslate"><span class="pre">value_counts</span></code>メソッドを用いる</p></li>
-</ul>
-</li>
-<li><p>選手プロフィール<code class="docutils literal notranslate"><span class="pre">PL</span></code>を用いて'player_id'を選手名に変換する</p></li>
-</ul>
-<p><strong>シュート数</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PR_shot</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;subevent&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;shot&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;subevent&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;free_kick_shot&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;subevent&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;penalty&#39;</span><span class="p">),</span> <span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-<span class="n">PR_shot</span> <span class="o">=</span> <span class="n">PR_shot</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">PL</span><span class="p">[[</span><span class="s1">&#39;player_id&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>  <span class="c1"># 選手IDを選手名に変換する</span>
-<span class="n">PR_shot</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>H_Kane            175
-Mohame_Salah      142
-C_Eriksen          97
-Richarlison        92
-S_Agüero           91
-K_D_Bruyne         91
-A_Sánchez          85
-R_Sterling         80
-R_Lukaku           80
-Robert_Firmino     80
-Name: player_id, dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>パス数</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PR_pass</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;pass&#39;</span><span class="p">),</span> <span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-<span class="n">PR_pass</span> <span class="o">=</span> <span class="n">PR_pass</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">PL</span><span class="p">[[</span><span class="s1">&#39;player_id&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>  <span class="c1"># 選手IDを選手名に変換する</span>
-<span class="n">PR_pass</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>G_Xhaka         2974
-N_Otamendi      2964
-Fernandinho     2842
-Azpilicueta     2713
-K_D_Bruyne      2672
-N_Matić         2456
-Davi_Silva      2382
-J_Vertonghen    2370
-K_Walker        2316
-C_Eriksen       2196
-Name: player_id, dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>アシスト数</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PR_assist</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">EV_tag</span><span class="p">[</span><span class="s1">&#39;assist&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-<span class="n">PR_assist</span> <span class="o">=</span> <span class="n">PR_assist</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">PL</span><span class="p">[[</span><span class="s1">&#39;player_id&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>  <span class="c1"># 選手IDを選手名に変換する</span>
-<span class="n">PR_assist</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>K_D_Bruyne      16
-L_Sané          13
-R_Mahrez        10
-R_Sterling      10
-Davi_Silva      10
-H_Mkhitaryan     9
-D_Alli           9
-C_Eriksen        9
-Mohame_Salah     8
-P_Groß           8
-Name: player_id, dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>ゴール数</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PR_goal</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[((</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;shot&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;free_kick&#39;</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">EV_tag</span><span class="p">[</span><span class="s1">&#39;goal&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-<span class="n">PR_goal</span> <span class="o">=</span> <span class="n">PR_goal</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">PL</span><span class="p">[[</span><span class="s1">&#39;player_id&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>  <span class="c1"># 選手IDを選手名に変換する</span>
-<span class="n">PR_goal</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mohame_Salah      32
-H_Kane            29
-S_Agüero          21
-J_Vardy           20
-R_Sterling        18
-R_Lukaku          16
-Robert_Firmino    15
-A_Lacazette       14
-Gabrie_Jesus      13
-G_Murray          12
-Name: player_id, dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="id24">
-<h3>選手間のパス数の可視化<a class="headerlink" href="#id24" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3>選手間のパス数の可視化<a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>最後に，特定の試合における選手間のパス数を可視化してみよう．
 本来，このような解析にはnetworkxという専用のライブラリを使うべきだが，以下ではpandasとseabornという可視化ライブラリを用いて実装する．</p>
 <p><strong>試合の抽出</strong></p>
@@ -3945,7 +3808,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/appendix_205_0.png" src="../_images/appendix_205_0.png" />
+<img alt="../_images/appendix_194_0.png" src="../_images/appendix_194_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3955,17 +3818,17 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/appendix_206_0.png" src="../_images/appendix_206_0.png" />
+<img alt="../_images/appendix_195_0.png" src="../_images/appendix_195_0.png" />
 </div>
 </div>
 </section>
 </section>
-<section id="id25">
-<h2>トラッキングデータの解析<a class="headerlink" href="#id25" title="このヘッドラインへのパーマリンク">#</a></h2>
+<section id="id24">
+<h2>トラッキングデータの解析<a class="headerlink" href="#id24" title="このヘッドラインへのパーマリンク">#</a></h2>
 <section id="pettersen">
-<span id="id26"></span><h3>Pettersenデータセットの詳細<a class="headerlink" href="#pettersen" title="このヘッドラインへのパーマリンク">#</a></h3>
-<section id="id27">
-<h4>データセットに関する情報の入手先<a class="headerlink" href="#id27" title="このヘッドラインへのパーマリンク">#</a></h4>
+<span id="id25"></span><h3>Pettersenデータセットの詳細<a class="headerlink" href="#pettersen" title="このヘッドラインへのパーマリンク">#</a></h3>
+<section id="id26">
+<h4>データセットに関する情報の入手先<a class="headerlink" href="#id26" title="このヘッドラインへのパーマリンク">#</a></h4>
 <p>Pettersenデータセットの情報は以下で入手できる：</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.researchgate.net/publication/260983291_Soccer_Video_and_Player_Position_Dataset">データの詳細をまとめた論文</a></p>
@@ -4093,8 +3956,8 @@ Name: player_id, dtype: int64
 </ul>
 </section>
 </section>
-<section id="id28">
-<h3>ボロノイ領域<a class="headerlink" href="#id28" title="このヘッドラインへのパーマリンク">#</a></h3>
+<section id="id27">
+<h3>ボロノイ領域<a class="headerlink" href="#id27" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>2次元平面上に<span class="math notranslate nohighlight">\(N\)</span>個の個体（<strong>母点</strong>と呼ぶ）が配置されているとき，平面上の各点を「どの母点から最も近いか」という基準で分割する．
 このとき，母点<span class="math notranslate nohighlight">\(p\)</span>から最も近い領域のことを母点<span class="math notranslate nohighlight">\(p\)</span>の<strong>ボロノイ領域</strong>と呼ぶ．
 通常，近さの基準はユークリッド距離によって定める．
@@ -4174,7 +4037,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/appendix_227_0.png" src="../_images/appendix_227_0.png" />
+<img alt="../_images/appendix_216_0.png" src="../_images/appendix_216_0.png" />
 </div>
 </div>
 <p><strong>ボロノイ領域の情報の取得</strong></p>
@@ -4358,12 +4221,12 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/appendix_242_0.png" src="../_images/appendix_242_0.png" />
+<img alt="../_images/appendix_231_0.png" src="../_images/appendix_231_0.png" />
 </div>
 </div>
 </section>
-<section id="id29">
-<h3>ドロネーネットワーク<a class="headerlink" href="#id29" title="このヘッドラインへのパーマリンク">#</a></h3>
+<section id="id28">
+<h3>ドロネーネットワーク<a class="headerlink" href="#id28" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>ある程度幅のある時間帯から選手の平均位置を求めてフォーメーションを可視化するには重心系で平均位置と標準偏差を求めれば良い．
 では，特定の時刻においてフォーメーションを定量化・可視化するにはどうすればよいだろうか？
 各時刻において4-4-2や3-4-3などの数字の組を割り当てるのも一つの方法かもしれないが，実はもっと便利な方法がある．
@@ -4448,7 +4311,7 @@ Name: player_id, dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1cc5983d0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/appendix_260_1.png" src="../_images/appendix_260_1.png" />
+<img alt="../_images/appendix_249_1.png" src="../_images/appendix_249_1.png" />
 </div>
 </div>
 <p><strong>ドロネーネットワークの情報の取得</strong></p>
@@ -4550,7 +4413,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/appendix_269_0.png" src="../_images/appendix_269_0.png" />
+<img alt="../_images/appendix_258_0.png" src="../_images/appendix_258_0.png" />
 </div>
 </div>
 </section>
