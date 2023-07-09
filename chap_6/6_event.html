@@ -2087,7 +2087,7 @@ dtype: float64
 <td><p>試合ID</p></td>
 </tr>
 <tr class="row-even"><td><p>half</p></td>
-<td><p>1H（前半），2H（後半），E1（延長前半），E2（延長後半），P（ペナルティ）</p></td>
+<td><p>1（前半），2（後半）</p></td>
 </tr>
 <tr class="row-odd"><td><p>t</p></td>
 <td><p>イベントが起きた時間（ハーフ開始からの経過時間）．単位は秒</p></td>
@@ -2271,20 +2271,23 @@ dtype: float64
 </tr>
 </thead>
 <tbody>
+<tr class="row-even"><td><p>goal</p></td>
+<td><p>得点</p></td>
+</tr>
+<tr class="row-odd"><td><p>own_goal</p></td>
+<td><p>オウンゴール</p></td>
+</tr>
+<tr class="row-even"><td><p>assist</p></td>
+<td><p>アシスト</p></td>
+</tr>
+<tr class="row-odd"><td><p>key_pass</p></td>
+<td><p>パス</p></td>
+</tr>
 <tr class="row-even"><td><p>accurate</p></td>
 <td><p>イベントの成功</p></td>
 </tr>
 <tr class="row-odd"><td><p>not accurate</p></td>
 <td><p>イベントの失敗</p></td>
-</tr>
-<tr class="row-even"><td><p>assist</p></td>
-<td><p>アシスト</p></td>
-</tr>
-<tr class="row-odd"><td><p>goal</p></td>
-<td><p>得点</p></td>
-</tr>
-<tr class="row-even"><td><p>own_goal</p></td>
-<td><p>オウンゴール</p></td>
 </tr>
 </tbody>
 </table>
@@ -2295,7 +2298,7 @@ dtype: float64
 イベントデータ解析の目的はこれらのデータから意味のある情報を抽出することである．
 イベントデータを解析する際の手順は以下のようにまとめられる：</p>
 <ol class="simple">
-<li><p>イベントログ，イベントタグから必要なデータを条件付き抽出する</p></li>
+<li><p>イベントログ<code class="docutils literal notranslate"><span class="pre">EV</span></code>，イベントタグ<code class="docutils literal notranslate"><span class="pre">EV_tag</span></code>から必要な行を条件付き抽出する</p></li>
 <li><p>条件付き抽出したデータを集計する</p></li>
 <li><p>集計したデータを可視化する</p></li>
 </ol>
@@ -3303,7 +3306,7 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># デュエル（攻撃）</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># デュエル（攻撃時）</span>
 <span class="n">cond</span> <span class="o">=</span> <span class="p">(</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;subevent&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;ground_attacking_duel&#39;</span><span class="p">)</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span><span class="p">,</span> <span class="s1">&#39;x1&#39;</span><span class="p">],</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span><span class="p">,</span> <span class="s1">&#39;y1&#39;</span><span class="p">]</span>
 <span class="n">event_hmap</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;jet&#39;</span><span class="p">)</span>
