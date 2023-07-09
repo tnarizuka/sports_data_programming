@@ -879,8 +879,10 @@ ev_tag = EV_tag.loc[EV['game_id']==2499719].copy()
 # 選手間のパス数を求めるには，パスの出し手と受け手の情報が必要である．
 # しかし，イベントログ`EV`にはパスの出し手の情報しかないので，受け手の情報を加える必要がある．
 # イベント名が'pass'の行については，次の行の選手IDがパスの受け手に対応するので，以下のようにパスリスト`ps`を作成できる．
+# なお，イベントログには選手ID（'player_id'）の情報しかないので，選手プロフィール`PL`のデータを用いて選手名を追加する．
+# 以下のように，`replace`メソッドを用いて，選手ID（'player_id'）を選手名（'name'）に置換すれば良い．
 
-# In[134]:
+# In[193]:
 
 
 # イベント名が'pass'の行を抽出
@@ -892,18 +894,15 @@ ps = pd.DataFrame({'player_id': ev_pass['player_id'].values[:-1],
                    'player_id2': ev_pass['player_id'].values[1:],
                    'team_id2': ev_pass['team_id'].values[1:]})
 
-
-# **選手名の追加**
-
-# イベントログには選手ID（'player_id'）の情報しかないので，選手プロフィール`PL`のデータを用いて選手名を追加する．
-# 以下のように，`replace`メソッドを用いて，選手ID（'player_id'）を選手名（'name'）に置換すれば良い．
-
-# In[135]:
-
-
+# パスリストに選手名を追加
 ps['name'] = ps['player_id'].replace(PL['player_id'].values, PL['name'].values)
 ps['name2'] = ps['player_id2'].replace(PL['player_id'].values, PL['name'].values)
-ps.head()
+
+
+# In[195]:
+
+
+ps
 
 
 # **パス数行列の作成**
@@ -912,29 +911,31 @@ ps.head()
 # パス数行列の $(i, j)$ 成分は選手 $i$ から $j$ へのパスを表す．
 # 以下は`for`文によってパス数行列を作成する例である．
 
-# In[136]:
+# In[190]:
 
 
-tm_id = ev['team_id'].unique()
-pl_id0 = ps.loc[ps['team_id']==tm_id[0], 'name'].unique()
-pl_id1 = ps.loc[ps['team_id']==tm_id[1], 'name'].unique()
+# チームIDの取得
+tm_id = ev['team_id'].unique() # 2チームのチームID
+pl_id0 = ps.loc[ps['team_id']==tm_id[0], 'name'].unique() # チーム0の選手ID
+pl_id1 = ps.loc[ps['team_id']==tm_id[1], 'name'].unique() # チーム1の選手ID
+
+# チーム0のパス数行列を作成
 A0 = pd.DataFrame(index=pl_id0, columns=pl_id0)
-A1 = pd.DataFrame(index=pl_id1, columns=pl_id1)
-
-
-# In[137]:
-
-
 for i in pl_id0:
     for j in pl_id0:
         A0.loc[i, j] = len(ps.loc[(ps['name']==i) & (ps['name2']==j)])
 
+# チーム1のパス数行列を作成
+A1 = pd.DataFrame(index=pl_id1, columns=pl_id1) 
 for i in pl_id1:
     for j in pl_id1:
         A1.loc[i, j] = len(ps.loc[(ps['name']==i) & (ps['name2']==j)])
-        
-A0 = A0.astype(int)
-A1 = A1.astype(int)
+
+
+# In[191]:
+
+
+A0
 
 
 # **パス数行列の可視化**
@@ -945,30 +946,38 @@ A1 = A1.astype(int)
 # しかし，ネットワークの分析と可視化にはnetworkxなどの専用ライブラリの知識が必要となるので，ここではより直接的にヒートマップを用いた可視化方法を採用する．
 # 以下の`plot_corr_mat`関数は，seabornという可視化ライブラリを用いてパス数行列をヒートマップで可視化する．
 
-# In[143]:
+# In[186]:
 
 
 import seaborn
-def plot_corr_mat(mat, cm='jet'):
+def plot_corr_mat(A):
     fig, ax = plt.subplots(figsize=(5, 5))
-    seaborn.heatmap(mat, ax=ax, linewidths=0.1, cbar=True, annot=True,\
-                    square=True, cmap=cm, linecolor='w', cbar_kws={"shrink": .7})
-    ax.set_xticklabels(mat.columns, fontsize=8)
-    ax.set_yticklabels(mat.index, fontsize=8)
-    ax_clb = ax.collections[0].colorbar
-    ax_clb.ax.tick_params(labelsize=8)
+    ax.set_xticklabels(A.columns, fontsize=8) # x軸のラベル
+    ax.set_yticklabels(A.index, fontsize=8)   # y軸のラベル
+
+    # ヒートマップの作成
+    seaborn.heatmap(A, ax=ax, 
+                    linewidths=0.1, # セル間の線の太さ
+                    linecolor='w',  # セル間の線の色
+                    cbar=True,      # カラーバーの表示
+                    annot=True,     # セルに値を表示
+                    square=True,    # セルを正方形にする
+                    cmap='jet',     # カラーマップの色（'Reds', 'Greens', 'Blues'など）
+                    cbar_kws={"shrink": .5} # カラーバーのサイズ
+                    )
+    
 
 
-# In[144]:
+# In[185]:
 
 
-plot_corr_mat(A0, 'Reds')
+plot_corr_mat(A0)
 
 
-# In[140]:
+# In[175]:
 
 
-plot_corr_mat(A1, 'Greens')
+plot_corr_mat(A1)
 
 
 # ### 演習問題
