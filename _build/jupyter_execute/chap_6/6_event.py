@@ -859,19 +859,19 @@ Rank_goal = Rank_goal.rename(index=dict_id_name)  # 選手IDを選手名に変�
 Rank_goal.iloc[:10]
 
 
-# ### 選手間のパス数の可視化
+# ### 選手間のパス数
 
 # 最後に，特定の試合における選手間のパス数を可視化してみよう．
 # 本来，このような解析にはnetworkxという専用のライブラリを使うべきだが，以下ではpandasとseabornという可視化ライブラリを用いて実装する．
 
 # **試合の抽出**
 
-# In[ ]:
+# In[128]:
 
 
-# 後のエラー対処のために明示的に.copy()を付けている
-ev = EV.loc[EV['game_id']==EV['game_id'].unique()[0]].copy()
-ev_tag = EV_tag.loc[EV['game_id']==EV['game_id'].iloc[0]].copy()
+# 特定の試合を抽出
+ev = EV.loc[EV['game_id']==2499719].copy()
+ev_tag = EV_tag.loc[EV['game_id']==2499719].copy()
 
 
 # **パスリストの作成** 
@@ -880,14 +880,17 @@ ev_tag = EV_tag.loc[EV['game_id']==EV['game_id'].iloc[0]].copy()
 # しかし，イベントログ`EV`にはパスの出し手の情報しかないので，受け手の情報を加える必要がある．
 # イベント名が'pass'の行については，次の行の選手IDがパスの受け手に対応するので，以下のようにパスリスト`ps`を作成できる．
 
-# In[ ]:
+# In[134]:
 
 
-ps = ev.loc[ev['event']=='pass', ['player_id', 'team_id']]
-ps['player_id2'], ps['team_id2'] = 0, 0
-ps['player_id2'].iloc[:-1] = ps['player_id'].iloc[1:].values
-ps['team_id2'].iloc[:-1] = ps['team_id'].iloc[1:].values
-ps.head()
+# イベント名が'pass'の行を抽出
+ev_pass = ev.loc[ev['event']=='pass', ['player_id', 'team_id']]
+
+# パスリストの作成
+ps = pd.DataFrame({'player_id': ev_pass['player_id'].values[:-1],
+                   'team_id': ev_pass['team_id'].values[:-1],
+                   'player_id2': ev_pass['player_id'].values[1:],
+                   'team_id2': ev_pass['team_id'].values[1:]})
 
 
 # **選手名の追加**
@@ -895,7 +898,7 @@ ps.head()
 # イベントログには選手ID（'player_id'）の情報しかないので，選手プロフィール`PL`のデータを用いて選手名を追加する．
 # 以下のように，`replace`メソッドを用いて，選手ID（'player_id'）を選手名（'name'）に置換すれば良い．
 
-# In[ ]:
+# In[135]:
 
 
 ps['name'] = ps['player_id'].replace(PL['player_id'].values, PL['name'].values)
@@ -905,11 +908,11 @@ ps.head()
 
 # **パス数行列の作成**
 
-# チーム内の選手$i$と$j$間のパス数を要素とする行列をパス数行列と呼ぶことにする．
-# パス数行列は非対称な行列であり，行列の$(i, j)$成分は選手$i$から$j$へのパス，$(j, i)$成分はその逆を表す．
-# パス数行列の作成方法はいくつか考えられるが，以下では`for`文を用いて実装している．
+# チーム内の選手 $i$ と $j$ 間のパス数を要素とする行列をパス数行列と呼ぶことにする．
+# パス数行列の $(i, j)$ 成分は選手 $i$ から $j$ へのパスを表す．
+# 以下は`for`文によってパス数行列を作成する例である．
 
-# In[ ]:
+# In[136]:
 
 
 tm_id = ev['team_id'].unique()
@@ -919,7 +922,7 @@ A0 = pd.DataFrame(index=pl_id0, columns=pl_id0)
 A1 = pd.DataFrame(index=pl_id1, columns=pl_id1)
 
 
-# In[ ]:
+# In[137]:
 
 
 for i in pl_id0:
@@ -942,7 +945,7 @@ A1 = A1.astype(int)
 # しかし，ネットワークの分析と可視化にはnetworkxなどの専用ライブラリの知識が必要となるので，ここではより直接的にヒートマップを用いた可視化方法を採用する．
 # 以下の`plot_corr_mat`関数は，seabornという可視化ライブラリを用いてパス数行列をヒートマップで可視化する．
 
-# In[ ]:
+# In[143]:
 
 
 import seaborn
@@ -956,14 +959,19 @@ def plot_corr_mat(mat, cm='jet'):
     ax_clb.ax.tick_params(labelsize=8)
 
 
-# In[ ]:
+# In[144]:
 
 
 plot_corr_mat(A0, 'Reds')
 
 
-# In[ ]:
+# In[140]:
 
 
 plot_corr_mat(A1, 'Greens')
 
+
+# ### 演習問題
+# 
+# - 失敗パスに対してパス数行列を作成し，可視化せよ．
+# - 他のチームに対してもパス数行列を作成し，可視化せよ．
