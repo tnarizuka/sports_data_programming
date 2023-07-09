@@ -2070,7 +2070,7 @@ dtype: float64
 <p>5 rows × 14 columns</p>
 </div></div></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">EV</span></code>には380試合分のイベントログが含まれており，その行数は643150にのぼる．
+<p><code class="docutils literal notranslate"><span class="pre">EV</span></code>には380試合分のイベントログが含まれており，その行数は64万行にのぼる．
 <code class="docutils literal notranslate"><span class="pre">EV</span></code>の各行は試合中の１イベントに対応し，各列にそのイベントに関する基本情報が収められている．
 各列の内容は下表の通りである．</p>
 <table class="colwidths-auto table">
@@ -2111,38 +2111,37 @@ dtype: float64
 <td><p>サブイベントID</p></td>
 </tr>
 <tr class="row-even"><td><p>x1</p></td>
-<td><p>イベントの始まりの<span class="math notranslate nohighlight">\(x\)</span>座標（単位は%）</p></td>
+<td><p>イベントの始まりの <span class="math notranslate nohighlight">\(x\)</span> 座標（単位は%）</p></td>
 </tr>
 <tr class="row-odd"><td><p>y1</p></td>
-<td><p>イベントの始まりの<span class="math notranslate nohighlight">\(y\)</span>座標（単位は%）</p></td>
+<td><p>イベントの始まりの <span class="math notranslate nohighlight">\(y\)</span> 座標（単位は%）</p></td>
 </tr>
 <tr class="row-even"><td><p>x2</p></td>
-<td><p>イベントの終わりの<span class="math notranslate nohighlight">\(x\)</span>座標（単位は%）</p></td>
+<td><p>イベントの終わりの <span class="math notranslate nohighlight">\(x\)</span> 座標（単位は%）</p></td>
 </tr>
 <tr class="row-odd"><td><p>y2</p></td>
-<td><p>イベントの終わりの<span class="math notranslate nohighlight">\(y\)</span>座標（単位は%）</p></td>
+<td><p>イベントの終わりの <span class="math notranslate nohighlight">\(y\)</span> 座標（単位は%）</p></td>
 </tr>
 </tbody>
 </table>
-<p><strong>イベントログの座標系</strong></p>
-<p>イベントの始まりの座標<span class="math notranslate nohighlight">\((x_{1}, y_{1})\)</span>と終わりの座標<span class="math notranslate nohighlight">\((x_{2}, y_{2})\)</span>が存在する．
-座標系は以下の通りである：</p>
+<p><strong>座標系</strong></p>
+<p>イベントの始まりの座標 <span class="math notranslate nohighlight">\((x_{1}, y_{1})\)</span> と終わりの座標 <span class="math notranslate nohighlight">\((x_{2}, y_{2})\)</span> は以下の座標系に従う：</p>
 <ul class="simple">
 <li><p>原点は左下</p></li>
-<li><p><span class="math notranslate nohighlight">\(x,\ y\)</span>座標の値はフィールドの横幅と縦幅の最大値に対する割合（単位は%）</p>
+<li><p><span class="math notranslate nohighlight">\(x,\ y\)</span> 座標の値はフィールドの横幅と縦幅の最大値に対する割合（単位は%）</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(0\le x \le 100\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(0\le y \le 100\)</span></p></li>
 </ul>
 </li>
-<li><p>HomeとAwayの攻撃方向は右方向に統一されている</p>
+<li><p>両チームの攻撃方向は右方向となるように統一されている</p>
 <ul>
-<li><p>チームや前後半に関係なく，<span class="math notranslate nohighlight">\(x&gt;50\)</span>が相手陣，<span class="math notranslate nohighlight">\(x&lt;50\)</span>が自陣</p></li>
-<li><p><strong>※ 解析内容に応じて，チームごとに攻撃方向が逆になるように変換する必要がある</strong></p></li>
+<li><p>チームや前後半に関係なく，<span class="math notranslate nohighlight">\( x &gt; 50 \)</span> が相手陣，<span class="math notranslate nohighlight">\( x &lt; 50 \)</span> が自陣</p></li>
+<li><p><strong>※ 解析内容に応じて，攻撃方向が逆になるように変換する必要がある</strong></p></li>
 </ul>
 </li>
 </ul>
-<p>サッカーコートの公式規格は<span class="math notranslate nohighlight">\(105\mathrm{m}\times 68\mathrm{m}\)</span>なので，コートを描く際にはアスペクト比を以下のように設定する：</p>
+<p>サッカーコートの公式規格は <span class="math notranslate nohighlight">\(105\mathrm{m}\times 68\mathrm{m}\)</span> なので，コートを描く際にはアスペクト比を以下のように設定する：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">68</span><span class="o">/</span><span class="mi">105</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2260,9 +2259,10 @@ dtype: float64
 </div></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">EV_tag</span></code>はイベントログ<code class="docutils literal notranslate"><span class="pre">EV</span></code>と同じ行数のDataFrameであり，各行が試合中の１イベントを表している．
-一方，各列には'goal'，'assist'などのイベントに付与されたタグ（付加情報）が並んでおり，真ならば1，偽ならば0となっている．
-例えば，'goal'列が1である行では，そのイベントにおいて得点が入ったことを意味する．
-タグの詳細情報は<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1o_tZ-y0eAYlgN1audJThoVBMN0Ta2x5f">tag_list.csv</a>にまとめられている．
+各列にはイベントに付与されたタグ（'goal'，'assist'など）が並んでおり，真ならば1，偽ならば0となっている．
+（このようなデータをOne-Hotエンコーディングと呼ぶ．）
+例えば，'goal'列が1である行では，そのイベントにおいて得点が入ったことを意味する．</p>
+<p>タグの詳細情報は<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1o_tZ-y0eAYlgN1audJThoVBMN0Ta2x5f">tag_list.csv</a>にまとめられている．
 主要なタグを下表にまとめる．</p>
 <table class="colwidths-auto table">
 <thead>
