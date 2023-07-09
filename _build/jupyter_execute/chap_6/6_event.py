@@ -494,6 +494,8 @@ ax.set_xticks(x);
 # 基本的にExcelで解析するのは困難であり，Pandasの本領が最も発揮されるデータといえる．
 
 # 以下では，イングランド・プレミアリーグのデータを解析対象とする．
+# 他のリーグのデータを解析する場合は{ref}`pappalardo`からデータをダウンロードすること．
+# 
 # 準備として，次のファイルをダウンロードしてカレントディレクトリに移動する：
 # - イベントログ：[event_England.csv](https://drive.google.com/uc?export=download&id=1783Zl4IRGmiYmo-uLA1-FsZwGesOsFhg)
 # - イベントタグ：[event_tag_England.csv](https://drive.google.com/uc?export=download&id=17LhNNVGZ9nsm-d3lqfBWiKmEqGitJwVI)
@@ -882,7 +884,7 @@ ev_tag = EV_tag.loc[EV['game_id']==2499719].copy()
 # なお，イベントログには選手ID（'player_id'）の情報しかないので，選手プロフィール`PL`のデータを用いて選手名を追加する．
 # 以下のように，`replace`メソッドを用いて，選手ID（'player_id'）を選手名（'name'）に置換すれば良い．
 
-# In[193]:
+# In[196]:
 
 
 # イベント名が'pass'の行を抽出
@@ -890,8 +892,8 @@ ev_pass = ev.loc[ev['event']=='pass', ['player_id', 'team_id']]
 
 # パスリストの作成
 ps = pd.DataFrame({'player_id': ev_pass['player_id'].values[:-1],
-                   'team_id': ev_pass['team_id'].values[:-1],
                    'player_id2': ev_pass['player_id'].values[1:],
+                   'team_id': ev_pass['team_id'].values[:-1],
                    'team_id2': ev_pass['team_id'].values[1:]})
 
 # パスリストに選手名を追加
@@ -899,7 +901,7 @@ ps['name'] = ps['player_id'].replace(PL['player_id'].values, PL['name'].values)
 ps['name2'] = ps['player_id2'].replace(PL['player_id'].values, PL['name'].values)
 
 
-# In[195]:
+# In[197]:
 
 
 ps
@@ -983,5 +985,5 @@ plot_corr_mat(A1)
 # ### 演習問題
 # 
 # - イングランド以外のリーグについて，選手のランキングを求めよ．
-# - 失敗パスに対してパス数行列を作成し，可視化せよ．
 # - 他のチームに対してもパス数行列を作成し，可視化せよ．
+# - 失敗パスに対してパス数行列を作成し，可視化せよ．
