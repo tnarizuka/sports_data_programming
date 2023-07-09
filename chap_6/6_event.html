@@ -475,7 +475,12 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id19">
-     6.4.5. 選手間のパス数の可視化
+     6.4.5. 選手間のパス数
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id20">
+     6.4.6. 演習問題
     </a>
    </li>
   </ul>
@@ -597,7 +602,12 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id19">
-     6.4.5. 選手間のパス数の可視化
+     6.4.5. 選手間のパス数
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id20">
+     6.4.6. 演習問題
     </a>
    </li>
   </ul>
@@ -3496,15 +3506,15 @@ Name: player_id, dtype: int64
 </div>
 </section>
 <section id="id19">
-<h3><span class="section-number">6.4.5. </span>選手間のパス数の可視化<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3><span class="section-number">6.4.5. </span>選手間のパス数<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>最後に，特定の試合における選手間のパス数を可視化してみよう．
 本来，このような解析にはnetworkxという専用のライブラリを使うべきだが，以下ではpandasとseabornという可視化ライブラリを用いて実装する．</p>
 <p><strong>試合の抽出</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 後のエラー対処のために明示的に.copy()を付けている</span>
-<span class="n">ev</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">ev_tag</span> <span class="o">=</span> <span class="n">EV_tag</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 特定の試合を抽出</span>
+<span class="n">ev</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">2499719</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">ev_tag</span> <span class="o">=</span> <span class="n">EV_tag</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">2499719</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -3515,78 +3525,17 @@ Name: player_id, dtype: int64
 イベント名が'pass'の行については，次の行の選手IDがパスの受け手に対応するので，以下のようにパスリスト<code class="docutils literal notranslate"><span class="pre">ps</span></code>を作成できる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;pass&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;player_id&#39;</span><span class="p">,</span> <span class="s1">&#39;team_id&#39;</span><span class="p">]]</span>
-<span class="n">ps</span><span class="p">[</span><span class="s1">&#39;player_id2&#39;</span><span class="p">],</span> <span class="n">ps</span><span class="p">[</span><span class="s1">&#39;team_id2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
-<span class="n">ps</span><span class="p">[</span><span class="s1">&#39;player_id2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">ps</span><span class="p">[</span><span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">ps</span><span class="p">[</span><span class="s1">&#39;team_id2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">ps</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># イベント名が&#39;pass&#39;の行を抽出</span>
+<span class="n">ev_pass</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;pass&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;player_id&#39;</span><span class="p">,</span> <span class="s1">&#39;team_id&#39;</span><span class="p">]]</span>
+
+<span class="c1"># パスリストの作成</span>
+<span class="n">ps</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;player_id&#39;</span><span class="p">:</span> <span class="n">ev_pass</span><span class="p">[</span><span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+                   <span class="s1">&#39;team_id&#39;</span><span class="p">:</span> <span class="n">ev_pass</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+                   <span class="s1">&#39;player_id2&#39;</span><span class="p">:</span> <span class="n">ev_pass</span><span class="p">[</span><span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
+                   <span class="s1">&#39;team_id2&#39;</span><span class="p">:</span> <span class="n">ev_pass</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:]})</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>player_id</th>
-      <th>team_id</th>
-      <th>player_id2</th>
-      <th>team_id2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>25413</td>
-      <td>1609</td>
-      <td>370224</td>
-      <td>1609</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>370224</td>
-      <td>1609</td>
-      <td>3319</td>
-      <td>1609</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3319</td>
-      <td>1609</td>
-      <td>120339</td>
-      <td>1609</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>120339</td>
-      <td>1609</td>
-      <td>167145</td>
-      <td>1609</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>167145</td>
-      <td>1609</td>
-      <td>3319</td>
-      <td>1609</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p><strong>選手名の追加</strong></p>
 <p>イベントログには選手ID（'player_id'）の情報しかないので，選手プロフィール<code class="docutils literal notranslate"><span class="pre">PL</span></code>のデータを用いて選手名を追加する．
@@ -3677,9 +3626,9 @@ Name: player_id, dtype: int64
 </div></div></div>
 </div>
 <p><strong>パス数行列の作成</strong></p>
-<p>チーム内の選手<span class="math notranslate nohighlight">\(i\)</span>と<span class="math notranslate nohighlight">\(j\)</span>間のパス数を要素とする行列をパス数行列と呼ぶことにする．
-パス数行列は非対称な行列であり，行列の<span class="math notranslate nohighlight">\((i, j)\)</span>成分は選手<span class="math notranslate nohighlight">\(i\)</span>から<span class="math notranslate nohighlight">\(j\)</span>へのパス，<span class="math notranslate nohighlight">\((j, i)\)</span>成分はその逆を表す．
-パス数行列の作成方法はいくつか考えられるが，以下では<code class="docutils literal notranslate"><span class="pre">for</span></code>文を用いて実装している．</p>
+<p>チーム内の選手 <span class="math notranslate nohighlight">\(i\)</span> と <span class="math notranslate nohighlight">\(j\)</span> 間のパス数を要素とする行列をパス数行列と呼ぶことにする．
+パス数行列の <span class="math notranslate nohighlight">\((i, j)\)</span> 成分は選手 <span class="math notranslate nohighlight">\(i\)</span> から <span class="math notranslate nohighlight">\(j\)</span> へのパスを表す．
+以下は<code class="docutils literal notranslate"><span class="pre">for</span></code>文によってパス数行列を作成する例である．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tm_id</span> <span class="o">=</span> <span class="n">ev</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
@@ -3748,6 +3697,13 @@ Name: player_id, dtype: int64
 <img alt="../_images/6_event_139_0.png" src="../_images/6_event_139_0.png" />
 </div>
 </div>
+</section>
+<section id="id20">
+<h3><span class="section-number">6.4.6. </span>演習問題<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">#</a></h3>
+<ul class="simple">
+<li><p>失敗パスに対してパス数行列を作成し，可視化せよ．</p></li>
+<li><p>他のチームに対してもパス数行列を作成し，可視化せよ．</p></li>
+</ul>
 </section>
 </section>
 </section>
