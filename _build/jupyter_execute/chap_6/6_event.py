@@ -511,8 +511,6 @@ ax.set_xticks(x);
 # | //（スペイン）                         | イベントログ：[event_Spain.csv](https://drive.google.com/uc?export=download&id=17K-vF4xBn6GtBtFap5sIf26ZZnjs20fz) <br>イベントタグ：[event_tag_Spain.csv](https://drive.google.com/uc?export=download&id=17lGhSTFByywubBTmJKoTzrmaGLOgOZ3k)| 56.1MB <br> 74.5MB |
 
 # 以下では，イングランド・プレミアリーグのデータを解析対象とする．
-# 他のリーグのデータを解析する場合は{ref}`pappalardo`からデータをダウンロードすること．
-# 
 # 準備として，次のファイルをダウンロードしてカレントディレクトリに移動する：
 # - イベントログ：[event_England.csv](https://drive.google.com/uc?export=download&id=1783Zl4IRGmiYmo-uLA1-FsZwGesOsFhg)
 # - イベントタグ：[event_tag_England.csv](https://drive.google.com/uc?export=download&id=17LhNNVGZ9nsm-d3lqfBWiKmEqGitJwVI)
