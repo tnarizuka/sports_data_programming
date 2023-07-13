@@ -47,8 +47,13 @@ get_ipython().run_line_magic('precision', '3')
 
 # ## データの前処理
 
-# ここでは，Tromsø IL vs Strømsgodsetの前半のトラッキングデータを解析対象とする．
-# まずはトラッキングデータのcsvファイル（[2013-11-03_tromso_stromsgodset_first.csv](https://datasets.simula.no/downloads/alfheim/2013-11-03/zxy/2013-11-03_tromso_stromsgodset_first.csv)）をダウンロードし，カレントディレクトリに移動しておく：
+# ここでは，Tromsø IL vs Strømsgodsetのトラッキングデータを解析対象とする．
+# まずはトラッキングデータのcsvファイルを以下からダウンロードし，カレントディレクトリに移動しておく：
+# 
+# - 前半のデータ：[2013-11-03_tromso_stromsgodset_first.csv](https://datasets.simula.no/downloads/alfheim/2013-11-03/zxy/2013-11-03_tromso_stromsgodset_first.csv)
+# - 後半のデータ：[2013-11-03_tromso_stromsgodset_second.csv](https://datasets.simula.no/downloads/alfheim/2013-11-03/zxy/2013-11-03_tromso_stromsgodset_second.csv)
+# 
+# なお，以下では前半の解析例だけを示す．
 
 # ### データの加工・整形
 
