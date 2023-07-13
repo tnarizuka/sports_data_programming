@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[3]:
 
 
 # （必須）モジュールのインポート
@@ -62,7 +62,7 @@ get_ipython().run_line_magic('precision', '3')
 # ダウンロードしたcsvファイルを`df`という名前でDataFrameに読み込む．
 # その際に列ラベル（`columns`）を指定しておく．
 
-# In[ ]:
+# In[8]:
 
 
 df = pd.read_csv('./2013-11-03_tromso_stromsgodset_first.csv',\
@@ -75,7 +75,7 @@ df.head(2)
 
 # 読み込んだデータには向き（'heading', 'direction'）や速さ（'speed'）などの列も含まれているが，以下では時刻（'time'），選手ID（'id'），位置座標（'x', 'y'）の情報だけを用いるので，これらを抽出する．
 
-# In[6]:
+# In[9]:
 
 
 df = df[['time', 'id', 'x', 'y']]
