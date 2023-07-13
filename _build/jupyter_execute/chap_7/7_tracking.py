@@ -701,8 +701,3 @@ ax.set_aspect('equal')
 # 実行
 anim = FuncAnimation(fig, update, blit=True, interval=20)
 
-
-# ### 発展問題
-# 
-# - チームの重心と慣性半径を描画するアニメーションを作成せよ
-# - チームの重心を原点とする座標系（重心座標系）でアニメーションを作成せよ
