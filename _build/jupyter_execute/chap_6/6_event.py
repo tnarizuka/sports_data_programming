@@ -879,7 +879,7 @@ Rank_goal.iloc[:10]
 
 # **試合の抽出**
 
-# In[128]:
+# In[3]:
 
 
 # 特定の試合を抽出
@@ -895,7 +895,7 @@ ev_tag = EV_tag.loc[EV['game_id']==2499719].copy()
 # なお，イベントログには選手ID（'player_id'）の情報しかないので，選手プロフィール`PL`のデータを用いて選手名を追加する．
 # 以下のように，`replace`メソッドを用いて，選手ID（'player_id'）を選手名（'name'）に置換すれば良い．
 
-# In[196]:
+# In[4]:
 
 
 # イベント名が'pass'の行を抽出
@@ -912,7 +912,7 @@ ps['name'] = ps['player_id'].replace(PL['player_id'].values, PL['name'].values)
 ps['name2'] = ps['player_id2'].replace(PL['player_id'].values, PL['name'].values)
 
 
-# In[197]:
+# In[5]:
 
 
 ps
@@ -924,7 +924,7 @@ ps
 # パス数行列の $(i, j)$ 成分は選手 $i$ から $j$ へのパスを表す．
 # 以下は`for`文によってパス数行列を作成する例である．
 
-# In[190]:
+# In[6]:
 
 
 # チームIDの取得
@@ -945,7 +945,7 @@ for i in pl_id1:
         A1.loc[i, j] = len(ps.loc[(ps['name']==i) & (ps['name2']==j)])
 
 
-# In[191]:
+# In[7]:
 
 
 A0
@@ -959,14 +959,12 @@ A0
 # しかし，ネットワークの分析と可視化にはnetworkxなどの専用ライブラリの知識が必要となるので，ここではより直接的にヒートマップを用いた可視化方法を採用する．
 # 以下の`plot_corr_mat`関数は，seabornという可視化ライブラリを用いてパス数行列をヒートマップで可視化する．
 
-# In[186]:
+# In[12]:
 
 
 import seaborn
 def plot_corr_mat(A):
     fig, ax = plt.subplots(figsize=(5, 5))
-    ax.set_xticklabels(A.columns, fontsize=8) # x軸のラベル
-    ax.set_yticklabels(A.index, fontsize=8)   # y軸のラベル
 
     # ヒートマップの作成
     seaborn.heatmap(A, ax=ax, 
@@ -978,16 +976,17 @@ def plot_corr_mat(A):
                     cmap='jet',     # カラーマップの色（'Reds', 'Greens', 'Blues'など）
                     cbar_kws={"shrink": .5} # カラーバーのサイズ
                     )
-    
+    ax.set_xticklabels(A.columns, fontsize=8) # x軸のラベル
+    ax.set_yticklabels(A.index, fontsize=8)   # y軸のラベル
 
 
-# In[185]:
+# In[13]:
 
 
 plot_corr_mat(A0)
 
 
-# In[175]:
+# In[14]:
 
 
 plot_corr_mat(A1)
