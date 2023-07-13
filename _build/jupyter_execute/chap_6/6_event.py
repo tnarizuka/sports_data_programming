@@ -723,8 +723,7 @@ def event_hmap(x, y, cm='Greens'):
     ax.set_aspect(68/105)
     
     # ヒートマップの描画
-    ret = ax.hist2d(x, y,\
-                    bins=[50, 25], range=[[0, 100], [0, 100]], cmap=cm, cmin=0)
+    ret = ax.hist2d(x, y,                    bins=[50, 25], range=[[0, 100], [0, 100]], cmap=cm, cmin=0)
 
     # カラーバーを追加
     fig.colorbar(ret[3], orientation='vertical', 
@@ -934,13 +933,13 @@ pl_id0 = ps.loc[ps['team_id']==tm_id[0], 'name'].unique() # チーム0の選手I
 pl_id1 = ps.loc[ps['team_id']==tm_id[1], 'name'].unique() # チーム1の選手ID
 
 # チーム0のパス数行列を作成
-A0 = pd.DataFrame(index=pl_id0, columns=pl_id0)
+A0 = pd.DataFrame(index=pl_id0, columns=pl_id0, dtype=int)
 for i in pl_id0:
     for j in pl_id0:
         A0.loc[i, j] = len(ps.loc[(ps['name']==i) & (ps['name2']==j)])
 
 # チーム1のパス数行列を作成
-A1 = pd.DataFrame(index=pl_id1, columns=pl_id1) 
+A1 = pd.DataFrame(index=pl_id1, columns=pl_id1, dtype=int) 
 for i in pl_id1:
     for j in pl_id1:
         A1.loc[i, j] = len(ps.loc[(ps['name']==i) & (ps['name2']==j)])
