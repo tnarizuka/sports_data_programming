@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[32]:
+# In[1]:
 
 
 # （必須）モジュールのインポート
@@ -62,7 +62,7 @@ get_ipython().run_line_magic('precision', '3')
 # ダウンロードしたcsvファイルを`df`という名前でDataFrameに読み込む．
 # その際に列ラベル（`columns`）を指定しておく．
 
-# In[33]:
+# In[2]:
 
 
 df = pd.read_csv('./2013-11-03_tromso_stromsgodset_first.csv',\
@@ -75,7 +75,7 @@ df.head(2)
 
 # 読み込んだデータには向き（'heading', 'direction'）や速さ（'speed'）などの列も含まれているが，以下では時刻（'time'），選手ID（'id'），位置座標（'x', 'y'）の情報だけを用いるので，これらを抽出する．
 
-# In[34]:
+# In[3]:
 
 
 df = df[['time', 'id', 'x', 'y']]
@@ -86,7 +86,7 @@ df.head(2)
 
 # 次に，`sort_values`メソッドを用いて，'time'列，'id'列をキーにして`df`をソートする．これにより`df`の行方向の並びが時間順となり，同一時刻の場合は選手ID順となる．
 
-# In[35]:
+# In[4]:
 
 
 # time列, id列でソート
@@ -99,7 +99,7 @@ df.head(2)
 # 'time'列には試合が行われた年月日および時刻が文字列として保存されている．
 # このうち，前半の年月日の情報は不要なので，`str.split`メソッドを用いて年月日と時刻を切り離す．
 
-# In[37]:
+# In[5]:
 
 
 temp = df['time'].str.split(' ', expand=True)
@@ -112,7 +112,7 @@ temp.head(2)
 # - 分と秒の情報だけを取り出し，単位を秒に変換する
 # - `df`の第0行からの経過時間に変換し，`df`の'time'列に追加する
 
-# In[38]:
+# In[6]:
 
 
 # 経過時間（秒）に変換
@@ -132,7 +132,7 @@ df.head(2)
 # - 列ラベル（`columns`）：選手ID
 # - $(i, j)$ 成分：ある時刻における特定の選手の $x, y$ 座標
 
-# In[43]:
+# In[7]:
 
 
 U = df['id'].unique()  # 選手ID
@@ -151,13 +151,13 @@ for u in U:
 df_x, df_y = df_x[U], df_y[U]  # 't'列を除去
 
 
-# In[48]:
+# In[8]:
 
 
 df_x.head()
 
 
-# In[47]:
+# In[9]:
 
 
 df_y.head()
@@ -167,7 +167,7 @@ df_y.head()
 
 # `df_x`，`df_y`には以下の選手の座標が含まれている：
 
-# In[49]:
+# In[10]:
 
 
 df_x.columns
@@ -176,7 +176,7 @@ df_x.columns
 # この中には，実際に試合に出場した選手の他に審判などの位置座標も含まれている．
 # これら不要なデータを特定するため，選手IDごとに位置座標をプロットしてみる．
 
-# In[50]:
+# In[11]:
 
 
 u = 6
@@ -192,20 +192,20 @@ ax.set_aspect('equal')
 # ```
 # `df_x`，`df_y`からこれらの選手のデータだけ抽出する．
 
-# In[51]:
+# In[12]:
 
 
 df_x2 = df_x[[1, 2, 5, 7, 8, 9, 10, 13, 14, 15]]
 df_y2 = df_y[[1, 2, 5, 7, 8, 9, 10, 13, 14, 15]]
 
 
-# In[52]:
+# In[13]:
 
 
 df_x2.head(2)
 
 
-# In[53]:
+# In[14]:
 
 
 df_y2.head(2)
@@ -213,7 +213,7 @@ df_y2.head(2)
 
 # ### データの保存
 
-# In[54]:
+# In[15]:
 
 
 df_x2.to_csv('./x_1st.csv', header=True, index=True, encoding='utf-8')
@@ -231,7 +231,7 @@ df_y2.to_csv('./y_1st.csv', header=True, index=True, encoding='utf-8')
 
 # 改めて，作成したデータを`X`，`Y`というDataFrameに読み込む．
 
-# In[55]:
+# In[16]:
 
 
 X = pd.read_csv('./x_1st.csv', encoding='utf-8', index_col=0)
@@ -248,7 +248,7 @@ Y = pd.read_csv('./y_1st.csv', encoding='utf-8', index_col=0)
 # - 列ラベル（`columns`）：選手ID
 # - $(i, j)$ 成分：ある時刻における特定の選手の$x, y$座標
 
-# In[56]:
+# In[17]:
 
 
 X.head(2)
@@ -261,7 +261,7 @@ X.head(2)
 # よって，`X`，`Y`から`loc`属性を用いて条件付き抽出すれば，特定の時刻のデータだけ抜き出せる．
 # 例えば，10秒〜20秒の時間帯だけ抽出するには，行ラベル（`index`）が200から400までの行を条件付き抽出すればよい．
 
-# In[57]:
+# In[18]:
 
 
 X.loc[200:400]
@@ -269,7 +269,7 @@ X.loc[200:400]
 
 # フレーム番号を秒単位に直すのが面倒な場合は，以下のように`index`を秒単位に変換した`T`というSeriesを作っておき，これを用いて条件付き抽出すればよい．
 
-# In[58]:
+# In[19]:
 
 
 T = X.index * 0.05
@@ -280,7 +280,7 @@ X.loc[(T >= 10) & (T <= 20)]
 
 # 以上を踏まえて，試合中の特定の時刻のスナップショットを描いてみよう．
 
-# In[59]:
+# In[20]:
 
 
 fig, ax = plt.subplots()
@@ -321,7 +321,7 @@ ax.set_aspect('equal')
 # ここで，$X_{u}(i),\ Y_{u}(i)$は第$i$フレームの選手$u$の$x,\ y$座標である．
 # これは，全選手の$x,\ y$座標の平均値を求めれば良いので，以下のように計算できる：
 
-# In[65]:
+# In[21]:
 
 
 Xc = X.mean(axis=1)
@@ -340,7 +340,7 @@ Xc.head()
 # 
 # これは，$ x $ 方向の分散と $ y $ 方向の分散の和の平方根である．
 
-# In[64]:
+# In[22]:
 
 
 R = np.sqrt(X.var(ddof=0, axis=1) + Y.var(ddof=0, axis=1))
@@ -349,7 +349,7 @@ R.head()
 
 # **重心と慣性半径の描画**
 
-# In[62]:
+# In[23]:
 
 
 fig, ax = plt.subplots(figsize=(4, 4))
@@ -395,14 +395,14 @@ ax.set_aspect('equal')
 # 以下では，$ n=20 $として，20フレーム（=1秒間）の平均速度を求める．
 # 実装には`diff`メソッドを用いて`n`フレーム前との差分を計算すれば良い．
 
-# In[66]:
+# In[24]:
 
 
 n = 20
 Vx, Vy = X.diff(n)/(0.05*n), Y.diff(n)/(0.05*n)  # nフレーム（0.05n秒）前との差を取る
 
 
-# In[70]:
+# In[25]:
 
 
 Vx.tail()
@@ -415,7 +415,7 @@ Vx.tail()
 # また，秩序変数は時刻の横に文字列として出力する．
 # フレーム番号を変えると，矢印の向きの揃い具合と連動して秩序変数の値が変化することが分かる．
 
-# In[72]:
+# In[26]:
 
 
 fig, ax = plt.subplots(figsize=(4,4))
@@ -470,7 +470,7 @@ ax.set_aspect('equal')
 # まずは何も考えずに試合前半の全選手の位置をフィールド上に色分けしてプロットしてみよう．
 # この場合，座標原点がフィールドの左下に常に固定されているので，**絶対座標系**と呼ばれる．
 
-# In[73]:
+# In[27]:
 
 
 fig, ax = plt.subplots(figsize=(3.5, 3))
@@ -493,7 +493,7 @@ ax.set_aspect('equal')
 # これを**重心座標系**と呼ぶ．
 # 各選手の座標を重心座標系に変換するには，以下のように各時刻において選手の座標から重心の座標を引き算すればよい．
 
-# In[74]:
+# In[28]:
 
 
 Xc = X.sub(X.mean(axis=1), axis=0)
@@ -503,7 +503,7 @@ Yc = Y.sub(Y.mean(axis=1), axis=0)
 # 以下の２つのグラフは，いずれも重心座標系において全選手の位置を色分けしてプロットした結果である．
 # １つ目は選手ごとに各時刻の位置をマーカーでプロットしており，2つ目は選手ごとに平均位置と標準偏差（慣性半径）をプロットしている．
 
-# In[75]:
+# In[29]:
 
 
 fig, ax = plt.subplots(figsize=(4, 4))
@@ -516,7 +516,7 @@ ax.set_aspect('equal')
 ax.set_xlabel('$X$'); ax.set_ylabel('$Y$')
 
 
-# In[76]:
+# In[30]:
 
 
 fig, ax = plt.subplots(figsize=(4, 4))
@@ -545,7 +545,7 @@ ax.set_xlabel('$X$'); ax.set_ylabel('$Y$')
 # アニメーションはMatplotlibの`FuncAnimation`を用いると簡単に実装できる．
 # まずは`FuncAnimation`を以下のようにインポートしておく：
 
-# In[77]:
+# In[31]:
 
 
 from matplotlib.animation import FuncAnimation
@@ -555,7 +555,7 @@ from matplotlib.animation import FuncAnimation
 # これまで，MatplotlibによるグラフはJupyter Lab内に表示することができた．
 # これは，デフォルトの設定としてグラフの出力先がJupyter Lab内となっていたからであり，明示的に設定するには以下のコマンドを実行する：
 
-# In[78]:
+# In[32]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -563,7 +563,7 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 
 # 一方，アニメーションを表示するには上の設定を以下のように変更する必要がある：
 
-# In[79]:
+# In[33]:
 
 
 get_ipython().run_line_magic('matplotlib', 'tk')
@@ -574,14 +574,14 @@ get_ipython().run_line_magic('matplotlib', 'tk')
 
 # ### 位置
 
-# In[80]:
+# In[34]:
 
 
 X = pd.read_csv('./x_1st.csv', encoding='utf-8', index_col=0)
 Y = pd.read_csv('./y_1st.csv', encoding='utf-8', index_col=0)
 
 
-# In[81]:
+# In[35]:
 
 
 # 描画関数
@@ -606,7 +606,7 @@ anim = FuncAnimation(fig, update, blit=True, interval=10)
 
 # ### 位置とテキスト
 
-# In[82]:
+# In[36]:
 
 
 # 描画関数
@@ -637,7 +637,7 @@ anim = FuncAnimation(fig, update, blit=True, interval=10)
 
 # ### 位置・速度ベクトル・テキスト
 
-# In[84]:
+# In[37]:
 
 
 # 速度ベクトルと秩序変数の計算
@@ -645,7 +645,7 @@ Vx, Vy = X.diff(20), Y.diff(20)
 V = np.sqrt(Vx**2 + Vy**2)
 
 
-# In[85]:
+# In[38]:
 
 
 # 描画関数
