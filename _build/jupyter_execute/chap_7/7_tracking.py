@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[3]:
+# In[1]:
 
 
 # （必須）モジュールのインポート
@@ -62,10 +62,12 @@ get_ipython().run_line_magic('precision', '3')
 # ダウンロードしたcsvファイルを`df`という名前でDataFrameに読み込む．
 # その際に列ラベル（`columns`）を指定しておく．
 
-# In[8]:
+# In[2]:
 
 
-df = pd.read_csv('./2013-11-03_tromso_stromsgodset_first.csv',                 header=None, encoding='utf-8',                 names=['time','id','x','y','heading','direction','energy','speed','total_distance'])
+df = pd.read_csv('./2013-11-03_tromso_stromsgodset_first.csv',\
+                 header=None, encoding='utf-8',\
+                 names=['time','id','x','y','heading','direction','energy','speed','total_distance'])
 df.head(2)
 
 
@@ -73,7 +75,7 @@ df.head(2)
 
 # 読み込んだデータには向き（'heading', 'direction'）や速さ（'speed'）などの列も含まれているが，以下では時刻（'time'），選手ID（'id'），位置座標（'x', 'y'）の情報だけを用いるので，これらを抽出する．
 
-# In[9]:
+# In[3]:
 
 
 df = df[['time', 'id', 'x', 'y']]
@@ -84,7 +86,7 @@ df.head(2)
 
 # 次に，`sort_values`メソッドを用いて，'time'列，'id'列をキーにして`df`をソートする．これにより`df`の行方向の並びが時間順となり，同一時刻の場合は選手ID順となる．
 
-# In[7]:
+# In[4]:
 
 
 # time列, id列でソート
@@ -97,7 +99,7 @@ df.head(2)
 # 'time'列には試合が行われた年月日および時刻が文字列として保存されている．
 # このうち，前半の年月日の情報は不要なので，`str.split`メソッドを用いて年月日と時刻を切り離す．
 
-# In[8]:
+# In[5]:
 
 
 tmp = df['time'].str.split(' ', expand=True)
@@ -110,7 +112,7 @@ tmp.head(2)
 # - 分と秒の情報だけを取り出し，単位を秒に変換する
 # - `df`の第0行からの経過時間に変換し，`df`の'time'列に追加する
 
-# In[9]:
+# In[6]:
 
 
 # 経過時間（秒）に変換
@@ -130,7 +132,7 @@ df.head(2)
 # - 列ラベル（`columns`）：選手ID
 # - $(i, j)$ 成分：ある時刻における特定の選手の$x, y$座標
 
-# In[10]:
+# In[7]:
 
 
 U = df['id'].unique()  # 選手ID
@@ -149,13 +151,13 @@ for u in U:
 df_x, df_y = df_x[U], df_y[U]  # 't'列を除去
 
 
-# In[11]:
+# In[8]:
 
 
 df_x.head(2)
 
 
-# In[12]:
+# In[9]:
 
 
 df_y.head(2)
@@ -165,7 +167,7 @@ df_y.head(2)
 
 # `df_x`，`df_y`には以下の選手の座標が含まれている：
 
-# In[13]:
+# In[10]:
 
 
 df_x.columns
@@ -174,7 +176,7 @@ df_x.columns
 # この中には，実際に試合に出場した選手の他に審判などの位置座標も含まれている．
 # まずはこれら不要なデータを特定するため，選手IDごとに位置座標を全てプロットする．
 
-# In[14]:
+# In[11]:
 
 
 u = 6
@@ -190,20 +192,20 @@ ax.set_aspect('equal')
 # ```
 # `df_x`，`df_y`からこれらの選手のデータだけ抽出する．
 
-# In[15]:
+# In[12]:
 
 
 df_x2 = df_x[[1, 2, 5, 7, 8, 9, 10, 13, 14, 15]]
 df_y2 = df_y[[1, 2, 5, 7, 8, 9, 10, 13, 14, 15]]
 
 
-# In[16]:
+# In[13]:
 
 
 df_x2.head(2)
 
 
-# In[17]:
+# In[14]:
 
 
 df_y2.head(2)
@@ -211,7 +213,7 @@ df_y2.head(2)
 
 # ### データの保存
 
-# In[18]:
+# In[15]:
 
 
 df_x2.to_csv('./x_1st.csv', header=True, index=True, encoding='utf-8')
@@ -229,7 +231,7 @@ df_y2.to_csv('./y_1st.csv', header=True, index=True, encoding='utf-8')
 
 # 改めて，作成したデータを`X`，`Y`というDataFrameに読み込む．
 
-# In[19]:
+# In[16]:
 
 
 X = pd.read_csv('./x_1st.csv', encoding='utf-8', index_col=0)
@@ -246,7 +248,7 @@ Y = pd.read_csv('./y_1st.csv', encoding='utf-8', index_col=0)
 # - 列ラベル（`columns`）：選手ID
 # - $(i, j)$ 成分：ある時刻における特定の選手の$x, y$座標
 
-# In[20]:
+# In[17]:
 
 
 X.head(2)
@@ -259,7 +261,7 @@ X.head(2)
 # よって，`X`，`Y`から`loc`属性を用いて条件付き抽出すれば，特定の時刻のデータだけ抜き出せる．
 # 例えば，10秒〜20秒の時間帯だけ抽出するには，行ラベル（`index`）が200から400までの行を条件付き抽出すればよい．
 
-# In[21]:
+# In[18]:
 
 
 X.loc[200:400]
@@ -267,7 +269,7 @@ X.loc[200:400]
 
 # フレーム番号を秒単位に直すのが面倒な場合は，以下のように`index`を秒単位に変換した`T`というSeriesを作っておき，これを用いて条件付き抽出すればよい．
 
-# In[22]:
+# In[19]:
 
 
 T = X.index * 0.05
@@ -278,7 +280,7 @@ X.loc[(T >= 10) & (T <= 20)]
 
 # 以上を踏まえて，試合中の特定の時刻のスナップショットを描いてみよう．
 
-# In[23]:
+# In[20]:
 
 
 fig, ax = plt.subplots()
@@ -319,7 +321,7 @@ ax.set_aspect('equal')
 # ここで，$X_{u}(i),\ Y_{u}(i)$は第$i$フレームの選手$u$の$x,\ y$座標である．
 # これは，全選手の$x,\ y$座標の平均値を求めれば良いので，以下のように計算できる：
 
-# In[24]:
+# In[23]:
 
 
 Xc = X.mean(axis=1)
@@ -335,7 +337,7 @@ Yc = Y.mean(axis=1)
 #     R(i) = \sqrt{ \frac{1}{N} \sum_{u=1}^{N} [(X_{u}(i) - X_{c}(i))^{2} + (Y_{u}(i) - Y_{c}(i))^{2}] }
 # $$
 
-# In[25]:
+# In[24]:
 
 
 R = np.sqrt(X.var(ddof=0, axis=1) + Y.var(ddof=0, axis=1))
@@ -343,7 +345,7 @@ R = np.sqrt(X.var(ddof=0, axis=1) + Y.var(ddof=0, axis=1))
 
 # **重心と慣性半径の描画**
 
-# In[26]:
+# In[25]:
 
 
 fig, ax = plt.subplots(figsize=(4, 4))
@@ -374,56 +376,35 @@ ax.set_yticks([0, 68])
 ax.set_aspect('equal')
 
 
-# ### 速度と秩序変数の計算
-
-# **速度**
+# ### 速度の計算
 
 # 次に，位置座標から速度を求めてみよう．
-# 速度の$x,\ y$成分を$V_{x},\ V_{y}$とすると，これらは以下のように表される：
+# フレーム $ i $ の速度の $ x, y $ 成分を $ V_{x},\ V_{y} $ とすると，これらは以下のように計算される：
 # 
 # $$
-# V_{x}(i) = \frac{X(i+n) - X(i)}{0.05n},\\[10pt]
-# V_{y}(i) = \frac{Y(i+n) - Y(i)}{0.05n}
+#     V_{x}(i) = \frac{X(i+n) - X(i)}{n}\frac{1}{0.05},\\[10pt]
+#     V_{y}(i) = \frac{Y(i+n) - Y(i)}{n}\frac{1}{0.05}
 # $$
 # 
-# ここで，$X(i),\ Y(i)$は第$i$フレームの$x, y$座標を表し，$n$はフレームの増分である．
-# また，座標の差分を$0.05$で割ることで単位を[m/frame]から[m/s]に変換している．
-# 以下では，$n=20$として，20フレーム（=1秒間）の平均速度を求める．
+# ここで，$ X(i),\ Y(i) $ は 第 $i$ フレームの $x, y$ 座標を表し，$n$ はフレームの増分である．
+# また，座標の差分を $ 0.05 $ で割ることで単位を[m/frame]から[m/s]に変換している．
+# 以下では，$ n=20 $として，20フレーム（=1秒間）の平均速度を求める．
 # 実装には`diff`メソッドを用いて`n`フレーム前との差分を計算すれば良い．
 
-# In[27]:
+# In[28]:
 
 
 n = 20
 Vx, Vy = X.diff(n)/(0.05*n), Y.diff(n)/(0.05*n)  # nフレーム（0.05n秒）前との差を取る
 
 
-# In[28]:
+# In[29]:
 
 
 Vx.tail(2)
 
 
-# **秩序変数**
-
-# やや高度ではあるが，以下で定義される**秩序変数**（Order Parameter）という量を計算してみよう：
-# 
-# $$
-# \phi(i) = \left| \frac{1}{N} \sum_{u=1}^{N} \frac{\vec{v}_{u}(i)}{|\vec{v}_{u}(i)|} \right|
-# $$
-
-# 秩序変数は，集団の向きの揃い具合を表す量で，統計物理学の分野でよく用いられる．
-# その定義域は$0\le\phi(t)\le 1$であり，0に近いほど集団の移動方向がバラバラ，1に近いほど揃っていることを意味する．
-# 定義より，秩序変数は速度ベクトルから以下のように計算することができる．
-
-# In[29]:
-
-
-V = np.sqrt(Vx**2 + Vy**2)
-OP = np.sqrt(np.sum(Vx/V, axis=1)**2 + np.sum(Vy/V, axis=1)**2) / 10
-
-
-# **速度ベクトルと秩序変数の描画**
+# **速度ベクトルの描画**
 
 # 速度と秩序変数が計算できたので，これらを描画してみよう．
 # 速度ベクトルの描画には，matplotlibの`quiver`関数を用いて選手の位置を始点とする矢印を描けば良い．
@@ -688,7 +669,8 @@ def update(i):
 # グラフの設定
 fig, ax = plt.subplots(figsize=(5, 5))
 pt, = ax.plot([], [], 'bo', ms=5, mfc='None')
-aw = ax.quiver(np.zeros(10), np.zeros(10), np.zeros(10), np.zeros(10),               color='b', angles='uv', units='xy', scale=0.7, width=0.5)
+aw = ax.quiver(np.zeros(10), np.zeros(10), np.zeros(10), np.zeros(10),\
+               color='b', angles='uv', units='xy', scale=0.7, width=0.5)
 text = ax.text(65, 63, '', fontsize=10)
 
 ax.set_xlim(0, 105); ax.set_ylim(0, 68)

@@ -1323,7 +1323,9 @@ df.drop(columns=['t', 'player'])
 # In[48]:
 
 
-dict_data = {'t':[2, 64, 350, 600],             'player':['ozora', 'misaki', 'wakabayashi', 'hyuga'],             'x':[5.0, 20.0, 10.5, 32.5],
+dict_data = {'t':[2, 64, 350, 600],\
+             'player':['ozora', 'misaki', 'wakabayashi', 'hyuga'],\
+             'x':[5.0, 20.0, 10.5, 32.5],
              'y':[10.0, 1.0, 50.5, 2.5]}
 df = pd.DataFrame(dict_data, index=[2, 0, 1, 3])
 df
