@@ -321,11 +321,12 @@ ax.set_aspect('equal')
 # ここで，$X_{u}(i),\ Y_{u}(i)$は第$i$フレームの選手$u$の$x,\ y$座標である．
 # これは，全選手の$x,\ y$座標の平均値を求めれば良いので，以下のように計算できる：
 
-# In[23]:
+# In[65]:
 
 
 Xc = X.mean(axis=1)
 Yc = Y.mean(axis=1)
+Xc.head()
 
 
 # **チームの広がり**
@@ -339,15 +340,16 @@ Yc = Y.mean(axis=1)
 # 
 # これは，$ x $ 方向の分散と $ y $ 方向の分散の和の平方根である．
 
-# In[60]:
+# In[64]:
 
 
 R = np.sqrt(X.var(ddof=0, axis=1) + Y.var(ddof=0, axis=1))
+R.head()
 
 
 # **重心と慣性半径の描画**
 
-# In[25]:
+# In[62]:
 
 
 fig, ax = plt.subplots(figsize=(4, 4))
@@ -381,7 +383,7 @@ ax.set_aspect('equal')
 # ### 速度の計算
 
 # 次に，位置座標から速度を求めてみよう．
-# フレーム $ i $ の速度の $ x, y $ 成分を $ V_{x},\ V_{y} $ とすると，これらは以下のように計算される：
+# フレーム $ i $ における速度の $ x, y $ 成分を $ V_{x}(i),\ V_{y}(i) $ とすると，これらは以下のように計算される：
 # 
 # $$
 #     V_{x}(i) = \frac{X(i+n) - X(i)}{n}\frac{1}{0.05},\\[10pt]
@@ -393,17 +395,17 @@ ax.set_aspect('equal')
 # 以下では，$ n=20 $として，20フレーム（=1秒間）の平均速度を求める．
 # 実装には`diff`メソッドを用いて`n`フレーム前との差分を計算すれば良い．
 
-# In[28]:
+# In[66]:
 
 
 n = 20
 Vx, Vy = X.diff(n)/(0.05*n), Y.diff(n)/(0.05*n)  # nフレーム（0.05n秒）前との差を取る
 
 
-# In[29]:
+# In[70]:
 
 
-Vx.tail(2)
+Vx.tail()
 
 
 # **速度ベクトルの描画**
@@ -413,7 +415,7 @@ Vx.tail(2)
 # また，秩序変数は時刻の横に文字列として出力する．
 # フレーム番号を変えると，矢印の向きの揃い具合と連動して秩序変数の値が変化することが分かる．
 
-# In[30]:
+# In[72]:
 
 
 fig, ax = plt.subplots(figsize=(4,4))
@@ -430,11 +432,10 @@ vx, vy = Vx.loc[i], Vy.loc[i]
 ax.quiver(x, y, vx, vy, color='r', angles='uv', units='xy', scale=0.7, width=0.5)
 
 # 時刻と秩序変数の表示
-op = np.round(OP.loc[i], 2)
 t = i*0.05
 m, s = np.floor(t/60.).astype(int), np.floor(t % 60).astype(int)
 ss = ("%.2f" % (t % 60 - s)).replace('.', '')[1:].zfill(2)
-ax.set_title('$t$=%s分%s秒%s   $\phi=$%s' % (m, s, ss, op), fontsize=10)
+ax.set_title('$t$=%s分%s秒%s' % (m, s, ss), fontsize=10)
 
 ax.set_xlim(0, 105); ax.set_ylim(0, 68)
 ax.set_xticks([0, 105])
@@ -469,7 +470,7 @@ ax.set_aspect('equal')
 # まずは何も考えずに試合前半の全選手の位置をフィールド上に色分けしてプロットしてみよう．
 # この場合，座標原点がフィールドの左下に常に固定されているので，**絶対座標系**と呼ばれる．
 
-# In[ ]:
+# In[73]:
 
 
 fig, ax = plt.subplots(figsize=(3.5, 3))
@@ -492,7 +493,7 @@ ax.set_aspect('equal')
 # これを**重心座標系**と呼ぶ．
 # 各選手の座標を重心座標系に変換するには，以下のように各時刻において選手の座標から重心の座標を引き算すればよい．
 
-# In[43]:
+# In[74]:
 
 
 Xc = X.sub(X.mean(axis=1), axis=0)
@@ -502,7 +503,7 @@ Yc = Y.sub(Y.mean(axis=1), axis=0)
 # 以下の２つのグラフは，いずれも重心座標系において全選手の位置を色分けしてプロットした結果である．
 # １つ目は選手ごとに各時刻の位置をマーカーでプロットしており，2つ目は選手ごとに平均位置と標準偏差（慣性半径）をプロットしている．
 
-# In[44]:
+# In[75]:
 
 
 fig, ax = plt.subplots(figsize=(4, 4))
@@ -515,7 +516,7 @@ ax.set_aspect('equal')
 ax.set_xlabel('$X$'); ax.set_ylabel('$Y$')
 
 
-# In[45]:
+# In[76]:
 
 
 fig, ax = plt.subplots(figsize=(4, 4))
@@ -544,7 +545,7 @@ ax.set_xlabel('$X$'); ax.set_ylabel('$Y$')
 # アニメーションはMatplotlibの`FuncAnimation`を用いると簡単に実装できる．
 # まずは`FuncAnimation`を以下のようにインポートしておく：
 
-# In[56]:
+# In[77]:
 
 
 from matplotlib.animation import FuncAnimation
@@ -554,7 +555,7 @@ from matplotlib.animation import FuncAnimation
 # これまで，MatplotlibによるグラフはJupyter Lab内に表示することができた．
 # これは，デフォルトの設定としてグラフの出力先がJupyter Lab内となっていたからであり，明示的に設定するには以下のコマンドを実行する：
 
-# In[57]:
+# In[78]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -562,7 +563,7 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 
 # 一方，アニメーションを表示するには上の設定を以下のように変更する必要がある：
 
-# In[58]:
+# In[79]:
 
 
 get_ipython().run_line_magic('matplotlib', 'tk')
@@ -573,14 +574,14 @@ get_ipython().run_line_magic('matplotlib', 'tk')
 
 # ### 位置
 
-# In[59]:
+# In[80]:
 
 
 X = pd.read_csv('./x_1st.csv', encoding='utf-8', index_col=0)
 Y = pd.read_csv('./y_1st.csv', encoding='utf-8', index_col=0)
 
 
-# In[60]:
+# In[81]:
 
 
 # 描画関数
@@ -605,7 +606,7 @@ anim = FuncAnimation(fig, update, blit=True, interval=10)
 
 # ### 位置とテキスト
 
-# In[61]:
+# In[82]:
 
 
 # 描画関数
@@ -636,16 +637,15 @@ anim = FuncAnimation(fig, update, blit=True, interval=10)
 
 # ### 位置・速度ベクトル・テキスト
 
-# In[62]:
+# In[84]:
 
 
 # 速度ベクトルと秩序変数の計算
 Vx, Vy = X.diff(20), Y.diff(20)
 V = np.sqrt(Vx**2 + Vy**2)
-OP = np.sqrt(np.sum(Vx/V, axis=1)**2 + np.sum(Vy/V, axis=1)**2) / 10
 
 
-# In[63]:
+# In[85]:
 
 
 # 描画関数
@@ -663,8 +663,7 @@ def update(i):
     t = i*0.05
     m, s = np.floor(t/60.).astype(int), np.floor(t % 60).astype(int)
     ss = ("%.2f" % (t % 60 - s)).replace('.', '')[1:].zfill(2)
-    op = np.round(OP.loc[i], 2)
-    text.set_text('$t$=%s分%s秒%s   $\phi=$%s' % (m, s, ss, op))
+    text.set_text('$t$=%s分%s秒%s' % (m, s, ss))
 
     return list(np.hstack([pt, aw, text]))
 
