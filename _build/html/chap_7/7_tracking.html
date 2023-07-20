@@ -610,7 +610,7 @@ title="Print to PDF"
 <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.precision&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>    <span class="c1"># 小数点以下の表示桁</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>   <span class="c1"># 表示する行数の上限</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>  <span class="c1"># 表示する列数の上限</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># 表示する列数の上限</span>
 <span class="o">%</span><span class="k">precision</span> 3
 </pre></div>
 </div>
@@ -690,7 +690,9 @@ title="Print to PDF"
       <th>time</th>
       <th>id</th>
       <th>x</th>
-      <th>...</th>
+      <th>y</th>
+      <th>heading</th>
+      <th>direction</th>
       <th>energy</th>
       <th>speed</th>
       <th>total_distance</th>
@@ -702,7 +704,9 @@ title="Print to PDF"
       <td>2013-11-03 18:01:09</td>
       <td>2</td>
       <td>26.573</td>
-      <td>...</td>
+      <td>29.436</td>
+      <td>0.800</td>
+      <td>0.824</td>
       <td>150.662</td>
       <td>0.968</td>
       <td>255.584</td>
@@ -712,14 +716,15 @@ title="Print to PDF"
       <td>2013-11-03 18:01:09</td>
       <td>5</td>
       <td>35.550</td>
-      <td>...</td>
+      <td>30.268</td>
+      <td>1.158</td>
+      <td>-0.175</td>
       <td>364.309</td>
       <td>0.624</td>
       <td>297.861</td>
     </tr>
   </tbody>
 </table>
-<p>2 rows × 9 columns</p>
 </div></div></div>
 </div>
 <p><strong>時刻・選手ID・位置座標の抽出</strong></p>
@@ -775,7 +780,7 @@ title="Print to PDF"
 </table>
 </div></div></div>
 </div>
-<p><strong>DataFrameのソート</strong></p>
+<p><strong>DataFrameの並び替え</strong></p>
 <p>次に，<code class="docutils literal notranslate"><span class="pre">sort_values</span></code>メソッドを用いて，'time'列，'id'列をキーにして<code class="docutils literal notranslate"><span class="pre">df</span></code>をソートする．これにより<code class="docutils literal notranslate"><span class="pre">df</span></code>の行方向の並びが時間順となり，同一時刻の場合は選手ID順となる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -834,8 +839,8 @@ title="Print to PDF"
 このうち，前半の年月日の情報は不要なので，<code class="docutils literal notranslate"><span class="pre">str.split</span></code>メソッドを用いて年月日と時刻を切り離す．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tmp</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">tmp</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">temp</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -887,7 +892,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 経過時間（秒）に変換</span>
-<span class="n">times</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">times</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
 <span class="n">sec</span> <span class="o">=</span> <span class="n">times</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">60</span> <span class="o">+</span> <span class="n">times</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sec</span> <span class="o">-</span> <span class="n">sec</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
@@ -940,7 +945,7 @@ title="Print to PDF"
 </div></div></div>
 </div>
 <p><strong>選手別の座標に変換</strong></p>
-<p>各選手の<span class="math notranslate nohighlight">\(x\)</span>座標と<span class="math notranslate nohighlight">\(y\)</span>座標を格納した以下のようなDataFrame，<code class="docutils literal notranslate"><span class="pre">df_x</span></code>，<code class="docutils literal notranslate"><span class="pre">df_y</span></code>を作成する：</p>
+<p>各選手の <span class="math notranslate nohighlight">\(x\)</span> 座標と <span class="math notranslate nohighlight">\(y\)</span> 座標を格納した以下のようなDataFrame，<code class="docutils literal notranslate"><span class="pre">df_x</span></code>，<code class="docutils literal notranslate"><span class="pre">df_y</span></code>を作成する：</p>
 <ul class="simple">
 <li><p>行ラベル（<code class="docutils literal notranslate"><span class="pre">index</span></code>）：フレーム番号</p>
 <ul>
@@ -948,14 +953,14 @@ title="Print to PDF"
 </ul>
 </li>
 <li><p>列ラベル（<code class="docutils literal notranslate"><span class="pre">columns</span></code>）：選手ID</p></li>
-<li><p><span class="math notranslate nohighlight">\((i, j)\)</span> 成分：ある時刻における特定の選手の<span class="math notranslate nohighlight">\(x, y\)</span>座標</p></li>
+<li><p><span class="math notranslate nohighlight">\((i, j)\)</span> 成分：ある時刻における特定の選手の <span class="math notranslate nohighlight">\(x, y\)</span> 座標</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">U</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>  <span class="c1"># 選手ID</span>
 <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>  <span class="c1"># 0.05秒刻みの経過時間</span>
-<span class="n">df_x</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;t&#39;</span><span class="p">:</span> <span class="n">T</span><span class="p">})</span>  <span class="c1"># x座標</span>
-<span class="n">df_y</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;t&#39;</span><span class="p">:</span> <span class="n">T</span><span class="p">})</span>  <span class="c1"># y座標</span>
+<span class="n">df_x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;t&#39;</span><span class="p">:</span> <span class="n">T</span><span class="p">})</span>  <span class="c1"># x座標</span>
+<span class="n">df_y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;t&#39;</span><span class="p">:</span> <span class="n">T</span><span class="p">})</span>  <span class="c1"># y座標</span>
 
 <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">U</span><span class="p">:</span>
     <span class="n">df_u</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">u</span><span class="p">]</span>  <span class="c1"># 選手uだけ抽出</span>
@@ -972,7 +977,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_x</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_x</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -998,7 +1003,11 @@ title="Print to PDF"
       <th>1</th>
       <th>2</th>
       <th>5</th>
+      <th>7</th>
+      <th>8</th>
       <th>...</th>
+      <th>14</th>
+      <th>15</th>
       <th>6</th>
       <th>11</th>
       <th>3</th>
@@ -1010,7 +1019,11 @@ title="Print to PDF"
       <td>53.138</td>
       <td>26.573</td>
       <td>35.550</td>
+      <td>41.586</td>
+      <td>28.507</td>
       <td>...</td>
+      <td>28.530</td>
+      <td>50.084</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1020,19 +1033,65 @@ title="Print to PDF"
       <td>53.138</td>
       <td>26.609</td>
       <td>35.545</td>
+      <td>41.572</td>
+      <td>28.537</td>
       <td>...</td>
+      <td>28.528</td>
+      <td>50.105</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>53.138</td>
+      <td>26.645</td>
+      <td>35.539</td>
+      <td>41.557</td>
+      <td>28.568</td>
+      <td>...</td>
+      <td>28.525</td>
+      <td>50.134</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>53.138</td>
+      <td>26.682</td>
+      <td>35.534</td>
+      <td>41.543</td>
+      <td>28.596</td>
+      <td>...</td>
+      <td>28.521</td>
+      <td>50.169</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>53.138</td>
+      <td>26.719</td>
+      <td>35.528</td>
+      <td>41.529</td>
+      <td>28.624</td>
+      <td>...</td>
+      <td>28.516</td>
+      <td>50.210</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
   </tbody>
 </table>
-<p>2 rows × 14 columns</p>
+<p>5 rows × 14 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_y</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_y</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1058,7 +1117,11 @@ title="Print to PDF"
       <th>1</th>
       <th>2</th>
       <th>5</th>
+      <th>7</th>
+      <th>8</th>
       <th>...</th>
+      <th>14</th>
+      <th>15</th>
       <th>6</th>
       <th>11</th>
       <th>3</th>
@@ -1070,7 +1133,11 @@ title="Print to PDF"
       <td>44.062</td>
       <td>29.436</td>
       <td>30.268</td>
+      <td>38.675</td>
+      <td>39.612</td>
       <td>...</td>
+      <td>17.597</td>
+      <td>25.779</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1080,14 +1147,60 @@ title="Print to PDF"
       <td>44.062</td>
       <td>29.467</td>
       <td>30.299</td>
+      <td>38.663</td>
+      <td>39.568</td>
       <td>...</td>
+      <td>17.561</td>
+      <td>25.722</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>44.062</td>
+      <td>29.495</td>
+      <td>30.331</td>
+      <td>38.651</td>
+      <td>39.525</td>
+      <td>...</td>
+      <td>17.532</td>
+      <td>25.665</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>44.062</td>
+      <td>29.520</td>
+      <td>30.364</td>
+      <td>38.640</td>
+      <td>39.486</td>
+      <td>...</td>
+      <td>17.510</td>
+      <td>25.607</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>44.062</td>
+      <td>29.541</td>
+      <td>30.397</td>
+      <td>38.629</td>
+      <td>39.449</td>
+      <td>...</td>
+      <td>17.495</td>
+      <td>25.549</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
   </tbody>
 </table>
-<p>2 rows × 14 columns</p>
+<p>5 rows × 14 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -1107,7 +1220,7 @@ title="Print to PDF"
 </div>
 </div>
 <p>この中には，実際に試合に出場した選手の他に審判などの位置座標も含まれている．
-まずはこれら不要なデータを特定するため，選手IDごとに位置座標を全てプロットする．</p>
+これら不要なデータを特定するため，選手IDごとに位置座標をプロットしてみる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="mi">6</span>
@@ -1163,7 +1276,10 @@ title="Print to PDF"
       <th>1</th>
       <th>2</th>
       <th>5</th>
-      <th>...</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
       <th>13</th>
       <th>14</th>
       <th>15</th>
@@ -1175,7 +1291,10 @@ title="Print to PDF"
       <td>53.138</td>
       <td>26.573</td>
       <td>35.550</td>
-      <td>...</td>
+      <td>41.586</td>
+      <td>28.507</td>
+      <td>32.254</td>
+      <td>45.247</td>
       <td>21.029</td>
       <td>28.530</td>
       <td>50.084</td>
@@ -1185,14 +1304,16 @@ title="Print to PDF"
       <td>53.138</td>
       <td>26.609</td>
       <td>35.545</td>
-      <td>...</td>
+      <td>41.572</td>
+      <td>28.537</td>
+      <td>32.254</td>
+      <td>45.247</td>
       <td>21.070</td>
       <td>28.528</td>
       <td>50.105</td>
     </tr>
   </tbody>
 </table>
-<p>2 rows × 10 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1223,7 +1344,10 @@ title="Print to PDF"
       <th>1</th>
       <th>2</th>
       <th>5</th>
-      <th>...</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
       <th>13</th>
       <th>14</th>
       <th>15</th>
@@ -1235,7 +1359,10 @@ title="Print to PDF"
       <td>44.062</td>
       <td>29.436</td>
       <td>30.268</td>
-      <td>...</td>
+      <td>38.675</td>
+      <td>39.612</td>
+      <td>12.724</td>
+      <td>14.462</td>
       <td>17.624</td>
       <td>17.597</td>
       <td>25.779</td>
@@ -1245,14 +1372,16 @@ title="Print to PDF"
       <td>44.062</td>
       <td>29.467</td>
       <td>30.299</td>
-      <td>...</td>
+      <td>38.663</td>
+      <td>39.568</td>
+      <td>12.724</td>
+      <td>14.462</td>
       <td>17.623</td>
       <td>17.561</td>
       <td>25.722</td>
     </tr>
   </tbody>
 </table>
-<p>2 rows × 10 columns</p>
 </div></div></div>
 </div>
 </section>

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[32]:
 
 
 # （必須）モジュールのインポート
@@ -17,7 +17,7 @@ plt.rcParams['font.family'] = 'Hiragino Sans'
 np.set_printoptions(suppress=True, precision=3)
 pd.set_option('display.precision', 3)    # 小数点以下の表示桁
 pd.set_option('display.max_rows', 50)   # 表示する行数の上限
-pd.set_option('display.max_columns', 7)  # 表示する列数の上限
+pd.set_option('display.max_columns', 10)  # 表示する列数の上限
 get_ipython().run_line_magic('precision', '3')
 
 
@@ -62,7 +62,7 @@ get_ipython().run_line_magic('precision', '3')
 # ダウンロードしたcsvファイルを`df`という名前でDataFrameに読み込む．
 # その際に列ラベル（`columns`）を指定しておく．
 
-# In[2]:
+# In[33]:
 
 
 df = pd.read_csv('./2013-11-03_tromso_stromsgodset_first.csv',\
@@ -75,18 +75,18 @@ df.head(2)
 
 # 読み込んだデータには向き（'heading', 'direction'）や速さ（'speed'）などの列も含まれているが，以下では時刻（'time'），選手ID（'id'），位置座標（'x', 'y'）の情報だけを用いるので，これらを抽出する．
 
-# In[3]:
+# In[34]:
 
 
 df = df[['time', 'id', 'x', 'y']]
 df.head(2)
 
 
-# **DataFrameのソート**
+# **DataFrameの並び替え**
 
 # 次に，`sort_values`メソッドを用いて，'time'列，'id'列をキーにして`df`をソートする．これにより`df`の行方向の並びが時間順となり，同一時刻の場合は選手ID順となる．
 
-# In[4]:
+# In[35]:
 
 
 # time列, id列でソート
@@ -99,11 +99,11 @@ df.head(2)
 # 'time'列には試合が行われた年月日および時刻が文字列として保存されている．
 # このうち，前半の年月日の情報は不要なので，`str.split`メソッドを用いて年月日と時刻を切り離す．
 
-# In[5]:
+# In[37]:
 
 
-tmp = df['time'].str.split(' ', expand=True)
-tmp.head(2)
+temp = df['time'].str.split(' ', expand=True)
+temp.head(2)
 
 
 # 時刻の情報は`18:01:09`という形式の文字列である．
@@ -112,11 +112,11 @@ tmp.head(2)
 # - 分と秒の情報だけを取り出し，単位を秒に変換する
 # - `df`の第0行からの経過時間に変換し，`df`の'time'列に追加する
 
-# In[6]:
+# In[38]:
 
 
 # 経過時間（秒）に変換
-times = tmp[1].str.split(':', expand=True).astype(float)
+times = temp[1].str.split(':', expand=True).astype(float)
 sec = times[1]*60 + times[2]
 df['time'] = sec - sec.iloc[0]
 
@@ -125,20 +125,20 @@ df.head(2)
 
 # **選手別の座標に変換**
 
-# 各選手の$x$座標と$y$座標を格納した以下のようなDataFrame，`df_x`，`df_y`を作成する：
+# 各選手の $x$ 座標と $y$ 座標を格納した以下のようなDataFrame，`df_x`，`df_y`を作成する：
 # 
 # - 行ラベル（`index`）：フレーム番号
 #     - 1行=1フレーム=0.05秒
 # - 列ラベル（`columns`）：選手ID
-# - $(i, j)$ 成分：ある時刻における特定の選手の$x, y$座標
+# - $(i, j)$ 成分：ある時刻における特定の選手の $x, y$ 座標
 
-# In[7]:
+# In[43]:
 
 
 U = df['id'].unique()  # 選手ID
 T = np.arange(0, df['time'].max()+0.05, 0.05)  # 0.05秒刻みの経過時間
-df_x = DataFrame({'t': T})  # x座標
-df_y = DataFrame({'t': T})  # y座標
+df_x = pd.DataFrame({'t': T})  # x座標
+df_y = pd.DataFrame({'t': T})  # y座標
 
 for u in U:
     df_u = df.loc[df['id']==u]  # 選手uだけ抽出
@@ -151,32 +151,32 @@ for u in U:
 df_x, df_y = df_x[U], df_y[U]  # 't'列を除去
 
 
-# In[8]:
+# In[48]:
 
 
-df_x.head(2)
+df_x.head()
 
 
-# In[9]:
+# In[47]:
 
 
-df_y.head(2)
+df_y.head()
 
 
 # ### 不要な選手の除去
 
 # `df_x`，`df_y`には以下の選手の座標が含まれている：
 
-# In[10]:
+# In[49]:
 
 
 df_x.columns
 
 
 # この中には，実際に試合に出場した選手の他に審判などの位置座標も含まれている．
-# まずはこれら不要なデータを特定するため，選手IDごとに位置座標を全てプロットする．
+# これら不要なデータを特定するため，選手IDごとに位置座標をプロットしてみる．
 
-# In[11]:
+# In[50]:
 
 
 u = 6
@@ -192,20 +192,20 @@ ax.set_aspect('equal')
 # ```
 # `df_x`，`df_y`からこれらの選手のデータだけ抽出する．
 
-# In[12]:
+# In[51]:
 
 
 df_x2 = df_x[[1, 2, 5, 7, 8, 9, 10, 13, 14, 15]]
 df_y2 = df_y[[1, 2, 5, 7, 8, 9, 10, 13, 14, 15]]
 
 
-# In[13]:
+# In[52]:
 
 
 df_x2.head(2)
 
 
-# In[14]:
+# In[53]:
 
 
 df_y2.head(2)
