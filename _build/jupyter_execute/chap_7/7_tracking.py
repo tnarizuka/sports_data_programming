@@ -17,7 +17,7 @@ plt.rcParams['font.family'] = 'Hiragino Sans'
 np.set_printoptions(suppress=True, precision=3)
 pd.set_option('display.precision', 3)    # 小数点以下の表示桁
 pd.set_option('display.max_rows', 50)   # 表示する行数の上限
-pd.set_option('display.max_columns', 10)  # 表示する列数の上限
+pd.set_option('display.max_columns', 15)  # 表示する列数の上限
 get_ipython().run_line_magic('precision', '3')
 
 
