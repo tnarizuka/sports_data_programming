@@ -723,8 +723,7 @@ def event_hmap(x, y, cm='Greens'):
     ax.set_aspect(68/105)
     
     # ヒートマップの描画
-    ret = ax.hist2d(x, y,\
-                    bins=[50, 25], range=[[0, 100], [0, 100]], cmap=cm, cmin=0)
+    ret = ax.hist2d(x, y,                    bins=[50, 25], range=[[0, 100], [0, 100]], cmap=cm, cmin=0)
 
     # カラーバーを追加
     fig.colorbar(ret[3], orientation='vertical', 

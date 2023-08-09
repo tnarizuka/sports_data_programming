@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# In[ ]:
+
+
+
+
+
 # In[1]:
 
 
@@ -65,9 +71,7 @@ get_ipython().run_line_magic('precision', '3')
 # In[2]:
 
 
-df = pd.read_csv('./2013-11-03_tromso_stromsgodset_first.csv',\
-                 header=None, encoding='utf-8',\
-                 names=['time','id','x','y','heading','direction','energy','speed','total_distance'])
+df = pd.read_csv('./2013-11-03_tromso_stromsgodset_first.csv',                 header=None, encoding='utf-8',                 names=['time','id','x','y','heading','direction','energy','speed','total_distance'])
 df.head(2)
 
 
@@ -670,8 +674,7 @@ def update(i):
 # グラフの設定
 fig, ax = plt.subplots(figsize=(5, 5))
 pt, = ax.plot([], [], 'bo', ms=5, mfc='None')
-aw = ax.quiver(np.zeros(10), np.zeros(10), np.zeros(10), np.zeros(10),\
-               color='b', angles='uv', units='xy', scale=0.7, width=0.5)
+aw = ax.quiver(np.zeros(10), np.zeros(10), np.zeros(10), np.zeros(10),               color='b', angles='uv', units='xy', scale=0.7, width=0.5)
 text = ax.text(65, 63, '', fontsize=10)
 
 ax.set_xlim(0, 105); ax.set_ylim(0, 68)
