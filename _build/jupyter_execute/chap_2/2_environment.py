@@ -76,27 +76,27 @@ plt.rcParams['font.family'] = 'MS Gothic'
 
 # ## Jupyter Lab
 # 
-# 本講義ノートは`.ipynb`ファイルとしてダウンロードしてJupyter上で実行可能である．
+# 本講義ノートは`.ipynb`ファイル形式でダウンロードしてJupyter上で実行可能である．
 # Jupyterの環境構築の方法はいくつかあるので自分の好きな方法を選んで良いが，Anacondaをインストールすると，自動的にJupyter NotebookとJupyter Labが使えるようになる．
 # 
 # **Jupyter Labの起動**
 # 
 # - Anaconda Navigatorを起動
-#     - ［スタートメニュー］→［Anaconda Navigator (anaconda3)］
-# - ［Jupyter Lab］をクリック
+#     - ［スタートメニュー］→［すべてのアプリ］→ [Anaconda3(64-bit)] →［Anaconda Navigator］
+# - ［Jupyter Lab］をLaunch
 # 
 # **ノートブック（.ipynbファイル）の起動**
 # 
 # - `.ipynb`ファイルをダウンロードし，作業フォルダに保存する．
 #     - 講義ノート上部のアイコンから`.ipynb`をクリック
-#     - 自動保存された場合は`ダウンロード`フォルダ内に保存されているはず
+#     - 自動保存された場合は`ダウンロード`フォルダ内に保存される
 # - Jupyter Labを起動し，左上のフォルダアイコンをクリックする．
 # - .ipynbファイルを保存した作業フォルダに移動し，`.ipynb`ファイルをダブルクリックする．
 
 # ## Maplotlibの日本語対応
 # 
 # Matplotlibはグラフ作成のためのライブラリである（詳しくは基礎編で解説する）．
-# Matplotlibは標準で日本語に対応していないので，ここでは日本語対応する方法を2つ紹介する．
+# Matplotlibは標準で日本語が出力されないので，ここでは日本語対応する方法を2つ紹介する．
 
 # **方法1：`rcParams`に使用するフォント名を指定する**
 # 
@@ -104,32 +104,28 @@ plt.rcParams['font.family'] = 'MS Gothic'
 # 使用可能なフォントは環境によって異なるが，Windowsの場合は`'MS Gothic'`，`'Meiryo'`などを指定する．
 # Macの場合は`'Hiragino Sans'`を指定する．
 
-# In[3]:
+# In[2]:
 
 
-# 日本語フォントの設定（Mac:'Hiragino Sans', Windows:'MS Gothic'）
+import matplotlib.pyplot as plt
 plt.rcParams['font.family'] = 'MS Gothic'
 
 
 # **方法2： japanize_matplotlib を利用する（詳しくは[こちら](https://pypi.org/project/japanize-matplotlib/)）**
 # 
-# japanize_matplotlibはPythonのモジュールなので，最初にインストールしておけば，あとは他のモジュールと同じように`import japanize_matplotlib`とするだけで日本語が使用可能になる．
+# japanize_matplotlibは一度インストールすれば，あとは他のモジュールと同じように`import japanize_matplotlib`とするだけで日本語が使用可能になる．
 # ただし，使用可能なフォントはIPAexゴシックだけなので，フォントにこだわりたい場合は方法１をおすすめする．
 # 
-# <!-- **japanize_matplotlibのインストール（詳しくは[こちら](https://pypi.org/project/japanize-matplotlib/)）** -->
-# 
-# - ターミナルを開いて以下のコマンドを実行し，AnacondaのインストールされているフォルダのPathを取得する
-#     ```
-#     conda info -e
-#     ```
-# - `*`の右に表示された文字列（フォルダのパス）をコピーして以下を実行
-#   ```zsh
-#   activate "フォルダのパス"
-#   ```
-# - 以下のコマンドを実行してインストールする
+# - Anaconda Promptを起動
+# - 以下のコマンドを実行してjapanize_matplotlibをインストールする
 #     ```zsh
 #     pip install japanize-matplotlib
 #     ```
+# - Jupyter Labを再起動して，以下のコードを実行する
+#     ```python
+#     import japanize_matplotlib
+#     ```
+# - 日本語が使用可能になる
 
 # ## パス（Path）について
 # 
