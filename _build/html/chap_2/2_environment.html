@@ -693,10 +693,10 @@ Windowsで絶対パスを取得するには，パスをコピーしたいファ�
 </div>
 </div>
 </div>
-<p>2つ目の方法では，パスが<code class="docutils literal notranslate"><span class="pre">'.'</span></code>から始まっているが，これは現在の居場所（<strong>カレントディレクトリ</strong>と呼ぶ）のパスを意味する．
+<p>2つ目の方法では，パスが<code class="docutils literal notranslate"><span class="pre">'.'</span></code>から始まっているが，<code class="docutils literal notranslate"><span class="pre">'.'</span></code>は現在の居場所（<strong>カレントディレクトリ</strong>と呼ぶ）のパスを意味する．
 デフォルトではカレントディレクトリは<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>ファイルが保存されているフォルダとなる．
-このように，カレントディレクトリのパス<code class="docutils literal notranslate"><span class="pre">'.'</span></code>から始まるパスを<strong>相対パス</strong>と呼ぶ．
-カレントディレクトリは以下のコマンドにより任意のフォルダに変更することができる．</p>
+このように，カレントディレクトリのパス<code class="docutils literal notranslate"><span class="pre">'.'</span></code>から始まるパスを<strong>相対パス</strong>と呼ぶ．</p>
+<p>なお，カレントディレクトリは以下のコマンドにより任意のフォルダに変更することができる．</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 </pre></div>
