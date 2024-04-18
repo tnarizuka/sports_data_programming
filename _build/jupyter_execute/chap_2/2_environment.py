@@ -17,14 +17,12 @@ plt.rcParams['font.family'] = 'MS Gothic'
 
 # # プログラミング環境の構築
 
-# ## Anacondaのアンインストール（環境再構築の場合）
-# 
-# - コントロールパネル > プログラムのアンインストール
-# - Anacondaを選択してアンインストール
-# - PC再起動
-# 
 # ## Anacondaのインストール
 # 
+# - Anacondaのアンインストール（環境再構築の場合）
+#   - コントロールパネル > プログラムのアンインストール
+#   - Anacondaを選択してアンインストール
+#   - PC再起動
 # - インストーラのダウンロード
 #   - [Anaconda Distribution](https://www.anaconda.com/download) にアクセス
 #   - メールアドレスを入力して，届いたメールのURLを開く
