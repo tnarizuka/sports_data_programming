@@ -636,14 +636,14 @@ Macの場合は<code class="docutils literal notranslate"><span class="pre">'Hir
 <h2><span class="section-number">2.5. </span>パス（Path）について<a class="headerlink" href="#path" title="このヘッドラインへのパーマリンク">#</a></h2>
 <section id="id3">
 <h3><span class="section-number">2.5.1. </span>パスとは何か？<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>Pythonプログラムの実行，自分のPC上のファイルの読み込み，加工したデータの保存を行うには，対象となるファイルの在り処，つまりアドレスが分からないといけない．
+<p>Pythonプログラムの実行，ファイルの読み込み，加工したデータの保存などを行うには，ファイルやフォルダの場所（PC内のアドレス）を指定する必要がある．
 このアドレスを指定する文字列のことをパス（Path）と呼ぶ．
 Windowsの場合，パスはフォルダの階層構造を区切り文字<code class="docutils literal notranslate"><span class="pre">¥</span></code>（またはバックスラッシュ<code class="docutils literal notranslate"><span class="pre">\</span></code>）によって区切った形式で以下のように表される：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>C:¥Users¥narizuka
 </pre></div>
 </div>
 <p>フォルダの階層の区切りは<code class="docutils literal notranslate"><span class="pre">¥</span></code>（またはバックスラッシュ<code class="docutils literal notranslate"><span class="pre">\\</span></code>）によって表されており，<code class="docutils literal notranslate"><span class="pre">¥</span></code>の隣にはフォルダの名前が記載されている．
-上の例は，Cドライブ（<code class="docutils literal notranslate"><span class="pre">C:</span></code>）の<code class="docutils literal notranslate"><span class="pre">Users</span></code>フォルダの中の<code class="docutils literal notranslate"><span class="pre">narizuka</span></code>フォルダのパスを表す．</p>
+上の例は，Cドライブ（<code class="docutils literal notranslate"><span class="pre">C:</span></code>）の中にある<code class="docutils literal notranslate"><span class="pre">Users</span></code>フォルダの中の<code class="docutils literal notranslate"><span class="pre">narizuka</span></code>フォルダのパスを表す．</p>
 </section>
 <section id="id4">
 <h3><span class="section-number">2.5.2. </span>絶対パスと相対パス<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">#</a></h3>
@@ -659,15 +659,10 @@ Windowsの場合，パスはフォルダの階層構造を区切り文字<code c
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Y軸&#39;)
-</pre></div>
 </div>
-<img alt="../_images/2_environment_15_1.png" src="../_images/2_environment_15_1.png" />
-</div>
-</div>
-<p>実行がうまくいけば，サイン関数が出力されるはずである．
-出力された図を自分の作業フォルダに保存するには，<code class="docutils literal notranslate"><span class="pre">fig.savefig(path)</span></code>のように保存先のパスを指定すれば良い．
+<p>実行がうまくいけば，サイン関数が出力されるはずである．</p>
+<p>次に，出力された図を自分のPCの任意のフォルダに保存する．
+このためには，<code class="docutils literal notranslate"><span class="pre">fig.savefig(path)</span></code>のように保存先のパスを指定すれば良い．
 このとき，パスの指定方法には以下の２つの方法が存在する．</p>
 <section id="id5">
 <h4>1. 絶対パスによる指定<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">#</a></h4>
