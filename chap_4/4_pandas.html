@@ -1069,7 +1069,7 @@ Pandasでは，空白値の他，pythonの組み込み定数である<code class
 <p>Pandasでデータ分析を行う場合，外部のファイルから直接データを読み込んだり，整形したデータを改めてファイルに保存することが多い．特に，データ分析で最もよく用いられるのがcsv形式のファイルである．csvとはカンマで区切られたテキストファイルを指す略称で，Excelで編集することもできる．</p>
 <p><strong>csvファイルに保存する</strong></p>
 <p>まず，DataFrameをcsvファイルに保存するには，以下のように<code class="docutils literal notranslate"><span class="pre">to_csv</span></code>メソッドを用いる：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;***.csv&#39;</span><span class="p">,</span>  <span class="n">option</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;***.csv&#39;</span><span class="p">,</span>  <span class="n">option</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>第1引数には保存先ファイルのパスを指定し，第２引数以降にオプションを指定する．</p>
