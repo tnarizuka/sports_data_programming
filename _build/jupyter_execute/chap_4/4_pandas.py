@@ -172,7 +172,7 @@ df
 # まず，DataFrameをcsvファイルに保存するには，以下のように`to_csv`メソッドを用いる：
 # 
 # ```python
-#     df.to_csv('***.csv',  option)
+# df.to_csv('***.csv',  option)
 # ```
 # 
 # 第1引数には保存先ファイルのパスを指定し，第２引数以降にオプションを指定する．
