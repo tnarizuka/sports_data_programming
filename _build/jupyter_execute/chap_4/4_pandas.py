@@ -205,7 +205,7 @@ df.to_csv('./df_sample.csv', # ipynbファイルと同じフォルダに保存
 # 次に，csvファイルを読み込むには`pd.read_csv`関数を用いる：
 # 
 # ```python
-#     pd.read_csv('***.csv', option)
+# pd.read_csv('***.csv', option)
 # ```
 # 
 # 第1引数にcsvファイルのパスを指定し，第２引数以降にoptionを指定する．
