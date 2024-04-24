@@ -1099,12 +1099,12 @@ title="Print to PDF"
 <h2><span class="section-number">3.1. </span>Numpyとは？<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">#</a></h2>
 <section id="id2">
 <h3><span class="section-number">3.1.1. </span>NumPyとは？<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>スポーツのデータセットは画像，ドキュメント，数値測定結果，など様々なフォーマットを持つが，これらは数値や文字列を格納した配列として扱うことができる．例えば，競技を撮影した動画はフレーム単位ではデジタル画像として表されている．デジタル画像は2次元配列として表され，配列の各要素が各ピクセルの輝度（RGB値）に対応している．また，選手の位置情報は <span class="math notranslate nohighlight">\((x, y, z)\)</span> の時系列データとなっているので，各座標成分毎の時系列データとして扱えば，2次元配列として表すことができる．</p>
-<p>このように，数値や文字列を効率的に格納し操作することは，データ分析において最重要事項である．Pythonには，配列を扱うためのリストが標準搭載されているが，サイズの大きいデータを扱うのには不向きである．そこで，大規模な配列を高速に処理するためのライブラリとしてNumPy（ナンパイ）が用意されている．NumPyの配列はPythonの組み込みリストと似ているが，配列のサイズが大きくなるにつれて，より効率的なデータ操作ができるように設計されている．</p>
+<p>スポーツのデータセットは画像，ドキュメント，数値測定結果，など様々なフォーマットを持つが，これらは数値や文字列を格納した配列として扱うことができる．例えば，競技を撮影した動画はフレーム単位ではデジタル画像として表されている．デジタル画像は2次元配列として表され，配列の各要素が各ピクセルの輝度（RGB値）に対応している．また，選手の位置情報は <span class="math notranslate nohighlight">\((x, y, z)\)</span> の時系列データとなっているので，各座標成分の時系列データとして扱えば，2次元配列として表すことができる．</p>
+<p>このように，データ分析では，数値や文字列を効率的に格納することが必要となる．Pythonには，配列を扱うためのリストという機能が標準搭載されているが，サイズの大きいデータを扱うのには不向きである．そこで，大規模な配列を高速に処理するためのライブラリとしてNumPy（ナンパイ）が用意されている．NumPyの配列はPythonの組み込みリストと似ているが，配列のサイズが大きくなるにつれて，より効率的なデータ操作ができるように設計されている．</p>
 </section>
 <section id="numpyimport">
 <h3><span class="section-number">3.1.2. </span>NumPyのimport<a class="headerlink" href="#numpyimport" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>NumPyは他のパッケージと同様にimportすることができる．Numpyは<code class="docutils literal notranslate"><span class="pre">np</span></code>という名前で以下のようにimportするのが慣例である：</p>
+<p>NumPyは<code class="docutils literal notranslate"><span class="pre">np</span></code>という名前で以下のようにimportするのが慣例である：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -4193,8 +4193,8 @@ Wall time: 10.1 ms
 <ul class="simple">
 <li><p>肥満度を表す指標としてBMIが知られている．BMIは身長と体重を用いて以下で定義される：</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-362617a5-1cd2-405d-83b9-44ee34118813">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-362617a5-1cd2-405d-83b9-44ee34118813" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-90873adf-e4dc-4a93-9ca3-20ef3cd44fff">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-90873adf-e4dc-4a93-9ca3-20ef3cd44fff" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
     \mathrm{BMI} = \frac{体重 [kg]}{(身長 [m])^2}
 \end{align}\]</div>
 <ul class="simple">
