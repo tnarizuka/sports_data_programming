@@ -377,12 +377,12 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     3.1.3. Numpy配列と組み込みリストの違い
+     3.1.3. Numpy配列とリストの違い
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id4">
-       組み込みリスト
+       組リスト
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -733,12 +733,12 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     3.1.3. Numpy配列と組み込みリストの違い
+     3.1.3. Numpy配列とリストの違い
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id4">
-       組み込みリスト
+       組リスト
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -1081,11 +1081,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;%.3f&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="numpy">
 <h1><span class="section-number">3. </span>NumPyの基礎<a class="headerlink" href="#numpy" title="このヘッドラインへのパーマリンク">#</a></h1>
@@ -1115,20 +1110,14 @@ title="Print to PDF"
 <p>これにより，NumPyの関数（例えば<code class="docutils literal notranslate"><span class="pre">func</span></code>関数）を使うときには<code class="docutils literal notranslate"><span class="pre">np.func()</span></code>のように実行できる．</p>
 </section>
 <section id="id3">
-<h3><span class="section-number">3.1.3. </span>Numpy配列と組み込みリストの違い<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3><span class="section-number">3.1.3. </span>Numpy配列とリストの違い<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">#</a></h3>
 <section id="id4">
-<h4>組み込みリスト<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">#</a></h4>
-<p>Pythonは何もimportせずに組み込みリスト（以下，単にリストと呼ぶ）を使うことができる．
-リストは以下のように整数と文字列など複数の型を同時に格納することができ，多次元にすることも可能である．
-また，行ごとに異なるサイズにすることも可能である．</p>
+<h4>組リスト<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">#</a></h4>
+<p>Pythonのリストは以下のように整数と文字列など複数の型を同時に格納することができ，多次元にすることも可能である．
+また，行ごとに異なるサイズにすることもできる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">]]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1, &#39;a&#39;, 10.000], [2, &#39;b&#39;]]
 </pre></div>
 </div>
 </div>
@@ -1140,12 +1129,6 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 2],
-       [3, 4]])
 </pre></div>
 </div>
 </div>
@@ -1166,26 +1149,12 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[   0    1    2 ... 9997 9998 9999]
-CPU times: user 1.78 ms, sys: 93 µs, total: 1.87 ms
-Wall time: 2.75 ms
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 <span class="n">x_numpy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x_numpy</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[   0    1    2 ... 9997 9998 9999]
-CPU times: user 373 µs, sys: 99 µs, total: 472 µs
-Wall time: 400 µs
 </pre></div>
 </div>
 </div>
@@ -1203,26 +1172,12 @@ Wall time: 400 µs
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[    0     2     4 ... 19994 19996 19998]
-CPU times: user 2.03 ms, sys: 89 µs, total: 2.11 ms
-Wall time: 2.02 ms
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 <span class="n">x_numpy</span> <span class="o">=</span> <span class="n">x_numpy</span> <span class="o">*</span> <span class="mi">2</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x_numpy</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[    0     2     4 ... 19994 19996 19998]
-CPU times: user 363 µs, sys: 86 µs, total: 449 µs
-Wall time: 386 µs
 </pre></div>
 </div>
 </div>
@@ -1235,11 +1190,6 @@ Wall time: 386 µs
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 0~10までの整数をランダムに生成して，ソートする</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([25, 45, 50, 57, 68, 72, 73, 89, 92, 98])
 </pre></div>
 </div>
 </div>
@@ -1264,21 +1214,11 @@ Wall time: 386 µs
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 2, 3, 4])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
 <span class="n">x</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1., 2., 3., 4.])
 </pre></div>
 </div>
 </div>
@@ -1289,11 +1229,6 @@ Wall time: 386 µs
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># データ型を整数に変更</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="n">x</span><span class="o">.</span><span class="n">dtype</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype(&#39;int64&#39;)
 </pre></div>
 </div>
 </div>
@@ -1320,26 +1255,12 @@ NumPy配列は以下のような属性を持つ：</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1 2 3 4 5 6]
-[[1. 2. 3.]
- [4. 5. 6.]
- [7. 8. 9.]]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 配列の形状</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x2</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(6,)
-(3, 3)
 </pre></div>
 </div>
 </div>
@@ -1352,12 +1273,6 @@ NumPy配列は以下のような属性を持つ：</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
-2
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1367,24 +1282,12 @@ NumPy配列は以下のような属性を持つ：</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
-9
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 配列のデータ型</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x1</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x2</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>int64
-float64
 </pre></div>
 </div>
 </div>
@@ -1425,22 +1328,10 @@ float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 2, 3])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1],
-       [2],
-       [3]])
 </pre></div>
 </div>
 </div>
@@ -1525,13 +1416,6 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3, 5, 7],
-       [1, 0, 9],
-       [2, 4, 3]])
-</pre></div>
-</div>
-</div>
 </div>
 <figure class="align-default" id="fig-matrix">
 <a class="reference internal image-reference" href="../_images/matrix.png"><img alt="../_images/matrix.png" src="../_images/matrix.png" style="height: 200px;" /></a>
@@ -1553,11 +1437,6 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 2, 3, 4])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1566,23 +1445,11 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 2],
-       [3, 4],
-       [5, 6]])
-</pre></div>
-</div>
-</div>
 </div>
 <p>もし，各要素の型が一致しない場合，以下のように自動的に型が統一される</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1., 2., 3.])
 </pre></div>
 </div>
 </div>
@@ -1604,11 +1471,6 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0,  2,  4,  6,  8, 10, 12, 14, 16, 18])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1617,21 +1479,11 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 0から1までを5分割した数列</span>
 <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.  , 0.25, 0.5 , 0.75, 1.  ])
 </pre></div>
 </div>
 </div>
@@ -1646,11 +1498,6 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1659,25 +1506,11 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1., 1., 1., 1., 1.],
-       [1., 1., 1., 1., 1.],
-       [1., 1., 1., 1., 1.]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 要素がすべて100である3x5配列</span>
 <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[100, 100, 100, 100, 100],
-       [100, 100, 100, 100, 100],
-       [100, 100, 100, 100, 100]])
 </pre></div>
 </div>
 </div>
@@ -1696,22 +1529,10 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 1, 1],
-       [1, 1, 1]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[5, 5, 5],
-       [5, 5, 5]])
 </pre></div>
 </div>
 </div>
@@ -1726,13 +1547,6 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.62197022, 0.18613305, 0.29947713, 0.6708852 ],
-       [0.13100347, 0.23576014, 0.41194976, 0.12867305],
-       [0.00546251, 0.66337373, 0.96481903, 0.5806944 ]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1741,25 +1555,11 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[10, 18, 12, 18],
-       [17, 17, 11, 16],
-       [17, 19, 18, 12]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 平均5，標準偏差0.5の正規乱数を要素とする3x4配列</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[4.45508929, 5.32938944, 4.84941649, 4.34136552],
-       [4.87821941, 5.3815311 , 4.2874893 , 4.52356434],
-       [4.96416317, 4.58840246, 5.24862741, 5.29240486]])
 </pre></div>
 </div>
 </div>
@@ -1779,11 +1579,6 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1791,23 +1586,10 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([  0,   2,   4,   6,   8,  10,  12,  14,  16,  18,  20,  22,  24,
-        26,  28,  30,  32,  34,  36,  38,  40,  42,  44,  46,  48,  50,
-        52,  54,  56,  58,  60,  62,  64,  66,  68,  70,  72,  74,  76,
-        78,  80,  82,  84,  86,  88,  90,  92,  94,  96,  98, 100])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 作成した配列の要素数を取得</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>51
 </pre></div>
 </div>
 </div>
@@ -1825,11 +1607,6 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[5, 5, 5, 5], [5, 5, 5, 5], [5, 5, 5, 5]]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1837,22 +1614,10 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[5, 5, 5, 5],
-       [5, 5, 5, 5],
-       [5, 5, 5, 5]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 作成した配列の形状を取得</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3, 4)
 </pre></div>
 </div>
 </div>
@@ -1864,21 +1629,10 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-1. , -0.9, -0.8, -0.7, -0.6, -0.5, -0.4, -0.3, -0.2, -0.1, -0. ,
-        0.1,  0.2,  0.3,  0.4,  0.5,  0.6,  0.7,  0.8,  0.9])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 10から2まで2ずつ減少する配列</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([10,  8,  6,  4,  2])
 </pre></div>
 </div>
 </div>
@@ -1889,24 +1643,10 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.,  5., 10.])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 要素が全て0である5x1の浮動小数配列</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.],
-       [0.],
-       [0.],
-       [0.],
-       [0.]])
 </pre></div>
 </div>
 </div>
@@ -1917,21 +1657,10 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1., 1., 1., 1., 1., 1., 1.],
-       [1., 1., 1., 1., 1., 1., 1.]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 要素が全て0.5である長さ10の1次元配列</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5])
 </pre></div>
 </div>
 </div>
@@ -1945,34 +1674,10 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.222 0.871 0.207 0.919 0.488 0.612 0.766]
- [0.518 0.297 0.188 0.081 0.738 0.441 0.158]
- [0.88  0.274 0.414 0.296 0.629 0.58  0.6  ]
- [0.266 0.285 0.254 0.328 0.144 0.166 0.964]
- [0.96  0.188 0.024 0.205 0.7   0.78  0.023]
- [0.578 0.002 0.515 0.64  0.986 0.259 0.802]
- [0.87  0.923 0.002 0.469 0.981 0.399 0.814]
- [0.546 0.771 0.485 0.029 0.087 0.111 0.251]
- [0.965 0.632 0.817 0.566 0.635 0.812 0.927]
- [0.913 0.825 0.094 0.361 0.036 0.546 0.796]
- [0.051 0.189 0.365 0.244 0.795 0.352 0.639]
- [0.493 0.583 0.939 0.944 0.112 0.844 0.346]
- [0.101 0.383 0.51  0.961 0.372 0.012 0.86 ]
- [0.111 0.478 0.85  0.515 0.447 0.8   0.02 ]
- [0.573 0.411 0.985 0.801 0.054 0.19  0.452]]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># xの形状を取得</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(15, 7)
 </pre></div>
 </div>
 </div>
@@ -1983,34 +1688,10 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype(&#39;float64&#39;)
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># xと同じ形状で全ての要素が0</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 0., 0., 0., 0., 0., 0.],
-       [0., 0., 0., 0., 0., 0., 0.],
-       [0., 0., 0., 0., 0., 0., 0.],
-       [0., 0., 0., 0., 0., 0., 0.],
-       [0., 0., 0., 0., 0., 0., 0.],
-       [0., 0., 0., 0., 0., 0., 0.],
-       [0., 0., 0., 0., 0., 0., 0.],
-       [0., 0., 0., 0., 0., 0., 0.],
-       [0., 0., 0., 0., 0., 0., 0.],
-       [0., 0., 0., 0., 0., 0., 0.],
-       [0., 0., 0., 0., 0., 0., 0.],
-       [0., 0., 0., 0., 0., 0., 0.],
-       [0., 0., 0., 0., 0., 0., 0.],
-       [0., 0., 0., 0., 0., 0., 0.],
-       [0., 0., 0., 0., 0., 0., 0.]])
 </pre></div>
 </div>
 </div>
@@ -2021,48 +1702,10 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1., 1., 1., 1., 1., 1., 1.],
-       [1., 1., 1., 1., 1., 1., 1.],
-       [1., 1., 1., 1., 1., 1., 1.],
-       [1., 1., 1., 1., 1., 1., 1.],
-       [1., 1., 1., 1., 1., 1., 1.],
-       [1., 1., 1., 1., 1., 1., 1.],
-       [1., 1., 1., 1., 1., 1., 1.],
-       [1., 1., 1., 1., 1., 1., 1.],
-       [1., 1., 1., 1., 1., 1., 1.],
-       [1., 1., 1., 1., 1., 1., 1.],
-       [1., 1., 1., 1., 1., 1., 1.],
-       [1., 1., 1., 1., 1., 1., 1.],
-       [1., 1., 1., 1., 1., 1., 1.],
-       [1., 1., 1., 1., 1., 1., 1.],
-       [1., 1., 1., 1., 1., 1., 1.]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># xと同じ形状で全ての要素が3</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3., 3., 3., 3., 3., 3., 3.],
-       [3., 3., 3., 3., 3., 3., 3.],
-       [3., 3., 3., 3., 3., 3., 3.],
-       [3., 3., 3., 3., 3., 3., 3.],
-       [3., 3., 3., 3., 3., 3., 3.],
-       [3., 3., 3., 3., 3., 3., 3.],
-       [3., 3., 3., 3., 3., 3., 3.],
-       [3., 3., 3., 3., 3., 3., 3.],
-       [3., 3., 3., 3., 3., 3., 3.],
-       [3., 3., 3., 3., 3., 3., 3.],
-       [3., 3., 3., 3., 3., 3., 3.],
-       [3., 3., 3., 3., 3., 3., 3.],
-       [3., 3., 3., 3., 3., 3., 3.],
-       [3., 3., 3., 3., 3., 3., 3.],
-       [3., 3., 3., 3., 3., 3., 3.]])
 </pre></div>
 </div>
 </div>
@@ -2088,21 +1731,11 @@ NumPy配列に対するインデックス参照の方法はPythonリストの場
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 2, 3, 4, 5, 6])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 0番目要素</span>
 <span class="n">x1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
 </pre></div>
 </div>
 </div>
@@ -2114,22 +1747,12 @@ NumPy配列に対するインデックス参照の方法はPythonリストの場
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
-</pre></div>
-</div>
-</div>
 </div>
 <p>配列の末尾からi番目の要素にアクセスするには負のインデックスを用いる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 末尾の要素</span>
 <span class="n">x1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
 </pre></div>
 </div>
 </div>
@@ -2147,12 +1770,6 @@ NumPy配列に対するインデックス参照の方法はPythonリストの場
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1., 2., 3.],
-       [4., 5., 6.]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2161,21 +1778,11 @@ NumPy配列に対するインデックス参照の方法はPythonリストの場
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.000
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># (1, 0)要素</span>
 <span class="n">x2</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.000
 </pre></div>
 </div>
 </div>
@@ -2193,21 +1800,11 @@ NumPy配列に対するインデックス参照の方法はPythonリストの場
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1, 94, 88, 60, 46, 26, 54, 88, 10, 32])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3, 4, 7番目の要素</span>
 <span class="n">x1</span><span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">]]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([60, 46, 88])
 </pre></div>
 </div>
 </div>
@@ -2219,26 +1816,11 @@ NumPy配列に対するインデックス参照の方法はPythonリストの場
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[14,  2, 73, 55, 75],
-       [78,  0, 15, 22, 35],
-       [83, 27, 42,  6, 84],
-       [10,  5, 49, 41, 78],
-       [37, 65,  5, 72, 93]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 第0行と第2行</span>
 <span class="n">x2</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[14,  2, 73, 55, 75],
-       [83, 27, 42,  6, 84]])
 </pre></div>
 </div>
 </div>
@@ -2262,21 +1844,11 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># インデックスが0以上5未満の要素</span>
 <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1, 2, 3, 4])
 </pre></div>
 </div>
 </div>
@@ -2288,21 +1860,11 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1, 2, 3, 4])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># インデックスが5以上の要素（endの省略）</span>
 <span class="n">x</span><span class="p">[</span><span class="mi">5</span><span class="p">:]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([5, 6, 7, 8, 9])
 </pre></div>
 </div>
 </div>
@@ -2314,21 +1876,11 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 2, 4, 6, 8])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># インデックス1からスタートして1つおき</span>
 <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 3, 5, 7, 9])
 </pre></div>
 </div>
 </div>
@@ -2338,11 +1890,6 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 逆順にすべての要素</span>
 <span class="n">x</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([9, 8, 7, 6, 5, 4, 3, 2, 1, 0])
 </pre></div>
 </div>
 </div>
@@ -2358,26 +1905,11 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1,  2,  3],
-       [ 4,  5,  6],
-       [ 7,  8,  9],
-       [10, 11, 12],
-       [13, 14, 15]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 0~1行かつ0~1列</span>
 <span class="n">x2</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 2],
-       [4, 5]])
 </pre></div>
 </div>
 </div>
@@ -2393,11 +1925,6 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 2, 3])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2406,26 +1933,11 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1,  2,  3],
-       [ 7,  8,  9],
-       [13, 14, 15]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1行目以降</span>
 <span class="n">x2</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 4,  5,  6],
-       [ 7,  8,  9],
-       [10, 11, 12],
-       [13, 14, 15]])
 </pre></div>
 </div>
 </div>
@@ -2441,25 +1953,11 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1,  4,  7, 10, 13])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1列目以降</span>
 <span class="n">x2</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 2,  3],
-       [ 5,  6],
-       [ 8,  9],
-       [11, 12],
-       [14, 15]])
 </pre></div>
 </div>
 </div>
@@ -2479,11 +1977,6 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2493,22 +1986,12 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0,  1, -2,  3,  4,  5,  6,  7,  8,  9])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 0~4番目要素までを-1に変更</span>
 <span class="n">x1</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 <span class="n">x1</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-1, -1, -1, -1, -1,  5,  6,  7,  8,  9])
 </pre></div>
 </div>
 </div>
@@ -2523,26 +2006,12 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 2, 3],
-       [4, 5, 6],
-       [7, 8, 9]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># (0,0)成分を12に変更</span>
 <span class="n">x2</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12</span>
 <span class="n">x2</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[12,  2,  3],
-       [ 4,  5,  6],
-       [ 7,  8,  9]])
 </pre></div>
 </div>
 </div>
@@ -2555,26 +2024,12 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[12,  2,  3],
-       [-4, -5, -6],
-       [ 7,  8,  9]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 第2列を[10, 20, 30]に変更</span>
 <span class="n">x2</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
 <span class="n">x2</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[12,  2, 10],
-       [-4, -5, 20],
-       [ 7,  8, 30]])
 </pre></div>
 </div>
 </div>
@@ -2592,24 +2047,10 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 9, 15, 64, 28, 89, 93, 29,  8, 73,  0],
-       [40, 36, 16, 11, 54, 88, 62, 33, 72, 78],
-       [49, 51, 54, 77, 69, 13, 25, 13, 92, 86],
-       [30, 30, 89, 12, 65, 31, 57, 36, 27, 18],
-       [93, 77, 22, 23, 94, 11, 28, 74, 88,  9]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># (3,7)成分</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>36
 </pre></div>
 </div>
 </div>
@@ -2620,11 +2061,6 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([40, 36, 16, 11, 54, 88, 62, 33, 72, 78])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2632,22 +2068,10 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([93, 88, 13, 31, 11])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 0~2行かつ5列以降</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[93, 29,  8, 73,  0],
-       [88, 62, 33, 72, 78],
-       [13, 25, 13, 92, 86]])
 </pre></div>
 </div>
 </div>
@@ -2678,15 +2102,6 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="n">x</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0,  1,  2,  3,  4],
-       [ 5,  6,  7,  8,  9],
-       [10, 11, 12, 13, 14],
-       [15, 16, 17, 18, 19],
-       [20, 21, 22, 23, 24]])
 </pre></div>
 </div>
 </div>
@@ -2721,22 +2136,12 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([60, 38, 96, 82, 34])
-</pre></div>
-</div>
-</div>
 </div>
 <p>この配列と同じ形状で各要素が<code class="docutils literal notranslate"><span class="pre">True</span></code>または<code class="docutils literal notranslate"><span class="pre">False</span></code>である以下のような配列を用意する：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index_bool</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
 <span class="n">index_bool</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([False,  True, False,  True, False])
 </pre></div>
 </div>
 </div>
@@ -2747,11 +2152,6 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Trueの要素だけ抽出</span>
 <span class="n">x1</span><span class="p">[</span><span class="n">index_bool</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([38, 82])
 </pre></div>
 </div>
 </div>
@@ -2768,25 +2168,12 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([74, 20, 31, 55, 42, 43, 52, 34,  9, 30, 43, 14, 53, 27, 15,  8, 15,
-       44, 28, 10])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ブールインデックスの取得</span>
 <span class="n">x_bool</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">&lt;</span> <span class="mi">50</span>
 <span class="n">x_bool</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([False,  True,  True, False,  True,  True, False,  True,  True,
-        True,  True,  True, False,  True,  True,  True,  True,  True,
-        True,  True])
 </pre></div>
 </div>
 </div>
@@ -2798,21 +2185,11 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([20, 31, 42, 43, 34,  9, 30, 43, 14, 27, 15,  8, 15, 44, 28, 10])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 50未満の要素の抽出（条件を直接指定）</span>
 <span class="n">x1</span><span class="p">[</span><span class="n">x1</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([20, 31, 42, 43, 34,  9, 30, 43, 14, 27, 15,  8, 15, 44, 28, 10])
 </pre></div>
 </div>
 </div>
@@ -2826,25 +2203,11 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0,  1,  2,  3,  4,  5,  6],
-       [ 7,  8,  9, 10, 11, 12, 13],
-       [14, 15, 16, 17, 18, 19, 20],
-       [21, 22, 23, 24, 25, 26, 27],
-       [28, 29, 30, 31, 32, 33, 34]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 10未満</span>
 <span class="n">x2</span><span class="p">[</span><span class="n">x2</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 </pre></div>
 </div>
 </div>
@@ -2856,23 +2219,11 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,
-       27, 28, 29, 30, 31, 32, 33, 34])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2に等しくない</span>
 <span class="n">x2</span><span class="p">[</span><span class="n">x2</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0,  1,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17,
-       18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34])
 </pre></div>
 </div>
 </div>
@@ -2884,22 +2235,11 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2で割り切れる</span>
 <span class="n">x2</span><span class="p">[</span><span class="n">x2</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0,  2,  4,  6,  8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32,
-       34])
 </pre></div>
 </div>
 </div>
@@ -2913,24 +2253,10 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[False, False,  True,  True,  True, False, False],
-       [False, False, False, False, False, False, False],
-       [False, False, False, False, False, False, False],
-       [False, False, False, False, False, False, False],
-       [False, False, False, False, False, False, False]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x2</span><span class="p">[</span><span class="n">x2_bool</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2, 3, 4])
 </pre></div>
 </div>
 </div>
@@ -2939,11 +2265,6 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1または5</span>
 <span class="n">x2</span><span class="p">[(</span><span class="n">x2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">x2</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 5])
 </pre></div>
 </div>
 </div>
@@ -2959,22 +2280,12 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-5, -4, -3, -2, -1,  0,  1,  2,  3,  4,  5,  6,  7,  8,  9])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 負の値を持つ要素を0に変更</span>
 <span class="n">x1</span><span class="p">[</span><span class="n">x1</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">x1</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 </pre></div>
 </div>
 </div>
@@ -2987,23 +2298,11 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0,  0,  0,  0,  0,  0,  1,  4,  3,  8,  5, 12,  7, 16,  9])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">x2</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 1, 2],
-       [3, 4, 5],
-       [6, 7, 8]])
 </pre></div>
 </div>
 </div>
@@ -3013,13 +2312,6 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 4以上の要素を10に変更</span>
 <span class="n">x2</span><span class="p">[</span><span class="n">x2</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">x2</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0,  1,  2],
-       [ 3, 10, 10],
-       [10, 10, 10]])
 </pre></div>
 </div>
 </div>
@@ -3037,32 +2329,10 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([  -1,   89,   18,   44,  -27,  -92,   90,   55,   12,   58,  -93,
-         43,   13,   81,  -20,  -73,  -56,  -35,   75,  -70,  -14,   25,
-         46,   21,   37,    6,  -59,   90,   29,    3,   44,  -95,  -42,
-       -100,   32,   10,   64,    5,   79,  -73,  -69,  -98,  -32,  -62,
-          5,   47,  -82,   13,   35,    0,    8,    9,   58,   90,  -89,
-        -33,   24,   93,   83,   31,   -9,  -22,   55,   57,  -67,  -15,
-         35,  -84,   -6,  -86,  -69,  -91,  -62,  -53,   44,   33,   62,
-         73,   87,   52,   41,   18,  -69,  -68,  -24,   72,   33,   42,
-         75,   -6,  -18,   28,   35,  -84,  -36,  -92,  -56,   26,   65,
-         -6])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 負の値を持つ要素</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([  -1,  -27,  -92,  -93,  -20,  -73,  -56,  -35,  -70,  -14,  -59,
-        -95,  -42, -100,  -73,  -69,  -98,  -32,  -62,  -82,  -89,  -33,
-         -9,  -22,  -67,  -15,  -84,   -6,  -86,  -69,  -91,  -62,  -53,
-        -69,  -68,  -24,   -6,  -18,  -84,  -36,  -92,  -56,   -6])
 </pre></div>
 </div>
 </div>
@@ -3073,23 +2343,10 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 18, -27,  90,  12, -93,  81,  75,  21,   6,  90,   3, -42, -69,
-         0,   9,  90, -33,  24,  93,  -9,  57, -15, -84,  -6, -69,  33,
-        87,  18, -69, -24,  72,  33,  42,  75,  -6, -18, -84, -36,  -6])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 10以上50未満</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([18, 44, 12, 43, 13, 25, 46, 21, 37, 29, 44, 32, 10, 47, 13, 35, 24,
-       31, 35, 44, 33, 41, 18, 33, 42, 28, 35, 26])
 </pre></div>
 </div>
 </div>
@@ -3100,17 +2357,6 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([  -1,   89,  -27,  -92,   90,   55,   58,  -93,   81,  -20,  -73,
-        -56,  -35,   75,  -70,  -14,    6,  -59,   90,    3,  -95,  -42,
-       -100,   10,   64,    5,   79,  -73,  -69,  -98,  -32,  -62,    5,
-        -82,    0,    8,    9,   58,   90,  -89,  -33,   93,   83,   -9,
-        -22,   55,   57,  -67,  -15,  -84,   -6,  -86,  -69,  -91,  -62,
-        -53,   62,   73,   87,   52,  -69,  -68,  -24,   72,   75,   -6,
-        -18,  -84,  -36,  -92,  -56,   65,   -6])
-</pre></div>
-</div>
-</div>
 </div>
 <p>以下の配列<code class="docutils literal notranslate"><span class="pre">x</span></code>から指定された配列を作成せよ．</p>
 <div class="cell docutils container">
@@ -3118,15 +2364,6 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="n">x</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-5, -5,  3],
-       [ 3,  2, -8],
-       [ 7,  4, -7],
-       [-1, -3, -9],
-       [ 7,  3, -7]])
 </pre></div>
 </div>
 </div>
@@ -3182,11 +2419,6 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([47, 68, 25, ..., 80, 97, 13])
-</pre></div>
-</div>
-</div>
 </div>
 <p>いま，この1000万個の数値に対して平均値を求めようと思ったとき，最も単純な方法は以下のようなfor文による実装である：</p>
 <div class="cell docutils container">
@@ -3200,13 +2432,6 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49.4999793
-CPU times: user 1.72 s, sys: 6.98 ms, total: 1.73 s
-Wall time: 1.73 s
-</pre></div>
-</div>
-</div>
 </div>
 <p>実行結果を見ると，平均を求めるという単純な演算であるにも関わらず，数秒の時間がかかっている（実行時間はPCのスペックによって変動する）．これは，データ数が非常に大きいことが原因である．</p>
 <p>一方，NumPyには平均値を求めるためのユニバーサル関数<code class="docutils literal notranslate"><span class="pre">numpy.mean</span></code>が用意されている．これを用いると，上のように配列の各要素にアクセスすることなく関数を1回実行するだけで平均値を求めることができる：</p>
@@ -3214,15 +2439,6 @@ Wall time: 1.73 s
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 10.3 ms, sys: 627 µs, total: 10.9 ms
-Wall time: 10.1 ms
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49.500
 </pre></div>
 </div>
 </div>
@@ -3250,23 +2466,11 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 2, 3],
-       [4, 5, 6]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 足し算</span>
 <span class="n">x2</span> <span class="o">+</span> <span class="mi">5</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 6,  7,  8],
-       [ 9, 10, 11]])
 </pre></div>
 </div>
 </div>
@@ -3278,23 +2482,11 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-4, -3, -2],
-       [-1,  0,  1]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 掛け算</span>
 <span class="n">x2</span> <span class="o">*</span> <span class="mi">2</span> 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 2,  4,  6],
-       [ 8, 10, 12]])
 </pre></div>
 </div>
 </div>
@@ -3306,23 +2498,11 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.5, 1. , 1.5],
-       [2. , 2.5, 3. ]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 累乗</span>
 <span class="n">x2</span> <span class="o">**</span> <span class="mi">2</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1,  4,  9],
-       [16, 25, 36]])
 </pre></div>
 </div>
 </div>
@@ -3334,23 +2514,11 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 0, 1],
-       [0, 1, 0]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 加減乗除</span>
 <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">x2</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2.667, 3.333, 4.   ],
-       [4.667, 5.333, 6.   ]])
 </pre></div>
 </div>
 </div>
@@ -3367,23 +2535,11 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 2, 3],
-       [4, 5, 6]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 同じ要素同士の足し算</span>
 <span class="n">x2</span> <span class="o">+</span> <span class="n">x2</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 2,  4,  6],
-       [ 8, 10, 12]])
 </pre></div>
 </div>
 </div>
@@ -3395,12 +2551,6 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 0, 0],
-       [0, 0, 0]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3409,23 +2559,11 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1,  4,  9],
-       [16, 25, 36]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 同じ要素同士の割り算</span>
 <span class="n">x2</span> <span class="o">/</span> <span class="n">x2</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1., 1., 1.],
-       [1., 1., 1.]])
 </pre></div>
 </div>
 </div>
@@ -3445,20 +2583,10 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([65, 21, 44, 21, 68, 61, 17,  8, 19,  2])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 2,  8, 17, 19, 21, 21, 44, 61, 65, 68])
 </pre></div>
 </div>
 </div>
@@ -3472,15 +2600,6 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[9, 0, 0],
-       [0, 1, 9],
-       [5, 6, 6],
-       [5, 4, 2],
-       [1, 3, 9]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3489,29 +2608,11 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 0, 0],
-       [1, 1, 2],
-       [5, 3, 6],
-       [5, 4, 9],
-       [9, 6, 9]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 列方向（行ごと）にソート</span>
 <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 0, 9],
-       [0, 1, 9],
-       [5, 6, 6],
-       [2, 4, 5],
-       [1, 3, 9]])
 </pre></div>
 </div>
 </div>
@@ -3527,24 +2628,10 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2, 8, 6, 7, 2, 1, 3, 0, 9, 3, 0, 6, 6, 5, 0, 6, 3, 1, 0, 6, 3, 2,
-       9, 2, 4, 2, 6, 7, 4, 9, 8, 7, 8, 1, 2, 3, 6, 8, 9, 2, 0, 7, 0, 3,
-       1, 6, 8, 9, 0, 3, 0, 5, 6, 4, 1, 1, 5, 7, 2, 7, 9, 7, 1, 7, 5, 5,
-       3, 6, 2, 5, 0, 5, 0, 5, 2, 9, 1, 0, 6, 9, 2, 7, 7, 1, 8, 4, 9, 1,
-       0, 9, 4, 6, 3, 2, 8, 4, 8, 0, 0, 2])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 </pre></div>
 </div>
 </div>
@@ -3567,11 +2654,6 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2, 1, 0, 1, 2])
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="id46">
@@ -3580,11 +2662,6 @@ Wall time: 10.1 ms
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># πの取得</span>
 <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.142
 </pre></div>
 </div>
 </div>
@@ -3604,21 +2681,11 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 30.,  60.,  90., 180.])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sin</span>
 <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.5  , 0.866, 1.   , 0.   ])
 </pre></div>
 </div>
 </div>
@@ -3630,21 +2697,11 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.866,  0.5  ,  0.   , -1.   ])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># tan</span>
 <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 5.774e-01,  1.732e+00,  1.633e+16, -1.225e-16])
 </pre></div>
 </div>
 </div>
@@ -3666,21 +2723,11 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.   , 1.414, 1.732])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2^x</span>
 <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2, 4, 8])
 </pre></div>
 </div>
 </div>
@@ -3692,21 +2739,11 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 2.718,  7.389, 20.086])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># e^x</span>
 <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 2.718,  7.389, 20.086])
 </pre></div>
 </div>
 </div>
@@ -3722,11 +2759,6 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2., 3., 4.])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3736,22 +2768,12 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2., 3., 4.])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 自然対数（底がe）</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1., 2., 3.])
 </pre></div>
 </div>
 </div>
@@ -3815,21 +2837,11 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([40, 15, 72, ..., 98, 45, 28])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 合計</span>
 <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>499124
 </pre></div>
 </div>
 </div>
@@ -3841,21 +2853,11 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>99
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 最小値</span>
 <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
 </pre></div>
 </div>
 </div>
@@ -3867,21 +2869,11 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50.000
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 平均値</span>
 <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49.912
 </pre></div>
 </div>
 </div>
@@ -3893,11 +2885,6 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>28.726
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3906,21 +2893,11 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>825.185
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 不偏分散（n-1で割る）</span>
 <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>825.267
 </pre></div>
 </div>
 </div>
@@ -3938,15 +2915,6 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[37, 12, 72,  9, 75],
-       [ 5, 79, 64, 16,  1],
-       [76, 71,  6, 25, 50],
-       [20, 18, 84, 11, 28],
-       [29, 14, 50, 68, 87]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3955,21 +2923,11 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([76, 79, 84, 68, 87])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 列方向（行ごと）</span>
 <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([75, 79, 76, 84, 87])
 </pre></div>
 </div>
 </div>
@@ -4010,15 +2968,6 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.,  1.,  2.,  3.,  4.],
-       [ 5.,  6.,  7.,  8.,  9.],
-       [10., 11., 12., 13., 14.],
-       [15., 16., 17., 18., 19.],
-       [20., 21., 22., 23., 24.]])
-</pre></div>
-</div>
-</div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">np.loadtxt</span></code>には引数として区切り文字<code class="docutils literal notranslate"><span class="pre">delimiter</span></code>，データ型<code class="docutils literal notranslate"><span class="pre">dtype</span></code>，エンコーディング<code class="docutils literal notranslate"><span class="pre">encoding</span></code>などが指定できる．<code class="docutils literal notranslate"><span class="pre">delimiter</span></code>を省略するとデフォルト値のスペース' 'となる．</p>
 </section>
@@ -4036,22 +2985,6 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([5.013, 5.13 , 4.802, 4.898, 4.364, 3.702, 5.145, 4.563, 5.197,
-       5.468, 4.992, 5.13 , 4.263, 5.401, 4.125, 4.752, 4.496, 5.013,
-       4.939, 4.227, 4.697, 4.303, 4.686, 5.166, 4.229, 5.835, 4.75 ,
-       5.337, 6.124, 4.173, 4.763, 4.849, 4.534, 5.555, 4.905, 5.639,
-       4.723, 5.177, 4.78 , 4.788, 5.114, 5.29 , 4.573, 4.579, 4.672,
-       4.927, 4.294, 4.865, 5.565, 4.33 , 4.875, 5.882, 4.704, 4.546,
-       5.136, 4.998, 5.427, 4.205, 5.028, 5.053, 4.955, 4.643, 5.102,
-       5.602, 5.042, 5.082, 5.187, 4.887, 4.664, 5.157, 5.742, 5.326,
-       4.884, 5.592, 5.46 , 5.608, 4.058, 5.111, 5.908, 5.871, 4.97 ,
-       4.705, 4.589, 4.974, 4.957, 5.216, 4.902, 4.67 , 4.877, 4.895,
-       4.747, 4.281, 4.898, 4.716, 4.826, 4.485, 5.293, 5.186, 3.796,
-       5.482])
-</pre></div>
-</div>
-</div>
 </div>
 <p>このデータに対し，<code class="docutils literal notranslate"><span class="pre">np.mean</span></code>関数と<code class="docutils literal notranslate"><span class="pre">np.std</span></code>関数を用いて標本平均と標本標準偏差を求めると以下のようになった．</p>
 <div class="cell docutils container">
@@ -4060,20 +2993,10 @@ Wall time: 10.1 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.930
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.465
 </pre></div>
 </div>
 </div>
@@ -4107,17 +3030,6 @@ Wall time: 10.1 ms
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># csvファイルを読み込む</span>
 <span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;./player_England.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
 <span class="n">D</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[  3319,    180,     76],
-       [    -1,   1000,   1000],
-       [  3560,    179,     72],
-       ...,
-       [357712,    183,     92],
-       [386197,    175,     71],
-       [412919,    190,     76]])
 </pre></div>
 </div>
 </div>
@@ -4193,8 +3105,8 @@ Wall time: 10.1 ms
 <ul class="simple">
 <li><p>肥満度を表す指標としてBMIが知られている．BMIは身長と体重を用いて以下で定義される：</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-90873adf-e4dc-4a93-9ca3-20ef3cd44fff">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-90873adf-e4dc-4a93-9ca3-20ef3cd44fff" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b02b3149-6f55-4e48-9775-0918d1240acd">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-b02b3149-6f55-4e48-9775-0918d1240acd" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
     \mathrm{BMI} = \frac{体重 [kg]}{(身長 [m])^2}
 \end{align}\]</div>
 <ul class="simple">
