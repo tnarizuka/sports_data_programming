@@ -1714,6 +1714,19 @@ NumPyおよびPandasでは，列番号が増減する軸を<code class="docutils
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 0, 0],
+       [0, 0, 0]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1741,6 +1754,7 @@ NumPyおよびPandasでは，列番号が増減する軸を<code class="docutils
 </section>
 <section id="id17">
 <h4>ランダムな配列（乱数）<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">#</a></h4>
+<p>ランダムな値（乱数）を生成する関数も用意される．以下に一例を示す．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 0以上1未満の一様実数乱数を要素とする3x4配列</span>
@@ -1749,9 +1763,9 @@ NumPyおよびPandasでは，列番号が増減する軸を<code class="docutils
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.532, 0.34 , 0.099, 0.132],
-       [0.829, 1.   , 0.491, 0.509],
-       [0.716, 0.192, 0.57 , 0.11 ]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.421, 0.182, 0.227, 0.842],
+       [0.315, 0.002, 0.506, 0.941],
+       [0.54 , 0.115, 0.372, 0.097]])
 </pre></div>
 </div>
 </div>
@@ -1764,9 +1778,9 @@ NumPyおよびPandasでは，列番号が増減する軸を<code class="docutils
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[13, 17, 17, 16],
-       [16, 11, 19, 19],
-       [11, 18, 17, 16]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[14, 10, 12, 15],
+       [11, 12, 11, 14],
+       [12, 13, 17, 10]])
 </pre></div>
 </div>
 </div>
@@ -1779,9 +1793,24 @@ NumPyおよびPandasでは，列番号が増減する軸を<code class="docutils
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[4.582, 4.268, 4.674, 5.009],
-       [5.479, 4.319, 5.091, 4.665],
-       [4.145, 5.077, 5.547, 4.831]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[4.088, 5.3  , 4.997, 4.785],
+       [5.193, 4.897, 3.747, 5.182],
+       [5.211, 4.581, 6.032, 5.542]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>もし，乱数を生成する際にシードを指定したい場合は<code class="docutils literal notranslate"><span class="pre">np.random.seed</span></code>関数を用いる．
+<code class="docutils literal notranslate"><span class="pre">np.random.seed(seed=10)</span></code>のようにシード値を指定することで，再現性のある乱数を生成することができる（何度実行しても同じ乱数が生成される）．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 9, 15, 64, 28, 89, 93, 29,  8, 73,  0])
 </pre></div>
 </div>
 </div>
@@ -4013,8 +4042,8 @@ Wall time: 6.61 ms
 <ul class="simple">
 <li><p>肥満度を表す指標としてBMIが知られている．BMIは身長と体重を用いて以下で定義される：</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-e46bfc57-fb0d-45a4-ab61-cfdd2ef8fc16">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-e46bfc57-fb0d-45a4-ab61-cfdd2ef8fc16" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ef9fcf9a-6b6d-437a-ba3a-9badd98b115c">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-ef9fcf9a-6b6d-437a-ba3a-9badd98b115c" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
     \mathrm{BMI} = \frac{体重 [kg]}{(身長 [m])^2}
 \end{align}\]</div>
 <ul class="simple">
