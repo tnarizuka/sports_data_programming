@@ -1096,7 +1096,7 @@ title="Print to PDF"
 <h2><span class="section-number">3.1. </span>Numpyとは？<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">#</a></h2>
 <section id="id2">
 <h3><span class="section-number">3.1.1. </span>NumPyとは？<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>スポーツのデータセットは画像，ドキュメント，数値測定結果，など様々なフォーマットを持つが，これらは数値や文字列を格納した配列として扱うことができる．例えば，競技を撮影した動画はフレーム単位ではデジタル画像として表されている．デジタル画像は2次元配列として表され，配列の各要素が各ピクセルの輝度（RGB値）に対応している．また，選手の位置情報は <span class="math notranslate nohighlight">\((x, y, z)\)</span> の時系列データとなっているので，各座標成分の時系列データとして扱えば，2次元配列として表すことができる．</p>
+<p>スポーツのデータセットは画像，ドキュメント，座標，など様々なフォーマットを持つが，これらは数値や文字列を格納した配列として扱うことができる．例えば，試合を撮影した動画はフレーム単位ではデジタル画像として表されている．デジタル画像は2次元配列として表され，配列の各要素が各ピクセルの輝度（RGB値）に対応している．また，選手の位置座標は <span class="math notranslate nohighlight">\((x, y, z)\)</span> の時系列データとなっているので，各座標成分の時系列データとして扱えば，2次元配列として表すことができる．</p>
 <p>このように，データ分析では，数値や文字列を効率的に格納することが必要となる．Pythonには，配列を扱うためのリストという機能が標準搭載されているが，サイズの大きいデータを扱うのには不向きである．そこで，大規模な配列を高速に処理するためのライブラリとしてNumPy（ナンパイ）が用意されている．NumPyの配列はPythonの組み込みリストと似ているが，配列のサイズが大きくなるにつれて，より効率的なデータ操作ができるように設計されている．</p>
 </section>
 <section id="numpyimport">
@@ -1147,7 +1147,7 @@ title="Print to PDF"
 </div>
 </div>
 <p>NumPy配列は組み込みリストと同様に多次元配列を実現できるが，<strong>全ての要素が同じ型を持ち，各行のサイズも同じでなければならない</strong>という制約がある（データ型をobjectにすれば実現できなくもないが，これは用いるべきではない）．
-一見するとPythonの組み込みリストの方が使い勝手が良いように見えるが，Numpy配列には以下のような長所があるため，特に大規模な数値データを分析する際に用いられる．</p>
+一見するとPythonの組み込みリストの方が使い勝手が良いように見えるが，Numpy配列には以下のような長所があるため，特に大規模な数値データを分析する際に威力を発揮する．</p>
 <p><strong>1. リストに比べて高速に動作する</strong></p>
 <p>これは，Numpyの内部がC言語によって実装されていることが理由であり，特に大規模なデータを扱う際に違いが顕著になる．
 以下は0から9999まで1ずつ増える配列をリストとNumpy配列で生成する例である．</p>
@@ -3986,8 +3986,8 @@ Wall time: 6.61 ms
 <ul class="simple">
 <li><p>肥満度を表す指標としてBMIが知られている．BMIは身長と体重を用いて以下で定義される：</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-7404f24c-64a7-4b97-bf19-8337cd122c23">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-7404f24c-64a7-4b97-bf19-8337cd122c23" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-abede25b-5e2e-4be0-9f40-aa21d2c71df2">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-abede25b-5e2e-4be0-9f40-aa21d2c71df2" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
     \mathrm{BMI} = \frac{体重 [kg]}{(身長 [m])^2}
 \end{align}\]</div>
 <ul class="simple">
