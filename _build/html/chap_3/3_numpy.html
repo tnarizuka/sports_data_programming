@@ -394,7 +394,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     3.1.4. NumPy配列の型
+     3.1.4. NumPy配列のデータ型
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -448,7 +448,7 @@ title="Print to PDF"
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id16">
-       規則的な配列を作成する
+       規則的な配列を生成する
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -750,7 +750,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     3.1.4. NumPy配列の型
+     3.1.4. NumPy配列のデータ型
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -804,7 +804,7 @@ title="Print to PDF"
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id16">
-       規則的な配列を作成する
+       規則的な配列を生成する
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -1147,9 +1147,9 @@ title="Print to PDF"
 </div>
 </div>
 <p>NumPy配列は組み込みリストと同様に多次元配列を実現できるが，<strong>全ての要素が同じ型を持ち，各行のサイズも同じでなければならない</strong>という制約がある（データ型をobjectにすれば実現できなくもないが，これは用いるべきではない）．
-一見するとPythonの組み込みリストの方が使い勝手が良いように見えるが，Numpy配列には以下のような長所があるため，特に大規模な数値データを分析する際に威力を発揮する．</p>
+一見するとPythonの組み込みリストの方が使い勝手が良いように見えるが，Numpy配列には以下のような長所があるため，特に大規模な数値データを扱う際に威力を発揮する．</p>
 <p><strong>1. リストに比べて高速に動作する</strong></p>
-<p>これは，Numpyの内部がC言語によって実装されていることが理由であり，特に大規模なデータを扱う際に違いが顕著になる．
+<p>Numpyの内部はC言語によって実装されているため，特に大規模なデータを扱う際にリストとの違いが顕著になる．
 以下は0から9999まで1ずつ増える配列をリストとNumpy配列で生成する例である．</p>
 <p>※マジックコマンド<code class="docutils literal notranslate"><span class="pre">%%time</span></code>を使用することで，セル全体のコードの実行時間を測定することができる．</p>
 <div class="cell docutils container">
@@ -1164,8 +1164,8 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[   0    1    2 ... 9997 9998 9999]
-CPU times: user 1.23 ms, sys: 97 µs, total: 1.33 ms
-Wall time: 1.32 ms
+CPU times: user 947 µs, sys: 56 µs, total: 1 ms
+Wall time: 969 µs
 </pre></div>
 </div>
 </div>
@@ -1180,15 +1180,15 @@ Wall time: 1.32 ms
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[   0    1    2 ... 9997 9998 9999]
-CPU times: user 231 µs, sys: 50 µs, total: 281 µs
-Wall time: 245 µs
+CPU times: user 201 µs, sys: 32 µs, total: 233 µs
+Wall time: 208 µs
 </pre></div>
 </div>
 </div>
 </div>
 <p><strong>2. 配列全体に対する高速な演算が可能でコードがシンプル</strong></p>
-<p>この機能はユニバーサル関数と呼ばれ，配列に対して演算を行うだけでそれが各要素に適用されるので，コードがシンプルになる．
-リストで同じ結果を得るためにはfor文を用いなければならないが，pythonではループ処理が非常に遅くかつコードが煩雑になる．
+<p>この機能はユニバーサル関数と呼ばれ，配列に対して演算を行うだけでそれが各要素に適用されるのでコードがシンプルになる．
+リストで同じ結果を得るためにはfor文を使う必要があるが，pythonではループ処理が非常に遅くかつコードが煩雑になる．
 以下は，配列の各要素を2倍するコードをリストとNumpy配列で実装した例である．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1201,8 +1201,8 @@ Wall time: 245 µs
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[    0     2     4 ... 19994 19996 19998]
-CPU times: user 1.86 ms, sys: 100 µs, total: 1.96 ms
-Wall time: 1.92 ms
+CPU times: user 1.42 ms, sys: 46 µs, total: 1.47 ms
+Wall time: 1.46 ms
 </pre></div>
 </div>
 </div>
@@ -1217,14 +1217,14 @@ Wall time: 1.92 ms
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[    0     2     4 ... 19994 19996 19998]
-CPU times: user 351 µs, sys: 758 µs, total: 1.11 ms
-Wall time: 1.18 ms
+CPU times: user 212 µs, sys: 54 µs, total: 266 µs
+Wall time: 236 µs
 </pre></div>
 </div>
 </div>
 </div>
 <p><strong>3. 高速に動作する関数やメソッドが利用可能</strong></p>
-<p>例えば配列をソートしたいとき，NumPyや類似のパッケージを使わない場合は自分でソート関数を作る必要があるが，それが上手く高速に動く保証はない．
+<p>例えば配列をソートしたいとき，NumPyや類似のパッケージを使わない場合は自分でソート関数を作る必要があるが，それがエラーなく高速に動く保証はない．
 一方，NumPyには予め<code class="docutils literal notranslate"><span class="pre">np.sort</span></code>関数が用意されているためこれを用いるだけで済み，さらにアルゴリズムを選択することもできる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1235,7 +1235,7 @@ Wall time: 1.18 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([26, 30, 43, 47, 55, 64, 72, 79, 95, 99])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 2, 14, 48, 48, 62, 65, 68, 68, 72, 98])
 </pre></div>
 </div>
 </div>
@@ -1243,15 +1243,14 @@ Wall time: 1.18 ms
 </section>
 </section>
 <section id="id6">
-<h3><span class="section-number">3.1.4. </span>NumPy配列の型<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>データ型を明示的に指定したい場合には<code class="docutils literal notranslate"><span class="pre">dtype</span></code>キーワードを用いる．<code class="docutils literal notranslate"><span class="pre">dtype</span></code>で指定できる主要なデータ型は以下の通りである：</p>
+<h3><span class="section-number">3.1.4. </span>NumPy配列のデータ型<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">np.array</span></code>関数でデータ型を明示的に指定したい場合には<code class="docutils literal notranslate"><span class="pre">dtype</span></code>キーワードを用いる．<code class="docutils literal notranslate"><span class="pre">dtype</span></code>で指定できる主要なデータ型は以下の通りである：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">int</span></code>（整数）</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">float</span></code>（浮動小数点数）</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>（0か1）</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">str</span></code>（文字列）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>（真偽値：<code class="docutils literal notranslate"><span class="pre">True</span></code>／<code class="docutils literal notranslate"><span class="pre">False</span></code>）</p></li>
 </ul>
-<p>より詳しく<code class="docutils literal notranslate"><span class="pre">float64</span></code>のようにビット長を指定することもできるが省略するとデフォルトのビット長が指定される．なお，文字列を扱いたい場合はリストかPandasを用いるのが良い．</p>
+<p>より詳しく<code class="docutils literal notranslate"><span class="pre">float64</span></code>のようにビット長を指定することもできるが省略するとデフォルトのビット長が指定される．なお，文字列を扱いたい場合はNumpyではなくリストかPandasを用いるのが良い．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
@@ -1278,7 +1277,7 @@ Wall time: 1.18 ms
 </div>
 </div>
 </div>
-<p>データ型を変更したい場合は<code class="docutils literal notranslate"><span class="pre">astype</span></code>メソッドを用いる．</p>
+<p>既存のNumPy配列に対してデータ型を変更したい場合は<code class="docutils literal notranslate"><span class="pre">astype</span></code>メソッドを用いる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># データ型を整数に変更</span>
@@ -1397,7 +1396,7 @@ float64
 </section>
 <section id="id9">
 <h2><span class="section-number">3.2. </span>ベクトルと行列について<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">#</a></h2>
-<p>データ分析をする上でベクトルと行列の演算は避けて通ることができない．実は，NumPyはベクトルや行列を扱うためのパッケージといっても過言ではない．以下，ベクトルと行列について簡単に説明する．</p>
+<p>データ分析をする上でベクトルと行列の演算（つまり線形代数）は避けて通ることができない．実は，NumPyはベクトルや行列を扱うためのパッケージといっても過言ではない．以下，ベクトルと行列について簡単に説明する．</p>
 <section id="id10">
 <h3><span class="section-number">3.2.1. </span>ベクトル<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>以下のように数字を1方向に並べたものをベクトルと呼ぶ：</p>
@@ -1483,7 +1482,7 @@ float64
 \right)
 \]</div>
 <p>これらを<strong>行</strong>と呼び，それぞれを0から始まる行番号によって0行，1行，2行などという．
-NumPyおよびPandasでは，行番号が増減する方向を<code class="docutils literal notranslate"><span class="pre">axis=0</span></code>と表す．</p>
+NumPyおよびPandasでは，行番号が増減する軸を<code class="docutils literal notranslate"><span class="pre">axis=0</span></code>と表す．</p>
 <p>一方，行列を縦方向に切ると</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1510,9 +1509,9 @@ NumPyおよびPandasでは，行番号が増減する方向を<code class="docut
     \right)
 \end{split}\]</div>
 <p>に分割することができる．
-これを<strong>列</strong>と呼び，それぞれを0から始まる列番号によって0列，1列，2列などという．
-NumPyおよびPandasでは，列番号が増減する方向を<code class="docutils literal notranslate"><span class="pre">axis=1</span></code>と表す．</p>
-<p>行列の形状は行数と列数の組み合わせで <span class="math notranslate nohighlight">\( 3\times 3 \)</span> 行列などと表す（１つ目の3は行数，２つ目の3は列数）．また，行列の成分は行番号 <span class="math notranslate nohighlight">\( i \)</span> と列番号 <span class="math notranslate nohighlight">\( j \)</span> を用いて <span class="math notranslate nohighlight">\( (i, j) \)</span> 成分などと表す．例えば，上の行列の <span class="math notranslate nohighlight">\((0, 1)\)</span> 成分は2である．</p>
+これを<strong>列</strong>と呼び，0から始まる列番号によって0列，1列，2列などという．
+NumPyおよびPandasでは，列番号が増減する軸を<code class="docutils literal notranslate"><span class="pre">axis=1</span></code>と表す．</p>
+<p>行列の形状は行数と列数の組み合わせで <span class="math notranslate nohighlight">\( 3\times 3 \)</span> 行列などと表す（1つ目の3は行数，2つ目の3は列数）．また，行列の成分は行番号 <span class="math notranslate nohighlight">\( i \)</span> と列番号 <span class="math notranslate nohighlight">\( j \)</span> を用いて <span class="math notranslate nohighlight">\( (i, j) \)</span> 成分などと表す．例えば，上の行列の <span class="math notranslate nohighlight">\((0, 1)\)</span> 成分は2である．</p>
 <p>行列は2次元のNumPy配列によって以下のように実現できる：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1538,10 +1537,10 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </section>
 <section id="id12">
 <h2><span class="section-number">3.3. </span>NumPy配列の生成<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">#</a></h2>
-<p>NumPy配列を生成するには，リストを変換する方法と配列生成関数を使う方法がある．</p>
+<p>NumPy配列を生成するには，主にリストを変換する方法と配列生成関数を使う方法がある．</p>
 <section id="id13">
 <h3><span class="section-number">3.3.1. </span>リストを変換する<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>リストからNumPy配列を作るには，<code class="docutils literal notranslate"><span class="pre">np.array()</span></code>を用いる</p>
+<p>リストからNumPy配列を作るには，<code class="docutils literal notranslate"><span class="pre">np.array</span></code>関数を用いる</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
@@ -1585,13 +1584,23 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </section>
 <section id="id14">
 <h3><span class="section-number">3.3.2. </span>配列生成関数を使う<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>予めリストが与えられた場合や配列の要素が分かっていてサイズが小さい場合には上の方法で問題ないが，それ以外の場合にはNumPyの配列生成関数を利用するのが良い．</p>
+<p>予めリストが与えられている場合や配列の要素が分かっていてサイズが小さい場合には上の方法で問題ないが，それ以外の場合にはNumPyの配列生成関数を利用するのが良い．</p>
 <section id="id15">
 <h4>等間隔の数列を作成する<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">#</a></h4>
-<p>まず，等間隔の数列を作る関数として，<code class="docutils literal notranslate"><span class="pre">np.arange()</span></code>と<code class="docutils literal notranslate"><span class="pre">np.linspace()</span></code>がある．
-前者は<code class="docutils literal notranslate"><span class="pre">np.arange(start,</span> <span class="pre">end,</span> <span class="pre">step)</span></code>で<code class="docutils literal notranslate"><span class="pre">start</span></code>以上<code class="docutils literal notranslate"><span class="pre">end</span></code>未満の範囲で<code class="docutils literal notranslate"><span class="pre">step</span></code>間隔の数列を生成する．
-後者は<code class="docutils literal notranslate"><span class="pre">np.linspace(start,</span> <span class="pre">end,</span> <span class="pre">num)</span></code>で<code class="docutils literal notranslate"><span class="pre">start</span></code>から<code class="docutils literal notranslate"><span class="pre">end</span></code>の間を<code class="docutils literal notranslate"><span class="pre">num</span></code>等分した数列を生成する．
-この２つはNumPyの関数の中でも特に多用するので覚えたほうが良い．</p>
+<p>まず，等間隔の数列を作る関数として，<code class="docutils literal notranslate"><span class="pre">np.arange()</span></code>と<code class="docutils literal notranslate"><span class="pre">np.linspace()</span></code>がある．</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">np.arange(start,</span> <span class="pre">end,</span> <span class="pre">step)</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">start</span></code>以上<code class="docutils literal notranslate"><span class="pre">end</span></code>未満の範囲で<code class="docutils literal notranslate"><span class="pre">step</span></code>間隔の数列を生成する．</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.linspace(start,</span> <span class="pre">end,</span> <span class="pre">num)</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">start</span></code>から<code class="docutils literal notranslate"><span class="pre">end</span></code>の間を<code class="docutils literal notranslate"><span class="pre">num</span></code>等分した数列を生成する．</p></li>
+</ul>
+</li>
+</ul>
+<p>この２つはNumPyの関数の中でも特に多用するので覚えておいた方が良い．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 0以上20未満の範囲で2ずつ増加する数列</span>
@@ -1633,7 +1642,25 @@ NumPyおよびPandasでは，列番号が増減する方向を<code class="docut
 </div>
 </section>
 <section id="id16">
-<h4>規則的な配列を作成する<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">#</a></h4>
+<h4>規則的な配列を生成する<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">#</a></h4>
+<p>以下のように，規則的な配列（全ての要素が同じ値であるなど）を生成する関数も用意されている：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">np.zeros(shape)</span></code></p>
+<ul>
+<li><p>全ての要素が0の<code class="docutils literal notranslate"><span class="pre">shape</span></code>形状の配列を生成する．</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.ones(shape)</span></code></p>
+<ul>
+<li><p>全ての要素が1の<code class="docutils literal notranslate"><span class="pre">shape</span></code>形状の配列を生成する．</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.full(shape,</span> <span class="pre">fill_value)</span></code></p>
+<ul>
+<li><p>全ての要素が<code class="docutils literal notranslate"><span class="pre">fill_value</span></code>の<code class="docutils literal notranslate"><span class="pre">shape</span></code>形状の配列を生成する．</p></li>
+</ul>
+</li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 要素が全て0である長さ10の整数配列</span>
@@ -3986,8 +4013,8 @@ Wall time: 6.61 ms
 <ul class="simple">
 <li><p>肥満度を表す指標としてBMIが知られている．BMIは身長と体重を用いて以下で定義される：</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-abede25b-5e2e-4be0-9f40-aa21d2c71df2">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-abede25b-5e2e-4be0-9f40-aa21d2c71df2" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e46bfc57-fb0d-45a4-ab61-cfdd2ef8fc16">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-e46bfc57-fb0d-45a4-ab61-cfdd2ef8fc16" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
     \mathrm{BMI} = \frac{体重 [kg]}{(身長 [m])^2}
 \end{align}\]</div>
 <ul class="simple">
