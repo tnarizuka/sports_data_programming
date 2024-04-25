@@ -1819,7 +1819,7 @@ NumPyおよびPandasでは，列番号が増減する軸を<code class="docutils
 </section>
 <section id="id18">
 <h3><span class="section-number">3.3.3. </span>演習問題<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>以下の配列を作成せよ：</p>
+<p>以下の配列を生成せよ：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 0から100まで2ずつ増加する数列</span>
 <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
 </pre></div>
@@ -1845,7 +1845,7 @@ NumPyおよびPandasでは，列番号が増減する軸を<code class="docutils
 </div>
 </div>
 </div>
-<p>以下の配列を作成せよ：</p>
+<p>以下の配列を生成せよ：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 要素が全て5である3x4配列</span>
 <span class="p">[[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
  <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
@@ -1873,7 +1873,7 @@ NumPyおよびPandasでは，列番号が増減する軸を<code class="docutils
 </div>
 </div>
 </div>
-<p>以下の配列をNumPyを使って作成せよ</p>
+<p>以下の配列をNumPyを使って生成せよ</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># -1以上1未満の範囲で0.1ずつ増加する配列</span>
@@ -1916,7 +1916,7 @@ NumPyおよびPandasでは，列番号が増減する軸を<code class="docutils
 </div>
 </div>
 </div>
-<p>以下の配列<code class="docutils literal notranslate"><span class="pre">x</span></code>と同じ形状の配列を作成せよ</p>
+<p>以下の配列<code class="docutils literal notranslate"><span class="pre">x</span></code>と同じ形状の配列を生成せよ</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
@@ -1989,9 +1989,8 @@ NumPyおよびPandasでは，列番号が増減する軸を<code class="docutils
 <p>配列中の要素が先頭から何番目かを表す番号を<strong>インデックス</strong>と呼ぶ．
 1次元配列は1つのインデックス，2次元配列は2つのインデックス（行番号と列番号に対応するインデックス）によって指定する．
 Pythonでは<strong>インデックスが0から始まる</strong>ことに注意する．</p>
-<p>インデックスを用いると，配列の１部分を取り出すことができる．
-これを<strong>インデックス参照</strong>と呼ぶ．
-NumPy配列に対するインデックス参照の方法はPythonリストの場合と同様であり，必要なインデックスを角カッコ<code class="docutils literal notranslate"><span class="pre">[]</span></code>で指定することで <span class="math notranslate nohighlight">\(i\)</span> 番目要素にアクセスできる．</p>
+<p>インデックスを用いて配列の一部分を取り出すことを<strong>インデックス参照</strong>と呼ぶ．
+NumPy配列に対するインデックス参照の方法はリストと同様であり，必要なインデックスを角カッコ<code class="docutils literal notranslate"><span class="pre">[]</span></code>で指定することで <span class="math notranslate nohighlight">\(i\)</span> 番目要素にアクセスできる．</p>
 <section id="id21">
 <h4>1次元配列の場合<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">#</a></h4>
 <div class="cell docutils container">
@@ -2107,7 +2106,7 @@ NumPy配列に対するインデックス参照の方法はPythonリストの場
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0,  2,  2, 91, 65, 45, 87,  1, 23, 50])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([40, 36, 16, 11, 54, 88, 62, 33, 72, 78])
 </pre></div>
 </div>
 </div>
@@ -2120,7 +2119,7 @@ NumPy配列に対するインデックス参照の方法はPythonリストの場
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([91, 65,  1])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([11, 54, 33])
 </pre></div>
 </div>
 </div>
@@ -2133,11 +2132,11 @@ NumPy配列に対するインデックス参照の方法はPythonリストの場
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[86, 19, 54, 24, 64],
-       [77, 73,  1,  9, 64],
-       [23, 39, 68, 81, 91],
-       [36, 97, 87, 69, 36],
-       [18, 34, 30, 77, 97]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[49, 51, 54, 77, 69],
+       [13, 25, 13, 92, 86],
+       [30, 30, 89, 12, 65],
+       [31, 57, 36, 27, 18],
+       [93, 77, 22, 23, 94]])
 </pre></div>
 </div>
 </div>
@@ -2150,8 +2149,8 @@ NumPy配列に対するインデックス参照の方法はPythonリストの場
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[86, 19, 54, 24, 64],
-       [23, 39, 68, 81, 91]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[49, 51, 54, 77, 69],
+       [30, 30, 89, 12, 65]])
 </pre></div>
 </div>
 </div>
@@ -2161,11 +2160,11 @@ NumPy配列に対するインデックス参照の方法はPythonリストの場
 <section id="id24">
 <h3><span class="section-number">3.4.2. </span>配列のスライス<a class="headerlink" href="#id24" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>配列中の連続する要素を取り出す操作を<strong>スライス</strong>と呼ぶ．
-NumPyでは，以下のようなコロン<code class="docutils literal notranslate"><span class="pre">:</span></code>を用いた表記により配列の１部分にアクセスすることができる：</p>
+NumPyでは，以下のようなコロン<code class="docutils literal notranslate"><span class="pre">:</span></code>を用いた表記により配列の連続する要素を取り出すことができる：</p>
 <p><code class="docutils literal notranslate"><span class="pre">x[i_start:</span> <span class="pre">i_end:</span> <span class="pre">step]</span></code></p>
 <p>ここで，<code class="docutils literal notranslate"><span class="pre">i_start</span></code>は始めのインデックス，<code class="docutils literal notranslate"><span class="pre">i_end</span></code>は終わりのインデックス，<code class="docutils literal notranslate"><span class="pre">step</span></code>は間隔を表す．
 <code class="docutils literal notranslate"><span class="pre">i_start</span></code>，<code class="docutils literal notranslate"><span class="pre">i_end</span></code>，<code class="docutils literal notranslate"><span class="pre">step</span></code>のいずれかが指定されていない場合はデフォルト値として，<code class="docutils literal notranslate"><span class="pre">i_start=0</span></code>，<code class="docutils literal notranslate"><span class="pre">i_end=その次元のsize</span></code>，<code class="docutils literal notranslate"><span class="pre">step=1</span></code>が指定される．
-通常はstepを省略する．</p>
+通常は<code class="docutils literal notranslate"><span class="pre">step</span></code>を省略する．</p>
 <section id="id25">
 <h4>1次元配列のスライス<a class="headerlink" href="#id25" title="このヘッドラインへのパーマリンク">#</a></h4>
 <div class="cell docutils container">
@@ -2382,7 +2381,7 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 <section id="id29">
 <h3><span class="section-number">3.4.3. </span>配列への代入<a class="headerlink" href="#id29" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>インデックス参照やスライスによって抽出した配列要素に代入すると，元の配列が変更される．
-この機能を用いると，NumPy配列の１部分を変更することができる．</p>
+この機能を用いると，NumPy配列の一部分を変更することができる．</p>
 <section id="id30">
 <h4>1次元の場合<a class="headerlink" href="#id30" title="このヘッドラインへのパーマリンク">#</a></h4>
 <div class="cell docutils container">
@@ -4042,8 +4041,8 @@ Wall time: 6.61 ms
 <ul class="simple">
 <li><p>肥満度を表す指標としてBMIが知られている．BMIは身長と体重を用いて以下で定義される：</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-ef9fcf9a-6b6d-437a-ba3a-9badd98b115c">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-ef9fcf9a-6b6d-437a-ba3a-9badd98b115c" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a7a1d5d2-192b-4e11-b2be-de43325ab268">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-a7a1d5d2-192b-4e11-b2be-de43325ab268" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
     \mathrm{BMI} = \frac{体重 [kg]}{(身長 [m])^2}
 \end{align}\]</div>
 <ul class="simple">
