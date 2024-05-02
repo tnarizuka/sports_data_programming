@@ -2032,7 +2032,7 @@ NumPy配列に対するインデックス参照の方法はリストと同様で
 </div>
 </div>
 </div>
-<p>配列の末尾からi番目の要素にアクセスするには負のインデックスを用いる．</p>
+<p>配列の末尾から <span class="math notranslate nohighlight">\( i \)</span> 番目の要素にアクセスするには負のインデックスを用いる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 末尾の要素</span>
@@ -2095,7 +2095,7 @@ NumPy配列に対するインデックス参照の方法はリストと同様で
 </section>
 <section id="id23">
 <h4>複数要素の参照（ファンシーインデックス参照）<a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">#</a></h4>
-<p>インデックス参照の際に複数のインデックスをまとめて指定することができる．
+<p>インデックス参照の際にインデックスをリストにすることで，複数の要素をまとめて参照することができる．
 これをファンシーインデックス参照と呼ぶ．
 詳しくは付録を参照のこと：<a class="reference internal" href="../appendix/appendix.html#numpy-fancy-index"><span class="std std-ref">ファンシーインデックス参照</span></a></p>
 <div class="cell docutils container">
@@ -2106,7 +2106,7 @@ NumPy配列に対するインデックス参照の方法はリストと同様で
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([40, 36, 16, 11, 54, 88, 62, 33, 72, 78])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([73, 27, 80, 69, 72, 44, 75,  2,  9,  3])
 </pre></div>
 </div>
 </div>
@@ -2119,7 +2119,7 @@ NumPy配列に対するインデックス参照の方法はリストと同様で
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([11, 54, 33])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([69, 72,  2])
 </pre></div>
 </div>
 </div>
@@ -2132,11 +2132,11 @@ NumPy配列に対するインデックス参照の方法はリストと同様で
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[49, 51, 54, 77, 69],
-       [13, 25, 13, 92, 86],
-       [30, 30, 89, 12, 65],
-       [31, 57, 36, 27, 18],
-       [93, 77, 22, 23, 94]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[92, 70, 73, 37, 77],
+       [10, 64, 60, 63, 17],
+       [21, 97,  7, 48, 46],
+       [29, 91, 18, 60, 66],
+       [56, 27,  4, 38, 55]])
 </pre></div>
 </div>
 </div>
@@ -2149,8 +2149,8 @@ NumPy配列に対するインデックス参照の方法はリストと同様で
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[49, 51, 54, 77, 69],
-       [30, 30, 89, 12, 65]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[92, 70, 73, 37, 77],
+       [21, 97,  7, 48, 46]])
 </pre></div>
 </div>
 </div>
@@ -2234,7 +2234,7 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># インデックス1からスタートして1つおき</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># インデックス1からスタートして1つおき（endの省略）</span>
 <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -2297,7 +2297,7 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </section>
 <section id="id27">
 <h4>行の抽出<a class="headerlink" href="#id27" title="このヘッドラインへのパーマリンク">#</a></h4>
-<p>２次元配列で行を抽出する場合には単に行番号を指定するだけで良い．</p>
+<p>2次元配列で行を抽出する場合には単に行番号を指定するだけで良い．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 第1行</span>
@@ -2345,7 +2345,7 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </section>
 <section id="id28">
 <h4>列の抽出<a class="headerlink" href="#id28" title="このヘッドラインへのパーマリンク">#</a></h4>
-<p>２次元配列で列を抽出する場合には，行方向にはコロン<code class="docutils literal notranslate"><span class="pre">：</span></code>を指定し，列方向に抽出したい列番号を指定する．</p>
+<p>2次元配列で列を抽出する場合には，行方向にはコロン<code class="docutils literal notranslate"><span class="pre">：</span></code>を指定し，列方向に抽出したい列番号を指定する．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 第0列</span>
@@ -2668,7 +2668,7 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ブールインデックスの取得</span>
-<span class="n">x_bool</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">&lt;</span> <span class="mi">50</span>
+<span class="n">x_bool</span> <span class="o">=</span> <span class="p">(</span><span class="n">x1</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">)</span>
 <span class="n">x_bool</span>
 </pre></div>
 </div>
@@ -3060,8 +3060,8 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49.4999793
-CPU times: user 1.01 s, sys: 887 µs, total: 1.01 s
-Wall time: 1.03 s
+CPU times: user 1.06 s, sys: 4.29 ms, total: 1.07 s
+Wall time: 1.09 s
 </pre></div>
 </div>
 </div>
@@ -3076,8 +3076,8 @@ Wall time: 1.03 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 6.6 ms, sys: 474 µs, total: 7.08 ms
-Wall time: 6.61 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 7.05 ms, sys: 643 µs, total: 7.69 ms
+Wall time: 6.94 ms
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49.500
@@ -3918,10 +3918,20 @@ Wall time: 6.61 ms
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.930
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.465
 </pre></div>
 </div>
 </div>
@@ -4041,8 +4051,8 @@ Wall time: 6.61 ms
 <ul class="simple">
 <li><p>肥満度を表す指標としてBMIが知られている．BMIは身長と体重を用いて以下で定義される：</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-a7a1d5d2-192b-4e11-b2be-de43325ab268">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-a7a1d5d2-192b-4e11-b2be-de43325ab268" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8037ec3d-3086-4831-90d5-5cd3dd9b3187">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-8037ec3d-3086-4831-90d5-5cd3dd9b3187" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
     \mathrm{BMI} = \frac{体重 [kg]}{(身長 [m])^2}
 \end{align}\]</div>
 <ul class="simple">
