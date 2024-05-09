@@ -3031,7 +3031,7 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 <h2><span class="section-number">3.7. </span>NumPy配列の演算<a class="headerlink" href="#id40" title="このヘッドラインへのパーマリンク">#</a></h2>
 <section id="ufunc">
 <h3><span class="section-number">3.7.1. </span>ユニバーサル関数（ufunc）<a class="headerlink" href="#ufunc" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>NumPy配列の演算（加減乗除など）はリストと同じように<code class="docutils literal notranslate"><span class="pre">for</span></code>文などで実装すると非常に低速になってしまう．そこで，高速な演算が可能な<strong>ユニバーサル関数</strong>が用意されている．これは，<strong>配列に対して１つの関数を実行するだけで，全ての要素に対して演算が行われる機能</strong>である．例えば，以下のように1000万個の数値が格納された1次元のNumPy配列があるとする．</p>
+<p>NumPy配列の演算（加減乗除など）は，<code class="docutils literal notranslate"><span class="pre">for</span></code>文で実装すると非常に低速になってしまう．そこで，高速な演算が可能な<strong>ユニバーサル関数</strong>が用意されている．これは，<strong>配列に対して１つの関数を実行するだけで，全ての要素に対して演算が行われる機能</strong>である．例えば，以下のように1000万個の数値が格納された1次元のNumPy配列があるとする．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
@@ -3060,8 +3060,8 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49.4999793
-CPU times: user 1.06 s, sys: 4.29 ms, total: 1.07 s
-Wall time: 1.09 s
+CPU times: user 963 ms, sys: 4.57 ms, total: 967 ms
+Wall time: 972 ms
 </pre></div>
 </div>
 </div>
@@ -3076,8 +3076,8 @@ Wall time: 1.09 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 7.05 ms, sys: 643 µs, total: 7.69 ms
-Wall time: 6.94 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 6.05 ms, sys: 513 µs, total: 6.56 ms
+Wall time: 5.92 ms
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49.500
@@ -3092,8 +3092,8 @@ Wall time: 6.94 ms
 <h3><span class="section-number">3.7.2. </span>配列の演算規則<a class="headerlink" href="#id41" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>NumPy配列の演算規則は以下のようにまとめられる：</p>
 <ul class="simple">
-<li><p>NumPy配列と数値の演算は，配列の全ての要素に演算が適用される</p></li>
-<li><p>同じ形状を持つ２つの配列の演算は，<strong>各配列の同じ要素同士で演算が行われる</strong>．</p></li>
+<li><p>NumPy配列と数値の演算では，配列の全ての要素に演算が適用される</p></li>
+<li><p>同じ形状を持つ２つの配列の演算では，<strong>各配列の同じ要素同士で演算が行われる</strong>．</p></li>
 <li><p>異なる形状を持つ配列の演算には特別な規則（<strong>ブロードキャスト</strong>）が適用される．
 ※ 詳しくは付録を参照のこと：<a class="reference internal" href="../appendix/appendix.html#numpy-fancy-index"><span class="std std-ref">ファンシーインデックス参照</span></a></p></li>
 </ul>
@@ -3216,7 +3216,7 @@ Wall time: 6.94 ms
 </section>
 <section id="id43">
 <h4>同じ形状を持つ配列間の演算<a class="headerlink" href="#id43" title="このヘッドラインへのパーマリンク">#</a></h4>
-<p>次に，同じ形状をもつ２つの配列の演算は，<strong>各配列の同じ要素同士で演算が行われる</strong>．</p>
+<p>次に，同じ形状をもつ２つの配列の演算では，<strong>各配列の同じ要素同士で演算が行われる</strong>．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 配列の生成</span>
@@ -4051,8 +4051,8 @@ Wall time: 6.94 ms
 <ul class="simple">
 <li><p>肥満度を表す指標としてBMIが知られている．BMIは身長と体重を用いて以下で定義される：</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-8037ec3d-3086-4831-90d5-5cd3dd9b3187">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-8037ec3d-3086-4831-90d5-5cd3dd9b3187" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-98b9b692-b447-405b-ad2d-992846dfa688">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-98b9b692-b447-405b-ad2d-992846dfa688" title="この数式へのパーマリンク">#</a></span>\[\begin{align}
     \mathrm{BMI} = \frac{体重 [kg]}{(身長 [m])^2}
 \end{align}\]</div>
 <ul class="simple">
