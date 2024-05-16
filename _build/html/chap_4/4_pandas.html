@@ -658,9 +658,6 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="c1"># 日本語フォントの設定（Mac:&#39;Hiragino Sans&#39;, Windows:&#39;MS Gothic&#39;）</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;MS Gothic&#39;</span>
-
 <span class="c1"># 表示設定</span>
 <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.precision&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>    <span class="c1"># 小数点以下の表示桁</span>
@@ -784,11 +781,10 @@ title="Print to PDF"
 </table>
 </div></div></div>
 </div>
-<p>このデータは１つの行が１イベントに対応しており，0から3までの行ラベル（<strong>＝index</strong>）が付与されている．
+<p>このデータは１つの行が１イベントに対応しており，<code class="docutils literal notranslate"><span class="pre">A</span></code>から<code class="docutils literal notranslate"><span class="pre">D</span></code>までの行ラベル（<strong>＝index</strong>）が付与されている．
 また，各列には時刻（整数型），選手名（文字列型），位置座標（浮動小数点型），など異なるデータ型が混在しており，それぞれに<code class="docutils literal notranslate"><span class="pre">'t'</span></code>，<code class="docutils literal notranslate"><span class="pre">'player'&quot;</span></code>，<code class="docutils literal notranslate"><span class="pre">'position'</span></code>，<code class="docutils literal notranslate"><span class="pre">'x'</span></code>，<code class="docutils literal notranslate"><span class="pre">'y'</span></code>という列ラベル（<strong>＝columns</strong>）が付与されている．
-このデータを処理するためには，NumPyではなくPandasを用いた方が便利そうだと直感的に分かるだろう．</p>
-<!-- また，トラッキングデータには様々な選手の位置座標が時系列として記録されており，多くの欠損値を含む．このようなデータを処理するためには，NumPyを用いるよりも上に挙げた機能を備えたPandasを用いる方が便利である． -->
-<p>なお，ラベルの付いていない巨大な数値データを扱いたい場合や3次元以上の数値データを扱いたい場合など，NumPyを用いた方が良い場面ももちろんある．
+このデータを処理するためには，NumPyではなくPandasを用いた方が便利そうだと分かるだろう．
+なお，ラベルの付いていない巨大な数値データを扱いたい場合や3次元以上の数値データを扱いたい場合など，NumPyを用いた方が良い場面ももちろんある．
 また，データの可視化はPandasでもできるが，より多機能なMatplotlibを用いることを推奨する．</p>
 </section>
 </section>
@@ -815,7 +811,7 @@ DataFrameは（Excelのような）テーブル形式の構造を持ち，以下
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>の第１引数<code class="docutils literal notranslate"><span class="pre">data</span></code>にはリスト，NumPy配列，辞書などを指定できる．
+<p>第１引数<code class="docutils literal notranslate"><span class="pre">data</span></code>にはリスト，NumPy配列，辞書などを指定できる．
 また，オプションとして，行ラベルを表す<code class="docutils literal notranslate"><span class="pre">index</span></code>と列ラベルを表す<code class="docutils literal notranslate"><span class="pre">columns</span></code>を指定することができる．</p>
 <p><strong>リスト・NumPy配列の変換</strong></p>
 <div class="cell docutils container">
@@ -919,7 +915,7 @@ DataFrameは（Excelのような）テーブル形式の構造を持ち，以下
 </div></div></div>
 </div>
 <p><strong>辞書の変換</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">data</span></code>として辞書を指定すると，辞書のkeyが列ラベル<code class="docutils literal notranslate"><span class="pre">columns</span></code>となる．
+<p>第１引数に辞書を指定すると，辞書のkeyが列ラベル<code class="docutils literal notranslate"><span class="pre">columns</span></code>となる．
 行ラベル<code class="docutils literal notranslate"><span class="pre">index</span></code>はオプションとして指定する．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1066,9 +1062,9 @@ Pandasでは，空白値の他，pythonの組み込み定数である<code class
 </section>
 <section id="id5">
 <h3><span class="section-number">4.2.3. </span>DataFrameのファイル入出力<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>Pandasでデータ分析を行う場合，外部のファイルから直接データを読み込んだり，整形したデータを改めてファイルに保存することが多い．特に，データ分析で最もよく用いられるのがcsv形式のファイルである．csvとはカンマで区切られたテキストファイルを指す略称で，Excelで編集することもできる．</p>
+<p>Pandasでデータ分析を行う場合，外部のファイルから直接データを読み込んだり，整形したデータを改めてファイルに保存することが多い．特に，データ分析でよく用いられるのがcsv形式のファイルである．csvとはカンマで区切られたテキストファイルを指す略称で，Excelで編集することもできる．</p>
 <p><strong>csvファイルに保存する</strong></p>
-<p>まず，DataFrameをcsvファイルに保存するには，以下のように<code class="docutils literal notranslate"><span class="pre">to_csv</span></code>メソッドを用いる：</p>
+<p>まず，DataFrameをcsvファイルに保存するには，<code class="docutils literal notranslate"><span class="pre">to_csv</span></code>メソッドを用いる：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;***.csv&#39;</span><span class="p">,</span>  <span class="n">option</span><span class="p">)</span>
 </pre></div>
 </div>
