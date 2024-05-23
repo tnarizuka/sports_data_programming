@@ -1336,13 +1336,11 @@ dtype: object
 <section id="id7">
 <h3><span class="section-number">4.2.5. </span>DataFrameの参照<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>DataFrameも，NumPy配列のように配列の一部分を参照することができる．
-ただし，DataFrameには行番号・列番号の他に，行ラベル・列ラベルが存在するため，以下のようにこれらを区別する必要がある：
-DataFrameの一部分を参照する方法として，主に以下がある：</p>
+ただし，DataFrameには行番号・列番号の他に，行ラベル・列ラベルが存在するため，以下のようにこれらを区別する：</p>
 <ul class="simple">
-<li><p>行・列番号による参照：<code class="docutils literal notranslate"><span class="pre">iloc</span></code>属性（NumPyのインデックス参照と同じ）</p></li>
-<li><p>行・列ラベルによる参照：<code class="docutils literal notranslate"><span class="pre">loc</span></code>属性，角括弧<code class="docutils literal notranslate"><span class="pre">[]</span></code></p></li>
+<li><p>行・列番号によって参照する方法：<code class="docutils literal notranslate"><span class="pre">iloc</span></code>属性（NumPyのインデックス参照と同じ）</p></li>
+<li><p>行・列ラベルによって参照する方法：<code class="docutils literal notranslate"><span class="pre">loc</span></code>属性，角括弧<code class="docutils literal notranslate"><span class="pre">[]</span></code></p></li>
 </ul>
-<p>このうち，<code class="docutils literal notranslate"><span class="pre">loc</span></code>属性を用いたラベルによる参照はPandas特有であり，かつ頻繁に使用するので必ず理解したほうが良い．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># csvファイルをDataFrameに読み込む</span>
@@ -1410,11 +1408,11 @@ DataFrameの一部分を参照する方法として，主に以下がある：</
 </div></div></div>
 </div>
 <p><strong>行・列番号による参照：<code class="docutils literal notranslate"><span class="pre">iloc</span></code>属性</strong></p>
-<p>0から始まる要素番号（行番号と列番号）によって参照を行うには以下のように<code class="docutils literal notranslate"><span class="pre">iloc</span></code>属性を用いる：</p>
+<p>DataFrameを行番号と列番号によって参照するには以下のように<code class="docutils literal notranslate"><span class="pre">iloc</span></code>属性を用いる：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">行番号</span><span class="p">,</span> <span class="n">列番号</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>これは，基本的にNumPyのインデックス参照と同様であり，スライスにも対応している．</p>
+<p>これは，基本的にNumPyのインデックス参照と同じ機能であり，スライスにも対応している．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 第1行の参照（列番号は省略可）</span>
@@ -1434,7 +1432,7 @@ Name: B, dtype: object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 第1列の参照</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 第1列の参照（行番号に:を指定）</span>
 <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1451,7 +1449,7 @@ Name: player, dtype: object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 第1~3行の参照（スライス）</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 第1~3行のスライス（列番号は省略）</span>
 <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1507,7 +1505,62 @@ Name: player, dtype: object
 </table>
 </div></div></div>
 </div>
-<p>複数の行番号，列番号を指定するには角括弧<code class="docutils literal notranslate"><span class="pre">[]</span></code>を二重にする．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 第1~2列のスライス（行番号に:を指定）</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>player</th>
+      <th>x</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>ozora</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>misaki</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>wakabayashi</td>
+      <td>10.5</td>
+    </tr>
+    <tr>
+      <th>D</th>
+      <td>hyuga</td>
+      <td>32.5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>複数の行番号，列番号はリストで指定する（角括弧<code class="docutils literal notranslate"><span class="pre">[]</span></code>を二重にする）．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 第1行と3行の参照</span>
@@ -1616,7 +1669,7 @@ Name: player, dtype: object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 第0列〜2列の参照</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 第0列〜2列の参照（スライス）</span>
 <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1747,7 +1800,7 @@ Name: player, dtype: object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># &#39;A&#39;行を参照（列ラベルは省略可）</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># &#39;A&#39;行を参照（列ラベルは省略）</span>
 <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1764,7 +1817,7 @@ Name: A, dtype: object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 複数の行を参照（角括弧を二重にする）</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 複数の行はリストで指定する（角括弧を二重にする）</span>
 <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
@@ -1815,7 +1868,7 @@ Name: A, dtype: object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 複数の列を参照</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 複数の列を参照（行ラベルに:を指定する）</span>
 <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
@@ -1928,7 +1981,7 @@ Name: A, dtype: object
 </div>
 <p><strong>角括弧<code class="docutils literal notranslate"><span class="pre">[]</span></code>による列の抽出</strong></p>
 <p>角括弧を使って<code class="docutils literal notranslate"><span class="pre">df['t']</span></code>とすることで<code class="docutils literal notranslate"><span class="pre">'t'</span></code>というラベルの列を取り出すことができる．
-ただし，ラベルを用いて列を抽出する場合に限る．</p>
+ただし，列ラベルを用いて列を抽出する場合に限る．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># &#39;t&#39;列の参照（df.loc[:, &#39;t&#39;]と同じ）</span>
@@ -2146,12 +2199,22 @@ Name: t, dtype: int64
       <th></th>
       <th>name</th>
       <th>team_id</th>
-      <th>...</th>
+      <th>role</th>
+      <th>height</th>
+      <th>weight</th>
+      <th>foot</th>
+      <th>nationality</th>
+      <th>birth_area</th>
       <th>birthday</th>
       <th>league</th>
     </tr>
     <tr>
       <th>player_id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -2164,7 +2227,12 @@ Name: t, dtype: int64
       <th>3319</th>
       <td>M_Özil</td>
       <td>1609</td>
-      <td>...</td>
+      <td>MD</td>
+      <td>180.0</td>
+      <td>76.0</td>
+      <td>left</td>
+      <td>Germany</td>
+      <td>Germany</td>
       <td>1988/10/15</td>
       <td>England</td>
     </tr>
@@ -2172,7 +2240,12 @@ Name: t, dtype: int64
       <th>3560</th>
       <td>Nach_Monreal</td>
       <td>1609</td>
-      <td>...</td>
+      <td>DF</td>
+      <td>179.0</td>
+      <td>72.0</td>
+      <td>left</td>
+      <td>Spain</td>
+      <td>Spain</td>
       <td>1986/02/26</td>
       <td>England</td>
     </tr>
@@ -2180,7 +2253,12 @@ Name: t, dtype: int64
       <th>7855</th>
       <td>L_Koscielny</td>
       <td>1609</td>
-      <td>...</td>
+      <td>DF</td>
+      <td>186.0</td>
+      <td>75.0</td>
+      <td>right</td>
+      <td>Poland</td>
+      <td>France</td>
       <td>1985/09/10</td>
       <td>England</td>
     </tr>
@@ -2188,7 +2266,12 @@ Name: t, dtype: int64
       <th>7870</th>
       <td>A_Ramsey</td>
       <td>1609</td>
-      <td>...</td>
+      <td>MD</td>
+      <td>183.0</td>
+      <td>76.0</td>
+      <td>right</td>
+      <td>Wales</td>
+      <td>Wales</td>
       <td>1990/12/26</td>
       <td>England</td>
     </tr>
@@ -2196,7 +2279,12 @@ Name: t, dtype: int64
       <th>7882</th>
       <td>P_Čech</td>
       <td>1609</td>
-      <td>...</td>
+      <td>GK</td>
+      <td>196.0</td>
+      <td>90.0</td>
+      <td>left</td>
+      <td>Czec_Republic</td>
+      <td>Czec_Republic</td>
       <td>1982/05/20</td>
       <td>England</td>
     </tr>
@@ -2207,12 +2295,22 @@ Name: t, dtype: int64
       <td>...</td>
       <td>...</td>
       <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
       <th>266885</th>
       <td>M_Olunga</td>
       <td>756</td>
-      <td>...</td>
+      <td>FW</td>
+      <td>188.0</td>
+      <td>80.0</td>
+      <td>left</td>
+      <td>Kenya</td>
+      <td>Kenya</td>
       <td>1994/03/26</td>
       <td>Spain</td>
     </tr>
@@ -2220,7 +2318,12 @@ Name: t, dtype: int64
       <th>282448</th>
       <td>Alei_García</td>
       <td>756</td>
-      <td>...</td>
+      <td>MD</td>
+      <td>173.0</td>
+      <td>74.0</td>
+      <td>right</td>
+      <td>Spain</td>
+      <td>Spain</td>
       <td>1997/06/28</td>
       <td>Spain</td>
     </tr>
@@ -2228,7 +2331,12 @@ Name: t, dtype: int64
       <th>366374</th>
       <td>K_Soni</td>
       <td>756</td>
-      <td>...</td>
+      <td>MD</td>
+      <td>182.0</td>
+      <td>77.0</td>
+      <td>left</td>
+      <td>Cameroon</td>
+      <td>Cameroon</td>
       <td>1998/04/17</td>
       <td>Spain</td>
     </tr>
@@ -2236,7 +2344,12 @@ Name: t, dtype: int64
       <th>443324</th>
       <td>Dougla_Luiz</td>
       <td>756</td>
-      <td>...</td>
+      <td>MD</td>
+      <td>178.0</td>
+      <td>65.0</td>
+      <td>right</td>
+      <td>Brazil</td>
+      <td>Brazil</td>
       <td>1998/05/09</td>
       <td>Spain</td>
     </tr>
@@ -2244,7 +2357,12 @@ Name: t, dtype: int64
       <th>508686</th>
       <td>M_Lizak</td>
       <td>756</td>
-      <td>...</td>
+      <td>GK</td>
+      <td>192.0</td>
+      <td>78.0</td>
+      <td>NaN</td>
+      <td>Poland</td>
+      <td>Poland</td>
       <td>1996/07/15</td>
       <td>Spain</td>
     </tr>
@@ -2415,9 +2533,6 @@ Name: t, dtype: int64
 <h2><span class="section-number">4.3. </span>条件付き抽出<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">#</a></h2>
 <p>DataFrameからある条件を満たす行や列を抽出する方法として，ブールインデックス参照がある．<br>
 ※ この他にも<code class="docutils literal notranslate"><span class="pre">where</span></code>メソッド，<code class="docutils literal notranslate"><span class="pre">query</span></code>メソッドなどがあるがここでは扱わない</p>
-<section id="id10">
-<h3><span class="section-number">4.3.1. </span>ブールインデックスの取得<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>DataFrameにおけるブールインデックス参照は基本的にはNumPyと同様である．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./df_sample.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -2483,7 +2598,10 @@ Name: t, dtype: int64
 </table>
 </div></div></div>
 </div>
-<p>NumPyと同様に，<code class="docutils literal notranslate"><span class="pre">==,</span> <span class="pre">&gt;,</span> <span class="pre">&lt;,</span> <span class="pre">%</span></code>などの比較演算子を用いると，ブール値のSeriesまたはDataFrameを自動的に取得することができる．</p>
+<section id="id10">
+<h3><span class="section-number">4.3.1. </span>ブールインデックスの取得<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">#</a></h3>
+<p>DataFrameにおけるブールインデックス参照は基本的にはNumPyと同様であるが，必ず<code class="docutils literal notranslate"><span class="pre">loc</span></code>属性を用いる．
+NumPyと同様に，<code class="docutils literal notranslate"><span class="pre">==,</span> <span class="pre">&gt;,</span> <span class="pre">&lt;,</span> <span class="pre">%</span></code>などの比較演算子を用いると，ブールインデックス配列（SeriesまたはDataFrame）を自動的に取得することができる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># &#39;t&#39;列の値が64</span>
@@ -2535,7 +2653,7 @@ dtype: bool
 </div>
 </div>
 </div>
-<p>複数条件の場合は<code class="docutils literal notranslate"><span class="pre">(条件1)</span> <span class="pre">&amp;</span> <span class="pre">(条件2)</span></code>や<code class="docutils literal notranslate"><span class="pre">（条件1）|（条件2）</span></code>のように各条件を()で囲む（and, or,  notは使えない）</p>
+<p>条件が複数ある場合は<code class="docutils literal notranslate"><span class="pre">(条件1)</span> <span class="pre">&amp;</span> <span class="pre">(条件2)</span></code>や<code class="docutils literal notranslate"><span class="pre">（条件1）|（条件2）</span></code>のように各条件を()で囲む（and, or,  notは使えない）</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># &#39;t&#39;列が64より大きくかつ&#39;player&#39;列が&#39;hyuga&#39;</span>
@@ -2591,7 +2709,7 @@ Name: t, dtype: bool
 </section>
 <section id="id11">
 <h3><span class="section-number">4.3.2. </span>ブールインデックス参照<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>NumPyと同様，以下のようにブールインデックスが<code class="docutils literal notranslate"><span class="pre">True</span></code>の行だけを抽出することができる：</p>
+<p><code class="docutils literal notranslate"><span class="pre">loc</span></code>属性を用いた参照において，ブールインデックスを指定すると，行ラベルが<code class="docutils literal notranslate"><span class="pre">True</span></code>の行だけを抽出することができる：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">条件</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;列ラベル1&#39;</span><span class="p">,</span> <span class="s1">&#39;列ラベル2&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
