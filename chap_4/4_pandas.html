@@ -6775,9 +6775,9 @@ dtype: float64
 </section>
 <section id="id22">
 <h2><span class="section-number">4.6. </span>章末問題<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">#</a></h2>
+<p><strong>問題A</strong></p>
 <p>次のcsvファイルをダウンロードし，カレントディレクトリに保存せよ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1E3ahjvdekZzCu63k1oECs_GOJTS294BP">player_all.csv</a>  <br>
-このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
-※ 本データはPappalardoデータセットを加工したものである（詳細は<a class="reference external" href="https://rtwqzpj5uefb1pvzmprbnq-on.drv.tw/document/%E8%AC%9B%E7%BE%A9/%E7%AB%8B%E6%AD%A3/%E3%82%B9%E3%83%9B%E3%82%9A%E3%83%BC%E3%83%84%E3%83%86%E3%82%99%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%83%95%E3%82%9A%E3%83%AD%E3%82%AF%E3%82%99%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%AF%E3%82%99/6_event.html">イベントデータの解析</a>）．</p>
+このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">player_all.csv</span></code>ファイルを<code class="docutils literal notranslate"><span class="pre">df</span></code>に読み込め</p></li>
 </ul>
@@ -6861,6 +6861,83 @@ dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># キーパー（&#39;GK&#39;）</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>問題B</strong></p>
+<p>次のcsvファイルをダウンロードし，カレントディレクトリに保存せよ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A">game.csv</a>  <br>
+このファイルには，ヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）の2017年シーズンの全試合の結果が記録されている．</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">game.csv</span></code>ファイルを<code class="docutils literal notranslate"><span class="pre">df</span></code>に読み込め</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>１つのリーグを選び，このリーグの節数を求めよ．（節番号は<code class="docutils literal notranslate"><span class="pre">section</span></code>列に記録されている．）</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>新たに<code class="docutils literal notranslate"><span class="pre">total_score</span></code>列を作成し，<code class="docutils literal notranslate"><span class="pre">away_score</span></code>列と<code class="docutils literal notranslate"><span class="pre">home_score</span></code>列の合計を計算せよ．</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Homeチームの平均得点とAwayチームの平均得点をそれぞれ求めよ．</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄（Homeチーム）</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄（Awayチーム）</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>好きなチームを選び，そのチームのホームゲームとアウェイゲームの平均得点を求めよ．</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄（ホームゲーム）</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄（アウェイゲーム）</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>全チームのシーズン総得点を求めよ．</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
 </pre></div>
 </div>
 </div>
