@@ -194,7 +194,7 @@ V = [2, 0.5]
 
 fig, ax = plt.subplots()
 ax.quiver(X, Y, U, V, angles='uv', units='xy', scale=1, width=0.1)
-ax.set_xlim([0, 3]); plt.ylim([0, 3])
+ax.set_xlim([0, 3]); ax.set_ylim([0, 3])
 ax.set_aspect('equal');
 
 
@@ -402,7 +402,7 @@ poisson.pmf(x, 5)
 #   U: -3.1, -4.0, -1.9, -2.7, -2.9, -3.0, -1.0, -1.6, -0.0, -3.3
 #   V: -1.1, 1.6, 2.0, -0.0, -0.7, 1.3, 1.1, 1.5, 3.3, -0.8
 #   ```
-#   - `scale=0.5`，`width=0.005`とする
+#   - `scale=0.5`，`width=0.5`とする
 # - $x$ 軸の範囲：$0\le x \le 105$
 # - $y$ 軸の範囲：$0 \le y \le 68$
 # - アスペクト比を1にする
