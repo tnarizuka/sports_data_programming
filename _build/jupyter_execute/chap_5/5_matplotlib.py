@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[3]:
+# In[1]:
 
 
 # （必須）モジュールのインポート
@@ -10,9 +10,6 @@ import numpy as np
 import pandas as pd
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-
-# 日本語フォントの設定（Mac:'Hiragino Sans', Windows:'MS Gothic'）
-plt.rcParams['font.family'] = 'Hiragino Sans'
 
 # 表示設定
 np.set_printoptions(suppress=True, precision=3)
@@ -43,20 +40,20 @@ get_ipython().run_line_magic('precision', '3')
 # 
 # Matplotlibは以下のようにインポートするのが慣例である．
 
-# In[2]:
+# In[29]:
 
 
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 
 
-# ### プロットの基本中の基本
+# ### プロットの基本
 
 # Matplotlibの最も基本的なプロット関数が`plt.plot`（以下，単に`plot`メソッド）である．
 # プロットには２つのスタイルが存在するが，**本講義ではオブジェクト指向スタイルを採用する**（詳細は {ref}`matplotlib_style` を参照）．
 # オブジェクト指向スタイルでは，FigureオブジェクトとAxesオブジェクトを生成した上で以下のように実行する．
 
-# In[16]:
+# In[30]:
 
 
 fig, ax = plt.subplots(figsize=(3, 3))
@@ -70,7 +67,7 @@ ax.plot([0, 1, 2, 3], [1, -1, 1, -1], 'bx-');
 # ### グラフ作成の一連の流れ
 # データのプロット，グラフの装飾，グラフの保存までの一連の流れは以下の通りである．
 
-# In[7]:
+# In[31]:
 
 
 # FigureとAxesを生成する
@@ -120,7 +117,7 @@ fig.savefig('./sample_graph.pdf', bbox_inches="tight", pad_inches=0.2, transpare
 # - 他の色名は[ここ](https://matplotlib.org/stable/gallery/color/named_colors.html)にまとまっている．
 # - 色を指定しない場合はデフォルトの色から順に指定される．
 
-# In[13]:
+# In[32]:
 
 
 # 様々な色の指定方法
@@ -139,7 +136,7 @@ ax.plot(x, x+3, c='k'); # colorオプションに色名の頭文字を指定
 # - 他のマーカーは[ここ](https://matplotlib.org/stable/api/markers_api.html)にまとまっている
 # - マーカーを指定しない場合はデフォルトのマーカーが順に指定される
 
-# In[12]:
+# In[33]:
 
 
 # 様々なマーカー
@@ -156,7 +153,7 @@ ax.plot(x, x+4, marker='^', ls='None', mfc='None', mec='b');
 # - `linestyle='-'`のように指定する
 # - 主要な線種：'-', '--', ':' , '-.', 'None'
 
-# In[73]:
+# In[34]:
 
 
 # 様々な線種
@@ -170,7 +167,7 @@ ax.plot(x, x+3, ls='-.');
 
 # ### 棒グラフ
 
-# In[24]:
+# In[35]:
 
 
 fig, ax = plt.subplots()
@@ -186,7 +183,7 @@ ax.bar(x, h, width=0.2, align='edge', color='w', edgecolor='b');
 
 # ### 矢印
 
-# In[51]:
+# In[36]:
 
 
 # ２つの矢印
@@ -211,7 +208,7 @@ ax.set_aspect('equal');
 # グラフを装飾するには`ax.メソッド名`のように装飾メソッドを呼び出す．
 # 以下に主要なメソッドを用いたグラフ装飾の例を示す．
 
-# In[34]:
+# In[39]:
 
 
 '''FigureとAxesの生成'''
@@ -232,10 +229,10 @@ ax.set_ylim(-3, 3)
 ax.set_aspect('equal')
 
 # タイトル
-ax.set_title('三角関数のグラフ', fontsize=12)
+ax.set_title('Sin Plots', fontsize=12)
 
 # 軸ラベル
-ax.set_xlabel('角度 $X$ [rad]', fontsize=12)
+ax.set_xlabel('Angle $X$ [rad]', fontsize=12)
 ax.set_ylabel('$Y$', fontsize=12)
 
 # 凡例
@@ -255,7 +252,7 @@ ax.set_xticklabels(['0', '$\pi$', '$2\pi$', '$3\pi$'])
 ax.tick_params(axis='both', labelsize=12)
 
 '''Figureの保存'''
-fig.savefig('./multi_sin.pdf', bbox_inches='tight');
+fig.savefig('./multiple_sin_plots.pdf', bbox_inches='tight');
 
 
 # **座標軸の範囲**
@@ -344,7 +341,7 @@ fig.savefig('./multi_sin.pdf', bbox_inches='tight');
 # $$
 # 
 # - 上の2次関数を点線でプロットする
-# - 頂点の位置に赤の'x'マーカーをプロットする
+# - 頂点の位置に赤の`x`マーカーをプロットする
 # - $x$軸の範囲：$-10\le x\le 10$
 # - $y$軸の範囲：$-5\le x\le 3$
 # - $x$軸に好きなラベルを設定する
@@ -354,7 +351,7 @@ fig.savefig('./multi_sin.pdf', bbox_inches='tight');
 # In[ ]:
 
 
-
+# 解答欄
 
 
 # **ポアソン分布のグラフ（得点分布への導入）**
@@ -389,7 +386,7 @@ poisson.pmf(x, 5)
 # In[ ]:
 
 
-
+# 解答欄
 
 
 # **選手の位置と速度ベクトルの描画**
@@ -413,7 +410,7 @@ poisson.pmf(x, 5)
 # In[ ]:
 
 
-
+# 解答欄
 
 
 # ## 箱ひげ図とヒストグラム
@@ -472,7 +469,7 @@ poisson.pmf(x, 5)
 # | widths | 箱の幅 | 数値 |
 # | vert | 箱の回転 | True/False |
 
-# In[20]:
+# In[12]:
 
 
 # データの作成
@@ -483,14 +480,14 @@ data2 = np.random.normal(loc=2, scale=2, size=100)
 # PandasのDataFaremeには要約統計量を一度に計算する`describe`メソッドが用意されている．
 # これを用いて，まずは要約統計量を求めてみよう．
 
-# In[21]:
+# In[13]:
 
 
 df = pd.DataFrame({'data1':data1, 'data2':data2})
 df.describe()
 
 
-# In[22]:
+# In[14]:
 
 
 # 箱ひげ図のプロット
@@ -523,7 +520,7 @@ ax.set_ylabel('$Y$', fontsize=15);
 #   - `bins=n`とした場合，$ n $ 個の等間隔の階級に分ける．１つの階級の幅は `(最大値-最小値) / n` となる．
 #   - `bins=[0, 1, 2, 3]`とした場合，階級の境界は`[0, 1), [1, 2), [2, 3]`となる（**最後だけ右端を含むことに注意**）．
 
-# In[5]:
+# In[15]:
 
 
 # データの作成
@@ -543,7 +540,7 @@ ax.set_xticks(np.arange(130, 210, 10));
 
 # 以下は上のヒストグラムに対応する度数分布表である．
 
-# In[6]:
+# In[16]:
 
 
 f, x = ret[0], ret[1]
@@ -567,7 +564,7 @@ df
 # | rwidth | バーの幅 | 数値（0~1） |
 # | align | バーの中央を階級のどこに合わせるか | 'left'（階級の左端）, 'mid'（階級の中央＝デフォルト）, 'right'（階級の右端） |
 
-# In[7]:
+# In[17]:
 
 
 # データの作成
@@ -600,7 +597,7 @@ ax.set_xticks(np.arange(130, 210, 10));
 # | density | 縦軸を相対度数に変更 | True/False |
 # | cumulative | 縦軸を累積度数に変更 | 1（下側累積）, -1（上側累積） |
 
-# In[8]:
+# In[18]:
 
 
 # データの作成
@@ -642,7 +639,7 @@ ax.set_xticks(np.arange(130, 210, 10));
 # | cmin | 表示するbinの度数の最小値 | 数値 |
 # | cmax | 表示するbinの度数の最大値 | 数値 |
 
-# In[9]:
+# In[19]:
 
 
 # データの作成
@@ -650,7 +647,7 @@ X = np.random.normal(loc=0, scale=2, size=100000)
 Y = np.random.normal(loc=0, scale=1, size=100000)
 
 
-# In[11]:
+# In[20]:
 
 
 # 散布図
@@ -659,7 +656,7 @@ ax.set_aspect('equal')
 ax.plot(X, Y, '.', ms=0.1, alpha=0.3);
 
 
-# In[19]:
+# In[21]:
 
 
 # ヒートマップ
@@ -699,7 +696,7 @@ ret = ax.hist2d(X, Y,
 # | aspect | カラーバーの縦横比 | 数値 |
 # | pad | カラーバーの位置 | 数値 |
 
-# In[25]:
+# In[22]:
 
 
 # データの生成
@@ -744,7 +741,7 @@ fig.colorbar(ret[3],
 # - 好きな色に変更
 # - グラフを好きな名前で保存
 
-# In[27]:
+# In[23]:
 
 
 # 指数分布に従うデータの生成
@@ -753,7 +750,7 @@ np.random.seed(5)
 data = expon.rvs(loc=0, scale=10, size=1000) # データの生成
 
 
-# In[ ]:
+# In[24]:
 
 
 fig, ax = plt.subplots()
@@ -776,7 +773,7 @@ ax.plot(x, expon.pdf(x, loc=0, scale=10), 'r-', lw=2)
 # - 好きな色に変更
 # - グラフを好きな名前で保存
 
-# In[29]:
+# In[26]:
 
 
 # ポアソン分布に従うデータの生成
@@ -785,7 +782,7 @@ np.random.seed(20)
 data = poisson.rvs(mu=2, size=1000) # データの生成
 
 
-# In[ ]:
+# In[27]:
 
 
 fig, ax = plt.subplots()
@@ -803,7 +800,7 @@ ax.plot(x, poisson.pmf(x, 2), 'r-', lw=2)
 # このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
 # ※ 本データはPappalardoデータセットを加工したものである（詳細は[イベントデータの解析](https://rtwqzpj5uefb1pvzmprbnq-on.drv.tw/document/講義/立正/スポーツデータ分析のためのプログラミング/6_event.html)）．
 
-# In[33]:
+# In[28]:
 
 
 df = pd.read_csv('./player_all.csv', header=0, index_col='player_id', na_values=0)

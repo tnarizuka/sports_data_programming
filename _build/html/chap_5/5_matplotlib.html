@@ -372,7 +372,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     5.1.2. プロットの基本中の基本
+     5.1.2. プロットの基本
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -489,7 +489,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     5.1.2. プロットの基本中の基本
+     5.1.2. プロットの基本
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -594,9 +594,6 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="c1"># 日本語フォントの設定（Mac:&#39;Hiragino Sans&#39;, Windows:&#39;MS Gothic&#39;）</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Hiragino Sans&#39;</span>
-
 <span class="c1"># 表示設定</span>
 <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.precision&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>    <span class="c1"># 小数点以下の表示桁</span>
@@ -642,7 +639,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="id3">
-<h3><span class="section-number">5.1.2. </span>プロットの基本中の基本<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3><span class="section-number">5.1.2. </span>プロットの基本<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>Matplotlibの最も基本的なプロット関数が<code class="docutils literal notranslate"><span class="pre">plt.plot</span></code>（以下，単に<code class="docutils literal notranslate"><span class="pre">plot</span></code>メソッド）である．
 プロットには２つのスタイルが存在するが，<strong>本講義ではオブジェクト指向スタイルを採用する</strong>（詳細は <a class="reference internal" href="../appendix/appendix.html#matplotlib-style"><span class="std std-ref">２つのプロットスタイル</span></a> を参照）．
 オブジェクト指向スタイルでは，FigureオブジェクトとAxesオブジェクトを生成した上で以下のように実行する．</p>
@@ -898,10 +895,10 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
 
 <span class="c1"># タイトル</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;三角関数のグラフ&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Sin Plots&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 
 <span class="c1"># 軸ラベル</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;角度 $X$ [rad]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Angle $X$ [rad]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$Y$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 
 <span class="c1"># 凡例</span>
@@ -921,7 +918,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 
 <span class="sd">&#39;&#39;&#39;Figureの保存&#39;&#39;&#39;</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./multi_sin.pdf&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">);</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./multiple_sin_plots.pdf&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1032,13 +1029,20 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 \]</div>
 <ul class="simple">
 <li><p>上の2次関数を点線でプロットする</p></li>
-<li><p>頂点の位置に赤の'x'マーカーをプロットする</p></li>
+<li><p>頂点の位置に赤の<code class="docutils literal notranslate"><span class="pre">x</span></code>マーカーをプロットする</p></li>
 <li><p><span class="math notranslate nohighlight">\(x\)</span>軸の範囲：<span class="math notranslate nohighlight">\(-10\le x\le 10\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(y\)</span>軸の範囲：<span class="math notranslate nohighlight">\(-5\le x\le 3\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(x\)</span>軸に好きなラベルを設定する</p></li>
 <li><p><span class="math notranslate nohighlight">\(y\)</span>軸に好きなラベルを設定する</p></li>
 <li><p>グラフを好きな名前で保存</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p><strong>ポアソン分布のグラフ（得点分布への導入）</strong></p>
 <p>パラメータ <span class="math notranslate nohighlight">\(\lambda\)</span> のポアソン分布は以下で定義される：</p>
 <div class="math notranslate nohighlight">
@@ -1075,6 +1079,13 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <li><p>凡例を表示する</p></li>
 <li><p>グラフを好きな名前で保存する</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p><strong>選手の位置と速度ベクトルの描画</strong></p>
 <p>以下の条件で，グラフを作成せよ：</p>
 <ul>
@@ -1097,6 +1108,13 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <li><p><span class="math notranslate nohighlight">\(y\)</span> 軸の範囲：<span class="math notranslate nohighlight">\(0 \le y \le 68\)</span></p></li>
 <li><p>アスペクト比を1にする</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="id13">
@@ -1215,38 +1233,38 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
     </tr>
     <tr>
       <th>mean</th>
-      <td>0.002</td>
-      <td>2.166</td>
+      <td>-0.128</td>
+      <td>1.942</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>0.955</td>
-      <td>2.182</td>
+      <td>1.044</td>
+      <td>1.987</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>-2.537</td>
-      <td>-2.953</td>
+      <td>-2.298</td>
+      <td>-4.332</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>-0.581</td>
-      <td>0.665</td>
+      <td>-0.883</td>
+      <td>0.528</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>-0.019</td>
-      <td>2.054</td>
+      <td>-0.133</td>
+      <td>2.090</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>0.501</td>
-      <td>3.676</td>
+      <td>0.569</td>
+      <td>3.308</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>2.769</td>
-      <td>7.681</td>
+      <td>3.238</td>
+      <td>6.033</td>
     </tr>
   </tbody>
 </table>
@@ -1740,6 +1758,12 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x14f0599d0&gt;]
+</pre></div>
+</div>
+<img alt="../_images/5_matplotlib_90_1.png" src="../_images/5_matplotlib_90_1.png" />
+</div>
 </div>
 <p><strong>ポアソン分布</strong></p>
 <p>パラメータ <span class="math notranslate nohighlight">\( \lambda=2 \)</span> のポアソン分布に従うデータに対して，以下の条件でヒストグラムを作成し，グラフに追加せよ．</p>
@@ -1772,6 +1796,12 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <span class="c1"># ヒストグラムを追加する</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x14f0eabe0&gt;]
+</pre></div>
+</div>
+<img alt="../_images/5_matplotlib_93_1.png" src="../_images/5_matplotlib_93_1.png" />
 </div>
 </div>
 </section>
