@@ -443,12 +443,12 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id16">
-     5.4.3. 2次元ヒストグラム（ヒートマップ）
+     5.4.3. 1次元ヒストグラムと確率分布の重ね書き
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id17">
-     5.4.4. 演習問題
+     5.4.4. 2次元ヒストグラム（ヒートマップ）
     </a>
    </li>
   </ul>
@@ -560,12 +560,12 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id16">
-     5.4.3. 2次元ヒストグラム（ヒートマップ）
+     5.4.3. 1次元ヒストグラムと確率分布の重ね書き
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id17">
-     5.4.4. 演習問題
+     5.4.4. 2次元ヒストグラム（ヒートマップ）
     </a>
    </li>
   </ul>
@@ -1044,14 +1044,14 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </div>
 <p><strong>ポアソン分布のグラフ（得点分布への導入）</strong></p>
-<p>パラメータ <span class="math notranslate nohighlight">\(\lambda\)</span> のポアソン分布は以下で定義される：</p>
+<p>パラメータ <span class="math notranslate nohighlight">\( \mu \)</span> のポアソン分布は以下で定義される：</p>
 <div class="math notranslate nohighlight">
 \[
-    f(x) = \frac{\lambda^x}{x!} \mathrm{e}^{-\lambda x}
+    f(x) = \frac{\mu^x}{x!} \mathrm{e}^{-\mu x}
 \]</div>
 <ul class="simple">
 <li><p>Pythonにおいてポアソン分布を扱うには，まず<code class="docutils literal notranslate"><span class="pre">scipy.stats.poisson</span></code>をインポートする．</p></li>
-<li><p>その上で，値 <span class="math notranslate nohighlight">\(x\)</span> に対してパラメータ <span class="math notranslate nohighlight">\(\mathrm{lmd}\)</span> のポアソン分布を計算するには <code class="docutils literal notranslate"><span class="pre">poisson.pmf(x,</span> <span class="pre">lmd)</span></code> とする．</p></li>
+<li><p>その上で，値 <span class="math notranslate nohighlight">\(x\)</span> に対してパラメータ <span class="math notranslate nohighlight">\( m \)</span> のポアソン分布を計算するには <code class="docutils literal notranslate"><span class="pre">poisson.pmf(x,</span> <span class="pre">m)</span></code> とする．</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1119,7 +1119,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </section>
 <section id="id13">
 <h2><span class="section-number">5.4. </span>箱ひげ図とヒストグラム<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">#</a></h2>
-<p>複数の数値からなるデータが与えられたとき，まずは平均値，四分位数，分散・標準偏差などを求めてデータの分布をおおまかに把握するのがデータ分析の鉄則である．
+<p>データを取得したときに，まずは平均値，四分位数，分散・標準偏差などを求めてデータの分布をおおまかに把握するのがデータ分析の鉄則である．
 既に説明したように，NumPyやPandasを用いれば，これらの要約統計量を手軽かつ高速に求めることができる．
 ここでは，データの分布を数量的に把握するだけでなく，Matplotlibを用いて可視化する方法を説明する．
 具体的な可視化の方法として，以下の２つを扱う：</p>
@@ -1130,10 +1130,10 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <section id="id14">
 <h3><span class="section-number">5.4.1. </span>箱ひげ図<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>数値データを小さい順に並べたとき，中央に来るデータを中央値，下位半分のデータを下位データ，上半分のデータを上位データと呼ぶ．
-ただし，データ数が奇数個の場合には中央値を除いて半分に分ける．
+（※データ数が奇数個の場合には中央値を除いて半分に分ける．）
 また，下位データの中央値を第１四分位数，上位データの中央値を第３四分位数と呼ぶ．
 最小値，第１四分位数，中央値，第３四分位数，最大値によってデータのばらつきを表す方法は<strong>五数要約</strong>と呼ばれる．
-なお，データ数が偶数個の場合には，中央に来る２つの値の平均値を中央値とするのが一般的である．</p>
+（※データ数が偶数個の場合には，中央に来る２つの値の平均値を中央値とするのが一般的である．）</p>
 <figure class="align-default" id="fig-five-number">
 <a class="reference internal image-reference" href="../_images/five_number.png"><img alt="../_images/five_number.png" src="../_images/five_number.png" style="height: 200px;" /></a>
 <figcaption>
@@ -1145,7 +1145,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <ol class="simple">
 <li><p>データの第１四分位数から第３四分位数の間に箱を描く</p></li>
 <li><p>中央値の位置に線を引く</p></li>
-<li><p>箱から箱の長さ（四分位範囲）の1.5倍を超えて離れた点を外れ値と見なし，白丸で描く．</p></li>
+<li><p>箱から箱の幅（四分位範囲）の1.5倍を超えて離れた点を外れ値と見なし，白丸で描く．</p></li>
 <li><p>外れ値でないものの最大値と最小値から箱まで線（ひげ）を引く．</p></li>
 </ol>
 <figure class="align-default" id="fig-box-plot">
@@ -1154,7 +1154,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <p><span class="caption-number">図 5.2 </span><span class="caption-text">箱ひげ図の例</span><a class="headerlink" href="#fig-box-plot" title="この画像へのパーマリンク">#</a></p>
 </figcaption>
 </figure>
-<p>Matplotlibには箱ひげ図を描くための<code class="docutils literal notranslate"><span class="pre">ax.boxplot</span></code>メソッドが用意されている：</p>
+<p>Matplotlibで箱ひげ図を描くためには<code class="docutils literal notranslate"><span class="pre">ax.boxplot</span></code>メソッドを使う：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">boxplot</span><span class="p">([</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">option</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1171,7 +1171,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </thead>
 <tbody>
 <tr class="row-even"><td><p>whis</p></td>
-<td><p>箱から何倍離れた点を外れ値と見なすか（デフォルトは1.5）</p></td>
+<td><p>箱の幅から何倍離れた点を外れ値と見なすか（デフォルトは1.5）</p></td>
 <td><p>数値</p></td>
 </tr>
 <tr class="row-odd"><td><p>widths</p></td>
@@ -1193,8 +1193,27 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 箱ひげ図のプロット</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">boxplot</span><span class="p">([</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">],</span> <span class="n">whis</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">widths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">vert</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 横軸の目盛りラベル</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s1">&#39;data1&#39;</span><span class="p">,</span> <span class="s1">&#39;data2&#39;</span><span class="p">])</span>
+
+<span class="c1"># 軸のラベル</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$X$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$Y$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5_matplotlib_64_0.png" src="../_images/5_matplotlib_64_0.png" />
+</div>
+</div>
 <p>PandasのDataFaremeには要約統計量を一度に計算する<code class="docutils literal notranslate"><span class="pre">describe</span></code>メソッドが用意されている．
-これを用いて，まずは要約統計量を求めてみよう．</p>
+これを用いて，要約統計量を求めると以下のようになる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;data1&#39;</span><span class="p">:</span><span class="n">data1</span><span class="p">,</span> <span class="s1">&#39;data2&#39;</span><span class="p">:</span><span class="n">data2</span><span class="p">})</span>
@@ -1233,80 +1252,61 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
     </tr>
     <tr>
       <th>mean</th>
-      <td>-0.128</td>
-      <td>1.942</td>
+      <td>0.003</td>
+      <td>2.130</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>1.044</td>
-      <td>1.987</td>
+      <td>0.909</td>
+      <td>1.716</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>-2.298</td>
-      <td>-4.332</td>
+      <td>-2.601</td>
+      <td>-1.776</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>-0.883</td>
-      <td>0.528</td>
+      <td>-0.575</td>
+      <td>1.018</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>-0.133</td>
-      <td>2.090</td>
+      <td>0.135</td>
+      <td>2.175</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>0.569</td>
-      <td>3.308</td>
+      <td>0.574</td>
+      <td>2.987</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>3.238</td>
-      <td>6.033</td>
+      <td>1.694</td>
+      <td>6.305</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 箱ひげ図のプロット</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">boxplot</span><span class="p">([</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">],</span> <span class="n">whis</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">widths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">vert</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># 横軸の目盛りラベル</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s1">&#39;data1&#39;</span><span class="p">,</span> <span class="s1">&#39;data2&#39;</span><span class="p">])</span>
-
-<span class="c1"># 軸のラベル</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$X$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$Y$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_66_0.png" src="../_images/5_matplotlib_66_0.png" />
-</div>
-</div>
 </section>
 <section id="id15">
 <h3><span class="section-number">5.4.2. </span>1次元ヒストグラム<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>データの分布の傾向（ある値のデータがどのくらいあるか）を表す方法として，箱ひげ図ではデータを要約しすぎてしまい適切にその特徴を表せないことがある．
+<p>データの分布（ある値のデータがどのくらいあるか）を表す方法として，箱ひげ図ではデータを要約しすぎてしまい適切にその特徴を表せないことがある．
 そこで，より詳細に分布の傾向を可視化する方法として度数分布表やそれを可視化した<strong>ヒストグラム</strong>（度数分布図）がある．
 度数分布とは，値を0以上10未満，10以上20未満などのいくつかの区間（<strong>階級</strong>，<strong>ビン</strong>）に分けてそれぞれの区間に含まれるデータの個数（<strong>度数</strong>）をまとめたもので，横軸に階級の代表値（<strong>階級値</strong>），縦軸に度数をとったグラフがヒストグラムである．
 なお，ヒストグラムの横軸には各階級の最小と最大を表示する場合や，階級の最小値や中央値を示す場合がある．
-また，縦軸には度数ではなく相対度数（度数/データ数）を取ることもある．</p>
+また，縦軸には度数ではなく相対度数（度数/データ数）や累積度数（その階級までの度数の和）を取ることがある．</p>
 <p>Matplotlibで1次元ヒストグラムを描画するには<code class="docutils literal notranslate"><span class="pre">ax.hist()</span></code>を用いる：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>第１引数には数値データを与える．</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">bins</span></code>引数には，以下を指定できる：</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">bins</span></code>引数には階級の分け方を指定する．以下の方法がある：</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">bins=n</span></code>とした場合，<span class="math notranslate nohighlight">\( n \)</span> 個の等間隔の階級に分ける．１つの階級の幅は <code class="docutils literal notranslate"><span class="pre">(最大値-最小値)</span> <span class="pre">/</span> <span class="pre">n</span></code> となる．</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">bins=[0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>とした場合，階級の境界は<code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1),</span> <span class="pre">[1,</span> <span class="pre">2),</span> <span class="pre">[2,</span> <span class="pre">3]</span></code>となる（<strong>最後だけ右端を含むことに注意</strong>）．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bins=[0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>とした場合，各階級の境界は<code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1),</span> <span class="pre">[1,</span> <span class="pre">2),</span> <span class="pre">[2,</span> <span class="pre">3]</span></code>となる（<strong>最後だけ右端を含むことに注意</strong>）．</p></li>
 </ul>
 </li>
 </ul>
@@ -1318,8 +1318,8 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 
 <span class="c1"># ヒストグラムの描画</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>  <span class="c1"># 階級数10</span>
-<span class="c1"># ret = ax.hist(data, bins=[130, 140, 150, 160, 170, 180, 190, 200], color=&#39;gray&#39;, edgecolor=&#39;k&#39;)</span>
+<span class="c1"># ret = ax.hist(data, bins=10, color=&#39;gray&#39;, edgecolor=&#39;k&#39;)  # binsに階級数10を指定する</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">130</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>  <span class="c1"># binsに階級の境界値を指定する</span>
 
 <span class="c1"># 軸のラベル</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$X$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
@@ -1371,83 +1371,59 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
   <tbody>
     <tr>
       <th>0</th>
-      <td>138.103</td>
-      <td>144.180</td>
-      <td>141.142</td>
-      <td>4.0</td>
-      <td>0.004</td>
+      <td>130.0</td>
+      <td>140.0</td>
+      <td>135.0</td>
+      <td>1.0</td>
+      <td>0.001</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>144.180</td>
-      <td>150.258</td>
-      <td>147.219</td>
-      <td>15.0</td>
-      <td>0.015</td>
+      <td>140.0</td>
+      <td>150.0</td>
+      <td>145.0</td>
+      <td>16.0</td>
+      <td>0.016</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>150.258</td>
-      <td>156.336</td>
-      <td>153.297</td>
-      <td>70.0</td>
-      <td>0.070</td>
+      <td>150.0</td>
+      <td>160.0</td>
+      <td>155.0</td>
+      <td>139.0</td>
+      <td>0.139</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>156.336</td>
-      <td>162.413</td>
-      <td>159.374</td>
-      <td>148.0</td>
-      <td>0.148</td>
+      <td>160.0</td>
+      <td>170.0</td>
+      <td>165.0</td>
+      <td>347.0</td>
+      <td>0.347</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>162.413</td>
-      <td>168.491</td>
-      <td>165.452</td>
-      <td>205.0</td>
-      <td>0.205</td>
+      <td>170.0</td>
+      <td>180.0</td>
+      <td>175.0</td>
+      <td>329.0</td>
+      <td>0.329</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>168.491</td>
-      <td>174.568</td>
-      <td>171.529</td>
-      <td>226.0</td>
-      <td>0.226</td>
+      <td>180.0</td>
+      <td>190.0</td>
+      <td>185.0</td>
+      <td>149.0</td>
+      <td>0.149</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>174.568</td>
-      <td>180.646</td>
-      <td>177.607</td>
-      <td>181.0</td>
-      <td>0.181</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>180.646</td>
-      <td>186.723</td>
-      <td>183.684</td>
-      <td>114.0</td>
-      <td>0.114</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>186.723</td>
-      <td>192.801</td>
-      <td>189.762</td>
-      <td>31.0</td>
-      <td>0.031</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>192.801</td>
-      <td>198.878</td>
-      <td>195.839</td>
-      <td>6.0</td>
-      <td>0.006</td>
+      <td>190.0</td>
+      <td>200.0</td>
+      <td>195.0</td>
+      <td>19.0</td>
+      <td>0.019</td>
     </tr>
   </tbody>
 </table>
@@ -1464,31 +1440,31 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>histtype</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">histtype</span></code></p></td>
 <td><p>ヒストグラムのスタイル</p></td>
 <td><p>'bar', 'step', 'stepfilled', 'barstacked'</p></td>
 </tr>
-<tr class="row-odd"><td><p>color</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">color</span></code></p></td>
 <td><p>塗りつぶしの色</p></td>
 <td><p>色名</p></td>
 </tr>
-<tr class="row-even"><td><p>edgecolor</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edgecolor</span></code></p></td>
 <td><p>枠線の色</p></td>
 <td><p>色名</p></td>
 </tr>
-<tr class="row-odd"><td><p>linewidth</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">linewidth</span></code></p></td>
 <td><p>枠線の太さ</p></td>
 <td><p>数値</p></td>
 </tr>
-<tr class="row-even"><td><p>linestyle</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">linestyle</span></code></p></td>
 <td><p>線種</p></td>
 <td><p>'-', '--', '-.', ':'</p></td>
 </tr>
-<tr class="row-odd"><td><p>rwidth</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">rwidth</span></code></p></td>
 <td><p>バーの幅</p></td>
 <td><p>数値（0~1）</p></td>
 </tr>
-<tr class="row-even"><td><p>align</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">align</span></code></p></td>
 <td><p>バーの中央を階級のどこに合わせるか</p></td>
 <td><p>'left'（階級の左端）, 'mid'（階級の中央＝デフォルト）, 'right'（階級の右端）</p></td>
 </tr>
@@ -1505,9 +1481,9 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
               <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">130</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span> <span class="c1"># 階級の左端の値を指定する</span>
               <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span>  <span class="c1"># ヒストグラムのスタイルを棒グラフに</span>
               <span class="n">color</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span>       <span class="c1"># バーの色をシアンに</span>
-              <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>   <span class="c1"># バーの枠線の色を黒に</span>
+              <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span>   <span class="c1"># バーの枠線の色を白に</span>
               <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>   <span class="c1"># バーの枠線の太さを1に</span>
-              <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span>  <span class="c1"># 枠線を点線に</span>
+              <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span>  <span class="c1"># 枠線を実線に</span>
               <span class="p">)</span>
 
 <span class="c1"># 軸のラベル</span>
@@ -1553,7 +1529,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
               <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">130</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span> <span class="c1"># 階級の左端の値を指定する</span>
               <span class="n">density</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>      <span class="c1"># 縦軸を相対度数に変更</span>
               <span class="n">cumulative</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># 上側累積に変更  </span>
-              <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span>
+              <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span>
               <span class="p">)</span>
 
 <span class="c1"># 軸のラベル</span>
@@ -1569,18 +1545,116 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </section>
 <section id="id16">
-<h3><span class="section-number">5.4.3. </span>2次元ヒストグラム（ヒートマップ）<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3><span class="section-number">5.4.3. </span>1次元ヒストグラムと確率分布の重ね書き<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">#</a></h3>
+<p><strong>指数分布</strong></p>
+<p>平均 <span class="math notranslate nohighlight">\( \mu \)</span>，標準偏差 <span class="math notranslate nohighlight">\( \sigma \)</span> の正規分布は以下で定義される：</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x; \mu, \sigma) = \frac{1}{\sqrt{2\pi\sigma^2}} \mathrm{e}^{-\frac{(x-\mu)^2}{2\sigma^2}}
+\]</div>
+<p>以下は <span class="math notranslate nohighlight">\( \mu=180,\ \sigma=10 \)</span> の正規分布に従うデータからヒストグラムを作成し，確率密度関数を重ね書きした例である．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 正規分布に従うデータの生成</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span> <span class="c1"># 平均180, 標準偏差5の正規分布に従うデータ</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="c1"># 指数分布の確率密度関数を描画する</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># ヒストグラムを描画する</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> 
+              <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="c1"># 階級数を20に指定</span>
+              <span class="n">density</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>       <span class="c1"># 縦軸を相対度数に変更</span>
+              <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span>  <span class="c1"># ヒストグラムのスタイルを棒グラフに</span>
+              <span class="n">color</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span>       <span class="c1"># バーの色をシアンに</span>
+              <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span>   <span class="c1"># バーの枠線の色を白に</span>
+              <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>   <span class="c1"># バーの枠線の太さを1に</span>
+              <span class="p">)</span>
+
+<span class="c1"># 軸のラベル</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$X$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5_matplotlib_81_0.png" src="../_images/5_matplotlib_81_0.png" />
+</div>
+</div>
+<p><strong>ポアソン分布</strong></p>
+<p>パラメータ <span class="math notranslate nohighlight">\( \mu \)</span> のポアソン分布は以下で定義される：</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x) = \frac{\mu^x}{x!} \mathrm{e}^{-\mu x}
+\]</div>
+<p>以下はパラメータ <span class="math notranslate nohighlight">\( \mu=2 \)</span> のポアソン分布に従うデータからヒストグラムを作成し，確率質量関数を重ね書きした例である．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ポアソン分布に従うデータの生成</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">poisson</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">poisson</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">mu</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span> <span class="c1"># データの生成</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="c1"># ポアソン分布の確率質量関数を描画する</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">poisson</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># ヒストグラムを追加する</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> 
+              <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="c1"># 階級の左端の値を指定する</span>
+              <span class="n">density</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>      <span class="c1"># 縦軸を相対度数に変更</span>
+              <span class="n">align</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>   <span class="c1"># バーの中央を階級の左端に合わせる</span>
+              <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="c1"># ヒストグラムのスタイルを棒グラフに</span>
+              <span class="n">rwidth</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>     <span class="c1"># バーの幅を0.8に</span>
+              <span class="p">)</span>
+
+<span class="c1"># 軸のラベル</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$X$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">9</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5_matplotlib_84_0.png" src="../_images/5_matplotlib_84_0.png" />
+</div>
+</div>
+</section>
+<section id="id17">
+<h3><span class="section-number">5.4.4. </span>2次元ヒストグラム（ヒートマップ）<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>データ分析では，２つの変数間の相関を見たり，2次元データの分布を可視化する場面がよくあり，このような場合にもヒストグラムが活躍する．
 例えば，サッカーの試合においてフィールド上の各位置のシュート頻度を可視化したい場合， <span class="math notranslate nohighlight">\((x, y)\)</span> という2次元の座標データに対してシュート頻度（度数）を対応付ければ良い．
-このような2次元ヒストグラムを可視化する方法の１つがヒートマップである．</p>
-<p>Matplotlibでヒートマップを可視化するには，<code class="docutils literal notranslate"><span class="pre">hist2d</span></code>メソッドを用いる：</p>
+2次元ヒストグラムを可視化する方法の１つとして，度数を色の濃淡に対応させたヒートマップがある．</p>
+<p>Matplotlibでヒートマップを可視化するには，<code class="docutils literal notranslate"><span class="pre">ax.hist2d</span></code>メソッドを用いる：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">bins</span></code>引数には <span class="math notranslate nohighlight">\(x\)</span> 方向と <span class="math notranslate nohighlight">\(y\)</span> 方向のbinの数，またはbinの左端の値をリストで指定する．</p></li>
-<li><p>例えば，<code class="docutils literal notranslate"><span class="pre">bins=10</span></code>とした場合には<span class="math notranslate nohighlight">\(x,\ y\)</span>方向共に10個のbinに分割する．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bins</span></code>引数には <span class="math notranslate nohighlight">\(x\)</span> 方向と <span class="math notranslate nohighlight">\(y\)</span> 方向の階級数，または階級の左端の値をリストで指定する．</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">bins=10</span></code>とした場合には<span class="math notranslate nohighlight">\(x,\ y\)</span>方向共に10個のbinに分割する．</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">bins=[10,</span> <span class="pre">20]</span></code>とした場合には <span class="math notranslate nohighlight">\(x\)</span> 方向を10個，<span class="math notranslate nohighlight">\(y\)</span> 方向を20個のbinに分割する．</p></li>
+</ul>
+</li>
 </ul>
 <table class="colwidths-auto table">
 <thead>
@@ -1627,7 +1701,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_82_0.png" src="../_images/5_matplotlib_82_0.png" />
+<img alt="../_images/5_matplotlib_88_0.png" src="../_images/5_matplotlib_88_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1637,8 +1711,8 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> 
                 <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>  <span class="c1"># 100x50のbinに分割する</span>
-                <span class="nb">range</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]],</span>  <span class="c1"># 用いるデータの範囲</span>
-                <span class="n">density</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>  <span class="c1"># 度数を規格化しない</span>
+                <span class="nb">range</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]],</span>  <span class="c1"># 描画に使用するデータの範囲</span>
+                <span class="n">density</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>  <span class="c1"># 度数の規格化</span>
                 <span class="n">cmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>     <span class="c1"># 度数が1以上のbinだけ表示</span>
                 <span class="n">cmax</span><span class="o">=</span><span class="mi">1000</span>   <span class="c1"># 度数が1000以下のbinだけ表示</span>
                 <span class="p">)</span>  
@@ -1646,16 +1720,16 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_83_0.png" src="../_images/5_matplotlib_83_0.png" />
+<img alt="../_images/5_matplotlib_89_0.png" src="../_images/5_matplotlib_89_0.png" />
 </div>
 </div>
 <p><strong>ヒートマップの装飾と<a class="reference external" href="https://matplotlib.org/3.5.0/api/_as_gen/matplotlib.pyplot.colorbar.html">カラーバーの追加</a></strong></p>
-<p>ヒートマップの色は各binの度数に対応している．
+<p>ヒートマップの色は各階級の度数に対応している．
 この色はカラーマップと呼ばれ，<code class="docutils literal notranslate"><span class="pre">cmap='カラーマップの名前'</span></code>のように指定できる．
 主要なカラーマップには'jet'（デフォルト），'rainbow'，'gray'，'autumn'などがある．
 その他のカラーマップは<a class="reference external" href="https://matplotlib.org/3.5.1/tutorials/colors/colormaps.html">ここ</a>を参照のこと．</p>
 <p>カラーマップと度数の対応はカラーバーとして可視化できる．
-ヒートマップにカラーバーを追加するにはFigureオブジェクトの<code class="docutils literal notranslate"><span class="pre">fig.colorbar</span></code>メソッド用い，以下のように実行する：</p>
+ヒートマップにカラーバーを追加するにはFigureオブジェクトの<code class="docutils literal notranslate"><span class="pre">fig.colorbar</span></code>メソッドを用いる：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="n">bx</span><span class="p">,</span> <span class="n">by</span><span class="p">],</span> <span class="n">option</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ret</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">option</span><span class="p">)</span>
 </pre></div>
@@ -1713,95 +1787,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_matplotlib_86_0.png" src="../_images/5_matplotlib_86_0.png" />
-</div>
-</div>
-</section>
-<section id="id17">
-<h3><span class="section-number">5.4.4. </span>演習問題<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p><strong>指数分布</strong></p>
-<p>パラメータ <span class="math notranslate nohighlight">\( \lambda \)</span> の指数分布は以下で定義される：</p>
-<div class="math notranslate nohighlight">
-\[
-    f(x) = \frac{1}{\lambda} e^{- \frac{x}{\lambda}}
-\]</div>
-<p>パラメータ <span class="math notranslate nohighlight">\( \lambda=10 \)</span> の指数分布に従うデータに対して，以下の条件でヒストグラムを作成し，グラフに追加せよ．</p>
-<ul class="simple">
-<li><p>階級数は20</p></li>
-<li><p>縦軸は相対度数</p></li>
-<li><p><span class="math notranslate nohighlight">\( x \)</span> 軸の範囲：<span class="math notranslate nohighlight">\( 0 \le x \le 70 \)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\( y \)</span> 軸の範囲：<span class="math notranslate nohighlight">\( 0 \le x \le 0.1 \)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\( x \)</span> 軸のラベル：<span class="math notranslate nohighlight">\( x \)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\( y \)</span> 軸のラベル：<span class="math notranslate nohighlight">\( f(x) \)</span></p></li>
-<li><p>好きな色に変更</p></li>
-<li><p>グラフを好きな名前で保存</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 指数分布に従うデータの生成</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">expon</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">expon</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span> <span class="c1"># データの生成</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-
-<span class="c1"># 指数分布の確率密度関数を描画する</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">expon</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="c1"># ヒストグラムを描画する</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x14f0599d0&gt;]
-</pre></div>
-</div>
-<img alt="../_images/5_matplotlib_90_1.png" src="../_images/5_matplotlib_90_1.png" />
-</div>
-</div>
-<p><strong>ポアソン分布</strong></p>
-<p>パラメータ <span class="math notranslate nohighlight">\( \lambda=2 \)</span> のポアソン分布に従うデータに対して，以下の条件でヒストグラムを作成し，グラフに追加せよ．</p>
-<ul class="simple">
-<li><p>階級は <span class="math notranslate nohighlight">\( [0, 1), [1, 2),..., [8, 9) \)</span></p></li>
-<li><p>縦軸は相対度数</p></li>
-<li><p><span class="math notranslate nohighlight">\( x \)</span> 軸の範囲： <span class="math notranslate nohighlight">\( 0 \le x \le 9 \)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\( y \)</span> 軸の範囲： <span class="math notranslate nohighlight">\( 0 \le y \le 0.3 \)</span></p></li>
-<li><p>好きな色に変更</p></li>
-<li><p>グラフを好きな名前で保存</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ポアソン分布に従うデータの生成</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">poisson</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">poisson</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">mu</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span> <span class="c1"># データの生成</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-
-<span class="c1"># ポアソン分布の確率質量関数を描画する</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">poisson</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="c1"># ヒストグラムを追加する</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x14f0eabe0&gt;]
-</pre></div>
-</div>
-<img alt="../_images/5_matplotlib_93_1.png" src="../_images/5_matplotlib_93_1.png" />
+<img alt="../_images/5_matplotlib_92_0.png" src="../_images/5_matplotlib_92_0.png" />
 </div>
 </div>
 </section>
@@ -1978,14 +1964,9 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 </div>
 <p><strong>問題B：身長のヒストグラム</strong></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">England</span></code>リーグに所属する選手の身長のヒストグラムを以下の条件で作成せよ：</p>
-<ul>
-<li><p>横軸のラベル：<code class="docutils literal notranslate"><span class="pre">height</span> <span class="pre">[cm]</span></code></p></li>
-<li><p>縦軸のラベル：<code class="docutils literal notranslate"><span class="pre">Frequency</span></code></p></li>
-<li><p>階級の数：10</p></li>
-<li><p>その他の装飾は自由</p></li>
-</ul>
-</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">England</span></code>リーグに所属する選手の身長のヒストグラムを作成せよ．</p></li>
+<li><p>作成したヒストグラムに，正規分布の確率密度関数を重ね書きせよ．ただし，平均値と標準偏差はデータから求めよ．</p></li>
+<li><p>グラフを見やすく装飾せよ．</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1998,6 +1979,7 @@ Axesオブジェクトを<code class="docutils literal notranslate"><span class=
 <ul class="simple">
 <li><p>横軸に身長，縦軸に体重をとった散布図を作成せよ．</p></li>
 <li><p>横軸に身長，縦軸に体重をとったヒートマップを作成せよ．</p></li>
+<li><p>身長と体重の相関係数を計算せよ．</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
