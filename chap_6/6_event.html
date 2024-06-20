@@ -623,9 +623,6 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="c1"># 日本語フォントの設定（Mac:&#39;Hiragino Sans&#39;, Windows:&#39;MS Gothic&#39;）</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Hiragino Sans&#39;</span>
-
 <span class="c1"># 表示設定</span>
 <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.precision&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>    <span class="c1"># 小数点以下の表示桁</span>
@@ -708,7 +705,9 @@ title="Print to PDF"
       <th></th>
       <th>game_id</th>
       <th>league</th>
+      <th>section</th>
       <th>...</th>
+      <th>home_id</th>
       <th>away_score</th>
       <th>home_score</th>
     </tr>
@@ -718,7 +717,9 @@ title="Print to PDF"
       <th>0</th>
       <td>2499719</td>
       <td>England</td>
+      <td>1</td>
       <td>...</td>
+      <td>1609</td>
       <td>3</td>
       <td>4</td>
     </tr>
@@ -726,7 +727,9 @@ title="Print to PDF"
       <th>1</th>
       <td>2499723</td>
       <td>England</td>
+      <td>1</td>
       <td>...</td>
+      <td>1623</td>
       <td>0</td>
       <td>1</td>
     </tr>
@@ -734,7 +737,9 @@ title="Print to PDF"
       <th>2</th>
       <td>2499724</td>
       <td>England</td>
+      <td>1</td>
       <td>...</td>
+      <td>1611</td>
       <td>0</td>
       <td>4</td>
     </tr>
@@ -742,7 +747,9 @@ title="Print to PDF"
       <th>3</th>
       <td>2499722</td>
       <td>England</td>
+      <td>1</td>
       <td>...</td>
+      <td>1628</td>
       <td>3</td>
       <td>0</td>
     </tr>
@@ -750,7 +757,9 @@ title="Print to PDF"
       <th>4</th>
       <td>2499725</td>
       <td>England</td>
+      <td>1</td>
       <td>...</td>
+      <td>1613</td>
       <td>2</td>
       <td>0</td>
     </tr>
@@ -1342,12 +1351,12 @@ Arsenal
   <tbody>
     <tr>
       <th>0</th>
-      <td>Swansea_City</td>
-      <td>10531</td>
-      <td>28</td>
-      <td>56</td>
-      <td>-28</td>
-      <td>33</td>
+      <td>Arsenal</td>
+      <td>1609</td>
+      <td>74</td>
+      <td>51</td>
+      <td>23</td>
+      <td>63</td>
     </tr>
   </tbody>
 </table>
@@ -1664,15 +1673,15 @@ Arsenal
 この式において，<span class="math notranslate nohighlight">\( p^{x}(1-p)^{n-x} \)</span> は成功が <span class="math notranslate nohighlight">\( x \)</span>回，失敗が <span class="math notranslate nohighlight">\( n-x \)</span> 回生じる確率を意味する．
 また，<span class="math notranslate nohighlight">\( \binom{n}{x} \)</span> は <span class="math notranslate nohighlight">\( n \)</span> 個から <span class="math notranslate nohighlight">\( x \)</span> 個を取り出す組み合わせの数 <span class="math notranslate nohighlight">\( _{n}C_{x} \)</span> を表し，<span class="math notranslate nohighlight">\( n \)</span> 回の中で何回目に成功するかの場合の数に対応する．</p>
 <p>いま，成功確率 <span class="math notranslate nohighlight">\( p \)</span> が小さく，かつ試行回数 <span class="math notranslate nohighlight">\( n \)</span> が大きい極限を考える．
-ただし，極限を取る際に発散しないように平均値が一定値 <span class="math notranslate nohighlight">\( np=m \)</span> になるようにする．
-このような条件で <span class="math notranslate nohighlight">\(n\)</span> 回中 <span class="math notranslate nohighlight">\(x\)</span> 回成功する確率 <span class="math notranslate nohighlight">\(f(x)\)</span> は，二項分布の式に <span class="math notranslate nohighlight">\( np=m \)</span> を代入し，極限 <span class="math notranslate nohighlight">\( p\to 0,\ n\to \infty \)</span> を取ることで</p>
+ただし，極限を取る際に発散しないように平均値が一定値 <span class="math notranslate nohighlight">\( np=\mu \)</span> になるようにする．
+このような条件で <span class="math notranslate nohighlight">\(n\)</span> 回中 <span class="math notranslate nohighlight">\(x\)</span> 回成功する確率 <span class="math notranslate nohighlight">\(f(x)\)</span> は，二項分布の式に <span class="math notranslate nohighlight">\( np=\mu \)</span> を代入し，極限 <span class="math notranslate nohighlight">\( p\to 0,\ n\to \infty \)</span> を取ることで</p>
 <div class="math notranslate nohighlight">
 \[
-    f(x) = \frac{m^{x}}{x!} \mathrm{e}^{-m}
+    f(x) = \frac{\mu^{x}}{x!} \mathrm{e}^{-\mu}
 \]</div>
 <p>と求まる．
 これを<strong>ポアソン分布</strong>と呼ぶ．
-ポアソン分布は1つのパラメータ <span class="math notranslate nohighlight">\( m \)</span> だけで特徴づけられ，<strong>期待値と分散はともに <span class="math notranslate nohighlight">\( m \)</span> となる</strong>．
+ポアソン分布は1つのパラメータ <span class="math notranslate nohighlight">\( \mu \)</span> だけで特徴づけられ，<strong>期待値と分散はともに <span class="math notranslate nohighlight">\( \mu \)</span> となる</strong>．
 ポアソン分布はその導出過程より，<strong>一定の期間内に発生確率の小さい稀な現象を多数回試行した場合に，その発生回数が従う分布である</strong>．
 実際，以下の現象は全てポアソン分布に従うことが知られている：</p>
 <ul class="simple">
@@ -1873,8 +1882,8 @@ dtype: float64
         <span class="n">rwidth</span><span class="o">=</span><span class="mf">0.2</span>       <span class="c1"># バーの幅</span>
         <span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;1試合の得点&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;試合数&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Score&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -1902,7 +1911,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1cbf03c40&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1315622b0&gt;]
 </pre></div>
 </div>
 <img alt="../_images/6_event_59_1.png" src="../_images/6_event_59_1.png" />
@@ -1929,8 +1938,8 @@ dtype: float64
 <span class="n">fx</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">size</span> <span class="o">*</span> <span class="n">poisson</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fx</span><span class="p">,</span> <span class="s1">&#39;-ok&#39;</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;1試合の得点&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;試合数&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Score&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
 </pre></div>
 </div>
