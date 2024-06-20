@@ -1911,19 +1911,18 @@ Arsenal
 <section id="id9">
 <h2><span class="section-number">6.3. </span>得点分布<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">#</a></h2>
 <p>サッカーは非常に得点頻度が低い競技であるが，得点がランダムに入るため常に試合から目が離せない．
-このようなランダム性はサッカーが人々を熱狂させる理由と考えられるが，一方でランダム性の裏にはきれいな法則が隠れている．</p>
+得点のランダム性はサッカーが人々を熱狂させる理由と考えられるが，実はこのようなランダム性の裏にはきれいな法則が隠れている．</p>
 <section id="id10">
 <h3><span class="section-number">6.3.1. </span>ポアソン分布<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p><strong>二項分布からポアソン分布へ</strong></p>
 <p>成功確率が <span class="math notranslate nohighlight">\( p \)</span> の試行を独立に <span class="math notranslate nohighlight">\( n \)</span> 回繰り返すことを考える．
 例えば，サイコロを振って特定の目が出ることを成功とすると，<span class="math notranslate nohighlight">\( p=1/6 \)</span> である．
-いま，<span class="math notranslate nohighlight">\( n \)</span> 回中 <span class="math notranslate nohighlight">\( x \)</span> 回成功する確率を <span class="math notranslate nohighlight">\( f(x) \)</span> とすると，<span class="math notranslate nohighlight">\( f(x) \)</span> は二項分布</p>
+いま，<span class="math notranslate nohighlight">\( n \)</span> 回中 <span class="math notranslate nohighlight">\( x \)</span> 回成功する確率を <span class="math notranslate nohighlight">\( f(x) \)</span> とすると，<span class="math notranslate nohighlight">\( f(x) \)</span> は二項分布に従う：</p>
 <div class="math notranslate nohighlight">
 \[
     f(x) = \binom{n}{x}p^{x}(1-p)^{n-x}
 \]</div>
-<p>に従う．
-この式において，<span class="math notranslate nohighlight">\( p^{x}(1-p)^{n-x} \)</span> は成功が <span class="math notranslate nohighlight">\( x \)</span>回，失敗が <span class="math notranslate nohighlight">\( n-x \)</span> 回生じる確率を意味する．
+<p>この式において，<span class="math notranslate nohighlight">\( p^{x}(1-p)^{n-x} \)</span> は成功が <span class="math notranslate nohighlight">\( x \)</span>回，失敗が <span class="math notranslate nohighlight">\( n-x \)</span> 回生じる確率を意味する．
 また，<span class="math notranslate nohighlight">\( \binom{n}{x} \)</span> は <span class="math notranslate nohighlight">\( n \)</span> 個から <span class="math notranslate nohighlight">\( x \)</span> 個を取り出す組み合わせの数 <span class="math notranslate nohighlight">\( _{n}C_{x} \)</span> を表し，<span class="math notranslate nohighlight">\( n \)</span> 回の中で何回目に成功するかの場合の数に対応する．</p>
 <p>いま，成功確率 <span class="math notranslate nohighlight">\( p \)</span> が小さく，かつ試行回数 <span class="math notranslate nohighlight">\( n \)</span> が大きい極限を考える．
 ただし，極限を取る際に発散しないように平均値が一定値 <span class="math notranslate nohighlight">\( np=\mu \)</span> になるようにする．
@@ -1935,9 +1934,10 @@ Arsenal
 <p>と求まる．
 これを<strong>ポアソン分布</strong>と呼ぶ．
 ポアソン分布は1つのパラメータ <span class="math notranslate nohighlight">\( \mu \)</span> だけで特徴づけられ，<strong>期待値と分散はともに <span class="math notranslate nohighlight">\( \mu \)</span> となる</strong>．
-ポアソン分布はその導出過程より，<strong>一定の期間内に発生確率の小さい稀な現象を多数回試行した場合に，その発生回数が従う分布である</strong>．
-実際，以下の現象は全てポアソン分布に従うことが知られている：</p>
+ポアソン分布はその導出過程より，<strong>一定の期間内に発生確率の小さい稀な現象を何度も試行した場合に，その発生回数が従う分布である</strong>．
+例えば，以下の現象は全てポアソン分布に従うことが知られている：</p>
 <ul class="simple">
+<li><p>1日のコンビニの来客数</p></li>
 <li><p>1日の交通事故件数</p></li>
 <li><p>1分間の放射性元素の崩壊数</p></li>
 <li><p>１ヶ月の有感地震の回数</p></li>
@@ -1945,7 +1945,7 @@ Arsenal
 </ul>
 <p><strong>サッカーの得点分布</strong></p>
 <p>チームの強さや試合展開など細かいことはひとまず無視し，サッカーにおける得点がランダムに発生すると仮定する．
-このとき，試合中のどの時点においても一定の得点確率があると見なせば，サッカーは得点確率 <span class="math notranslate nohighlight">\( p \)</span> の小さい試行を何度も繰り返す現象（<span class="math notranslate nohighlight">\( n\to \infty \)</span>）と見なすことができ，1試合の得点数はポアソン分布に従うことが期待される．</p>
+例えば，1プレーが数秒に１回行われるとし，どのプレーでも一定の得点確率 <span class="math notranslate nohighlight">\( p \)</span> で得点が入ると見なせば，サッカーは得点確率 <span class="math notranslate nohighlight">\( p \)</span> の小さい試行を何度も繰り返す現象（<span class="math notranslate nohighlight">\( n\to \infty \)</span>）と見なすことができ，1試合の得点数はポアソン分布に従うことが期待される．</p>
 </section>
 <section id="id11">
 <h3><span class="section-number">6.3.2. </span>得点データの要約<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">#</a></h3>
@@ -1979,7 +1979,11 @@ Arsenal
       <th>game_id</th>
       <th>league</th>
       <th>section</th>
-      <th>...</th>
+      <th>date</th>
+      <th>venue</th>
+      <th>away</th>
+      <th>away_id</th>
+      <th>home</th>
       <th>home_id</th>
       <th>away_score</th>
       <th>home_score</th>
@@ -1991,7 +1995,11 @@ Arsenal
       <td>2499719</td>
       <td>England</td>
       <td>1</td>
-      <td>...</td>
+      <td>2017-08-11</td>
+      <td>Emirates_Stadium</td>
+      <td>Leicester_City</td>
+      <td>1631</td>
+      <td>Arsenal</td>
       <td>1609</td>
       <td>3</td>
       <td>4</td>
@@ -2001,14 +2009,17 @@ Arsenal
       <td>2499723</td>
       <td>England</td>
       <td>1</td>
-      <td>...</td>
+      <td>2017-08-12</td>
+      <td>Goodison_Park</td>
+      <td>Stoke_City</td>
+      <td>1639</td>
+      <td>Everton</td>
       <td>1623</td>
       <td>0</td>
       <td>1</td>
     </tr>
   </tbody>
 </table>
-<p>2 rows × 11 columns</p>
 </div></div></div>
 </div>
 <p>この得点データを用いて，リーグごとにアウェイチームとホームチームの得点傾向を調べてみよう．
@@ -2135,7 +2146,7 @@ dtype: float64
         <span class="n">rwidth</span><span class="o">=</span><span class="mf">0.2</span>       <span class="c1"># バーの幅</span>
         <span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Score&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Home Score&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
 </pre></div>
@@ -2156,7 +2167,7 @@ dtype: float64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">poisson</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">fx</span> <span class="o">=</span> <span class="n">poisson</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fx</span><span class="p">,</span> <span class="s1">&#39;-ok&#39;</span><span class="p">)</span>
@@ -2164,7 +2175,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1315622b0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x16ff3f0a0&gt;]
 </pre></div>
 </div>
 <img alt="../_images/6_event_59_1.png" src="../_images/6_event_59_1.png" />
@@ -2191,7 +2202,7 @@ dtype: float64
 <span class="n">fx</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">size</span> <span class="o">*</span> <span class="n">poisson</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fx</span><span class="p">,</span> <span class="s1">&#39;-ok&#39;</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Score&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Home Score&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
 </pre></div>
@@ -2204,13 +2215,13 @@ dtype: float64
 <p>実データ（棒グラフ）とポアソン分布（折れ線）の概形はおおよそ一致していることが分かる．
 これは，得点の平均値と分散が近い値になったことと共に，サッカーの得点分布がポアソン分布に従うことを裏付ける材料となる．
 もちろん，サッカーの得点分布が普遍的にポアソン分布に従うかどうかは，他のリーグのデータを調べなければわからない（確かめてみよ）．
-また，<span class="math notranslate nohighlight">\(\chi^2\)</span>検定などを用いてより定量的な検証を行うことも必要である．</p>
+また，<span class="math notranslate nohighlight">\(\chi^2\)</span>検定などを用いてより定量的な検証を行うことも必要である（試してみよ）．</p>
 </section>
 <section id="id13">
 <h3><span class="section-number">6.3.4. </span>演習問題<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">#</a></h3>
 <ul class="simple">
-<li><p>他のリーグについて，ホームチーム（またはアウェイチーム）の得点分布を描画せよ．</p></li>
-<li><p>実データから求めた平均値をパラメータとするポアソン分布を同じグラフに描画せよ．</p></li>
+<li><p>他のリーグについて，ホームチームまたはアウェイチームの得点分布を描画し，さらに実データから求めた平均値をパラメータとするポアソン分布を同じグラフに描画せよ．</p></li>
+<li><p><span class="math notranslate nohighlight">\( \chi^2 \)</span> 検定を用いて，サッカーの得点分布がポアソン分布に従うかどうか検証せよ．</p></li>
 </ul>
 </section>
 </section>
