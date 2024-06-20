@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[81]:
 
 
 # （必須）モジュールのインポート
@@ -13,8 +13,8 @@ import matplotlib.pyplot as plt
 # 表示設定
 np.set_printoptions(suppress=True, precision=3)
 pd.set_option('display.precision', 3)    # 小数点以下の表示桁
-pd.set_option('display.max_rows', 50)   # 表示する行数の上限
-pd.set_option('display.max_columns', 7)  # 表示する列数の上限
+pd.set_option('display.max_rows', 10)   # 表示する行数の上限
+pd.set_option('display.max_columns', 20)  # 表示する列数の上限
 get_ipython().run_line_magic('precision', '3')
 
 
@@ -32,7 +32,7 @@ get_ipython().run_line_magic('precision', '3')
 # ### 本講義で用いる加工済みデータ
 # 
 # Pappalardoデータセットはjson形式で提供されており，このままではデータ分析がしづらい．
-# そこで，予めjson形式のデータを整形・加工し，PandasのDataFrameの形で保存しておくと便利であるが，この過程は本講義で扱った知識を総動員するだけでなく，文字列の処理などの知識も必要となる．
+# そこで，予めjson形式のデータを整形・加工し，PandasのDataFrameの形で保存しておくと便利であるが，この過程は本講義で扱うレベルを超える．
 # **本講義ではデータの整形・加工の過程は省略し，加工済みデータ（csvファイル）のデータを提供することにする**．
 # 以下では，加工済みデータの一部を使ってデータ解析の例を示すが，他のデータを解析したい場合は付録からダウンロードできる：{ref}`pappalardo`
 
@@ -42,10 +42,9 @@ get_ipython().run_line_magic('precision', '3')
 # - 全試合の得点データ：[game.csv](https://drive.google.com/uc?export=download&id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A)
 # - チームプロフィール：[team.csv](https://drive.google.com/uc?export=download&id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1)
 #   
-# これらを用いれば，チームごとに得点，失点，得失点差，勝敗などを算出することができる．
 # 各リーグの最終的な順位は勝ち点によって決まる．
 # １試合で獲得する勝ち点は勝利が3，引き分けが1，負けが0である．
-# よって，得点データを用いれば勝ち点を計算し，順位表を作成することができる．
+# 得点データを用いれば，チームごとに勝ち点を計算し，順位表を作成することができる．
 # 
 # 以下では，イングランド・プレミアリーグの最終成績と順位表を作成してみよう．
 # なお，公式に公開されている2017年度イングランド・プレミアリーグの最終成績と順位表は以下で確認できる：
@@ -56,19 +55,19 @@ get_ipython().run_line_magic('precision', '3')
 
 # まずは [game.csv](https://drive.google.com/uc?export=download&id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A) をダウンロードしてカレントディレクトリに移動し，`GM`という名前のDataFrameに読み込む．
 
-# In[2]:
+# In[68]:
 
 
 GM = pd.read_csv('./game.csv', header=0)
 GM.head(5)
 
 
-# このデータの各行には2017年度ヨーロッパリーグで行われた試合の情報が収められている．
+# このデータの各行には2017年度にヨーロッパリーグで行われた全試合の情報が収められている．
 # 各列の意味は下表の通りである．
 # このうち，`away_score`列と`home_score`列がアウェイチームとホームチームの得点である．
 # 例えば，第0行はアーセナル（ホーム）対レイチェスターシティ（アウェイ）の試合情報を表し，得点は4-3であることが分かる．
 # 
-# | 変数名 | 内容 |
+# | 各列の変数 | 内容 |
 # | ---- | ---- |
 # | game_id | 試合の一意なID |
 # | league | リーグ名 |
@@ -84,7 +83,7 @@ GM.head(5)
 
 # 次に [team.csv](https://drive.google.com/uc?export=download&id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1) をダウンロードしてカレントディレクトリに移動し，`TM`という名前のDataFrameに読み込む．
 
-# In[3]:
+# In[99]:
 
 
 TM = pd.read_csv('./team.csv', header=0)
@@ -95,7 +94,7 @@ TM.head()
 # 各列の意味は下表の通りである．
 # 例えば，第0行はイングランド・プレミアリーグに所属するアーセナルのチーム情報を表している．
 # 
-# | 変数名 | 内容 |
+# | 各列の変数 | 内容 |
 # | ---- | ---- |
 # | name | チームの俗称 |
 # | team_id | チームID|
@@ -106,7 +105,7 @@ TM.head()
 # 以下では，イングランド・プレミアリーグのデータを解析対象とする．
 # そこで，条件付き抽出を用いて，`TM`と`GM`からイングランド・プレミアリーグのデータだけ抽出する．
 
-# In[4]:
+# In[100]:
 
 
 GM_E = GM.loc[GM['league']=='England']
@@ -116,9 +115,9 @@ TM_E = TM.loc[TM['league']=='England']
 # ### １チームのリーグ成績
 
 # チームプロフィール`TM_E`の先頭行のチーム（アーセナル）に対し，リーグ成績を求めてみよう．
-# このチームのチームIDとチーム名を取得するには以下のように`iloc`属性を用いて先頭行を抽出すれば良い．
+# まずは`iloc`属性を用いて`TM_E`の先頭行を抽出し，このチームのチームIDとチーム名を取得する．
 
-# In[5]:
+# In[101]:
 
 
 tm_id = TM_E['team_id'].iloc[0]
@@ -131,72 +130,73 @@ print(tm_name)
 # 
 # 得点データ`GM`では，2チームをhome，awayによって区別している．
 # よって，チームごとに得点と失点を集計するには，ホームゲームとアウェイゲームに分けて処理する必要がある．
-# ホームゲームでは，`home_score`列が得点，`away_score`列が失点に対応し，アウェイゲームでは逆になる．
+# ホームゲームでは`home_score`列が得点，`away_score`列が失点に対応し，アウェイゲームでは`away_score`列が得点，`home_score`列が失点である．
 # このことに注意し，アーセナルのホームゲームの得点・失点を`S_h`，アウェイゲームの得点・失点を`S_a`に保存する．
 # また，得失点差の列`diff`を追加する．
 
-# In[6]:
+# In[102]:
 
 
 # 得点と失点（ホームゲーム）
-S_h = GM_E.loc[(GM_E['home_id']==tm_id), ['home_score', 'away_score']] # 対象とするチームのスコアを抽出
+S_h = GM_E.loc[(GM_E['home_id']==tm_id), ['section', 'home_score', 'away_score']] # 対象とするチームのスコアを抽出
 S_h = S_h.rename(columns={'home_score': 'goal', 'away_score': 'loss'}) # 列ラベルのリネーム
 S_h.head()
 
 
-# In[7]:
+# In[103]:
 
 
 # 得点と失点（アウェイゲーム）
-S_a = GM_E.loc[(GM_E['away_id']==tm_id), ['away_score', 'home_score']] # 対象とするチームのスコアを抽出
+S_a = GM_E.loc[(GM_E['away_id']==tm_id), ['section', 'away_score', 'home_score']] # 対象とするチームのスコアを抽出
 S_a = S_a.rename(columns={'away_score': 'goal', 'home_score': 'loss'}) # 列ラベルのリネーム
 S_a.head()
 
 
-# In[8]:
+# In[105]:
 
 
 # 得失点差列の追加
 S_h['diff'] = S_h['goal'] - S_h['loss']  # ホーム
 S_a['diff'] = S_a['goal'] - S_a['loss']  # アウェイ
-S_h.head()
+S_h
 
 
 # **試合結果**
 # 
 # 次に，試合結果の列`result`を追加する．
 # 勝ちを1，引き分けを0，負けを-1で表すことにすると，各試合の結果は得失点差を変換することで求められる．
-# 求め方は色々と考えられるが，以下では`np.sign`関数を使って正の数を1，負の数を-1に変換している．
+# 以下では`np.sign`関数を使って正の数を1，負の数を-1に変換することで`result`列を求める．
 
-# In[9]:
+# In[107]:
 
 
 S_h['result'] = np.sign(S_h['diff']) # ホーム
 S_a['result'] = np.sign(S_a['diff']) # アウェイ
-S_h.head()
+S_h
 
 
-# **ホームゲームとアウェイゲームのデータを結合**
+# **ホームゲームとアウェイゲームのデータを結合する**
 # 
-# 次に，`pd.concat`関数を使ってホームゲームとアウェイゲームのデータを統合する．
+# 次に，`pd.concat`関数を使ってホームゲームのデータの下にアウェイゲームのデータを結合する．
 
-# In[10]:
+# In[108]:
 
 
 S = pd.concat([S_h, S_a])
-S.head()
+S
 
 
 # **勝ち点**
 
 # 勝ち点は勝ちの場合に3，引き分けの場合に1として計算する．
 
-# In[11]:
+# In[111]:
 
 
-S['point'] = 0
-S.loc[S['result']==1, 'point'] = 3
-S.loc[S['result']==0, 'point'] = 1
+S['point'] = 0  # 勝ち点列を0で初期化する
+S.loc[S['result']==1, 'point'] = 3  # 勝ちの場合
+S.loc[S['result']==0, 'point'] = 1  # 引き分けの場合
+S.sort_values('section') # 節でソート
 
 
 # **最終成績**
@@ -204,7 +204,7 @@ S.loc[S['result']==0, 'point'] = 1
 # 最後に各試合のデータを集計し，総得点，総失点，総得失点差，勝ち点を計算すれば，アーセナルのリーグ成績が求められる．
 # 他のチームの成績を統合することを考えて，以下のようにDataFrameの形に整形しておく．
 
-# In[12]:
+# In[112]:
 
 
 pd.DataFrame([[tm_name, tm_id, S['goal'].sum(), S['loss'].sum(), S['diff'].sum(), S['point'].sum()]],
@@ -213,10 +213,10 @@ pd.DataFrame([[tm_name, tm_id, S['goal'].sum(), S['loss'].sum(), S['diff'].sum()
 
 # ### 全チームのリーグ成績と順位表
 
-# 全チームのリーグ成績を求めるには，`for`文を用いて上の手続きを繰り返せば良い．
+# 全チームのリーグ成績を求めるには上の手続きを繰り返せば良い．
 # 以下では，`Rank`という名前のDataFrameに全チームのリーグ成績を保存する．
 
-# In[13]:
+# In[116]:
 
 
 Rank = pd.DataFrame(columns=['チーム', 'ID', '得点', '失点', '得失点', '勝点'])
@@ -226,7 +226,7 @@ for i in range(len(TM_E)):
     
     '''ホームゲーム'''
     # 得点と失点
-    S_h = GM_E.loc[(GM_E['home_id']==tm_id), ['home_score', 'away_score']]
+    S_h = GM_E.loc[(GM_E['home_id']==tm_id), ['section', 'home_score', 'away_score']]
     S_h = S_h.rename(columns={'home_score': 'goal', 'away_score': 'loss'})
 
     # 得失点差
@@ -237,7 +237,7 @@ for i in range(len(TM_E)):
     
     '''アウェイゲーム'''
     # 得点と失点
-    S_a = GM_E.loc[(GM_E['away_id']==tm_id), ['home_score', 'away_score']]
+    S_a = GM_E.loc[(GM_E['away_id']==tm_id), ['section', 'home_score', 'away_score']]
     S_a = S_a.rename(columns={'away_score': 'goal', 'home_score': 'loss'})
 
     # 得失点差
@@ -254,6 +254,9 @@ for i in range(len(TM_E)):
     S.loc[S['result']==1, 'point'] = 3
     S.loc[S['result']==0, 'point'] = 1
     
+    # 節でソート
+    S = S.sort_values('section')
+    
     # 順位表への統合
     gf = S['goal'].sum()  # 総得点
     ga = S['loss'].sum()  # 総失点
@@ -265,21 +268,24 @@ for i in range(len(TM_E)):
     Rank = pd.concat([Rank, df])
 
 
-# 最後に，勝ち点の順にソートし，インデックスを付け直す．
+# 最後に，データフレームを勝ち点の順にソートしてインデックスを付け直し，csvファイルとして保存する．
 
-# In[14]:
+# In[118]:
 
 
 # ソートと再インデックス
 Rank = Rank.sort_values(['勝点'], ascending=False)
 Rank = Rank.reset_index(drop=1)
 
+# csvファイルへの出力
+Rank.to_csv('./Rank_England.csv', index=True)
+
 
 # 以上により，イングランド・プレミアリーグの順位表が作成できた．
 # 
 # ※ [Wikipedia](https://ja.wikipedia.org/wiki/%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%AA%E3%83%BC%E3%82%B02017-2018)の情報とは一部合わないが，[Premier League Table, Form Guide & Season Archives](https://www.premierleague.com/tables?co=1&se=79&mw=-1&ha=-1)とは一致している．
 
-# In[15]:
+# In[93]:
 
 
 Rank
@@ -288,6 +294,8 @@ Rank
 # ### 演習問題
 
 # - イングランド以外のリーグについて，同様の順位表を作成せよ
+# - 好きなチームに対して，横軸に節，縦軸に累積勝ち点を取ったグラフを作成し，1シーズンの勝ち点の変動を可視化せよ．
+# - 特定のリーグの全チームについて，勝ち点の変動を可視化せよ．
 
 # ## 得点分布
 # 
