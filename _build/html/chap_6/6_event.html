@@ -2336,7 +2336,14 @@ dtype: float64
       <th>id</th>
       <th>game_id</th>
       <th>half</th>
-      <th>...</th>
+      <th>t</th>
+      <th>team_id</th>
+      <th>player_id</th>
+      <th>event</th>
+      <th>event_id</th>
+      <th>subevent</th>
+      <th>subevent_id</th>
+      <th>x1</th>
       <th>y1</th>
       <th>x2</th>
       <th>y2</th>
@@ -2348,7 +2355,14 @@ dtype: float64
       <td>177959171</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>2.759</td>
+      <td>1609</td>
+      <td>25413</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>simple_pass</td>
+      <td>85.0</td>
+      <td>49.0</td>
       <td>49.0</td>
       <td>31.0</td>
       <td>78.0</td>
@@ -2358,7 +2372,14 @@ dtype: float64
       <td>177959172</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>4.947</td>
+      <td>1609</td>
+      <td>370224</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>high_pass</td>
+      <td>83.0</td>
+      <td>31.0</td>
       <td>78.0</td>
       <td>51.0</td>
       <td>75.0</td>
@@ -2368,7 +2389,14 @@ dtype: float64
       <td>177959173</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>6.542</td>
+      <td>1609</td>
+      <td>3319</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>head_pass</td>
+      <td>82.0</td>
+      <td>51.0</td>
       <td>75.0</td>
       <td>35.0</td>
       <td>71.0</td>
@@ -2378,7 +2406,14 @@ dtype: float64
       <td>177959174</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>8.143</td>
+      <td>1609</td>
+      <td>120339</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>head_pass</td>
+      <td>82.0</td>
+      <td>35.0</td>
       <td>71.0</td>
       <td>41.0</td>
       <td>95.0</td>
@@ -2388,14 +2423,20 @@ dtype: float64
       <td>177959175</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>10.302</td>
+      <td>1609</td>
+      <td>167145</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>simple_pass</td>
+      <td>85.0</td>
+      <td>41.0</td>
       <td>95.0</td>
       <td>72.0</td>
       <td>88.0</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 14 columns</p>
 </div></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">EV</span></code>には380試合分のイベントログが含まれており，その行数は64万行にのぼる．
@@ -2524,7 +2565,21 @@ dtype: float64
       <th>id</th>
       <th>goal</th>
       <th>own_goal</th>
+      <th>opportunity</th>
+      <th>assist</th>
+      <th>keypass</th>
+      <th>left</th>
+      <th>right</th>
+      <th>head/body</th>
+      <th>free_space_r</th>
       <th>...</th>
+      <th>interception</th>
+      <th>sliding_tackle</th>
+      <th>red_card</th>
+      <th>yellow_card</th>
+      <th>second_yellow_card</th>
+      <th>accurate</th>
+      <th>not_accurate</th>
       <th>counter_attack</th>
       <th>dangerous_ball_lost</th>
       <th>blocked</th>
@@ -2536,7 +2591,21 @@ dtype: float64
       <td>177959171</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2546,7 +2615,21 @@ dtype: float64
       <td>177959172</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2556,7 +2639,21 @@ dtype: float64
       <td>177959173</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2566,7 +2663,21 @@ dtype: float64
       <td>177959174</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2576,7 +2687,21 @@ dtype: float64
       <td>177959175</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2643,186 +2768,6 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ev</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>id</th>
-      <th>game_id</th>
-      <th>half</th>
-      <th>...</th>
-      <th>y1</th>
-      <th>x2</th>
-      <th>y2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>177959171</td>
-      <td>2499719</td>
-      <td>1</td>
-      <td>...</td>
-      <td>49.0</td>
-      <td>31.0</td>
-      <td>78.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>177959172</td>
-      <td>2499719</td>
-      <td>1</td>
-      <td>...</td>
-      <td>78.0</td>
-      <td>51.0</td>
-      <td>75.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>177959173</td>
-      <td>2499719</td>
-      <td>1</td>
-      <td>...</td>
-      <td>75.0</td>
-      <td>35.0</td>
-      <td>71.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>177959174</td>
-      <td>2499719</td>
-      <td>1</td>
-      <td>...</td>
-      <td>71.0</td>
-      <td>41.0</td>
-      <td>95.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>177959175</td>
-      <td>2499719</td>
-      <td>1</td>
-      <td>...</td>
-      <td>95.0</td>
-      <td>72.0</td>
-      <td>88.0</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 14 columns</p>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ev_tag</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>id</th>
-      <th>goal</th>
-      <th>own_goal</th>
-      <th>...</th>
-      <th>counter_attack</th>
-      <th>dangerous_ball_lost</th>
-      <th>blocked</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>177959171</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>177959172</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>177959173</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>177959174</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>177959175</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 58 columns</p>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 前半のみ抽出</span>
 <span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;half&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
@@ -2850,7 +2795,14 @@ dtype: float64
       <th>id</th>
       <th>game_id</th>
       <th>half</th>
-      <th>...</th>
+      <th>t</th>
+      <th>team_id</th>
+      <th>player_id</th>
+      <th>event</th>
+      <th>event_id</th>
+      <th>subevent</th>
+      <th>subevent_id</th>
+      <th>x1</th>
       <th>y1</th>
       <th>x2</th>
       <th>y2</th>
@@ -2862,7 +2814,14 @@ dtype: float64
       <td>177960132</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>2814.015</td>
+      <td>1631</td>
+      <td>8653</td>
+      <td>others_on_the_ball</td>
+      <td>7</td>
+      <td>touch</td>
+      <td>72.0</td>
+      <td>14.0</td>
       <td>49.0</td>
       <td>11.0</td>
       <td>61.0</td>
@@ -2872,7 +2831,14 @@ dtype: float64
       <td>177960129</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>2814.485</td>
+      <td>1609</td>
+      <td>14869</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>simple_pass</td>
+      <td>85.0</td>
+      <td>89.0</td>
       <td>39.0</td>
       <td>92.0</td>
       <td>50.0</td>
@@ -2882,7 +2848,14 @@ dtype: float64
       <td>177960130</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>2815.901</td>
+      <td>1609</td>
+      <td>7945</td>
+      <td>shot</td>
+      <td>10</td>
+      <td>shot</td>
+      <td>100.0</td>
+      <td>92.0</td>
       <td>50.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2892,7 +2865,14 @@ dtype: float64
       <td>177960121</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>2817.605</td>
+      <td>1631</td>
+      <td>8480</td>
+      <td>save_attempt</td>
+      <td>9</td>
+      <td>reflexes</td>
+      <td>90.0</td>
+      <td>100.0</td>
       <td>100.0</td>
       <td>8.0</td>
       <td>50.0</td>
@@ -2902,14 +2882,20 @@ dtype: float64
       <td>177960127</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>2852.557</td>
+      <td>1631</td>
+      <td>14853</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>simple_pass</td>
+      <td>85.0</td>
+      <td>31.0</td>
       <td>24.0</td>
       <td>100.0</td>
       <td>100.0</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 14 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -2941,7 +2927,14 @@ dtype: float64
       <th>id</th>
       <th>game_id</th>
       <th>half</th>
-      <th>...</th>
+      <th>t</th>
+      <th>team_id</th>
+      <th>player_id</th>
+      <th>event</th>
+      <th>event_id</th>
+      <th>subevent</th>
+      <th>subevent_id</th>
+      <th>x1</th>
       <th>y1</th>
       <th>x2</th>
       <th>y2</th>
@@ -2953,7 +2946,14 @@ dtype: float64
       <td>177959186</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>13.961</td>
+      <td>1631</td>
+      <td>8653</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>head_pass</td>
+      <td>82.0</td>
+      <td>23.0</td>
       <td>25.0</td>
       <td>39.0</td>
       <td>15.0</td>
@@ -2963,7 +2963,14 @@ dtype: float64
       <td>177959189</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>14.765</td>
+      <td>1631</td>
+      <td>8013</td>
+      <td>duel</td>
+      <td>1</td>
+      <td>air_duel</td>
+      <td>10.0</td>
+      <td>39.0</td>
       <td>15.0</td>
       <td>33.0</td>
       <td>20.0</td>
@@ -2973,7 +2980,14 @@ dtype: float64
       <td>177961218</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>14.765</td>
+      <td>1609</td>
+      <td>0</td>
+      <td>duel</td>
+      <td>1</td>
+      <td>air_duel</td>
+      <td>10.0</td>
+      <td>61.0</td>
       <td>85.0</td>
       <td>67.0</td>
       <td>80.0</td>
@@ -2983,7 +2997,14 @@ dtype: float64
       <td>177959178</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>15.320</td>
+      <td>1609</td>
+      <td>167145</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>head_pass</td>
+      <td>82.0</td>
+      <td>67.0</td>
       <td>80.0</td>
       <td>59.0</td>
       <td>61.0</td>
@@ -2993,14 +3014,20 @@ dtype: float64
       <td>177959179</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>18.052</td>
+      <td>1609</td>
+      <td>49876</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>head_pass</td>
+      <td>82.0</td>
+      <td>59.0</td>
       <td>61.0</td>
       <td>45.0</td>
       <td>45.0</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 14 columns</p>
 </div></div></div>
 </div>
 <p><strong>特定のイベントの抽出</strong></p>
@@ -3036,7 +3063,14 @@ dtype: float64
       <th>id</th>
       <th>game_id</th>
       <th>half</th>
-      <th>...</th>
+      <th>t</th>
+      <th>team_id</th>
+      <th>player_id</th>
+      <th>event</th>
+      <th>event_id</th>
+      <th>subevent</th>
+      <th>subevent_id</th>
+      <th>x1</th>
       <th>y1</th>
       <th>x2</th>
       <th>y2</th>
@@ -3048,7 +3082,14 @@ dtype: float64
       <td>177959171</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>2.759</td>
+      <td>1609</td>
+      <td>25413</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>simple_pass</td>
+      <td>85.0</td>
+      <td>49.0</td>
       <td>49.0</td>
       <td>31.0</td>
       <td>78.0</td>
@@ -3058,7 +3099,14 @@ dtype: float64
       <td>177959172</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>4.947</td>
+      <td>1609</td>
+      <td>370224</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>high_pass</td>
+      <td>83.0</td>
+      <td>31.0</td>
       <td>78.0</td>
       <td>51.0</td>
       <td>75.0</td>
@@ -3068,7 +3116,14 @@ dtype: float64
       <td>177959173</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>6.542</td>
+      <td>1609</td>
+      <td>3319</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>head_pass</td>
+      <td>82.0</td>
+      <td>51.0</td>
       <td>75.0</td>
       <td>35.0</td>
       <td>71.0</td>
@@ -3078,7 +3133,14 @@ dtype: float64
       <td>177959174</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>8.143</td>
+      <td>1609</td>
+      <td>120339</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>head_pass</td>
+      <td>82.0</td>
+      <td>35.0</td>
       <td>71.0</td>
       <td>41.0</td>
       <td>95.0</td>
@@ -3088,14 +3150,20 @@ dtype: float64
       <td>177959175</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>10.302</td>
+      <td>1609</td>
+      <td>167145</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>simple_pass</td>
+      <td>85.0</td>
+      <td>41.0</td>
       <td>95.0</td>
       <td>72.0</td>
       <td>88.0</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 14 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -3127,7 +3195,14 @@ dtype: float64
       <th>id</th>
       <th>game_id</th>
       <th>half</th>
-      <th>...</th>
+      <th>t</th>
+      <th>team_id</th>
+      <th>player_id</th>
+      <th>event</th>
+      <th>event_id</th>
+      <th>subevent</th>
+      <th>subevent_id</th>
+      <th>x1</th>
       <th>y1</th>
       <th>x2</th>
       <th>y2</th>
@@ -3139,7 +3214,14 @@ dtype: float64
       <td>177959171</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>2.759</td>
+      <td>1609</td>
+      <td>25413</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>simple_pass</td>
+      <td>85.0</td>
+      <td>49.0</td>
       <td>49.0</td>
       <td>31.0</td>
       <td>78.0</td>
@@ -3149,7 +3231,14 @@ dtype: float64
       <td>177959175</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>10.302</td>
+      <td>1609</td>
+      <td>167145</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>simple_pass</td>
+      <td>85.0</td>
+      <td>41.0</td>
       <td>95.0</td>
       <td>72.0</td>
       <td>88.0</td>
@@ -3159,7 +3248,14 @@ dtype: float64
       <td>177959177</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>12.549</td>
+      <td>1609</td>
+      <td>3319</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>simple_pass</td>
+      <td>85.0</td>
+      <td>72.0</td>
       <td>88.0</td>
       <td>77.0</td>
       <td>75.0</td>
@@ -3169,7 +3265,14 @@ dtype: float64
       <td>177959196</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>29.981</td>
+      <td>1631</td>
+      <td>265366</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>simple_pass</td>
+      <td>85.0</td>
+      <td>29.0</td>
       <td>26.0</td>
       <td>37.0</td>
       <td>8.0</td>
@@ -3179,14 +3282,20 @@ dtype: float64
       <td>177959197</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>31.164</td>
+      <td>1631</td>
+      <td>8013</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>simple_pass</td>
+      <td>85.0</td>
+      <td>37.0</td>
       <td>8.0</td>
       <td>23.0</td>
       <td>5.0</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 14 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -3218,7 +3327,14 @@ dtype: float64
       <th>id</th>
       <th>game_id</th>
       <th>half</th>
-      <th>...</th>
+      <th>t</th>
+      <th>team_id</th>
+      <th>player_id</th>
+      <th>event</th>
+      <th>event_id</th>
+      <th>subevent</th>
+      <th>subevent_id</th>
+      <th>x1</th>
       <th>y1</th>
       <th>x2</th>
       <th>y2</th>
@@ -3230,7 +3346,14 @@ dtype: float64
       <td>177959212</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>94.596</td>
+      <td>1609</td>
+      <td>25413</td>
+      <td>shot</td>
+      <td>10</td>
+      <td>shot</td>
+      <td>100.0</td>
+      <td>88.0</td>
       <td>41.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -3240,7 +3363,14 @@ dtype: float64
       <td>177959226</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>96.971</td>
+      <td>1631</td>
+      <td>8480</td>
+      <td>save_attempt</td>
+      <td>9</td>
+      <td>reflexes</td>
+      <td>90.0</td>
+      <td>100.0</td>
       <td>100.0</td>
       <td>12.0</td>
       <td>59.0</td>
@@ -3250,7 +3380,14 @@ dtype: float64
       <td>177959280</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>254.745</td>
+      <td>1631</td>
+      <td>14763</td>
+      <td>shot</td>
+      <td>10</td>
+      <td>shot</td>
+      <td>100.0</td>
+      <td>96.0</td>
       <td>52.0</td>
       <td>100.0</td>
       <td>100.0</td>
@@ -3260,7 +3397,14 @@ dtype: float64
       <td>177959249</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>256.548</td>
+      <td>1609</td>
+      <td>7882</td>
+      <td>save_attempt</td>
+      <td>9</td>
+      <td>reflexes</td>
+      <td>90.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>4.0</td>
       <td>48.0</td>
@@ -3270,14 +3414,20 @@ dtype: float64
       <td>177959759</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>1710.855</td>
+      <td>1631</td>
+      <td>12829</td>
+      <td>shot</td>
+      <td>10</td>
+      <td>shot</td>
+      <td>100.0</td>
+      <td>94.0</td>
       <td>54.0</td>
       <td>100.0</td>
       <td>100.0</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 14 columns</p>
 </div></div></div>
 </div>
 <p><strong>イベントタグを用いた抽出</strong></p>
@@ -3312,7 +3462,14 @@ dtype: float64
       <th>id</th>
       <th>game_id</th>
       <th>half</th>
-      <th>...</th>
+      <th>t</th>
+      <th>team_id</th>
+      <th>player_id</th>
+      <th>event</th>
+      <th>event_id</th>
+      <th>subevent</th>
+      <th>subevent_id</th>
+      <th>x1</th>
       <th>y1</th>
       <th>x2</th>
       <th>y2</th>
@@ -3324,7 +3481,14 @@ dtype: float64
       <td>177959171</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>2.759</td>
+      <td>1609</td>
+      <td>25413</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>simple_pass</td>
+      <td>85.0</td>
+      <td>49.0</td>
       <td>49.0</td>
       <td>31.0</td>
       <td>78.0</td>
@@ -3334,7 +3498,14 @@ dtype: float64
       <td>177959172</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>4.947</td>
+      <td>1609</td>
+      <td>370224</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>high_pass</td>
+      <td>83.0</td>
+      <td>31.0</td>
       <td>78.0</td>
       <td>51.0</td>
       <td>75.0</td>
@@ -3344,7 +3515,14 @@ dtype: float64
       <td>177959173</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>6.542</td>
+      <td>1609</td>
+      <td>3319</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>head_pass</td>
+      <td>82.0</td>
+      <td>51.0</td>
       <td>75.0</td>
       <td>35.0</td>
       <td>71.0</td>
@@ -3354,7 +3532,14 @@ dtype: float64
       <td>177959174</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>8.143</td>
+      <td>1609</td>
+      <td>120339</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>head_pass</td>
+      <td>82.0</td>
+      <td>35.0</td>
       <td>71.0</td>
       <td>41.0</td>
       <td>95.0</td>
@@ -3364,7 +3549,14 @@ dtype: float64
       <td>177959175</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>10.302</td>
+      <td>1609</td>
+      <td>167145</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>simple_pass</td>
+      <td>85.0</td>
+      <td>41.0</td>
       <td>95.0</td>
       <td>72.0</td>
       <td>88.0</td>
@@ -3378,13 +3570,27 @@ dtype: float64
       <td>...</td>
       <td>...</td>
       <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
       <th>1739</th>
       <td>177961023</td>
       <td>2499719</td>
       <td>2</td>
-      <td>...</td>
+      <td>2865.715</td>
+      <td>1631</td>
+      <td>26150</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>head_pass</td>
+      <td>82.0</td>
+      <td>65.0</td>
       <td>94.0</td>
       <td>72.0</td>
       <td>83.0</td>
@@ -3394,7 +3600,14 @@ dtype: float64
       <td>177961024</td>
       <td>2499719</td>
       <td>2</td>
-      <td>...</td>
+      <td>2866.966</td>
+      <td>1631</td>
+      <td>12829</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>simple_pass</td>
+      <td>85.0</td>
+      <td>72.0</td>
       <td>83.0</td>
       <td>69.0</td>
       <td>74.0</td>
@@ -3404,7 +3617,14 @@ dtype: float64
       <td>177961037</td>
       <td>2499719</td>
       <td>2</td>
-      <td>...</td>
+      <td>2985.152</td>
+      <td>1631</td>
+      <td>8488</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>head_pass</td>
+      <td>82.0</td>
+      <td>20.0</td>
       <td>77.0</td>
       <td>25.0</td>
       <td>72.0</td>
@@ -3414,7 +3634,14 @@ dtype: float64
       <td>177961039</td>
       <td>2499719</td>
       <td>2</td>
-      <td>...</td>
+      <td>2990.768</td>
+      <td>1631</td>
+      <td>8653</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>simple_pass</td>
+      <td>85.0</td>
+      <td>11.0</td>
       <td>68.0</td>
       <td>7.0</td>
       <td>53.0</td>
@@ -3424,7 +3651,14 @@ dtype: float64
       <td>177961035</td>
       <td>2499719</td>
       <td>2</td>
-      <td>...</td>
+      <td>2994.901</td>
+      <td>1609</td>
+      <td>49876</td>
+      <td>pass</td>
+      <td>8</td>
+      <td>head_pass</td>
+      <td>82.0</td>
+      <td>54.0</td>
       <td>51.0</td>
       <td>73.0</td>
       <td>58.0</td>
@@ -3463,7 +3697,14 @@ dtype: float64
       <th>id</th>
       <th>game_id</th>
       <th>half</th>
-      <th>...</th>
+      <th>t</th>
+      <th>team_id</th>
+      <th>player_id</th>
+      <th>event</th>
+      <th>event_id</th>
+      <th>subevent</th>
+      <th>subevent_id</th>
+      <th>x1</th>
       <th>y1</th>
       <th>x2</th>
       <th>y2</th>
@@ -3475,7 +3716,14 @@ dtype: float64
       <td>177959212</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>94.596</td>
+      <td>1609</td>
+      <td>25413</td>
+      <td>shot</td>
+      <td>10</td>
+      <td>shot</td>
+      <td>100.0</td>
+      <td>88.0</td>
       <td>41.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -3485,7 +3733,14 @@ dtype: float64
       <td>177959280</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>254.745</td>
+      <td>1631</td>
+      <td>14763</td>
+      <td>shot</td>
+      <td>10</td>
+      <td>shot</td>
+      <td>100.0</td>
+      <td>96.0</td>
       <td>52.0</td>
       <td>100.0</td>
       <td>100.0</td>
@@ -3495,7 +3750,14 @@ dtype: float64
       <td>177959759</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>1710.855</td>
+      <td>1631</td>
+      <td>12829</td>
+      <td>shot</td>
+      <td>10</td>
+      <td>shot</td>
+      <td>100.0</td>
+      <td>94.0</td>
       <td>54.0</td>
       <td>100.0</td>
       <td>100.0</td>
@@ -3505,7 +3767,14 @@ dtype: float64
       <td>177960130</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>2815.901</td>
+      <td>1609</td>
+      <td>7945</td>
+      <td>shot</td>
+      <td>10</td>
+      <td>shot</td>
+      <td>100.0</td>
+      <td>92.0</td>
       <td>50.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -3515,7 +3784,14 @@ dtype: float64
       <td>177960379</td>
       <td>2499719</td>
       <td>2</td>
-      <td>...</td>
+      <td>634.312</td>
+      <td>1631</td>
+      <td>12829</td>
+      <td>shot</td>
+      <td>10</td>
+      <td>shot</td>
+      <td>100.0</td>
+      <td>92.0</td>
       <td>54.0</td>
       <td>100.0</td>
       <td>100.0</td>
@@ -3525,7 +3801,14 @@ dtype: float64
       <td>177960849</td>
       <td>2499719</td>
       <td>2</td>
-      <td>...</td>
+      <td>2231.120</td>
+      <td>1609</td>
+      <td>7870</td>
+      <td>shot</td>
+      <td>10</td>
+      <td>shot</td>
+      <td>100.0</td>
+      <td>94.0</td>
       <td>63.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -3535,14 +3818,20 @@ dtype: float64
       <td>177960902</td>
       <td>2499719</td>
       <td>2</td>
-      <td>...</td>
+      <td>2374.621</td>
+      <td>1609</td>
+      <td>26010</td>
+      <td>shot</td>
+      <td>10</td>
+      <td>shot</td>
+      <td>100.0</td>
+      <td>91.0</td>
       <td>44.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
   </tbody>
 </table>
-<p>7 rows × 14 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -3590,7 +3879,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_103_0.png" src="../_images/6_event_103_0.png" />
+<img alt="../_images/6_event_101_0.png" src="../_images/6_event_101_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3603,7 +3892,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_104_0.png" src="../_images/6_event_104_0.png" />
+<img alt="../_images/6_event_102_0.png" src="../_images/6_event_102_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3616,7 +3905,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_105_0.png" src="../_images/6_event_105_0.png" />
+<img alt="../_images/6_event_103_0.png" src="../_images/6_event_103_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3629,7 +3918,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_106_0.png" src="../_images/6_event_106_0.png" />
+<img alt="../_images/6_event_104_0.png" src="../_images/6_event_104_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3642,7 +3931,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_107_0.png" src="../_images/6_event_107_0.png" />
+<img alt="../_images/6_event_105_0.png" src="../_images/6_event_105_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3655,7 +3944,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_108_0.png" src="../_images/6_event_108_0.png" />
+<img alt="../_images/6_event_106_0.png" src="../_images/6_event_106_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3668,7 +3957,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_109_0.png" src="../_images/6_event_109_0.png" />
+<img alt="../_images/6_event_107_0.png" src="../_images/6_event_107_0.png" />
 </div>
 </div>
 </section>
@@ -4043,7 +4332,14 @@ Name: player_id, dtype: int64
       <th>A_Lacazette</th>
       <th>R_Holding</th>
       <th>M_Özil</th>
-      <th>...</th>
+      <th>Mohame_Elneny</th>
+      <th>Bellerín</th>
+      <th>G_Xhaka</th>
+      <th>S_Kolašinac</th>
+      <th>Nach_Monreal</th>
+      <th>P_Čech</th>
+      <th>A_Oxlade-Chamberlain</th>
+      <th>D_Welbeck</th>
       <th>O_Giroud</th>
       <th>A_Ramsey</th>
       <th>T_Walcott</th>
@@ -4055,7 +4351,14 @@ Name: player_id, dtype: int64
       <td>0.0</td>
       <td>1.0</td>
       <td>2.0</td>
-      <td>...</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -4065,7 +4368,14 @@ Name: player_id, dtype: int64
       <td>1.0</td>
       <td>0.0</td>
       <td>4.0</td>
-      <td>...</td>
+      <td>11.0</td>
+      <td>8.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>12.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -4075,7 +4385,14 @@ Name: player_id, dtype: int64
       <td>5.0</td>
       <td>6.0</td>
       <td>3.0</td>
-      <td>...</td>
+      <td>3.0</td>
+      <td>8.0</td>
+      <td>19.0</td>
+      <td>9.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
@@ -4085,7 +4402,14 @@ Name: player_id, dtype: int64
       <td>1.0</td>
       <td>8.0</td>
       <td>7.0</td>
-      <td>...</td>
+      <td>1.0</td>
+      <td>10.0</td>
+      <td>16.0</td>
+      <td>4.0</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>2.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -4095,57 +4419,48 @@ Name: player_id, dtype: int64
       <td>3.0</td>
       <td>10.0</td>
       <td>11.0</td>
-      <td>...</td>
+      <td>11.0</td>
+      <td>0.0</td>
+      <td>6.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>2.0</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>G_Xhaka</th>
-      <td>2.0</td>
-      <td>8.0</td>
-      <td>15.0</td>
+      <th>...</th>
       <td>...</td>
-      <td>0.0</td>
-      <td>2.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>S_Kolašinac</th>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>19.0</td>
       <td>...</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>Nach_Monreal</th>
-      <td>0.0</td>
-      <td>8.0</td>
-      <td>1.0</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>P_Čech</th>
-      <td>0.0</td>
-      <td>2.0</td>
-      <td>1.0</td>
       <td>...</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
       <th>A_Oxlade-Chamberlain</th>
       <td>3.0</td>
       <td>1.0</td>
       <td>6.0</td>
-      <td>...</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>9.0</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
       <td>2.0</td>
       <td>1.0</td>
       <td>1.0</td>
@@ -4155,7 +4470,14 @@ Name: player_id, dtype: int64
       <td>1.0</td>
       <td>1.0</td>
       <td>3.0</td>
-      <td>...</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
@@ -4165,7 +4487,14 @@ Name: player_id, dtype: int64
       <td>1.0</td>
       <td>0.0</td>
       <td>1.0</td>
-      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
@@ -4175,7 +4504,14 @@ Name: player_id, dtype: int64
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
-      <td>...</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -4185,7 +4521,14 @@ Name: player_id, dtype: int64
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -4230,7 +4573,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_137_0.png" src="../_images/6_event_137_0.png" />
+<img alt="../_images/6_event_135_0.png" src="../_images/6_event_135_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -4240,7 +4583,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_138_0.png" src="../_images/6_event_138_0.png" />
+<img alt="../_images/6_event_136_0.png" src="../_images/6_event_136_0.png" />
 </div>
 </div>
 </section>
