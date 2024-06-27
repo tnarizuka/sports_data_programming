@@ -981,12 +981,14 @@ def plot_corr_mat(A):
 # In[102]:
 
 
+# チーム0のパス数行列のヒートマップ
 plot_corr_mat(A0)
 
 
-# In[103]:
+# In[106]:
 
 
+# チーム1のパス数行列のヒートマップ
 plot_corr_mat(A1)
 
 
