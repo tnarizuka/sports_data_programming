@@ -837,7 +837,7 @@ title="Print to PDF"
 </tbody>
 </table>
 <p>次に <a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1">team.csv</a> をダウンロードしてカレントディレクトリに移動し，<code class="docutils literal notranslate"><span class="pre">TM</span></code>という名前のDataFrameに読み込む．</p>
-<div class="cell tag_&quot;scroll-output&quot; docutils container">
+<div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TM</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./team.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">TM</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -1950,7 +1950,7 @@ Arsenal
 <section id="id11">
 <h3><span class="section-number">6.3.2. </span>得点データの要約<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>まずは<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A">game.csv</a>をダウンロードしてカレントディレクトリに保存し，<code class="docutils literal notranslate"><span class="pre">GM</span></code>という名前のDataFrameに読み込む．</p>
-<div class="cell docutils container">
+<div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GM</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./game.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">GM</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -2308,7 +2308,7 @@ dtype: float64
 <section id="id16">
 <h3><span class="section-number">6.4.2. </span>イベントデータの詳細<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p><strong>イベントログ</strong></p>
-<div class="cell docutils container">
+<div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">EV</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -4140,7 +4140,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pass_list</span>
 </pre></div>
@@ -4568,7 +4568,8 @@ Name: player_id, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_corr_mat</span><span class="p">(</span><span class="n">A0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># チーム0のパス数行列のヒートマップ</span>
+<span class="n">plot_corr_mat</span><span class="p">(</span><span class="n">A0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -4578,7 +4579,8 @@ Name: player_id, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_corr_mat</span><span class="p">(</span><span class="n">A1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># チーム1のパス数行列のヒートマップ</span>
+<span class="n">plot_corr_mat</span><span class="p">(</span><span class="n">A1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
