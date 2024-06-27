@@ -4296,7 +4296,7 @@ Name: player_id, dtype: int64
         <span class="n">A0</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pass_list</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">pass_list</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pass_list</span><span class="p">[</span><span class="s1">&#39;name2&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">j</span><span class="p">)])</span>
 
 <span class="c1"># チーム1のパス数行列を作成</span>
-<span class="n">A1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">pl_id1</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">pl_id1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span> 
+<span class="n">A1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">pl_id1</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">pl_id1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">pl_id1</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">pl_id1</span><span class="p">:</span>
         <span class="n">A1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pass_list</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">pass_list</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pass_list</span><span class="p">[</span><span class="s1">&#39;name2&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">j</span><span class="p">)])</span>
@@ -4304,7 +4304,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A0</span>
 </pre></div>
