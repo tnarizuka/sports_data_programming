@@ -893,7 +893,7 @@ ev_tag = EV_tag.loc[EV['game_id']==2499719].copy()
 # なお，イベントログには選手ID（'player_id'）の情報しかないので，選手プロフィール`PL`のデータを用いて選手名を追加する．
 # 以下のように，`replace`メソッドを用いて，選手ID（'player_id'）を選手名（'name'）に置換すれば良い．
 
-# In[97]:
+# In[104]:
 
 
 # イベント名が'pass'の行を抽出
@@ -910,7 +910,7 @@ pass_list['name'] = pass_list['player_id'].replace(PL['player_id'].values, PL['n
 pass_list['name2'] = pass_list['player_id2'].replace(PL['player_id'].values, PL['name'].values)
 
 
-# In[98]:
+# In[105]:
 
 
 pass_list
@@ -937,7 +937,7 @@ for i in pl_id0:
         A0.loc[i, j] = len(pass_list.loc[(pass_list['name']==i) & (pass_list['name2']==j)])
 
 # チーム1のパス数行列を作成
-A1 = pd.DataFrame(index=pl_id1, columns=pl_id1, dtype=int) 
+A1 = pd.DataFrame(index=pl_id1, columns=pl_id1, dtype=int)
 for i in pl_id1:
     for j in pl_id1:
         A1.loc[i, j] = len(pass_list.loc[(pass_list['name']==i) & (pass_list['name2']==j)])
