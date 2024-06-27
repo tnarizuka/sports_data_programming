@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[41]:
 
 
 # （必須）モジュールのインポート
@@ -55,7 +55,7 @@ get_ipython().run_line_magic('precision', '3')
 
 # まずは [game.csv](https://drive.google.com/uc?export=download&id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A) をダウンロードしてカレントディレクトリに移動し，`GM`という名前のDataFrameに読み込む．
 
-# In[68]:
+# In[43]:
 
 
 GM = pd.read_csv('./game.csv', header=0)
@@ -521,7 +521,7 @@ ax.set_xticks(x);
 # 
 # これらを以下のように読み込んでおく．
 
-# In[2]:
+# In[42]:
 
 
 # イベントデータと選手プロフィールの読み込み
@@ -546,24 +546,24 @@ EV.head()
 
 # | 変数名 | 内容 |
 # | ---- | ---- |
-# | id | １つのイベントに付与される識別ID（１行に対して１つのIDが付与される） | 
+# | id | イベント識別ID | 
 # | game_id | 試合ID |
 # | half | 1（前半），2（後半）|
-# | t | イベントが起きた時間（ハーフ開始からの経過時間）．単位は秒 |
+# | t | ハーフ開始からの経過時間（単位は秒） |
 # | team_id | チームID |
 # | player_id | 選手ID |
 # | event | イベント名 |
 # | event_id | イベントID |
 # | subevent | サブイベント名 |
 # | subevent_id | サブイベントID |
-# | x1 | イベントの始まりの $x$ 座標（単位は\%） |
-# | y1 | イベントの始まりの $y$ 座標（単位は\%） |
-# | x2 | イベントの終わりの $x$ 座標（単位は\%） |
-# | y2 | イベントの終わりの $y$ 座標（単位は\%） |
+# | x1 | イベント開始 $x$ 座標（単位は\%） |
+# | y1 | イベント開始 $y$ 座標（単位は\%） |
+# | x2 | イベント終了 $x$ 座標（単位は\%） |
+# | y2 | イベント終了 $y$ 座標（単位は\%） |
 
 # **座標系**
 # 
-# イベントの始まりの座標 $(x_{1}, y_{1})$ と終わりの座標 $(x_{2}, y_{2})$ は以下の座標系に従う：
+# イベント開始座標 $(x_{1}, y_{1})$ と終了座標 $(x_{2}, y_{2})$ は以下の座標系に従う：
 # - 原点は左下
 # - $x,\ y$ 座標の値はフィールドの横幅と縦幅の最大値に対する割合（単位は\%）
 #   - $0\le x \le 100$
@@ -578,19 +578,19 @@ EV.head()
 # ax.set_aspect(68/105)
 # ```
 
-# In[4]:
+# In[48]:
 
 
 '''サッカーコートの描画'''
 fig, ax = plt.subplots(figsize=(4, 4))
-ax.set_aspect(68/105)
+ax.set_aspect(68/105)  # アスペクト比を設定する
 
 # ハーフウェイライン
 ax.plot([50, 50], [0, 100], 'k--') 
 
 # 描画範囲と軸ラベル
 ax.set_xlim(0, 100); ax.set_ylim(0, 100)
-ax.set_xlabel('$X$'); ax.set_ylabel('$Y$')
+ax.set_xlabel('$X$'); ax.set_ylabel('$Y$');
 
 
 # **イベントタグ**
@@ -632,25 +632,25 @@ EV_tag.head()
 
 # **特定の試合・時間帯の抽出**
 
-# In[6]:
+# In[53]:
 
 
-# 特定の試合を抽出
+# 特定の試合を抽出する
 ev = EV.loc[EV['game_id']==2499719].copy()
 ev_tag = EV_tag.loc[EV['game_id']==2499719].copy()
 
 
-# In[9]:
+# In[55]:
 
 
-# 前半のみ抽出
+# 前半のみ抽出する
 ev.loc[ev['half']==1].tail()
 
 
-# In[10]:
+# In[56]:
 
 
-# 前半開始20秒までを抽出
+# 前半開始20秒までを抽出する
 ev.loc[(ev['half']==1) & (ev['t']<20)].tail()
 
 
@@ -660,21 +660,21 @@ ev.loc[(ev['half']==1) & (ev['t']<20)].tail()
 # `'event'`列は`'pass'`，`'foul'`などの大分類，`'subevent'`列は`'simple_pass'`や`'high_pass'`などの小分類となっている．
 # `'event'`および`'subevent'`のリストは[event_list.csv](https://drive.google.com/uc?export=download&id=1oSDUt73paDOsORVj732rGU0vwIwGHvHJ) にまとめられている．
 
-# In[11]:
+# In[57]:
 
 
 # event列が'pass'の行を抽出
 ev.loc[ev['event']=='pass'].head()
 
 
-# In[12]:
+# In[58]:
 
 
 # subevent列が'simple_pass'の行を抽出
 ev.loc[ev['subevent']=='simple_pass'].head()
 
 
-# In[13]:
+# In[59]:
 
 
 # event列が'shot'の行を抽出
@@ -686,14 +686,14 @@ ev.loc[(ev_tag['goal']==1)].head()
 # イベントタグ`EV_tag`はイベントログ`EV`と同じ行数で共通の行ラベル（インデックス）を持つ．
 # よって，`EV_tag`で取得したブールインデックスを用いて`EV`から条件付き抽出することができる．
 
-# In[14]:
+# In[60]:
 
 
 # イベント名が'pass'で，'accurate'タグが1である行（成功パス）を抽出
 ev.loc[(ev['event']=='pass') & (ev_tag['accurate']==1)]
 
 
-# In[15]:
+# In[61]:
 
 
 # イベント名が'shot'で，'goal'タグが1である行（成功シュート）
@@ -706,10 +706,13 @@ ev.loc[(ev['event']=='shot') & (ev_tag['goal']==1)]
 # まず，以下のようにヒートマップを描く`event_hmap`関数を作成する．
 # この関数は，$x,\ y$座標のデータを引数として受け取り，matplotlibの`hist2d`関数を用いてヒートマップを描く．
 
-# In[16]:
+# In[63]:
 
 
 def event_hmap(x, y, cm='Greens'):
+    '''
+    イベントデータからヒートマップを描画する
+    '''
     
     fig, ax = plt.subplots(figsize=(4, 4))
     
@@ -724,7 +727,7 @@ def event_hmap(x, y, cm='Greens'):
     fig.colorbar(ret[3], orientation='vertical', 
                  shrink=0.4, aspect=10, pad=0.05)
     
-    # ハーフウェイライン
+    # ハーフウェイラインを追加
     ax.plot([50, 50], [0, 100], 'k--') 
 
     # 描画範囲とラベル
@@ -735,7 +738,7 @@ def event_hmap(x, y, cm='Greens'):
 # 特定のイベントだけを条件付き抽出してその$x,\ y$座標を`event_hmap`関数に渡せば，そのイベントが行われたフィールド上の位置をヒートマップで可視化することができる．
 # 以下にいくつかの例を示す．
 
-# In[17]:
+# In[64]:
 
 
 # パス
@@ -744,16 +747,16 @@ x, y = EV.loc[cond, 'x1'], EV.loc[cond, 'y1']
 event_hmap(x, y)
 
 
-# In[18]:
+# In[68]:
 
 
 # 特定の選手のパス
-cond = (EV['event']=='pass') & (EV['player_id']==EV['player_id'].unique()[4])
+cond = (EV['event']=='pass') & (EV['player_id']==167145)
 x, y = EV.loc[cond, 'x1'], EV.loc[cond, 'y1']
 event_hmap(x, y, 'Blues')
 
 
-# In[19]:
+# In[69]:
 
 
 # クロス
@@ -762,7 +765,7 @@ x, y = EV.loc[cond, 'x1'], EV.loc[cond, 'y1']
 event_hmap(x, y, 'Reds')
 
 
-# In[20]:
+# In[70]:
 
 
 # デュエル
@@ -771,7 +774,7 @@ x, y = EV.loc[cond, 'x1'], EV.loc[cond, 'y1']
 event_hmap(x, y, 'Greys')
 
 
-# In[21]:
+# In[71]:
 
 
 # デュエル（攻撃時）
@@ -780,7 +783,7 @@ x, y = EV.loc[cond, 'x1'], EV.loc[cond, 'y1']
 event_hmap(x, y, 'jet')
 
 
-# In[22]:
+# In[72]:
 
 
 # シュート
@@ -789,7 +792,7 @@ x, y = EV.loc[cond, 'x1'], EV.loc[cond, 'y1']
 event_hmap(x, y)
 
 
-# In[23]:
+# In[73]:
 
 
 # シュート（成功）
@@ -818,7 +821,7 @@ event_hmap(x, y)
 # - 選手プロフィール`PL`を用いて'player_id'を選手名に変換する
 #   - 'player_id'と'name'が対応した辞書を作成し，`rename`メソッドを用いる
 
-# In[24]:
+# In[78]:
 
 
 # 'player_id'と'name'が対応した辞書
@@ -827,7 +830,7 @@ dict_id_name = dict(PL[['player_id', 'name']].values)
 
 # **シュート数**
 
-# In[25]:
+# In[92]:
 
 
 cond = (EV['subevent']=='shot') | (EV['subevent']=='free_kick_shot') | (EV['subevent']=='penalty')
@@ -838,7 +841,7 @@ Rank_shot.iloc[:10]
 
 # **パス数**
 
-# In[26]:
+# In[93]:
 
 
 Rank_pass = EV.loc[(EV['event']=='pass'), 'player_id'].value_counts()
@@ -848,7 +851,7 @@ Rank_pass.iloc[:10]
 
 # **アシスト数**
 
-# In[27]:
+# In[94]:
 
 
 Rank_assist = EV.loc[(EV_tag['assist']==1), 'player_id'].value_counts()
@@ -858,7 +861,7 @@ Rank_assist.iloc[:10]
 
 # **ゴール数**
 
-# In[28]:
+# In[95]:
 
 
 cond = ((EV['event']=='shot') | (EV['event']=='free_kick')) & (EV_tag['goal']==1)
@@ -874,7 +877,7 @@ Rank_goal.iloc[:10]
 
 # **試合の抽出**
 
-# In[29]:
+# In[96]:
 
 
 # 特定の試合を抽出
@@ -886,31 +889,31 @@ ev_tag = EV_tag.loc[EV['game_id']==2499719].copy()
 
 # 選手間のパス数を求めるには，パスの出し手と受け手の情報が必要である．
 # しかし，イベントログ`EV`にはパスの出し手の情報しかないので，受け手の情報を加える必要がある．
-# イベント名が'pass'の行については，次の行の選手IDがパスの受け手に対応するので，以下のようにパスリスト`ps`を作成できる．
+# イベント名が'pass'の行については，次の行の選手IDがパスの受け手に対応するので，以下のようにパスリスト`pass_list`を作成できる．
 # なお，イベントログには選手ID（'player_id'）の情報しかないので，選手プロフィール`PL`のデータを用いて選手名を追加する．
 # 以下のように，`replace`メソッドを用いて，選手ID（'player_id'）を選手名（'name'）に置換すれば良い．
 
-# In[30]:
+# In[97]:
 
 
 # イベント名が'pass'の行を抽出
 ev_pass = ev.loc[ev['event']=='pass', ['player_id', 'team_id']]
 
 # パスリストの作成
-ps = pd.DataFrame({'player_id': ev_pass['player_id'].values[:-1],
+pass_list = pd.DataFrame({'player_id': ev_pass['player_id'].values[:-1],
                    'player_id2': ev_pass['player_id'].values[1:],
                    'team_id': ev_pass['team_id'].values[:-1],
                    'team_id2': ev_pass['team_id'].values[1:]})
 
 # パスリストに選手名を追加
-ps['name'] = ps['player_id'].replace(PL['player_id'].values, PL['name'].values)
-ps['name2'] = ps['player_id2'].replace(PL['player_id'].values, PL['name'].values)
+pass_list['name'] = pass_list['player_id'].replace(PL['player_id'].values, PL['name'].values)
+pass_list['name2'] = pass_list['player_id2'].replace(PL['player_id'].values, PL['name'].values)
 
 
-# In[31]:
+# In[98]:
 
 
-ps
+pass_list
 
 
 # **パス数行列の作成**
@@ -919,28 +922,28 @@ ps
 # パス数行列の $(i, j)$ 成分は選手 $i$ から $j$ へのパスを表す．
 # 以下は`for`文によってパス数行列を作成する例である．
 
-# In[32]:
+# In[99]:
 
 
 # チームIDの取得
 tm_id = ev['team_id'].unique() # 2チームのチームID
-pl_id0 = ps.loc[ps['team_id']==tm_id[0], 'name'].unique() # チーム0の選手ID
-pl_id1 = ps.loc[ps['team_id']==tm_id[1], 'name'].unique() # チーム1の選手ID
+pl_id0 = pass_list.loc[pass_list['team_id']==tm_id[0], 'name'].unique() # チーム0の選手ID
+pl_id1 = pass_list.loc[pass_list['team_id']==tm_id[1], 'name'].unique() # チーム1の選手ID
 
 # チーム0のパス数行列を作成
 A0 = pd.DataFrame(index=pl_id0, columns=pl_id0, dtype=int)
 for i in pl_id0:
     for j in pl_id0:
-        A0.loc[i, j] = len(ps.loc[(ps['name']==i) & (ps['name2']==j)])
+        A0.loc[i, j] = len(pass_list.loc[(pass_list['name']==i) & (pass_list['name2']==j)])
 
 # チーム1のパス数行列を作成
 A1 = pd.DataFrame(index=pl_id1, columns=pl_id1, dtype=int) 
 for i in pl_id1:
     for j in pl_id1:
-        A1.loc[i, j] = len(ps.loc[(ps['name']==i) & (ps['name2']==j)])
+        A1.loc[i, j] = len(pass_list.loc[(pass_list['name']==i) & (pass_list['name2']==j)])
 
 
-# In[33]:
+# In[100]:
 
 
 A0
@@ -954,7 +957,7 @@ A0
 # しかし，ネットワークの分析と可視化にはnetworkxなどの専用ライブラリの知識が必要となるので，ここではより直接的にヒートマップを用いた可視化方法を採用する．
 # 以下の`plot_corr_mat`関数は，seabornという可視化ライブラリを用いてパス数行列をヒートマップで可視化する．
 
-# In[34]:
+# In[101]:
 
 
 import seaborn
@@ -975,13 +978,13 @@ def plot_corr_mat(A):
     ax.set_yticklabels(A.index, fontsize=8)   # y軸のラベル
 
 
-# In[35]:
+# In[102]:
 
 
 plot_corr_mat(A0)
 
 
-# In[14]:
+# In[103]:
 
 
 plot_corr_mat(A1)
