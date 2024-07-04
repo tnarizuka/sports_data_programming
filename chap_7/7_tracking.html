@@ -2232,6 +2232,35 @@ dtype: float64
 </table>
 </div></div></div>
 </div>
+<p><strong>秩序変数</strong></p>
+<p>やや高度ではあるが，以下で定義される秩序変数（Order Parameter）という量を計算してみよう：</p>
+<div class="math notranslate nohighlight">
+\[
+\phi(i) = \left| \frac{1}{N} \sum_{u=1}^{N} \frac{\vec{v}_{u}(i)}{|\vec{v}_{u}(i)|} \right|
+\]</div>
+<p>秩序変数は，集団の向きの揃い具合を表す量で，統計物理学の分野でよく用いられる．
+その定義域は<span class="math notranslate nohighlight">\(0\le\phi(t)\le 1\)</span>であり，0に近いほど集団の移動方向がバラバラ，1に近いほど揃っていることを意味する．
+定義より，秩序変数は速度ベクトルから以下のように計算することができる．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Vx</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">Vy</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">OP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Vx</span><span class="o">/</span><span class="n">V</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Vy</span><span class="o">/</span><span class="n">V</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">OP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2500</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.942
+</pre></div>
+</div>
+</div>
+</div>
 <p><strong>速度ベクトルの描画</strong></p>
 <p>速度が計算できたので，これらを描画してみよう．
 速度ベクトルの描画には，matplotlibの<code class="docutils literal notranslate"><span class="pre">quiver</span></code>関数を用いて選手の位置を始点とする矢印を描けば良い．
@@ -2252,11 +2281,12 @@ dtype: float64
 <span class="n">vx</span><span class="p">,</span> <span class="n">vy</span> <span class="o">=</span> <span class="n">Vx</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">Vy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">vx</span><span class="p">,</span> <span class="n">vy</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;uv&#39;</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
-<span class="c1"># 時刻の表示</span>
+<span class="c1"># 時刻と秩序変数の表示</span>
+<span class="n">op</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">OP</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">i</span><span class="o">*</span><span class="mf">0.05</span>
 <span class="n">m</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">t</span><span class="o">/</span><span class="mf">60.</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">t</span> <span class="o">%</span> <span class="mi">60</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="n">ss</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t</span> <span class="o">%</span> <span class="mi">60</span> <span class="o">-</span> <span class="n">s</span><span class="p">))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;$t$=</span><span class="si">%s</span><span class="se">\&#39;</span><span class="si">%s</span><span class="se">\&quot;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">ss</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;$t$=</span><span class="si">%s</span><span class="se">\&#39;</span><span class="si">%s</span><span class="se">\&quot;</span><span class="si">%s</span><span class="s1">   $\phi=$</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">ss</span><span class="p">,</span> <span class="n">op</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">105</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">68</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">105</span><span class="p">])</span>
@@ -2266,7 +2296,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7_tracking_73_0.png" src="../_images/7_tracking_73_0.png" />
+<img alt="../_images/7_tracking_78_0.png" src="../_images/7_tracking_78_0.png" />
 </div>
 </div>
 </section>
@@ -2318,7 +2348,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7_tracking_80_0.png" src="../_images/7_tracking_80_0.png" />
+<img alt="../_images/7_tracking_85_0.png" src="../_images/7_tracking_85_0.png" />
 </div>
 </div>
 <p>プロットの結果を見て明らかなように，各選手はフィールド上を縦横無尽に動き周っていることがわかる．
@@ -2354,7 +2384,7 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$Y$&#39;)
 </pre></div>
 </div>
-<img alt="../_images/7_tracking_86_1.png" src="../_images/7_tracking_86_1.png" />
+<img alt="../_images/7_tracking_91_1.png" src="../_images/7_tracking_91_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2381,7 +2411,7 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$Y$&#39;)
 </pre></div>
 </div>
-<img alt="../_images/7_tracking_87_1.png" src="../_images/7_tracking_87_1.png" />
+<img alt="../_images/7_tracking_92_1.png" src="../_images/7_tracking_92_1.png" />
 </div>
 </div>
 <p>今度は選手ごとにだいたい決まった定位置（☓）を持ち，そこから標準偏差くらいの広がり（◯）を持って移動している様子が見て取れる．
