@@ -2110,8 +2110,8 @@ dtype: float64
 フレーム <span class="math notranslate nohighlight">\( i \)</span> における速度の <span class="math notranslate nohighlight">\( x, y \)</span> 成分を <span class="math notranslate nohighlight">\( V_{x}(i),\ V_{y}(i) \)</span> とすると，これらは以下のように計算される：</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-    V_{x}(i) = \frac{X(i+n) - X(i)}{n}\frac{1}{0.05},\\[10pt]
-    V_{y}(i) = \frac{Y(i+n) - Y(i)}{n}\frac{1}{0.05}
+    V_{x}(i) = \frac{X(i) - X(i-n)}{n}\frac{1}{0.05},\\[10pt]
+    V_{y}(i) = \frac{Y(i) - Y(i-n)}{n}\frac{1}{0.05}
 \end{split}\]</div>
 <p>ここで，<span class="math notranslate nohighlight">\( X(i),\ Y(i) \)</span> は 第 <span class="math notranslate nohighlight">\(i\)</span> フレームの <span class="math notranslate nohighlight">\(x, y\)</span> 座標を表し，<span class="math notranslate nohighlight">\(n\)</span> はフレームの増分である．
 また，座標の差分を <span class="math notranslate nohighlight">\( 0.05 \)</span> で割ることで単位を[m/frame]から[m/s]に変換している．
@@ -2252,7 +2252,7 @@ dtype: float64
 <span class="n">vx</span><span class="p">,</span> <span class="n">vy</span> <span class="o">=</span> <span class="n">Vx</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">Vy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">vx</span><span class="p">,</span> <span class="n">vy</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;uv&#39;</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
-<span class="c1"># 時刻と秩序変数の表示</span>
+<span class="c1"># 時刻の表示</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">i</span><span class="o">*</span><span class="mf">0.05</span>
 <span class="n">m</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">t</span><span class="o">/</span><span class="mf">60.</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">t</span> <span class="o">%</span> <span class="mi">60</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="n">ss</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t</span> <span class="o">%</span> <span class="mi">60</span> <span class="o">-</span> <span class="n">s</span><span class="p">))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -2273,9 +2273,10 @@ dtype: float64
 <section id="id14">
 <h3><span class="section-number">7.3.5. </span>発展問題<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">#</a></h3>
 <ul class="simple">
-<li><p>各選手の走行距離を計算せよ</p></li>
 <li><p>速度から速さ（速度の大きさ）を求め，選手ごとに速さのヒストグラムを求めよ．</p></li>
 <li><p>加速度を計算せよ．</p></li>
+<li><p>各選手の走行距離を計算せよ</p></li>
+<li><p>各選手のスプリント回数を計算せよ</p></li>
 </ul>
 </section>
 <section id="id15">

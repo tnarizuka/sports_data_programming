@@ -390,8 +390,8 @@ ax.set_aspect('equal')
 # フレーム $ i $ における速度の $ x, y $ 成分を $ V_{x}(i),\ V_{y}(i) $ とすると，これらは以下のように計算される：
 # 
 # $$
-#     V_{x}(i) = \frac{X(i+n) - X(i)}{n}\frac{1}{0.05},\\[10pt]
-#     V_{y}(i) = \frac{Y(i+n) - Y(i)}{n}\frac{1}{0.05}
+#     V_{x}(i) = \frac{X(i) - X(i-n)}{n}\frac{1}{0.05},\\[10pt]
+#     V_{y}(i) = \frac{Y(i) - Y(i-n)}{n}\frac{1}{0.05}
 # $$
 # 
 # ここで，$ X(i),\ Y(i) $ は 第 $i$ フレームの $x, y$ 座標を表し，$n$ はフレームの増分である．
@@ -419,7 +419,7 @@ Vx.tail()
 # また，秩序変数は時刻の横に文字列として出力する．
 # フレーム番号を変えると，矢印の向きの揃い具合と連動して秩序変数の値が変化することが分かる．
 
-# In[40]:
+# In[41]:
 
 
 fig, ax = plt.subplots(figsize=(4,4))
@@ -435,7 +435,7 @@ ax.plot(x, y, 'ro', ms=5, mfc='None')
 vx, vy = Vx.loc[i], Vy.loc[i]
 ax.quiver(x, y, vx, vy, color='r', angles='uv', units='xy', scale=0.7, width=0.5)
 
-# 時刻と秩序変数の表示
+# 時刻の表示
 t = i*0.05
 m, s = np.floor(t/60.).astype(int), np.floor(t % 60).astype(int)
 ss = ("%.2f" % (t % 60 - s)).replace('.', '')[1:].zfill(2)
@@ -449,9 +449,10 @@ ax.set_aspect('equal')
 
 # ### 発展問題
 
-# - 各選手の走行距離を計算せよ
 # - 速度から速さ（速度の大きさ）を求め，選手ごとに速さのヒストグラムを求めよ．
 # - 加速度を計算せよ．
+# - 各選手の走行距離を計算せよ
+# - 各選手のスプリント回数を計算せよ
 
 # ### フォーメーション
 
