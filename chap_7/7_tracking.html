@@ -625,13 +625,14 @@ title="Print to PDF"
 <section id="pettersen">
 <h3><span class="section-number">7.1.1. </span>Pettersenデータセット<a class="headerlink" href="#pettersen" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>Pettersenデータセットはサッカーのトラッキングデータをまとめたデータセットである．
-試合数は3試合と少ないが，2022年時点で一般公開されている数少ないサッカートラッキングデータである．</p>
+試合数は3試合と少ないが，2024年時点で一般公開されている数少ないサッカートラッキングデータである．</p>
 </section>
 <section id="id3">
 <h3><span class="section-number">7.1.2. </span>データセットの内容<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>本データセットはノルウェーのAlfheimスタジアムにおいて取得されている．
+<p>本データセットに含まれるトラッキングデータはノルウェーのAlfheimスタジアムにおいて取得されている．
 対象となる試合はAlfheimスタジアムを本拠地とするTromsø ILの3試合である．
-データセットには試合映像とセンサーによって取得された位置座標のデータ（トラッキングデータ）が含まれているが，トラッキングデータの取得対象はTromsø ILの選手のみである．
+データセットには試合映像とGPSデバイスによって取得された位置座標のデータ（トラッキングデータ）が含まれている．
+ただし，トラッキングデータの取得対象はTromsø ILの選手のみである．
 また，選手のプライバシー保護のため，トラッキングデータから選手の個人情報は除去されている．</p>
 <p>トラッキングデータの位置座標は以下のような座標系において，1秒間に20フレーム（20fps）の解像度で取得されている．</p>
 <ul class="simple">
@@ -942,7 +943,7 @@ title="Print to PDF"
 </div></div></div>
 </div>
 <p><strong>選手別の座標に変換</strong></p>
-<p>各選手の <span class="math notranslate nohighlight">\(x\)</span> 座標と <span class="math notranslate nohighlight">\(y\)</span> 座標を格納した以下のようなDataFrame，<code class="docutils literal notranslate"><span class="pre">df_x</span></code>，<code class="docutils literal notranslate"><span class="pre">df_y</span></code>を作成する：</p>
+<p>各選手の <span class="math notranslate nohighlight">\(x\)</span> 座標と <span class="math notranslate nohighlight">\(y\)</span> 座標を格納した以下のようなデータフレーム（<code class="docutils literal notranslate"><span class="pre">df_x</span></code>，<code class="docutils literal notranslate"><span class="pre">df_y</span></code>）を作成する：</p>
 <ul class="simple">
 <li><p>行ラベル（<code class="docutils literal notranslate"><span class="pre">index</span></code>）：フレーム番号</p>
 <ul>
@@ -1002,7 +1003,10 @@ title="Print to PDF"
       <th>5</th>
       <th>7</th>
       <th>8</th>
-      <th>...</th>
+      <th>9</th>
+      <th>10</th>
+      <th>12</th>
+      <th>13</th>
       <th>14</th>
       <th>15</th>
       <th>6</th>
@@ -1018,7 +1022,10 @@ title="Print to PDF"
       <td>35.550</td>
       <td>41.586</td>
       <td>28.507</td>
-      <td>...</td>
+      <td>32.254</td>
+      <td>45.247</td>
+      <td>74.59</td>
+      <td>21.029</td>
       <td>28.530</td>
       <td>50.084</td>
       <td>NaN</td>
@@ -1032,7 +1039,10 @@ title="Print to PDF"
       <td>35.545</td>
       <td>41.572</td>
       <td>28.537</td>
-      <td>...</td>
+      <td>32.254</td>
+      <td>45.247</td>
+      <td>74.59</td>
+      <td>21.070</td>
       <td>28.528</td>
       <td>50.105</td>
       <td>NaN</td>
@@ -1046,7 +1056,10 @@ title="Print to PDF"
       <td>35.539</td>
       <td>41.557</td>
       <td>28.568</td>
-      <td>...</td>
+      <td>32.254</td>
+      <td>45.247</td>
+      <td>74.59</td>
+      <td>21.114</td>
       <td>28.525</td>
       <td>50.134</td>
       <td>NaN</td>
@@ -1060,7 +1073,10 @@ title="Print to PDF"
       <td>35.534</td>
       <td>41.543</td>
       <td>28.596</td>
-      <td>...</td>
+      <td>32.254</td>
+      <td>45.247</td>
+      <td>74.59</td>
+      <td>21.161</td>
       <td>28.521</td>
       <td>50.169</td>
       <td>NaN</td>
@@ -1074,7 +1090,10 @@ title="Print to PDF"
       <td>35.528</td>
       <td>41.529</td>
       <td>28.624</td>
-      <td>...</td>
+      <td>32.254</td>
+      <td>45.247</td>
+      <td>74.59</td>
+      <td>21.209</td>
       <td>28.516</td>
       <td>50.210</td>
       <td>NaN</td>
@@ -1083,7 +1102,6 @@ title="Print to PDF"
     </tr>
   </tbody>
 </table>
-<p>5 rows × 14 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1116,7 +1134,10 @@ title="Print to PDF"
       <th>5</th>
       <th>7</th>
       <th>8</th>
-      <th>...</th>
+      <th>9</th>
+      <th>10</th>
+      <th>12</th>
+      <th>13</th>
       <th>14</th>
       <th>15</th>
       <th>6</th>
@@ -1132,7 +1153,10 @@ title="Print to PDF"
       <td>30.268</td>
       <td>38.675</td>
       <td>39.612</td>
-      <td>...</td>
+      <td>12.724</td>
+      <td>14.462</td>
+      <td>71.048</td>
+      <td>17.624</td>
       <td>17.597</td>
       <td>25.779</td>
       <td>NaN</td>
@@ -1146,7 +1170,10 @@ title="Print to PDF"
       <td>30.299</td>
       <td>38.663</td>
       <td>39.568</td>
-      <td>...</td>
+      <td>12.724</td>
+      <td>14.462</td>
+      <td>71.048</td>
+      <td>17.623</td>
       <td>17.561</td>
       <td>25.722</td>
       <td>NaN</td>
@@ -1160,7 +1187,10 @@ title="Print to PDF"
       <td>30.331</td>
       <td>38.651</td>
       <td>39.525</td>
-      <td>...</td>
+      <td>12.724</td>
+      <td>14.462</td>
+      <td>71.048</td>
+      <td>17.616</td>
       <td>17.532</td>
       <td>25.665</td>
       <td>NaN</td>
@@ -1174,7 +1204,10 @@ title="Print to PDF"
       <td>30.364</td>
       <td>38.640</td>
       <td>39.486</td>
-      <td>...</td>
+      <td>12.724</td>
+      <td>14.462</td>
+      <td>71.048</td>
+      <td>17.603</td>
       <td>17.510</td>
       <td>25.607</td>
       <td>NaN</td>
@@ -1188,7 +1221,10 @@ title="Print to PDF"
       <td>30.397</td>
       <td>38.629</td>
       <td>39.449</td>
-      <td>...</td>
+      <td>12.724</td>
+      <td>14.462</td>
+      <td>71.048</td>
+      <td>17.584</td>
       <td>17.495</td>
       <td>25.549</td>
       <td>NaN</td>
@@ -1197,7 +1233,6 @@ title="Print to PDF"
     </tr>
   </tbody>
 </table>
-<p>5 rows × 14 columns</p>
 </div></div></div>
 </div>
 </section>
