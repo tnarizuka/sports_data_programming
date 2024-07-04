@@ -229,7 +229,7 @@ df_y2.to_csv('./y_1st.csv', header=True, index=True, encoding='utf-8')
 
 # 改めて，作成したデータを`X`，`Y`というDataFrameに読み込む．
 
-# In[16]:
+# In[19]:
 
 
 X = pd.read_csv('./x_1st.csv', encoding='utf-8', index_col=0)
@@ -240,7 +240,7 @@ Y = pd.read_csv('./y_1st.csv', encoding='utf-8', index_col=0)
 
 # **データの構造**
 
-# DataFrame`X`，`Y`は以下のような構造になっている：
+# データフレーム`X`，`Y`は以下のような構造になっている：
 # - 行ラベル（`index`）：フレーム番号
 #     - 1行=1フレーム=0.05秒
 # - 列ラベル（`columns`）：選手ID
@@ -252,6 +252,12 @@ Y = pd.read_csv('./y_1st.csv', encoding='utf-8', index_col=0)
 X.head(2)
 
 
+# In[20]:
+
+
+Y.head(2)
+
+
 # **特定の時間帯の抽出**
 
 # `X`，`Y`の行ラベル（`index`）はフレーム番号に等しい．
@@ -259,7 +265,7 @@ X.head(2)
 # よって，`X`，`Y`から`loc`属性を用いて条件付き抽出すれば，特定の時刻のデータだけ抜き出せる．
 # 例えば，10秒〜20秒の時間帯だけ抽出するには，行ラベル（`index`）が200から400までの行を条件付き抽出すればよい．
 
-# In[18]:
+# In[21]:
 
 
 X.loc[200:400]
@@ -267,7 +273,7 @@ X.loc[200:400]
 
 # フレーム番号を秒単位に直すのが面倒な場合は，以下のように`index`を秒単位に変換した`T`というSeriesを作っておき，これを用いて条件付き抽出すればよい．
 
-# In[19]:
+# In[22]:
 
 
 T = X.index * 0.05
@@ -278,7 +284,7 @@ X.loc[(T >= 10) & (T <= 20)]
 
 # 以上を踏まえて，試合中の特定の時刻のスナップショットを描いてみよう．
 
-# In[20]:
+# In[24]:
 
 
 fig, ax = plt.subplots()
@@ -294,7 +300,7 @@ ax.plot(x, y, 'ro', ms=5, mfc='None')
 t = i*0.05
 m, s = np.floor(t/60.).astype(int), np.floor(t % 60).astype(int)
 ss = ("%.2f" % (t % 60 - s)).replace('.', '')[1:].zfill(2)
-ax.set_title('$t$=%s分%s秒%s' % (m, s, ss), fontsize=10)
+ax.set_title('$t$=%s\'%s\"%s' % (m, s, ss), fontsize=10)
 
 ax.set_xlim(0, 105); ax.set_ylim(0, 68)
 ax.set_xticks([0, 105])
@@ -319,7 +325,7 @@ ax.set_aspect('equal')
 # ここで，$X_{u}(i),\ Y_{u}(i)$は第$i$フレームの選手$u$の$x,\ y$座標である．
 # これは，全選手の$x,\ y$座標の平均値を求めれば良いので，以下のように計算できる：
 
-# In[21]:
+# In[25]:
 
 
 Xc = X.mean(axis=1)
@@ -338,7 +344,7 @@ Xc.head()
 # 
 # これは，$ x $ 方向の分散と $ y $ 方向の分散の和の平方根である．
 
-# In[22]:
+# In[26]:
 
 
 R = np.sqrt(X.var(ddof=0, axis=1) + Y.var(ddof=0, axis=1))
@@ -347,7 +353,7 @@ R.head()
 
 # **重心と慣性半径の描画**
 
-# In[23]:
+# In[28]:
 
 
 fig, ax = plt.subplots(figsize=(4, 4))
@@ -370,7 +376,7 @@ ax.plot(xc + r*np.cos(theta), yc + r*np.sin(theta), 'r--')
 t = i*0.05
 m, s = np.floor(t/60.).astype(int), np.floor(t % 60).astype(int)
 ss = ("%.2f" % (t % 60 - s)).replace('.', '')[1:].zfill(2)
-ax.set_title('$t$=%s分%s秒%s' % (m, s, ss), fontsize=10)
+ax.set_title('$t$=%s\'%s\"%s' % (m, s, ss), fontsize=10)
 
 ax.set_xlim(0, 105); ax.set_ylim(0, 68)
 ax.set_xticks([0, 105])
@@ -393,14 +399,14 @@ ax.set_aspect('equal')
 # 以下では，$ n=20 $として，20フレーム（=1秒間）の平均速度を求める．
 # 実装には`diff`メソッドを用いて`n`フレーム前との差分を計算すれば良い．
 
-# In[24]:
+# In[29]:
 
 
 n = 20
 Vx, Vy = X.diff(n)/(0.05*n), Y.diff(n)/(0.05*n)  # nフレーム（0.05n秒）前との差を取る
 
 
-# In[25]:
+# In[30]:
 
 
 Vx.tail()
@@ -408,18 +414,18 @@ Vx.tail()
 
 # **速度ベクトルの描画**
 
-# 速度と秩序変数が計算できたので，これらを描画してみよう．
+# 速度が計算できたので，これらを描画してみよう．
 # 速度ベクトルの描画には，matplotlibの`quiver`関数を用いて選手の位置を始点とする矢印を描けば良い．
 # また，秩序変数は時刻の横に文字列として出力する．
 # フレーム番号を変えると，矢印の向きの揃い具合と連動して秩序変数の値が変化することが分かる．
 
-# In[26]:
+# In[40]:
 
 
 fig, ax = plt.subplots(figsize=(4,4))
 
 # フレーム番号
-i=2000
+i=2500
 
 # 位置の描画
 x, y = X.loc[i], Y.loc[i]
@@ -433,7 +439,7 @@ ax.quiver(x, y, vx, vy, color='r', angles='uv', units='xy', scale=0.7, width=0.5
 t = i*0.05
 m, s = np.floor(t/60.).astype(int), np.floor(t % 60).astype(int)
 ss = ("%.2f" % (t % 60 - s)).replace('.', '')[1:].zfill(2)
-ax.set_title('$t$=%s分%s秒%s' % (m, s, ss), fontsize=10)
+ax.set_title('$t$=%s\'%s\"%s' % (m, s, ss), fontsize=10)
 
 ax.set_xlim(0, 105); ax.set_ylim(0, 68)
 ax.set_xticks([0, 105])
