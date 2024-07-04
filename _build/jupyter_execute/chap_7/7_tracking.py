@@ -412,6 +412,31 @@ Vx, Vy = X.diff(n)/(0.05*n), Y.diff(n)/(0.05*n)  # nフレーム（0.05n秒）�
 Vx.tail()
 
 
+# **秩序変数**
+
+# やや高度ではあるが，以下で定義される秩序変数（Order Parameter）という量を計算してみよう：
+# 
+# $$
+# \phi(i) = \left| \frac{1}{N} \sum_{u=1}^{N} \frac{\vec{v}_{u}(i)}{|\vec{v}_{u}(i)|} \right|
+# $$
+
+# 秩序変数は，集団の向きの揃い具合を表す量で，統計物理学の分野でよく用いられる．
+# その定義域は$0\le\phi(t)\le 1$であり，0に近いほど集団の移動方向がバラバラ，1に近いほど揃っていることを意味する．
+# 定義より，秩序変数は速度ベクトルから以下のように計算することができる．
+
+# In[42]:
+
+
+V = np.sqrt(Vx**2 + Vy**2)
+OP = np.sqrt(np.sum(Vx/V, axis=1)**2 + np.sum(Vy/V, axis=1)**2) / 10
+
+
+# In[45]:
+
+
+OP.iloc[2500]
+
+
 # **速度ベクトルの描画**
 
 # 速度が計算できたので，これらを描画してみよう．
@@ -419,7 +444,7 @@ Vx.tail()
 # また，秩序変数は時刻の横に文字列として出力する．
 # フレーム番号を変えると，矢印の向きの揃い具合と連動して秩序変数の値が変化することが分かる．
 
-# In[41]:
+# In[44]:
 
 
 fig, ax = plt.subplots(figsize=(4,4))
@@ -435,11 +460,12 @@ ax.plot(x, y, 'ro', ms=5, mfc='None')
 vx, vy = Vx.loc[i], Vy.loc[i]
 ax.quiver(x, y, vx, vy, color='r', angles='uv', units='xy', scale=0.7, width=0.5)
 
-# 時刻の表示
+# 時刻と秩序変数の表示
+op = np.round(OP.loc[i], 2)
 t = i*0.05
 m, s = np.floor(t/60.).astype(int), np.floor(t % 60).astype(int)
 ss = ("%.2f" % (t % 60 - s)).replace('.', '')[1:].zfill(2)
-ax.set_title('$t$=%s\'%s\"%s' % (m, s, ss), fontsize=10)
+ax.set_title('$t$=%s\'%s\"%s   $\phi=$%s' % (m, s, ss, op), fontsize=10)
 
 ax.set_xlim(0, 105); ax.set_ylim(0, 68)
 ax.set_xticks([0, 105])
