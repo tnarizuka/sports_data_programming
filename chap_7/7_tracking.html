@@ -2110,12 +2110,13 @@ dtype: float64
 フレーム <span class="math notranslate nohighlight">\( i \)</span> における速度の <span class="math notranslate nohighlight">\( x, y \)</span> 成分を <span class="math notranslate nohighlight">\( V_{x}(i),\ V_{y}(i) \)</span> とすると，これらは以下のように計算される：</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-    V_{x}(i) = \frac{X(i) - X(i-n)}{n}\frac{1}{0.05},\\[10pt]
-    V_{y}(i) = \frac{Y(i) - Y(i-n)}{n}\frac{1}{0.05}
+    V_{x}(i) = \frac{X(i) - X(i-n)}{0.05n},\\[10pt]
+    V_{y}(i) = \frac{Y(i) - Y(i-n)}{0.05n}
 \end{split}\]</div>
 <p>ここで，<span class="math notranslate nohighlight">\( X(i),\ Y(i) \)</span> は 第 <span class="math notranslate nohighlight">\(i\)</span> フレームの <span class="math notranslate nohighlight">\(x, y\)</span> 座標を表し，<span class="math notranslate nohighlight">\(n\)</span> はフレームの増分である．
-また，座標の差分を <span class="math notranslate nohighlight">\( 0.05 \)</span> で割ることで単位を[m/frame]から[m/s]に変換している．
-以下では，<span class="math notranslate nohighlight">\( n=20 \)</span>として，20フレーム（=1秒間）の平均速度を求める．
+また，1フレームが0.05秒なので， <span class="math notranslate nohighlight">\( 0.05n \)</span> は <span class="math notranslate nohighlight">\( n \)</span> フレームの経過時間である．
+これより， <span class="math notranslate nohighlight">\( V_{x}(i),\ V_{y}(i) \)</span> の単位は m/s となる．</p>
+<p>以下では，<span class="math notranslate nohighlight">\( n=20 \)</span>とし，20フレーム（=1秒間）の平均速度と求める．
 実装には<code class="docutils literal notranslate"><span class="pre">diff</span></code>メソッドを用いて<code class="docutils literal notranslate"><span class="pre">n</span></code>フレーム前との差分を計算すれば良い．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
