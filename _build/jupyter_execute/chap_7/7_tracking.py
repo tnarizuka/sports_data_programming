@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[4]:
 
 
 # （必須）モジュールのインポート
@@ -580,7 +580,7 @@ ax.set_xlabel('$X$'); ax.set_ylabel('$Y$')
 # アニメーションはMatplotlibの`FuncAnimation`を用いると簡単に実装できる．
 # まずは`FuncAnimation`を以下のようにインポートしておく：
 
-# In[31]:
+# In[1]:
 
 
 from matplotlib.animation import FuncAnimation
@@ -598,7 +598,7 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 
 # 一方，アニメーションを表示するには上の設定を以下のように変更する必要がある：
 
-# In[33]:
+# In[ ]:
 
 
 get_ipython().run_line_magic('matplotlib', 'tk')
@@ -609,14 +609,14 @@ get_ipython().run_line_magic('matplotlib', 'tk')
 
 # ### 位置
 
-# In[34]:
+# In[5]:
 
 
 X = pd.read_csv('./x_1st.csv', encoding='utf-8', index_col=0)
 Y = pd.read_csv('./y_1st.csv', encoding='utf-8', index_col=0)
 
 
-# In[35]:
+# In[12]:
 
 
 # 描画関数
@@ -641,7 +641,7 @@ anim = FuncAnimation(fig, update, blit=True, interval=10)
 
 # ### 位置とテキスト
 
-# In[36]:
+# In[11]:
 
 
 # 描画関数
@@ -653,7 +653,7 @@ def update(i):
     t = i*0.05
     m, s = np.floor(t/60.).astype(int), np.floor(t % 60).astype(int)
     ss = ("%.2f" % (t % 60 - s)).replace('.', '')[1:].zfill(2)
-    title.set_text('$t$=%s分%s秒%s' % (m, s, ss))
+    title.set_text('$t$=%s\'%s\"%s' % (m, s, ss))
 
     return list(np.hstack([pt, title]))
 
@@ -672,7 +672,7 @@ anim = FuncAnimation(fig, update, blit=True, interval=10)
 
 # ### 位置・速度ベクトル・テキスト
 
-# In[37]:
+# In[8]:
 
 
 # 速度ベクトルと秩序変数の計算
@@ -680,7 +680,7 @@ Vx, Vy = X.diff(20), Y.diff(20)
 V = np.sqrt(Vx**2 + Vy**2)
 
 
-# In[38]:
+# In[10]:
 
 
 # 描画関数
@@ -698,7 +698,7 @@ def update(i):
     t = i*0.05
     m, s = np.floor(t/60.).astype(int), np.floor(t % 60).astype(int)
     ss = ("%.2f" % (t % 60 - s)).replace('.', '')[1:].zfill(2)
-    text.set_text('$t$=%s分%s秒%s' % (m, s, ss))
+    text.set_text('$t$=%s\'%s\"%s' % (m, s, ss))
 
     return list(np.hstack([pt, aw, text]))
 
