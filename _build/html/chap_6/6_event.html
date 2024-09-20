@@ -1,620 +1,432 @@
 
 <!DOCTYPE html>
 
-<html lang="ja">
+
+<html lang="ja" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>6. イベントデータの解析 &#8212; Programming for Sports Data Analysis</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/documentation_options.js?v=1cf7f4d9"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="../_static/translations.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/translations.js?v=91613774"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-RHZE5CW8BR"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-RHZE5CW8BR');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-RHZE5CW8BR');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chap_6/6_event';</script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="7. トラッキングデータの解析" href="../chap_7/7_tracking.html" />
     <link rel="prev" title="5. Matplotlibの基礎" href="../chap_5/5_matplotlib.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="ja">
-    
-
-    <!-- Google Analytics -->
-    
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-RHZE5CW8BR"></script>
-<script>
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){ dataLayer.push(arguments); }
-                    gtag('js', new Date());
-                    gtag('config', 'G-RHZE5CW8BR');
-                </script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="ja"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Programming for Sports Data Analysis</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Programming for Sports Data Analysis</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">検索</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../chap_1/1_introduction.html">
-   1. イントロダクション
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../chap_2/2_environment.html">
-   2. プログラミング環境の構築
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../chap_3/3_numpy.html">
-   3. NumPyの基礎
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../chap_4/4_pandas.html">
-   4. Pandasの基礎
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../chap_5/5_matplotlib.html">
-   5. Matplotlibの基礎
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   6. イベントデータの解析
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../chap_7/7_tracking.html">
-   7. トラッキングデータの解析
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../chap_1/1_introduction.html">1. イントロダクション</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap_2/2_environment.html">2. プログラミング環境の構築</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap_3/3_numpy.html">3. NumPyの基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap_4/4_pandas.html">4. Pandasの基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap_5/5_matplotlib.html">5. Matplotlibの基礎</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. イベントデータの解析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap_7/7_tracking.html">7. トラッキングデータの解析</a></li>
 </ul>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/appendix.html">
-   付録
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/appendix.html">付録</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/tnarizuka/sports_data_programming/main?urlpath=tree/docs/chap_6/6_event.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/tnarizuka/sports_data_programming" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="ソースリポジトリ"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/tnarizuka/sports_data_programming/issues/new?title=Issue%20on%20page%20%2Fchap_6/6_event.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="問題を報告"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="このページをダウンロード">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chap_6/6_event.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="ソースファイルをダウンロード"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="PDFに印刷"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="全画面モード"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/tnarizuka/sports_data_programming"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
 
-      </li>
-      
-      <li>
-        <a href="https://github.com/tnarizuka/sports_data_programming/issues/new?title=Issue%20on%20page%20%2Fchap_6/6_event.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/chap_6/6_event.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </button>
-
-      </li>
+</div></div>
       
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
+    </div>
   
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
-    </div>
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   6.1. イベントデータ
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pappalardo">
-     6.1.1. Pappalardoデータセット
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     6.1.2. 本講義で用いる加工済みデータ
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   6.2. リーグ成績と順位表
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     6.2.1. データの読み込み
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
-     6.2.2. １チームのリーグ成績
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id7">
-     6.2.3. 全チームのリーグ成績と順位表
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id8">
-     6.2.4. 演習問題
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id9">
-   6.3. 得点分布
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id10">
-     6.3.1. ポアソン分布
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id11">
-     6.3.2. 得点データの要約
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id12">
-     6.3.3. 得点分布
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id13">
-     6.3.4. 演習問題
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id14">
-   6.4. イベントデータの解析
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id15">
-     6.4.1. 加工済みデータの内容
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id16">
-     6.4.2. イベントデータの詳細
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id17">
-     6.4.3. イベントデータ解析の基本
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id18">
-     6.4.4. イベント別のヒートマップ
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id19">
-     6.4.5. 選手のランキング
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id20">
-     6.4.6. 選手間のパス数
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id21">
-     6.4.7. 演習問題
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>イベントデータの解析</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   6.1. イベントデータ
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pappalardo">
-     6.1.1. Pappalardoデータセット
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     6.1.2. 本講義で用いる加工済みデータ
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   6.2. リーグ成績と順位表
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     6.2.1. データの読み込み
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
-     6.2.2. １チームのリーグ成績
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id7">
-     6.2.3. 全チームのリーグ成績と順位表
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id8">
-     6.2.4. 演習問題
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id9">
-   6.3. 得点分布
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id10">
-     6.3.1. ポアソン分布
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id11">
-     6.3.2. 得点データの要約
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id12">
-     6.3.3. 得点分布
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id13">
-     6.3.4. 演習問題
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id14">
-   6.4. イベントデータの解析
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id15">
-     6.4.1. 加工済みデータの内容
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id16">
-     6.4.2. イベントデータの詳細
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id17">
-     6.4.3. イベントデータ解析の基本
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id18">
-     6.4.4. イベント別のヒートマップ
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id19">
-     6.4.5. 選手のランキング
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id20">
-     6.4.6. 選手間のパス数
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id21">
-     6.4.7. 演習問題
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>イベントデータの解析</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目次 </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.1. イベントデータ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pappalardo">6.1.1. Pappalardoデータセット</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.1.2. 本講義で用いる加工済みデータ</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.2. リーグ成績と順位表</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.2.1. データの読み込み</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.2.2. １チームのリーグ成績</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">6.2.3. 全チームのリーグ成績と順位表</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">6.2.4. 演習問題</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">6.3. 得点分布</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">6.3.1. ポアソン分布</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">6.3.2. 得点データの要約</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">6.3.3. 得点分布</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">6.3.4. 演習問題</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">6.4. イベントデータの解析</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">6.4.1. 加工済みデータの内容</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">6.4.2. イベントデータの詳細</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">6.4.3. イベントデータ解析の基本</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">6.4.4. イベント別のヒートマップ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">6.4.5. 選手のランキング</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">6.4.6. 選手間のパス数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">6.4.7. 演習問題</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># （必須）モジュールのインポート</span>
@@ -639,18 +451,18 @@ title="Print to PDF"
 </div>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">6. </span>イベントデータの解析<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">#</a></h1>
+<h1><span class="section-number">6. </span>イベントデータの解析<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <section id="id2">
-<h2><span class="section-number">6.1. </span>イベントデータ<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">#</a></h2>
+<h2><span class="section-number">6.1. </span>イベントデータ<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <section id="pappalardo">
-<h3><span class="section-number">6.1.1. </span>Pappalardoデータセット<a class="headerlink" href="#pappalardo" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3><span class="section-number">6.1.1. </span>Pappalardoデータセット<a class="headerlink" href="#pappalardo" title="Link to this heading">#</a></h3>
 <p>Pappalardoデータセットはサッカーのイベントデータをまとめた大規模データセットであり，<a class="reference external" href="https://creativecommons.org/licenses/by/4.0/deed.ja">CC BY 4.0ライセンス</a>の下で提供されている．
 元のデータはWyscout社によって収集されたもので，それをL. Pappalardoらが編集し2019年に公開された．
 2023年時点で一般公開されているサッカーのイベントデータセットの中では最大級である．
 データセットの詳細については以下の付録を参照のこと：<a class="reference internal" href="../appendix/appendix.html#pappalardo"><span class="std std-ref">Pappalardoデータセットの詳細</span></a></p>
 </section>
 <section id="id3">
-<h3><span class="section-number">6.1.2. </span>本講義で用いる加工済みデータ<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3><span class="section-number">6.1.2. </span>本講義で用いる加工済みデータ<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>Pappalardoデータセットはjson形式で提供されており，このままではデータ分析がしづらい．
 そこで，予めjson形式のデータを整形・加工し，PandasのDataFrameの形で保存しておくと便利であるが，この過程は本講義で扱うレベルを超える．
 <strong>本講義ではデータの整形・加工の過程は省略し，加工済みデータ（csvファイル）のデータを提供することにする</strong>．
@@ -658,11 +470,11 @@ title="Print to PDF"
 </section>
 </section>
 <section id="id4">
-<h2><span class="section-number">6.2. </span>リーグ成績と順位表<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">#</a></h2>
+<h2><span class="section-number">6.2. </span>リーグ成績と順位表<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>以下のデータをダウンロードし，カレントディレクトリに保存せよ：</p>
 <ul class="simple">
-<li><p>全試合の得点データ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A">game.csv</a></p></li>
-<li><p>チームプロフィール：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1">team.csv</a></p></li>
+<li><p>全試合の得点データ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A">game.csv</a></p></li>
+<li><p>チームプロフィール：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1">team.csv</a></p></li>
 </ul>
 <p>各リーグの最終的な順位は勝ち点によって決まる．
 １試合で獲得する勝ち点は勝利が3，引き分けが1，負けが0である．
@@ -671,11 +483,11 @@ title="Print to PDF"
 なお，公式に公開されている2017年度イングランド・プレミアリーグの最終成績と順位表は以下で確認できる：</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%AA%E3%83%BC%E3%82%B02017-2018">https://ja.wikipedia.org/wiki/プレミアリーグ2017-2018</a></p></li>
-<li><p><a class="reference external" href="https://www.premierleague.com/tables?co=1&amp;se=79&amp;mw=-1&amp;ha=-1">Premier League Table, Form Guide &amp; Season Archives</a></p></li>
+<li><p><a class="reference external" href="https://www.premierleague.com/tables?co=1&amp;amp;se=79&amp;amp;mw=-1&amp;amp;ha=-1">Premier League Table, Form Guide &amp; Season Archives</a></p></li>
 </ul>
 <section id="id5">
-<h3><span class="section-number">6.2.1. </span>データの読み込み<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>まずは <a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A">game.csv</a> をダウンロードしてカレントディレクトリに移動し，<code class="docutils literal notranslate"><span class="pre">GM</span></code>という名前のDataFrameに読み込む．</p>
+<h3><span class="section-number">6.2.1. </span>データの読み込み<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>まずは <a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A">game.csv</a> をダウンロードしてカレントディレクトリに移動し，<code class="docutils literal notranslate"><span class="pre">GM</span></code>という名前のDataFrameに読み込む．</p>
 <div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GM</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./game.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -794,7 +606,7 @@ title="Print to PDF"
 各列の意味は下表の通りである．
 このうち，<code class="docutils literal notranslate"><span class="pre">away_score</span></code>列と<code class="docutils literal notranslate"><span class="pre">home_score</span></code>列がアウェイチームとホームチームの得点である．
 例えば，第0行はアーセナル（ホーム）対レイチェスターシティ（アウェイ）の試合情報を表し，得点は4-3であることが分かる．</p>
-<table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>各列の変数</p></th>
 <th class="head"><p>内容</p></th>
@@ -836,7 +648,8 @@ title="Print to PDF"
 </tr>
 </tbody>
 </table>
-<p>次に <a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1">team.csv</a> をダウンロードしてカレントディレクトリに移動し，<code class="docutils literal notranslate"><span class="pre">TM</span></code>という名前のDataFrameに読み込む．</p>
+</div>
+<p>次に <a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1">team.csv</a> をダウンロードしてカレントディレクトリに移動し，<code class="docutils literal notranslate"><span class="pre">TM</span></code>という名前のDataFrameに読み込む．</p>
 <div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TM</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./team.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -918,7 +731,7 @@ title="Print to PDF"
 <p>このデータの各行には2017年度ヨーロッパリーグに出場したクラブチームの情報が収められている．
 各列の意味は下表の通りである．
 例えば，第0行はイングランド・プレミアリーグに所属するアーセナルのチーム情報を表している．</p>
-<table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>各列の変数</p></th>
 <th class="head"><p>内容</p></th>
@@ -942,6 +755,7 @@ title="Print to PDF"
 </tr>
 </tbody>
 </table>
+</div>
 <p>以下では，イングランド・プレミアリーグのデータを解析対象とする．
 そこで，条件付き抽出を用いて，<code class="docutils literal notranslate"><span class="pre">TM</span></code>と<code class="docutils literal notranslate"><span class="pre">GM</span></code>からイングランド・プレミアリーグのデータだけ抽出する．</p>
 <div class="cell docutils container">
@@ -954,7 +768,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="id6">
-<h3><span class="section-number">6.2.2. </span>１チームのリーグ成績<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3><span class="section-number">6.2.2. </span>１チームのリーグ成績<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>チームプロフィール<code class="docutils literal notranslate"><span class="pre">TM_E</span></code>の先頭行のチーム（アーセナル）に対し，リーグ成績を求めてみよう．
 まずは<code class="docutils literal notranslate"><span class="pre">iloc</span></code>属性を用いて<code class="docutils literal notranslate"><span class="pre">TM_E</span></code>の先頭行を抽出し，このチームのチームIDとチーム名を取得する．</p>
 <div class="cell docutils container">
@@ -1689,7 +1503,7 @@ Arsenal
 </div>
 </section>
 <section id="id7">
-<h3><span class="section-number">6.2.3. </span>全チームのリーグ成績と順位表<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3><span class="section-number">6.2.3. </span>全チームのリーグ成績と順位表<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>全チームのリーグ成績を求めるには上の手続きを繰り返せば良い．
 以下では，<code class="docutils literal notranslate"><span class="pre">Rank</span></code>という名前のDataFrameに全チームのリーグ成績を保存する．</p>
 <div class="cell docutils container">
@@ -1759,7 +1573,7 @@ Arsenal
 </div>
 </div>
 <p>以上により，イングランド・プレミアリーグの順位表が作成できた．</p>
-<p>※ <a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%AA%E3%83%BC%E3%82%B02017-2018">Wikipedia</a>の情報とは一部合わないが，<a class="reference external" href="https://www.premierleague.com/tables?co=1&amp;se=79&amp;mw=-1&amp;ha=-1">Premier League Table, Form Guide &amp; Season Archives</a>とは一致している．</p>
+<p>※ <a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%AA%E3%83%BC%E3%82%B02017-2018">Wikipedia</a>の情報とは一部合わないが，<a class="reference external" href="https://www.premierleague.com/tables?co=1&amp;amp;se=79&amp;amp;mw=-1&amp;amp;ha=-1">Premier League Table, Form Guide &amp; Season Archives</a>とは一致している．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Rank</span>
@@ -1900,7 +1714,7 @@ Arsenal
 </div>
 </section>
 <section id="id8">
-<h3><span class="section-number">6.2.4. </span>演習問題<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3><span class="section-number">6.2.4. </span>演習問題<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>イングランド以外のリーグについて，同様の順位表を作成せよ</p></li>
 <li><p>好きなチームに対して，横軸に節，縦軸に累積勝ち点を取ったグラフを作成し，1シーズンの勝ち点の変動を可視化せよ．</p></li>
@@ -1909,11 +1723,11 @@ Arsenal
 </section>
 </section>
 <section id="id9">
-<h2><span class="section-number">6.3. </span>得点分布<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">#</a></h2>
+<h2><span class="section-number">6.3. </span>得点分布<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
 <p>サッカーは非常に得点頻度が低い競技であるが，得点がランダムに入るため常に試合から目が離せない．
 得点のランダム性はサッカーが人々を熱狂させる理由と考えられるが，実はこのようなランダム性の裏にはきれいな法則が隠れている．</p>
 <section id="id10">
-<h3><span class="section-number">6.3.1. </span>ポアソン分布<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3><span class="section-number">6.3.1. </span>ポアソン分布<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <p><strong>二項分布からポアソン分布へ</strong></p>
 <p>成功確率が <span class="math notranslate nohighlight">\( p \)</span> の試行を独立に <span class="math notranslate nohighlight">\( n \)</span> 回繰り返すことを考える．
 例えば，サイコロを振って特定の目が出ることを成功とすると，<span class="math notranslate nohighlight">\( p=1/6 \)</span> である．
@@ -1948,8 +1762,8 @@ Arsenal
 例えば，1プレーが数秒に１回行われるとし，どのプレーでも一定の得点確率 <span class="math notranslate nohighlight">\( p \)</span> で得点が入ると見なせば，サッカーは得点確率 <span class="math notranslate nohighlight">\( p \)</span> の小さい試行を何度も繰り返す現象（<span class="math notranslate nohighlight">\( n\to \infty \)</span>）と見なすことができ，1試合の得点数はポアソン分布に従うことが期待される．</p>
 </section>
 <section id="id11">
-<h3><span class="section-number">6.3.2. </span>得点データの要約<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>まずは<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A">game.csv</a>をダウンロードしてカレントディレクトリに保存し，<code class="docutils literal notranslate"><span class="pre">GM</span></code>という名前のDataFrameに読み込む．</p>
+<h3><span class="section-number">6.3.2. </span>得点データの要約<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<p>まずは<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A">game.csv</a>をダウンロードしてカレントディレクトリに保存し，<code class="docutils literal notranslate"><span class="pre">GM</span></code>という名前のDataFrameに読み込む．</p>
 <div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GM</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./game.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -2127,7 +1941,7 @@ dtype: float64
 </div>
 </section>
 <section id="id12">
-<h3><span class="section-number">6.3.3. </span>得点分布<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3><span class="section-number">6.3.3. </span>得点分布<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
 <p>平均値と分散の一致だけではポアソン分布に従う根拠として乏しい．
 そこで，リーグ別にホームチームの得点のヒストグラムを求めてみよう．
 以下はイングランド・プレミアリーグのホームチームの得点分布である．</p>
@@ -2153,7 +1967,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_57_0.png" src="../_images/6_event_57_0.png" />
+<img alt="../_images/70b14cf96dd0d12ce81392a15b371d1d5365fb21fdf150cb7e12011568ad3529.png" src="../_images/70b14cf96dd0d12ce81392a15b371d1d5365fb21fdf150cb7e12011568ad3529.png" />
 </div>
 </div>
 <p>次に，上のヒストグラムがポアソン分布に従っているか調べるため，試合データから求めた平均値をパラメータとするポアソン分布を描いてみる．
@@ -2178,7 +1992,7 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x16ff3f0a0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/6_event_59_1.png" src="../_images/6_event_59_1.png" />
+<img alt="../_images/9a405435e8cc93db2a6cd45976494f2f08b7fec365895496353e1812950ce349.png" src="../_images/9a405435e8cc93db2a6cd45976494f2f08b7fec365895496353e1812950ce349.png" />
 </div>
 </div>
 <p>上のグラフを見比べると，確かに似た分布になっていることが分かる．
@@ -2209,7 +2023,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_61_0.png" src="../_images/6_event_61_0.png" />
+<img alt="../_images/c3787aa9194b8b62ab211e5d0a8bf6c8c832be6ca9eb8b0d31534a33ad4a20ae.png" src="../_images/c3787aa9194b8b62ab211e5d0a8bf6c8c832be6ca9eb8b0d31534a33ad4a20ae.png" />
 </div>
 </div>
 <p>実データ（棒グラフ）とポアソン分布（折れ線）の概形はおおよそ一致していることが分かる．
@@ -2218,7 +2032,7 @@ dtype: float64
 また，<span class="math notranslate nohighlight">\(\chi^2\)</span>検定などを用いてより定量的な検証を行うことも必要である（試してみよ）．</p>
 </section>
 <section id="id13">
-<h3><span class="section-number">6.3.4. </span>演習問題<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3><span class="section-number">6.3.4. </span>演習問題<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>他のリーグについて，ホームチームまたはアウェイチームの得点分布を描画し，さらに実データから求めた平均値をパラメータとするポアソン分布を同じグラフに描画せよ．</p></li>
 <li><p><span class="math notranslate nohighlight">\( \chi^2 \)</span> 検定を用いて，サッカーの得点分布がポアソン分布に従うかどうか検証せよ．</p></li>
@@ -2226,7 +2040,7 @@ dtype: float64
 </section>
 </section>
 <section id="id14">
-<h2><span class="section-number">6.4. </span>イベントデータの解析<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">#</a></h2>
+<h2><span class="section-number">6.4. </span>イベントデータの解析<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
 <p>Pappalardoデータセットのイベントデータはイベントログとイベントタグの2種類から成る：</p>
 <ul class="simple">
 <li><p>イベントログ</p>
@@ -2245,10 +2059,10 @@ dtype: float64
 イベントデータは選手プロフィールや得点データに比べて格段に情報量が多いため，その扱いの難易度も高い．
 基本的にExcelで解析するのは困難であり，Pandasの本領が最も発揮されるデータといえる．</p>
 <section id="id15">
-<h3><span class="section-number">6.4.1. </span>加工済みデータの内容<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3><span class="section-number">6.4.1. </span>加工済みデータの内容<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
 <p>加工済みデータの詳細およびダウンロード用リンクを以下にまとめる．<br>
 ※ W杯とCLのデータはヨーロッパリーグと試合数が異なるので除外する．</p>
-<table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>内容</p></th>
 <th class="head"><p>ファイル</p></th>
@@ -2257,41 +2071,42 @@ dtype: float64
 </thead>
 <tbody>
 <tr class="row-even"><td><p>イベントIDとイベント名の対応</p></td>
-<td><p><a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1oSDUt73paDOsORVj732rGU0vwIwGHvHJ">event_list.csv</a></p></td>
+<td><p><a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=1oSDUt73paDOsORVj732rGU0vwIwGHvHJ">event_list.csv</a></p></td>
 <td><p>0.9KB</p></td>
 </tr>
 <tr class="row-odd"><td><p>イベントに付与されるタグの説明</p></td>
-<td><p><a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1o_tZ-y0eAYlgN1audJThoVBMN0Ta2x5f">tag_list.csv</a></p></td>
+<td><p><a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=1o_tZ-y0eAYlgN1audJThoVBMN0Ta2x5f">tag_list.csv</a></p></td>
 <td><p>2KB</p></td>
 </tr>
 <tr class="row-even"><td><p>各試合のイベントデータ（イングランド）</p></td>
-<td><p>イベントログ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1783Zl4IRGmiYmo-uLA1-FsZwGesOsFhg">event_England.csv</a> <br>イベントタグ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=17LhNNVGZ9nsm-d3lqfBWiKmEqGitJwVI">event_tag_England.csv</a></p></td>
+<td><p>イベントログ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=1783Zl4IRGmiYmo-uLA1-FsZwGesOsFhg">event_England.csv</a> <br>イベントタグ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=17LhNNVGZ9nsm-d3lqfBWiKmEqGitJwVI">event_tag_England.csv</a></p></td>
 <td><p>58MB <br> 76.2MB</p></td>
 </tr>
 <tr class="row-odd"><td><p>//（フランス）</p></td>
-<td><p>イベントログ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=17B8fTf8E7W56USHRObhRaeYBDqatDaft">event_France.csv</a> <br> イベントタグ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=17Sq34wx_Ge_9tVyJYFup1XixwneoWjaO">event_tag_France.csv</a></p></td>
+<td><p>イベントログ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=17B8fTf8E7W56USHRObhRaeYBDqatDaft">event_France.csv</a> <br> イベントタグ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=17Sq34wx_Ge_9tVyJYFup1XixwneoWjaO">event_tag_France.csv</a></p></td>
 <td><p>57.6MB <br> 74.8MB</p></td>
 </tr>
 <tr class="row-even"><td><p>//（ドイツ）</p></td>
-<td><p>イベントログ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=17GVyiEgRFW9VZstK5LvEKLuKTuWmKe1Z">event_Germany.csv</a> <br>イベントタグ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=17dGXdEp0yNH1ySRCcB9ydLxcmUAESFHy">event_tag_Germany.csv</a></p></td>
+<td><p>イベントログ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=17GVyiEgRFW9VZstK5LvEKLuKTuWmKe1Z">event_Germany.csv</a> <br>イベントタグ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=17dGXdEp0yNH1ySRCcB9ydLxcmUAESFHy">event_tag_Germany.csv</a></p></td>
 <td><p>47.2MB <br> 61.5MB</p></td>
 </tr>
 <tr class="row-odd"><td><p>//（イタリア）</p></td>
-<td><p>イベントログ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=17C5vUbS9_zRWpgTalUNzWfP6oFXf0U3K">event_Italy.csv</a> <br>イベントタグ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=17cH2MUqBDdWeBnTGK2EFYEfmB-GAxC3M">event_tag_Italy.csv</a></p></td>
+<td><p>イベントログ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=17C5vUbS9_zRWpgTalUNzWfP6oFXf0U3K">event_Italy.csv</a> <br>イベントタグ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=17cH2MUqBDdWeBnTGK2EFYEfmB-GAxC3M">event_tag_Italy.csv</a></p></td>
 <td><p>58.9MB <br> 76.6MB</p></td>
 </tr>
 <tr class="row-even"><td><p>//（スペイン）</p></td>
-<td><p>イベントログ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=17K-vF4xBn6GtBtFap5sIf26ZZnjs20fz">event_Spain.csv</a> <br>イベントタグ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=17lGhSTFByywubBTmJKoTzrmaGLOgOZ3k">event_tag_Spain.csv</a></p></td>
+<td><p>イベントログ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=17K-vF4xBn6GtBtFap5sIf26ZZnjs20fz">event_Spain.csv</a> <br>イベントタグ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=17lGhSTFByywubBTmJKoTzrmaGLOgOZ3k">event_tag_Spain.csv</a></p></td>
 <td><p>56.1MB <br> 74.5MB</p></td>
 </tr>
 </tbody>
 </table>
+</div>
 <p>以下では，イングランド・プレミアリーグのデータを解析対象とする．
 準備として，次のファイルをダウンロードしてカレントディレクトリに移動する：</p>
 <ul class="simple">
-<li><p>イベントログ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1783Zl4IRGmiYmo-uLA1-FsZwGesOsFhg">event_England.csv</a></p></li>
-<li><p>イベントタグ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=17LhNNVGZ9nsm-d3lqfBWiKmEqGitJwVI">event_tag_England.csv</a></p></li>
-<li><p>選手プロフィール：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1rtCAL0DqW9SeslMuGFCusg8VRRWz6J_M">player.csv</a></p></li>
+<li><p>イベントログ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=1783Zl4IRGmiYmo-uLA1-FsZwGesOsFhg">event_England.csv</a></p></li>
+<li><p>イベントタグ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=17LhNNVGZ9nsm-d3lqfBWiKmEqGitJwVI">event_tag_England.csv</a></p></li>
+<li><p>選手プロフィール：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=1rtCAL0DqW9SeslMuGFCusg8VRRWz6J_M">player.csv</a></p></li>
 </ul>
 <p>これらを以下のように読み込んでおく．</p>
 <div class="cell docutils container">
@@ -2306,7 +2121,7 @@ dtype: float64
 </div>
 </section>
 <section id="id16">
-<h3><span class="section-number">6.4.2. </span>イベントデータの詳細<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3><span class="section-number">6.4.2. </span>イベントデータの詳細<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
 <p><strong>イベントログ</strong></p>
 <div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
@@ -2442,7 +2257,7 @@ dtype: float64
 <p><code class="docutils literal notranslate"><span class="pre">EV</span></code>には380試合分のイベントログが含まれており，その行数は64万行にのぼる．
 <code class="docutils literal notranslate"><span class="pre">EV</span></code>の各行は試合中の１イベントに対応し，各列にそのイベントに関する基本情報が収められている．
 各列の内容は下表の通りである．</p>
-<table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>変数名</p></th>
 <th class="head"><p>内容</p></th>
@@ -2493,6 +2308,7 @@ dtype: float64
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>座標系</strong></p>
 <p>イベント開始座標 <span class="math notranslate nohighlight">\((x_{1}, y_{1})\)</span> と終了座標 <span class="math notranslate nohighlight">\((x_{2}, y_{2})\)</span> は以下の座標系に従う：</p>
 <ul class="simple">
@@ -2530,7 +2346,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_77_0.png" src="../_images/6_event_77_0.png" />
+<img alt="../_images/04d2238d44d2a487dbe294362cd9f6f0b3184e01f31113077d50872f8c6a067c.png" src="../_images/04d2238d44d2a487dbe294362cd9f6f0b3184e01f31113077d50872f8c6a067c.png" />
 </div>
 </div>
 <p><strong>イベントタグ</strong></p>
@@ -2712,9 +2528,9 @@ dtype: float64
 各列にはイベントに付与されたタグ（'goal'，'assist'など）が並んでおり，真ならば1，偽ならば0となっている．
 （このようなデータをOne-Hotエンコーディングと呼ぶ．）
 例えば，'goal'列が1である行では，そのイベントにおいて得点が入ったことを意味する．</p>
-<p>タグの詳細情報は<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1o_tZ-y0eAYlgN1audJThoVBMN0Ta2x5f">tag_list.csv</a>にまとめられている．
+<p>タグの詳細情報は<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=1o_tZ-y0eAYlgN1audJThoVBMN0Ta2x5f">tag_list.csv</a>にまとめられている．
 主要なタグを下表にまとめる．</p>
-<table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>タグ名</p></th>
 <th class="head"><p>内容</p></th>
@@ -2741,13 +2557,14 @@ dtype: float64
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 <section id="id17">
-<h3><span class="section-number">6.4.3. </span>イベントデータ解析の基本<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3><span class="section-number">6.4.3. </span>イベントデータ解析の基本<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
 <p>イベントログ<code class="docutils literal notranslate"><span class="pre">EV</span></code>とイベントタグ<code class="docutils literal notranslate"><span class="pre">EV_tag</span></code>には，ボールに関わるイベントに関するほぼ全ての情報が含まれている．
 イベントデータ解析の目的はこれらのデータから意味のある情報を抽出することである．
 イベントデータを解析する際の手順は以下のようにまとめられる：</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>イベントログ<code class="docutils literal notranslate"><span class="pre">EV</span></code>，イベントタグ<code class="docutils literal notranslate"><span class="pre">EV_tag</span></code>から必要な行を条件付き抽出する</p></li>
 <li><p>条件付き抽出したデータを集計する</p></li>
 <li><p>集計したデータを可視化する</p></li>
@@ -3030,7 +2847,7 @@ dtype: float64
 <p><strong>特定のイベントの抽出</strong></p>
 <p>イベントログ<code class="docutils literal notranslate"><span class="pre">EV</span></code>には<code class="docutils literal notranslate"><span class="pre">'event'</span></code>列と<code class="docutils literal notranslate"><span class="pre">'subevent'</span></code>列が存在する．
 <code class="docutils literal notranslate"><span class="pre">'event'</span></code>列は<code class="docutils literal notranslate"><span class="pre">'pass'</span></code>，<code class="docutils literal notranslate"><span class="pre">'foul'</span></code>などの大分類，<code class="docutils literal notranslate"><span class="pre">'subevent'</span></code>列は<code class="docutils literal notranslate"><span class="pre">'simple_pass'</span></code>や<code class="docutils literal notranslate"><span class="pre">'high_pass'</span></code>などの小分類となっている．
-<code class="docutils literal notranslate"><span class="pre">'event'</span></code>および<code class="docutils literal notranslate"><span class="pre">'subevent'</span></code>のリストは<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1oSDUt73paDOsORVj732rGU0vwIwGHvHJ">event_list.csv</a> にまとめられている．</p>
+<code class="docutils literal notranslate"><span class="pre">'event'</span></code>および<code class="docutils literal notranslate"><span class="pre">'subevent'</span></code>のリストは<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=1oSDUt73paDOsORVj732rGU0vwIwGHvHJ">event_list.csv</a> にまとめられている．</p>
 <div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># event列が&#39;pass&#39;の行を抽出</span>
@@ -3833,7 +3650,7 @@ dtype: float64
 </div>
 </section>
 <section id="id18">
-<h3><span class="section-number">6.4.4. </span>イベント別のヒートマップ<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3><span class="section-number">6.4.4. </span>イベント別のヒートマップ<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
 <p>条件付き抽出の応用として，イベント別にヒートマップを描いてみよう．
 まず，以下のようにヒートマップを描く<code class="docutils literal notranslate"><span class="pre">event_hmap</span></code>関数を作成する．
 この関数は，<span class="math notranslate nohighlight">\(x,\ y\)</span>座標のデータを引数として受け取り，matplotlibの<code class="docutils literal notranslate"><span class="pre">hist2d</span></code>関数を用いてヒートマップを描く．</p>
@@ -3879,7 +3696,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_101_0.png" src="../_images/6_event_101_0.png" />
+<img alt="../_images/b3dceddaa152a37701421cb048d690ba7d77cf9ad7a9d8ead8b2b33e4fac8b45.png" src="../_images/b3dceddaa152a37701421cb048d690ba7d77cf9ad7a9d8ead8b2b33e4fac8b45.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3892,7 +3709,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_102_0.png" src="../_images/6_event_102_0.png" />
+<img alt="../_images/565bf0ed21e3799c22844f2927d1ef1697016defdd4ec5fcf9304d83a9b268d6.png" src="../_images/565bf0ed21e3799c22844f2927d1ef1697016defdd4ec5fcf9304d83a9b268d6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3905,7 +3722,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_103_0.png" src="../_images/6_event_103_0.png" />
+<img alt="../_images/edd665902c6c8b34f27f1a219ab2a5d209200166a238d4596bbeb6402f615368.png" src="../_images/edd665902c6c8b34f27f1a219ab2a5d209200166a238d4596bbeb6402f615368.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3918,7 +3735,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_104_0.png" src="../_images/6_event_104_0.png" />
+<img alt="../_images/32e8c7bb2ffe35821535ea79bccb41918c008a587b55857981679fbe5b481f8e.png" src="../_images/32e8c7bb2ffe35821535ea79bccb41918c008a587b55857981679fbe5b481f8e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3931,7 +3748,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_105_0.png" src="../_images/6_event_105_0.png" />
+<img alt="../_images/ec69c11503040dc3c6bea8e00f492213b80d2f63d1c05760dfe26b81d8d87b29.png" src="../_images/ec69c11503040dc3c6bea8e00f492213b80d2f63d1c05760dfe26b81d8d87b29.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3944,7 +3761,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_106_0.png" src="../_images/6_event_106_0.png" />
+<img alt="../_images/4f253a756d7596ddf2cce66b02ec2e43b137444493dff3527f03dd329e1d08e8.png" src="../_images/4f253a756d7596ddf2cce66b02ec2e43b137444493dff3527f03dd329e1d08e8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3957,12 +3774,12 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_107_0.png" src="../_images/6_event_107_0.png" />
+<img alt="../_images/101c15aa168d6589f2a93af2c14af51c981303c3fa619463ee82960fa01fdb35.png" src="../_images/101c15aa168d6589f2a93af2c14af51c981303c3fa619463ee82960fa01fdb35.png" />
 </div>
 </div>
 </section>
 <section id="id19">
-<h3><span class="section-number">6.4.5. </span>選手のランキング<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3><span class="section-number">6.4.5. </span>選手のランキング<a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
 <p>シーズンが終了すると，チームのリーグ成績と共に選手の個人成績が発表される．
 個人成績は，シュート数やゴール数などの部門別ランキングとなっている．
 ここでは，イベントデータを用いてこれらのランキングを求めてみよう．
@@ -4103,7 +3920,7 @@ Name: player_id, dtype: int64
 </div>
 </section>
 <section id="id20">
-<h3><span class="section-number">6.4.6. </span>選手間のパス数<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3><span class="section-number">6.4.6. </span>選手間のパス数<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
 <p>最後に，特定の試合における選手間のパス数を可視化してみよう．
 本来，このような解析にはnetworkxという専用のライブラリを使うべきだが，以下ではpandasとseabornという可視化ライブラリを用いて実装する．</p>
 <p><strong>試合の抽出</strong></p>
@@ -4574,7 +4391,7 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_135_0.png" src="../_images/6_event_135_0.png" />
+<img alt="../_images/bad06c2e64e18e100b3cb4c33fef403376cdaaa023d41366577de1eded924992.png" src="../_images/bad06c2e64e18e100b3cb4c33fef403376cdaaa023d41366577de1eded924992.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -4585,12 +4402,12 @@ Name: player_id, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_event_136_0.png" src="../_images/6_event_136_0.png" />
+<img alt="../_images/91a6aca67318e45ca882b38e25fed3116a26001ccf3a7f1a2cf33cbcf0574593.png" src="../_images/91a6aca67318e45ca882b38e25fed3116a26001ccf3a7f1a2cf33cbcf0574593.png" />
 </div>
 </div>
 </section>
 <section id="id21">
-<h3><span class="section-number">6.4.7. </span>演習問題<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3><span class="section-number">6.4.7. </span>演習問題<a class="headerlink" href="#id21" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>イベントログとイベントタグから様々な条件で場面を抽出し，ヒートマップを描画せよ．</p></li>
 <li><p>イングランド以外のリーグについて，選手のランキングを求めよ．</p></li>
@@ -4613,7 +4430,7 @@ Name: player_id, dtype: int64
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./chap_6"
         },
         predefinedOutput: true
@@ -4621,51 +4438,124 @@ Name: player_id, dtype: int64
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../chap_5/5_matplotlib.html" title="前へ ページ">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">前へ</p>
-            <p class="prev-next-title"><span class="section-number">5. </span>Matplotlibの基礎</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../chap_5/5_matplotlib.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">前へ</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Matplotlibの基礎</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="../chap_7/7_tracking.html" title="次へ ページ">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="../chap_7/7_tracking.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">次へ</p>
         <p class="prev-next-title"><span class="section-number">7. </span>トラッキングデータの解析</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目次
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.1. イベントデータ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pappalardo">6.1.1. Pappalardoデータセット</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.1.2. 本講義で用いる加工済みデータ</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.2. リーグ成績と順位表</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.2.1. データの読み込み</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.2.2. １チームのリーグ成績</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">6.2.3. 全チームのリーグ成績と順位表</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">6.2.4. 演習問題</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">6.3. 得点分布</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">6.3.1. ポアソン分布</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">6.3.2. 得点データの要約</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">6.3.3. 得点分布</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">6.3.4. 演習問題</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">6.4. イベントデータの解析</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">6.4.1. 加工済みデータの内容</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">6.4.2. イベントデータの詳細</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">6.4.3. イベントデータ解析の基本</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">6.4.4. イベント別のヒートマップ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">6.4.5. 選手のランキング</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">6.4.6. 選手間のパス数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">6.4.7. 演習問題</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    <div class="extra_footer">
-      © Copyright 2022-present by 成塚拓真 (Takuma Narizuka). この講義ノートは<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ja">CC BY-NC-ND 4.0</a>の下に提供する．</a>ただし，コード部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供する．
-
-    </div>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  © Copyright 2022-present by 成塚拓真 (Takuma Narizuka). この講義ノートは<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ja">CC BY-NC-ND 4.0</a>の下に提供する．</a>ただし，コード部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供する．
+
 </div>
+  </div>
+  
+</div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
