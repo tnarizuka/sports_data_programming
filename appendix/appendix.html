@@ -1,845 +1,469 @@
 
 <!DOCTYPE html>
 
-<html lang="ja">
+
+<html lang="ja" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>付録 &#8212; Programming for Sports Data Analysis</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/documentation_options.js?v=1cf7f4d9"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="../_static/translations.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/translations.js?v=91613774"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-RHZE5CW8BR"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-RHZE5CW8BR');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-RHZE5CW8BR');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'appendix/appendix';</script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="prev" title="7. トラッキングデータの解析" href="../chap_7/7_tracking.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="ja">
-    
-
-    <!-- Google Analytics -->
-    
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-RHZE5CW8BR"></script>
-<script>
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){ dataLayer.push(arguments); }
-                    gtag('js', new Date());
-                    gtag('config', 'G-RHZE5CW8BR');
-                </script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="ja"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Programming for Sports Data Analysis</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Programming for Sports Data Analysis</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">検索</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../chap_1/1_introduction.html">
-   1. イントロダクション
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../chap_2/2_environment.html">
-   2. プログラミング環境の構築
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../chap_3/3_numpy.html">
-   3. NumPyの基礎
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../chap_4/4_pandas.html">
-   4. Pandasの基礎
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../chap_5/5_matplotlib.html">
-   5. Matplotlibの基礎
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../chap_6/6_event.html">
-   6. イベントデータの解析
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../chap_7/7_tracking.html">
-   7. トラッキングデータの解析
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../chap_1/1_introduction.html">1. イントロダクション</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap_2/2_environment.html">2. プログラミング環境の構築</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap_3/3_numpy.html">3. NumPyの基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap_4/4_pandas.html">4. Pandasの基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap_5/5_matplotlib.html">5. Matplotlibの基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap_6/6_event.html">6. イベントデータの解析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap_7/7_tracking.html">7. トラッキングデータの解析</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   付録
-  </a>
- </li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">付録</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/tnarizuka/sports_data_programming/main?urlpath=tree/docs/appendix/appendix.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/tnarizuka/sports_data_programming" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="ソースリポジトリ"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/tnarizuka/sports_data_programming/issues/new?title=Issue%20on%20page%20%2Fappendix/appendix.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="問題を報告"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="このページをダウンロード">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/appendix/appendix.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="ソースファイルをダウンロード"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="PDFに印刷"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="全画面モード"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/tnarizuka/sports_data_programming"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
 
-      </li>
-      
-      <li>
-        <a href="https://github.com/tnarizuka/sports_data_programming/issues/new?title=Issue%20on%20page%20%2Fappendix/appendix.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/appendix/appendix.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </button>
-
-      </li>
+</div></div>
       
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
+    </div>
   
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
-    </div>
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   プログラミング環境
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#jupyterpython">
-     JupyterとPythonスクリプトの使い分け
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#jupyterconfig">
-     Jupyterのconfigファイル
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ipython">
-     Ipythonのプロファイル
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#google-colab">
-     Google Colab
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#google-colabjupyter-notebook">
-       Google colabでjupyter notebookを開く
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#import">
-       必要なモジュールをimportする
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#google-drive">
-       Google Driveをマウントする
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id3">
-       自作モジュールをimportする
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#matplotlib">
-       matplotlibのスタイルファイルを読み込む
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#numpy">
-   NumPy
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#numpy-fancy-index">
-     ファンシーインデックス参照
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id5">
-       1次元配列の場合
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id6">
-       ２次元配列の場合
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id7">
-     条件を満たす要素のインデックスを取得
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#numpy-change-shape">
-     配列の形状変更
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id9">
-       要素数を保った形状変更
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id10">
-       配列の連結
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id11">
-       配列の削除
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#numpy-broadcast">
-     異なる形状の配列間での演算：ブロードキャスト
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandas">
-   Pandas
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#series">
-     Seriesオブジェクト
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reindex">
-     指定したラベルの順に並べ替える：
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       reindex
-      </span>
-     </code>
-     メソッド
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id13">
-     データの結合
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id14">
-     データの重複処理
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id15">
-   Matplotlib
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#matplotlib-output">
-     描画結果の出力先
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#matplotlib-style">
-     ２つのプロットスタイル
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#figureaxes">
-     FigureとAxesの生成
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id18">
-   イベントデータの解析
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pappalardo">
-     Pappalardoデータセットの詳細
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id20">
-       データセットに関する情報の入手先
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id21">
-       データセットの内容
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id22">
-     ボールの軌跡の可視化
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id23">
-   トラッキングデータの解析
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pettersen">
-     Pettersenデータセットの詳細
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id25">
-       データセットに関する情報の入手先
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id26">
-     ボロノイ領域
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id27">
-     ドロネーネットワーク
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>付録</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   プログラミング環境
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#jupyterpython">
-     JupyterとPythonスクリプトの使い分け
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#jupyterconfig">
-     Jupyterのconfigファイル
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ipython">
-     Ipythonのプロファイル
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#google-colab">
-     Google Colab
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#google-colabjupyter-notebook">
-       Google colabでjupyter notebookを開く
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#import">
-       必要なモジュールをimportする
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#google-drive">
-       Google Driveをマウントする
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id3">
-       自作モジュールをimportする
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#matplotlib">
-       matplotlibのスタイルファイルを読み込む
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#numpy">
-   NumPy
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#numpy-fancy-index">
-     ファンシーインデックス参照
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id5">
-       1次元配列の場合
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id6">
-       ２次元配列の場合
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id7">
-     条件を満たす要素のインデックスを取得
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#numpy-change-shape">
-     配列の形状変更
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id9">
-       要素数を保った形状変更
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id10">
-       配列の連結
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id11">
-       配列の削除
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#numpy-broadcast">
-     異なる形状の配列間での演算：ブロードキャスト
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandas">
-   Pandas
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#series">
-     Seriesオブジェクト
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reindex">
-     指定したラベルの順に並べ替える：
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       reindex
-      </span>
-     </code>
-     メソッド
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id13">
-     データの結合
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id14">
-     データの重複処理
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id15">
-   Matplotlib
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#matplotlib-output">
-     描画結果の出力先
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#matplotlib-style">
-     ２つのプロットスタイル
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#figureaxes">
-     FigureとAxesの生成
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id18">
-   イベントデータの解析
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pappalardo">
-     Pappalardoデータセットの詳細
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id20">
-       データセットに関する情報の入手先
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id21">
-       データセットの内容
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id22">
-     ボールの軌跡の可視化
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id23">
-   トラッキングデータの解析
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pettersen">
-     Pettersenデータセットの詳細
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id25">
-       データセットに関する情報の入手先
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id26">
-     ボロノイ領域
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id27">
-     ドロネーネットワーク
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>付録</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目次 </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">プログラミング環境</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterpython">JupyterとPythonスクリプトの使い分け</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterconfig">Jupyterのconfigファイル</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipython">Ipythonのプロファイル</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colab">Google Colab</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colabjupyter-notebook">Google colabでjupyter notebookを開く</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#import">必要なモジュールをimportする</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#google-drive">Google Driveをマウントする</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">自作モジュールをimportする</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib">matplotlibのスタイルファイルを読み込む</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy">NumPy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-fancy-index">ファンシーインデックス参照</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1次元配列の場合</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">２次元配列の場合</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">条件を満たす要素のインデックスを取得</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-change-shape">配列の形状変更</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">要素数を保った形状変更</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">配列の連結</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">配列の削除</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-broadcast">異なる形状の配列間での演算：ブロードキャスト</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas">Pandas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#series">Seriesオブジェクト</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reindex">指定したラベルの順に並べ替える：<code class="docutils literal notranslate"><span class="pre">reindex</span></code>メソッド</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">データの結合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">データの重複処理</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Matplotlib</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-output">描画結果の出力先</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-style">２つのプロットスタイル</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#figureaxes">FigureとAxesの生成</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">イベントデータの解析</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pappalardo">Pappalardoデータセットの詳細</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">データセットに関する情報の入手先</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">データセットの内容</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">ボールの軌跡の可視化</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">トラッキングデータの解析</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pettersen">Pettersenデータセットの詳細</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">データセットに関する情報の入手先</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">ボロノイ領域</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">ドロネーネットワーク</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>付録<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">#</a></h1>
+<h1>付録<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <section id="id2">
-<h2>プログラミング環境<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">#</a></h2>
+<h2>プログラミング環境<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <section id="jupyterpython">
-<h3>JupyterとPythonスクリプトの使い分け<a class="headerlink" href="#jupyterpython" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3>JupyterとPythonスクリプトの使い分け<a class="headerlink" href="#jupyterpython" title="Link to this heading">#</a></h3>
 <p>Jupyterは短いコードを逐次実行しながら結果を確認するのには適しているが，コードが長くなると分かりにくくなる．そこで，コードが長くなってきたら関数やクラスに適宜まとめてスクリプト（<code class="docutils literal notranslate"><span class="pre">.py</span></code>ファイル）に保存すると良い．保存したスクリプトはNumPyやPandasと同じようにimportできるので，Jupyter上ではimportしたスクリプト内の関数を実行するだけにすると結果が整理しやすい．その際，以下に説明する自作モジュールの自動リロードの設定をしておくと便利である．</p>
 <p>※ ローカル環境で<code class="docutils literal notranslate"><span class="pre">.py</span></code>ファイルを編集するにはエディタを使用する．Windowsに標準搭載されているメモ帳を使うのが最も手軽だが，非常に使いづらいので推奨しない．まずは自分の好みに合うエディタを探すことを推奨する．よく使われるエディタは以下の通り：</p>
 <ul class="simple">
@@ -849,7 +473,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="jupyterconfig">
-<h3>Jupyterのconfigファイル<a class="headerlink" href="#jupyterconfig" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3>Jupyterのconfigファイル<a class="headerlink" href="#jupyterconfig" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>ターミナルで以下を実行する</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">notebook</span> <span class="o">--</span><span class="n">generate</span><span class="o">-</span><span class="n">config</span>
@@ -869,7 +493,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="ipython">
-<h3>Ipythonのプロファイル<a class="headerlink" href="#ipython" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3>Ipythonのプロファイル<a class="headerlink" href="#ipython" title="Link to this heading">#</a></h3>
 <p>Ipythonプロファイルを作成すると，jupyterの起動時に自動実行したいコマンドを設定できる．</p>
 <ul>
 <li><p>ターミナルで以下を実行する</p>
@@ -926,7 +550,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="google-colab">
-<h3>Google Colab<a class="headerlink" href="#google-colab" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3>Google Colab<a class="headerlink" href="#google-colab" title="Link to this heading">#</a></h3>
 <p>Google Colab（正式名称はGoogle Colaboratoty）はgoogleが提供するPython実行環境であり，Jupyter Notebookがベースになっている．
 実際，Google Colabで作成したノートブックは&quot;.ipynb形式&quot;で保存されるので，相互互換性がある．
 Google Colabの特徴は以下の通りである：</p>
@@ -945,7 +569,7 @@ Google Colabの特徴は以下の通りである：</p>
 また，GPUが無料で使用可能なので，重い計算を行う際にも重宝する．
 本講義では，基本的にJupyter Labを用いるが，Google Colabを用いても問題ない．</p>
 <section id="google-colabjupyter-notebook">
-<h4>Google colabでjupyter notebookを開く<a class="headerlink" href="#google-colabjupyter-notebook" title="このヘッドラインへのパーマリンク">#</a></h4>
+<h4>Google colabでjupyter notebookを開く<a class="headerlink" href="#google-colabjupyter-notebook" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Google Driveを開いて作業フォルダに移動</p></li>
 <li><p>既存の<code class="docutils literal notranslate"><span class="pre">.ipynbファイル</span></code>を選択するとGoogle Colabが開く</p></li>
@@ -957,11 +581,11 @@ Google Colabの特徴は以下の通りである：</p>
 </ul>
 </section>
 <section id="import">
-<h4>必要なモジュールをimportする<a class="headerlink" href="#import" title="このヘッドラインへのパーマリンク">#</a></h4>
+<h4>必要なモジュールをimportする<a class="headerlink" href="#import" title="Link to this heading">#</a></h4>
 <ul>
 <li><p>google colabにインストールされていないモジュール（japanize_matplotlibなど）</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install japanize-matplotlib
-import japanize_matplotlib
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">japanize</span><span class="o">-</span><span class="n">matplotlib</span>
+<span class="kn">import</span> <span class="nn">japanize_matplotlib</span>
 </pre></div>
 </div>
 </li>
@@ -973,7 +597,7 @@ import japanize_matplotlib
 </ul>
 </section>
 <section id="google-drive">
-<h4>Google Driveをマウントする<a class="headerlink" href="#google-drive" title="このヘッドラインへのパーマリンク">#</a></h4>
+<h4>Google Driveをマウントする<a class="headerlink" href="#google-drive" title="Link to this heading">#</a></h4>
 <p>Google Driveに保存した自作モジュールやファイルにアクセスしたい場合はGoogle Driveをマウントする必要がある．</p>
 <ul>
 <li><p>以下を実行する</p>
@@ -987,7 +611,7 @@ import japanize_matplotlib
 </ul>
 </section>
 <section id="id3">
-<h4>自作モジュールをimportする<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">#</a></h4>
+<h4>自作モジュールをimportする<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/content/drive/My Drive/***&#39;</span><span class="p">)</span>
 
@@ -997,7 +621,7 @@ import japanize_matplotlib
 <p>※ なお，自作モジュールの変更を反映したい場合は［ランタイムを出荷時設定にリセット］し，再度マウントする</p>
 </section>
 <section id="matplotlib">
-<h4>matplotlibのスタイルファイルを読み込む<a class="headerlink" href="#matplotlib" title="このヘッドラインへのパーマリンク">#</a></h4>
+<h4>matplotlibのスタイルファイルを読み込む<a class="headerlink" href="#matplotlib" title="Link to this heading">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;/content/drive/My Drive/***/matplotlibrc&#39;</span><span class="p">)</span>
 </pre></div>
@@ -1006,15 +630,15 @@ import japanize_matplotlib
 </section>
 </section>
 <section id="numpy">
-<h2>NumPy<a class="headerlink" href="#numpy" title="このヘッドラインへのパーマリンク">#</a></h2>
+<h2>NumPy<a class="headerlink" href="#numpy" title="Link to this heading">#</a></h2>
 <section id="numpy-fancy-index">
-<span id="id4"></span><h3>ファンシーインデックス参照<a class="headerlink" href="#numpy-fancy-index" title="このヘッドラインへのパーマリンク">#</a></h3>
+<span id="id4"></span><h3>ファンシーインデックス参照<a class="headerlink" href="#numpy-fancy-index" title="Link to this heading">#</a></h3>
 <p>インデックス参照では1つの要素だけにしかアクセスできなかった．
 また，配列のスライスでは，複数の要素を抽出できたが，連続した要素や1つおきの要素など規則的な抽出しか実現できなかった．
 そこで，任意の要素を複数抽出する方法として，ファンシーインデックス参照がある．
 これは，複数のインデックスを配列として指定するという方法であり，NumPy配列特有の機能である．</p>
 <section id="id5">
-<h4>1次元配列の場合<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">#</a></h4>
+<h4>1次元配列の場合<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -1084,7 +708,7 @@ import japanize_matplotlib
 </div>
 </section>
 <section id="id6">
-<h4>２次元配列の場合<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">#</a></h4>
+<h4>２次元配列の場合<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
 <p>通常のインデックス参照と同様に，行→列の順で指定する．
 1次元のインデックス配列を指定すると，複数の行を抽出できる．</p>
 <div class="cell docutils container">
@@ -1151,7 +775,7 @@ import japanize_matplotlib
 </section>
 </section>
 <section id="id7">
-<h3>条件を満たす要素のインデックスを取得<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3>条件を満たす要素のインデックスを取得<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">np.where</span></code>関数を用いると，配列の中で条件を満たす要素のインデックスを取得することができる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1189,9 +813,9 @@ import japanize_matplotlib
 つまり，条件を満たすインデックスは<code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0),</span> <span class="pre">(0,</span> <span class="pre">1),</span> <span class="pre">(0,</span> <span class="pre">2)</span></code>である．</p>
 </section>
 <section id="numpy-change-shape">
-<span id="id8"></span><h3>配列の形状変更<a class="headerlink" href="#numpy-change-shape" title="このヘッドラインへのパーマリンク">#</a></h3>
+<span id="id8"></span><h3>配列の形状変更<a class="headerlink" href="#numpy-change-shape" title="Link to this heading">#</a></h3>
 <section id="id9">
-<h4>要素数を保った形状変更<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">#</a></h4>
+<h4>要素数を保った形状変更<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
 <p>配列のサイズ（全要素数）を保ったまま形状（次元数）を変更するには<code class="docutils literal notranslate"><span class="pre">reshape</span></code>メソッドを用いる．
 例えば，1次元配列を3行3列の配列に変更するには次のようにする．</p>
 <div class="cell docutils container">
@@ -1268,7 +892,7 @@ import japanize_matplotlib
 </div>
 </section>
 <section id="id10">
-<h4>配列の連結<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">#</a></h4>
+<h4>配列の連結<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
 <p>複数のNumpy配列を連結するには，<code class="docutils literal notranslate"><span class="pre">concatenate</span></code>関数を用いる．
 また，同様の機能を持つ関数として，<code class="docutils literal notranslate"><span class="pre">block</span></code>関数，<code class="docutils literal notranslate"><span class="pre">vstack</span></code>関数，<code class="docutils literal notranslate"><span class="pre">hstack</span></code>関数があるがここでは触れない．</p>
 <div class="cell docutils container">
@@ -1348,7 +972,7 @@ import japanize_matplotlib
 </div>
 </section>
 <section id="id11">
-<h4>配列の削除<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">#</a></h4>
+<h4>配列の削除<a class="headerlink" href="#id11" title="Link to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">np.delete</span></code>関数で配列から任意の行や列を削除できる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1425,7 +1049,7 @@ import japanize_matplotlib
 </section>
 </section>
 <section id="numpy-broadcast">
-<span id="id12"></span><h3>異なる形状の配列間での演算：ブロードキャスト<a class="headerlink" href="#numpy-broadcast" title="このヘッドラインへのパーマリンク">#</a></h3>
+<span id="id12"></span><h3>異なる形状の配列間での演算：ブロードキャスト<a class="headerlink" href="#numpy-broadcast" title="Link to this heading">#</a></h3>
 <p>NumPy配列では以上の規則を含む<strong>ブロードキャスト</strong>と呼ばれる演算規則が存在する．
 ブロードキャストとは，異なる形状・サイズの配列同士で演算を行う場合に，一方または両方の配列の形状・サイズを自動的に変更（ブロードキャスト）する仕組みである．</p>
 <p>ブロードキャストは以下のルールに従う：</p>
@@ -1588,9 +1212,9 @@ ndim: 2
 </section>
 </section>
 <section id="pandas">
-<h2>Pandas<a class="headerlink" href="#pandas" title="このヘッドラインへのパーマリンク">#</a></h2>
+<h2>Pandas<a class="headerlink" href="#pandas" title="Link to this heading">#</a></h2>
 <section id="series">
-<h3>Seriesオブジェクト<a class="headerlink" href="#series" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3>Seriesオブジェクト<a class="headerlink" href="#series" title="Link to this heading">#</a></h3>
 <p>Pandasには，DataFrameの他に1次元のデータを扱うためのSeriesオブジェクトが用意されている．DataFrameには行ラベルindexと列ラベルcolumnsが付与されたが，<strong>Seriesにはindexだけが付与される</strong>．<strong>SeriesはDataFrameから特定の1列を抜き出したものであり，基本的な操作方法はDataFrameと同じである</strong>．実際のデータ分析においてSeriesを単体で用いることはあまりないが，DataFrameを１列だけ取り出したり，ブールインデックスを扱ったりすると遭遇する．</p>
 <p>SeriesはDataFrameから1列または1行を取り出すことで生成できる．
 また，<code class="docutils literal notranslate"><span class="pre">pd.Series</span></code>関数により，リスト，NumPy配列，辞書などから生成することもできる．</p>
@@ -1711,7 +1335,7 @@ dtype: float64
 </div>
 </section>
 <section id="reindex">
-<h3>指定したラベルの順に並べ替える：<code class="docutils literal notranslate"><span class="pre">reindex</span></code>メソッド<a class="headerlink" href="#reindex" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3>指定したラベルの順に並べ替える：<code class="docutils literal notranslate"><span class="pre">reindex</span></code>メソッド<a class="headerlink" href="#reindex" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">reindex</span></code>メソッドを用いると，指定した行・列ラベルの順番にDataFrameを並べ替えることができる．<br>
 なお，単にラベルを昇順・降順に並べ替えたい場合は既に説明した<code class="docutils literal notranslate"><span class="pre">sort_index</span></code>メソッドを用いた方が良い．</p>
 <div class="cell docutils container">
@@ -1980,7 +1604,7 @@ dtype: float64
 </div>
 </section>
 <section id="id13">
-<h3>データの結合<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3>データの結合<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
 <p>複数のDataFrameがあったとき，これらを結合する方法として，<code class="docutils literal notranslate"><span class="pre">concat</span></code>関数，<code class="docutils literal notranslate"><span class="pre">merge</span></code>関数，<code class="docutils literal notranslate"><span class="pre">join</span></code>関数が用意されている．
 <code class="docutils literal notranslate"><span class="pre">concat</span></code>関数は縦方向と横方向に連結ができる．
 一方，<code class="docutils literal notranslate"><span class="pre">merge</span></code>関数と<code class="docutils literal notranslate"><span class="pre">join</span></code>関数は横方向に連結する関数であり，<code class="docutils literal notranslate"><span class="pre">merge</span></code>関数は特定の列，<code class="docutils literal notranslate"><span class="pre">join</span></code>関数はindexを基準に連結する．
@@ -2509,7 +2133,7 @@ dtype: float64
 </div>
 </section>
 <section id="id14">
-<h3>データの重複処理<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3>データの重複処理<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
 <p><strong>重複データの削除（<code class="docutils literal notranslate"><span class="pre">drop_duplicates</span></code>メソッド）</strong></p>
 <p>pandasで重複したデータを削除するには<code class="docutils literal notranslate"><span class="pre">drop_duplicates</span></code>メソッドを用いる．<code class="docutils literal notranslate"><span class="pre">drop_duplicates</span></code>メソッドは以下のように指定する：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;列名1&#39;</span><span class="p">,</span> <span class="s1">&#39;列名2&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span>
@@ -3064,9 +2688,9 @@ dtype: bool
 </section>
 </section>
 <section id="id15">
-<h2>Matplotlib<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">#</a></h2>
+<h2>Matplotlib<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
 <section id="matplotlib-output">
-<span id="id16"></span><h3>描画結果の出力先<a class="headerlink" href="#matplotlib-output" title="このヘッドラインへのパーマリンク">#</a></h3>
+<span id="id16"></span><h3>描画結果の出力先<a class="headerlink" href="#matplotlib-output" title="Link to this heading">#</a></h3>
 <p>Matplotlibは使う環境によってグラフを画面に出力する方法が異なる．
 ここではJupyter NotebookとPythonスクリプトでの出力方法を解説する．</p>
 <p><strong>（デフォルト）Jupyter Labで実行し，Notebook内に表示する</strong></p>
@@ -3089,7 +2713,7 @@ dtype: bool
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/appendix_142_0.png" src="../_images/appendix_142_0.png" />
+<img alt="../_images/c363697c86397e0f1bbdbdf994c7250534e48912b11b884edaf9e11be4e1682c.png" src="../_images/c363697c86397e0f1bbdbdf994c7250534e48912b11b884edaf9e11be4e1682c.png" />
 </div>
 </div>
 <p><strong>Jupyter Labで実行し，別ウインドウに表示する</strong></p>
@@ -3131,7 +2755,7 @@ dtype: bool
 </div>
 </section>
 <section id="matplotlib-style">
-<span id="id17"></span><h3>２つのプロットスタイル<a class="headerlink" href="#matplotlib-style" title="このヘッドラインへのパーマリンク">#</a></h3>
+<span id="id17"></span><h3>２つのプロットスタイル<a class="headerlink" href="#matplotlib-style" title="Link to this heading">#</a></h3>
 <p><strong>FigureとAxes</strong></p>
 <p>Matplotlibの描画エリアは下図のようにFigureオブジェクト, Axesオブジェクトという要素で構成されている．
 Figureは描画エリア全体を表し，その中に複数のAxes（座標軸）が存在するという構造になっている．
@@ -3139,7 +2763,7 @@ Figureは描画エリア全体を表し，その中に複数のAxes（座標軸�
 <figure class="align-default" id="fig-fig-axes">
 <a class="reference internal image-reference" href="../_images/fig_axes.png"><img alt="../_images/fig_axes.png" src="../_images/fig_axes.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">図 1 </span><span class="caption-text">MatplotlibにおけるFigureオブジェクトとAxesオブジェクト</span><a class="headerlink" href="#fig-fig-axes" title="この画像へのパーマリンク">#</a></p>
+<p><span class="caption-number">図 1 </span><span class="caption-text">MatplotlibにおけるFigureオブジェクトとAxesオブジェクト</span><a class="headerlink" href="#fig-fig-axes" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Matplotlibには２つのプロットスタイルが存在し，方法１を<strong>オブジェクト指向スタイル</strong>，方法２を<strong>MATLABスタイル</strong>と呼ぶ．
@@ -3150,7 +2774,7 @@ Figureは描画エリア全体を表し，その中に複数のAxes（座標軸�
 <p><strong>（推奨）方法１：オブジェクト指向スタイル</strong></p>
 <p>オブジェクト指向スタイルでは，FigureオブジェクトとAxesオブジェクトを明示的に生成した上で，生成したオブジェクトのメソッドを用いてプロットを行う．
 基本的には以下の手順に従う．</p>
-<ol>
+<ol class="arabic">
 <li><p>FigureオブジェクトとAxesオブジェクトを生成する</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 </pre></div>
@@ -3216,14 +2840,14 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </section>
 <section id="figureaxes">
-<h3>FigureとAxesの生成<a class="headerlink" href="#figureaxes" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3>FigureとAxesの生成<a class="headerlink" href="#figureaxes" title="Link to this heading">#</a></h3>
 <p><strong>FigureとAxesを同時に生成</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">plt.subplots(nrows,</span> <span class="pre">ncols,</span> <span class="pre">option)</span></code>により，FigureとAxesを同時に生成できる．
 通常は<code class="docutils literal notranslate"><span class="pre">nrows</span></code>と<code class="docutils literal notranslate"><span class="pre">ncols</span></code>を省略し，<code class="docutils literal notranslate"><span class="pre">fig,</span> <span class="pre">ax</span> <span class="pre">=</span> <span class="pre">plt.subplots()</span></code>のようにして1つのAxesだけを生成する．
 複数のAxesを生成した場合は<code class="docutils literal notranslate"><span class="pre">nrows</span></code>に縦方向の分割数，<code class="docutils literal notranslate"><span class="pre">ncols</span></code>に横方向の分割数を指定する．
 例えば，<code class="docutils literal notranslate"><span class="pre">nrows=2,</span> <span class="pre">ncols=3</span></code>とすると，2×3=6個のAxesが生成される．
 これ以外に以下のオプションがある．</p>
-<table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>オプション</p></th>
 <th class="head"><p>内容</p></th>
@@ -3253,6 +2877,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </tr>
 </tbody>
 </table>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Figureと1つのAxesを生成する</span>
@@ -3340,11 +2965,11 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </section>
 </section>
 <section id="id18">
-<h2>イベントデータの解析<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">#</a></h2>
+<h2>イベントデータの解析<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
 <section id="pappalardo">
-<span id="id19"></span><h3>Pappalardoデータセットの詳細<a class="headerlink" href="#pappalardo" title="このヘッドラインへのパーマリンク">#</a></h3>
+<span id="id19"></span><h3>Pappalardoデータセットの詳細<a class="headerlink" href="#pappalardo" title="Link to this heading">#</a></h3>
 <section id="id20">
-<h4>データセットに関する情報の入手先<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">#</a></h4>
+<h4>データセットに関する情報の入手先<a class="headerlink" href="#id20" title="Link to this heading">#</a></h4>
 <p>Pappalardoデータセットに含まれる全てのデータおよび付加情報は以下で入手できる．</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://doi.org/10.1038/s41597-019-0247-7">データセットの詳細をまとめた論文</a></p>
@@ -3373,9 +2998,9 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </ul>
 </section>
 <section id="id21">
-<h4>データセットの内容<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">#</a></h4>
+<h4>データセットの内容<a class="headerlink" href="#id21" title="Link to this heading">#</a></h4>
 <p>Pappalardoデータセットに含まれる試合は2017年度ヨーロッパリーグ，2018年度FIFAW杯，2016年度UEFAチャンピオンズリーグの全1941試合である．</p>
-<table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>リーグ・大会名</p></th>
 <th class="head"><p>シーズン</p></th>
@@ -3435,8 +3060,9 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </tr>
 </tbody>
 </table>
+</div>
 <p>Pappalardoデータセットには，下表のようなデータが含まれている．</p>
-<table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>データ</p></th>
 <th class="head"><p>ファイル形式</p></th>
@@ -3469,6 +3095,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </tr>
 </tbody>
 </table>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># イベントデータと選手プロフィールの読み込み</span>
@@ -3486,7 +3113,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </section>
 </section>
 <section id="id22">
-<h3>ボールの軌跡の可視化<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3>ボールの軌跡の可視化<a class="headerlink" href="#id22" title="Link to this heading">#</a></h3>
 <p>イベントデータを用いると，パスやシュートなどのイベント単位で試合展開を追跡することができる．
 ここでは，特定の試合に対し，ボールの軌跡を可視化してみよう．</p>
 <p><strong>試合の抽出</strong></p>
@@ -3672,7 +3299,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/appendix_190_0.png" src="../_images/appendix_190_0.png" />
+<img alt="../_images/baa36a417bbf5a8a09172148ca0e2e143f9fb88114f3623a0f55c7792b574e32.png" src="../_images/baa36a417bbf5a8a09172148ca0e2e143f9fb88114f3623a0f55c7792b574e32.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3682,17 +3309,17 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/appendix_191_0.png" src="../_images/appendix_191_0.png" />
+<img alt="../_images/d734b436f754ea8414c5ffcef6e5cb613c1f162afe68f292c4d327dd6405ee3a.png" src="../_images/d734b436f754ea8414c5ffcef6e5cb613c1f162afe68f292c4d327dd6405ee3a.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="id23">
-<h2>トラッキングデータの解析<a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">#</a></h2>
+<h2>トラッキングデータの解析<a class="headerlink" href="#id23" title="Link to this heading">#</a></h2>
 <section id="pettersen">
-<span id="id24"></span><h3>Pettersenデータセットの詳細<a class="headerlink" href="#pettersen" title="このヘッドラインへのパーマリンク">#</a></h3>
+<span id="id24"></span><h3>Pettersenデータセットの詳細<a class="headerlink" href="#pettersen" title="Link to this heading">#</a></h3>
 <section id="id25">
-<h4>データセットに関する情報の入手先<a class="headerlink" href="#id25" title="このヘッドラインへのパーマリンク">#</a></h4>
+<h4>データセットに関する情報の入手先<a class="headerlink" href="#id25" title="Link to this heading">#</a></h4>
 <p>Pettersenデータセットの情報は以下で入手できる：</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.researchgate.net/publication/260983291_Soccer_Video_and_Player_Position_Dataset">データの詳細をまとめた論文</a></p>
@@ -3707,7 +3334,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </li>
 </ul>
 <p>Pettersenデータセットには以下の3試合のデータが含まれている：</p>
-<table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>日時</p></th>
 <th class="head"><p>対戦カード</p></th>
@@ -3733,13 +3360,14 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </tr>
 </tbody>
 </table>
+</div>
 <p>トラッキングデータは以下の2種類の形式で用意されている：</p>
 <ul class="simple">
 <li><p>raw data：センサから取得した生データ</p></li>
 <li><p>interpolated data：時間単位を0.05秒に統一したデータ</p></li>
 </ul>
 <p>トラッキングデータに含まれる変数は下表の通りである．</p>
-<table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>変数</p></th>
 <th class="head"><p>データ型</p></th>
@@ -3795,6 +3423,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>利用規約</strong></p>
 <ul class="simple">
 <li><p>選手個人の再識別は禁止</p></li>
@@ -3821,7 +3450,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </section>
 </section>
 <section id="id26">
-<h3>ボロノイ領域<a class="headerlink" href="#id26" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3>ボロノイ領域<a class="headerlink" href="#id26" title="Link to this heading">#</a></h3>
 <p>2次元平面上に<span class="math notranslate nohighlight">\(N\)</span>個の個体（<strong>母点</strong>と呼ぶ）が配置されているとき，平面上の各点を「どの母点から最も近いか」という基準で分割する．
 このとき，母点<span class="math notranslate nohighlight">\(p\)</span>から最も近い領域のことを母点<span class="math notranslate nohighlight">\(p\)</span>の<strong>ボロノイ領域</strong>と呼ぶ．
 通常，近さの基準はユークリッド距離によって定める．
@@ -3837,7 +3466,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 <figure class="align-default" id="fig-voronoi">
 <a class="reference internal image-reference" href="../_images/voronoi.png"><img alt="../_images/voronoi.png" src="../_images/voronoi.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">図 2 </span><span class="caption-text">ボロノイ図の例</span><a class="headerlink" href="#fig-voronoi" title="この画像へのパーマリンク">#</a></p>
+<p><span class="caption-number">図 2 </span><span class="caption-text">ボロノイ図の例</span><a class="headerlink" href="#fig-voronoi" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Pythonには科学技術計算のためのライブラリであるSciPyが用意されており，Anacondaをインストールすれば標準で使うことができる．
@@ -3851,7 +3480,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 <p>ボロノイ領域の計算と描画の手順は以下の通りである：</p>
-<ol>
+<ol class="arabic">
 <li><p>ボロノイ領域を計算したい母点の座標を取得する</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Voronoi</span></code>クラスを用いてオブジェクト（インスタンス）を生成する</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vor</span> <span class="o">=</span> <span class="n">Voronoi</span><span class="p">(</span><span class="n">xy</span><span class="p">)</span>
@@ -3901,7 +3530,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/appendix_212_0.png" src="../_images/appendix_212_0.png" />
+<img alt="../_images/8da7557cea756ab8bc9c66406d2f002cb9a2126defb38e9f833460437e637e80.png" src="../_images/8da7557cea756ab8bc9c66406d2f002cb9a2126defb38e9f833460437e637e80.png" />
 </div>
 </div>
 <p><strong>ボロノイ領域の情報の取得</strong></p>
@@ -4085,12 +3714,12 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/appendix_227_0.png" src="../_images/appendix_227_0.png" />
+<img alt="../_images/3d8efd904fa6038cac8f98f2a570c77a131c5fdde0ead4628cae700819a79f53.png" src="../_images/3d8efd904fa6038cac8f98f2a570c77a131c5fdde0ead4628cae700819a79f53.png" />
 </div>
 </div>
 </section>
 <section id="id27">
-<h3>ドロネーネットワーク<a class="headerlink" href="#id27" title="このヘッドラインへのパーマリンク">#</a></h3>
+<h3>ドロネーネットワーク<a class="headerlink" href="#id27" title="Link to this heading">#</a></h3>
 <p>ある程度幅のある時間帯から選手の平均位置を求めてフォーメーションを可視化するには重心系で平均位置と標準偏差を求めれば良い．
 では，特定の時刻においてフォーメーションを定量化・可視化するにはどうすればよいだろうか？
 各時刻において4-4-2や3-4-3などの数字の組を割り当てるのも一つの方法かもしれないが，実はもっと便利な方法がある．
@@ -4105,7 +3734,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 <figure class="align-default" id="fig-delaunay">
 <a class="reference internal image-reference" href="../_images/delaunay.png"><img alt="../_images/delaunay.png" src="../_images/delaunay.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">図 3 </span><span class="caption-text">ドロネーネットワークの例</span><a class="headerlink" href="#fig-delaunay" title="この画像へのパーマリンク">#</a></p>
+<p><span class="caption-number">図 3 </span><span class="caption-text">ドロネーネットワークの例</span><a class="headerlink" href="#fig-delaunay" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>scipy.spatialにはドロネーネットワークを計算・描画するための<code class="docutils literal notranslate"><span class="pre">Delaunay</span></code>クラスと<code class="docutils literal notranslate"><span class="pre">delaunay_plot_2d</span></code>が用意されている．
@@ -4118,7 +3747,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 <p>ドロネーネットワークの計算と描画の手順はボロノイ領域と同様である：</p>
-<ol>
+<ol class="arabic">
 <li><p>ドロネーネットワークを計算したい母点の座標を取得する</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Delaunay</span></code>クラスを用いてオブジェクトを生成する</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span> <span class="o">=</span> <span class="n">Delaunay</span><span class="p">(</span><span class="n">xy</span><span class="p">)</span>
@@ -4175,7 +3804,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1cc5983d0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/appendix_245_1.png" src="../_images/appendix_245_1.png" />
+<img alt="../_images/803918c2a06ad803ac5b18b72ff1eff9d502957da6f2106ee16b9a700d83ee23.png" src="../_images/803918c2a06ad803ac5b18b72ff1eff9d502957da6f2106ee16b9a700d83ee23.png" />
 </div>
 </div>
 <p><strong>ドロネーネットワークの情報の取得</strong></p>
@@ -4277,7 +3906,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/appendix_254_0.png" src="../_images/appendix_254_0.png" />
+<img alt="../_images/7363f955f0a905a40c13d15687a94dfc1d6a2f842ffd766a1fec92390087e287.png" src="../_images/7363f955f0a905a40c13d15687a94dfc1d6a2f842ffd766a1fec92390087e287.png" />
 </div>
 </div>
 </section>
@@ -4296,7 +3925,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./appendix"
         },
         predefinedOutput: true
@@ -4304,44 +3933,147 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../chap_7/7_tracking.html" title="前へ ページ">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">前へ</p>
-            <p class="prev-next-title"><span class="section-number">7. </span>トラッキングデータの解析</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../chap_7/7_tracking.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">前へ</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>トラッキングデータの解析</p>
+      </div>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目次
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">プログラミング環境</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterpython">JupyterとPythonスクリプトの使い分け</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterconfig">Jupyterのconfigファイル</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipython">Ipythonのプロファイル</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colab">Google Colab</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colabjupyter-notebook">Google colabでjupyter notebookを開く</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#import">必要なモジュールをimportする</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#google-drive">Google Driveをマウントする</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">自作モジュールをimportする</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib">matplotlibのスタイルファイルを読み込む</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy">NumPy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-fancy-index">ファンシーインデックス参照</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1次元配列の場合</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">２次元配列の場合</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">条件を満たす要素のインデックスを取得</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-change-shape">配列の形状変更</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">要素数を保った形状変更</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">配列の連結</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">配列の削除</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-broadcast">異なる形状の配列間での演算：ブロードキャスト</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas">Pandas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#series">Seriesオブジェクト</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reindex">指定したラベルの順に並べ替える：<code class="docutils literal notranslate"><span class="pre">reindex</span></code>メソッド</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">データの結合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">データの重複処理</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Matplotlib</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-output">描画結果の出力先</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-style">２つのプロットスタイル</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#figureaxes">FigureとAxesの生成</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">イベントデータの解析</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pappalardo">Pappalardoデータセットの詳細</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">データセットに関する情報の入手先</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">データセットの内容</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">ボールの軌跡の可視化</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">トラッキングデータの解析</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pettersen">Pettersenデータセットの詳細</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">データセットに関する情報の入手先</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">ボロノイ領域</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">ドロネーネットワーク</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    <div class="extra_footer">
-      © Copyright 2022-present by 成塚拓真 (Takuma Narizuka). この講義ノートは<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ja">CC BY-NC-ND 4.0</a>の下に提供する．</a>ただし，コード部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供する．
-
-    </div>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  © Copyright 2022-present by 成塚拓真 (Takuma Narizuka). この講義ノートは<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ja">CC BY-NC-ND 4.0</a>の下に提供する．</a>ただし，コード部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供する．
+
 </div>
+  </div>
+  
+</div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
