@@ -473,8 +473,8 @@ document.write(`
 <h2><span class="section-number">6.2. </span>リーグ成績と順位表<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>以下のデータをダウンロードし，カレントディレクトリに保存せよ：</p>
 <ul class="simple">
-<li><p>全試合の得点データ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A">game.csv</a></p></li>
-<li><p>チームプロフィール：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1">team.csv</a></p></li>
+<li><p>全試合の得点データ：<a class="reference external" href="https://drive.google.com/file/d/1gueZANYM2wOkQefKpoA_LplKkG0aXA4A/view?usp=drive_link">game.csv</a></p></li>
+<li><p>チームプロフィール：<a class="reference external" href="https://drive.google.com/file/d/1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1/view?usp=drive_link">team.csv</a></p></li>
 </ul>
 <p>各リーグの最終的な順位は勝ち点によって決まる．
 １試合で獲得する勝ち点は勝利が3，引き分けが1，負けが0である．
@@ -487,7 +487,7 @@ document.write(`
 </ul>
 <section id="id5">
 <h3><span class="section-number">6.2.1. </span>データの読み込み<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
-<p>まずは <a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A">game.csv</a> をダウンロードしてカレントディレクトリに移動し，<code class="docutils literal notranslate"><span class="pre">GM</span></code>という名前のDataFrameに読み込む．</p>
+<p>まずは <a class="reference external" href="https://drive.google.com/file/d/1gueZANYM2wOkQefKpoA_LplKkG0aXA4A/view?usp=drive_link">game.csv</a> をダウンロードしてカレントディレクトリに移動し，<code class="docutils literal notranslate"><span class="pre">GM</span></code>という名前のDataFrameに読み込む．</p>
 <div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GM</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./game.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -649,7 +649,7 @@ document.write(`
 </tbody>
 </table>
 </div>
-<p>次に <a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1">team.csv</a> をダウンロードしてカレントディレクトリに移動し，<code class="docutils literal notranslate"><span class="pre">TM</span></code>という名前のDataFrameに読み込む．</p>
+<p>次に <a class="reference external" href="https://drive.google.com/file/d/1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1/view?usp=drive_link">team.csv</a> をダウンロードしてカレントディレクトリに移動し，<code class="docutils literal notranslate"><span class="pre">TM</span></code>という名前のDataFrameに読み込む．</p>
 <div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TM</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./team.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -1763,7 +1763,7 @@ Arsenal
 </section>
 <section id="id11">
 <h3><span class="section-number">6.3.2. </span>得点データの要約<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
-<p>まずは<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=1gueZANYM2wOkQefKpoA_LplKkG0aXA4A">game.csv</a>をダウンロードしてカレントディレクトリに保存し，<code class="docutils literal notranslate"><span class="pre">GM</span></code>という名前のDataFrameに読み込む．</p>
+<p>まずは<a class="reference external" href="https://drive.google.com/file/d/1gueZANYM2wOkQefKpoA_LplKkG0aXA4A/view?usp=drive_link">game.csv</a>をダウンロードしてカレントディレクトリに保存し，<code class="docutils literal notranslate"><span class="pre">GM</span></code>という名前のDataFrameに読み込む．</p>
 <div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GM</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./game.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -2071,31 +2071,31 @@ dtype: float64
 </thead>
 <tbody>
 <tr class="row-even"><td><p>イベントIDとイベント名の対応</p></td>
-<td><p><a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=1oSDUt73paDOsORVj732rGU0vwIwGHvHJ">event_list.csv</a></p></td>
+<td><p><a class="reference external" href="https://drive.google.com/file/d/1oSDUt73paDOsORVj732rGU0vwIwGHvHJ/view?usp=drive_link">event_list.csv</a></p></td>
 <td><p>0.9KB</p></td>
 </tr>
 <tr class="row-odd"><td><p>イベントに付与されるタグの説明</p></td>
-<td><p><a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=1o_tZ-y0eAYlgN1audJThoVBMN0Ta2x5f">tag_list.csv</a></p></td>
+<td><p><a class="reference external" href="https://drive.google.com/file/d/1o_tZ-y0eAYlgN1audJThoVBMN0Ta2x5f/view?usp=drive_link">tag_list.csv</a></p></td>
 <td><p>2KB</p></td>
 </tr>
 <tr class="row-even"><td><p>各試合のイベントデータ（イングランド）</p></td>
-<td><p>イベントログ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=1783Zl4IRGmiYmo-uLA1-FsZwGesOsFhg">event_England.csv</a> <br>イベントタグ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=17LhNNVGZ9nsm-d3lqfBWiKmEqGitJwVI">event_tag_England.csv</a></p></td>
+<td><p>イベントログ：<a class="reference external" href="https://drive.google.com/file/d/1783Zl4IRGmiYmo-uLA1-FsZwGesOsFhg/view?usp=drive_link">event_England.csv</a> <br>イベントタグ：<a class="reference external" href="https://drive.google.com/file/d/17LhNNVGZ9nsm-d3lqfBWiKmEqGitJwVI/view?usp=drive_link">event_tag_England.csv</a></p></td>
 <td><p>58MB <br> 76.2MB</p></td>
 </tr>
 <tr class="row-odd"><td><p>//（フランス）</p></td>
-<td><p>イベントログ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=17B8fTf8E7W56USHRObhRaeYBDqatDaft">event_France.csv</a> <br> イベントタグ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=17Sq34wx_Ge_9tVyJYFup1XixwneoWjaO">event_tag_France.csv</a></p></td>
+<td><p>イベントログ：<a class="reference external" href="https://drive.google.com/file/d/17B8fTf8E7W56USHRObhRaeYBDqatDaft/view?usp=drive_link">event_France.csv</a> <br> イベントタグ：<a class="reference external" href="https://drive.google.com/file/d/17Sq34wx_Ge_9tVyJYFup1XixwneoWjaO/view?usp=drive_link">event_tag_France.csv</a></p></td>
 <td><p>57.6MB <br> 74.8MB</p></td>
 </tr>
 <tr class="row-even"><td><p>//（ドイツ）</p></td>
-<td><p>イベントログ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=17GVyiEgRFW9VZstK5LvEKLuKTuWmKe1Z">event_Germany.csv</a> <br>イベントタグ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=17dGXdEp0yNH1ySRCcB9ydLxcmUAESFHy">event_tag_Germany.csv</a></p></td>
+<td><p>イベントログ：<a class="reference external" href="https://drive.google.com/file/d/17GVyiEgRFW9VZstK5LvEKLuKTuWmKe1Z/view?usp=drive_link">event_Germany.csv</a> <br>イベントタグ：<a class="reference external" href="https://drive.google.com/file/d/17dGXdEp0yNH1ySRCcB9ydLxcmUAESFHy/view?usp=drive_link">event_tag_Germany.csv</a></p></td>
 <td><p>47.2MB <br> 61.5MB</p></td>
 </tr>
 <tr class="row-odd"><td><p>//（イタリア）</p></td>
-<td><p>イベントログ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=17C5vUbS9_zRWpgTalUNzWfP6oFXf0U3K">event_Italy.csv</a> <br>イベントタグ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=17cH2MUqBDdWeBnTGK2EFYEfmB-GAxC3M">event_tag_Italy.csv</a></p></td>
+<td><p>イベントログ：<a class="reference external" href="https://drive.google.com/file/d/17C5vUbS9_zRWpgTalUNzWfP6oFXf0U3K/view?usp=drive_link">event_Italy.csv</a> <br>イベントタグ：<a class="reference external" href="https://drive.google.com/file/d/17cH2MUqBDdWeBnTGK2EFYEfmB-GAxC3M/view?usp=drive_link">event_tag_Italy.csv</a></p></td>
 <td><p>58.9MB <br> 76.6MB</p></td>
 </tr>
 <tr class="row-even"><td><p>//（スペイン）</p></td>
-<td><p>イベントログ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=17K-vF4xBn6GtBtFap5sIf26ZZnjs20fz">event_Spain.csv</a> <br>イベントタグ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=17lGhSTFByywubBTmJKoTzrmaGLOgOZ3k">event_tag_Spain.csv</a></p></td>
+<td><p>イベントログ：<a class="reference external" href="https://drive.google.com/file/d/17K-vF4xBn6GtBtFap5sIf26ZZnjs20fz/view?usp=drive_link">event_Spain.csv</a> <br>イベントタグ：<a class="reference external" href="https://drive.google.com/file/d/17lGhSTFByywubBTmJKoTzrmaGLOgOZ3k/view?usp=drive_link">event_tag_Spain.csv</a></p></td>
 <td><p>56.1MB <br> 74.5MB</p></td>
 </tr>
 </tbody>
@@ -2104,9 +2104,9 @@ dtype: float64
 <p>以下では，イングランド・プレミアリーグのデータを解析対象とする．
 準備として，次のファイルをダウンロードしてカレントディレクトリに移動する：</p>
 <ul class="simple">
-<li><p>イベントログ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=1783Zl4IRGmiYmo-uLA1-FsZwGesOsFhg">event_England.csv</a></p></li>
-<li><p>イベントタグ：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=17LhNNVGZ9nsm-d3lqfBWiKmEqGitJwVI">event_tag_England.csv</a></p></li>
-<li><p>選手プロフィール：<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=1rtCAL0DqW9SeslMuGFCusg8VRRWz6J_M">player.csv</a></p></li>
+<li><p>イベントログ：<a class="reference external" href="https://drive.google.com/file/d/1783Zl4IRGmiYmo-uLA1-FsZwGesOsFhg/view?usp=drive_link">event_England.csv</a></p></li>
+<li><p>イベントタグ：<a class="reference external" href="https://drive.google.com/file/d/17LhNNVGZ9nsm-d3lqfBWiKmEqGitJwVI/view?usp=drive_link">event_tag_England.csv</a></p></li>
+<li><p>選手プロフィール：<a class="reference external" href="https://drive.google.com/file/d/1rtCAL0DqW9SeslMuGFCusg8VRRWz6J_M/view?usp=drive_link">player.csv</a></p></li>
 </ul>
 <p>これらを以下のように読み込んでおく．</p>
 <div class="cell docutils container">
@@ -2528,7 +2528,7 @@ dtype: float64
 各列にはイベントに付与されたタグ（'goal'，'assist'など）が並んでおり，真ならば1，偽ならば0となっている．
 （このようなデータをOne-Hotエンコーディングと呼ぶ．）
 例えば，'goal'列が1である行では，そのイベントにおいて得点が入ったことを意味する．</p>
-<p>タグの詳細情報は<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=1o_tZ-y0eAYlgN1audJThoVBMN0Ta2x5f">tag_list.csv</a>にまとめられている．
+<p>タグの詳細情報は<a class="reference external" href="https://drive.google.com/file/d/1o_tZ-y0eAYlgN1audJThoVBMN0Ta2x5f/view?usp=drive_link">tag_list.csv</a>にまとめられている．
 主要なタグを下表にまとめる．</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -2847,7 +2847,7 @@ dtype: float64
 <p><strong>特定のイベントの抽出</strong></p>
 <p>イベントログ<code class="docutils literal notranslate"><span class="pre">EV</span></code>には<code class="docutils literal notranslate"><span class="pre">'event'</span></code>列と<code class="docutils literal notranslate"><span class="pre">'subevent'</span></code>列が存在する．
 <code class="docutils literal notranslate"><span class="pre">'event'</span></code>列は<code class="docutils literal notranslate"><span class="pre">'pass'</span></code>，<code class="docutils literal notranslate"><span class="pre">'foul'</span></code>などの大分類，<code class="docutils literal notranslate"><span class="pre">'subevent'</span></code>列は<code class="docutils literal notranslate"><span class="pre">'simple_pass'</span></code>や<code class="docutils literal notranslate"><span class="pre">'high_pass'</span></code>などの小分類となっている．
-<code class="docutils literal notranslate"><span class="pre">'event'</span></code>および<code class="docutils literal notranslate"><span class="pre">'subevent'</span></code>のリストは<a class="reference external" href="https://drive.google.com/uc?export=download&amp;amp;id=1oSDUt73paDOsORVj732rGU0vwIwGHvHJ">event_list.csv</a> にまとめられている．</p>
+<code class="docutils literal notranslate"><span class="pre">'event'</span></code>および<code class="docutils literal notranslate"><span class="pre">'subevent'</span></code>のリストは<a class="reference external" href="https://drive.google.com/file/d/1oSDUt73paDOsORVj732rGU0vwIwGHvHJ/view?usp=drive_link">event_list.csv</a> にまとめられている．</p>
 <div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># event列が&#39;pass&#39;の行を抽出</span>
