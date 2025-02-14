@@ -458,7 +458,29 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># （必須）モジュールのインポート</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># 表示設定</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.precision&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>    <span class="c1"># 小数点以下の表示桁</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>   <span class="c1"># 表示する行数の上限</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>  <span class="c1"># 表示する列数の上限</span>
+<span class="o">%</span><span class="k">precision</span> 3
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;%.3f&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>付録<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <section id="id2">
 <h2>プログラミング環境<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
@@ -647,7 +669,7 @@ Google Colabの特徴は以下の通りである：</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([77, 18, 27, 83, 37, 71, 88, 15, 55,  6])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([25, 75, 61, 46, 90, 49, 89, 60, 63, 61])
 </pre></div>
 </div>
 </div>
@@ -660,7 +682,7 @@ Google Colabの特徴は以下の通りである：</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([83, 37, 15])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([46, 90, 60])
 </pre></div>
 </div>
 </div>
@@ -673,7 +695,7 @@ Google Colabの特徴は以下の通りである：</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([83, 15, 37])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([46, 60, 90])
 </pre></div>
 </div>
 </div>
@@ -686,7 +708,7 @@ Google Colabの特徴は以下の通りである：</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([83, 83, 83, 83, 83])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([46, 46, 46, 46, 46])
 </pre></div>
 </div>
 </div>
@@ -700,8 +722,8 @@ Google Colabの特徴は以下の通りである：</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[83, 15],
-       [37, 71]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[46, 60],
+       [90, 49]])
 </pre></div>
 </div>
 </div>
@@ -784,10 +806,20 @@ Google Colabの特徴は以下の通りである：</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([72, 63, 30, 35, 40, 44, 54, 64, 17, 46])
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">x1</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([0, 1, 6, 7]),)
 </pre></div>
 </div>
 </div>
@@ -801,10 +833,21 @@ Google Colabの特徴は以下の通りである：</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 2, 3],
+       [4, 5, 6]])
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">x2</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([0, 0, 0]), array([0, 1, 2]))
 </pre></div>
 </div>
 </div>
@@ -1200,9 +1243,9 @@ ndim: 2
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">/Users/narizuka/work/document/lecture/rissho/sport_programming/book/appendix/appendix.ipynb セル 84</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/narizuka/work/document/lecture/rissho/sport_programming/book/appendix/appendix.ipynb#Y146sZmlsZQ%3D%3D?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="c1"># 形状(3, 3)と(2, 1)：エラーが出る</span>
-<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/narizuka/work/document/lecture/rissho/sport_programming/book/appendix/appendix.ipynb#Y146sZmlsZQ%3D%3D?line=1&#39;</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">x2_2</span> <span class="o">+</span> <span class="n">y1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">38</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># 形状(3, 3)と(2, 1)：エラーが出る</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">x2_2</span> <span class="o">+</span> <span class="n">y1</span>
 
 <span class="ne">ValueError</span>: operands could not be broadcast together with shapes (3,3) (2,1) 
 </pre></div>
@@ -1220,7 +1263,7 @@ ndim: 2
 また，<code class="docutils literal notranslate"><span class="pre">pd.Series</span></code>関数により，リスト，NumPy配列，辞書などから生成することもできる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./4_pandas/df_sample.csv&#39;</span><span class="p">,</span>\
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./df_sample.csv&#39;</span><span class="p">,</span>\
                  <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span>
 </pre></div>
@@ -1364,35 +1407,40 @@ dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>b</th>
-      <th>c</th>
-      <th>a</th>
+      <th>t</th>
+      <th>player</th>
+      <th>x</th>
+      <th>y</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>3</td>
-      <td>4</td>
-      <td>5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>9</td>
-      <td>10</td>
-      <td>11</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>6</td>
-      <td>7</td>
-      <td>8</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0</td>
-      <td>1</td>
-      <td>2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
@@ -1431,28 +1479,28 @@ dtype: float64
   </thead>
   <tbody>
     <tr>
-      <th>3</th>
-      <td>1</td>
-      <td>2</td>
-      <td>0</td>
+      <th>A</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>0</th>
-      <td>4</td>
-      <td>5</td>
-      <td>3</td>
+      <th>B</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>7</td>
-      <td>8</td>
-      <td>6</td>
+      <th>C</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>10</td>
-      <td>11</td>
-      <td>9</td>
+      <th>D</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
@@ -1484,44 +1532,51 @@ dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>b</th>
-      <th>c</th>
-      <th>a</th>
+      <th>t</th>
+      <th>player</th>
+      <th>x</th>
+      <th>y</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>3.0</td>
-      <td>4.0</td>
-      <td>5.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>9.0</td>
-      <td>10.0</td>
-      <td>11.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>6.0</td>
-      <td>7.0</td>
-      <td>8.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>2.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>5</th>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1556,47 +1611,54 @@ dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>b</th>
-      <th>c</th>
-      <th>a</th>
+      <th>t</th>
+      <th>player</th>
+      <th>x</th>
+      <th>y</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>3</td>
-      <td>4</td>
-      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>9</td>
-      <td>10</td>
-      <td>11</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>6</td>
-      <td>7</td>
-      <td>8</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>3</th>
       <td>0</td>
-      <td>1</td>
-      <td>2</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>4</th>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>5</th>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
   </tbody>
 </table>
@@ -1992,7 +2054,8 @@ dtype: float64
       <th></th>
       <th>a</th>
       <th>b</th>
-      <th>...</th>
+      <th>c</th>
+      <th>a</th>
       <th>b</th>
       <th>c</th>
     </tr>
@@ -2002,7 +2065,8 @@ dtype: float64
       <th>0</th>
       <td>0</td>
       <td>1</td>
-      <td>...</td>
+      <td>2</td>
+      <td>0</td>
       <td>1</td>
       <td>2</td>
     </tr>
@@ -2010,13 +2074,13 @@ dtype: float64
       <th>1</th>
       <td>3</td>
       <td>4</td>
-      <td>...</td>
+      <td>5</td>
+      <td>3</td>
       <td>4</td>
       <td>5</td>
     </tr>
   </tbody>
 </table>
-<p>2 rows × 6 columns</p>
 </div></div></div>
 </div>
 <p>行ラベルが一部異なる場合，新たな行が追加される</p>
@@ -2048,7 +2112,8 @@ dtype: float64
       <th></th>
       <th>a</th>
       <th>b</th>
-      <th>...</th>
+      <th>c</th>
+      <th>d</th>
       <th>e</th>
       <th>f</th>
     </tr>
@@ -2058,7 +2123,8 @@ dtype: float64
       <th>0</th>
       <td>0.0</td>
       <td>1.0</td>
-      <td>...</td>
+      <td>2.0</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
@@ -2066,7 +2132,8 @@ dtype: float64
       <th>1</th>
       <td>3.0</td>
       <td>4.0</td>
-      <td>...</td>
+      <td>5.0</td>
+      <td>6.0</td>
       <td>7.0</td>
       <td>8.0</td>
     </tr>
@@ -2074,13 +2141,13 @@ dtype: float64
       <th>2</th>
       <td>NaN</td>
       <td>NaN</td>
-      <td>...</td>
+      <td>NaN</td>
+      <td>9.0</td>
       <td>10.0</td>
       <td>11.0</td>
     </tr>
   </tbody>
 </table>
-<p>3 rows × 6 columns</p>
 </div></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">join='inner'</span></code>を指定すると，ラベルが共通の行だけが残る．</p>
@@ -2112,7 +2179,8 @@ dtype: float64
       <th></th>
       <th>a</th>
       <th>b</th>
-      <th>...</th>
+      <th>c</th>
+      <th>d</th>
       <th>e</th>
       <th>f</th>
     </tr>
@@ -2122,13 +2190,13 @@ dtype: float64
       <th>1</th>
       <td>3</td>
       <td>4</td>
-      <td>...</td>
+      <td>5</td>
+      <td>6</td>
       <td>7</td>
       <td>8</td>
     </tr>
   </tbody>
 </table>
-<p>1 rows × 6 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -2713,7 +2781,7 @@ dtype: bool
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c363697c86397e0f1bbdbdf994c7250534e48912b11b884edaf9e11be4e1682c.png" src="../_images/c363697c86397e0f1bbdbdf994c7250534e48912b11b884edaf9e11be4e1682c.png" />
+<img alt="../_images/28686fb322a6496a4b2fa1ce5075b5a3fe0455f136245f0ac1a1dd61ae20e799.png" src="../_images/28686fb322a6496a4b2fa1ce5075b5a3fe0455f136245f0ac1a1dd61ae20e799.png" />
 </div>
 </div>
 <p><strong>Jupyter Labで実行し，別ウインドウに表示する</strong></p>
@@ -2729,13 +2797,14 @@ dtype: bool
 <p>なお，'inline'や'tk'はバックエンドと呼ばれ，以下が利用可能である．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 現在のバックエンドを確認</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="c1"># 現在のバックエンドを確認</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">get_backend</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TkAgg
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module://matplotlib_inline.backend_inline
 </pre></div>
 </div>
 </div>
@@ -2748,7 +2817,7 @@ dtype: bool
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Available matplotlib backends: [&#39;tk&#39;, &#39;gtk&#39;, &#39;gtk3&#39;, &#39;gtk4&#39;, &#39;wx&#39;, &#39;qt4&#39;, &#39;qt5&#39;, &#39;qt6&#39;, &#39;qt&#39;, &#39;osx&#39;, &#39;nbagg&#39;, &#39;notebook&#39;, &#39;agg&#39;, &#39;svg&#39;, &#39;pdf&#39;, &#39;ps&#39;, &#39;inline&#39;, &#39;ipympl&#39;, &#39;widget&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Available matplotlib backends: [&#39;tk&#39;, &#39;gtk&#39;, &#39;gtk3&#39;, &#39;gtk4&#39;, &#39;wx&#39;, &#39;qt4&#39;, &#39;qt5&#39;, &#39;qt6&#39;, &#39;qt&#39;, &#39;osx&#39;, &#39;nbagg&#39;, &#39;webagg&#39;, &#39;notebook&#39;, &#39;agg&#39;, &#39;svg&#39;, &#39;pdf&#39;, &#39;ps&#39;, &#39;inline&#39;, &#39;ipympl&#39;, &#39;widget&#39;]
 </pre></div>
 </div>
 </div>
@@ -2812,9 +2881,12 @@ Figureは描画エリア全体を表し，その中に複数のAxes（座標軸�
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
 
 <span class="c1"># Figureを保存する</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./5_matplotlib/1_axes.pdf&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">,</span> <span class="n">pad_inches</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./1_axes.pdf&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">,</span> <span class="n">pad_inches</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/da20b2c50122359f5ee4204b52613365481aa6c5cd305eb0f571777d81b61ef8.png" src="../_images/da20b2c50122359f5ee4204b52613365481aa6c5cd305eb0f571777d81b61ef8.png" />
 </div>
 </div>
 <p><strong>（非推奨）方法２：MATLABスタイル</strong></p>
@@ -2833,9 +2905,12 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
 
 <span class="c1"># Figureを保存する</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./5_matplotlib/1_axes.pdf&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">,</span> <span class="n">pad_inches</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./1_axes.pdf&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">,</span> <span class="n">pad_inches</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9e3fcb21723b07bfa9d8bbcc902bbe9dfa57331c40e9377ea60c8aef0d652b96.png" src="../_images/9e3fcb21723b07bfa9d8bbcc902bbe9dfa57331c40e9377ea60c8aef0d652b96.png" />
 </div>
 </div>
 </section>
@@ -2892,14 +2967,12 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
 
 <span class="c1"># Figureを保存する</span>
-<span class="c1"># fig.savefig(&#39;./5_matplotlib/1_axes.pdf&#39;, bbox_inches=&quot;tight&quot;, pad_inches=0.2, transparent=True, dpi=300)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./1_axes.pdf&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">,</span> <span class="n">pad_inches</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Y&#39;)
-</pre></div>
-</div>
+<img alt="../_images/da20b2c50122359f5ee4204b52613365481aa6c5cd305eb0f571777d81b61ef8.png" src="../_images/da20b2c50122359f5ee4204b52613365481aa6c5cd305eb0f571777d81b61ef8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2919,14 +2992,12 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
 
 <span class="c1"># Figureを保存する</span>
-<span class="c1"># fig.savefig(&#39;./5_matplotlib/2_axes.pdf&#39;, bbox_inches=&#39;tight&#39;)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./2_axes.pdf&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Y&#39;)
-</pre></div>
-</div>
+<img alt="../_images/7b28b1b38f829428efdbc64e61716b1284e16178e8d70dd6b62558eebeffabc1.png" src="../_images/7b28b1b38f829428efdbc64e61716b1284e16178e8d70dd6b62558eebeffabc1.png" />
 </div>
 </div>
 <p><strong>Figureを生成して，後からAxesを追加</strong></p>
@@ -2952,14 +3023,12 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
 
 <span class="c1"># Figureの保存</span>
-<span class="c1"># fig.savefig(&#39;./5_matplotlib/2_axes.pdf&#39;, bbox_inches=&#39;tight&#39;)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./2_axes.pdf&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Y&#39;)
-</pre></div>
-</div>
+<img alt="../_images/7b28b1b38f829428efdbc64e61716b1284e16178e8d70dd6b62558eebeffabc1.png" src="../_images/7b28b1b38f829428efdbc64e61716b1284e16178e8d70dd6b62558eebeffabc1.png" />
 </div>
 </div>
 </section>
@@ -3099,13 +3168,13 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># イベントデータと選手プロフィールの読み込み</span>
-<span class="n">EV</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./event_England.csv&#39;</span><span class="p">)</span>
-<span class="n">EV_tag</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./event_tag_England.csv&#39;</span><span class="p">)</span>
-<span class="n">PL</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./player.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df_event</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./event_England.csv&#39;</span><span class="p">)</span>
+<span class="n">df_tag</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./event_tag_England.csv&#39;</span><span class="p">)</span>
+<span class="n">df_player</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./player.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># 特定の試合を抽出</span>
-<span class="n">ev</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">2499719</span><span class="p">]</span>
-<span class="n">ev_tag</span> <span class="o">=</span> <span class="n">EV_tag</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">2499719</span><span class="p">]</span>
+<span class="n">df_event_game</span> <span class="o">=</span> <span class="n">df_event</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">2499719</span><span class="p">]</span>
+<span class="n">df_tag_game</span> <span class="o">=</span> <span class="n">df_tag</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">2499719</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -3120,8 +3189,8 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 特定の試合を抽出</span>
-<span class="n">ev</span> <span class="o">=</span> <span class="n">EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">2499719</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">ev_tag</span> <span class="o">=</span> <span class="n">EV_tag</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">EV</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">2499719</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_event_game</span> <span class="o">=</span> <span class="n">df_event</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">2499719</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_tag_game</span> <span class="o">=</span> <span class="n">df_tag</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">2499719</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -3129,8 +3198,8 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 <p><strong>チーム名の確認</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tm_id</span> <span class="o">=</span> <span class="n">ev</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-<span class="n">tm_id</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">team_id</span> <span class="o">=</span> <span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">team_id</span>
 </pre></div>
 </div>
 </div>
@@ -3146,12 +3215,12 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 以下のように，片方のチーム（'team_id'が1631）の<span class="math notranslate nohighlight">\(x, y\)</span>座標から最大値100を引き，絶対値を取ればよい．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">100</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_event_game</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">team_id</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">df_event_game</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">team_id</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">df_event_game</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">team_id</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">df_event_game</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">team_id</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">100</span><span class="p">)</span>
 
 <span class="c1"># 座標の補正（コート外の座標を欠損値にする）</span>
-<span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span><span class="o">|</span><span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;x2&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-<span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">100</span><span class="p">)</span><span class="o">|</span><span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;x2&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">100</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">df_event_game</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span><span class="o">|</span><span class="p">(</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;x2&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">df_event_game</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">100</span><span class="p">)</span><span class="o">|</span><span class="p">(</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;x2&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">100</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
 </pre></div>
 </div>
 </div>
@@ -3162,7 +3231,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 なお，イベント名が'duel'の場合，始点と終点の座標が同じで'team_id'が異なる2つの行が挿入されている．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;duel&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_event_game</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;duel&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -3188,7 +3257,14 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
       <th>id</th>
       <th>game_id</th>
       <th>half</th>
-      <th>...</th>
+      <th>t</th>
+      <th>team_id</th>
+      <th>player_id</th>
+      <th>event</th>
+      <th>event_id</th>
+      <th>subevent</th>
+      <th>subevent_id</th>
+      <th>x1</th>
       <th>y1</th>
       <th>x2</th>
       <th>y2</th>
@@ -3200,7 +3276,14 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
       <td>177959189</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>14.765</td>
+      <td>1631</td>
+      <td>8013</td>
+      <td>duel</td>
+      <td>1</td>
+      <td>air_duel</td>
+      <td>10.0</td>
+      <td>61.0</td>
       <td>85.0</td>
       <td>67.0</td>
       <td>80.0</td>
@@ -3210,7 +3293,14 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
       <td>177961218</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>14.765</td>
+      <td>1609</td>
+      <td>0</td>
+      <td>duel</td>
+      <td>1</td>
+      <td>air_duel</td>
+      <td>10.0</td>
+      <td>61.0</td>
       <td>85.0</td>
       <td>67.0</td>
       <td>80.0</td>
@@ -3220,7 +3310,14 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
       <td>177959191</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>21.878</td>
+      <td>1631</td>
+      <td>8653</td>
+      <td>duel</td>
+      <td>1</td>
+      <td>air_duel</td>
+      <td>10.0</td>
+      <td>71.0</td>
       <td>54.0</td>
       <td>50.0</td>
       <td>59.0</td>
@@ -3230,7 +3327,14 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
       <td>177959181</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>22.552</td>
+      <td>1609</td>
+      <td>25413</td>
+      <td>duel</td>
+      <td>1</td>
+      <td>air_duel</td>
+      <td>10.0</td>
+      <td>71.0</td>
       <td>54.0</td>
       <td>50.0</td>
       <td>59.0</td>
@@ -3240,14 +3344,20 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
       <td>177959205</td>
       <td>2499719</td>
       <td>1</td>
-      <td>...</td>
+      <td>38.192</td>
+      <td>1631</td>
+      <td>12829</td>
+      <td>duel</td>
+      <td>1</td>
+      <td>ground_loose_ball_duel</td>
+      <td>13.0</td>
+      <td>33.0</td>
       <td>78.0</td>
       <td>29.0</td>
       <td>85.0</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 14 columns</p>
 </div></div></div>
 </div>
 <p>これは，ボール保持チームが特定できないためと考えられる．
@@ -3264,22 +3374,22 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">68</span><span class="o">/</span><span class="mi">105</span><span class="p">)</span>
 
-    <span class="n">ev</span><span class="p">[</span><span class="s1">&#39;tmp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-    <span class="n">cond</span> <span class="o">=</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;half&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">ts</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">te</span><span class="p">)</span>
+    <span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;tmp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">cond</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;half&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">ts</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">te</span><span class="p">)</span>
 
     <span class="c1"># チーム0のpass</span>
-    <span class="n">X0</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;duel&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;tmp&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">Y0</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;duel&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">,</span> <span class="s1">&#39;tmp&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">X0</span> <span class="o">=</span> <span class="n">df_event_game</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">team_id</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;duel&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;tmp&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">Y0</span> <span class="o">=</span> <span class="n">df_event_game</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">team_id</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;duel&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">,</span> <span class="s1">&#39;tmp&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X0</span><span class="p">,</span> <span class="n">Y0</span><span class="p">,</span> <span class="s1">&#39;o-r&#39;</span><span class="p">,</span> <span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
 
     <span class="c1"># チーム1のpass</span>
-    <span class="n">X1</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;duel&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;tmp&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">Y1</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;duel&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">,</span> <span class="s1">&#39;tmp&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">X1</span> <span class="o">=</span> <span class="n">df_event_game</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">team_id</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;duel&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;tmp&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">Y1</span> <span class="o">=</span> <span class="n">df_event_game</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">team_id</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;duel&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">,</span> <span class="s1">&#39;tmp&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">Y1</span><span class="p">,</span> <span class="s1">&#39;^-b&#39;</span><span class="p">,</span> <span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
 
     <span class="c1"># duel</span>
-    <span class="n">X2</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;duel&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;tmp&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">Y2</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">tm_id</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;duel&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">,</span> <span class="s1">&#39;tmp&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">X2</span> <span class="o">=</span> <span class="n">df_event_game</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">team_id</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;duel&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;tmp&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">Y2</span> <span class="o">=</span> <span class="n">df_event_game</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">team_id</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;duel&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">,</span> <span class="s1">&#39;tmp&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="n">Y2</span><span class="p">,</span> <span class="s1">&#39;-k&#39;</span><span class="p">)</span>
 
     <span class="c1"># ハーフウェイライン</span>
@@ -3299,7 +3409,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/baa36a417bbf5a8a09172148ca0e2e143f9fb88114f3623a0f55c7792b574e32.png" src="../_images/baa36a417bbf5a8a09172148ca0e2e143f9fb88114f3623a0f55c7792b574e32.png" />
+<img alt="../_images/73016654b358d394f73801070ac7000635ebf8e077a1c5bc71a4b954ac0cde57.png" src="../_images/73016654b358d394f73801070ac7000635ebf8e077a1c5bc71a4b954ac0cde57.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3309,7 +3419,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d734b436f754ea8414c5ffcef6e5cb613c1f162afe68f292c4d327dd6405ee3a.png" src="../_images/d734b436f754ea8414c5ffcef6e5cb613c1f162afe68f292c4d327dd6405ee3a.png" />
+<img alt="../_images/7bd882af97c4eca0c81d0d0618785e649cf5d91cc89d1a3006312178e19b1166.png" src="../_images/7bd882af97c4eca0c81d0d0618785e649cf5d91cc89d1a3006312178e19b1166.png" />
 </div>
 </div>
 </section>
@@ -3501,11 +3611,11 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.00479986, 0.42557694],
-       [0.25918285, 0.46804615],
-       [0.59054658, 0.24204563],
-       [0.5556198 , 0.22389116],
-       [0.75206927, 0.71048846]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.377, 0.083],
+       [0.453, 0.408],
+       [0.022, 0.878],
+       [0.322, 0.631],
+       [0.236, 0.52 ]])
 </pre></div>
 </div>
 </div>
@@ -3530,7 +3640,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8da7557cea756ab8bc9c66406d2f002cb9a2126defb38e9f833460437e637e80.png" src="../_images/8da7557cea756ab8bc9c66406d2f002cb9a2126defb38e9f833460437e637e80.png" />
+<img alt="../_images/716e5e3a34fca0e75bab96a758e929d157dec07e0f74a9e65823d1c7caf5b5db.png" src="../_images/716e5e3a34fca0e75bab96a758e929d157dec07e0f74a9e65823d1c7caf5b5db.png" />
 </div>
 </div>
 <p><strong>ボロノイ領域の情報の取得</strong></p>
@@ -3543,11 +3653,11 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.00479986, 0.42557694],
-       [0.25918285, 0.46804615],
-       [0.59054658, 0.24204563],
-       [0.5556198 , 0.22389116],
-       [0.75206927, 0.71048846]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.377, 0.083],
+       [0.453, 0.408],
+       [0.022, 0.878],
+       [0.322, 0.631],
+       [0.236, 0.52 ]])
 </pre></div>
 </div>
 </div>
@@ -3560,10 +3670,10 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.09598411,  1.81234378],
-       [ 0.19240644,  0.08493598],
-       [ 0.53872165,  0.52198381],
-       [ 0.47296843,  0.42557593]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.531, -0.291],
+       [ 0.252,  0.284],
+       [ 0.124,  0.695],
+       [ 0.367,  0.508]])
 </pre></div>
 </div>
 </div>
@@ -3579,7 +3689,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-1, 0], [-1, 1], [0, 1], [-1, 2], [-1, 3], [2, 3], [0, 2], [1, 3]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-1, 0], [-1, 1], [0, 1], [2, 3], [-1, 2], [-1, 3], [0, 2], [1, 3]]
 </pre></div>
 </div>
 </div>
@@ -3596,29 +3706,29 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[ 0.47296843,  0.42557593],
-        [-0.09598411,  1.81234378]],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[ 0.367,  0.508],
+        [-1.531, -0.291]],
 
-       [[ 0.47296843,  0.42557593],
-        [ 0.19240644,  0.08493598]],
+       [[ 0.367,  0.508],
+        [ 0.252,  0.284]],
 
-       [[-0.09598411,  1.81234378],
-        [ 0.19240644,  0.08493598]],
+       [[-1.531, -0.291],
+        [ 0.252,  0.284]],
 
-       [[ 0.47296843,  0.42557593],
-        [ 0.53872165,  0.52198381]],
+       [[ 0.124,  0.695],
+        [ 0.367,  0.508]],
 
-       [[ 0.47296843,  0.42557593],
-        [ 0.47296843,  0.42557593]],
+       [[ 0.367,  0.508],
+        [ 0.124,  0.695]],
 
-       [[ 0.53872165,  0.52198381],
-        [ 0.47296843,  0.42557593]],
+       [[ 0.367,  0.508],
+        [ 0.367,  0.508]],
 
-       [[-0.09598411,  1.81234378],
-        [ 0.53872165,  0.52198381]],
+       [[-1.531, -0.291],
+        [ 0.124,  0.695]],
 
-       [[ 0.19240644,  0.08493598],
-        [ 0.47296843,  0.42557593]]])
+       [[ 0.252,  0.284],
+        [ 0.367,  0.508]]])
 </pre></div>
 </div>
 </div>
@@ -3632,7 +3742,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1, -1, 0], [3, -1, 2], [], [2, 0, -1], [3, 1, -1], [3, 1, 0, 2]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1, -1, 0], [-1, 3, 2], [3, 1, 0, 2], [-1, 0, 2], [-1, 1, 3], []]
 </pre></div>
 </div>
 </div>
@@ -3714,7 +3824,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3d8efd904fa6038cac8f98f2a570c77a131c5fdde0ead4628cae700819a79f53.png" src="../_images/3d8efd904fa6038cac8f98f2a570c77a131c5fdde0ead4628cae700819a79f53.png" />
+<img alt="../_images/e79ae3ac8f1231a27e89a49edda3f3db9d2d0f69339897eadbd3036fdb53a28e.png" src="../_images/e79ae3ac8f1231a27e89a49edda3f3db9d2d0f69339897eadbd3036fdb53a28e.png" />
 </div>
 </div>
 </section>
@@ -3801,10 +3911,10 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1cc5983d0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x31f43b110&gt;]
 </pre></div>
 </div>
-<img alt="../_images/803918c2a06ad803ac5b18b72ff1eff9d502957da6f2106ee16b9a700d83ee23.png" src="../_images/803918c2a06ad803ac5b18b72ff1eff9d502957da6f2106ee16b9a700d83ee23.png" />
+<img alt="../_images/6ecf83dc6b4f65846bfc2128bdb974b1fb7af64cc3e07c675b09c6468a85bede.png" src="../_images/6ecf83dc6b4f65846bfc2128bdb974b1fb7af64cc3e07c675b09c6468a85bede.png" />
 </div>
 </div>
 <p><strong>ドロネーネットワークの情報の取得</strong></p>
@@ -3816,11 +3926,11 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.20388417, 0.10846285],
-       [0.01606943, 0.19004779],
-       [0.11307419, 0.57232529],
-       [0.19897726, 0.82871054],
-       [0.12486662, 0.1370552 ]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.641, 0.139],
+       [0.266, 0.707],
+       [0.359, 0.524],
+       [0.827, 0.274],
+       [0.674, 0.911]])
 </pre></div>
 </div>
 </div>
@@ -3836,9 +3946,9 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.19897726, 0.82871054],
-       [0.11307419, 0.57232529],
-       [0.20388417, 0.10846285]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.359, 0.524],
+       [0.674, 0.911],
+       [0.266, 0.707]])
 </pre></div>
 </div>
 </div>
@@ -3856,11 +3966,11 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 0., 1., 1., 1.],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 0., 1., 1., 0.],
        [0., 0., 1., 0., 1.],
        [1., 1., 0., 1., 1.],
-       [1., 0., 1., 0., 0.],
-       [1., 1., 1., 0., 0.]])
+       [1., 0., 1., 0., 1.],
+       [0., 1., 1., 1., 0.]])
 </pre></div>
 </div>
 </div>
@@ -3906,7 +4016,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7363f955f0a905a40c13d15687a94dfc1d6a2f842ffd766a1fec92390087e287.png" src="../_images/7363f955f0a905a40c13d15687a94dfc1d6a2f842ffd766a1fec92390087e287.png" />
+<img alt="../_images/64638e7b029188fc78fd997e8c432851bf318466fddb51b0a7603dbf913d7216.png" src="../_images/64638e7b029188fc78fd997e8c432851bf318466fddb51b0a7603dbf913d7216.png" />
 </div>
 </div>
 </section>
