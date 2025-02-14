@@ -387,10 +387,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.1. Numpyとは？</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.1. NumPyとは？</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.1.1. NumPyとは？</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpyimport">3.1.2. NumPyのimport</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.1.3. Numpy配列とリストの違い</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.1.3. NumPy配列とリストの違い</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">リスト</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">NumPy配列</a></li>
 </ul>
@@ -492,10 +492,8 @@ document.write(`
   <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># （必須）モジュールのインポート</span>
-<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="c1"># 表示設定</span>
@@ -519,11 +517,11 @@ document.write(`
 <li><p><a class="reference external" href="http://note.nkmk.me">note.nkmk.me</a>: <a class="reference external" href="https://note.nkmk.me">https://note.nkmk.me</a></p></li>
 </ul>
 <section id="id1">
-<h2><span class="section-number">3.1. </span>Numpyとは？<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.1. </span>NumPyとは？<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <section id="id2">
 <h3><span class="section-number">3.1.1. </span>NumPyとは？<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<p>スポーツのデータセットは画像，ドキュメント，座標，など様々なフォーマットを持つが，これらは数値や文字列を格納した配列として扱うことができる．例えば，試合を撮影した動画はフレーム単位ではデジタル画像として表されている．デジタル画像は2次元配列として表され，配列の各要素が各ピクセルの輝度（RGB値）に対応している．また，選手の位置座標は <span class="math notranslate nohighlight">\((x, y, z)\)</span> の時系列データとなっているので，各座標成分の時系列データとして扱えば，2次元配列として表すことができる．</p>
-<p>このように，データ分析では，数値や文字列を効率的に格納することが必要となる．Pythonには，配列を扱うためのリストという機能が標準搭載されているが，サイズの大きいデータを扱うのには不向きである．そこで，大規模な配列を高速に処理するためのライブラリとしてNumPy（ナンパイ）が用意されている．NumPyの配列はPythonの組み込みリストと似ているが，配列のサイズが大きくなるにつれて，より効率的なデータ操作ができるように設計されている．</p>
+<p>スポーツのデータセットは画像，ドキュメント，座標，など様々なフォーマットを持つが，これらは数値や文字列を格納した配列として扱うことができる．例えば，試合を撮影した動画はフレーム単位ではデジタル画像として表されている．デジタル画像は2次元配列として表され，配列の各要素が各ピクセルの輝度（RGB値）に対応している．また，選手の位置座標は <span class="math notranslate nohighlight">\( (x, y, z) \)</span> の時系列データとなっているので，各座標成分の時系列データとして扱えば，2次元配列として表すことができる．
+このように，データ分析では，数値や文字列を効率的に格納することが必要となる．Pythonには，配列を扱うためのリストという機能が標準搭載されているが，サイズの大きいデータを扱うのには不向きである．そこで，大規模な配列を高速に処理するためのライブラリとしてNumPy（ナンパイ）が用意されている．NumPyの配列はPythonの組み込みリストと似ているが，配列のサイズが大きくなるにつれて，より効率的なデータ操作ができるように設計されている．</p>
 </section>
 <section id="numpyimport">
 <h3><span class="section-number">3.1.2. </span>NumPyのimport<a class="headerlink" href="#numpyimport" title="Link to this heading">#</a></h3>
@@ -538,7 +536,7 @@ document.write(`
 <p>これにより，NumPyの関数（例えば<code class="docutils literal notranslate"><span class="pre">func</span></code>関数）を使うときには<code class="docutils literal notranslate"><span class="pre">np.func()</span></code>のように実行できる．</p>
 </section>
 <section id="id3">
-<h3><span class="section-number">3.1.3. </span>Numpy配列とリストの違い<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.1.3. </span>NumPy配列とリストの違い<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <section id="id4">
 <h4>リスト<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
 <p>Pythonのリストは以下のように整数と文字列など複数の型を同時に格納することができ，多次元にすることも可能である．
@@ -572,26 +570,26 @@ document.write(`
 </div>
 </div>
 </div>
-<p>NumPy配列は組み込みリストと同様に多次元配列を実現できるが，<strong>全ての要素が同じ型を持ち，各行のサイズも同じでなければならない</strong>という制約がある（データ型をobjectにすれば実現できなくもないが，これは用いるべきではない）．
-一見するとPythonの組み込みリストの方が使い勝手が良いように見えるが，Numpy配列には以下のような長所があるため，特に大規模な数値データを扱う際に威力を発揮する．</p>
+<p>NumPy配列は組み込みリストと同様に多次元配列を実現できるが，<strong>全ての要素が同じ型を持ち，各行のサイズも同じでなければならない</strong>という制約がある（データ型をobject型にすれば実現可能だが非推奨）．
+一見するとPythonの組み込みリストの方が使い勝手が良いように見えるが，NumPy配列には以下のような長所があるため，特に大規模な数値データを扱う際に威力を発揮する．</p>
 <p><strong>1. リストに比べて高速に動作する</strong></p>
-<p>Numpyの内部はC言語によって実装されているため，特に大規模なデータを扱う際にリストとの違いが顕著になる．
-以下は0から9999まで1ずつ増える配列をリストとNumpy配列で生成する例である．</p>
+<p>NumPyの内部はC言語によって実装されているため，特に大規模なデータを扱う際にリストとの違いが顕著になる．
+以下は0から9999まで1ずつ増える配列をリストとNumPy配列で生成する例である．</p>
 <p>※マジックコマンド<code class="docutils literal notranslate"><span class="pre">%%time</span></code>を使用することで，セル全体のコードの実行時間を測定することができる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="n">x_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">list_data</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
-    <span class="n">x_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_list</span><span class="p">))</span>
+    <span class="n">list_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">list_data</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[   0    1    2 ... 9997 9998 9999]
-CPU times: user 947 µs, sys: 56 µs, total: 1 ms
-Wall time: 969 µs
+CPU times: user 1.08 ms, sys: 106 µs, total: 1.19 ms
+Wall time: 1.15 ms
 </pre></div>
 </div>
 </div>
@@ -599,15 +597,15 @@ Wall time: 969 µs
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="n">x_numpy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x_numpy</span><span class="p">)</span>
+<span class="n">array_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">array_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[   0    1    2 ... 9997 9998 9999]
-CPU times: user 201 µs, sys: 32 µs, total: 233 µs
-Wall time: 208 µs
+CPU times: user 281 µs, sys: 78 µs, total: 359 µs
+Wall time: 292 µs
 </pre></div>
 </div>
 </div>
@@ -615,20 +613,20 @@ Wall time: 208 µs
 <p><strong>2. 配列全体に対する高速な演算が可能でコードがシンプル</strong></p>
 <p>この機能はユニバーサル関数と呼ばれ，配列に対して演算を行うだけでそれが各要素に適用されるのでコードがシンプルになる．
 リストで同じ結果を得るためにはfor文を使う必要があるが，pythonではループ処理が非常に遅くかつコードが煩雑になる．
-以下は，配列の各要素を2倍するコードをリストとNumpy配列で実装した例である．</p>
+以下は，配列の各要素を2倍するコードをリストとNumPy配列で実装した例である．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_list</span><span class="p">)):</span>
-    <span class="n">x_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_list</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">list_data</span><span class="p">)):</span>
+    <span class="n">list_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">list_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">list_data</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[    0     2     4 ... 19994 19996 19998]
-CPU times: user 1.42 ms, sys: 46 µs, total: 1.47 ms
-Wall time: 1.46 ms
+CPU times: user 1.72 ms, sys: 118 µs, total: 1.84 ms
+Wall time: 1.97 ms
 </pre></div>
 </div>
 </div>
@@ -636,15 +634,15 @@ Wall time: 1.46 ms
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="n">x_numpy</span> <span class="o">=</span> <span class="n">x_numpy</span> <span class="o">*</span> <span class="mi">2</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x_numpy</span><span class="p">)</span>
+<span class="n">array_data</span> <span class="o">=</span> <span class="n">array_data</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">array_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[    0     2     4 ... 19994 19996 19998]
-CPU times: user 212 µs, sys: 54 µs, total: 266 µs
-Wall time: 236 µs
+CPU times: user 330 µs, sys: 110 µs, total: 440 µs
+Wall time: 437 µs
 </pre></div>
 </div>
 </div>
@@ -655,13 +653,13 @@ Wall time: 236 µs
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 0~10までの整数をランダムに生成して，ソートする</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">array_rand</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">array_rand</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 2, 14, 48, 48, 62, 65, 68, 68, 72, 98])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([18, 28, 36, 47, 51, 56, 60, 61, 64, 96])
 </pre></div>
 </div>
 </div>
@@ -676,7 +674,7 @@ Wall time: 236 µs
 <li><p><code class="docutils literal notranslate"><span class="pre">float</span></code>（浮動小数点数）</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>（真偽値：<code class="docutils literal notranslate"><span class="pre">True</span></code>／<code class="docutils literal notranslate"><span class="pre">False</span></code>）</p></li>
 </ul>
-<p>より詳しく<code class="docutils literal notranslate"><span class="pre">float64</span></code>のようにビット長を指定することもできるが省略するとデフォルトのビット長が指定される．なお，文字列を扱いたい場合はNumpyではなくリストかPandasを用いるのが良い．</p>
+<p>より詳しく<code class="docutils literal notranslate"><span class="pre">float64</span></code>のようにビット長を指定することもできるが省略するとデフォルトのビット長が指定される．なお，文字列を扱いたい場合はNumPyではなくリストかPandasを用いるのが良い．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
@@ -891,21 +889,21 @@ float64
 上の行列を横方向に切ると，以下のように３つのベクトルに分割することができる：</p>
 <div class="math notranslate nohighlight">
 \[
-    \left(
-	\begin{array}{c}
-		 3 &amp; 5 &amp; 7
-	\end{array}
-\right),
-    \left(
-	\begin{array}{c}
-		 1 &amp; 0 &amp; 9
-	\end{array}
-\right),
-\left(
-	\begin{array}{c}
-		 2 &amp; 4 &amp; 3
-	\end{array}
-\right)
+	\left(
+		\begin{array}{c}
+			3 &amp; 5 &amp; 7
+		\end{array}
+	\right),
+		\left(
+		\begin{array}{c}
+			1 &amp; 0 &amp; 9
+		\end{array}
+	\right),
+	\left(
+		\begin{array}{c}
+			2 &amp; 4 &amp; 3
+		\end{array}
+	\right)
 \]</div>
 <p>これらを<strong>行</strong>と呼び，それぞれを0から始まる行番号によって0行，1行，2行などという．
 NumPyおよびPandasでは，行番号が増減する軸を<code class="docutils literal notranslate"><span class="pre">axis=0</span></code>と表す．</p>
@@ -2094,8 +2092,8 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ブールインデックスの取得</span>
-<span class="n">x_bool</span> <span class="o">=</span> <span class="p">(</span><span class="n">x1</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">)</span>
-<span class="n">x_bool</span>
+<span class="n">index_bool</span> <span class="o">=</span> <span class="p">(</span><span class="n">x1</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">index_bool</span>
 </pre></div>
 </div>
 </div>
@@ -2110,7 +2108,7 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 50未満の要素の抽出</span>
-<span class="n">x1</span><span class="p">[</span><span class="n">x_bool</span><span class="p">]</span>
+<span class="n">x1</span><span class="p">[</span><span class="n">index_bool</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -2224,8 +2222,8 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1より大きくかつ5未満の要素</span>
-<span class="n">x2_bool</span> <span class="o">=</span> <span class="p">(</span><span class="n">x2</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x2</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)</span>
-<span class="n">x2_bool</span>
+<span class="n">index_bool_2</span> <span class="o">=</span> <span class="p">(</span><span class="n">x2</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x2</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">index_bool_2</span>
 </pre></div>
 </div>
 </div>
@@ -2241,7 +2239,7 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x2</span><span class="p">[</span><span class="n">x2_bool</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x2</span><span class="p">[</span><span class="n">index_bool_2</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -2344,12 +2342,12 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </section>
 <section id="id38">
 <h3><span class="section-number">3.5.2. </span>演習問題<a class="headerlink" href="#id38" title="Link to this heading">#</a></h3>
-<p>以下の配列<code class="docutils literal notranslate"><span class="pre">x</span></code>から指定した条件を満たす要素を抽出せよ</p>
+<p>以下の配列<code class="docutils literal notranslate"><span class="pre">x1</span></code>から指定した条件を満たす要素を抽出せよ</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">x</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">x1</span>
 </pre></div>
 </div>
 </div>
@@ -2396,12 +2394,12 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 </div>
 </div>
 </div>
-<p>以下の配列<code class="docutils literal notranslate"><span class="pre">x</span></code>から指定された配列を作成せよ．</p>
+<p>以下の配列<code class="docutils literal notranslate"><span class="pre">x2</span></code>から指定された配列を作成せよ．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-<span class="n">x</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">x2</span>
 </pre></div>
 </div>
 </div>
@@ -2461,8 +2459,8 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
-<span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="mf">1e7</span><span class="p">))</span>
-<span class="n">D</span>
+<span class="n">rand_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="mf">1e7</span><span class="p">))</span>
+<span class="n">rand_data</span>
 </pre></div>
 </div>
 </div>
@@ -2476,18 +2474,18 @@ NumPyでは，以下のようなコロン<code class="docutils literal notransla
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="n">M</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">D</span><span class="p">)):</span>
-    <span class="n">M</span> <span class="o">+=</span> <span class="n">D</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="n">sum_value</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rand_data</span><span class="p">)):</span>
+    <span class="n">sum_value</span> <span class="o">+=</span> <span class="n">rand_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     
-<span class="nb">print</span><span class="p">(</span><span class="n">M</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">D</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sum_value</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">rand_data</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49.4999793
-CPU times: user 963 ms, sys: 4.57 ms, total: 967 ms
-Wall time: 972 ms
+CPU times: user 1.37 s, sys: 22.7 ms, total: 1.39 s
+Wall time: 1.41 s
 </pre></div>
 </div>
 </div>
@@ -2497,13 +2495,13 @@ Wall time: 972 ms
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">rand_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 6.05 ms, sys: 513 µs, total: 6.56 ms
-Wall time: 5.92 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 5.02 ms, sys: 644 µs, total: 5.66 ms
+Wall time: 4.95 ms
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49.500
@@ -3094,8 +3092,8 @@ Wall time: 5.92 ms
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 配列の生成</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
-<span class="n">x</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+<span class="n">x1</span>
 </pre></div>
 </div>
 </div>
@@ -3108,12 +3106,12 @@ Wall time: 5.92 ms
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 合計</span>
-<span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>499124
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.int64(499124)
 </pre></div>
 </div>
 </div>
@@ -3121,12 +3119,12 @@ Wall time: 5.92 ms
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 最大値</span>
-<span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>99
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.int64(99)
 </pre></div>
 </div>
 </div>
@@ -3134,12 +3132,12 @@ Wall time: 5.92 ms
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 最小値</span>
-<span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.int64(0)
 </pre></div>
 </div>
 </div>
@@ -3147,7 +3145,7 @@ Wall time: 5.92 ms
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 中央値</span>
-<span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3160,7 +3158,7 @@ Wall time: 5.92 ms
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 平均値</span>
-<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3173,7 +3171,7 @@ Wall time: 5.92 ms
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 標準偏差</span>
-<span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3186,7 +3184,7 @@ Wall time: 5.92 ms
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 標本分散（nで割る）</span>
-<span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3199,7 +3197,7 @@ Wall time: 5.92 ms
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 不偏分散（n-1で割る）</span>
-<span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3269,7 +3267,7 @@ Wall time: 5.92 ms
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 配列の生成</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">sample_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3277,7 +3275,7 @@ Wall time: 5.92 ms
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 配列をcsv形式で保存する</span>
-<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;./array_ex.csv&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>  <span class="c1"># 相対パスを指定</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;./sample_array.csv&#39;</span><span class="p">,</span> <span class="n">sample_array</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>  <span class="c1"># 相対パスを指定</span>
 </pre></div>
 </div>
 </div>
@@ -3289,8 +3287,8 @@ Wall time: 5.92 ms
 <p>データをNumPy配列に読み込むには<code class="docutils literal notranslate"><span class="pre">np.loadtxt</span></code>関数を用いる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;./array_ex.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>  <span class="c1"># 相対パスを指定</span>
-<span class="n">arr</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;./array_ex.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>  <span class="c1"># 相対パスを指定</span>
+<span class="n">sample_array</span>
 </pre></div>
 </div>
 </div>
@@ -3315,8 +3313,8 @@ Wall time: 5.92 ms
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 配列の生成</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">x</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">data</span>
 </pre></div>
 </div>
 </div>
@@ -3340,7 +3338,7 @@ Wall time: 5.92 ms
 <p>このデータに対し，<code class="docutils literal notranslate"><span class="pre">np.mean</span></code>関数と<code class="docutils literal notranslate"><span class="pre">np.std</span></code>関数を用いて標本平均と標本標準偏差を求めると以下のようになった．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3352,7 +3350,7 @@ Wall time: 5.92 ms
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3363,7 +3361,7 @@ Wall time: 5.92 ms
 </div>
 </div>
 <ul class="simple">
-<li><p>NumPyの関数を使わずに<code class="docutils literal notranslate"><span class="pre">x</span></code>の標本平均を求め，上の結果と一致することを確かめよ．
+<li><p>NumPyの関数を使わずに<code class="docutils literal notranslate"><span class="pre">data</span></code>の標本平均を求め，上の結果と一致することを確かめよ．
 ただし，データ <span class="math notranslate nohighlight">\( x = (x_{1}, x_{2}, \ldots, x_{n}) \)</span> に対して，標本平均 <span class="math notranslate nohighlight">\( \bar{x} \)</span> は以下で定義される：</p></li>
 </ul>
 <div class="math notranslate nohighlight">
@@ -3371,7 +3369,7 @@ Wall time: 5.92 ms
     \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_{i} = \frac{x_{1}+x_{2}+\cdots+x_{n}}{n}
 \]</div>
 <ul class="simple">
-<li><p>NumPyの関数を使わずに<code class="docutils literal notranslate"><span class="pre">x</span></code>の標本標準偏差を求め，上の結果と一致することを確かめよ．
+<li><p>NumPyの関数を使わずに<code class="docutils literal notranslate"><span class="pre">data</span></code>の標本標準偏差を求め，上の結果と一致することを確かめよ．
 ただし，データ <span class="math notranslate nohighlight">\( x = (x_{1}, x_{2}, \ldots, x_{n}) \)</span> に対して，標本標準偏差 <span class="math notranslate nohighlight">\( \bar{\sigma} \)</span> は以下で定義される：</p></li>
 </ul>
 <div class="math notranslate nohighlight">
@@ -3385,12 +3383,12 @@ Wall time: 5.92 ms
 このファイルには，2017年度にイングランド・プレミアリーグに所属していた選手の選手ID，身長，体重のデータが保存されている．
 ただし，身長の単位はcm，体重の単位はkgである．</p>
 <p>※ 本データはPappalardoデータセットを加工したものである（詳細は<a class="reference internal" href="../appendix/appendix.html#pappalardo"><span class="std std-ref">Pappalardoデータセットの詳細</span></a>）．</p>
-<p>まず，このファイルをNumPy配列<code class="docutils literal notranslate"><span class="pre">D</span></code>に読み込む：</p>
+<p>まず，このファイルをNumPy配列<code class="docutils literal notranslate"><span class="pre">data</span></code>に読み込む：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># csvファイルを読み込む</span>
-<span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;./player_England.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
-<span class="n">D</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;./player_England.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+<span class="n">data</span>
 </pre></div>
 </div>
 </div>
@@ -3406,11 +3404,11 @@ Wall time: 5.92 ms
 </div>
 </div>
 </div>
-<p>配列<code class="docutils literal notranslate"><span class="pre">D</span></code>は第0列に選手ID，第1列に身長，第2列に体重が格納されている．
-例えば，<code class="docutils literal notranslate"><span class="pre">D</span></code>の第0行目を見ると，選手IDが3319で身長180cm，体重76kgであることが分かる．
+<p>配列<code class="docutils literal notranslate"><span class="pre">data</span></code>は第0列に選手ID，第1列に身長，第2列に体重が格納されている．
+例えば，<code class="docutils literal notranslate"><span class="pre">data</span></code>の第0行目を見ると，選手IDが3319で身長180cm，体重76kgであることが分かる．
 このデータに対し，以下の問いに答えよ．</p>
 <ul class="simple">
-<li><p>選手IDが-1となっている要素はダミーデータである．<code class="docutils literal notranslate"><span class="pre">D</span></code>からダミーデータを削除し，改めて配列<code class="docutils literal notranslate"><span class="pre">D</span></code>とせよ．</p></li>
+<li><p>選手IDが-1となっている要素はダミーデータである．<code class="docutils literal notranslate"><span class="pre">data</span></code>からダミーデータを削除し，改めて配列<code class="docutils literal notranslate"><span class="pre">data</span></code>とせよ．</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3441,13 +3439,13 @@ Wall time: 5.92 ms
 </div>
 </div>
 <ul class="simple">
-<li><p>配列Dから選手ID，身長，体重のデータを抽出し，それぞれ<code class="docutils literal notranslate"><span class="pre">I</span></code>, <code class="docutils literal notranslate"><span class="pre">H</span></code>, <code class="docutils literal notranslate"><span class="pre">W</span></code>という配列に格納せよ．</p></li>
+<li><p>配列Dから選手ID，身長，体重のデータを抽出し，それぞれ<code class="docutils literal notranslate"><span class="pre">player_id</span></code>, <code class="docutils literal notranslate"><span class="pre">height</span></code>, <code class="docutils literal notranslate"><span class="pre">weight</span></code>という配列に格納せよ．</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="o">=</span> 
-<span class="n">H</span> <span class="o">=</span> 
-<span class="n">W</span> <span class="o">=</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">player_id</span> <span class="o">=</span>
+<span class="n">height</span> <span class="o">=</span> 
+<span class="n">weight</span> <span class="o">=</span> 
 </pre></div>
 </div>
 </div>
@@ -3455,14 +3453,14 @@ Wall time: 5.92 ms
 <ul class="simple">
 <li><p>以下の方法により，身長の最小値，最大値を求めよ</p>
 <ul>
-<li><p>配列<code class="docutils literal notranslate"><span class="pre">H</span></code>を昇順（小→大）に並び替え，先頭と末尾の要素を抽出する</p></li>
+<li><p>配列<code class="docutils literal notranslate"><span class="pre">height</span></code>を昇順（小→大）に並び替え，先頭と末尾の要素を抽出する</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">np.min</span></code>関数，<code class="docutils literal notranslate"><span class="pre">np.max</span></code>関数を用いる</p></li>
 </ul>
 </li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hを昇順に並び替えて先頭と末尾の要素を抽出</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># heightを昇順に並び替えて先頭と末尾の要素を抽出</span>
 </pre></div>
 </div>
 </div>
@@ -3477,28 +3475,28 @@ Wall time: 5.92 ms
 <ul class="simple">
 <li><p>肥満度を表す指標としてBMIが知られている．BMIは身長と体重を用いて以下で定義される：</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-07f25cfb-0571-4739-98c5-73327025a9e9">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-07f25cfb-0571-4739-98c5-73327025a9e9" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7e87a665-95bc-42f5-8f01-bd57ee9cbe16">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-7e87a665-95bc-42f5-8f01-bd57ee9cbe16" title="Permalink to this equation">#</a></span>\[\begin{align}
     \mathrm{BMI} = \frac{体重 [kg]}{(身長 [m])^2}
 \end{align}\]</div>
 <ul class="simple">
-<li><p>身長の単位をcmからmに変換し，<code class="docutils literal notranslate"><span class="pre">H2</span></code>に格納せよ．</p></li>
+<li><p>身長の単位をcmからmに変換し，<code class="docutils literal notranslate"><span class="pre">height_m</span></code>に格納せよ．</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hの単位をcm -&gt; m</span>
-<span class="n">H2</span> <span class="o">=</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># heightの単位をcm -&gt; m</span>
+<span class="n">height_m</span> <span class="o">=</span> 
 </pre></div>
 </div>
 </div>
 </div>
 <ul class="simple">
-<li><p>配列<code class="docutils literal notranslate"><span class="pre">W</span></code>と<code class="docutils literal notranslate"><span class="pre">H2</span></code>からBMIを求め，<code class="docutils literal notranslate"><span class="pre">BMI</span></code>という配列に格納せよ．</p></li>
+<li><p>配列<code class="docutils literal notranslate"><span class="pre">weight</span></code>と<code class="docutils literal notranslate"><span class="pre">height_m</span></code>からBMIを求め，<code class="docutils literal notranslate"><span class="pre">bmi</span></code>という配列に格納せよ．</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># BMIを求める</span>
-<span class="n">BMI</span> <span class="o">=</span> 
+<span class="n">bmi</span> <span class="o">=</span> 
 </pre></div>
 </div>
 </div>
@@ -3582,10 +3580,10 @@ Wall time: 5.92 ms
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.1. Numpyとは？</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.1. NumPyとは？</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.1.1. NumPyとは？</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpyimport">3.1.2. NumPyのimport</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.1.3. Numpy配列とリストの違い</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.1.3. NumPy配列とリストの違い</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">リスト</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">NumPy配列</a></li>
 </ul>
