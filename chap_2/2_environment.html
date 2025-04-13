@@ -544,23 +544,10 @@ Macの場合は<code class="docutils literal notranslate"><span class="pre">'Hir
 </div>
 </div>
 </div>
-<p><strong>方法2： japanize_matplotlib を利用する（詳しくは<a class="reference external" href="https://pypi.org/project/japanize-matplotlib/">こちら</a>）</strong></p>
-<p>※ 2024年9月現在，Python 3.12以上ではjapanize_matplotlibが使えない．対処法は<a class="reference external" href="https://qiita.com/take_me/items/7d1a8823b99951210efa">ここ</a>を参照．</p>
-<p>japanize_matplotlibは一度インストールすれば，あとは他のモジュールと同じように<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">japanize_matplotlib</span></code>とするだけで日本語が使用可能になる．
-ただし，使用可能なフォントはIPAexゴシックだけなので，フォントにこだわりたい場合は方法１をおすすめする．</p>
-<ul>
-<li><p>Anaconda Promptを起動</p></li>
-<li><p>以下のコマンドを実行してjapanize_matplotlibをインストールする</p>
-<div class="highlight-zsh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>japanize-matplotlib
-</pre></div>
-</div>
-</li>
-<li><p>Jupyter Labを再起動して，以下のコードを実行する</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">japanize_matplotlib</span>
-</pre></div>
-</div>
-</li>
-<li><p>日本語が使用可能になる</p></li>
+<p><strong>方法2： japanize_matplotlib を利用する</strong></p>
+<ul class="simple">
+<li><p>2024年9月現在，Python 3.12以上ではjapanize_matplotlibが使えない．</p></li>
+<li><p>代わりに<code class="docutils literal notranslate"><span class="pre">matplotlob-fontja</span></code>が公開されている（詳しくは<a class="reference external" href="https://github.com/ciffelia/matplotlib-fontja">こちら</a>）．</p></li>
 </ul>
 </section>
 <section id="path">
