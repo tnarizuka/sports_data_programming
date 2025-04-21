@@ -594,8 +594,8 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[   0    1    2 ... 9997 9998 9999]
-CPU times: user 1.08 ms, sys: 106 µs, total: 1.19 ms
-Wall time: 1.15 ms
+CPU times: user 1.24 ms, sys: 76 µs, total: 1.32 ms
+Wall time: 1.28 ms
 </pre></div>
 </div>
 </div>
@@ -610,8 +610,8 @@ Wall time: 1.15 ms
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[   0    1    2 ... 9997 9998 9999]
-CPU times: user 281 µs, sys: 78 µs, total: 359 µs
-Wall time: 292 µs
+CPU times: user 266 µs, sys: 76 µs, total: 342 µs
+Wall time: 301 µs
 </pre></div>
 </div>
 </div>
@@ -631,8 +631,8 @@ Wall time: 292 µs
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[    0     2     4 ... 19994 19996 19998]
-CPU times: user 1.72 ms, sys: 118 µs, total: 1.84 ms
-Wall time: 1.97 ms
+CPU times: user 1.17 ms, sys: 34 µs, total: 1.21 ms
+Wall time: 1.18 ms
 </pre></div>
 </div>
 </div>
@@ -647,8 +647,8 @@ Wall time: 1.97 ms
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[    0     2     4 ... 19994 19996 19998]
-CPU times: user 330 µs, sys: 110 µs, total: 440 µs
-Wall time: 437 µs
+CPU times: user 347 µs, sys: 109 µs, total: 456 µs
+Wall time: 396 µs
 </pre></div>
 </div>
 </div>
@@ -665,7 +665,7 @@ Wall time: 437 µs
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([18, 28, 36, 47, 51, 56, 60, 61, 64, 96])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 7, 16, 18, 31, 40, 69, 73, 82, 83, 91])
 </pre></div>
 </div>
 </div>
@@ -912,7 +912,7 @@ float64
 	\right)
 \]</div>
 <p>これらを<strong>行</strong>と呼び，それぞれを0から始まる行番号によって0行，1行，2行などという．
-NumPyおよびPandasでは，行番号が増減する軸を<code class="docutils literal notranslate"><span class="pre">axis=0</span></code>と表す．</p>
+NumPyおよびPandasでは，行番号が増減する方向の軸を<code class="docutils literal notranslate"><span class="pre">axis=0</span></code>と表す．</p>
 <p>一方，行列を縦方向に切ると</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -940,7 +940,7 @@ NumPyおよびPandasでは，行番号が増減する軸を<code class="docutils
 \end{split}\]</div>
 <p>に分割することができる．
 これを<strong>列</strong>と呼び，0から始まる列番号によって0列，1列，2列などという．
-NumPyおよびPandasでは，列番号が増減する軸を<code class="docutils literal notranslate"><span class="pre">axis=1</span></code>と表す．</p>
+NumPyおよびPandasでは，列番号が増減する方向の軸を<code class="docutils literal notranslate"><span class="pre">axis=1</span></code>と表す．</p>
 <p>行列の形状は行数と列数の組み合わせで <span class="math notranslate nohighlight">\( 3\times 3 \)</span> 行列などと表す（1つ目の3は行数，2つ目の3は列数）．また，行列の成分は行番号 <span class="math notranslate nohighlight">\( i \)</span> と列番号 <span class="math notranslate nohighlight">\( j \)</span> を用いて <span class="math notranslate nohighlight">\( (i, j) \)</span> 成分などと表す．例えば，上の行列の <span class="math notranslate nohighlight">\((0, 1)\)</span> 成分は2である．</p>
 <p>行列は2次元のNumPy配列によって以下のように実現できる：</p>
 <div class="cell docutils container">
@@ -1193,9 +1193,9 @@ NumPyおよびPandasでは，列番号が増減する軸を<code class="docutils
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.421, 0.182, 0.227, 0.842],
-       [0.315, 0.002, 0.506, 0.941],
-       [0.54 , 0.115, 0.372, 0.097]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.391, 0.17 , 0.785, 0.667],
+       [0.012, 0.609, 0.572, 0.959],
+       [0.586, 0.242, 0.946, 0.169]])
 </pre></div>
 </div>
 </div>
@@ -1208,9 +1208,9 @@ NumPyおよびPandasでは，列番号が増減する軸を<code class="docutils
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[14, 10, 12, 15],
-       [11, 12, 11, 14],
-       [12, 13, 17, 10]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[16, 18, 17, 15],
+       [12, 18, 15, 13],
+       [19, 15, 11, 11]])
 </pre></div>
 </div>
 </div>
@@ -1223,9 +1223,9 @@ NumPyおよびPandasでは，列番号が増減する軸を<code class="docutils
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[4.088, 5.3  , 4.997, 4.785],
-       [5.193, 4.897, 3.747, 5.182],
-       [5.211, 4.581, 6.032, 5.542]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[5.066, 5.886, 4.766, 4.482],
+       [5.322, 5.313, 4.433, 5.196],
+       [4.388, 5.814, 5.695, 5.773]])
 </pre></div>
 </div>
 </div>
@@ -3481,8 +3481,8 @@ Wall time: 4.95 ms
 <ul class="simple">
 <li><p>肥満度を表す指標としてBMIが知られている．BMIは身長と体重を用いて以下で定義される：</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-158e4938-000f-4c73-b556-204136f6b6a4">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-158e4938-000f-4c73-b556-204136f6b6a4" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7e02f6d3-31e7-4e1c-b8bd-4e933ff01c58">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-7e02f6d3-31e7-4e1c-b8bd-4e933ff01c58" title="Permalink to this equation">#</a></span>\[\begin{align}
     \mathrm{BMI} = \frac{体重 [kg]}{(身長 [m])^2}
 \end{align}\]</div>
 <ul class="simple">
