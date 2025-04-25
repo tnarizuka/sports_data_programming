@@ -439,23 +439,26 @@ document.write(`
 <ul>
 <li><p>コントロールパネル &gt; プログラムのアンインストール</p></li>
 <li><p>Anacondaを選択してアンインストール</p></li>
+<li><p>anaconda3というフォルダが残っている場合は手動で削除する</p>
+<ul>
+<li><p>ユーザフォルダまたはCドライブ直下を確認</p></li>
+</ul>
+</li>
 <li><p>PC再起動</p></li>
 </ul>
 </li>
 <li><p>インストーラのダウンロード</p>
 <ul>
 <li><p><a class="reference external" href="https://www.anaconda.com/download">Anaconda Distribution</a> にアクセス</p></li>
-<li><p>メールアドレスを入力して，届いたメールのURLを開く</p></li>
 <li><p>Anacondaをダウンロード</p></li>
 </ul>
 </li>
-<li><p>Cドライブ直下（ユーザフォルダと同じ階層）に<code class="docutils literal notranslate"><span class="pre">anaconda3</span></code>というフォルダを作っておく</p></li>
 <li><p>Anacondaのインストール</p>
 <ul>
 <li><p>Select Installation TypeでJust Meを選ぶ</p></li>
-<li><p>Choose Install LocationでCドライブ直下に作ったanaconda3フォルダを選ぶ</p>
+<li><p>Choose Install LocationはデフォルトのままでOKだが，anacondaのインストール先のパスに日本語が含まれるとうまくいかないので注意</p>
 <ul>
-<li><p>anacondaのインストール先のパスに日本語が含まれるとうまくいかないため</p></li>
+<li><p>例：C:\Users\ユーザ名\Anaconda3</p></li>
 </ul>
 </li>
 <li><p>Advanced Installation Optionsで以下の2つに必ずチェックを入れる</p>
