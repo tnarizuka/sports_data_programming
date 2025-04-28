@@ -407,11 +407,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">2.6. Pythonのルール</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.6.1. 変数・数値・文字列</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.6.2. コメント</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.6.3. 画面出力</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.6.4. カッコの使い方</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.6.5. インポート</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">ライブラリのインポート</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">インポートしたライブラリの使い方</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.6.3. カッコの使い方</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.6.4. インポート</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">ライブラリのインポート</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">インポートしたライブラリの使い方</a></li>
 </ul>
 </li>
 </ul>
@@ -639,32 +638,50 @@ Windowsで絶対パスを取得するには，パスをコピーしたいファ�
 <section id="id7">
 <h3><span class="section-number">2.6.1. </span>変数・数値・文字列<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>変数</p>
+<li><p>変数と代入</p>
 <ul>
-<li><p>変数は，データを格納するための箱である．</p></li>
-<li><p>箱には名前を付けることができる．</p></li>
-<li><p>箱の中には数値や文字列などのデータを入れることができる．</p></li>
-<li><p>箱の中に入っているデータは，<code class="docutils literal notranslate"><span class="pre">print(箱の名前)</span></code>とすることで確認できる．</p></li>
-</ul>
-</li>
-<li><p>変数への代入</p>
-<ul>
-<li><p>箱の中にデータを入れることを<strong>代入</strong>と呼ぶ．</p></li>
+<li><p>変数は，データを格納するための箱であり，名前を付けることができる．</p></li>
+<li><p>変数の中に数値や文字列などのデータを入れることを<strong>代入</strong>と呼ぶ．</p></li>
 <li><p>代入は<code class="docutils literal notranslate"><span class="pre">=</span></code>を使って行う．</p></li>
-<li><p>例えば，<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">1</span></code>とすると，箱の名前が<code class="docutils literal notranslate"><span class="pre">a</span></code>で中身が<code class="docutils literal notranslate"><span class="pre">1</span></code>の箱ができる．</p></li>
+<li><p>変数の中身を確認するには<code class="docutils literal notranslate"><span class="pre">print()</span></code>を使う．</p></li>
 </ul>
 </li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
 <li><p>文字列</p>
 <ul>
-<li><p>文字列は，<code class="docutils literal notranslate"><span class="pre">'</span></code>または<code class="docutils literal notranslate"><span class="pre">&quot;</span></code>で囲まれた文字の列である．</p></li>
+<li><p>文字列は，<code class="docutils literal notranslate"><span class="pre">'</span></code>または<code class="docutils literal notranslate"><span class="pre">&quot;</span></code>で囲まれた文字である．</p></li>
 <li><p>例えば，<code class="docutils literal notranslate"><span class="pre">'abc'</span></code>や<code class="docutils literal notranslate"><span class="pre">&quot;abc&quot;</span></code>は文字列である．</p></li>
-<li><p>文字列の中に<code class="docutils literal notranslate"><span class="pre">'</span></code>を入れたい場合は，<code class="docutils literal notranslate"><span class="pre">&quot;</span></code>で囲むか，<code class="docutils literal notranslate"><span class="pre">\</span></code>を使う．</p>
-<ul>
-<li><p>例：<code class="docutils literal notranslate"><span class="pre">&quot;I</span> <span class="pre">said,</span> <span class="pre">'Hello'&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">'I</span> <span class="pre">said,</span> <span class="pre">\'Hello\''</span></code></p></li>
 </ul>
 </li>
 </ul>
-</li>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>abc
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
 <li><p>数値</p>
 <ul>
 <li><p>クォーテーションで囲まれていない数字は数値である．</p></li>
@@ -682,24 +699,16 @@ Windowsで絶対パスを取得するには，パスをコピーしたいファ�
 <li><p>冒頭に<code class="docutils literal notranslate"><span class="pre">#</span></code>を付けることで，その行はコメントとして認識される．</p></li>
 <li><p>コメントは，プログラムの実行には影響しない．</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># これはコメント文</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="id9">
-<h3><span class="section-number">2.6.3. </span>画面出力<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>変数や文字列を画面に出力するには，<code class="docutils literal notranslate"><span class="pre">print()</span></code>関数を使う．</p>
-<ul>
-<li><p>例えば，<code class="docutils literal notranslate"><span class="pre">print('Hello')</span></code>とすると，<code class="docutils literal notranslate"><span class="pre">Hello</span></code>と画面に出力される．</p></li>
-</ul>
-</li>
-<li><p>変数の中身を出力するには，<code class="docutils literal notranslate"><span class="pre">print(変数の名前)</span></code>とする．</p>
-<ul>
-<li><p>例えば，<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">1</span></code>とすると，<code class="docutils literal notranslate"><span class="pre">print(a)</span></code>とすることで，<code class="docutils literal notranslate"><span class="pre">1</span></code>と画面に出力される．</p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="id10">
-<h3><span class="section-number">2.6.4. </span>カッコの使い方<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.6.3. </span>カッコの使い方<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p>Pythonでは，カッコは以下のように使われる．</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -725,23 +734,42 @@ Windowsで絶対パスを取得するには，パスをコピーしたいファ�
 </table>
 </div>
 </section>
+<section id="id10">
+<h3><span class="section-number">2.6.4. </span>インポート<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <section id="id11">
-<h3><span class="section-number">2.6.5. </span>インポート<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
-<section id="id12">
-<h4>ライブラリのインポート<a class="headerlink" href="#id12" title="Link to this heading">#</a></h4>
+<h4>ライブラリのインポート<a class="headerlink" href="#id11" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Pythonでは，関数やクラスをまとめたものを<strong>ライブラリ</strong>と呼ぶ．</p></li>
 <li><p>ライブラリを使うためには，最初にインポートする必要がある．</p></li>
 <li><p>インポートは，<code class="docutils literal notranslate"><span class="pre">import</span></code>を使って行う．</p></li>
 <li><p>例えば，<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code>とすると，NumPyライブラリを<code class="docutils literal notranslate"><span class="pre">np</span></code>という名前で使うことができる．</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="id13">
-<h4>インポートしたライブラリの使い方<a class="headerlink" href="#id13" title="Link to this heading">#</a></h4>
+<section id="id12">
+<h4>インポートしたライブラリの使い方<a class="headerlink" href="#id12" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>インポートしたライブラリの関数を使うときは，<code class="docutils literal notranslate"><span class="pre">ライブラリ名.関数名</span></code>のように書く．</p></li>
 <li><p>例えば，<code class="docutils literal notranslate"><span class="pre">np.array([1,</span> <span class="pre">2,</span> <span class="pre">3])</span></code>とすると，NumPyライブラリの<code class="docutils literal notranslate"><span class="pre">array</span></code>関数を使って，配列を作ることができる．</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 2, 3])
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -827,11 +855,10 @@ Windowsで絶対パスを取得するには，パスをコピーしたいファ�
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">2.6. Pythonのルール</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.6.1. 変数・数値・文字列</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.6.2. コメント</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.6.3. 画面出力</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.6.4. カッコの使い方</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.6.5. インポート</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">ライブラリのインポート</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">インポートしたライブラリの使い方</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.6.3. カッコの使い方</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.6.4. インポート</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">ライブラリのインポート</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">インポートしたライブラリの使い方</a></li>
 </ul>
 </li>
 </ul>
