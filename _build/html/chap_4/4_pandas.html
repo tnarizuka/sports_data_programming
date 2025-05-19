@@ -958,6 +958,18 @@ Pandasでは，空白値の他，pythonの組み込み定数である<code class
 </table>
 </div></div></div>
 </div>
+<p><strong>URLから読み込む</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code>関数にURLを指定してcsvファイルを読み込むこともできる：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://tnarizuka.github.io/sports_data_programming/chap_4/df_sample.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="id6">
 <h3><span class="section-number">4.2.4. </span>DataFrameの属性<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
