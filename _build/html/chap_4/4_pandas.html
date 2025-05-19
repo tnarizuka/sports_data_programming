@@ -407,7 +407,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">4.2.6. 演習問題</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">4.3. 条件付き抽出</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">4.3. DataFrameの条件付き抽出</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">4.3.1. ブールインデックスの取得</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">4.3.2. ブールインデックス参照</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">4.3.3. ブールインデックス参照による値の変更</a></li>
@@ -963,12 +963,71 @@ Pandasでは，空白値の他，pythonの組み込み定数である<code class
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>第1引数にURLを指定し，第２引数以降にoptionを指定する．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://tnarizuka.github.io/sports_data_programming/chap_4/df_sample.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://tnarizuka.github.io/sports_data_programming/chap_4/df_sample.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>t</th>
+      <th>player</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>2</td>
+      <td>ozora</td>
+      <td>5.0</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>64</td>
+      <td>misaki</td>
+      <td>20.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>350</td>
+      <td>wakabayashi</td>
+      <td>10.5</td>
+      <td>50.5</td>
+    </tr>
+    <tr>
+      <th>D</th>
+      <td>600</td>
+      <td>hyuga</td>
+      <td>32.5</td>
+      <td>2.5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="id6">
@@ -1967,208 +2026,32 @@ Name: t, dtype: int64
 <p>次のcsvファイルをダウンロードし，カレントディレクトリに保存せよ：<a class="reference external" href="https://tnarizuka.github.io/sports_data_programming/chap_4/player_all.csv">player_all.csv</a> <br>
 このファイルには，2017年度にヨーロッパリーグ（イングランド，フランス，ドイツ，イタリア，スペイン）に所属していた選手のデータが保存されている．<br>
 ※ 本データはPappalardoデータセットを加工したものである（詳細は<a class="reference internal" href="../appendix/appendix.html#pappalardo"><span class="std std-ref">Pappalardoデータセットの詳細</span></a>）．</p>
-<p>まず，ダウンロードしたcsvファイルを<code class="docutils literal notranslate"><span class="pre">df</span></code>に読み込む．<br></p>
+<p>ダウンロードしたcsvファイルを<code class="docutils literal notranslate"><span class="pre">df</span></code>に読み込め．
+ただし，以下のオプションを指定せよ：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">index_col='player_id'</span></code>：選手IDを行ラベル（index）に設定</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">na_values=0</span></code>：値が0の要素を欠損値<code class="docutils literal notranslate"><span class="pre">NaN</span></code>で置き換える</p></li>
+</ul>
 <div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># index_col=&#39;player_id&#39;：選手IDを行ラベル（index）に設定</span>
-<span class="c1"># na_values=0：身長`height`と体重`weight`が0の要素を欠損値`NaN`で置き換える</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./player_all.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;player_id&#39;</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+<span class="n">df</span> <span class="o">=</span> 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>name</th>
-      <th>team_id</th>
-      <th>role</th>
-      <th>height</th>
-      <th>weight</th>
-      <th>foot</th>
-      <th>nationality</th>
-      <th>birth_area</th>
-      <th>birthday</th>
-      <th>league</th>
-    </tr>
-    <tr>
-      <th>player_id</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>3319</th>
-      <td>M_Özil</td>
-      <td>1609</td>
-      <td>MD</td>
-      <td>180.0</td>
-      <td>76.0</td>
-      <td>left</td>
-      <td>Germany</td>
-      <td>Germany</td>
-      <td>1988/10/15</td>
-      <td>England</td>
-    </tr>
-    <tr>
-      <th>3560</th>
-      <td>Nach_Monreal</td>
-      <td>1609</td>
-      <td>DF</td>
-      <td>179.0</td>
-      <td>72.0</td>
-      <td>left</td>
-      <td>Spain</td>
-      <td>Spain</td>
-      <td>1986/02/26</td>
-      <td>England</td>
-    </tr>
-    <tr>
-      <th>7855</th>
-      <td>L_Koscielny</td>
-      <td>1609</td>
-      <td>DF</td>
-      <td>186.0</td>
-      <td>75.0</td>
-      <td>right</td>
-      <td>Poland</td>
-      <td>France</td>
-      <td>1985/09/10</td>
-      <td>England</td>
-    </tr>
-    <tr>
-      <th>7870</th>
-      <td>A_Ramsey</td>
-      <td>1609</td>
-      <td>MD</td>
-      <td>183.0</td>
-      <td>76.0</td>
-      <td>right</td>
-      <td>Wales</td>
-      <td>Wales</td>
-      <td>1990/12/26</td>
-      <td>England</td>
-    </tr>
-    <tr>
-      <th>7882</th>
-      <td>P_Čech</td>
-      <td>1609</td>
-      <td>GK</td>
-      <td>196.0</td>
-      <td>90.0</td>
-      <td>left</td>
-      <td>Czec_Republic</td>
-      <td>Czec_Republic</td>
-      <td>1982/05/20</td>
-      <td>England</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>266885</th>
-      <td>M_Olunga</td>
-      <td>756</td>
-      <td>FW</td>
-      <td>188.0</td>
-      <td>80.0</td>
-      <td>left</td>
-      <td>Kenya</td>
-      <td>Kenya</td>
-      <td>1994/03/26</td>
-      <td>Spain</td>
-    </tr>
-    <tr>
-      <th>282448</th>
-      <td>Alei_García</td>
-      <td>756</td>
-      <td>MD</td>
-      <td>173.0</td>
-      <td>74.0</td>
-      <td>right</td>
-      <td>Spain</td>
-      <td>Spain</td>
-      <td>1997/06/28</td>
-      <td>Spain</td>
-    </tr>
-    <tr>
-      <th>366374</th>
-      <td>K_Soni</td>
-      <td>756</td>
-      <td>MD</td>
-      <td>182.0</td>
-      <td>77.0</td>
-      <td>left</td>
-      <td>Cameroon</td>
-      <td>Cameroon</td>
-      <td>1998/04/17</td>
-      <td>Spain</td>
-    </tr>
-    <tr>
-      <th>443324</th>
-      <td>Dougla_Luiz</td>
-      <td>756</td>
-      <td>MD</td>
-      <td>178.0</td>
-      <td>65.0</td>
-      <td>right</td>
-      <td>Brazil</td>
-      <td>Brazil</td>
-      <td>1998/05/09</td>
-      <td>Spain</td>
-    </tr>
-    <tr>
-      <th>508686</th>
-      <td>M_Lizak</td>
-      <td>756</td>
-      <td>GK</td>
-      <td>192.0</td>
-      <td>78.0</td>
-      <td>NaN</td>
-      <td>Poland</td>
-      <td>Poland</td>
-      <td>1996/07/15</td>
-      <td>Spain</td>
-    </tr>
-  </tbody>
-</table>
-<p>2439 rows × 10 columns</p>
-</div></div></div>
+</div>
+<p>以下は<code class="docutils literal notranslate"><span class="pre">player_all.csv</span></code>の保存先のurlである：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://tnarizuka.github.io/sports_data_programming/chap_4/player_all.csv&#39;</span>
+</pre></div>
+</div>
+<p>このcsvファイルをurlから<code class="docutils literal notranslate"><span class="pre">df</span></code>に読み込め．ただし，同様のオプションを指定せよ．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+<span class="n">df</span> <span class="o">=</span>
+</pre></div>
+</div>
+</div>
 </div>
 <p>DataFrameの先頭2行を取得せよ</p>
 <div class="cell docutils container">
@@ -2329,7 +2212,7 @@ Name: t, dtype: int64
 </section>
 </section>
 <section id="id9">
-<h2><span class="section-number">4.3. </span>条件付き抽出<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.3. </span>DataFrameの条件付き抽出<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
 <p>DataFrameからある条件を満たす行や列を抽出する方法として，ブールインデックス参照がある．<br>
 ※ この他にも<code class="docutils literal notranslate"><span class="pre">where</span></code>メソッド，<code class="docutils literal notranslate"><span class="pre">query</span></code>メソッドなどがあるがここでは扱わない</p>
 <div class="cell docutils container">
@@ -6831,7 +6714,7 @@ dtype: float64
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">4.2.6. 演習問題</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">4.3. 条件付き抽出</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">4.3. DataFrameの条件付き抽出</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">4.3.1. ブールインデックスの取得</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">4.3.2. ブールインデックス参照</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">4.3.3. ブールインデックス参照による値の変更</a></li>
