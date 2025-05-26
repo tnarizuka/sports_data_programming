@@ -2294,8 +2294,8 @@ Name: t, dtype: int64
 </div>
 <section id="id11">
 <h3><span class="section-number">4.4.1. </span>ブールインデックスの取得<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
-<p>DataFrameにおけるブールインデックス参照は基本的にはNumPyと同様であるが，必ず<code class="docutils literal notranslate"><span class="pre">loc</span></code>属性を用いる．
-NumPyと同様に，<code class="docutils literal notranslate"><span class="pre">==,</span> <span class="pre">&gt;,</span> <span class="pre">&lt;,</span> <span class="pre">%</span></code>などの比較演算子を用いると，ブールインデックス配列（SeriesまたはDataFrame）を自動的に取得することができる．</p>
+<p>PandasのDataFrameでも，NumPyと同様のブールインデックス参照が可能である．
+NumPyと同様に<code class="docutils literal notranslate"><span class="pre">==,</span> <span class="pre">&gt;,</span> <span class="pre">&lt;,</span> <span class="pre">%</span></code>などの比較演算子を用いると，ブールインデックス配列（SeriesまたはDataFrame）を自動的に取得することができる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># &#39;t&#39;列の値が64</span>
@@ -2403,11 +2403,11 @@ Name: t, dtype: bool
 </section>
 <section id="id12">
 <h3><span class="section-number">4.4.2. </span>ブールインデックス参照<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">loc</span></code>属性を用いた参照において，ブールインデックスを指定すると，行ラベルが<code class="docutils literal notranslate"><span class="pre">True</span></code>の行だけを抽出することができる：</p>
+<p><code class="docutils literal notranslate"><span class="pre">loc</span></code>属性を用いた参照において，行ラベルの部分に条件を指定すると，条件を満たす行だけを抽出できる．
+このとき，<strong>条件の次に列ラベルを指定すると，条件を満たす特定の列だけを抽出できる．</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">条件</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;列ラベル1&#39;</span><span class="p">,</span> <span class="s1">&#39;列ラベル2&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
-<p>特に，<strong>条件の次に列ラベルを指定すると，条件を満たす特定の列だけを抽出できる．</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># &#39;t&#39;列の値が64の行</span>
@@ -2735,7 +2735,7 @@ Name: t, dtype: bool
 </section>
 <section id="id13">
 <h3><span class="section-number">4.4.3. </span>ブールインデックス参照による値の変更<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
-<p>ブールインデックス参照で抽出したDataFrameに値を代入することで，条件を満たす要素だけ変更することができる．</p>
+<p>ブールインデックス参照で条件付き抽出したDataFrameに値を代入することで，条件を満たす要素だけ変更することができる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># &#39;t&#39;==64の&#39;player&#39;を&#39;wakashimazu&#39;に変更</span>
@@ -2875,7 +2875,8 @@ Name: t, dtype: bool
 <h3><span class="section-number">4.4.4. </span>欠損値の処理<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]]),</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 欠損値を含むDataFrameの作成</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]]),</span>
                   <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">])</span>
 <span class="n">df</span>
 </pre></div>
