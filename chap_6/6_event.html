@@ -643,7 +643,7 @@ document.write(`
 <tr class="row-odd"><td><p>away_score</p></td>
 <td><p>アウェイチームのスコア</p></td>
 </tr>
-<tr class="row-even"><td><p>homw_score</p></td>
+<tr class="row-even"><td><p>home_score</p></td>
 <td><p>ホームチームのスコア</p></td>
 </tr>
 </tbody>
@@ -3827,7 +3827,7 @@ Name: count, dtype: int64
 <p><strong>アシスト数</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_assist_rank</span> <span class="o">=</span> <span class="n">df_event</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df_tag</span><span class="p">[</span><span class="s1">&#39;assist&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_assist_rank</span> <span class="o">=</span> <span class="n">df_event</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;assist&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 <span class="n">df_assist_rank</span> <span class="o">=</span> <span class="n">df_assist_rank</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">dict_id_name</span><span class="p">)</span>  <span class="c1"># 選手IDを選手名に変換する</span>
 <span class="n">df_assist_rank</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
@@ -3853,7 +3853,7 @@ Name: count, dtype: int64
 <p><strong>ゴール数</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cond</span> <span class="o">=</span> <span class="p">((</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;shot&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;free_kick&#39;</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_tag</span><span class="p">[</span><span class="s1">&#39;goal&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cond</span> <span class="o">=</span> <span class="p">((</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;shot&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;free_kick&#39;</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;goal&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">df_goal_rank</span> <span class="o">=</span> <span class="n">df_event</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span><span class="p">,</span> <span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 <span class="n">df_goal_rank</span> <span class="o">=</span> <span class="n">df_goal_rank</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">dict_id_name</span><span class="p">)</span>  <span class="c1"># 選手IDを選手名に変換する</span>
 <span class="n">df_goal_rank</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
@@ -3887,7 +3887,6 @@ Name: count, dtype: int64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 特定の試合を抽出</span>
 <span class="n">df_event_game</span> <span class="o">=</span> <span class="n">df_event</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">2499719</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">df_tag_game</span> <span class="o">=</span> <span class="n">df_tag</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">2499719</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -4350,7 +4349,7 @@ Name: count, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1d8b8fa1f0f67c956fba72149266678a13539793bbbe393504ae16965abba212.png" src="../_images/1d8b8fa1f0f67c956fba72149266678a13539793bbbe393504ae16965abba212.png" />
+<img alt="../_images/15c33dee4bf00ca49f8317de94ae6d2e5b799fe4cc550eeb87042ee773418dd7.png" src="../_images/15c33dee4bf00ca49f8317de94ae6d2e5b799fe4cc550eeb87042ee773418dd7.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -4361,7 +4360,7 @@ Name: count, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/972f94278000716ddc84c63d5d377bc2be9c52fde477f9eb79fef67e0fa37a30.png" src="../_images/972f94278000716ddc84c63d5d377bc2be9c52fde477f9eb79fef67e0fa37a30.png" />
+<img alt="../_images/33ccace593621de8b864e8cb2799c1ccf6685174f409a32d9106568093617333.png" src="../_images/33ccace593621de8b864e8cb2799c1ccf6685174f409a32d9106568093617333.png" />
 </div>
 </div>
 </section>
