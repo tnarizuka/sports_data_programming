@@ -3175,12 +3175,10 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># イベントデータと選手プロフィールの読み込み</span>
 <span class="n">df_event</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./event_England.csv&#39;</span><span class="p">)</span>
-<span class="n">df_tag</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./event_tag_England.csv&#39;</span><span class="p">)</span>
 <span class="n">df_player</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./player.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># 特定の試合を抽出</span>
 <span class="n">df_event_game</span> <span class="o">=</span> <span class="n">df_event</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">2499719</span><span class="p">]</span>
-<span class="n">df_tag_game</span> <span class="o">=</span> <span class="n">df_tag</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">2499719</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -3196,7 +3194,6 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 特定の試合を抽出</span>
 <span class="n">df_event_game</span> <span class="o">=</span> <span class="n">df_event</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">2499719</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">df_tag_game</span> <span class="o">=</span> <span class="n">df_tag</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">2499719</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -3415,7 +3412,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/73016654b358d394f73801070ac7000635ebf8e077a1c5bc71a4b954ac0cde57.png" src="../_images/73016654b358d394f73801070ac7000635ebf8e077a1c5bc71a4b954ac0cde57.png" />
+<img alt="../_images/fb6ea968f8435430e67563a35e001dd0d0df0add4f0c1b9cce5dc537c822165f.png" src="../_images/fb6ea968f8435430e67563a35e001dd0d0df0add4f0c1b9cce5dc537c822165f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3425,7 +3422,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7bd882af97c4eca0c81d0d0618785e649cf5d91cc89d1a3006312178e19b1166.png" src="../_images/7bd882af97c4eca0c81d0d0618785e649cf5d91cc89d1a3006312178e19b1166.png" />
+<img alt="../_images/d86f5c04226d643e375aecf51e3604b3bcbc21e9ad5a6d3e794a25189c97e3ff.png" src="../_images/d86f5c04226d643e375aecf51e3604b3bcbc21e9ad5a6d3e794a25189c97e3ff.png" />
 </div>
 </div>
 </section>
