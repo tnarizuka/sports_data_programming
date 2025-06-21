@@ -477,7 +477,7 @@ document.write(`
 <section id="id4">
 <h2><span class="section-number">6.2. </span>リーグ成績と順位表<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>各リーグの最終的な順位は勝ち点によって決まる．
-１試合で獲得する勝ち点は勝利が3，引き分けが1，負けが0である．
+サッカーでは，１試合に勝利すると3点，引き分けだと1点，敗北だと0点の勝ち点が与えられる．
 得点データを用いれば，チームごとに勝ち点を計算し，順位表を作成することができる．
 以下では，イングランド・プレミアリーグの最終成績と順位表を作成してみよう．
 なお，公式に公開されている2017年度イングランド・プレミアリーグの最終成績と順位表は以下で確認できる：</p>
@@ -487,7 +487,7 @@ document.write(`
 </ul>
 <section id="id5">
 <h3><span class="section-number">6.2.1. </span>データの読み込み<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
-<p>まずは <a class="reference external" href="https://tnarizuka.github.io/sports_data_programming/chap_6/game.csv">game.csv</a> をダウンロードしてカレントディレクトリに移動し，<code class="docutils literal notranslate"><span class="pre">df_game</span></code>という名前のDataFrameに読み込む．</p>
+<p>まずは試合情報のデータ（<a class="reference external" href="https://tnarizuka.github.io/sports_data_programming/chap_6/game.csv">game.csv</a>）をダウンロードしてカレントディレクトリに移動し，<code class="docutils literal notranslate"><span class="pre">df_game</span></code>という名前のDataFrameに読み込む．</p>
 <div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_game</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./game.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -649,7 +649,7 @@ document.write(`
 </tbody>
 </table>
 </div>
-<p>次に <a class="reference external" href="https://tnarizuka.github.io/sports_data_programming/chap_6/team.csv">team.csv</a> をダウンロードしてカレントディレクトリに移動し，<code class="docutils literal notranslate"><span class="pre">df_team</span></code>という名前のDataFrameに読み込む．</p>
+<p>次にチーム情報のデータ（<a class="reference external" href="https://tnarizuka.github.io/sports_data_programming/chap_6/team.csv">team.csv</a>）をダウンロードしてカレントディレクトリに移動し，<code class="docutils literal notranslate"><span class="pre">df_team</span></code>という名前のDataFrameに読み込む．</p>
 <div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_team</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./team.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -728,7 +728,7 @@ document.write(`
 </table>
 </div></div></div>
 </div>
-<p>このデータの各行には2017年度ヨーロッパリーグに出場したクラブチームの情報が収められている．
+<p>このデータの各行には2017年度ヨーロッパリーグの全クラブチームの情報が収められている．
 各列の意味は下表の通りである．
 例えば，第0行はイングランド・プレミアリーグに所属するアーセナルのチーム情報を表している．</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -1179,7 +1179,7 @@ Arsenal
 </div></div></div>
 </div>
 <p><strong>ホームゲームとアウェイゲームのデータを結合する</strong></p>
-<p>次に，<code class="docutils literal notranslate"><span class="pre">pd.concat</span></code>関数を使ってホームゲームのデータの下にアウェイゲームのデータを結合する．</p>
+<p>次に，<code class="docutils literal notranslate"><span class="pre">pd.concat</span></code>関数を使ってホームゲームのDataFrameの下にアウェイゲームのDataFrameを結合する．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_score</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_score_h</span><span class="p">,</span> <span class="n">df_score_a</span><span class="p">])</span>
@@ -1715,7 +1715,7 @@ Arsenal
 <section id="id8">
 <h3><span class="section-number">6.2.4. </span>演習問題<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>イングランド以外のリーグについて，同様の順位表を作成せよ</p></li>
+<li><p>イングランド以外のリーグ（フランス，ドイツ，イタリア，スペイン）について，同様の順位表を作成せよ</p></li>
 <li><p>好きなチームに対して，横軸に節，縦軸に累積勝ち点を取ったグラフを作成し，1シーズンの勝ち点の変動を可視化せよ．</p></li>
 <li><p>特定のリーグの全チームについて，勝ち点の変動を可視化せよ．</p></li>
 </ul>
@@ -1723,7 +1723,7 @@ Arsenal
 </section>
 <section id="id9">
 <h2><span class="section-number">6.3. </span>得点分布<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
-<p>サッカーは非常に得点頻度が低い競技であるが，得点がランダムに入るため常に試合から目が離せない．
+<p>サッカーは非常に得点が入りにくい競技であるが，いつ得点が入るか予測が難しいため常に試合から目が離せない．
 得点のランダム性はサッカーが人々を熱狂させる理由と考えられるが，実はこのようなランダム性の裏にはきれいな法則が隠れている．</p>
 <section id="id10">
 <h3><span class="section-number">6.3.1. </span>ポアソン分布<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
@@ -1757,12 +1757,12 @@ Arsenal
 <li><p>プロシア陸軍で馬に蹴られて死亡した兵士の数</p></li>
 </ul>
 <p><strong>サッカーの得点分布</strong></p>
-<p>チームの強さや試合展開など細かいことはひとまず無視し，サッカーにおける得点がランダムに発生すると仮定する．
+<p>チームの強さや試合展開など細かいことはひとまず無視し，試合中にランダムに得点が発生すると仮定する．
 例えば，1プレーが数秒に１回行われるとし，どのプレーでも一定の得点確率 <span class="math notranslate nohighlight">\( p \)</span> で得点が入ると見なせば，サッカーは得点確率 <span class="math notranslate nohighlight">\( p \)</span> の小さい試行を何度も繰り返す現象（<span class="math notranslate nohighlight">\( n\to \infty \)</span>）と見なすことができ，1試合の得点数はポアソン分布に従うことが期待される．</p>
 </section>
 <section id="id11">
 <h3><span class="section-number">6.3.2. </span>得点データの要約<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
-<p>まずは<a class="reference external" href="https://drive.google.com/file/d/1gueZANYM2wOkQefKpoA_LplKkG0aXA4A/view?usp=drive_link">game.csv</a>をダウンロードしてカレントディレクトリに保存し，<code class="docutils literal notranslate"><span class="pre">df_game</span></code>という名前のDataFrameに読み込む．</p>
+<p>まずは試合情報のデータ（<a class="reference external" href="https://tnarizuka.github.io/sports_data_programming/chap_6/game.csv">game.csv</a>）をダウンロードしてカレントディレクトリに保存し，<code class="docutils literal notranslate"><span class="pre">df_game</span></code>という名前のDataFrameに読み込む．</p>
 <div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_game</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./game.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -1835,11 +1835,11 @@ Arsenal
 </table>
 </div></div></div>
 </div>
-<p>この得点データを用いて，リーグごとにアウェイチームとホームチームの得点傾向を調べてみよう．
+<p>このデータを用いて，リーグごとにアウェイチームとホームチームの得点傾向を調べてみよう．
 以下はアウェイチームとホームチームの得点の平均値および分散である．
 この結果からおおよそ以下のようなことが読み取れる</p>
 <ul class="simple">
-<li><p>1試合の得点の平均値はおおよそ1.2点くらいとなっており，サッカーが得点頻度の少ない競技であることが分かる．</p></li>
+<li><p>1試合の1チームの平均得点はどのリーグでも1.2点くらいとなっており，サッカーが得点頻度の少ない競技であることが分かる．</p></li>
 <li><p>ホームとアウェイで比べると，ホームの方がやや平均得点が高い傾向にある．</p></li>
 <li><p>得点の平均値と分散はほぼ同じ値となっており，ポアソン分布の性質をおおよそ満たしている．</p></li>
 </ul>
@@ -1966,7 +1966,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a98768842c6eca2de200406ef9e48ee117ed60b98938b20627e6e8ccc14b3db4.png" src="../_images/a98768842c6eca2de200406ef9e48ee117ed60b98938b20627e6e8ccc14b3db4.png" />
+<img alt="../_images/5ecc855aa4346200f0a92868e15102930086c74de679de844bff1836b7d53df3.png" src="../_images/5ecc855aa4346200f0a92868e15102930086c74de679de844bff1836b7d53df3.png" />
 </div>
 </div>
 <p>次に，上のヒストグラムがポアソン分布に従っているか調べるため，試合データから求めた平均値をパラメータとするポアソン分布を描いてみる．
@@ -1988,10 +1988,10 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1778a4b30&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x321cd9bb0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/396b4834be6c2dd335b099be5bbfa1474c1ff2f63d0eca4dd344daf8a22f503a.png" src="../_images/396b4834be6c2dd335b099be5bbfa1474c1ff2f63d0eca4dd344daf8a22f503a.png" />
+<img alt="../_images/a4dfe03a48a935fb89a2a76e6a8c49f2c58d34e20dc90967a1b3c76ab52d8dbd.png" src="../_images/a4dfe03a48a935fb89a2a76e6a8c49f2c58d34e20dc90967a1b3c76ab52d8dbd.png" />
 </div>
 </div>
 <p>上のグラフを見比べると，確かに似た分布になっていることが分かる．
@@ -2022,7 +2022,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/fe295d1f0cfc4b10a12544ace5563f98d0628b1fd33d313afae8a6c3abdda89b.png" src="../_images/fe295d1f0cfc4b10a12544ace5563f98d0628b1fd33d313afae8a6c3abdda89b.png" />
+<img alt="../_images/9e252ec0bb3237fe840eeac5859c62e9dad289d2b160d1ee55f3d624d72b6424.png" src="../_images/9e252ec0bb3237fe840eeac5859c62e9dad289d2b160d1ee55f3d624d72b6424.png" />
 </div>
 </div>
 <p>実データ（棒グラフ）とポアソン分布（折れ線）の概形はおおよそ一致していることが分かる．
@@ -2040,21 +2040,15 @@ dtype: float64
 </section>
 <section id="id14">
 <h2><span class="section-number">6.4. </span>イベントデータの解析<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
-<p>Pappalardo-Wyscoutデータセットのイベントデータはイベントログとイベントタグの2種類から成る：</p>
+<p>Pappalardo-Wyscoutデータセットのイベントデータには，以下のようなデータが含まれている：</p>
 <ul class="simple">
-<li><p>イベントログ</p>
-<ul>
-<li><p>パスやシュートなどのボールに関わるイベントに対して，起きた時刻，場所，関わった選手などの基本情報が紐付けられたデータ</p></li>
+<li><p>（主にボールに関わる）イベントが起きた時刻</p></li>
+<li><p>イベント名</p></li>
+<li><p>イベントが始まった場所と終わった場所の座標</p></li>
+<li><p>イベントに付与されたフラグ</p></li>
 <li><p>1試合あたり1500~2000イベント</p></li>
 </ul>
-</li>
-<li><p>イベントタグ</p>
-<ul>
-<li><p>イベントログの各イベントに対して，より詳細な付加情報が紐付けられたデータ</p></li>
-</ul>
-</li>
-</ul>
-<p>イベントデータにはボールに関わるほぼ全てのプレー情報が含まれているため，これを分析すれば詳細な試合展開を把握することができる．
+<p>イベントデータにはボールに関わる全てのプレー情報が含まれているため，これを分析すれば詳細な試合展開を把握することができる．
 イベントデータは選手プロフィールや得点データに比べて格段に情報量が多いため，その扱いの難易度も高い．
 基本的にExcelで解析するのは困難であり，Pandasの本領が最も発揮されるデータといえる．</p>
 <section id="id15">
@@ -2063,39 +2057,31 @@ dtype: float64
 ※ W杯とCLのデータはヨーロッパリーグと試合数が異なるので除外する．</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>内容</p></th>
+<tr class="row-odd"><th class="head"><p>リーグ</p></th>
 <th class="head"><p>ファイル</p></th>
 <th class="head"><p>ファイルサイズ</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>イベントIDとイベント名の対応</p></td>
-<td><p><a class="reference external" href="https://drive.google.com/file/d/1oSDUt73paDOsORVj732rGU0vwIwGHvHJ/view?usp=drive_link">event_list.csv</a></p></td>
-<td><p>0.9KB</p></td>
-</tr>
-<tr class="row-odd"><td><p>イベントに付与されるタグの説明</p></td>
-<td><p><a class="reference external" href="https://drive.google.com/file/d/1o_tZ-y0eAYlgN1audJThoVBMN0Ta2x5f/view?usp=drive_link">tag_list.csv</a></p></td>
-<td><p>2KB</p></td>
-</tr>
-<tr class="row-even"><td><p>各試合のイベントデータ（イングランド）</p></td>
-<td><p>イベントログ：<a class="reference external" href="https://drive.google.com/file/d/1783Zl4IRGmiYmo-uLA1-FsZwGesOsFhg/view?usp=drive_link">event_England.csv</a> <br>イベントタグ：<a class="reference external" href="https://drive.google.com/file/d/17LhNNVGZ9nsm-d3lqfBWiKmEqGitJwVI/view?usp=drive_link">event_tag_England.csv</a></p></td>
+<tr class="row-even"><td><p>イングランド</p></td>
+<td><p><a class="reference external" href="https://tnarizuka.github.io/sports_data_programming/chap_6/event_England.csv">event_England.csv</a></p></td>
 <td><p>58MB <br> 76.2MB</p></td>
 </tr>
-<tr class="row-odd"><td><p>//（フランス）</p></td>
-<td><p>イベントログ：<a class="reference external" href="https://drive.google.com/file/d/17B8fTf8E7W56USHRObhRaeYBDqatDaft/view?usp=drive_link">event_France.csv</a> <br> イベントタグ：<a class="reference external" href="https://drive.google.com/file/d/17Sq34wx_Ge_9tVyJYFup1XixwneoWjaO/view?usp=drive_link">event_tag_France.csv</a></p></td>
-<td><p>57.6MB <br> 74.8MB</p></td>
+<tr class="row-odd"><td><p>フランス</p></td>
+<td><p><a class="reference external" href="https://tnarizuka.github.io/sports_data_programming/chap_6/event_France.csv">event_France.csv</a></p></td>
+<td><p>58MB <br> 76.2MB</p></td>
 </tr>
-<tr class="row-even"><td><p>//（ドイツ）</p></td>
-<td><p>イベントログ：<a class="reference external" href="https://drive.google.com/file/d/17GVyiEgRFW9VZstK5LvEKLuKTuWmKe1Z/view?usp=drive_link">event_Germany.csv</a> <br>イベントタグ：<a class="reference external" href="https://drive.google.com/file/d/17dGXdEp0yNH1ySRCcB9ydLxcmUAESFHy/view?usp=drive_link">event_tag_Germany.csv</a></p></td>
-<td><p>47.2MB <br> 61.5MB</p></td>
+<tr class="row-even"><td><p>ドイツ</p></td>
+<td><p><a class="reference external" href="https://tnarizuka.github.io/sports_data_programming/chap_6/event_Germany.csv">event_Germany.csv</a></p></td>
+<td><p>58MB <br> 76.2MB</p></td>
 </tr>
-<tr class="row-odd"><td><p>//（イタリア）</p></td>
-<td><p>イベントログ：<a class="reference external" href="https://drive.google.com/file/d/17C5vUbS9_zRWpgTalUNzWfP6oFXf0U3K/view?usp=drive_link">event_Italy.csv</a> <br>イベントタグ：<a class="reference external" href="https://drive.google.com/file/d/17cH2MUqBDdWeBnTGK2EFYEfmB-GAxC3M/view?usp=drive_link">event_tag_Italy.csv</a></p></td>
-<td><p>58.9MB <br> 76.6MB</p></td>
+<tr class="row-odd"><td><p>イタリア</p></td>
+<td><p><a class="reference external" href="https://tnarizuka.github.io/sports_data_programming/chap_6/event_Italy.csv">event_Italy.csv</a></p></td>
+<td><p>58MB <br> 76.2MB</p></td>
 </tr>
-<tr class="row-even"><td><p>//（スペイン）</p></td>
-<td><p>イベントログ：<a class="reference external" href="https://drive.google.com/file/d/17K-vF4xBn6GtBtFap5sIf26ZZnjs20fz/view?usp=drive_link">event_Spain.csv</a> <br>イベントタグ：<a class="reference external" href="https://drive.google.com/file/d/17lGhSTFByywubBTmJKoTzrmaGLOgOZ3k/view?usp=drive_link">event_tag_Spain.csv</a></p></td>
-<td><p>56.1MB <br> 74.5MB</p></td>
+<tr class="row-even"><td><p>スペイン</p></td>
+<td><p><a class="reference external" href="https://tnarizuka.github.io/sports_data_programming/chap_6/event_Spain.csv">event_Spain.csv</a></p></td>
+<td><p>58MB <br> 76.2MB</p></td>
 </tr>
 </tbody>
 </table>
