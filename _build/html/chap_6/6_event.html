@@ -476,15 +476,10 @@ document.write(`
 </section>
 <section id="id4">
 <h2><span class="section-number">6.2. </span>リーグ成績と順位表<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>以下のデータをダウンロードし，カレントディレクトリに保存せよ：</p>
-<ul class="simple">
-<li><p>全試合の得点データ：<a class="reference external" href="https://tnarizuka.github.io/sports_data_programming/chap_6/game.csv">game.csv</a></p></li>
-<li><p>チームプロフィール：<a class="reference external" href="https://tnarizuka.github.io/sports_data_programming/chap_6/team.csv">team.csv</a></p></li>
-</ul>
 <p>各リーグの最終的な順位は勝ち点によって決まる．
 １試合で獲得する勝ち点は勝利が3，引き分けが1，負けが0である．
-得点データを用いれば，チームごとに勝ち点を計算し，順位表を作成することができる．</p>
-<p>以下では，イングランド・プレミアリーグの最終成績と順位表を作成してみよう．
+得点データを用いれば，チームごとに勝ち点を計算し，順位表を作成することができる．
+以下では，イングランド・プレミアリーグの最終成績と順位表を作成してみよう．
 なお，公式に公開されている2017年度イングランド・プレミアリーグの最終成績と順位表は以下で確認できる：</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%AA%E3%83%BC%E3%82%B02017-2018">https://ja.wikipedia.org/wiki/プレミアリーグ2017-2018</a></p></li>
@@ -492,7 +487,7 @@ document.write(`
 </ul>
 <section id="id5">
 <h3><span class="section-number">6.2.1. </span>データの読み込み<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
-<p>まずは <a class="reference external" href="https://drive.google.com/file/d/1gueZANYM2wOkQefKpoA_LplKkG0aXA4A/view?usp=drive_link">game.csv</a> をダウンロードしてカレントディレクトリに移動し，<code class="docutils literal notranslate"><span class="pre">df_game</span></code>という名前のDataFrameに読み込む．</p>
+<p>まずは <a class="reference external" href="https://tnarizuka.github.io/sports_data_programming/chap_6/game.csv">game.csv</a> をダウンロードしてカレントディレクトリに移動し，<code class="docutils literal notranslate"><span class="pre">df_game</span></code>という名前のDataFrameに読み込む．</p>
 <div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_game</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./game.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -619,7 +614,7 @@ document.write(`
 </thead>
 <tbody>
 <tr class="row-even"><td><p>game_id</p></td>
-<td><p>試合の一意なID</p></td>
+<td><p>試合ID</p></td>
 </tr>
 <tr class="row-odd"><td><p>league</p></td>
 <td><p>リーグ名</p></td>
@@ -654,7 +649,7 @@ document.write(`
 </tbody>
 </table>
 </div>
-<p>次に <a class="reference external" href="https://drive.google.com/file/d/1gzjVMRX3daVVFEsNlz-ipidyw-tM2zr1/view?usp=drive_link">team.csv</a> をダウンロードしてカレントディレクトリに移動し，<code class="docutils literal notranslate"><span class="pre">df_team</span></code>という名前のDataFrameに読み込む．</p>
+<p>次に <a class="reference external" href="https://tnarizuka.github.io/sports_data_programming/chap_6/team.csv">team.csv</a> をダウンロードしてカレントディレクトリに移動し，<code class="docutils literal notranslate"><span class="pre">df_team</span></code>という名前のDataFrameに読み込む．</p>
 <div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_team</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./team.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
