@@ -394,7 +394,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.1. イベントデータ</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pappalardo">6.1.1. Pappalardoデータセット</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pappalardo-wyscout">6.1.1. Pappalardo-Wyscoutデータセット</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.1.2. 本講義で用いる加工済みデータ</a></li>
 </ul>
 </li>
@@ -459,19 +459,19 @@ document.write(`
 <h1><span class="section-number">6. </span>イベントデータの解析<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <section id="id2">
 <h2><span class="section-number">6.1. </span>イベントデータ<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<section id="pappalardo">
-<h3><span class="section-number">6.1.1. </span>Pappalardoデータセット<a class="headerlink" href="#pappalardo" title="Link to this heading">#</a></h3>
-<p>Pappalardoデータセットはサッカーのイベントデータをまとめた大規模データセットであり，<a class="reference external" href="https://creativecommons.org/licenses/by/4.0/deed.ja">CC BY 4.0ライセンス</a>の下で提供されている．
+<section id="pappalardo-wyscout">
+<h3><span class="section-number">6.1.1. </span>Pappalardo-Wyscoutデータセット<a class="headerlink" href="#pappalardo-wyscout" title="Link to this heading">#</a></h3>
+<p>Pappalardo-Wyscoutデータセットはサッカーのイベントデータをまとめた大規模データセットであり，<a class="reference external" href="https://creativecommons.org/licenses/by/4.0/deed.ja">CC BY 4.0ライセンス</a>の下で提供されている．
 元のデータはWyscout社によって収集されたもので，それをL. Pappalardoらが編集し2019年に公開された．
 2023年時点で一般公開されているサッカーのイベントデータセットの中では最大級である．
-データセットの詳細については以下の付録を参照のこと：<a class="reference internal" href="../appendix/appendix.html#pappalardo"><span class="std std-ref">Pappalardoデータセットの詳細</span></a></p>
+データセットの詳細については以下の付録を参照のこと：<a class="reference internal" href="../appendix/appendix.html#pappalardo"><span class="std std-ref">Pappalardo-Wyscoutデータセットの詳細</span></a></p>
 </section>
 <section id="id3">
 <h3><span class="section-number">6.1.2. </span>本講義で用いる加工済みデータ<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<p>Pappalardoデータセットはjson形式で提供されており，このままではデータ分析がしづらい．
+<p>Pappalardo-Wyscoutデータセットはjson形式で提供されており，このままではデータ分析がしづらい．
 そこで，予めjson形式のデータを整形・加工し，PandasのDataFrameの形で保存しておくと便利であるが，この過程は本講義で扱うレベルを超える．
 <strong>本講義ではデータの整形・加工の過程は省略し，加工済みデータ（csvファイル）のデータを提供することにする</strong>．
-以下では，加工済みデータの一部を使ってデータ解析の例を示すが，他のデータを解析したい場合は付録からダウンロードできる：<a class="reference internal" href="../appendix/appendix.html#pappalardo"><span class="std std-ref">Pappalardoデータセットの詳細</span></a></p>
+以下では，加工済みデータの一部を使ってデータ解析の例を示すが，他のデータを解析したい場合は付録からダウンロードできる：<a class="reference internal" href="../appendix/appendix.html#pappalardo"><span class="std std-ref">Pappalardo-Wyscoutデータセットの詳細</span></a></p>
 </section>
 </section>
 <section id="id4">
@@ -2045,7 +2045,7 @@ dtype: float64
 </section>
 <section id="id14">
 <h2><span class="section-number">6.4. </span>イベントデータの解析<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
-<p>Pappalardoデータセットのイベントデータはイベントログとイベントタグの2種類から成る：</p>
+<p>Pappalardo-Wyscoutデータセットのイベントデータはイベントログとイベントタグの2種類から成る：</p>
 <ul class="simple">
 <li><p>イベントログ</p>
 <ul>
@@ -4491,7 +4491,7 @@ Name: count, dtype: int64
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.1. イベントデータ</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pappalardo">6.1.1. Pappalardoデータセット</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pappalardo-wyscout">6.1.1. Pappalardo-Wyscoutデータセット</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.1.2. 本講義で用いる加工済みデータ</a></li>
 </ul>
 </li>
