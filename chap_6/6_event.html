@@ -3753,15 +3753,29 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 特定の選手のパス</span>
-<span class="n">cond</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;pass&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">167145</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># フォワード</span>
+<span class="n">player_id_gk</span> <span class="o">=</span> <span class="n">df_player</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_player</span><span class="p">[</span><span class="s1">&#39;role&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;DF&#39;</span><span class="p">,</span> <span class="s1">&#39;player_id&#39;</span><span class="p">]</span>
+<span class="n">cond</span> <span class="o">=</span> <span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">player_id_gk</span><span class="p">)</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">df_event</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span><span class="p">,</span> <span class="s1">&#39;x1&#39;</span><span class="p">],</span> <span class="n">df_event</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span><span class="p">,</span> <span class="s1">&#39;y1&#39;</span><span class="p">]</span>
+<span class="n">plot_event_hmap</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cm</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7440b69efeebdf1ecd3571ddc5d626208c04571ee23454491a9db85593edfc04.png" src="../_images/7440b69efeebdf1ecd3571ddc5d626208c04571ee23454491a9db85593edfc04.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 特定の選手（エジル）のパス</span>
+<span class="n">cond</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;pass&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">3319</span><span class="p">)</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">df_event</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span><span class="p">,</span> <span class="s1">&#39;x1&#39;</span><span class="p">],</span> <span class="n">df_event</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span><span class="p">,</span> <span class="s1">&#39;y1&#39;</span><span class="p">]</span>
 <span class="n">plot_event_hmap</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6264f6d97c91850a3801c6a9cfaa39e9da2411478d82d981adb2f618e31dc25e.png" src="../_images/6264f6d97c91850a3801c6a9cfaa39e9da2411478d82d981adb2f618e31dc25e.png" />
+<img alt="../_images/98f11743307f23f65df21dd2f69136d859cfc95aa33ed95bc775f88e0cd04671.png" src="../_images/98f11743307f23f65df21dd2f69136d859cfc95aa33ed95bc775f88e0cd04671.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3978,6 +3992,15 @@ Name: count, dtype: int64
 <section id="id20">
 <h3><span class="section-number">6.4.6. </span>演習問題<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
 <p>イベントデータの<code class="docutils literal notranslate"><span class="pre">event</span></code>列と<code class="docutils literal notranslate"><span class="pre">subevent</span></code>列から様々な条件で場面を抽出し，ヒートマップを描画せよ．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>好きな選手を一人選び，その選手のイベントデータを抽出してヒートマップを描画せよ．
+このヒートマップを基に選手のプレースタイルを考察せよ．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
