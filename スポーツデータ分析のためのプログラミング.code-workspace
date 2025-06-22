@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "../../スポーツデータ分析のためのプログラミング/confidential_data"
 		}
 	],
 	"settings": {}
