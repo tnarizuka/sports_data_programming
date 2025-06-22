@@ -461,26 +461,25 @@ document.write(`
 <h2><span class="section-number">6.1. </span>イベントデータ<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <section id="pappalardo-wyscout">
 <h3><span class="section-number">6.1.1. </span>Pappalardo-Wyscoutデータセット<a class="headerlink" href="#pappalardo-wyscout" title="Link to this heading">#</a></h3>
-<p>Pappalardo-Wyscoutデータセットはサッカーのイベントデータをまとめた大規模データセットであり，<a class="reference external" href="https://creativecommons.org/licenses/by/4.0/deed.ja">CC BY 4.0ライセンス</a>の下で提供されている．
-元のデータはWyscout社によって収集されたもので，それをL. Pappalardoらが編集し2019年に公開された．
-2023年時点で一般公開されているサッカーのイベントデータセットの中では最大級である．
+<p>Pappalardo-Wyscoutデータセットはサッカーのイベントデータをまとめたオープンデータセットである．
+元のデータはWyscout社によって収集されたもので，それをL. Pappalardoらが編集し<a class="reference external" href="https://creativecommons.org/licenses/by/4.0/deed.ja">CC BY 4.0ライセンス</a>の下で提供されている．
+現在一般公開されているサッカーのイベントデータセットの中では最大級である．
 データセットの詳細については以下の付録を参照のこと：<a class="reference internal" href="../appendix/appendix.html#pappalardo"><span class="std std-ref">Pappalardo-Wyscoutデータセットの詳細</span></a></p>
 </section>
 <section id="id3">
 <h3><span class="section-number">6.1.2. </span>本講義で用いる加工済みデータ<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>Pappalardo-Wyscoutデータセットはjson形式で提供されており，このままではデータ分析がしづらい．
-そこで，予めjson形式のデータを加工・整形し，PandasのDataFrameの形で保存しておくと便利であるが，この過程は本講義で扱うレベルを超える．
-<strong>本講義ではデータの加工・整形の過程は省略し，加工済みデータ（csvファイル）のデータを提供することにする</strong>．
-以下では，加工済みデータの一部を使ってデータ解析の例を示す．</p>
+そこで，json形式のデータを加工・整形したデータをcsv形式で提供する．
+以下では，加工済みデータの一部を使ったデータ解析の例を示す．</p>
 </section>
 </section>
 <section id="id4">
 <h2><span class="section-number">6.2. </span>リーグ成績と順位表<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>各リーグの最終的な順位は勝ち点によって決まる．
-サッカーでは，１試合に勝利すると3点，引き分けだと1点，敗北だと0点の勝ち点が与えられる．
-得点データを用いれば，チームごとに勝ち点を計算し，順位表を作成することができる．
+<p>リーグの最終的な順位は勝ち点によって決まる．
+サッカーでは，試合に勝利すると3点，引き分けだと1点，敗北だと0点の勝ち点が与えられる．
+試合別の得点データを用いれば，チームごとに勝ち点を計算し，順位表を作成することができる．
 以下では，イングランド・プレミアリーグの最終成績と順位表を作成してみよう．
-なお，公式に公開されている2017年度イングランド・プレミアリーグの最終成績と順位表は以下で確認できる：</p>
+なお，2017年度イングランド・プレミアリーグの最終成績と順位表は以下で確認できる：</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%AA%E3%83%BC%E3%82%B02017-2018">https://ja.wikipedia.org/wiki/プレミアリーグ2017-2018</a></p></li>
 <li><p><a class="reference external" href="https://www.premierleague.com/tables?co=1&amp;amp;se=79&amp;amp;mw=-1&amp;amp;ha=-1">Premier League Table, Form Guide &amp; Season Archives</a></p></li>
@@ -602,10 +601,10 @@ document.write(`
 </table>
 </div></div></div>
 </div>
-<p>このデータの各行には2017年度にヨーロッパリーグで行われた全試合の情報が収められている．
+<p>このデータの各行には2017年度ヨーロッパリーグの全試合の情報が記録されている．
 各列の意味は下表の通りである．
 このうち，<code class="docutils literal notranslate"><span class="pre">away_score</span></code>列と<code class="docutils literal notranslate"><span class="pre">home_score</span></code>列がアウェイチームとホームチームの得点である．
-例えば，第0行はアーセナル（ホーム）対レイチェスターシティ（アウェイ）の試合情報を表し，得点は4-3であることが分かる．</p>
+例えば，第0行はアーセナル（ホーム）対レイチェスターシティ（アウェイ）の試合情報を表し，アーセナルが4-3で勝利したことが分かる．</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>各列の変数</p></th>
@@ -728,7 +727,7 @@ document.write(`
 </table>
 </div></div></div>
 </div>
-<p>このデータの各行には2017年度ヨーロッパリーグの全クラブチームの情報が収められている．
+<p>このデータの各行には2017年度ヨーロッパリーグの全クラブチームの情報が記録されている．
 各列の意味は下表の通りである．
 例えば，第0行はイングランド・プレミアリーグに所属するアーセナルのチーム情報を表している．</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -773,8 +772,8 @@ document.write(`
 まずは<code class="docutils literal notranslate"><span class="pre">iloc</span></code>属性を用いて<code class="docutils literal notranslate"><span class="pre">df_team_eng</span></code>の先頭行を抽出し，このチームのチームIDとチーム名を取得する．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">team_id</span> <span class="o">=</span> <span class="n">df_team_eng</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">team_name</span> <span class="o">=</span> <span class="n">df_team_eng</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">team_id</span> <span class="o">=</span> <span class="n">df_team_eng</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># チームID</span>
+<span class="n">team_name</span> <span class="o">=</span> <span class="n">df_team_eng</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># チーム名</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">team_id</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">team_name</span><span class="p">)</span>
 </pre></div>
@@ -788,15 +787,15 @@ Arsenal
 </div>
 </div>
 <p><strong>得点・失点・得失点差</strong></p>
-<p>得点データ<code class="docutils literal notranslate"><span class="pre">df_game</span></code>では，2チームをhome，awayによって区別している．
+<p>得点データ<code class="docutils literal notranslate"><span class="pre">df_game</span></code>では，各チームをhome，awayによって区別している．
 よって，チームごとに得点と失点を集計するには，ホームゲームとアウェイゲームに分けて処理する必要がある．
-ホームゲームでは<code class="docutils literal notranslate"><span class="pre">home_score</span></code>列が得点，<code class="docutils literal notranslate"><span class="pre">away_score</span></code>列が失点に対応し，アウェイゲームでは<code class="docutils literal notranslate"><span class="pre">away_score</span></code>列が得点，<code class="docutils literal notranslate"><span class="pre">home_score</span></code>列が失点である．
+ホームゲームでは<code class="docutils literal notranslate"><span class="pre">home_score</span></code>列が得点，<code class="docutils literal notranslate"><span class="pre">away_score</span></code>列が失点に対応し，アウェイゲームでは<code class="docutils literal notranslate"><span class="pre">away_score</span></code>列が得点，<code class="docutils literal notranslate"><span class="pre">home_score</span></code>列が失点となる．
 このことに注意し，アーセナルのホームゲームの得点・失点を<code class="docutils literal notranslate"><span class="pre">df_score_h</span></code>，アウェイゲームの得点・失点を<code class="docutils literal notranslate"><span class="pre">df_score_a</span></code>に保存する．
 また，得失点差の列<code class="docutils literal notranslate"><span class="pre">diff</span></code>を追加する．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 得点と失点（ホームゲーム）</span>
-<span class="n">df_score_h</span> <span class="o">=</span> <span class="n">df_game_eng</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df_game_eng</span><span class="p">[</span><span class="s1">&#39;home_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">team_id</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;section&#39;</span><span class="p">,</span> <span class="s1">&#39;home_score&#39;</span><span class="p">,</span> <span class="s1">&#39;away_score&#39;</span><span class="p">]]</span> <span class="c1"># 対象とするチームのスコアを抽出</span>
+<span class="n">df_score_h</span> <span class="o">=</span> <span class="n">df_game_eng</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_game_eng</span><span class="p">[</span><span class="s1">&#39;home_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">team_id</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;section&#39;</span><span class="p">,</span> <span class="s1">&#39;home_score&#39;</span><span class="p">,</span> <span class="s1">&#39;away_score&#39;</span><span class="p">]]</span> <span class="c1"># 対象とするチームの節とスコア</span>
 <span class="n">df_score_h</span> <span class="o">=</span> <span class="n">df_score_h</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;home_score&#39;</span><span class="p">:</span> <span class="s1">&#39;goal&#39;</span><span class="p">,</span> <span class="s1">&#39;away_score&#39;</span><span class="p">:</span> <span class="s1">&#39;loss&#39;</span><span class="p">})</span> <span class="c1"># 列ラベルのリネーム</span>
 <span class="n">df_score_h</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -864,7 +863,7 @@ Arsenal
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 得点と失点（アウェイゲーム）</span>
-<span class="n">df_score_a</span> <span class="o">=</span> <span class="n">df_game_eng</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df_game_eng</span><span class="p">[</span><span class="s1">&#39;away_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">team_id</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;section&#39;</span><span class="p">,</span> <span class="s1">&#39;away_score&#39;</span><span class="p">,</span> <span class="s1">&#39;home_score&#39;</span><span class="p">]]</span> <span class="c1"># 対象とするチームのスコアを抽出</span>
+<span class="n">df_score_a</span> <span class="o">=</span> <span class="n">df_game_eng</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df_game_eng</span><span class="p">[</span><span class="s1">&#39;away_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">team_id</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;section&#39;</span><span class="p">,</span> <span class="s1">&#39;away_score&#39;</span><span class="p">,</span> <span class="s1">&#39;home_score&#39;</span><span class="p">]]</span> <span class="c1"># 対象とするチームの節とスコア</span>
 <span class="n">df_score_a</span> <span class="o">=</span> <span class="n">df_score_a</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;away_score&#39;</span><span class="p">:</span> <span class="s1">&#39;goal&#39;</span><span class="p">,</span> <span class="s1">&#39;home_score&#39;</span><span class="p">:</span> <span class="s1">&#39;loss&#39;</span><span class="p">})</span> <span class="c1"># 列ラベルのリネーム</span>
 <span class="n">df_score_a</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -931,9 +930,9 @@ Arsenal
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 得失点差列の追加</span>
-<span class="n">df_score_h</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_score_h</span><span class="p">[</span><span class="s1">&#39;goal&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df_score_h</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span>  <span class="c1"># ホーム</span>
-<span class="n">df_score_a</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_score_a</span><span class="p">[</span><span class="s1">&#39;goal&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df_score_a</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span>  <span class="c1"># アウェイ</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 得失点差の列を追加</span>
+<span class="n">df_score_h</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_score_h</span><span class="p">[</span><span class="s1">&#39;goal&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df_score_h</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span>  <span class="c1"># ホームゲーム</span>
+<span class="n">df_score_a</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_score_a</span><span class="p">[</span><span class="s1">&#39;goal&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df_score_a</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span>  <span class="c1"># アウェイゲーム</span>
 <span class="n">df_score_h</span>
 </pre></div>
 </div>
@@ -1048,8 +1047,7 @@ Arsenal
 </div>
 <p><strong>試合結果</strong></p>
 <p>次に，試合結果の列<code class="docutils literal notranslate"><span class="pre">result</span></code>を追加する．
-勝ちを1，引き分けを0，負けを-1で表すことにすると，各試合の結果は得失点差を変換することで求められる．
-以下では<code class="docutils literal notranslate"><span class="pre">np.sign</span></code>関数を使って正の数を1，負の数を-1に変換することで<code class="docutils literal notranslate"><span class="pre">result</span></code>列を求める．</p>
+値の符号に応じて1，0，-1を返す<code class="docutils literal notranslate"><span class="pre">np.sign</span></code>関数を<code class="docutils literal notranslate"><span class="pre">diff</span></code>列に適用すれば，勝ちを1，引き分けを0，負けを-1で表すことができる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_score_h</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">df_score_h</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">])</span> <span class="c1"># ホーム</span>
@@ -1215,44 +1213,44 @@ Arsenal
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>4</td>
-      <td>3</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>31</th>
-      <td>4</td>
-      <td>3</td>
+      <th>14</th>
+      <td>2</td>
       <td>0</td>
-      <td>3</td>
-      <td>1</td>
+      <td>4</td>
+      <td>-4</td>
+      <td>-1</td>
     </tr>
     <tr>
-      <th>51</th>
+      <th>35</th>
+      <td>4</td>
+      <td>0</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>55</th>
       <td>6</td>
+      <td>1</td>
+      <td>2</td>
+      <td>-1</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>8</td>
       <td>2</td>
       <td>0</td>
       <td>2</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>61</th>
-      <td>7</td>
+      <th>83</th>
+      <td>9</td>
+      <td>1</td>
       <td>2</td>
-      <td>0</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>91</th>
-      <td>10</td>
-      <td>2</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
+      <td>-1</td>
+      <td>-1</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1263,58 +1261,64 @@ Arsenal
       <td>...</td>
     </tr>
     <tr>
-      <th>286</th>
-      <td>29</td>
-      <td>1</td>
-      <td>2</td>
-      <td>-1</td>
-      <td>-1</td>
+      <th>298</th>
+      <td>30</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
     </tr>
     <tr>
-      <th>303</th>
-      <td>31</td>
-      <td>1</td>
-      <td>3</td>
+      <th>313</th>
+      <td>32</td>
+      <td>0</td>
+      <td>2</td>
       <td>-2</td>
       <td>-1</td>
     </tr>
     <tr>
-      <th>335</th>
-      <td>34</td>
+      <th>327</th>
+      <td>33</td>
       <td>1</td>
-      <td>2</td>
-      <td>-1</td>
-      <td>-1</td>
-    </tr>
-    <tr>
-      <th>353</th>
-      <td>36</td>
-      <td>1</td>
-      <td>2</td>
-      <td>-1</td>
-      <td>-1</td>
-    </tr>
-    <tr>
-      <th>377</th>
-      <td>38</td>
       <td>1</td>
       <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>342</th>
+      <td>35</td>
+      <td>0</td>
+      <td>5</td>
+      <td>-5</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>369</th>
+      <td>37</td>
+      <td>0</td>
       <td>1</td>
-      <td>1</td>
+      <td>-1</td>
+      <td>-1</td>
     </tr>
   </tbody>
 </table>
 <p>38 rows × 5 columns</p>
 </div></div></div>
 </div>
-<p><strong>勝ち点</strong></p>
-<p>勝ち点は勝ちの場合に3，引き分けの場合に1として計算する．</p>
+<p><strong>勝ち点・累積勝ち点</strong></p>
+<p>勝ち点は勝ちの場合に3，引き分けの場合に1として計算する．
+まず，<code class="docutils literal notranslate"><span class="pre">point</span></code>列を0で初期化し，<code class="docutils literal notranslate"><span class="pre">result</span></code>列の値に応じて勝ち点を計算する．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_score</span><span class="p">[</span><span class="s1">&#39;point&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># 勝ち点列を0で初期化する</span>
 <span class="n">df_score</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_score</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;point&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># 勝ちの場合</span>
 <span class="n">df_score</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_score</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;point&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># 引き分けの場合</span>
-<span class="n">df_score</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;section&#39;</span><span class="p">)</span> <span class="c1"># 節でソート</span>
+
+<span class="c1"># 累積勝ち点を計算する</span>
+<span class="n">df_score</span><span class="p">[</span><span class="s1">&#39;total_point&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_score</span><span class="p">[</span><span class="s1">&#39;point&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>  <span class="c1"># 勝ち点の累積和を計算</span>
+
+<span class="n">df_score</span> <span class="o">=</span> <span class="n">df_score</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;section&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 節でソートしてインデックスをリセット</span>
+<span class="n">df_score</span>
 </pre></div>
 </div>
 </div>
@@ -1343,53 +1347,59 @@ Arsenal
       <th>diff</th>
       <th>result</th>
       <th>point</th>
+      <th>total_point</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
       <td>1</td>
-      <td>4</td>
-      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>1</td>
       <td>1</td>
-      <td>3</td>
     </tr>
     <tr>
-      <th>11</th>
+      <th>1</th>
       <td>2</td>
-      <td>0</td>
-      <td>1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>3</td>
       <td>0</td>
       <td>4</td>
       <td>-4</td>
       <td>-1</td>
       <td>0</td>
+      <td>1</td>
     </tr>
     <tr>
-      <th>31</th>
-      <td>4</td>
+      <th>2</th>
       <td>3</td>
+      <td>2</td>
       <td>0</td>
-      <td>3</td>
+      <td>2</td>
       <td>1</td>
       <td>3</td>
+      <td>4</td>
     </tr>
     <tr>
-      <th>44</th>
+      <th>3</th>
+      <td>4</td>
+      <td>0</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
       <td>5</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>1</td>
+      <td>5</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1399,55 +1409,61 @@ Arsenal
       <td>...</td>
       <td>...</td>
       <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
-      <th>335</th>
+      <th>33</th>
       <td>34</td>
       <td>1</td>
-      <td>2</td>
-      <td>-1</td>
-      <td>-1</td>
+      <td>1</td>
       <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>33</td>
     </tr>
     <tr>
-      <th>341</th>
+      <th>34</th>
       <td>35</td>
-      <td>4</td>
-      <td>1</td>
-      <td>3</td>
-      <td>1</td>
-      <td>3</td>
+      <td>0</td>
+      <td>5</td>
+      <td>-5</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>33</td>
     </tr>
     <tr>
-      <th>353</th>
+      <th>35</th>
       <td>36</td>
+      <td>0</td>
       <td>1</td>
-      <td>2</td>
       <td>-1</td>
       <td>-1</td>
       <td>0</td>
+      <td>33</td>
     </tr>
     <tr>
-      <th>361</th>
+      <th>36</th>
       <td>37</td>
-      <td>5</td>
       <td>0</td>
-      <td>5</td>
       <td>1</td>
-      <td>3</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>33</td>
     </tr>
     <tr>
-      <th>377</th>
+      <th>37</th>
       <td>38</td>
       <td>1</td>
+      <td>2</td>
+      <td>-1</td>
+      <td>-1</td>
       <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>3</td>
+      <td>33</td>
     </tr>
   </tbody>
 </table>
-<p>38 rows × 6 columns</p>
+<p>38 rows × 7 columns</p>
 </div></div></div>
 </div>
 <p><strong>最終成績</strong></p>
@@ -1455,7 +1471,14 @@ Arsenal
 他のチームの成績を統合することを考えて，以下のようにDataFrameの形に整形しておく．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="n">team_name</span><span class="p">,</span> <span class="n">team_id</span><span class="p">,</span> <span class="n">df_score</span><span class="p">[</span><span class="s1">&#39;goal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">df_score</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">df_score</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">df_score</span><span class="p">[</span><span class="s1">&#39;point&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()]],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;チーム&#39;</span><span class="p">,</span> <span class="s1">&#39;ID&#39;</span><span class="p">,</span> <span class="s1">&#39;得点&#39;</span><span class="p">,</span> <span class="s1">&#39;失点&#39;</span><span class="p">,</span> <span class="s1">&#39;得失点&#39;</span><span class="p">,</span> <span class="s1">&#39;勝点&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;チーム&#39;</span><span class="p">:</span> <span class="n">team_name</span><span class="p">,</span>
+    <span class="s1">&#39;ID&#39;</span><span class="p">:</span> <span class="n">team_id</span><span class="p">,</span>
+    <span class="s1">&#39;得点&#39;</span><span class="p">:</span> <span class="n">df_score</span><span class="p">[</span><span class="s1">&#39;goal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span>
+    <span class="s1">&#39;失点&#39;</span><span class="p">:</span> <span class="n">df_score</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span>
+    <span class="s1">&#39;得失点&#39;</span><span class="p">:</span> <span class="n">df_score</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span>
+    <span class="s1">&#39;勝点&#39;</span><span class="p">:</span> <span class="n">df_score</span><span class="p">[</span><span class="s1">&#39;point&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1489,12 +1512,12 @@ Arsenal
   <tbody>
     <tr>
       <th>0</th>
-      <td>Arsenal</td>
-      <td>1609</td>
-      <td>74</td>
-      <td>51</td>
-      <td>23</td>
-      <td>63</td>
+      <td>Swansea_City</td>
+      <td>10531</td>
+      <td>28</td>
+      <td>56</td>
+      <td>-28</td>
+      <td>33</td>
     </tr>
   </tbody>
 </table>
@@ -1542,8 +1565,8 @@ Arsenal
     <span class="n">df_score</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_score</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;point&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
     <span class="n">df_score</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_score</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;point&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
     
-    <span class="c1"># 節でソート</span>
-    <span class="n">df_score</span> <span class="o">=</span> <span class="n">df_score</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;section&#39;</span><span class="p">)</span>
+    <span class="c1"># 節でソートしてインデックスをリセット</span>
+    <span class="n">df_score</span> <span class="o">=</span> <span class="n">df_score</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;section&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     
     <span class="c1"># 順位表への統合</span>
     <span class="n">gf</span> <span class="o">=</span> <span class="n">df_score</span><span class="p">[</span><span class="s1">&#39;goal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>  <span class="c1"># 総得点</span>
@@ -1558,12 +1581,11 @@ Arsenal
 </div>
 </div>
 </div>
-<p>最後に，データフレームを勝ち点の順にソートしてインデックスを付け直し，csvファイルとして保存する．</p>
+<p>最後に，データフレームを勝ち点の順にソートしてインデックスを振り直し，csvファイルとして保存する．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ソートと再インデックス</span>
-<span class="n">df_rank</span> <span class="o">=</span> <span class="n">df_rank</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;勝点&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">df_rank</span> <span class="o">=</span> <span class="n">df_rank</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_rank</span> <span class="o">=</span> <span class="n">df_rank</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;勝点&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># 勝ち点でソート</span>
+<span class="n">df_rank</span> <span class="o">=</span> <span class="n">df_rank</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># インデックスを振り直す</span>
 
 <span class="c1"># csvファイルへの出力</span>
 <span class="n">df_rank</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./Rank_England.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1714,11 +1736,38 @@ Arsenal
 </section>
 <section id="id8">
 <h3><span class="section-number">6.2.4. </span>演習問題<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>イングランド以外のリーグ（フランス，ドイツ，イタリア，スペイン）について，同様の順位表を作成せよ</p></li>
-<li><p>好きなチームに対して，横軸に節，縦軸に累積勝ち点を取ったグラフを作成し，1シーズンの勝ち点の変動を可視化せよ．</p></li>
-<li><p>特定のリーグの全チームについて，勝ち点の変動を可視化せよ．</p></li>
-</ul>
+<p>好きなチームを一つ選び，全試合の得点・失点・得失点差・勝ち点・累積勝ち点を記録したDataFrameを作成せよ．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>選んだチームについて，横軸に節，縦軸に累積勝ち点を取ったグラフを作成し，1シーズンの勝ち点の変動を可視化せよ．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>選んだチームが所属するリーグについて，順位表を作成せよ．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>全チームの勝ち点変動を可視化せよ．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="id9">
