@@ -1760,7 +1760,7 @@ Arsenal
 </div>
 </div>
 </div>
-<p>全チームの勝ち点変動を可視化せよ．</p>
+<p>上位5チームの勝ち点変動を同じグラフに重ねて可視化せよ．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
@@ -1772,7 +1772,7 @@ Arsenal
 </section>
 <section id="id9">
 <h2><span class="section-number">6.3. </span>得点分布<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
-<p>サッカーは非常に得点が入りにくい競技であるが，いつ得点が入るか予測が難しいため常に試合から目が離せない．
+<p>サッカーは非常に得点が入りにくい競技であるが，同時にいつ得点が入るか予測が難しいという特徴もある．
 得点のランダム性はサッカーが人々を熱狂させる理由と考えられるが，実はこのようなランダム性の裏にはきれいな法則が隠れている．</p>
 <section id="id10">
 <h3><span class="section-number">6.3.1. </span>ポアソン分布<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
@@ -2037,7 +2037,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x321cd9bb0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x32eee6270&gt;]
 </pre></div>
 </div>
 <img alt="../_images/a4dfe03a48a935fb89a2a76e6a8c49f2c58d34e20dc90967a1b3c76ab52d8dbd.png" src="../_images/a4dfe03a48a935fb89a2a76e6a8c49f2c58d34e20dc90967a1b3c76ab52d8dbd.png" />
@@ -2081,10 +2081,51 @@ dtype: float64
 </section>
 <section id="id13">
 <h3><span class="section-number">6.3.4. </span>演習問題<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>他のリーグについて，ホームチームまたはアウェイチームの得点分布を描画し，さらに実データから求めた平均値をパラメータとするポアソン分布を同じグラフに描画せよ．</p></li>
-<li><p><span class="math notranslate nohighlight">\( \chi^2 \)</span> 検定を用いて，サッカーの得点分布がポアソン分布に従うかどうか検証せよ．</p></li>
-</ul>
+<p><strong>サッカーの得点分布</strong></p>
+<p>イングランドリーグのアウェイチームについても得点分布を描画し，実データから求めた平均値をパラメータとするポアソン分布を同じグラフに描画せよ．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>他のリーグについても同様に得点分布を描画し，実データから求めた平均値をパラメータとするポアソン分布を同じグラフに描画せよ．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>アイスホッケーの得点分布</strong></p>
+<p><a class="reference external" href="https://tnarizuka.github.io/sports_data_programming/chap_6/ice_hockey_score.csv">ice_hockey_score.csv</a>は，NHL(National Hockey League)の2000シーズン〜2019シーズンの全試合の得点データである．<br>
+※ このデータは <a class="reference external" href="https://www.kaggle.com/datasets/martinellis/nhl-game-data/">https://www.kaggle.com/datasets/martinellis/nhl-game-data/</a> から取得した．</p>
+<p>このデータをpandasのDataFrameに読み込め．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>シーズンごとにホームチームとアウェイチームの平均得点を求め，違いやその要因を考察せよ．<br>
+※ アイスホッケーにはルール上ホームアドバンテージがあることが知られている．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>好きなシーズンを選び，アウェイチームとホームチームの得点分布を描画せよ．また，実データから求めた平均値をパラメータとするポアソン分布を同じグラフに描画せよ．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="id14">
