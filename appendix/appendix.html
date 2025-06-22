@@ -442,15 +442,16 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">ボールの軌跡の可視化</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">選手間のパス数</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">トラッキングデータの解析</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">トラッキングデータの解析</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pettersen-alfheim">Pettersen-Alfheimデータセットの詳細</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">データセットに関する情報の入手先</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">データセットに関する情報の入手先</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">ボロノイ領域</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">ドロネーネットワーク</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">ボロノイ領域</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">ドロネーネットワーク</a></li>
 </ul>
 </li>
 </ul>
@@ -3426,13 +3427,499 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 </section>
-</section>
 <section id="id22">
-<h2>トラッキングデータの解析<a class="headerlink" href="#id22" title="Link to this heading">#</a></h2>
+<h3>選手間のパス数<a class="headerlink" href="#id22" title="Link to this heading">#</a></h3>
+<p>特定の試合における選手間のパス数を可視化してみよう．
+本来，このような解析にはnetworkxという専用のライブラリを使うべきだが，以下ではpandasとseabornという可視化ライブラリを用いて実装する．</p>
+<p><strong>試合の抽出</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 特定の試合を抽出</span>
+<span class="n">df_event_game</span> <span class="o">=</span> <span class="n">df_event</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;game_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">2499719</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>パスリストの作成</strong></p>
+<p>選手間のパス数を求めるには，パスの出し手と受け手の情報が必要である．
+しかし，イベントログ<code class="docutils literal notranslate"><span class="pre">df_event</span></code>にはパスの出し手の情報しかないので，受け手の情報を加える必要がある．
+イベント名が'pass'の行については，次の行の選手IDがパスの受け手に対応するので，以下のようにパスリスト<code class="docutils literal notranslate"><span class="pre">pass_list</span></code>を作成できる．
+なお，イベントログには選手ID（'player_id'）の情報しかないので，選手プロフィール<code class="docutils literal notranslate"><span class="pre">df_player</span></code>のデータを用いて選手名を追加する．
+以下のように，<code class="docutils literal notranslate"><span class="pre">replace</span></code>メソッドを用いて，選手ID（'player_id'）を選手名（'name'）に置換すれば良い．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># イベント名が&#39;pass&#39;の行を抽出</span>
+<span class="n">df_event_pass</span> <span class="o">=</span> <span class="n">df_event_game</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;pass&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;player_id&#39;</span><span class="p">,</span> <span class="s1">&#39;team_id&#39;</span><span class="p">]]</span>
+
+<span class="c1"># パスリストの作成</span>
+<span class="n">pass_list</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;player_id&#39;</span><span class="p">:</span> <span class="n">df_event_pass</span><span class="p">[</span><span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+                   <span class="s1">&#39;player_id2&#39;</span><span class="p">:</span> <span class="n">df_event_pass</span><span class="p">[</span><span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
+                   <span class="s1">&#39;team_id&#39;</span><span class="p">:</span> <span class="n">df_event_pass</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+                   <span class="s1">&#39;team_id2&#39;</span><span class="p">:</span> <span class="n">df_event_pass</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:]})</span>
+
+<span class="c1"># パスリストに選手名を追加</span>
+<span class="n">pass_list</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pass_list</span><span class="p">[</span><span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">df_player</span><span class="p">[</span><span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">df_player</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">pass_list</span><span class="p">[</span><span class="s1">&#39;name2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pass_list</span><span class="p">[</span><span class="s1">&#39;player_id2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">df_player</span><span class="p">[</span><span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">df_player</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pass_list</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>player_id</th>
+      <th>player_id2</th>
+      <th>team_id</th>
+      <th>team_id2</th>
+      <th>name</th>
+      <th>name2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>25413</td>
+      <td>370224</td>
+      <td>1609</td>
+      <td>1609</td>
+      <td>A_Lacazette</td>
+      <td>R_Holding</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>370224</td>
+      <td>3319</td>
+      <td>1609</td>
+      <td>1609</td>
+      <td>R_Holding</td>
+      <td>M_Özil</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3319</td>
+      <td>120339</td>
+      <td>1609</td>
+      <td>1609</td>
+      <td>M_Özil</td>
+      <td>Mohame_Elneny</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>120339</td>
+      <td>167145</td>
+      <td>1609</td>
+      <td>1609</td>
+      <td>Mohame_Elneny</td>
+      <td>Bellerín</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>167145</td>
+      <td>3319</td>
+      <td>1609</td>
+      <td>1609</td>
+      <td>Bellerín</td>
+      <td>M_Özil</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>830</th>
+      <td>217078</td>
+      <td>8488</td>
+      <td>1631</td>
+      <td>1631</td>
+      <td>D_Amartey</td>
+      <td>W_Morgan</td>
+    </tr>
+    <tr>
+      <th>831</th>
+      <td>8488</td>
+      <td>265366</td>
+      <td>1631</td>
+      <td>1631</td>
+      <td>W_Morgan</td>
+      <td>W_Ndidi</td>
+    </tr>
+    <tr>
+      <th>832</th>
+      <td>265366</td>
+      <td>8653</td>
+      <td>1631</td>
+      <td>1631</td>
+      <td>W_Ndidi</td>
+      <td>H_Maguire</td>
+    </tr>
+    <tr>
+      <th>833</th>
+      <td>8653</td>
+      <td>8480</td>
+      <td>1631</td>
+      <td>1631</td>
+      <td>H_Maguire</td>
+      <td>K_Schmeichel</td>
+    </tr>
+    <tr>
+      <th>834</th>
+      <td>8480</td>
+      <td>49876</td>
+      <td>1631</td>
+      <td>1609</td>
+      <td>K_Schmeichel</td>
+      <td>G_Xhaka</td>
+    </tr>
+  </tbody>
+</table>
+<p>835 rows × 6 columns</p>
+</div></div></div>
+</div>
+<p><strong>パス数行列の作成</strong></p>
+<p>チーム内の選手 <span class="math notranslate nohighlight">\(i\)</span> と <span class="math notranslate nohighlight">\(j\)</span> 間のパス数を要素とする行列をパス数行列と呼ぶことにする．
+パス数行列の <span class="math notranslate nohighlight">\((i, j)\)</span> 成分は選手 <span class="math notranslate nohighlight">\(i\)</span> から <span class="math notranslate nohighlight">\(j\)</span> へのパスを表す．
+以下は<code class="docutils literal notranslate"><span class="pre">for</span></code>文によってパス数行列を作成する例である．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># チームIDの取得</span>
+<span class="n">team_id</span> <span class="o">=</span> <span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span> <span class="c1"># 2チームのチームID</span>
+<span class="n">player_id_0</span> <span class="o">=</span> <span class="n">pass_list</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pass_list</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">team_id</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span> <span class="c1"># チーム0の選手ID</span>
+<span class="n">player_id_1</span> <span class="o">=</span> <span class="n">pass_list</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pass_list</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">team_id</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span> <span class="c1"># チーム1の選手ID</span>
+
+<span class="c1"># チーム0のパス数行列を作成</span>
+<span class="n">A0</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">player_id_0</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">player_id_0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">player_id_0</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">player_id_0</span><span class="p">:</span>
+        <span class="n">A0</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pass_list</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">pass_list</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pass_list</span><span class="p">[</span><span class="s1">&#39;name2&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">j</span><span class="p">)])</span>
+
+<span class="c1"># チーム1のパス数行列を作成</span>
+<span class="n">A1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">player_id_1</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">player_id_1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">player_id_1</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">player_id_1</span><span class="p">:</span>
+        <span class="n">A1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pass_list</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">pass_list</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pass_list</span><span class="p">[</span><span class="s1">&#39;name2&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">j</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A_Lacazette</th>
+      <th>R_Holding</th>
+      <th>M_Özil</th>
+      <th>Mohame_Elneny</th>
+      <th>Bellerín</th>
+      <th>G_Xhaka</th>
+      <th>S_Kolašinac</th>
+      <th>Nach_Monreal</th>
+      <th>P_Čech</th>
+      <th>A_Oxlade-Chamberlain</th>
+      <th>D_Welbeck</th>
+      <th>O_Giroud</th>
+      <th>A_Ramsey</th>
+      <th>T_Walcott</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A_Lacazette</th>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>R_Holding</th>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>11.0</td>
+      <td>8.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>12.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>M_Özil</th>
+      <td>5.0</td>
+      <td>6.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>8.0</td>
+      <td>19.0</td>
+      <td>9.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Mohame_Elneny</th>
+      <td>1.0</td>
+      <td>8.0</td>
+      <td>7.0</td>
+      <td>1.0</td>
+      <td>10.0</td>
+      <td>16.0</td>
+      <td>4.0</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Bellerín</th>
+      <td>3.0</td>
+      <td>10.0</td>
+      <td>11.0</td>
+      <td>11.0</td>
+      <td>0.0</td>
+      <td>6.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>A_Oxlade-Chamberlain</th>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>9.0</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>D_Welbeck</th>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>O_Giroud</th>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>A_Ramsey</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>T_Walcott</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>14 rows × 14 columns</p>
+</div></div></div>
+</div>
+<p><strong>パス数行列の可視化</strong></p>
+<p>パス数行列を可視化する方法はいくつか考えられる．
+例えば，選手を点，選手間のパス数を線の太さに対応させた図で表す方法がある．
+このような図はネットワーク呼ばれ，サッカーのデータ分析における標準的な手法となっている．
+しかし，ネットワークの分析と可視化にはnetworkxなどの専用ライブラリの知識が必要となるので，ここではより直接的にヒートマップを用いた可視化方法を採用する．
+以下の<code class="docutils literal notranslate"><span class="pre">plot_corr_mat</span></code>関数は，seabornという可視化ライブラリを用いてパス数行列をヒートマップで可視化する．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span>
+<span class="k">def</span> <span class="nf">plot_corr_mat</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+    <span class="c1"># ヒートマップの作成</span>
+    <span class="n">seaborn</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> 
+                    <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="c1"># セル間の線の太さ</span>
+                    <span class="n">linecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span>  <span class="c1"># セル間の線の色</span>
+                    <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>      <span class="c1"># カラーバーの表示</span>
+                    <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>     <span class="c1"># セルに値を表示</span>
+                    <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>    <span class="c1"># セルを正方形にする</span>
+                    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span>     <span class="c1"># カラーマップの色（&#39;Reds&#39;, &#39;Greens&#39;, &#39;Blues&#39;など）</span>
+                    <span class="n">cbar_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;shrink&quot;</span><span class="p">:</span> <span class="mf">.5</span><span class="p">}</span> <span class="c1"># カラーバーのサイズ</span>
+                    <span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> <span class="c1"># x軸のラベル</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>   <span class="c1"># y軸のラベル</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># チーム0のパス数行列のヒートマップ</span>
+<span class="n">plot_corr_mat</span><span class="p">(</span><span class="n">A0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/15c33dee4bf00ca49f8317de94ae6d2e5b799fe4cc550eeb87042ee773418dd7.png" src="../_images/15c33dee4bf00ca49f8317de94ae6d2e5b799fe4cc550eeb87042ee773418dd7.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># チーム1のパス数行列のヒートマップ</span>
+<span class="n">plot_corr_mat</span><span class="p">(</span><span class="n">A1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/33ccace593621de8b864e8cb2799c1ccf6685174f409a32d9106568093617333.png" src="../_images/33ccace593621de8b864e8cb2799c1ccf6685174f409a32d9106568093617333.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="id23">
+<h2>トラッキングデータの解析<a class="headerlink" href="#id23" title="Link to this heading">#</a></h2>
 <section id="pettersen-alfheim">
 <span id="pettersen"></span><h3>Pettersen-Alfheimデータセットの詳細<a class="headerlink" href="#pettersen-alfheim" title="Link to this heading">#</a></h3>
-<section id="id23">
-<h4>データセットに関する情報の入手先<a class="headerlink" href="#id23" title="Link to this heading">#</a></h4>
+<section id="id24">
+<h4>データセットに関する情報の入手先<a class="headerlink" href="#id24" title="Link to this heading">#</a></h4>
 <p>Pettersen-Alfheimデータセットの情報は以下で入手できる：</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.researchgate.net/publication/260983291_Soccer_Video_and_Player_Position_Dataset">データの詳細をまとめた論文</a></p>
@@ -3562,8 +4049,8 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </ul>
 </section>
 </section>
-<section id="id24">
-<h3>ボロノイ領域<a class="headerlink" href="#id24" title="Link to this heading">#</a></h3>
+<section id="id25">
+<h3>ボロノイ領域<a class="headerlink" href="#id25" title="Link to this heading">#</a></h3>
 <p>2次元平面上に<span class="math notranslate nohighlight">\(N\)</span>個の個体（<strong>母点</strong>と呼ぶ）が配置されているとき，平面上の各点を「どの母点から最も近いか」という基準で分割する．
 このとき，母点<span class="math notranslate nohighlight">\(p\)</span>から最も近い領域のことを母点<span class="math notranslate nohighlight">\(p\)</span>の<strong>ボロノイ領域</strong>と呼ぶ．
 通常，近さの基準はユークリッド距離によって定める．
@@ -3831,8 +4318,8 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </div>
 </div>
 </section>
-<section id="id25">
-<h3>ドロネーネットワーク<a class="headerlink" href="#id25" title="Link to this heading">#</a></h3>
+<section id="id26">
+<h3>ドロネーネットワーク<a class="headerlink" href="#id26" title="Link to this heading">#</a></h3>
 <p>ある程度幅のある時間帯から選手の平均位置を求めてフォーメーションを可視化するには重心系で平均位置と標準偏差を求めれば良い．
 では，特定の時刻においてフォーメーションを定量化・可視化するにはどうすればよいだろうか？
 各時刻において4-4-2や3-4-3などの数字の組を割り当てるのも一つの方法かもしれないが，実はもっと便利な方法がある．
@@ -4131,15 +4618,16 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">ボールの軌跡の可視化</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">選手間のパス数</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">トラッキングデータの解析</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">トラッキングデータの解析</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pettersen-alfheim">Pettersen-Alfheimデータセットの詳細</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">データセットに関する情報の入手先</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">データセットに関する情報の入手先</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">ボロノイ領域</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">ドロネーネットワーク</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">ボロノイ領域</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">ドロネーネットワーク</a></li>
 </ul>
 </li>
 </ul>
