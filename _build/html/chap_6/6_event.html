@@ -1180,6 +1180,7 @@ Arsenal
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_score</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_score_h</span><span class="p">,</span> <span class="n">df_score_a</span><span class="p">])</span>
+<span class="n">df_score</span> <span class="o">=</span> <span class="n">df_score</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;section&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 節でソートしてインデックスをリセット</span>
 <span class="n">df_score</span>
 </pre></div>
 </div>
@@ -1212,44 +1213,44 @@ Arsenal
   </thead>
   <tbody>
     <tr>
-      <th>14</th>
+      <th>0</th>
+      <td>1</td>
+      <td>4</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
       <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
       <td>0</td>
       <td>4</td>
       <td>-4</td>
       <td>-1</td>
     </tr>
     <tr>
-      <th>35</th>
+      <th>3</th>
       <td>4</td>
+      <td>3</td>
       <td>0</td>
+      <td>3</td>
       <td>1</td>
-      <td>-1</td>
-      <td>-1</td>
     </tr>
     <tr>
-      <th>55</th>
-      <td>6</td>
-      <td>1</td>
-      <td>2</td>
-      <td>-1</td>
-      <td>-1</td>
-    </tr>
-    <tr>
-      <th>73</th>
-      <td>8</td>
-      <td>2</td>
+      <th>4</th>
+      <td>5</td>
       <td>0</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>83</th>
-      <td>9</td>
-      <td>1</td>
-      <td>2</td>
-      <td>-1</td>
-      <td>-1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1260,44 +1261,44 @@ Arsenal
       <td>...</td>
     </tr>
     <tr>
-      <th>298</th>
-      <td>30</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>313</th>
-      <td>32</td>
-      <td>0</td>
+      <th>33</th>
+      <td>34</td>
+      <td>1</td>
       <td>2</td>
-      <td>-2</td>
+      <td>-1</td>
       <td>-1</td>
     </tr>
     <tr>
-      <th>327</th>
-      <td>33</td>
+      <th>34</th>
+      <td>35</td>
+      <td>4</td>
       <td>1</td>
+      <td>3</td>
       <td>1</td>
-      <td>0</td>
-      <td>0</td>
     </tr>
     <tr>
-      <th>342</th>
-      <td>35</td>
+      <th>35</th>
+      <td>36</td>
+      <td>1</td>
+      <td>2</td>
+      <td>-1</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>37</td>
+      <td>5</td>
       <td>0</td>
       <td>5</td>
-      <td>-5</td>
-      <td>-1</td>
+      <td>1</td>
     </tr>
     <tr>
-      <th>369</th>
-      <td>37</td>
+      <th>37</th>
+      <td>38</td>
+      <td>1</td>
       <td>0</td>
       <td>1</td>
-      <td>-1</td>
-      <td>-1</td>
+      <td>1</td>
     </tr>
   </tbody>
 </table>
@@ -1316,7 +1317,6 @@ Arsenal
 <span class="c1"># 累積勝ち点を計算する</span>
 <span class="n">df_score</span><span class="p">[</span><span class="s1">&#39;total_point&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_score</span><span class="p">[</span><span class="s1">&#39;point&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>  <span class="c1"># 勝ち点の累積和を計算</span>
 
-<span class="n">df_score</span> <span class="o">=</span> <span class="n">df_score</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;section&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 節でソートしてインデックスをリセット</span>
 <span class="n">df_score</span>
 </pre></div>
 </div>
@@ -1353,42 +1353,42 @@ Arsenal
     <tr>
       <th>0</th>
       <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>4</td>
+      <td>3</td>
       <td>1</td>
       <td>1</td>
+      <td>3</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2</td>
       <td>0</td>
-      <td>4</td>
-      <td>-4</td>
+      <td>1</td>
+      <td>-1</td>
       <td>-1</td>
       <td>0</td>
-      <td>1</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>2</th>
       <td>3</td>
-      <td>2</td>
       <td>0</td>
-      <td>2</td>
-      <td>1</td>
-      <td>3</td>
       <td>4</td>
+      <td>-4</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>3</th>
       <td>4</td>
+      <td>3</td>
       <td>0</td>
+      <td>3</td>
       <td>1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>0</td>
-      <td>4</td>
+      <td>3</td>
+      <td>6</td>
     </tr>
     <tr>
       <th>4</th>
@@ -1398,7 +1398,7 @@ Arsenal
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>5</td>
+      <td>7</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1414,51 +1414,51 @@ Arsenal
       <th>33</th>
       <td>34</td>
       <td>1</td>
-      <td>1</td>
+      <td>2</td>
+      <td>-1</td>
+      <td>-1</td>
       <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>33</td>
+      <td>54</td>
     </tr>
     <tr>
       <th>34</th>
       <td>35</td>
-      <td>0</td>
-      <td>5</td>
-      <td>-5</td>
-      <td>-1</td>
-      <td>0</td>
-      <td>33</td>
+      <td>4</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+      <td>57</td>
     </tr>
     <tr>
       <th>35</th>
       <td>36</td>
-      <td>0</td>
-      <td>1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>0</td>
-      <td>33</td>
-    </tr>
-    <tr>
-      <th>36</th>
-      <td>37</td>
-      <td>0</td>
-      <td>1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>0</td>
-      <td>33</td>
-    </tr>
-    <tr>
-      <th>37</th>
-      <td>38</td>
       <td>1</td>
       <td>2</td>
       <td>-1</td>
       <td>-1</td>
       <td>0</td>
-      <td>33</td>
+      <td>57</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>37</td>
+      <td>5</td>
+      <td>0</td>
+      <td>5</td>
+      <td>1</td>
+      <td>3</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>38</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>63</td>
     </tr>
   </tbody>
 </table>
@@ -1511,12 +1511,12 @@ Arsenal
   <tbody>
     <tr>
       <th>0</th>
-      <td>Swansea_City</td>
-      <td>10531</td>
-      <td>28</td>
-      <td>56</td>
-      <td>-28</td>
-      <td>33</td>
+      <td>Arsenal</td>
+      <td>1609</td>
+      <td>74</td>
+      <td>51</td>
+      <td>23</td>
+      <td>63</td>
     </tr>
   </tbody>
 </table>
@@ -1558,14 +1558,12 @@ Arsenal
     
     <span class="c1"># 統合</span>
     <span class="n">df_score</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_score_h</span><span class="p">,</span> <span class="n">df_score_a</span><span class="p">])</span>
+    <span class="n">df_score</span> <span class="o">=</span> <span class="n">df_score</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;section&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># 節でソートしてインデックスをリセット</span>
     
     <span class="c1"># 勝ち点</span>
     <span class="n">df_score</span><span class="p">[</span><span class="s1">&#39;point&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">df_score</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_score</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;point&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
     <span class="n">df_score</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_score</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;point&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-    
-    <span class="c1"># 節でソートしてインデックスをリセット</span>
-    <span class="n">df_score</span> <span class="o">=</span> <span class="n">df_score</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;section&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     
     <span class="c1"># 順位表への統合</span>
     <span class="n">gf</span> <span class="o">=</span> <span class="n">df_score</span><span class="p">[</span><span class="s1">&#39;goal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>  <span class="c1"># 総得点</span>
@@ -1596,7 +1594,7 @@ Arsenal
 <p>※ <a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%AA%E3%83%BC%E3%82%B02017-2018">Wikipedia</a>の情報とは一部合わないが，<a class="reference external" href="https://www.premierleague.com/tables?co=1&amp;amp;se=79&amp;amp;mw=-1&amp;amp;ha=-1">Premier League Table, Form Guide &amp; Season Archives</a>とは一致している．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_rank</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_rank</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1674,62 +1672,52 @@ Arsenal
       <td>70</td>
     </tr>
     <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
+      <th>5</th>
+      <td>Arsenal</td>
+      <td>1609</td>
+      <td>74</td>
+      <td>51</td>
+      <td>23</td>
+      <td>63</td>
     </tr>
     <tr>
-      <th>15</th>
-      <td>Huddersfield_Town</td>
-      <td>1673</td>
-      <td>28</td>
-      <td>58</td>
-      <td>-30</td>
-      <td>37</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>Southampton</td>
-      <td>1619</td>
-      <td>37</td>
-      <td>56</td>
-      <td>-19</td>
+      <th>6</th>
+      <td>Burnley</td>
+      <td>1646</td>
       <td>36</td>
+      <td>39</td>
+      <td>-3</td>
+      <td>54</td>
     </tr>
     <tr>
-      <th>17</th>
-      <td>Stoke_City</td>
-      <td>1639</td>
-      <td>35</td>
-      <td>68</td>
-      <td>-33</td>
-      <td>33</td>
+      <th>7</th>
+      <td>Everton</td>
+      <td>1623</td>
+      <td>44</td>
+      <td>58</td>
+      <td>-14</td>
+      <td>49</td>
     </tr>
     <tr>
-      <th>18</th>
-      <td>Swansea_City</td>
-      <td>10531</td>
-      <td>28</td>
+      <th>8</th>
+      <td>Leicester_City</td>
+      <td>1631</td>
       <td>56</td>
-      <td>-28</td>
-      <td>33</td>
+      <td>60</td>
+      <td>-4</td>
+      <td>47</td>
     </tr>
     <tr>
-      <th>19</th>
-      <td>West_Bromwich_Albion</td>
-      <td>1627</td>
-      <td>31</td>
-      <td>56</td>
-      <td>-25</td>
-      <td>31</td>
+      <th>9</th>
+      <td>AFC_Bournemouth</td>
+      <td>1659</td>
+      <td>45</td>
+      <td>61</td>
+      <td>-16</td>
+      <td>44</td>
     </tr>
   </tbody>
 </table>
-<p>20 rows × 6 columns</p>
 </div></div></div>
 </div>
 </section>
