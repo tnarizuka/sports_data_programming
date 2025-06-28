@@ -3878,7 +3878,8 @@ Name: count, dtype: int64
 <p><code class="docutils literal notranslate"><span class="pre">df_event</span></code>から以下の条件でシュートイベントだけを抽出し，新たに<code class="docutils literal notranslate"><span class="pre">df_shot</span></code>というDataFrameに保存せよ．<br></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_shot</span> <span class="o">=</span> <span class="n">df_event</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;shot&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;free_kick&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;goal&#39;</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># シュートイベントの抽出</span>
+<span class="n">df_shot</span> <span class="o">=</span> <span class="n">df_event</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;shot&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;free_kick&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;goal&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -3901,6 +3902,13 @@ Name: count, dtype: int64
 <ul class="simple">
 <li><p>相手ゴールの中心の座標は <span class="math notranslate nohighlight">\((100, 50)\)</span> である．</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># シュート距離の計算</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>以下のコードを実行し，<code class="docutils literal notranslate"><span class="pre">df_shot['distance']</span></code>の値を5m単位に丸めよ．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
