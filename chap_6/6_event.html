@@ -3878,7 +3878,7 @@ Name: count, dtype: int64
 <p><code class="docutils literal notranslate"><span class="pre">df_event</span></code>から以下の条件でシュートイベントだけを抽出し，新たに<code class="docutils literal notranslate"><span class="pre">df_shot</span></code>というDataFrameに保存せよ．<br></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># シュートイベントの抽出</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
 <span class="n">df_shot</span> <span class="o">=</span> <span class="n">df_event</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;shot&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df_event</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;free_kick&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;goal&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
@@ -3890,10 +3890,7 @@ Name: count, dtype: int64
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># success列を追加して0で初期化</span>
-<span class="n">df_shot</span><span class="p">[</span><span class="s1">&#39;success&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="c1"># 成功したシュートに1を設定</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
 </pre></div>
 </div>
 </div>
@@ -3904,7 +3901,7 @@ Name: count, dtype: int64
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># シュート距離の計算</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
 </pre></div>
 </div>
 </div>
@@ -3912,7 +3909,7 @@ Name: count, dtype: int64
 <p>以下のコードを実行し，<code class="docutils literal notranslate"><span class="pre">df_shot['distance']</span></code>の値を5m単位に丸めよ．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># シュート距離を5m単位に丸める</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
 <span class="n">df_shot</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">df_shot</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span>
 </pre></div>
 </div>
@@ -3925,7 +3922,7 @@ Name: count, dtype: int64
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># シュート距離ごとの成功率を計算</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
 <span class="n">distance</span> <span class="o">=</span> <span class="n">df_shot</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;distance&#39;</span><span class="p">)[</span><span class="s1">&#39;success&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">index</span>  <span class="c1"># シュート距離</span>
 <span class="n">success_rate</span> <span class="o">=</span> <span class="n">df_shot</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;distance&#39;</span><span class="p">)[</span><span class="s1">&#39;success&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>  <span class="c1"># シュート成功率</span>
 </pre></div>
@@ -3939,7 +3936,7 @@ Name: count, dtype: int64
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># シュート距離とシュート成功率の関係</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
 </pre></div>
 </div>
 </div>
