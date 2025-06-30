@@ -2231,7 +2231,7 @@ dtype: float64
 </section>
 <section id="id17">
 <h3><span class="section-number">6.4.3. </span>イベントデータ解析の基本<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
-<p>イベントデータには，ボールに関わるイベントに関するほぼ全ての情報が含まれている．
+<p>イベントデータには，ボールの受け渡し時のイベント情報が含まれている．
 イベントデータ解析の目的はこれらのデータから意味のある情報を抽出することである．
 イベントデータを解析する際の手順は以下のようにまとめられる：</p>
 <ol class="arabic simple">
@@ -2241,6 +2241,7 @@ dtype: float64
 </ol>
 <p>以下では，条件付き抽出の例をいくつか示す．</p>
 <p><strong>特定の試合・時間帯の抽出</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">df_event</span></code>にはイングランド・プレミアリーグの全試合のイベントデータが含まれているため，まずは特定の試合のデータのみ抽出して<code class="docutils literal notranslate"><span class="pre">df_event_game</span></code>に保存する．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 特定の試合を抽出する</span>
@@ -2250,6 +2251,8 @@ dtype: float64
 </div>
 </div>
 </div>
+<p>次に，<code class="docutils literal notranslate"><span class="pre">df_event_game</span></code>から特定の時間帯のデータを抽出する．
+<code class="docutils literal notranslate"><span class="pre">half</span></code>列（前半が1，後半が2）や<code class="docutils literal notranslate"><span class="pre">t</span></code>列（ハーフ開始からの経過時間）を用いて条件付き抽出を行う．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 前半のみ抽出する</span>
@@ -3641,7 +3644,15 @@ Name: count, dtype: int64
 </section>
 <section id="id20">
 <h3><span class="section-number">6.4.6. </span>演習問題<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
-<p>イベントデータの<code class="docutils literal notranslate"><span class="pre">event</span></code>列と<code class="docutils literal notranslate"><span class="pre">subevent</span></code>列から様々な条件で場面を抽出し，<code class="docutils literal notranslate"><span class="pre">plot_evemt_hmap</span></code>関数を用いてヒートマップを描画せよ．</p>
+<p>イベントデータの<code class="docutils literal notranslate"><span class="pre">half</span></code>列と<code class="docutils literal notranslate"><span class="pre">t</span></code>列を用いて様々な時間帯のデータを抽出せよ．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>イベントデータの<code class="docutils literal notranslate"><span class="pre">event</span></code>列や<code class="docutils literal notranslate"><span class="pre">subevent</span></code>列，フラグ列を用いて様々な条件で場面を抽出し，<code class="docutils literal notranslate"><span class="pre">plot_evemt_hmap</span></code>関数を用いてヒートマップを描画せよ．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
