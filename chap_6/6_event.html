@@ -2022,10 +2022,10 @@ dtype: float64
       <td>25413</td>
       <td>pass</td>
       <td>simple_pass</td>
-      <td>49</td>
-      <td>49</td>
-      <td>31.0</td>
-      <td>78.0</td>
+      <td>51.4</td>
+      <td>33.3</td>
+      <td>32.6</td>
+      <td>53.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2042,10 +2042,10 @@ dtype: float64
       <td>370224</td>
       <td>pass</td>
       <td>high_pass</td>
-      <td>31</td>
-      <td>78</td>
+      <td>32.6</td>
+      <td>53.0</td>
+      <td>53.6</td>
       <td>51.0</td>
-      <td>75.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2062,10 +2062,10 @@ dtype: float64
       <td>3319</td>
       <td>pass</td>
       <td>head_pass</td>
-      <td>51</td>
-      <td>75</td>
-      <td>35.0</td>
-      <td>71.0</td>
+      <td>53.6</td>
+      <td>51.0</td>
+      <td>36.8</td>
+      <td>48.3</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2082,10 +2082,10 @@ dtype: float64
       <td>120339</td>
       <td>pass</td>
       <td>head_pass</td>
-      <td>35</td>
-      <td>71</td>
-      <td>41.0</td>
-      <td>95.0</td>
+      <td>36.8</td>
+      <td>48.3</td>
+      <td>43.1</td>
+      <td>64.6</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2102,10 +2102,10 @@ dtype: float64
       <td>167145</td>
       <td>pass</td>
       <td>simple_pass</td>
-      <td>41</td>
-      <td>95</td>
-      <td>72.0</td>
-      <td>88.0</td>
+      <td>43.1</td>
+      <td>64.6</td>
+      <td>75.6</td>
+      <td>59.8</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2159,16 +2159,16 @@ dtype: float64
 <td><p>サブイベントID</p></td>
 </tr>
 <tr class="row-even"><td><p>x1</p></td>
-<td><p>イベント開始 <span class="math notranslate nohighlight">\(x\)</span> 座標（単位は%）</p></td>
+<td><p>イベント開始 <span class="math notranslate nohighlight">\(x\)</span> 座標（単位はm）</p></td>
 </tr>
 <tr class="row-odd"><td><p>y1</p></td>
-<td><p>イベント開始 <span class="math notranslate nohighlight">\(y\)</span> 座標（単位は%）</p></td>
+<td><p>イベント開始 <span class="math notranslate nohighlight">\(y\)</span> 座標（単位はm）</p></td>
 </tr>
 <tr class="row-even"><td><p>x2</p></td>
-<td><p>イベント終了 <span class="math notranslate nohighlight">\(x\)</span> 座標（単位は%）</p></td>
+<td><p>イベント終了 <span class="math notranslate nohighlight">\(x\)</span> 座標（単位はm）</p></td>
 </tr>
 <tr class="row-odd"><td><p>y2</p></td>
-<td><p>イベント終了 <span class="math notranslate nohighlight">\(y\)</span> 座標（単位は%）</p></td>
+<td><p>イベント終了 <span class="math notranslate nohighlight">\(y\)</span> 座標（単位はm）</p></td>
 </tr>
 <tr class="row-even"><td><p>goal</p></td>
 <td><p>得点フラグ（1/0）</p></td>
@@ -2192,40 +2192,36 @@ dtype: float64
 <p>イベント開始座標 <span class="math notranslate nohighlight">\((x_{1}, y_{1})\)</span> と終了座標 <span class="math notranslate nohighlight">\((x_{2}, y_{2})\)</span> は以下の座標系に従う：</p>
 <ul class="simple">
 <li><p>原点は左下</p></li>
-<li><p><span class="math notranslate nohighlight">\(x,\ y\)</span> 座標の値はフィールドの横幅と縦幅の最大値に対する割合（単位は%）</p>
+<li><p><span class="math notranslate nohighlight">\(x,\ y\)</span> 座標の値はフィールドの横幅と縦幅の最大値に対する割合（単位はm）</p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(0\le x \le 100\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(0\le y \le 100\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(0\le x \le 105\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(0\le y \le 68\)</span></p></li>
 </ul>
 </li>
 <li><p>両チームの攻撃方向は右方向となるように統一されている</p>
 <ul>
-<li><p>チームや前後半に関係なく，<span class="math notranslate nohighlight">\( x &gt; 50 \)</span> が相手陣，<span class="math notranslate nohighlight">\( x &lt; 50 \)</span> が自陣</p></li>
+<li><p>チームや前後半に関係なく，<span class="math notranslate nohighlight">\( x &gt; 52.5 \)</span> が相手陣，<span class="math notranslate nohighlight">\( x &lt; 52.5 \)</span> が自陣</p></li>
 <li><p><strong>※ 解析内容に応じて，攻撃方向が逆になるように変換する必要がある</strong></p></li>
 </ul>
 </li>
 </ul>
-<p>サッカーコートの公式規格は <span class="math notranslate nohighlight">\(105\mathrm{m}\times 68\mathrm{m}\)</span> なので，コートを描く際にはアスペクト比を以下のように設定する：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">68</span><span class="o">/</span><span class="mi">105</span><span class="p">)</span>
-</pre></div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;サッカーコートの描画&#39;&#39;&#39;</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">68</span><span class="o">/</span><span class="mi">105</span><span class="p">)</span>  <span class="c1"># アスペクト比を設定する</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>  <span class="c1"># アスペクト比を設定する</span>
 
 <span class="c1"># ハーフウェイライン</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">)</span> 
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">52.5</span><span class="p">,</span> <span class="mf">52.5</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">68</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">)</span> 
 
 <span class="c1"># 描画範囲と軸ラベル</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">105</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">68</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$X$&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$Y$&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2a7870833db291255f38b567dc31f751c02403cea02c044b63962831bed10600.png" src="../_images/2a7870833db291255f38b567dc31f751c02403cea02c044b63962831bed10600.png" />
+<img alt="../_images/404c66add3b229dad7f537a1cb6d2557f266b6ce467df8febbe7a410bd0fcc52.png" src="../_images/404c66add3b229dad7f537a1cb6d2557f266b6ce467df8febbe7a410bd0fcc52.png" />
 </div>
 </div>
 </section>
@@ -2309,10 +2305,10 @@ dtype: float64
       <td>8653</td>
       <td>others_on_the_ball</td>
       <td>touch</td>
-      <td>14</td>
-      <td>49</td>
-      <td>11.0</td>
-      <td>61.0</td>
+      <td>14.7</td>
+      <td>33.3</td>
+      <td>11.6</td>
+      <td>41.5</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2329,10 +2325,10 @@ dtype: float64
       <td>14869</td>
       <td>pass</td>
       <td>simple_pass</td>
-      <td>89</td>
-      <td>39</td>
-      <td>92.0</td>
-      <td>50.0</td>
+      <td>93.4</td>
+      <td>26.5</td>
+      <td>96.6</td>
+      <td>34.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
@@ -2349,8 +2345,8 @@ dtype: float64
       <td>7945</td>
       <td>shot</td>
       <td>shot</td>
-      <td>92</td>
-      <td>50</td>
+      <td>96.6</td>
+      <td>34.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
@@ -2369,10 +2365,10 @@ dtype: float64
       <td>8480</td>
       <td>save_attempt</td>
       <td>reflexes</td>
-      <td>100</td>
-      <td>100</td>
-      <td>8.0</td>
-      <td>50.0</td>
+      <td>105.0</td>
+      <td>68.0</td>
+      <td>8.4</td>
+      <td>34.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2389,10 +2385,10 @@ dtype: float64
       <td>14853</td>
       <td>pass</td>
       <td>simple_pass</td>
-      <td>31</td>
-      <td>24</td>
-      <td>100.0</td>
-      <td>100.0</td>
+      <td>32.6</td>
+      <td>16.3</td>
+      <td>105.0</td>
+      <td>68.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2459,10 +2455,10 @@ dtype: float64
       <td>8653</td>
       <td>pass</td>
       <td>head_pass</td>
-      <td>23</td>
-      <td>25</td>
-      <td>39.0</td>
-      <td>15.0</td>
+      <td>24.2</td>
+      <td>17.0</td>
+      <td>41.0</td>
+      <td>10.2</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2479,10 +2475,10 @@ dtype: float64
       <td>8013</td>
       <td>duel</td>
       <td>air_duel</td>
-      <td>39</td>
-      <td>15</td>
-      <td>33.0</td>
-      <td>20.0</td>
+      <td>41.0</td>
+      <td>10.2</td>
+      <td>34.6</td>
+      <td>13.6</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2499,10 +2495,10 @@ dtype: float64
       <td>0</td>
       <td>duel</td>
       <td>air_duel</td>
-      <td>61</td>
-      <td>85</td>
-      <td>67.0</td>
-      <td>80.0</td>
+      <td>64.0</td>
+      <td>57.8</td>
+      <td>70.4</td>
+      <td>54.4</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2519,10 +2515,10 @@ dtype: float64
       <td>167145</td>
       <td>pass</td>
       <td>head_pass</td>
-      <td>67</td>
-      <td>80</td>
-      <td>59.0</td>
-      <td>61.0</td>
+      <td>70.4</td>
+      <td>54.4</td>
+      <td>62.0</td>
+      <td>41.5</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2539,10 +2535,10 @@ dtype: float64
       <td>49876</td>
       <td>pass</td>
       <td>head_pass</td>
-      <td>59</td>
-      <td>61</td>
-      <td>45.0</td>
-      <td>45.0</td>
+      <td>62.0</td>
+      <td>41.5</td>
+      <td>47.2</td>
+      <td>30.6</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2613,10 +2609,10 @@ dtype: float64
       <td>25413</td>
       <td>pass</td>
       <td>simple_pass</td>
-      <td>49</td>
-      <td>49</td>
-      <td>31.0</td>
-      <td>78.0</td>
+      <td>51.4</td>
+      <td>33.3</td>
+      <td>32.6</td>
+      <td>53.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2633,10 +2629,10 @@ dtype: float64
       <td>370224</td>
       <td>pass</td>
       <td>high_pass</td>
-      <td>31</td>
-      <td>78</td>
+      <td>32.6</td>
+      <td>53.0</td>
+      <td>53.6</td>
       <td>51.0</td>
-      <td>75.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2653,10 +2649,10 @@ dtype: float64
       <td>3319</td>
       <td>pass</td>
       <td>head_pass</td>
-      <td>51</td>
-      <td>75</td>
-      <td>35.0</td>
-      <td>71.0</td>
+      <td>53.6</td>
+      <td>51.0</td>
+      <td>36.8</td>
+      <td>48.3</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2673,10 +2669,10 @@ dtype: float64
       <td>120339</td>
       <td>pass</td>
       <td>head_pass</td>
-      <td>35</td>
-      <td>71</td>
-      <td>41.0</td>
-      <td>95.0</td>
+      <td>36.8</td>
+      <td>48.3</td>
+      <td>43.1</td>
+      <td>64.6</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2693,10 +2689,10 @@ dtype: float64
       <td>167145</td>
       <td>pass</td>
       <td>simple_pass</td>
-      <td>41</td>
-      <td>95</td>
-      <td>72.0</td>
-      <td>88.0</td>
+      <td>43.1</td>
+      <td>64.6</td>
+      <td>75.6</td>
+      <td>59.8</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2763,10 +2759,10 @@ dtype: float64
       <td>25413</td>
       <td>pass</td>
       <td>simple_pass</td>
-      <td>49</td>
-      <td>49</td>
-      <td>31.0</td>
-      <td>78.0</td>
+      <td>51.4</td>
+      <td>33.3</td>
+      <td>32.6</td>
+      <td>53.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2783,10 +2779,10 @@ dtype: float64
       <td>167145</td>
       <td>pass</td>
       <td>simple_pass</td>
-      <td>41</td>
-      <td>95</td>
-      <td>72.0</td>
-      <td>88.0</td>
+      <td>43.1</td>
+      <td>64.6</td>
+      <td>75.6</td>
+      <td>59.8</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2803,10 +2799,10 @@ dtype: float64
       <td>3319</td>
       <td>pass</td>
       <td>simple_pass</td>
-      <td>72</td>
-      <td>88</td>
-      <td>77.0</td>
-      <td>75.0</td>
+      <td>75.6</td>
+      <td>59.8</td>
+      <td>80.9</td>
+      <td>51.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2823,10 +2819,10 @@ dtype: float64
       <td>265366</td>
       <td>pass</td>
       <td>simple_pass</td>
-      <td>29</td>
-      <td>26</td>
-      <td>37.0</td>
-      <td>8.0</td>
+      <td>30.4</td>
+      <td>17.7</td>
+      <td>38.8</td>
+      <td>5.4</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2843,10 +2839,10 @@ dtype: float64
       <td>8013</td>
       <td>pass</td>
       <td>simple_pass</td>
-      <td>37</td>
-      <td>8</td>
-      <td>23.0</td>
-      <td>5.0</td>
+      <td>38.8</td>
+      <td>5.4</td>
+      <td>24.2</td>
+      <td>3.4</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2913,8 +2909,8 @@ dtype: float64
       <td>25413</td>
       <td>shot</td>
       <td>shot</td>
-      <td>88</td>
-      <td>41</td>
+      <td>92.4</td>
+      <td>27.9</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
@@ -2933,10 +2929,10 @@ dtype: float64
       <td>8480</td>
       <td>save_attempt</td>
       <td>reflexes</td>
-      <td>100</td>
-      <td>100</td>
-      <td>12.0</td>
-      <td>59.0</td>
+      <td>105.0</td>
+      <td>68.0</td>
+      <td>12.6</td>
+      <td>40.1</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2953,10 +2949,10 @@ dtype: float64
       <td>14763</td>
       <td>shot</td>
       <td>shot</td>
-      <td>96</td>
-      <td>52</td>
-      <td>100.0</td>
-      <td>100.0</td>
+      <td>100.8</td>
+      <td>35.4</td>
+      <td>105.0</td>
+      <td>68.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2973,10 +2969,10 @@ dtype: float64
       <td>7882</td>
       <td>save_attempt</td>
       <td>reflexes</td>
-      <td>0</td>
-      <td>0</td>
-      <td>4.0</td>
-      <td>48.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.2</td>
+      <td>32.6</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2993,10 +2989,10 @@ dtype: float64
       <td>12829</td>
       <td>shot</td>
       <td>shot</td>
-      <td>94</td>
-      <td>54</td>
-      <td>100.0</td>
-      <td>100.0</td>
+      <td>98.7</td>
+      <td>36.7</td>
+      <td>105.0</td>
+      <td>68.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -3063,10 +3059,10 @@ dtype: float64
       <td>25413</td>
       <td>pass</td>
       <td>simple_pass</td>
-      <td>49</td>
-      <td>49</td>
-      <td>31.0</td>
-      <td>78.0</td>
+      <td>51.4</td>
+      <td>33.3</td>
+      <td>32.6</td>
+      <td>53.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -3083,10 +3079,10 @@ dtype: float64
       <td>370224</td>
       <td>pass</td>
       <td>high_pass</td>
-      <td>31</td>
-      <td>78</td>
+      <td>32.6</td>
+      <td>53.0</td>
+      <td>53.6</td>
       <td>51.0</td>
-      <td>75.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -3103,10 +3099,10 @@ dtype: float64
       <td>3319</td>
       <td>pass</td>
       <td>head_pass</td>
-      <td>51</td>
-      <td>75</td>
-      <td>35.0</td>
-      <td>71.0</td>
+      <td>53.6</td>
+      <td>51.0</td>
+      <td>36.8</td>
+      <td>48.3</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -3123,10 +3119,10 @@ dtype: float64
       <td>120339</td>
       <td>pass</td>
       <td>head_pass</td>
-      <td>35</td>
-      <td>71</td>
-      <td>41.0</td>
-      <td>95.0</td>
+      <td>36.8</td>
+      <td>48.3</td>
+      <td>43.1</td>
+      <td>64.6</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -3143,10 +3139,10 @@ dtype: float64
       <td>167145</td>
       <td>pass</td>
       <td>simple_pass</td>
-      <td>41</td>
-      <td>95</td>
-      <td>72.0</td>
-      <td>88.0</td>
+      <td>43.1</td>
+      <td>64.6</td>
+      <td>75.6</td>
+      <td>59.8</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -3213,8 +3209,8 @@ dtype: float64
       <td>25413</td>
       <td>shot</td>
       <td>shot</td>
-      <td>88</td>
-      <td>41</td>
+      <td>92.4</td>
+      <td>27.9</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
@@ -3233,10 +3229,10 @@ dtype: float64
       <td>14763</td>
       <td>shot</td>
       <td>shot</td>
-      <td>96</td>
-      <td>52</td>
-      <td>100.0</td>
-      <td>100.0</td>
+      <td>100.8</td>
+      <td>35.4</td>
+      <td>105.0</td>
+      <td>68.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -3253,10 +3249,10 @@ dtype: float64
       <td>12829</td>
       <td>shot</td>
       <td>shot</td>
-      <td>94</td>
-      <td>54</td>
-      <td>100.0</td>
-      <td>100.0</td>
+      <td>98.7</td>
+      <td>36.7</td>
+      <td>105.0</td>
+      <td>68.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -3273,8 +3269,8 @@ dtype: float64
       <td>7945</td>
       <td>shot</td>
       <td>shot</td>
-      <td>92</td>
-      <td>50</td>
+      <td>96.6</td>
+      <td>34.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
@@ -3293,10 +3289,10 @@ dtype: float64
       <td>12829</td>
       <td>shot</td>
       <td>shot</td>
-      <td>92</td>
-      <td>54</td>
-      <td>100.0</td>
-      <td>100.0</td>
+      <td>96.6</td>
+      <td>36.7</td>
+      <td>105.0</td>
+      <td>68.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -3313,8 +3309,8 @@ dtype: float64
       <td>7870</td>
       <td>shot</td>
       <td>shot</td>
-      <td>94</td>
-      <td>63</td>
+      <td>98.7</td>
+      <td>42.8</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
@@ -3333,8 +3329,8 @@ dtype: float64
       <td>26010</td>
       <td>shot</td>
       <td>shot</td>
-      <td>91</td>
-      <td>44</td>
+      <td>95.6</td>
+      <td>29.9</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
@@ -3368,22 +3364,26 @@ dtype: float64
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
     
     <span class="c1"># アスペクト比の変更</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">68</span><span class="o">/</span><span class="mi">105</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># X座標とY座標に小さなランダムノイズを追加（ヒートマップに筋が入るのを防ぐ）</span>
+    <span class="n">x</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">y</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
     
     <span class="c1"># ヒートマップの描画</span>
     <span class="n">ret</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="c1"># データのX座標とY座標</span>
-                    <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">25</span><span class="p">],</span> <span class="c1"># X方向とY方向のビン数</span>
-                    <span class="nb">range</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">]],</span> <span class="c1"># 描画範囲</span>
+                    <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="c1"># X方向とY方向のビン数</span>
+                    <span class="nb">range</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">105</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">68</span><span class="p">]],</span> <span class="c1"># 描画範囲</span>
                     <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
     <span class="c1"># カラーバーを追加</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ret</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
     
     <span class="c1"># ハーフウェイラインを追加</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">)</span> 
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">52.5</span><span class="p">,</span> <span class="mf">52.5</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">68</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">)</span>
 
     <span class="c1"># 描画範囲とラベル</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">105</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">68</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$X$&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$Y$&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -3401,7 +3401,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/76a0d7a5dc66da9825495433c0819469c2bad018d13f460cd9c45e542d25c0f7.png" src="../_images/76a0d7a5dc66da9825495433c0819469c2bad018d13f460cd9c45e542d25c0f7.png" />
+<img alt="../_images/8fa4735d8f17fac19cbb775464ebb1b7b8445f98c3051b402830c5e9dc2ea2ae.png" src="../_images/8fa4735d8f17fac19cbb775464ebb1b7b8445f98c3051b402830c5e9dc2ea2ae.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3415,7 +3415,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7440b69efeebdf1ecd3571ddc5d626208c04571ee23454491a9db85593edfc04.png" src="../_images/7440b69efeebdf1ecd3571ddc5d626208c04571ee23454491a9db85593edfc04.png" />
+<img alt="../_images/3ca857171fe6a8e8249a8232911038fd69b3b1fc215b4d69665700e431f8270f.png" src="../_images/3ca857171fe6a8e8249a8232911038fd69b3b1fc215b4d69665700e431f8270f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3428,7 +3428,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/98f11743307f23f65df21dd2f69136d859cfc95aa33ed95bc775f88e0cd04671.png" src="../_images/98f11743307f23f65df21dd2f69136d859cfc95aa33ed95bc775f88e0cd04671.png" />
+<img alt="../_images/d199c4dc97e659a7e184851e4d049eed19a928cc1b28864bc84d3e27f789c06c.png" src="../_images/d199c4dc97e659a7e184851e4d049eed19a928cc1b28864bc84d3e27f789c06c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3441,7 +3441,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8cc07cbe28c1be7a55cdc54244bee3445c7a8053a4ddfdab79292080ca75ed37.png" src="../_images/8cc07cbe28c1be7a55cdc54244bee3445c7a8053a4ddfdab79292080ca75ed37.png" />
+<img alt="../_images/0c8b58c41427ba465087aa8419f1aeae4d6734489e9bf0b116316774d50479f7.png" src="../_images/0c8b58c41427ba465087aa8419f1aeae4d6734489e9bf0b116316774d50479f7.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3454,7 +3454,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/374ba5244e0c2f1092da79f79a7217c693448bae5d777d4b2693f36e620f5542.png" src="../_images/374ba5244e0c2f1092da79f79a7217c693448bae5d777d4b2693f36e620f5542.png" />
+<img alt="../_images/dff6b8afddc6be4a1800ad6694779ed832514fa2b6ca4850c53f79fce643e4b0.png" src="../_images/dff6b8afddc6be4a1800ad6694779ed832514fa2b6ca4850c53f79fce643e4b0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3467,7 +3467,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/136ae3ac52bcb3605fc864213db1ae4be140bde38cc97bafa526b1bc40495723.png" src="../_images/136ae3ac52bcb3605fc864213db1ae4be140bde38cc97bafa526b1bc40495723.png" />
+<img alt="../_images/98e838e79899a53093a22185a64b3b9d47441e21b2617266395e0b1b9d850f62.png" src="../_images/98e838e79899a53093a22185a64b3b9d47441e21b2617266395e0b1b9d850f62.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3480,7 +3480,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/10895f3438a3007a4890ed3538662cf72a8ad97da6dec77f525ad90e1ce24755.png" src="../_images/10895f3438a3007a4890ed3538662cf72a8ad97da6dec77f525ad90e1ce24755.png" />
+<img alt="../_images/ff12d90d5153e47dc90e52afb977495bd709106fd4ac8420a67c37b32392e4b5.png" src="../_images/ff12d90d5153e47dc90e52afb977495bd709106fd4ac8420a67c37b32392e4b5.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3493,7 +3493,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/246f504b8c36544ee0f1e18691f25eff5f52b224a4c4330b1d59dbe97edea3bb.png" src="../_images/246f504b8c36544ee0f1e18691f25eff5f52b224a4c4330b1d59dbe97edea3bb.png" />
+<img alt="../_images/539d6d483c156efd0289892c253384a38cec5c58b916e38be3cc4028c3dab4b7.png" src="../_images/539d6d483c156efd0289892c253384a38cec5c58b916e38be3cc4028c3dab4b7.png" />
 </div>
 </div>
 </section>
@@ -3788,7 +3788,7 @@ Name: count, dtype: int64
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">df_shot</span></code>に新たに<code class="docutils literal notranslate"><span class="pre">distance</span></code>列を追加し，シュート距離（シュートの開始座標から相手ゴールの中心までの距離）を計算して保存せよ．</p>
 <ul class="simple">
-<li><p>相手ゴールの中心の座標は <span class="math notranslate nohighlight">\((100, 50)\)</span> である．</p></li>
+<li><p>相手ゴールの中心の座標は <span class="math notranslate nohighlight">\((105, 34)\)</span> である．</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3797,7 +3797,7 @@ Name: count, dtype: int64
 </div>
 </div>
 </div>
-<p>以下のコードを実行し，<code class="docutils literal notranslate"><span class="pre">df_shot['distance']</span></code>の値を5刻みの値に丸めよ．</p>
+<p>以下のコードを実行し，<code class="docutils literal notranslate"><span class="pre">df_shot['distance']</span></code>の値を5m刻みの値に丸めよ．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解答欄</span>
