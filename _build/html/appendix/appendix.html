@@ -3083,56 +3083,65 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 <th class="head"><p>試合数</p></th>
 <th class="head"><p>イベント数</p></th>
 <th class="head"><p>選手数</p></th>
+<th class="head"><p>加工済みデータ</p></th>
 </tr>
 </thead>
 <tbody>
+<tr class="row-even"><td><p>イングランド１部リーグ</p></td>
+<td><p>2017-18</p></td>
+<td><p>380</p></td>
+<td><p>643150</p></td>
+<td><p>603</p></td>
+<td><p><a class="reference external" href="https://tnarizuka.github.io/sports_data_programming/chap_6/event_England.csv">event_England.csv</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>フランス１部リーグ</p></td>
+<td><p>2017-18</p></td>
+<td><p>380</p></td>
+<td><p>632807</p></td>
+<td><p>629</p></td>
+<td><p><a class="reference external" href="https://tnarizuka.github.io/sports_data_programming/chap_6/event_France.csv">event_France.csv</a></p></td>
+</tr>
+<tr class="row-even"><td><p>ドイツ１部リーグ</p></td>
+<td><p>2017-18</p></td>
+<td><p>380</p></td>
+<td><p>519407</p></td>
+<td><p>537</p></td>
+<td><p><a class="reference external" href="https://tnarizuka.github.io/sports_data_programming/chap_6/event_Germany.csv">event_Germany.csv</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>イタリア１部リーグ</p></td>
+<td><p>2017-18</p></td>
+<td><p>380</p></td>
+<td><p>647372</p></td>
+<td><p>686</p></td>
+<td><p><a class="reference external" href="https://tnarizuka.github.io/sports_data_programming/chap_6/event_Italy.csv">event_Italy.csv</a></p></td>
+</tr>
 <tr class="row-even"><td><p>スペイン１部リーグ</p></td>
 <td><p>2017-18</p></td>
 <td><p>380</p></td>
 <td><p>628659</p></td>
 <td><p>619</p></td>
-</tr>
-<tr class="row-odd"><td><p>イングランド１部リーグ</p></td>
-<td><p>2017-18</p></td>
-<td><p>380</p></td>
-<td><p>643150</p></td>
-<td><p>603</p></td>
-</tr>
-<tr class="row-even"><td><p>イタリア１部リーグ</p></td>
-<td><p>2017-18</p></td>
-<td><p>380</p></td>
-<td><p>647372</p></td>
-<td><p>686</p></td>
-</tr>
-<tr class="row-odd"><td><p>ドイツ１部リーグ</p></td>
-<td><p>2017-18</p></td>
-<td><p>380</p></td>
-<td><p>519407</p></td>
-<td><p>537</p></td>
-</tr>
-<tr class="row-even"><td><p>フランス１部リーグ</p></td>
-<td><p>2017-18</p></td>
-<td><p>380</p></td>
-<td><p>632807</p></td>
-<td><p>629</p></td>
+<td><p><a class="reference external" href="https://tnarizuka.github.io/sports_data_programming/chap_6/event_Spain.csv">event_Spain.csv</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>FIFA World Cup</p></td>
 <td><p>2018</p></td>
 <td><p>64</p></td>
 <td><p>101759</p></td>
 <td><p>736</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-even"><td><p>UEFA Euro Cup</p></td>
 <td><p>2016</p></td>
 <td><p>51</p></td>
 <td><p>78140</p></td>
 <td><p>552</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p>計</p></td>
 <td><p></p></td>
 <td><p>1941</p></td>
 <td><p>3251294</p></td>
 <td><p>4299</p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
@@ -3216,7 +3225,7 @@ MATLABスタイルでは，プロット，装飾，保存など全てのコマ�
 <p><strong>座標の反転（片方のチームだけ）</strong></p>
 <p>元のデータでは，両チームの攻撃方向が右方向に統一されている．
 これだと，試合展開を可視化する際にわかりにくいので，一方のチームの攻撃方向が逆になるように変換する．
-以下のように，片方のチーム（'team_id'が1631）の<span class="math notranslate nohighlight">\(x, y\)</span>座標から最大値105を引き，絶対値を取ればよい．</p>
+以下のように，片方のチーム（'team_id'が1631）の<span class="math notranslate nohighlight">\(x, y\)</span>座標から最大値を引き，絶対値を取ればよい．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_event_game</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">team_id</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">df_event_game</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_event_game</span><span class="p">[</span><span class="s1">&#39;team_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">team_id</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">105</span><span class="p">)</span>
