@@ -28,8 +28,8 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
@@ -436,9 +436,9 @@ document.write(`
   <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># （必須）モジュールのインポート</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="c1"># 表示設定</span>
 <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -1587,15 +1587,15 @@ Wyscout社によって収集されたデータをL. Pappalardoらが編集し<a 
 <p>この式において，<span class="math notranslate nohighlight">\( p^{x}(1-p)^{n-x} \)</span> は成功が <span class="math notranslate nohighlight">\( x \)</span>回，失敗が <span class="math notranslate nohighlight">\( n-x \)</span> 回生じる確率を意味する．
 また，<span class="math notranslate nohighlight">\( \binom{n}{x} \)</span> は <span class="math notranslate nohighlight">\( n \)</span> 個から <span class="math notranslate nohighlight">\( x \)</span> 個を取り出す組み合わせの数 <span class="math notranslate nohighlight">\( _{n}C_{x} \)</span> を表し，<span class="math notranslate nohighlight">\( n \)</span> 回の中で何回目に成功するかの場合の数に対応する．</p>
 <p>いま，成功確率 <span class="math notranslate nohighlight">\( p \)</span> が小さく，かつ試行回数 <span class="math notranslate nohighlight">\( n \)</span> が大きい極限を考える．
-ただし，極限を取る際に発散しないように平均値が一定値 <span class="math notranslate nohighlight">\( np=\mu \)</span> になるようにする．
-このような条件で <span class="math notranslate nohighlight">\(n\)</span> 回中 <span class="math notranslate nohighlight">\(x\)</span> 回成功する確率 <span class="math notranslate nohighlight">\(f(x)\)</span> は，二項分布の式に <span class="math notranslate nohighlight">\( np=\mu \)</span> を代入し，極限 <span class="math notranslate nohighlight">\( p\to 0,\ n\to \infty \)</span> を取ることで</p>
+ただし，極限を取る際に発散しないように平均値が一定値 <span class="math notranslate nohighlight">\( np=m \)</span> になるようにする．
+このような条件で <span class="math notranslate nohighlight">\(n\)</span> 回中 <span class="math notranslate nohighlight">\(x\)</span> 回成功する確率 <span class="math notranslate nohighlight">\(f(x)\)</span> は，二項分布の式に <span class="math notranslate nohighlight">\( np=m \)</span> を代入し，極限 <span class="math notranslate nohighlight">\( p\to 0,\ n\to \infty \)</span> を取ることで</p>
 <div class="math notranslate nohighlight">
 \[
-    f(x) = \frac{\mu^{x}}{x!} \mathrm{e}^{-\mu}
+    f(x) = \frac{m^{x}}{x!} \mathrm{e}^{-m}
 \]</div>
 <p>と求まる．
 これを<strong>ポアソン分布</strong>と呼ぶ．
-ポアソン分布は1つのパラメータ <span class="math notranslate nohighlight">\( \mu \)</span> だけで特徴づけられ，<strong>期待値と分散はともに <span class="math notranslate nohighlight">\( \mu \)</span> となる</strong>．
+ポアソン分布は1つのパラメータ <span class="math notranslate nohighlight">\( m \)</span> だけで特徴づけられ，<strong>期待値と分散はともに <span class="math notranslate nohighlight">\( m \)</span> となる</strong>．
 ポアソン分布はその導出過程より，<strong>一定の期間内に発生確率の小さい稀な現象を何度も試行した場合に，その発生回数が従う分布である</strong>．
 例えば，以下の現象は全てポアソン分布に従うことが知られている：</p>
 <ul class="simple">
@@ -1828,7 +1828,7 @@ dtype: float64
 <p>のグラフを描けば良い．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">poisson</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">poisson</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">home_score</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
@@ -1848,10 +1848,10 @@ dtype: float64
 そこで，最後に２つのグラフを合わせよう．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">poisson</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">poisson</span>
 <span class="n">home_score</span> <span class="o">=</span> <span class="n">df_game</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_game</span><span class="p">[</span><span class="s1">&#39;league&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;England&#39;</span><span class="p">,</span> <span class="s1">&#39;home_score&#39;</span><span class="p">]</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">home_score</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">home_score</span><span class="p">,</span> 
         <span class="n">bins</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="c1"># 階級の左端の値を指定する</span>
@@ -3351,7 +3351,7 @@ dtype: float64
 この関数は，<span class="math notranslate nohighlight">\(x,\ y\)</span>座標のデータを引数として受け取り，matplotlibの<code class="docutils literal notranslate"><span class="pre">hist2d</span></code>関数を用いてヒートマップを描く．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_event_hmap</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cm</span><span class="o">=</span><span class="s1">&#39;Greens&#39;</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_event_hmap</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cm</span><span class="o">=</span><span class="s1">&#39;Greens&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    イベントデータからヒートマップを描画する</span>
 <span class="sd">    -- 引数 ---</span>

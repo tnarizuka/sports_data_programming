@@ -28,8 +28,8 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
@@ -498,9 +498,9 @@ document.write(`
   <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># （必須）モジュールのインポート</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="c1"># 表示設定</span>
 <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -534,7 +534,7 @@ document.write(`
 <p>NumPyは<code class="docutils literal notranslate"><span class="pre">np</span></code>という名前で以下のようにimportするのが慣例である：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </pre></div>
 </div>
 </div>
@@ -958,7 +958,8 @@ NumPyおよびPandasでは，列番号が増減する方向の軸を<code class=
 </div>
 </div>
 <figure class="align-default" id="fig-matrix">
-<a class="reference internal image-reference" href="../_images/matrix.png"><img alt="../_images/matrix.png" src="../_images/matrix.png" style="height: 200px;" /></a>
+<a class="reference internal image-reference" href="../_images/matrix.png"><img alt="../_images/matrix.png" src="../_images/matrix.png" style="height: 200px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">図 3.1 </span><span class="caption-text">行列の例</span><a class="headerlink" href="#fig-matrix" title="Link to this image">#</a></p>
 </figcaption>
@@ -3479,12 +3480,11 @@ Wall time: 4.63 ms
 </div>
 </div>
 <ul class="simple">
-<li><p>肥満度を表す指標としてBMIが知られている．BMIは身長と体重を用いて以下で定義される：</p></li>
+<li><p>肥満度を表す指標としてBMIが知られている．BMIは身長と体重を用いて以下で定義される：
+\begin{align}
+\mathrm{BMI} = \frac{体重 [kg]}{(身長 [m])^2}
+\end{align}</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-953ea03e-1d44-4d06-b6e4-349642dfc2d0">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-953ea03e-1d44-4d06-b6e4-349642dfc2d0" title="Permalink to this equation">#</a></span>\[\begin{align}
-    \mathrm{BMI} = \frac{体重 [kg]}{(身長 [m])^2}
-\end{align}\]</div>
 <ul class="simple">
 <li><p>身長の単位をcmからmに変換し，<code class="docutils literal notranslate"><span class="pre">height_m</span></code>に格納せよ．</p></li>
 </ul>
