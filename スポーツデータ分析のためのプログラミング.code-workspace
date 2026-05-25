@@ -7,5 +7,10 @@
 			"path": "../../スポーツデータ分析のためのプログラミング/confidential_data"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"python.defaultInterpreterPath": "/Users/narizuka/.pyenv/versions/miniforge3-4.10.3-10/envs/myenv/bin/python",
+		"isort.interpreter": [
+			"/Users/narizuka/.pyenv/versions/miniforge3-4.10.3-10/envs/myenv/bin/python"
+		]
+	}
 }
