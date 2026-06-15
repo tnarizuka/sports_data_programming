@@ -5,7 +5,12 @@ title: Programming for Sports Data Analysis
 author: ""
 copyright: "2022-present by 成塚拓真（Takuma Narizuka）"
 logo: logo.png
-exclude_patterns: [_build, README.md, .DS_Store]
+exclude_patterns:
+  - _build
+  - README.md
+  - .DS_Store
+  - docs/**
+  - private/**
 only_build_toc_files: true
 
 #######################################################################################
