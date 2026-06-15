@@ -1,29 +1,29 @@
 (function () {
-  function notebookFilename(link) {
+  function downloadFilename(link) {
     try {
       var url = new URL(link.getAttribute("href"), window.location.href);
-      return url.pathname.split("/").pop() || "notebook.ipynb";
+      return url.pathname.split("/").pop() || "source";
     } catch (error) {
-      return "notebook.ipynb";
+      return "source";
     }
   }
 
-  function enableNotebookDownloads() {
+  function enableSourceDownloads() {
     var selector = [
-      'a.btn-download-notebook-button[href$=".ipynb"]',
-      'a.btn-download-source-button[href$=".ipynb"]'
+      "a.btn-download-notebook-button[href]",
+      "a.btn-download-source-button[href]"
     ].join(",");
 
     document.querySelectorAll(selector).forEach(function (link) {
-      link.setAttribute("download", notebookFilename(link));
+      link.setAttribute("download", downloadFilename(link));
       link.removeAttribute("target");
       link.setAttribute("rel", "noopener");
     });
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", enableNotebookDownloads);
+    document.addEventListener("DOMContentLoaded", enableSourceDownloads);
   } else {
-    enableNotebookDownloads();
+    enableSourceDownloads();
   }
 })();
