@@ -20,6 +20,8 @@
 
 - [リポジトリ概要](docs/repository-overview.md)
 - [運用方法](docs/operation-guide.md)
+- [トラブルシュート](docs/troubleshooting.md)
+- [保守チェックリスト](docs/maintenance-checklist.md)
 - [公開用変更履歴](docs/public-changelog.md)
 
 管理者だけが参照する作業記録や復旧メモは `private/` に置きます．

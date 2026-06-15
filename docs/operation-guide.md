@@ -58,6 +58,9 @@ jb build --all .
 - `.ipynb` や `.md` のダウンロードリンクが期待通り動くか
 - `requirements.txt` と本文中の依存パッケージの説明が矛盾していないか
 
+定期的な確認には [保守チェックリスト](maintenance-checklist.md) を使います．
+エラーや警告が出た場合は [トラブルシュート](troubleshooting.md) を参照します．
+
 ## 公開情報と非公開情報
 
 公開してよい情報は `README.md` と `docs/` に置きます．
